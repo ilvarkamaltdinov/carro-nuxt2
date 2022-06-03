@@ -1,0 +1,11 @@
+.credit__form {
+  @include white-back;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.credit .rating {
+  &::after {
+    border: 4px solid $colorBgActive;
+  }
+}

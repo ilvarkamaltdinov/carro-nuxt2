@@ -1,0 +1,344 @@
+.catalog-new__model-img {
+  border-radius: 8px;
+  margin-bottom: 16px;
+  width: 100%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+}
+
+.catalog-new__model-link {
+  @include a-reset;
+}
+
+.catalog-new__model-price-wrap {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.catalog-new__model-label {
+  margin-right: 16px;
+}
+
+.catalog-new__model-price--from {
+  display: flex;
+  align-items: center;
+
+  &::after {
+    content: "-";
+    margin: 0 8px;
+    display: block;
+  }
+}
+
+.catalog-new__model-info {
+  @include list-reset;
+  margin-bottom: 12px;
+}
+
+.catalog-new__model-info-item-content {
+  margin-bottom: 8px;
+  color: grey;
+}
+
+.catalog-new__model-colors {
+  @include list-reset;
+  display: flex;
+  justify-content: left;
+  margin-bottom: 16px;
+}
+
+.catalog-new__model-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-right: 8px;
+  border: 1px solid $grey;
+}
+
+.catalog-new__model-picture {
+  padding-bottom:	56.5%;
+  position: relative;
+  margin-bottom: 12px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.catalog-new__model-complectation {
+  background-color: #e7e7e7;
+  border-radius: 6px;
+  padding: 6px;
+  display: inline-block;
+  margin-right: 12px;
+}
+
+.catalog-new__model-label {
+  border: 1px solid #e7e7e7;
+  border-radius: 6px;
+  padding: 6px;
+  display: inline-block;
+}
+
+.catalog-new__model-price {
+  display: flex;
+  align-items: center;
+}
+
+.catalog-new__model-price {
+  font-weight: 600;
+  font-size: 16px;
+  color: $red;
+}
+
+.catalog-new__model-heading {
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.catalog-new__model {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid $grey;
+}
+
+@media (max-width: $mobile-width-only) {
+  .catalog-new__model-img {
+    margin-bottom: 16px;
+  }
+
+  .catalog-new__model-descr {
+    margin-right: 16px;
+  }
+
+  .catalog-new__model-info-title {
+    display: none;
+  }
+
+  .catalog-new__model-info-title {
+    margin-bottom: 12px;
+  }
+
+  .catalog-new__model .catalog__car-info {
+    padding: 0;
+    margin-bottom: 16px;
+  }
+
+  .catalog-new__model-info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .catalog-new__model-info-wrap {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: $tablet-width-only) {
+
+  .catalog-new__model-official {
+    display: none;
+  }
+
+  .catalog-new__model-complectations {
+    @include horizontal-swipe;
+    margin: 0 -16px;
+    padding-left: 16px;
+    margin-bottom: 16px;
+  }
+
+  .catalog-new__model-info-item {
+    display: flex;
+  }
+
+  .catalog-new__model-info-title {
+    margin-right: 8px;
+  }
+
+  .catalog-new__model-complectations {
+    &::after {
+      content: "";
+      display: block;
+      padding-right: 1px;
+    }
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .catalog-new__model-link {
+    display: flex;
+  }
+
+  .catalog-new__model-img-wrap {
+    margin-right: 16px;
+  }
+
+  .catalog-new__model-commercial {
+    width: 100%;
+    align-items: center;
+  }
+
+  .catalog-new__model-info-item {
+    margin-right: 0;
+  }
+
+  .catalog-new__model-complectations {
+    padding: 0;
+    margin: 0;
+  }
+
+  .catalog-new__model-info {
+    justify-content: flex-start;
+  }
+
+  .catalog-new__model-info-item {
+    margin-right: 16px;
+  }
+
+  .catalog-new__model-commercial {
+    display: flex;
+  }
+
+  .catalog-new__model-complectations {
+    max-width: 80%;
+    margin-right: 16px;
+  }
+
+  .catalog-new__model-stock {
+    width: 30%;
+    max-width: 240px;
+    margin-left: auto;
+  }
+
+  .catalog-new__model-info-item-content {
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+
+  .catalog-new__model-info-item {
+    margin-bottom: 8px;
+  }
+
+  .catalog-new__model-link {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .catalog-new__model-descr {
+    grid-column: 2 / 4;
+  }
+
+  .catalog-new__model-commercial {
+    grid-column: 1 / 4;
+    grid-row: 2 / 3;
+  }
+
+  .catalog-new__model-info-item-content {
+    margin-bottom: 8px;
+    display: inline-block;
+  }
+
+  .catalog-new__model-colors {
+    justify-content: center;
+  }
+
+  .catalog-new__model-stock {
+    position: relative;
+
+    &::before {
+      content: "";
+      display: block;
+      width: 64px;
+      height: 100%;
+      position: absolute;
+      left: -79px;
+      top: 0;
+      background: linear-gradient(to right, transparent, white);
+    }
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .catalog-new__model-info-title {
+    margin-bottom: 8px;
+  }
+
+  .catalog-new__model-complectation--more {
+    width: 100%;
+    display: inline-block;
+    background: none;
+    color: grey;
+  }
+
+  .catalog-new__model-official {
+    font-size: 12px;
+  }
+
+  .catalog-new__model-logo {
+    margin-right: 16px;
+    max-height: 24px;
+    max-width: 120px;
+  }
+
+  .catalog-new__model-descr {
+    grid-column: 2/3;
+  }
+
+  .catalog-new__model-commercial {
+    grid-column: 3/4;
+    grid-row: auto;
+  }
+  .catalog-new__model-commercial {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .catalog-new__model-stock {
+    width: 240px;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .catalog-new__model-complectation {
+    margin-bottom: 16px;
+  }
+
+  .catalog-new__model-stock {
+    margin: 0;
+  }
+
+  .catalog-new__model-commercial {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .catalog-new__model-colors {
+    margin-bottom: 0;
+  }
+
+  .catalog-new__model {
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 13px 32px 36px -14px rgba(179, 179, 179, 0.5);
+    }
+  }
+
+  .catalog-new__model-official {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .catalog-new__model-stock {
+    margin-top: auto;
+  }
+}

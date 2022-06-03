@@ -1,0 +1,11 @@
+.page-link .button--add-review {
+  margin: 16px 0;
+}
+
+@media (min-width: $tablet-width) {
+  .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,20 @@
+- let carsCount = new Array(8);
+
+mixin catalogItem(img, isCatalog)
+  include ./catalog-item-s
+    - img
+
+section.page-main__catalog.catalog
+  .heading-group.heading-group--h1
+    .heading-group__wrap
+      h1.heading.heading--h1 Land Rover Range Rover Sport с пробегом
+      span.heading-group__label 242 автомобиля в наличии
+
+  include ../filter/filter-sort
+
+  .catalog__list
+    each element,i in carsCount
+      +catalogItem(i + 1, true)
+
+  include ../button/button-more
+    | Показать больше

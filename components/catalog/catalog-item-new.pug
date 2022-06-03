@@ -1,0 +1,52 @@
+- let catalogItemImgCount = new Array(6);
+
+mixin catalogItemImg(img)
+  include ./catalog-item-img-new
+    - img
+
+article.catalog__car-item.catalog__car-item--vertical.catalog__car-item--vertical-new.catalog__car-item--skeleton.col-12.col-md-6.col-lg-3
+  a.catalog__car-link(href="")
+    //- .catalog__car-recommend-label
+    //-   include ../tippy/tippy-recommend
+    .catalog__car-descr
+      h3.catalog__car-heading Volvo XC40 I
+      .catalog__price-wrap.catalog__price-wrap--mini-pc
+        .catalog__car-price 1 565 000 ₽
+        .catalog__car-oldprice 1 585 000 ₽
+    .catalog__car-img
+      each element,i in catalogItemImgCount
+        +catalogItemImg(i + 1)
+      object.catalog__call-card()
+        .catalog__card-wrap
+          svg.catalog__call-icon(viewbox="0 0 48 48")
+            use(xlink:href="#icon-call")
+          a.catalog__call-card-link(href='tel:+74995191324') Бесплатный звонок
+    ul.catalog__car-info
+      li.catalog__car-info-content.catalog__car-info-content--color
+        span.catalog__car-info-content-color
+        span.catalog__car-info-content-text Красный
+      li.catalog__car-info-item
+        span.catalog__car-info-content 3.2 л
+      li.catalog__car-info-item
+        span.catalog__car-info-content 220 л.с.
+      li.catalog__car-info-item
+        span.catalog__car-info-content АКПП
+      li.catalog__car-info-item
+        span.catalog__car-info-content Бензин
+      li.catalog__car-info-item
+        span.catalog__car-info-content Полный пр.
+  .catalog__card-labels
+    label.like
+      input.like__checkbox(type="checkbox" checked="checked")
+      span.like__checked
+        svg.like__icon(viewbox="0 0 48 48")
+          use(xlink:href="#icon-heart")
+  .catalog__car-extras
+    .catalog__car-button
+      .catalog-new__model-price-wrap
+        span.catalog-new__model-label Новый
+      .catalog__credit-payment
+        span.catalog__credit-payment-sum от 4 410 ₽/мес
+          span.catalog__credit-payment-first  без первого взноса
+      a.catalog__mini-credit.popup--link(href="#modal-credit" data-effect="mfp-move-horizontal")
+        | Купить в кредит

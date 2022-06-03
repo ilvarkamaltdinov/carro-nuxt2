@@ -1,0 +1,13 @@
+.vin {
+  display: flex;
+  align-items: center;
+  @include font-small;
+  color: $colorSuccess;
+}
+
+.vin__icon {
+  fill: $colorSuccess;
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+}

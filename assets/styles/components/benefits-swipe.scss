@@ -1,0 +1,52 @@
+.benefits-swipe {
+  @include list-reset;
+  padding: 8px 0;
+  display: flex;
+  -webkit-overflow-scrolling: touch;
+  -webkit-text-size-adjust: none;
+  width: 100%;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  margin: 8px 0;
+  padding-bottom: 0;
+  overflow-x: auto;
+  -ms-scroll-snap-type: x mandatory;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 12px;
+  overflow-y: hidden;
+}
+
+.benefits-swipe a {
+  @include a-reset;
+  padding: 8px;
+  display: block;
+}
+
+.benefits-swipe span {
+  color: $red;
+  white-space: pre;
+}
+
+.benefits-swipe__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $border-color;
+  margin-right: 8px;
+  position: relative;
+  height: 30px;
+  border-radius: 4px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+@media (min-width: $tablet-width) {
+  .benefits-swipe {
+    display: none;
+    margin: 16px 8px;
+  }
+}

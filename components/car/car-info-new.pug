@@ -1,0 +1,125 @@
+- let tippyText = "Совокупная оценка присваивается на основе технического состояния автомобиля"
+
+.car__details-block
+  ul.car__info-tabs.d-md-none
+    li.car__info-tab.car__info-tab--active Характеристики
+    li.car__info-tab Комплектация
+  .car__info-block.car__info-block--active.car__info-block--techs
+    ul.car__detail-table
+      li.car__detail-item
+        .car__detail-text Год выпуска
+        .car__detail-text 2021
+      li.car__detail-item
+        .car__detail-text Комплектация
+        .car__detail-text Active
+      li.car__detail-item
+        .car__detail-text Тип кузова
+        .car__detail-text Седан
+      li.car__detail-item
+        .car__detail-text Двигатель
+        .car__detail-text Бензиновый
+      li.car__detail-item
+        .car__detail-text КПП
+        .car__detail-text АКПП
+      li.car__detail-item
+        .car__detail-text Цвет
+        .car__detail-text.car__detail-text--color
+          .car__detail-text-add.car__detail-text-add--color()
+          .car__detail-text-add Черный металлик
+      li.car__detail-item
+        .car__detail-text Привод
+        .car__detail-text Задний
+      li.car__detail-item
+        .car__detail-text Объем двигателя
+        .car__detail-text 2 л.
+      li.car__detail-item
+        .car__detail-text Мощность л/c
+        .car__detail-text 184
+  .car__info-block.car__info-block--complect
+    h3.car__info-heading.heading Безопасность
+    ul.car__detail-table
+      li.car__detail-item
+        .car__detail-text Подушки безопасности оконные (шторки)
+      li.car__detail-item
+        .car__detail-text Подушка безопасности водителя
+      li.car__detail-item
+        .car__detail-text Подушка безопасности пассажира
+    h3.car__info-heading.heading Экстерьер
+    ul.car__detail-table
+      li.car__detail-item
+        .car__detail-text Размер колес: Легкосплавные диски 19
+      li.car__detail-item
+        .car__detail-text Подушка безопасности пассажира
+    table.car__detail-table
+      tbody
+        tr.car__detail-item
+          td.car__detail-text Ставка
+          td.car__detail-text От 9%
+        tr.car__detail-item
+          td.car__detail-text Первый взнос
+          td.car__detail-text От 0%
+        tr.car__detail-item
+          td.car__detail-text Сумма кредита
+          td.car__detail-text 50 000 - 2 500 000 ₽
+        tr.car__detail-item
+          td.car__detail-text Срок кредита
+          td.car__detail-text От 6 мес. до 7 лет
+        tr.car__detail-item
+          td.car__detail-text Скидка по автокредиту
+          td.car__detail-text 50 000 ₽
+        tr.car__detail-item
+          td.car__detail-text Оформление
+          td.car__detail-text 30 минут
+        tr.car__detail-item
+          td.car__detail-text Одобрение банков
+          td.car__detail-text По паспорту и ВУ
+        tr.car__detail-item
+          td.car__detail-text Досрочное погашение
+          td.car__detail-text Без штрафов
+
+.car__buy-options
+  .car__buy-wrap
+    .car__credit-wrap
+      .car__price-wrap
+        .car__price 1 525 000 ₽
+        .car__old-price 1 625 000 ₽
+        .catalog__car-weekend Скидка до 07.09
+      .car__month-price
+        span
+          span.car__month-payment от 8 954 ₽/месяц
+          |  без
+          span.car__month-word  первоначального
+          |  взноса
+    .car__additional
+      .car__in-stock
+        .car__in-stock-wrap
+          span.car__in-stock-label В наличии в автоцентре
+          strong АвтоГрадъ
+        include ../tippy/tippy-question
+      .car__phone-wrap
+        a.car__phone.car__phone--top(href="tel:+79091522222")
+          .car__phone-number +7 (800) 511-69-27
+          .car__phone-call Позвонить
+        a.button.button--green.car__callback.popup--link(href="#modal-callback" data-effect="mfp-move-horizontal") Обратный звонок
+
+  .car__buttons
+    button.car__buy-button.button Купить в кредит
+    .car__button-wrap
+
+  .car__express-form
+    h2.heading.heading--h2 Заявка на автомобиль
+    form.form.form--car
+      .form__paired.form__paired--selects
+        div
+          .form__input-wrapper
+            input.form__field(name='name' placeholder='ФИО' required='required')
+        div
+          .form__input-wrapper
+            input.form__field(type='tel' name='phone' placeholder='Телефон' inputmode='decimal' required='required')
+      label.form__agree.form__label(for='agree-personal')
+        input#agree-personal.form__checkbox(type='checkbox')
+        span.form__agree-text
+          | Соласен на
+          a.link(href='/privacy/') обработку персональных данных
+      .form__btn-wrapper
+        button.button.button--red Оставить заявку

@@ -1,0 +1,37 @@
+mutation order(
+  $dealer_id:Int!,
+  $type:String!,
+  $site_id:Int!
+  $clientName:String!,
+  $clientPhone:String!,
+  $clientAge:String,
+  $clientRegion:String,
+  $offer_title:String,
+  $offer_image:String,
+  $utm_source:String,
+  $utm_medium:String,
+  $utm_campaign:String,
+  $utm_term:String,
+  $utm_content:String,
+
+  $price:Int,$referer_url:String){
+  order(
+    dealer_id: $dealer_id,
+    type: $type,
+    clientName: $clientName,
+    clientPhone: $clientPhone,
+    site_id: $site_id,
+    clientAge: $clientAge,
+    clientRegion: $clientRegion,
+    utm_source:$utm_source,
+    utm_medium:$utm_medium,
+    utm_campaign:$utm_campaign,
+    utm_term:$utm_term,
+    utm_content:$utm_content,
+    offer_title: $offer_title,
+    offer_image: $offer_image,
+    price: $price,
+    referer_url: $referer_url){
+    id
+  }
+}

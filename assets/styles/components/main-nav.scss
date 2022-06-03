@@ -1,0 +1,22 @@
+// .main-nav {
+//   @include hide-element;
+// }
+
+@media (max-width: $mobile-width-only) {
+  // .main-nav {
+  //   @include modal-menu;
+  // }
+}
+
+@media (min-width: $desktop-width) {
+  .main-nav--modal .main-nav__list {
+    display: flex;
+    height: 320px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 32px;
+    @include border-bottom;
+    padding-bottom: 32px;
+  }
+}

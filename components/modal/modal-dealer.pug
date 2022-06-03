@@ -1,0 +1,50 @@
+section.modal.modal--credit
+  .heading-group.heading-group--modal
+    .heading-group__wrap
+      h2.heading.heading--h1 Автоцентр «АвтоГрадъ»
+      span.heading-group__label Старейший автодилер Москвы
+    button.modal__close
+      +icon("close-s", "modal__close-icon")
+  .modal__options
+    img.modal__logo(src="../img/dealers/logos/logo-autograd.svg" loading="lazy" alt="")
+    .modal__buttons
+      include ../button/button-callback
+      include ../button/button-call-modal
+
+  .modal__wrap
+    .features
+      .features__group
+        h3.heading.heading--h3 Контактные данные:
+        ul.features__list
+          li.features__item
+            .features__item-type Город:
+            .features__item-content г. Москва
+          li.features__item
+            .features__item-type Адрес:
+            .features__item-content Варшавское шоссе, д. 170Е
+          li.features__item
+            .features__item-type Метро:
+            .features__item-content м. Аннино, выход №1
+          li.features__item
+            .features__item-type Режим работы:
+            .features__item-content с 9:00 до 20:00
+          li.features__item
+            .features__item-type Телефон автоцентра:
+            .features__item-content
+              a.features__link(href="tel:+78007002211") +7 (800) 700-22-11
+          li.features__item
+            .features__item-type Кредитный отдел:
+            .features__item-content
+              a.features__link(href="tel:+78007002211") +7 (800) 700-22-11
+
+      .features__group
+        h3.heading.heading--h3 Об автоцентре:
+        p.features__item Автосалон «АвтоГрадъ» - один из крупнейших и старейших центров автомобильных продаж в Москве. За 25 лет продуктивной работы мы завоевали доверие многих тысяч автолюбителей, которые приезжают к нам за автомобилем со всей страны. Наш автоцентр сотрудничает с лучшими банками и страховыми компаниями, юристами и специалистами-оценщиками. Убедитесь в лучшем столичном сервисе и Вы, приехав за машиной своей мечты к нам, в «АвтоГрадъ».
+
+    .modal__dealer-photos
+      h3.heading.heading--h3 Фотографии автоцентра:
+      include ../dealer/dealer-slider
+
+    .modal__dealer-map
+      h3.heading.heading--h3 Автоцентр на карте:
+      .map.map--dealer

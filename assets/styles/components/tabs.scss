@@ -1,0 +1,47 @@
+.tabs {
+  margin-bottom: 16px;
+}
+
+.tabs--modal {
+  margin-bottom: 0;
+}
+
+.tabs__list {
+  display: flex;
+}
+
+.tabs__item {
+  margin-right: 16px;
+}
+
+.tabs__link {
+  border: 1px solid $colorDivider;
+  padding: 8px 16px;
+  border-radius: 50px;
+  display: inline-block;
+  transition: $transitionHover;
+
+  &:hover {
+    transition: $transitionHover;
+    background-color: $colorDivider;
+  }
+
+  @include font-features;
+}
+
+.tabs__item--active .tabs__link {
+  font-weight: $fontBold;
+  background-color: $colorDivider;
+}
+
+@media (max-width: $mobile-width-only) {
+  .tabs--modal {
+    margin: 0 -16px;
+    width: 100%;
+    width: calc(100% + 32px);
+  }
+
+  .tabs__list {
+    @include horizontal-scroll;
+  }
+}

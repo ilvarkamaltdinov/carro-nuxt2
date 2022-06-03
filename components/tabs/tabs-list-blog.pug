@@ -1,0 +1,15 @@
+- let tabsItems = ["Статьи", "Новости", "Рейтинги"];
+
+mixin tabsItem(tabText, tabActive, tabIndex)
+  include ./tabs-item
+    - tabText
+    - tabActive
+    - tabIndex
+
+.tabs
+  ul.tabs__list(id="tabs" role="tablist")
+    each element,i in tabsItems
+      if i === 0
+        +tabsItem(element, true, i)
+      else
+        +tabsItem(element, false, i)

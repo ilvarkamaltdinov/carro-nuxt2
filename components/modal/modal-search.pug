@@ -1,0 +1,32 @@
+section.modal.modal--search
+  h2.visually-hidden Поиск автомобилей
+  .modal__wrap.grid.grid__container
+    .search.grid__col-12
+      ul.search__list
+
+        li.search__item
+          a.search__link(href="")
+            +icon("mazda", "search__icon")
+            .search__text
+              .search__heading Mazda CX-5
+              .search__content С пробегом
+
+        li.search__item
+          a.search__link(href="")
+            +icon("form", "search__icon")
+            .search__text
+              .search__heading Автомобили
+              .search__content Привод: Полный
+
+
+        li.search__item
+          a.search__link(href="")
+            +icon("bank", "search__icon")
+            .search__text
+              .search__heading Автокредит
+              .search__content Услуги
+
+        li.search__item
+          .search__link
+            .search__text
+              .search__content Ничего не найдено

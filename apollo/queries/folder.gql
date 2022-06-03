@@ -1,0 +1,59 @@
+query folder($slug: String!, $dealer_id: Int!) {
+  folder(slug: $slug) {
+    id,
+    name,
+    name_rus,
+    title,
+    image,
+    images,
+    slug,
+    foldercolors {
+      id,
+      name,
+      color_code,
+      slug
+    },
+    overviews {
+      id,
+      amount,
+      path
+    },
+    modifications {
+      id,
+      name,
+      gearbox {
+        id,
+        name
+      },
+      drivetype {
+        id,
+        name
+      },
+      enginetype {
+        id,
+        name
+      }
+      engine_volume,
+      engine_power,
+      expen,
+      time,
+      max_speed,
+      complectations {
+        id,
+        name,
+        slug,
+        modification_id,
+        equipment {
+          title,
+          value
+        },
+        prices(dealer_id: $dealer_id){
+          id,
+          price,
+          price_old
+        }
+      }
+
+    }
+  }
+}

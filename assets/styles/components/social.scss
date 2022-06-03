@@ -1,0 +1,27 @@
+.social {
+  display: flex;
+  justify-content: center;
+}
+
+.social__item {
+ &:not(:last-child) {
+    margin-right: 16px;
+  }
+}
+
+.social__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 12px;
+  border-radius: 50%;
+  background-color: $colorBg;
+
+  @include hover-social;
+}
+
+.social__icon {
+  width: 16px;
+  height: 16px;
+}

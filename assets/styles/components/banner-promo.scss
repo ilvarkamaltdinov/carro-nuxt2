@@ -1,0 +1,104 @@
+.banner-promo {
+  background-color: #ffead7;
+}
+@media (max-width: $tablet-width) {
+  .banner-promo {
+    padding: 16px 16px 0;
+  }
+
+  .banner-promo__coop-text {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 8px;
+    color: white;
+    padding: 8px;
+    background-color: $green;
+  }
+
+  .banner-promo__tire {
+    margin-bottom: -4px;
+  }
+
+  .banner-promo__coop-carro {
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .banner-promo__coop-wrap {
+    display: flex;
+    align-items: center;
+  }
+
+  .banner-promo__x {
+    margin: 0 8px;
+    font-size: 18px;
+  }
+
+  .banner-promo__text {
+    text-align: center;
+    margin: 16px 0;
+  }
+}
+@media (min-width: $tablet-width) {
+  .banner-promo__coop {
+    display: flex;
+    align-items: center;
+  }
+
+  .banner-promo__x {
+    padding: 0 24px;
+    font-size: 24px;
+    font-weight: 400;
+    color: $red;
+  }
+
+  .banner-promo__coop {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .banner-promo__coop-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .banner-promo__coop-carro img {
+    height: 24px;
+  }
+
+  .banner-promo__michelin img {
+    height: 64px;
+    margin-bottom: 6px;
+  }
+
+  .banner-promo__tire {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .banner-promo__tire img {
+    height: 100%;
+    width: 120px;
+    height: 120px;
+    width: 240px;
+    margin-bottom: -6px;
+  }
+
+  .banner-promo {
+    height: 120px;
+    margin: 24px 0;
+    padding: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .banner-promo__text {
+    font-size: 20px;
+    font-weight: 600;
+    width: 400px;
+    line-height: 1.5;
+  }
+}

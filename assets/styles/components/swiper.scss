@@ -1,0 +1,170 @@
+.swiper {
+  position: relative;
+}
+
+.swiper-pagination {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin: 16px 0;
+}
+
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: $colorBgActive;
+  border-radius: 50%;
+  transition: $transitionHover;
+  margin: 0 8px;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $colorTextSecondary;
+}
+
+.swiper--progress .swiper-pagination-bullet {
+  max-width: 100px;
+}
+
+.swiper-pagination-bullet:hover {
+  cursor: pointer;
+}
+
+.swiper--progress .swiper-pagination-bullet {
+  position: relative;
+  width: 156px;
+  height: auto;
+  text-align: left;
+  border-radius: 0;
+  opacity: 1;
+  margin-right: 8px;
+  background-color: transparent;
+
+  .swiper-pagination-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 4px;
+    border-radius: $borderRadiusSmall;
+    background-color: $colorPrimaryLight;
+  }
+
+  .swiper-pagination-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    width: 0%;
+    height: 4px;
+    border-radius: $borderRadiusSmall;
+    background-color: $colorPrimary;
+  }
+}
+
+.swiper--progress .swiper-pagination-bullet-active {
+  background-color: transparent;
+
+  .swiper-pagination-progress {
+    animation-name: countingBar;
+    animation-duration: 3s; //autopaly 시간과 맞춰주기
+    animation-timing-function: ease-in;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+  }
+}
+
+.swiper--stories-modal.swiper--progress .swiper-pagination-bar {
+  background-color: $colorBg;
+  opacity: 0.5;
+}
+
+.swiper--stories-modal.swiper--progress .swiper-pagination-progress {
+  background-color: $colorBgActive;
+}
+
+.swiper--stories-modal .swiper-pagination {
+  margin-bottom: 32px;
+}
+
+.swiper-button {
+  width: 40px;
+  aspect-ratio: 1 / 1;
+  background-color: $colorBgButton;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: $shadow;
+}
+
+.swiper-button__icon {
+  fill: $colorLink;
+  width: 16px;
+  aspect-ratio: 1 / 1;
+}
+
+.swiper-button-next .swiper-button__icon {
+  transform: rotate(-90deg);
+}
+
+.swiper-button-prev .swiper-button__icon {
+  transform: rotate(90deg);
+}
+
+@media (max-width: $mobile-width-only) {
+  .swiper--stories-modal .swiper-button {
+    display: none;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .swiper--stories-modal .swiper-button {
+    position: absolute;
+    top: calc(50% - 20px);
+    z-index: 250;
+  }
+
+  .swiper--stories-modal .swiper-button-prev {
+    left: 40px;
+  }
+
+  .swiper--stories-modal .swiper-button-next {
+    right: 40px;
+  }
+
+  .swiper--progress .swiper-pagination-bullet .swiper-pagination-bar,
+  .swiper--progress
+    .swiper-pagination-bullet-active
+    .swiper-pagination-progress {
+    height: 8px;
+  }
+
+  .slider-index__item {
+    overflow: visible;
+  }
+
+  .swiper--index {
+    margin: -100px;
+    padding: 100px;
+  }
+
+  .swiper--catalog {
+    margin: -32px;
+    padding: 32px;
+  }
+
+  .swiper--catalog .swiper-slide,
+  .swiper--index .swiper-slide,
+  .swiper--stories .swiper-slide {
+    transition: all $transitionHover;
+    transition-property: opacity, background;
+
+    &:not(.swiper-slide-visible) {
+      opacity: 0;
+    }
+  }
+}

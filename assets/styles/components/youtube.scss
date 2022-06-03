@@ -1,0 +1,52 @@
+.youtube {
+  background-color: #000;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  cursor: hand;
+  cursor: pointer;
+}
+.youtube .thumb {
+  bottom: 0;
+  display: block;
+  left: 0;
+  margin: auto;
+  max-width: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+.youtube .play {
+  background-color: $red;
+  opacity: 1;
+  height: 48px;
+  left: calc(50% - 33px);
+  top: calc(50% - 24px);
+  position: absolute;
+  width: 77px;
+  border-radius: 20%;
+  transition: all 0.3s;
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 17px solid #fff;
+    left: calc(50% - 8px);
+    top: calc(50% - 10px);
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .youtube {
+    &:hover .play {
+      opacity: 0.8;
+    }
+  }
+}

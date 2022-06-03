@@ -1,0 +1,59 @@
+- let carsCount = new Array(4);
+
+mixin catalogItem(img, isCatalog)
+  include ./catalog-item-new
+    - img
+
+section.page-main__section.page-main__section--latest.page-main__catalog--loading
+  include ../../components/heading/heading-h2
+    | Новые Volvo XC40 в наличии
+
+  .catalog.page-main__catalog.page-main__catalog--latest
+    .catalog__tab
+      .catalog__tab-title
+        span.catalog__tab-complect Комплектация
+          span.catalog__tab-complect-title Active Plus
+        ul.catalog__tab-tech
+          li.catalog__tab-tech-item 2WD
+          li.catalog__tab-tech-item 6 AT
+          li.catalog__tab-tech-item 2.5 л
+          li.catalog__tab-tech-item 120 л.с.
+      .catalog__tab-more
+        .catalog__tab-more-button Свернуть
+        .catalog__tab-stock 15
+          span.catalog__tab-stock-desktop автомобилей в наличии
+          span.catalog__tab-stock-mobile авто
+
+    .catalog__tab-content.row
+      each element,i in carsCount
+        +catalogItem(i + 1, true)
+
+    .catalog__tab
+      .catalog__tab-title
+        span.catalog__tab-complect Комплектация
+          span.catalog__tab-complect-title Active Plus
+        ul.catalog__tab-tech
+          li.catalog__tab-tech-item 2WD
+          li.catalog__tab-tech-item 6 AT
+          li.catalog__tab-tech-item 2.5 л
+          li.catalog__tab-tech-item 120 л.с.
+      .catalog__tab-more
+        .catalog__tab-more-button Показать
+        .catalog__tab-stock 15
+          span.catalog__tab-stock-desktop автомобилей в наличии
+          span.catalog__tab-stock-mobile авто
+
+    .catalog__tab
+      .catalog__tab-title
+        span.catalog__tab-complect Комплектация
+          span.catalog__tab-complect-title Active Plus
+        ul.catalog__tab-tech
+          li.catalog__tab-tech-item 2WD
+          li.catalog__tab-tech-item 6 AT
+          li.catalog__tab-tech-item 2.5 л
+          li.catalog__tab-tech-item 120 л.с.
+      .catalog__tab-more
+        .catalog__tab-more-button Показать
+        .catalog__tab-stock 15
+          span.catalog__tab-stock-desktop автомобилей в наличии
+          span.catalog__tab-stock-mobile авто

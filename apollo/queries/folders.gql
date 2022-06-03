@@ -1,0 +1,16 @@
+query folders($mark_id: Int!, $dealer_id: Int!) {
+  folders(mark_id: $mark_id) {
+    id,
+    name,
+    background_color {
+      background,
+      color
+    },
+    image,
+    slug,
+    prices(dealer_id: $dealer_id){
+      price,
+      price_old
+    }
+  }
+}

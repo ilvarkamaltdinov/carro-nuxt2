@@ -1,0 +1,20 @@
+- let isCar = true;
+
+- let benefitsItemsText = ["КАСКО и комлект резины в подарок", "Платим первые полгода по кредиту", "Одобрение 98% при первом взносе", "Автокредит 1,9% по паспорту и правам"];
+
+- let benefitsItemsIcons = ["percent", "repair", "gift", "insurance"];
+
+- let benefitsItemsLink = ["#modal-sale", "#modal-insurance", "#modal-first", "#modal-docs"];
+
+-let benefitsListClass = isCar ? `benefits__list benefits__list--car` : `benefits__list`;
+
+mixin benefitsItem(text, icon, link)
+  include ./benefits-item
+    - text
+    - icon
+    - link
+
+.benefits
+  ul(class=benefitsListClass)
+    each element,i in benefitsItemsText
+      +benefitsItem(element, benefitsItemsIcons[i], benefitsItemsLink[i])

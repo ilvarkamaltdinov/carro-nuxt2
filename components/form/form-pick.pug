@@ -1,0 +1,87 @@
+- let formPickFieldsCarOne = ["Марка", "Модель"];
+- let formPickFieldsCarTwo = ["КПП", "Двигатель"];
+- let formPickFieldsCarThree = ["Пробег до (км)", "Год от"];
+- let formPickFieldsCarFour = ["Хозяев", "Цена до"];
+- let formPickFieldsPersonalOne = ["Телефон", "ФИО"];
+
+- let formPickCheckboxText = ["Соглашаюсь на обработку моих персональных данных"];
+- let formPickCheckboxType = ["agree-personal"];
+
+- let formSimilarCheckboxText = ["Рассмотрю похожие по параметрам автомобили"];
+- let formSimilarCheckboxType = ["agree-similar"];
+
+mixin formBuyoutCheckbox(text, checkboxName)
+  include ./form-checkbox
+  - text
+  - checkboxName
+
+mixin formItem(isSearch, title, isSelect, isPhone, isDate)
+  if isSelect
+    include ./form-select.pug
+    - isSearch
+    - title
+  else
+    include ./form-input.pug
+    - isSearch
+    - title
+    - isPhone
+    - isDate
+
+mixin formButton(isSearch, formButtonText)
+  include ./form-button
+    - isSearch
+    - formButtonText
+
+mixin formRangeSlider(rangeType, rangeLabel)
+  include ../range/range-slider
+    - rangeType
+    - rangeLabel
+
+mixin formRangeTotal(rangeTotalText, rangeTotalNumber, rangeQuestionText)
+  include ../range/range-total
+    - rangeTotalText
+    - rangeTotalNumber
+    - rangeQuestionText
+
+form.form.form--step
+  fieldset
+    include ./form-heading-fieldset
+      | Выберите автомобиль
+    .form__wrap
+      .form__paired.form__paired--selects
+        each element,i in formPickFieldsCarOne
+          +formItem(false, element, true)
+      .form__same-class
+        each element,i in formSimilarCheckboxText
+          +formBuyoutCheckbox(element, formSimilarCheckboxType[i])
+        include ../tippy/tippy-question
+          - asdfasdf
+      .form__paired.form__paired--selects
+        each element,i in formPickFieldsCarTwo
+          +formItem(false, element, true)
+      .form__paired.form__paired--selects
+        each element,i in formPickFieldsCarThree
+          if element === "Пробег до (км)"
+            +formItem(false, element, false)
+          else
+            +formItem(false, element, true)
+      .form__paired.form__paired--selects
+        each element,i in formPickFieldsCarFour
+          if element === "Цена до"
+            +formItem(false, element, false)
+          else
+            +formItem(false, element, true)
+
+  fieldset
+    include ./form-heading-fieldset
+      | Укажите свои данные
+    .form__paired.form__paired--selects
+      each element,i in formPickFieldsPersonalOne
+        if element === "ФИО"
+          +formItem(false, element, false)
+        else
+          +formItem(false, element, false, true, false)
+    each element,i in formPickCheckboxText
+      +formBuyoutCheckbox(element, formPickCheckboxType[i])
+
+    +formButton(false, "Оставить заявку")

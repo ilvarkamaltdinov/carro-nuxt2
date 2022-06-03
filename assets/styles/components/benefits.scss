@@ -1,0 +1,60 @@
+.benefits__item {
+  flex-shrink: 0;
+}
+
+.benefits__link {
+  @include white-back;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.benefits__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.benefits__text,
+.benefits__text-strong {
+  text-align: left;
+  @include font-small;
+  white-space: normal;
+}
+
+.benefits__icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+@media (max-width: $mobile-width-only) {
+  .benefits--credit {
+    margin-bottom: 16px;
+  }
+
+  .benefits--modal {
+    margin: 0 -16px;
+  }
+
+  .benefits__list {
+    @include horizontal-scroll;
+    padding-top: 32px;
+    padding-bottom: 48px;
+    margin-top: -32px;
+    margin-bottom: -32px;
+    margin-bottom: -48px;
+  }
+
+  .benefits__item {
+    margin-right: 16px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .benefits__list--car {
+    display: flex;
+    justify-content: space-between;
+  }
+}

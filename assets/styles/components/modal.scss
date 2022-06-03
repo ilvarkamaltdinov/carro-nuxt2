@@ -1,0 +1,159 @@
+.modal {
+  background: white;
+  position: fixed;
+  width: 100%;
+  top: 72px;
+  left: 0;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  height: calc(100vh - 120px);
+  overflow-y: scroll;
+  z-index: 500;
+}
+
+.modal__wrap {
+  padding: 0 16px;
+  padding-bottom: 160px;
+}
+
+.modal__close {
+  position: relative;
+  top: -4px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__close-icon {
+  fill: $colorText;
+}
+
+.modal__options {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  padding-top: 0px;
+  @include border-bottom;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.modal__buttons {
+  display: flex;
+}
+
+.modal__buttons .button {
+  margin-top: 0;
+
+  &:not(:last-child) {
+    margin-right: 16px;
+  }
+}
+
+.modal__choose-group {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  @include border-bottom;
+}
+
+.modal__rating {
+  display: flex;
+  align-items: center;
+}
+
+.modal__rating .heading {
+  margin-bottom: 0;
+}
+
+.modal.modal--search {
+  width: 100%;
+  left: 0;
+  height: fit-content;
+  top: 105px;
+  box-shadow: $shadowModal;
+}
+
+.modal--search .modal__wrap {
+  padding-top: 16px;
+  padding-bottom: 64px;
+}
+
+.modal--menu {
+  top: 106px;
+}
+
+@media (max-width: $mobile-width-only) {
+  .modal--makes {
+    @include modal-menu;
+    @include border-top;
+    top: 104px;
+    width: 100%;
+  }
+
+  .modal__wrap .filter__catalog-wrap {
+    padding-top: 0;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .modal.modal--makes,
+  .modal.modal--menu {
+    top: 130px;
+    height: auto;
+    padding-bottom: 40px;
+    left: 0;
+    width: 100%;
+    box-shadow: $shadowModal;
+  }
+
+  .modal--menu .modal__wrap {
+    padding: 0;
+    padding-top: 32px;
+  }
+
+  .modal--makes .modal__wrap {
+    padding: 32px 0;
+  }
+
+  .modal.modal--search {
+    top: 81px;
+  }
+
+  .modal {
+    height: 100%;
+    top: 0;
+    width: 880px;
+    left: calc(100% - 880px);
+  }
+
+  .modal__wrap {
+    padding: 32px;
+    padding-top: 16px;
+    padding-bottom: 48px;
+  }
+
+  .modal__options {
+    padding: 0 32px 16px;
+  }
+
+  .modal__close-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .modal__choose-group {
+    margin-bottom: 32px;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .modal--search .modal__wrap {
+    padding-left: 240px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}

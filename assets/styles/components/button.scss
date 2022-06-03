@@ -1,0 +1,177 @@
+.button {
+  padding: 12px 24px;
+  @include font-body-strong;
+  color: white;
+  border-radius: $borderRadiusSmall;
+  display: block;
+  text-align: center;
+  background-color: $colorBg;
+  transition: $transitionHover;
+}
+
+.button--credit {
+  background-color: $colorPrimary;
+  box-shadow: $shadowPrimary;
+  flex-shrink: 0;
+
+  &:hover {
+    background-color: $colorPrimaryDark;
+  }
+}
+
+.button--link {
+  color: $colorLink;
+  background-color: $colorBgButton;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.button--link .icon {
+  fill: $colorLink;
+  width: 16px;
+  height: 16px;
+}
+
+.button--view-s {
+  transform: rotate(90deg);
+}
+
+.button--link .button__text {
+  color: $colorLink;
+}
+
+.button--icon {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.button--icon .icon {
+  margin-right: 8px;
+}
+
+.button--more {
+  margin-top: 16px;
+  width: 100%;
+}
+
+.button--fixed {
+  width: 100%;
+}
+
+.button--form {
+  width: 100%;
+}
+
+.button--trade-in {
+  margin: 0;
+  width: auto;
+}
+
+.button--action {
+  padding: 16px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  height: 48px;
+  width: 48px;
+
+  &:hover {
+    background-color: $colorBgHover;
+  }
+}
+
+.button--action.button--more {
+  background-color: $colorBgButton;
+}
+
+.button--option {
+  color: $colorLink;
+  background-color: $colorBgButton;
+  width: 100%;
+  margin-top: 16px;
+  height: 48px;
+  width: 48px;
+}
+
+.button--option .icon {
+  fill: $colorLink;
+}
+
+.button__icon {
+  width: 16px;
+  aspect-ratio: 1 / 1;
+}
+
+.button--show {
+  color: $colorLink;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-top: 16px;
+  @include font-features;
+  background: transparent;
+
+  &::after {
+    margin-left: 8px;
+  }
+
+  &::after,
+  &::before {
+    content: "";
+    display: block;
+    position: relative;
+    background-color: $colorLink;
+    height: 2px;
+    width: 10px;
+    top: 1px;
+  }
+
+  &::before {
+    right: 10px;
+    order: 2;
+    transform: rotate(90deg);
+  }
+}
+
+.button--show-link {
+  &::after,
+  &::before {
+    display: none;
+  }
+}
+
+.button__text {
+  display: none;
+}
+
+@media (min-width: $desktop-width) {
+  .button {
+    padding: 12px 32px;
+  }
+
+  .button--show {
+    padding: 0;
+  }
+
+  .button--text {
+    width: auto;
+  }
+
+  .button__text {
+    display: block;
+    margin-left: 8px;
+    color: $colorText;
+  }
+
+  .button--action {
+    padding: 16px;
+  }
+
+  .button--more {
+    margin-top: 32px;
+  }
+}

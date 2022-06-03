@@ -1,0 +1,33 @@
+query usedOffers(
+  $site_id: Int!,
+  $page: Int!,
+  $limit: Int!,
+  $mark_slug_array: [String],
+  $folder_slug_array: [String],
+  $sort: String,
+  $generation_slug: String,
+  $gearbox_id: Int,
+  $body_type_id: Int,
+  $drive_type_id: Int,
+  $owner_id: Int,
+  $year_from: Int,
+  $year_to: Int
+) {
+  offers(
+    page: $page,
+    limit: $limit,
+    site_id: $site_id,
+    mark_slug_array: $mark_slug_array,
+    folder_slug_array: $folder_slug_array,
+    sort: $sort,
+    generation_slug:$generation_slug,
+    gearbox_id: $gearbox_id,
+    body_type_id: $body_type_id,
+    drive_type_id: $drive_type_id,
+    owner_id: $owner_id,
+    year_from: $year_from,
+    year_to: $year_to
+  ) {
+    total
+  }
+}

@@ -1,0 +1,236 @@
+.page-footer {
+  position: relative;
+  background-color: white;
+  box-shadow: $shadowFooter;
+  margin-top: 112px;
+}
+
+.page-footer__top {
+  width: 100%;
+  height: 32px;
+  top: -32px;
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 1400px;
+    aspect-ratio: 1 / 1;
+    position: absolute;
+    left: calc(50% - 700px);
+    top: 0;
+    background-color: white;
+    border-radius: 100%;
+  }
+}
+
+.page-footer__logo {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: -104px;
+  margin-bottom: -64px;
+  transition: $transitionHover;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+
+  &:hover {
+    transform: translateY(-4px);
+    transition: $transitionHover;
+  }
+
+  &:hover::after {
+    transform: scale(1.2);
+    transition: $transitionHover;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 40px;
+    position: absolute;
+    left: calc(50% - 30px);
+    bottom: -20px;
+    background-image: url("~/static/img/logo-footer-shadow.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: $transitionHover;
+  }
+}
+
+.page-footer__logo-img {
+  position: relative;
+  width: 72px;
+  object-fit: contain;
+  z-index: 50;
+}
+
+.page-footer__contacts {
+  @include border-top;
+  @include border-bottom;
+  border-color: $colorBg;
+}
+
+.page-footer__city-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 16px 0;
+}
+
+.page-footer__contacts .social {
+  padding: 16px 0;
+}
+
+.page-footer__contacts-list {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 16px 0;
+  @include border-top;
+  @include border-bottom;
+  border-color: $colorBg;
+}
+
+.page-footer__disclaimer {
+  padding: 16px 40px;
+  color: $colorTextSecondary;
+  text-align: center;
+}
+
+.page-footer__disclaimer-p {
+  margin-bottom: 16px;
+  @include font-small;
+}
+
+.page-footer__city {
+  color: $colorLink;
+  display: flex;
+  align-items: center;
+}
+
+.page-footer__city-icon {
+  fill: $colorLink;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+@media (max-width: $mobile-width-only) {
+  .page-footer__links,
+  .page-footer__cars,
+  .page-footer__credits {
+    display: none;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .page-footer__top {
+    &::before {
+      width: 40000px;
+      left: calc(50% - 20000px);
+    }
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .page-footer {
+    padding-bottom: 32px;
+    margin-top: 160px;
+  }
+
+  .page-footer__logo {
+    top: -108px;
+  }
+
+  .page-footer__cars {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    @include border-top;
+    @include border-bottom;
+    border-color: $colorBg;
+  }
+
+  .page-footer__cars-stock-number {
+    margin-left: 8px;
+    color: $colorLink;
+  }
+
+  .page-footer__disclaimer {
+    text-align: left;
+    padding: 0;
+  }
+
+  .page-footer__contacts-list {
+    border-top: none;
+  }
+
+  .page-footer__makes-item {
+    &:not(:last-child) {
+      margin-right: 16px;
+    }
+  }
+
+  .page-footer__makes-link {
+    @include hover-icon;
+  }
+
+  .page-footer__makes-logos {
+    display: flex;
+    align-items: center;
+  }
+
+  .page-footer__links-list {
+    display: flex;
+  }
+
+  .page-footer__links-item {
+    &:not(:last-child) {
+      margin-right: 24px;
+    }
+  }
+
+  .page-footer__link {
+    color: $colorLink;
+    transition: $transitionHover;
+
+    &:hover {
+      color: $colorLinkHover;
+    }
+  }
+
+  .page-footer__makes-icon {
+    width: 32px;
+    height: 32px;
+    image-rendering: optimizequality;
+  }
+
+  .page-footer__makes-item {
+    &:not(:last-child) {
+      margin-right: 32px;
+    }
+  }
+
+  .page-footer__makes-icon--cadillac {
+    width: 56px;
+  }
+
+  a.page-footer__contacts-item {
+    margin: 0 12px;
+    transition: $transitionHover;
+
+    &:hover {
+      color: $colorPrimary;
+    }
+  }
+
+  .page-footer__social {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

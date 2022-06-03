@@ -1,0 +1,60 @@
+- let catalogItemImgCount = new Array(6);
+- let tippyText = "Совокупная оценка присваивается на основе технического состояния автомобиля";
+
+mixin catalogItemImg(img)
+  include ./catalog-item-img-new
+    - img
+
+article.catalog__car-item.catalog__car-item--long.catalog__car-item--long-new.col-md-6.col-lg-12
+  a.catalog__car-link(href="")
+    //- .catalog__car-recommend-label
+    //-   include ../tippy/tippy-recommend
+    .catalog__car-img
+      each element,i in catalogItemImgCount
+        +catalogItemImg(i + 1)
+    .catalog__car-descr
+      h3.catalog__car-heading Volvo XC40 I
+      ul.catalog__car-info
+        li.catalog__car-info-item
+          span.catalog__car-info-title Двигатель
+          span.catalog__car-info-content 1.5 л, 109 л.с.
+        li.catalog__car-info-item
+          div.catalog__car-info-title Привод
+          span.catalog__car-info-content Передний
+        li.catalog__car-info-item
+          span.catalog__car-info-title Комплектация
+          span.catalog__car-info-content Drive
+        li.catalog__car-info-item
+          span.catalog__car-info-title Цвет
+          span.catalog__car-info-content.catalog__car-info-content--color
+            span.catalog__car-info-content-color
+            span.catalog__car-info-content-text Красный
+    .catalog__car-additional-info
+      .catalog__car-guaranty
+        img.catalog__car-logo(src="img/emblems/volvo.svg")
+        .catalog__car-guaranty-text
+          | Гарантия
+          span.catalog__car-guaranty-year  2 года
+          |  от автосалона
+      .catalog-new__model-price-wrap
+        span.catalog-new__model-label Новый
+      .catalog__price-wrap.catalog__price-wrap--pc
+        .catalog__car-price 1 565 000 ₽
+        .catalog__car-oldprice 1 585 000 ₽
+        .catalog__credit-payment
+          span.catalog__credit-payment-sum от 4 410 ₽/мес
+            span.catalog__credit-payment-first  без взноса
+  .catalog__card-labels
+    label.like
+      input.like__checkbox(type="checkbox" checked="checked")
+      span.like__checked
+        svg.like__icon(viewbox="0 0 48 48")
+          use(xlink:href="#icon-heart")
+  .catalog__car-extras
+    .catalog__car-button
+      a.catalog__mini-credit.popup--link(href="#modal-credit" data-effect="mfp-move-horizontal")
+        | Купить в кредит
+      a.catalog__car-phone(href="" type="tel")
+        svg.catalog__car-phone-icon(viewbox="0 0 48 48")
+          use(xlink:href="#icon-phone")
+        span.catalog__car-phone-number +7 (925) 042-43-22

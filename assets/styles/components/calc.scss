@@ -1,0 +1,181 @@
+.calc .rs-scale {
+  display: flex;
+  width: 110%;
+}
+
+.calc .rs-container .rs-selected {
+  background-color: $red!important;
+  border: 1px solid $red!important;
+}
+
+.calc .rs-container .rs-bg {
+  background-color: $light-grey;
+  border-radius: 8px;
+}
+
+.calc__info {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+  align-items: center;
+}
+
+.calc__info .payment {
+  padding: 8px;
+  color: $red;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.calc__info .payment-block {
+  display: flex;
+  align-items: center;
+}
+
+.calc__string {
+  font-weight: 600;
+}
+
+.calc {
+  padding: 0 8px;
+}
+
+//bank-payment-colors
+
+.calc--sberbank .payment {
+  color: $sberbank-green;
+}
+
+.calc--uralsib .payment {
+  color: $uralsib-blue;
+}
+
+.calc--alfabank .payment {
+  color: $alfabank-red;
+}
+
+.calc--gazprombank .payment {
+  color: $gazprombank-blue;
+}
+
+.calc--plusbank .payment {
+  color: $plusbank-orange;
+}
+
+.calc--tinkoff .payment {
+  color: $black;
+}
+
+.calc--unicredit .payment {
+  color: $unicredit-red;
+}
+
+.calc--sovkom .payment {
+  color: $sovkom-blue;
+}
+
+.calc--infinbank .payment {
+  color: $infin-violet;
+}
+
+.calc--setelem .payment {
+  color: $setelem-green;
+}
+
+.calc--reiffeisen .payment {
+  color: $black;
+}
+
+.calc--vtb .payment {
+  color: $vtb-blue;
+}
+
+.calc--avangard .payment {
+  color: $avangard-green;
+}
+
+.calc--rosselhozbank .payment {
+  color: $sberbank-green;
+}
+//
+
+//bank-slider-colors
+.calc--uralsib .rs-container .rs-selected {
+  background-color: $uralsib-blue!important;
+  border-color: $uralsib-blue!important;
+}
+
+.calc--sberbank .rs-container .rs-selected {
+  background-color: $sberbank-green!important;
+  border-color: $sberbank-green!important;
+}
+
+.calc--rosselhozbank .rs-container .rs-selected {
+  background-color: $sberbank-green!important;
+  border-color: $sberbank-green!important;
+}
+
+.calc--alfabank .rs-container .rs-selected {
+  background-color: $alfabank-red!important;
+  border-color: $alfabank-red!important;
+}
+
+.calc--gazprombank .rs-container .rs-selected {
+  background-color: $gazprombank-blue!important;
+  border-color: $gazprombank-blue!important;
+}
+
+.calc--plusbank .rs-container .rs-selected {
+  background-color: $plusbank-orange!important;
+  border-color: $plusbank-orange!important;
+}
+
+.calc--tinkoff .rs-container .rs-selected {
+  background-color: $tinkoff-yellow!important;
+  border-color: $tinkoff-yellow!important;
+}
+
+.calc--sovkom .rs-container .rs-selected {
+  background-color: $sovkom-blue!important;
+  border-color: $sovkom-blue!important;
+}
+
+.calc--infinbank .rs-container .rs-selected {
+  background-color: $infin-violet!important;
+  border-color: $infin-violet!important;
+}
+
+.calc--setelem .rs-container .rs-selected {
+  background-color: $setelem-green!important;
+  border-color: $setelem-green!important;
+}
+
+.calc--reiffeisen .rs-container .rs-selected {
+  background-color: $reiffeisen-yellow!important;
+  border-color: $reiffeisen-yellow!important;
+}
+
+.calc--vtb .rs-container .rs-selected {
+  background-color: $vtb-blue!important;
+  border-color: $vtb-blue!important;
+}
+
+.calc--avangard .rs-container .rs-selected {
+  background-color: $avangard-green!important;
+  border-color: $avangard-green!important;
+}
+//
+
+@media (min-width: $tablet-width) {
+  .calc {
+    padding: 0 16px;
+  }
+
+  .calc__info.month-pay {
+    margin-top: 16px;
+  }
+
+  .calc__info {
+    margin: 16px 0;
+  }
+}

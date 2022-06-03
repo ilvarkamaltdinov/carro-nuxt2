@@ -1,0 +1,46 @@
+- let formReviewFieldsCarOne = ["Марка", "Модель"];
+- let formReviewFieldsCarTwo = ["Поколение", "Тип кузова"];
+- let formReviewFieldsCarThree = ["Год", "КПП"];
+- let formReviewFieldsCarFour = ["Срок владения"];
+
+- let formReviewFieldsTextOne = ["Заголовок"];
+
+mixin formButton(isSearch, formButtonText)
+  include ./form-button
+    - isSearch
+    - formButtonText
+
+mixin formItem(isSearch, title, isSelect)
+  if isSelect
+    include ./form-select.pug
+    - isSearch
+    - title
+  else
+    include ./form-input.pug
+    - isSearch
+    - title
+    - isPhone
+    - isDate
+
+section.form.form--review
+  fieldset.form__review-add-fieldset
+    include ./form-heading-fieldset
+      | Укажите детали автомобиля
+    .form__wrap
+      .form__paired.form__paired--selects
+        each element,i in formReviewFieldsCarOne
+          +formItem(false, element, true)
+      .form__paired.form__paired--selects
+        each element,i in formReviewFieldsCarTwo
+          +formItem(false, element, true)
+      .form__paired.form__paired--selects
+        each element,i in formReviewFieldsCarThree
+          +formItem(false, element, true)
+      each element,i in formReviewFieldsCarFour
+        +formItem(false, element, true)
+  fieldset.form__review-add-fieldset
+    include ./form-heading-fieldset
+      | Заголовок отзыва
+    each element,i in formReviewFieldsTextOne
+      +formItem(false, element, false)
+  +formButton(false, "Опубликовать отзыв")

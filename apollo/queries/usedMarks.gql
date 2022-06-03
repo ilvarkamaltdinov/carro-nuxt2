@@ -1,0 +1,9 @@
+query usedMarks($site_id: Int!) {
+  marks(site_id: $site_id) {
+    id,
+    title,
+    title_rus,
+    slug,
+    offers_count,
+  }
+}

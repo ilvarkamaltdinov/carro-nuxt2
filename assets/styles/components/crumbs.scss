@@ -1,0 +1,37 @@
+.crumbs {
+  display: none;
+}
+
+@media (min-width: $desktop-width) {
+  .crumbs {
+    display: flex;
+    margin-bottom: 24px;
+  }
+
+  .crumbs__link {
+    display: block;
+  }
+
+  .crumbs__item {
+    margin-right: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    @include font-small;
+    color: $colorTextSecondary;
+
+    &:not(:last-child)::after {
+      content: "";
+      display: block;
+      margin-left: 8px;
+      margin-top: 2px;
+      width: 12px;
+      aspect-ratio: 1 / 1;
+      transform: rotate(-90deg);
+      background: url(~/static/img/icons/icon-arrow.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+}

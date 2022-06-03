@@ -1,0 +1,11 @@
+- let formSelectCLass = isSearch ? "col-md-6 col-lg-2" : "";
+- let formSelectHiddenClass = isHidden ? `form__mobile-hidden` : ``;
+
+div(class=`${formSelectCLass} ${formSelectHiddenClass}`)
+  div.form__select-wrap
+    select.form__field.form__field--select.select
+      option(value="") #{title}
+      option(value="") Acura
+      option(value="") BMW
+      option(value="") Citroen
+      option(value="") Jeep

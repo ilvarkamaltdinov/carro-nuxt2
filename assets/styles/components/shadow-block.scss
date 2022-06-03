@@ -1,0 +1,6 @@
+.shadow-block {
+  @include shadow;
+  padding: 24px 16px;
+  margin-bottom: 16px;
+  border-radius: $border-radius;
+}

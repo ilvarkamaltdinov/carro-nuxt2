@@ -1,0 +1,541 @@
+.featured__about * {
+  color: white;
+}
+
+.featured__item {
+  overflow: hidden;
+  border-radius: 12px;
+
+  &:hover .featured__link {
+    background-color: $colorPrimaryDark;
+  }
+}
+
+.featured__item--business {
+  &:hover .featured__link {
+    background-color: $colorTextDark;
+  }
+}
+
+.featured__link {
+  padding: 16px;
+  background-color: $colorPrimary;
+  display: block;
+  height: 100%;
+  transition: $transitionHover;
+}
+
+.featured__title {
+  @include font-desktop-h3-card;
+  margin-bottom: 8px;
+  z-index: 75;
+  position: relative;
+}
+
+.featured__picture {
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.featured__glass {
+  position: absolute;
+}
+
+.featured__item--sedan {
+  grid-column: 1 / -1;
+}
+
+.featured__item--business .featured__link {
+  background-color: $colorText;
+}
+
+.featured__label {
+  width: 80px;
+  margin-bottom: 16px;
+}
+
+.featured__img {
+  position: relative;
+  z-index: 25;
+}
+
+// sedan
+
+.featured__item--sedan .featured__glass--big {
+  z-index: 0;
+  width: 160px;
+  right: -16px;
+  top: -30%;
+}
+
+.featured__item--sedan .featured__glass--small {
+  z-index: 50;
+  width: 100px;
+  bottom: -40%;
+  left: 20%;
+}
+
+// family
+
+.featured__item--family .featured__glass--big {
+  z-index: 50;
+  width: 60px;
+  top: -40px;
+  right: 0;
+}
+
+.featured__item--family .featured__glass--small {
+  z-index: 25;
+  width: 60px;
+}
+
+.featured__item--family .featured__glass--small {
+  z-index: 25;
+  width: 60px;
+}
+
+.featured__item--family .featured__img {
+  position: relative;
+  top: -16px;
+}
+
+// business
+
+.featured__item--business .featured__glass--big {
+  z-index: 50;
+  width: 200px;
+  top: -40px;
+  right: -150px;
+}
+
+.featured__item--business .featured__glass--small {
+  z-index: 0;
+  width: 100px;
+  top: -40px;
+  left: 0;
+}
+
+.featured__item--business .featured__img {
+  position: relative;
+  top: 40px;
+  width: 240px;
+  max-width: initial;
+}
+
+// women
+
+.featured__item--women .featured__glass--big {
+  display: none;
+}
+
+.featured__item--women .featured__glass--small {
+  z-index: 25;
+  width: 64px;
+  top: -16px;
+  right: 64px;
+}
+
+.featured__item--women .featured__img {
+  position: relative;
+  top: -40px;
+  right: -60px;
+  width: 140px;
+  max-width: initial;
+}
+
+// allroad
+
+.featured__item--allroad .featured__glass--big {
+  display: none;
+}
+
+.featured__item--allroad .featured__glass--small {
+  z-index: 25;
+  width: 64px;
+  top: -16px;
+  right: 64px;
+}
+
+.featured__item--allroad .featured__img {
+  position: relative;
+  top: -20px;
+  right: -20px;
+  width: 240px;
+  max-width: initial;
+}
+
+// taxi
+
+.featured__item--taxi .featured__glass--big {
+  z-index: 50;
+  width: 32px;
+  bottom: 32px;
+  right: 32px;
+}
+
+.featured__item--taxi .featured__glass--small {
+  z-index: 25;
+  width: 64px;
+  top: -16px;
+  right: 64px;
+}
+
+// banks
+
+.featured__item--tinkoff .featured__link {
+  background-color: $colorBankTinkoff;
+
+  * {
+    color: $colorText;
+  }
+
+  &:hover {
+    background-color: darken($colorBankTinkoff, 12%);
+  }
+}
+
+.featured__item--alfa .featured__link {
+  background-color: $colorBankAlfa;
+
+  &:hover {
+    background-color: darken($colorBankAlfa, 12%);
+  }
+}
+
+.featured__item--sber .featured__link {
+  background-color: $colorBankSber;
+
+  &:hover {
+    background-color: darken($colorBankSber, 12%);
+  }
+}
+
+.featured__item--vtb .featured__link {
+  background-color: $colorBankVtb;
+
+  &:hover {
+    background-color: darken($colorBankVtb, 12%);
+  }
+}
+
+.featured__item--reif .featured__link {
+  background-color: $colorBankReif;
+
+  &:hover {
+    background-color: darken($colorBankReif, 12%);
+  }
+
+  * {
+    color: $colorText;
+  }
+}
+
+.featured__item--sovcom .featured__link {
+  background-color: $colorBankSovcom;
+
+  &:hover {
+    background-color: darken($colorBankSovcom, 12%);
+  }
+}
+
+
+.featured__item--alfa .featured__img {
+  top: -70px;
+  min-height: 250px;
+  object-fit: contain;
+}
+
+.featured__item--vtb .featured__img {
+  top: -80px;
+  right: -30px;
+  width: 340px;
+  object-fit: contain;
+  min-height: 250px;
+}
+
+.featured__item--tinkoff .featured__img {
+  top: -32px;
+}
+
+.featured__item--sovcom .featured__img {
+  top: -8px;
+}
+
+.featured__item--tinkoff .featured__glass--small {
+  bottom: 0;
+}
+
+.featured__item--sber .featured__glass--small {
+  top: 30px;
+}
+
+.featured__item--sovcom .featured__glass--big {
+  top: 20px;
+}
+
+@media (max-width: $mobile-width-only) {
+  .featured__text {
+    display: none;
+  }
+
+  .featured__banks {
+    margin-bottom: 24px;
+  }
+
+  .featured__item {
+    aspect-ratio: 4 / 3;
+  }
+
+  .featured__item--sedan {
+    aspect-ratio: 16 / 9;
+  }
+
+  .featured__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 12px;
+  }
+
+  .featured__item--business {
+    grid-row: 2 / 4;
+    aspect-ratio: auto;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .featured__glass {
+    transition: $transitionHover;
+  }
+
+  .featured__item {
+    @include glass-hover("X");
+  }
+
+  .featured__item--sedan {
+    grid-column: 1 / 9;
+  }
+
+  .featured__item--allroad {
+    grid-row: 1 / 3;
+    grid-column: 9 / 13;
+    @include glass-hover("Y");
+  }
+
+  .featured__item--family {
+    grid-column: 1 / 5;
+  }
+
+  .featured__item--women {
+    grid-column: 1 / 5;
+    @include glass-hover("Y");
+  }
+
+  .featured__item--business {
+    grid-column: 5 / 9;
+    grid-row: 2 / 4;
+    @include glass-hover("Y");
+  }
+
+  .featured__item--taxi {
+    grid-column: 9 / 13;
+  }
+
+  .featured__link {
+    padding: 32px;
+    position: relative;
+  }
+
+  .featured__item--sedan .featured__text {
+    max-width: 290px;
+  }
+
+  .featured__item--sedan .featured__picture {
+    right: 40px;
+    top: 40px;
+    position: absolute;
+  }
+
+  .featured__item--sedan .featured__glass--small {
+    width: 130px;
+    bottom: -66%;
+    left: 23%;
+  }
+
+  .featured__item--sedan .featured__glass--big {
+    top: -15%;
+  }
+
+  .featured__item--sedan .featured__img {
+    top: 24px;
+    right: -12px;
+  }
+
+  .featured__item--allroad .featured__img {
+    width: 480px;
+    right: 0;
+  }
+
+  .featured__item--allroad .featured__picture {
+    top: 40%;
+    position: absolute;
+  }
+
+  .featured__item--allroad .featured__glass--big {
+    display: block;
+    z-index: 50;
+    right: 160px;
+    bottom: -80px;
+    width: 180px;
+  }
+
+  .featured__item--allroad .featured__glass--small {
+    display: block;
+    left: 80px;
+    bottom: -80px;
+    width: 100px;
+  }
+
+  .featured__item--business .featured__img {
+    width: 480px;
+    top: 0;
+  }
+
+  .featured__item--business .featured__picture {
+    position: absolute;
+    bottom: 64px;
+  }
+
+  .featured__item--business .featured__glass--big {
+    top: -80px;
+    right: 0;
+  }
+
+  .featured__item--family .featured__img {
+    top: -5px;
+    margin: auto;
+    width: 220px;
+  }
+
+  .featured__item--family .featured__glass--big {
+    top: 6px;
+    right: 20px;
+  }
+
+  .featured__item--family .featured__glass--small {
+    left: 31px;
+    bottom: 71px;
+  }
+
+  .featured__item--women .featured__picture {
+    position: absolute;
+    right: 0;
+    top: 100px;
+  }
+
+  .featured__item--women .featured__img {
+    width: 260px;
+  }
+
+  .featured__item--women .featured__text {
+    width: 140px;
+  }
+
+  .featured__item--women .featured__glass--small {
+    z-index: 50;
+    right: 115px;
+  }
+
+  .featured__item--women .featured__glass--big {
+    display: block;
+    z-index: 0;
+    top: -78px;
+    right: -46px;
+    width: 100px;
+  }
+
+  .featured__item--taxi .featured__picture {
+    top: 50px;
+  }
+
+  .featured__item--taxi .featured__glass--small {
+    left: 35px;
+  }
+
+  .featured__item--taxi .featured__glass--big {
+    width: 80px;
+    top: -24px;
+    right: 32px;
+  }
+
+  .featured__item--tinkoff .featured__img {
+    top: -32px;
+  }
+
+  .featured__item--sovcom .featured__img {
+    width: 380px;
+    max-width: fit-content;
+    top: -56px;
+    right: -60px;
+  }
+
+  .featured__item--tinkoff .featured__glass--small {
+    width: 180px;
+    left: 240px;
+    bottom: 40px;
+  }
+
+  .featured__item--tinkoff .featured__glass--big {
+    left: 80px;
+  }
+
+  .featured__item--sber .featured__glass--small {
+    top: 30px;
+  }
+
+  .featured__item--sovcom .featured__glass--big {
+    top: 80px;
+    width: 80px;
+    right: -10px;
+    left: auto;
+  }
+
+  .featured__item--sovcom .featured__glass--small {
+    top: -60px;
+    width: 100px;
+    right: 71px;
+    left: auto;
+  }
+
+  .featured__item--alfa .featured__img {
+    width: 580px;
+  }
+
+  .featured__item--alfa .featured__glass--small {
+    top: 40px;
+    width: 200px;
+    left: -20px;
+  }
+
+  .featured__item--sber .featured__img {
+    top: 40px;
+  }
+
+  .featured__item--sber .featured__glass--big {
+    right: 40px;
+  }
+
+  .featured__item--sber .featured__glass--small {
+    width: 120px;
+  }
+
+  .featured__item--vtb .featured__img {
+    width: 280px;
+    max-width: auto;
+    right: -60px;
+  }
+
+  .featured__item--reif .featured__img {
+    top: -60px;
+  }
+}

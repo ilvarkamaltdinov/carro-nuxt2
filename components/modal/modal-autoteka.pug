@@ -1,0 +1,55 @@
+section.modal.modal--credit
+  .heading-group.heading-group--modal
+    .heading-group__wrap
+      h2.heading.heading--h1 Отчет «Автотеки» от 21.02
+      span.heading-group__label Land Rover Range Rover Evoque, 2020
+    button.modal__close
+      +icon("close-s", "modal__close-icon")
+  .modal__options
+    img.modal__logo(src="../img/logo-autoteka.svg" loading="lazy" alt="")
+    .modal__buttons
+      include ../button/button-download
+      include ../button/button-share
+
+  .modal__wrap
+    .features
+      .features__group
+        h3.heading.heading--h3.features__indicator.features__indicator--problem Технические характеристики:
+        ul.features__list.features__list--column
+          li.features__item
+            .features__item-type VIN:
+            .features__item-content XW8AN2XXXFXXXXXXX
+          li.features__item
+            .features__item-type Госномер:
+            .features__item-content Х000ХХ777
+          li.features__item
+            .features__item-type № кузова:
+            .features__item-content XW8AN2XXXFXXXXXXX
+          li.features__item
+            .features__item-type № двигателя:
+            .features__item-content 08XXX4A
+          li.features__item
+            .features__item-type Номер ПТС:
+            .features__item-content 78УС60XXXX
+          li.features__item
+            .features__item-type Номер СТС:
+            .features__item-content 77УС91XXXX
+          li.features__item
+            .features__item-type Год выпуска:
+            .features__item-content 2014
+          li.features__item
+            .features__item-type Тип ТС:
+            .features__item-content Легковой хэтчбек (комби)
+          li.features__item
+            .features__item-type Цвет:
+            .features__item-content Белый
+          li.features__item
+            .features__item-type Объём двигателя:
+            .features__item-content 1 598 см³
+          li.features__item
+            .features__item-type Мощность:
+            .features__item-content 110 л.с.
+
+      .features__group
+        h3.heading.heading--h3.features__indicator.features__indicator--clean Нет ограничений на регистрацию:
+        p.features__item Запрет регистрационных действий на машину накладывается, если у автовладельца есть неоплаченные штрафы и налоги, либо если имущество стало предметом спора.

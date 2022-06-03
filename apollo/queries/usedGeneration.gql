@@ -1,0 +1,10 @@
+query usedGeneration($site_id: Int!, $folder_id: Int, $mark_slug: String, $folder_slug: String) {
+  generations(site_id: $site_id, folder_id: $folder_id, mark_slug: $mark_slug, folder_slug: $folder_slug) {
+    id
+    name
+    year_begin
+    year_end
+    slug,
+    offers_count
+  }
+}

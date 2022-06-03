@@ -1,0 +1,56 @@
+.detailing__group {
+  display: none;
+}
+
+.detailing__group--active {
+  display: block;
+}
+
+.detailing__top {
+  margin: 16px 0;
+}
+
+.detailing__buttons {
+  @include list-reset;
+  display: flex;
+}
+
+.detailing__tab-link {
+  -webkit-appearance: none;
+  @include button-reset;
+  padding: 8px 16px;
+  border: 1px solid $grey;
+  display: inline-block;
+  border-radius: 4px;
+  transition: all 0.3s;
+
+  &:hover {
+    cursor: pointer;
+    border-color: $red;
+  }
+}
+
+.detailing__buttons-item {
+  margin-right: 16px;
+}
+
+.detailing__buttons-item--active .detailing__tab-link {
+  background: $red;
+  color: white;
+  border-color: $red;
+
+  &:hover {
+    cursor: default;
+  }
+}
+
+@media (max-width: $mobile-width-only) {
+  .detailing__buttons {
+    @include horizontal-swipe;
+    padding-left: 16px;
+  }
+
+  .detailing__top {
+    margin: 16px -16px;
+  }
+}

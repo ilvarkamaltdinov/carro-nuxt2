@@ -1,0 +1,94 @@
+.selection-new {
+  padding-bottom: 188px;
+  background-image: url("~/static/img/selection-new/selection--mobile.jpg");
+  background-size: 100% 400px;
+  background-repeat: no-repeat;
+  background-position: top;
+  position: relative;
+  margin-bottom: 40px;
+  margin-top: 24px;
+}
+
+.selection-new__wrap {
+  position: relative;
+  top: 80px;
+}
+
+.selection-new__form .heading {
+  text-align: center;
+}
+
+.selection-new__heading {
+  font-size: 48px;
+  color: white;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.selection-new__form {
+  background-color: white;
+  padding: 24px;
+  border-radius: $border-radius;
+  box-shadow: 13px 32px 36px -14px rgba(179,179,179,.3);
+}
+
+.selection-new__text {
+  font-size: 18px;
+  color: white;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.selection-new__car--two {
+  display: none;
+}
+
+.selection-new__car {
+  object-fit: contain;
+}
+
+@media (max-width: $mobile-width-only) {
+  .selection-new__heading {
+    text-align: center;
+  }
+
+  .selection-new__text {
+    text-align: center;
+  }
+}
+@media (min-width: $tablet-width) {
+  .selection-new {
+    background-position: center;
+    background-image: url("~/static/img/selection-new/selection.jpg");
+    background-size: 100% 400px;
+    margin-bottom: 80px;
+  }
+
+  .selection-new__wrap {
+    display: flex;
+    justify-content: space-between;
+    top: 120px;
+  }
+
+  .selection-new__cars {
+    position: relative;
+    display: flex;
+    top: 100px;
+  }
+
+  .selection-new__car--one {
+    position: relative;
+    z-index: 25;
+    left: -40px;
+  }
+
+  .selection-new__car--two {
+    position: relative;
+    left: -80px;
+    display: block;
+  }
+
+  .selection-new__car {
+    height: 200px;
+  }
+}

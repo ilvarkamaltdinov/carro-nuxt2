@@ -1,0 +1,147 @@
+.application__form {
+  @include white-back;
+  padding: 24px;
+}
+
+.application__catalog {
+  height: fit-content;
+}
+
+.application__banks-form {
+  display: flex;
+  align-items: center;
+}
+
+.application__banks-img {
+  height: 32px;
+  position: relative;
+}
+
+.application__banks-img--alfa {
+  top: 1px;
+}
+
+.application__banks-text {
+  margin-left: 8px;
+  color: $colorTextSecondary;
+  @include font-features;
+  color: $colorLink;
+  position: relative;
+  top: -2px;
+}
+
+.application__banks {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  grid-column: 8 / 13;
+  grid-row: 2 / 4;
+  @include white-back;
+  padding: 24px;
+  height: fit-content;
+  margin-bottom: 16px;
+}
+
+.application__banks--single {
+  padding: 0;
+  overflow: hidden;
+}
+
+.application__form-img-wrap {
+  position: relative;
+  top: 24px;
+  width: 359px;
+  margin-bottom: 3px;
+}
+
+.application__form {
+  margin-bottom: 16px;
+}
+
+.application__banks-item--alfa {
+  background-color: $colorBankAlfa;
+}
+
+@media (max-width: $mobile-width-only) {
+  .application__catalog--modal {
+    margin: 0 -16px;
+    margin-bottom: 16px;
+  }
+
+  .application__choose-car {
+    display: none;
+  }
+
+  .application__terms {
+    display: none;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .application__choose-car-icon {
+    fill: $colorLink;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 16px;
+  }
+
+  .application__choose-car-text {
+    @include font-desktop-h3;
+    color: $colorLink;
+  }
+
+  .application__choose-car {
+    height: 312px;
+    background-color: $colorBgButton;
+    border-radius: $borderRadius;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: $transitionHover;
+
+    &:hover {
+      opacity: 0.7;
+      cursor: pointer;
+    }
+  }
+
+  .application--modal .application__form-img-wrap {
+    width: 177px;
+  }
+
+  .application--modal .application__banks {
+    grid-column: 5/9;
+  }
+
+  .application__form {
+    grid-row: 1 / -1;
+    height: fit-content;
+  }
+
+  .application__terms {
+    @include white-back;
+    padding: 40px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .application__terms-number {
+    @include font-desktop-h1;
+    margin-bottom: 6px;
+  }
+
+  .application__terms-item {
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+
+  .application__terms-text {
+    color: $colorTextSecondary;
+  }
+}

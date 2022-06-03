@@ -1,0 +1,23 @@
+- let catalogMiniItemImgCount = new Array(6);
+
+mixin catalogItemImg(img)
+  include ./catalog-item-img
+    - img
+
+li.catalog__mini-item
+  .catalog__mini-img
+    +catalogItemImg(1)
+  .catalog__car-mini-info
+    .catalog__car-descr
+      h3.catalog__car-heading Hyundai Solaris 3.5, 2018
+      ul.catalog__car-info
+        li.catalog__car-info-item 2009 г.
+        li.catalog__car-info-item АКПП
+        li.catalog__car-info-item 120 000 км
+    .catalog__car-mini-condition
+      span.catalog__car-mini-condition-label Состояние:
+      include ../rating/rating
+    .catalog__price-wrap.catalog__price-wrap--mini-pc
+      .catalog__car-price 1 565 000 ₽
+      .catalog__car-oldprice 1 585 000 ₽
+      .catalog__car-weekend Скидка до 07.09

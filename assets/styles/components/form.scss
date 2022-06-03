@@ -1,0 +1,236 @@
+.form__field-wrap--car {
+  position: relative;
+}
+
+.form__car-icon {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+.form__catalog {
+  margin-bottom: 16px;
+  @include border-bottom;
+}
+
+.form__field-wrap--car-active .form__car-icon {
+  fill: $colorSuccess;
+}
+
+.form__range-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form__range-name {
+  @include font-features;
+}
+
+.form__range-name.irs-max {
+  display: block !important;
+}
+
+.form__block {
+  margin-bottom: 16px;
+}
+
+.form__block--range {
+  height: 76px;
+  margin-bottom: 16px;
+}
+
+.form__range-value {
+  @include font-body-strong;
+}
+
+.form__field-wrap {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.form__icon-search {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  fill: $colorBgActive;
+}
+
+.form__icon-search--close {
+  $color: $colorText;
+}
+
+.form__field {
+  width: 100%;
+  padding: 11px 16px;
+  border: 1px solid $colorDivider;
+  border-radius: $borderRadiusSmall;
+  @include font-body;
+  transition: $transitionHover;
+  text-align: left;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 48px;
+
+  &:hover {
+    border-color: $colorTextSecondary;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $colorText;
+  }
+}
+
+.form__field-wrap--success {
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    right: 16px;
+    top: 16px;
+    background: url("~/static/img/icons/icon-check.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+
+.form__field-wrap--error .form__field {
+  border-color: $colorError;
+}
+
+.form__field-wrap--select {
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    right: 16px;
+    top: 16px;
+    background: url("~/static/img/icons/icon-arrow.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    filter: brightness(0);
+  }
+}
+
+.form__field-wrap--select .form__field {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.form__total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.form__total-label {
+  @include font-desktop-h3;
+}
+
+.form__total-payment {
+  @include font-desktop-h3;
+  color: $colorSuccess;
+}
+
+.form__agree {
+  position: relative;
+  margin-right: 0;
+  transition: 0.3s;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+  width: 100%;
+  justify-content: center;
+
+  &:last-of-type {
+    margin-bottom: 16px;
+  }
+}
+
+.form__agree-text {
+  white-space: break-spaces;
+}
+
+.form__agree-text {
+  margin-left: 12px;
+  line-height: 1.5;
+}
+
+.form__field-arrow {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+
+.form__field-wrap--range {
+  margin-bottom: 0;
+
+  &:not(:last-child) {
+    margin-right: 12px;
+  }
+}
+
+.form__field--search-focus + .form__icon-search {
+  fill: $colorText;
+}
+
+@media (max-width: $mobile-width-only) {
+  .form__catalog {
+    margin-bottom: 16px;
+  }
+
+  .form__catalog .catalog__img {
+    margin: 16px -24px!important;
+  }
+
+  .form__catalog .catalog__tech-item {
+    @include font-small;
+  }
+
+  .form__field-wrap--search {
+    border-radius: 0;
+  }
+
+  .form__field-wrap--search .form__field {
+    border-radius: 0;
+    width: 100%;
+    border-color: transparent;
+    @include border-bottom;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .form__field--search {
+    &:hover {
+      cursor: text;
+    }
+  }
+
+  .form__field-wrap--search .form__field {
+    background-color: $colorBg;
+    border-color: $colorBg;
+  }
+
+  .form__field-wrap--search .form__field--search-focus {
+    background: white;
+    border-color: $colorBgActive;
+  }
+}

@@ -1,0 +1,227 @@
+.tech__card {
+  padding: 24px;
+  position: relative;
+  @include shadow;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+    pointer-events: none;
+  }
+}
+
+.tech__card-wrap {
+  perspective: 600px;
+  margin-bottom: 16px;
+}
+
+.tech__card--flipped {
+  transform: rotateY(180deg);
+}
+
+.tech__card-face {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 16px;
+  justify-content: space-between;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.tech__descr {
+  line-height: 1.5;
+  font-size: 14px;
+  margin: 0;
+  text-align: center;
+}
+
+.tech__whatsapp {
+  width: 32px;
+  height: 32px;
+  fill: $green;
+  margin-right: 8px;
+}
+
+.tech__title {
+  margin-bottom: 16px;
+}
+
+.tech__phone {
+  @include a-reset;
+  font-weight: 600;
+}
+
+.tech__phone-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 14px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  &::before {
+    content: "Whatsapp";
+    width: 100%;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: grey;
+  }
+}
+
+.tech__phone-wrap--top {
+  padding: 12px 0;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.tech__price {
+  font-size: 16px;
+  font-weight: 600;
+  color: $red;
+}
+
+.tech__card-face--front {
+  background-color: white;
+}
+
+.tech__card-face--back {
+  visibility: hidden;
+  transform: rotateY(180deg);
+}
+
+.tech__card .tech__card-face--back {
+  visibility: visible;
+}
+
+.tech__card-title-wrap {
+  text-align: center;
+}
+
+.tech__btns {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.tech__more {
+  width: 50px;
+  height: 50px;
+  @include shadow;
+  background-color: white;
+  border-radius: 50%;
+  border: none;
+  flex-shrink: 0;
+  margin-right: 32px;
+  display: flex;
+  padding: 2px;
+  justify-content: center;
+  align-items: center;
+}
+
+.tech__more-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.tech__title {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 0;
+}
+
+.tech__icon {
+  width: 64px;
+  height: 64px;
+}
+@media (max-width: $mobile-width-only) {
+  .tech__phone-wrap {
+    &::before {
+      font-size: 12px;
+    }
+  }
+
+  .tech__title {
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+
+  .tech__descr {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .tech__price {
+    margin-bottom: 8px;
+  }
+
+  .tech__whatsapp {
+    width: 24px;
+    height: 24px;
+  }
+}
+@media (min-width: $tablet-width) {
+  .tech__icon {
+    width: 128px;
+    height: 128px;
+  }
+
+  .tech__descr {
+    font-size: 16px;
+  }
+}
+@media (min-width: $desktop-width) {
+  .tech {
+    overflow: hidden;
+    padding: 8px 0;
+    padding-bottom: 48px;
+  }
+
+  .tech__phone-wrap {
+    font-size: 16px;
+  }
+
+  .tech__phone {
+    transition: all 0.3s;
+
+    &:hover {
+      color: $red;
+    }
+  }
+
+  .tech__more {
+    transition: all 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 1px 11px 0 rgba(65,78,91,.4);
+    }
+  }
+
+  .tech__card {
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 0 1px 11px 0 rgba(65,78,91,.4);
+      cursor: auto;
+    }
+  }
+}

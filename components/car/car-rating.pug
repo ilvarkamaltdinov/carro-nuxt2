@@ -1,0 +1,17 @@
+- let carRatingElements = ["Техническое состояние", "Состояние кузова", "Состояние салона"];
+- let carRatingTippy = ["Состояние двигателя, КПП, подвески автомобиля.", "Наличие сколов, царапин, потертостей, вмятин на кузове.", "Оценка целостности внутренних элементов салона и отделки."];
+
+
+mixin catalogItem(ratingLabel, ratingText)
+  include ./car-rating-item
+    - ratingLabel
+    - ratingText
+
+section.car__rating
+  .car__rating-total
+    h3.car__rating-label
+      | Рейтинг Mazda CX-9 3.7 АКПП 2008
+    include ../rating/rating
+  ul.car__rating-list
+    each element,i in carRatingElements
+      +catalogItem(element, carRatingTippy[i])

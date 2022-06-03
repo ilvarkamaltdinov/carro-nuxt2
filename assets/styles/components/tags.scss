@@ -1,0 +1,143 @@
+.tags {
+  margin: 16px 0;
+}
+
+.tags__list {
+  display: flex;
+  @include list-reset;
+  margin-bottom: 8px;
+}
+
+.tags__item a {
+  @include a-reset;
+  display: flex;
+  padding: 8px 16px;
+  border: 1px solid $grey;
+  border-radius: 6px;
+  margin-right: 8px;
+  white-space: nowrap;
+}
+
+.tags__name {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.tags__label {
+  margin-top: 8px;
+  margin-right: 8px;
+}
+
+.tags__item--active a {
+  color: white;
+  background-color: $red;
+  border-color: $red;
+
+  &:hover {
+    cursor: auto;
+  }
+}
+
+.tags__item--active .tags__qty {
+  color: white;
+}
+
+.tags__qty {
+  margin-left: 8px;
+  color: $red;
+}
+.tags--reviews {
+  margin-bottom: 0px;
+}
+@media (max-width: $mobile-width-only) {
+
+  .tags--best {
+    margin-bottom: 0px;
+  }
+  .tags__list--years {
+    display: none;
+  }
+  .tags__list:not(.tags__list--models) {
+    @include list-reset;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -ms-scroll-snap-type: x mandatory;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 12px;
+    padding-bottom: 8px;
+  }
+  .tags__list--models {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .tags__list--models .tags__label {
+    display: none;
+  }
+  .tags__list--models .tags__item {
+    width: 50%;
+    margin-bottom: 8px;
+  }
+  .tags__list--models .tags__item a {
+    display: flex;
+    justify-content: space-between;
+  }
+  .tags__list--models .tags__item:nth-child(odd) a {
+    margin-right: 0;
+  }
+  .tags--featured .tags__list--featured {
+    padding-left: 16px;
+  }
+  .tags--featured {
+    @include horizontal-swipe;
+    margin: 0 -16px;
+    margin-bottom: 16px;
+  }
+
+  .tags--featured {
+    display: none;
+  }
+}
+@media (min-width: $tablet-width) {
+  .tags__list--featured {
+    display: none;
+  }
+  .tags__item a {
+    margin-bottom: 8px;
+  }
+
+  .tags__list {
+    flex-wrap: wrap;
+  }
+  .tags__list--models {
+    height: max-content;
+  }
+}
+@media (min-width: $desktop-width) {
+  .tags {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .tags--about {
+    flex-direction: column;
+  }
+
+  .tabs--about .tags__list {
+    margin-bottom: 16px;
+  }
+
+  .tags__list {
+    max-width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .tags__item a {
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: $red;
+    }
+  }
+}

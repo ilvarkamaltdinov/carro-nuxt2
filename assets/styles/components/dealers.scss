@@ -1,0 +1,31 @@
+.dealers__item {
+  @include white-back;
+}
+
+.dealers__item-img {
+  border-radius: $borderRadius;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+@media (max-width: $mobile-width-only) {
+  .dealers__features {
+    margin-bottom: 16px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .dealers__item {
+    padding: 32px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .dealers__block-wrap {
+    display: flex;
+  }
+
+  .dealers__features {
+    width: 30%;
+  }
+}
