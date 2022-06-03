@@ -61,8 +61,8 @@
 					<li class="page-header__buttons-item">
 						<a class="page-header__buttons-link"
 						   href="">
-							<span v-if="likes!==0"
-							      class="page-header__favorites-count">{{ likes }}
+							<span v-if="likesArray.length"
+							      class="page-header__favorites-count">{{ likesArray.length }}
 							</span>
 							<svg-icon class="icon"
 							          name="icon-favorites"></svg-icon>
@@ -118,7 +118,7 @@ export default {
 			modalMenu: 'modal/modal-menu/modalMenu',
 			modalMarks: 'modal/modal-marks/modalMarks',
 			allMarks: 'marks/marks/allMarks',
-			likes: 'favorite/favorite/likes'
+			likesArray: 'favorite/favorite/likesArray'
 		})
 	},
 	mounted() {

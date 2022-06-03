@@ -13,7 +13,8 @@
 						
 						
 						<template v-slot:buttons>
-							<catalog-item-buttons @creditClick="creditClick(item)"
+							<catalog-item-buttons :active-like="likesArray.some(id => id === String(item.id))"
+							                      @creditClick="creditClick(item)"
 							                      @favoriteClick="favoriteClick(item)"
 							                      @callClick="callClick(item)" />
 						</template>
@@ -54,34 +55,10 @@ export default {
 			},
 		}
 	},
-	methods: {
-		...mapMutations({
-			setModalMain: 'modal/modal-main/SET_MODAL_MAIN',
-			setCallbackCar: 'modal/modal-callback/SET_CALLBACK_CAR',
-			setCreditCar: 'modal/modal-credit/SET_CREDIT_CAR'
-		}),
-		...mapActions({
-			getCatalogCars: 'catalog/catalog-cars/getCatalogCars',
-			liked: 'favorite/favorite/liked'
-		}),
-		favoriteClick(item) {
-			this.liked(item)
-		},
-		callClick(carInfo) {
-			this.setCallbackCar(carInfo)
-			this.setModalMain(this.modalChooseCar)
-		},
-		creditClick(carInfo) {
-			this.setCreditCar(carInfo)
-			this.setModalMain(this.modalCreditCar)
-		},
-		toCatalog() {
-			this.$router.push('/used')
-		}
-	},
 	computed: {
 		...mapGetters({
-			catalogCars: 'catalog/catalog-cars/catalogCars'
+			catalogCars: 'catalog/catalog-cars/catalogCars',
+			likesArray: 'favorite/favorite/likesArray'
 		}),
 		carsList() {
 			return this.offers ? this.offers.data : []
@@ -105,6 +82,31 @@ export default {
 					prevEl: '.catalog--slider .swiper-button-prev',
 				},
 			});
+		}
+	},
+	methods: {
+		...mapMutations({
+			setModalMain: 'modal/modal-main/SET_MODAL_MAIN',
+			setCallbackCar: 'modal/modal-callback/SET_CALLBACK_CAR',
+			setCreditCar: 'modal/modal-credit/SET_CREDIT_CAR'
+		}),
+		...mapActions({
+			getCatalogCars: 'catalog/catalog-cars/getCatalogCars',
+			liked: 'favorite/favorite/liked'
+		}),
+		favoriteClick(item) {
+			this.liked(item)
+		},
+		callClick(carInfo) {
+			this.setCallbackCar(carInfo)
+			this.setModalMain(this.modalChooseCar)
+		},
+		creditClick(carInfo) {
+			this.setCreditCar(carInfo)
+			this.setModalMain(this.modalCreditCar)
+		},
+		toCatalog() {
+			this.$router.push('/used')
 		}
 	}
 }

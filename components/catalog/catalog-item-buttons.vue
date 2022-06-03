@@ -1,7 +1,7 @@
 <template>
 	<div class="catalog__buttons">
 		<div class="catalog__actions">
-			<button-favorite @click="$emit('favoriteClick')" />
+			<button-favorite :active="activeLike" @click="$emit('favoriteClick')" />
 			<button-call @click="$emit('callClick')" />
 		</div>
 		<button-credit v-if="!chooseButton" @click="$emit('creditClick')" />
@@ -12,6 +12,10 @@
 <script>
 export default {
 	props: {
+		activeLike:{
+			type: Boolean,
+			default: false
+		},
 		chooseButton: {
 			type: Boolean,
 			default: false

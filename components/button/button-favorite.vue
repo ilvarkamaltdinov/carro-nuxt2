@@ -3,6 +3,17 @@
 	        @click.prevent="$emit('click')"
 	        type="button">
 		<svg-icon class="button__icon"
-		          name="icon-heart" />
+		          :name="active?'icon-heart-active':'icon-heart'" />
 	</button>
 </template>
+
+<script>
+export default {
+	props: {
+		active: {
+			type: Boolean,
+			default: false
+		}
+	}
+}
+</script>
