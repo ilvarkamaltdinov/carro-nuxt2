@@ -42,6 +42,10 @@
     grid-template-rows: repeat(3, 266px);
   }
 
+  .grid--reviews {
+    grid-template-rows: auto;
+  }
+
   .grid--header {
     grid-row-gap: 0;
   }

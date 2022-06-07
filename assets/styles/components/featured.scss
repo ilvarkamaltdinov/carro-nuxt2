@@ -273,9 +273,68 @@
   top: 20px;
 }
 
+.featured__review-picture {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.featured__review-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.featured__item--review {
+  position: relative;
+  @include overlay;
+  aspect-ratio: 4 / 3;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:hover .featured__play-icon {
+    opacity: 0.7;
+  }
+
+  &::before {
+    opacity: 0.7;
+  }
+
+  &:hover::before {
+    opacity: 0.65;
+  }
+}
+
+.featured__item--review .featured__text {
+  color: white;
+  z-index: 50;
+  position: relative;
+}
+
+.featured__play-icon {
+  width: 40px;
+  height: 40px;
+  left: calc(50% - 20px);
+  top: calc(50% - 20px);
+  z-index: 50;
+  position: absolute;
+  fill: white;
+  opacity: 0.9;
+  transition: $transitionHover;
+}
+
 @media (max-width: $mobile-width-only) {
   .featured__text {
     display: none;
+  }
+
+  .featured__item--review .featured__text {
+    display: block;
   }
 
   .featured__banks {
@@ -301,9 +360,19 @@
     grid-row: 2 / 4;
     aspect-ratio: auto;
   }
+
+  .featured__item--review {
+    grid-column: -1 / 1;
+    grid-row: auto;
+    aspect-ratio: 4 / 3;
+  }
 }
 
 @media (min-width: $desktop-width) {
+  .featured__item--review {
+    grid-column: span 4;
+  }
+
   .featured__glass {
     transition: $transitionHover;
   }

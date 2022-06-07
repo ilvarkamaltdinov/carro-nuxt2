@@ -11,7 +11,7 @@ export const getters = {
 export const actions = {
     async getTotal({commit}, payload) {
         let variables = {
-            site_id: 7,
+            site_id: 21,
             page: 1,
             limit: 0,
             mark_slug_array: payload.mark_slug_array

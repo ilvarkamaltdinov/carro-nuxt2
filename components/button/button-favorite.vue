@@ -1,5 +1,6 @@
 <template>
 	<button class="button button--action button--favorite"
+	        :class="{'button--favorite-active' : active}"
 	        @click.prevent="$emit('click')"
 	        type="button">
 		<svg-icon class="button__icon"

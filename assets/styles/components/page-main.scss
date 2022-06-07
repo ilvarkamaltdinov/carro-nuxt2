@@ -38,7 +38,8 @@
   .page-main__video,
   .page-main__slider-index,
   .page-main__filter,
-  .page-main .benefits__list {
+  .page-main .benefits__list,
+  .page-main__featured .tabs {
     @include container-mobile-reset;
   }
 

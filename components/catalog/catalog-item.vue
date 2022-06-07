@@ -1,6 +1,7 @@
 <template>
 	<div :class="{'swiper-slide':isSlide, 'grid__col-4':gridFour}">
-		<article v-show="inline" class="catalog__item catalog__item--desktop-l catalog__item--desktop-form">
+		<article v-show="inline"
+		         class="catalog__item catalog__item--desktop-l catalog__item--desktop-form">
 			<div class="catalog__img">
 				<div class="swiper">
 					<div class="swiper-wrapper">
@@ -11,10 +12,12 @@
 				</div>
 				<div class="swiper__buttons-wrapper">
 					<button class="swiper-button swiper-button-next">
-						<svg-icon class="swiper-button__icon" name="arrow"/>
+						<svg-icon class="swiper-button__icon"
+						          name="arrow" />
 					</button>
 					<button class="swiper-button swiper-button-prev">
-						<svg-icon class="swiper-button__icon" name="arrow"/>
+						<svg-icon class="swiper-button__icon"
+						          name="arrow" />
 					</button>
 				</div>
 			</div>
@@ -30,7 +33,7 @@
 								</a>
 							</h3>
 						</div>
-						<vin/>
+						<vin />
 					</div>
 					<div class="catalog__price-wrap">
 						<div class="catalog__price">
@@ -45,7 +48,7 @@
 					</div>
 				</div>
 				<div class="catalog__tech">
-					<rating/>
+					<rating />
 					<ul class="catalog__tech-list">
 						<li class="catalog__tech-item">132 000 км</li>
 						<li class="catalog__tech-item">5.5 л / 388 л.с.</li>
@@ -80,7 +83,14 @@
 				</div>
 			</div>
 			<div class="catalog__img">
-				<catalog-item-hover-slider :images="info.images" />
+				<component v-if="isMobile"
+				           v-for="img in info.images"
+				           :img="img.thumb"
+				           :key="img.thumb"
+				           is="catalog-item-img" />
+				<component v-else
+				           is="catalog-item-hover-slider"
+				           :images="info.images" />
 				<a class="catalog__call-card"
 				   href="tel:+74995191324">
 					<div class="catalog__call">
@@ -127,10 +137,7 @@ export default {
 	mixins: [filters],
 	data() {
 		return {
-			modalChooseCar: {
-				component: 'modal-callback',
-				visibility: true
-			},
+			isMobile: true
 		}
 	},
 	props: {
@@ -156,34 +163,11 @@ export default {
 			default: true
 		}
 	},
-	methods: {
-		...mapMutations({
-			setModalMain: 'modal/modal-main/SET_MODAL_MAIN'
-		}),
-		callback(info) {
-			console.log(info)
-			this.setModalMain(this.modalChooseCar)
-		}
-	},
-	// async mounted() {
-	// 	console.log(11111111)
-	// 	if(this.info){
-	// 		console.log(222222222)
-	// 		const sliderCatalogImg = new swiper.default('.catalog__img .swiper', {
-	// 			modules: [ swiper.Navigation, swiper.Autoplay ],
-	// 			loop: true,
-	// 			autoplayDisableOnInteraction: false,
-	// 			autoplay: false,
-	// 			slidesPerView: "auto",
-	// 			centeredSlides: false,
-	// 			watchSlidesProgress: true,
-	// 			spaceBetween: 16,
-	// 			navigation: {
-	// 				nextEl: '.catalog__img .swiper-button-next',
-	// 				prevEl: '.catalog__img .swiper-button-prev',
-	// 			},
-	// 		});
-	// 	}
-	// }
+	mounted() {
+		window.innerWidth < 1200 ?
+				this.isMobile = true
+				:this.isMobile = false
+		
+	}
 }
 </script>

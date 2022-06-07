@@ -32,10 +32,6 @@
     line-height: 32px;
   }
 
-  .site-list__group-list {
-    display: none;
-  }
-
   .site-list__item--sub .site-list__link {
     padding-left: 32px;
     @include font-body;

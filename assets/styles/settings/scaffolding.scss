@@ -7,7 +7,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 16px;
-  font-family: $fontFamily, Helvetica, sans-serif;
+  font-family: $fontFamily, $fontApple;
   font-weight: 400;
   background-color: $colorBg;
   @include font-body;

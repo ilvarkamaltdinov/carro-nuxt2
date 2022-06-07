@@ -16,11 +16,6 @@
 					</label>
 					<nuxt-link class="page-header__logo"
 					           to="/">
-						<!--<img class="page-header__logo-img"-->
-						<!--     src="~/static/img/logo.svg"-->
-						<!--     alt="Портал проверенных автомобилей с пробегом — carro.ru"-->
-						<!--     width="108"-->
-						<!--     height="24" />-->
 						<div class="page-header__logo-img-wrap">
 							<img src="~/static/img/logo-part-1.svg"
 							     alt="Портал проверенных автомобилей с пробегом — carro.ru"
@@ -29,8 +24,8 @@
 							     class="page-header__logo-circle">
 							<img src="~/static/img/logo-part-2.svg"
 							     alt="Портал проверенных автомобилей с пробегом — carro.ru"
-							     height="79"
-							     width="13"
+							     height="13"
+							     width="79"
 							     class="page-header__logo-letters">
 						</div>
 					</nuxt-link>
@@ -51,22 +46,23 @@
 					<site-list-desktop />
 				</nav>
 				<ul class="page-header__buttons">
-					<!--<li class="page-header__buttons-item">-->
-					<!--	<a class="page-header__buttons-link"-->
-					<!--	   href="">-->
-					<!--		<svg-icon class="icon"-->
-					<!--		          name="icon-search"></svg-icon>-->
-					<!--	</a>-->
-					<!--</li>-->
-					<li class="page-header__buttons-item">
+					<li class="page-header__buttons-item"
+					    v-if="mobile">
 						<a class="page-header__buttons-link"
 						   href="">
+							<svg-icon class="icon"
+							          name="icon-search"></svg-icon>
+						</a>
+					</li>
+					<li class="page-header__buttons-item">
+						<nuxt-link to="/favorites"
+						           class="page-header__buttons-link">
 							<span v-if="likesArray.length"
 							      class="page-header__favorites-count">{{ likesArray.length }}
 							</span>
 							<svg-icon class="icon"
 							          name="icon-favorites"></svg-icon>
-						</a>
+						</nuxt-link>
 					</li>
 					<li class="page-header__buttons-item">
 						<a class="page-header__buttons-link"
@@ -101,10 +97,10 @@
 			</nav>
 		</div>
 		<!--TODO анимация выпадающих списков в хедере-->
-		<transition name="modal">
+		<transition name="slide-fade">
 			<modal-makes v-show="modalMarks" />
 		</transition>
-		<transition name="modal">
+		<transition name="slide-fade">
 			<modal-menu v-show="modalMenu" />
 		</transition>
 	</header>
@@ -113,6 +109,11 @@
 import {mapGetters, mapMutations, mapActions} from 'vuex'
 
 export default {
+	data() {
+		return {
+			mobile: true,
+		}
+	},
 	computed: {
 		...mapGetters({
 			modalMenu: 'modal/modal-menu/modalMenu',
@@ -123,6 +124,9 @@ export default {
 	},
 	mounted() {
 		this.getLikes()
+		window.innerWidth < 1200 ?
+				this.mobile = true :
+				this.mobile = false
 	},
 	methods: {
 		...mapMutations({
@@ -130,8 +134,25 @@ export default {
 			setModalMarks: 'modal/modal-marks/setModalMarks'
 		}),
 		...mapActions({
-			getLikes:'favorite/favorite/getLikes'
+			getLikes: 'favorite/favorite/getLikes'
 		})
 	}
 }
 </script>
+<style lang="scss"
+       scoped>
+.slide-fade-enter-active {
+	transition: all .24s ease;
+}
+
+.slide-fade-leave-active {
+	transition: all .24s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-fade-enter, .slide-fade-leave-to
+	/* .slide-fade-leave-active до версии 2.1.8 */
+{
+	transform: translateY(-20px);
+	opacity: 0;
+}
+</style>

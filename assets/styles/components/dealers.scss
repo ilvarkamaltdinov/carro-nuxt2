@@ -12,6 +12,26 @@
   .dealers__features {
     margin-bottom: 16px;
   }
+
+  .dealers--catalog {
+    @include horizontal-scroll;
+    margin: 0 -16px;
+    margin-bottom: 24px;
+  }
+
+  .dealers__item {
+    margin-right: 16px;
+  }
+
+  .dealers__item--catalog {
+    margin-right: 16px;
+    width: 280px;
+    flex-shrink: 0;
+  }
+
+  .dealers__item--catalog .heading-group__label {
+    display: none;
+  }
 }
 
 @media (min-width: $desktop-width) {
@@ -21,11 +41,20 @@
     justify-content: space-between;
   }
 
+  .dealers__item--catalog {
+    flex-direction: column;
+  }
+
+  .dealers__item--catalog .dealers__features {
+    margin-right: 0;
+  }
+
   .dealers__block-wrap {
     display: flex;
   }
 
   .dealers__features {
-    width: 30%;
+    flex-grow: 1;
+    margin-right: 40px;
   }
 }

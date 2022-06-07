@@ -1,56 +1,56 @@
-.detailing__group {
-  display: none;
-}
-
-.detailing__group--active {
-  display: block;
-}
-
-.detailing__top {
-  margin: 16px 0;
-}
-
-.detailing__buttons {
-  @include list-reset;
+.detailing__item {
+  position: relative;
   display: flex;
+  flex-direction: column;
+  @include white-back;
+  padding: 24px;
 }
 
-.detailing__tab-link {
-  -webkit-appearance: none;
-  @include button-reset;
-  padding: 8px 16px;
-  border: 1px solid $grey;
-  display: inline-block;
-  border-radius: 4px;
-  transition: all 0.3s;
-
-  &:hover {
-    cursor: pointer;
-    border-color: $red;
-  }
+.detailing__title {
+  margin-bottom: 12px;
 }
 
-.detailing__buttons-item {
-  margin-right: 16px;
+.detailing__main {
+  margin-bottom: 16px;
 }
 
-.detailing__buttons-item--active .detailing__tab-link {
-  background: $red;
-  color: white;
-  border-color: $red;
+.detailing__price {
+  @include font-body-strong;
+  color: $colorPrimary;
+}
 
-  &:hover {
-    cursor: default;
-  }
+.deatailing__price-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.detailing__img {
+  aspect-ratio: 4 / 3;
+  border-radius: $borderRadius;
+  margin-bottom: 16px;
+}
+
+.detailing__price {
+  margin-right: 8px;
+}
+
+.detailing__sale {
+  @include font-features;
+}
+
+.deatailing__img {
+  aspect-ratio: 4 / 3;
+  margin-bottom: 16px;
 }
 
 @media (max-width: $mobile-width-only) {
-  .detailing__buttons {
-    @include horizontal-swipe;
-    padding-left: 16px;
+  .detailing__item {
+    margin-bottom: 16px;
   }
+}
 
-  .detailing__top {
-    margin: 16px -16px;
+@media (min-width: $desktop-width) {
+  .detailing__item {
+    grid-column: span 4;
   }
 }

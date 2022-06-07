@@ -1,5 +1,4 @@
 <template>
-	
 	<section class="page-main__catalog catalog catalog--slider grid__col-12">
 		<heading-h2>Автомобили в наличии</heading-h2>
 		<tabs-list />
@@ -35,79 +34,9 @@
 
 </template>
 <script>
-
-import {mapMutations, mapGetters, mapActions} from "vuex";
-
+import catalog from "~/mixins/catalog/catalog-index";
+import catalogButtonEvents from "~/mixins/catalog/catalog-button-events";
 export default {
-	data() {
-		return {
-			requestParams: {
-				limit: 8,
-				page: 1
-			},
-			modalChooseCar: {
-				component: 'modal-callback',
-				visibility: true
-			},
-			modalCreditCar: {
-				component: 'modal-credit',
-				visibility: true
-			},
-		}
-	},
-	computed: {
-		...mapGetters({
-			catalogCars: 'catalog/catalog-cars/catalogCars',
-			likesArray: 'favorite/favorite/likesArray'
-		}),
-		carsList() {
-			return this.offers ? this.offers.data : []
-		}
-	},
-	async mounted() {
-		await this.getCatalogCars(this.requestParams)
-		if (this.catalogCars) {
-			const sliderCatalog = new swiper.default('.catalog--slider .swiper', {
-				modules: [swiper.Navigation, swiper.Autoplay],
-				loop: false,
-				autoplayDisableOnInteraction: true,
-				autoplay: false,
-				slidesPerView: 3,
-				initialSlide: 1,
-				centeredSlides: true,
-				watchSlidesProgress: true,
-				spaceBetween: 24,
-				navigation: {
-					nextEl: '.catalog--slider .swiper-button-next',
-					prevEl: '.catalog--slider .swiper-button-prev',
-				},
-			});
-		}
-	},
-	methods: {
-		...mapMutations({
-			setModalMain: 'modal/modal-main/SET_MODAL_MAIN',
-			setCallbackCar: 'modal/modal-callback/SET_CALLBACK_CAR',
-			setCreditCar: 'modal/modal-credit/SET_CREDIT_CAR'
-		}),
-		...mapActions({
-			getCatalogCars: 'catalog/catalog-cars/getCatalogCars',
-			liked: 'favorite/favorite/liked'
-		}),
-		favoriteClick(item) {
-			this.liked(item)
-		},
-		callClick(carInfo) {
-			this.setCallbackCar(carInfo)
-			this.setModalMain(this.modalChooseCar)
-		},
-		creditClick(carInfo) {
-			this.setCreditCar(carInfo)
-			this.setModalMain(this.modalCreditCar)
-		},
-		toCatalog() {
-			this.$router.push('/used')
-		}
-	}
+	mixins: [catalog, catalogButtonEvents]
 }
 </script>

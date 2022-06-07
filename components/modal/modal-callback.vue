@@ -1,16 +1,5 @@
 <template>
-	<section class="modal modal--credit">
-		<div class="heading-group heading-group--modal">
-			<div class="heading-group__wrap">
-				<h2 class="heading heading--h1">Закажите звонок по автомобилю</h2>
-				<span class="heading-group__label">{{ callbackCar.name }}</span>
-			</div>
-			<button class="modal__close"
-			        @click="setModalMain(false)">
-				<svg-icon class="modal__close-icon"
-				          name="icon-close-s" />
-			</button>
-		</div>
+	<div>
 		<div class="modal__options">
 			<img class="modal__logo"
 			     src="~/static/img/dealers/logos/logo-autograd.svg"
@@ -32,35 +21,22 @@
 					<form-car-callback />
 				</div>
 				<div class="application__catalog application__catalog--modal catalog grid__col-4">
-					<catalog-item :has-buttons="false" :info="callbackCar"/>
+					<catalog-item :has-buttons="false"
+					              :info="modalData" />
 				</div>
 			</div>
 			<benefits-modal />
 		</div>
-	</section>
+	</div>
 </template>
 <script>
-import {mapGetters, mapMutations} from 'vuex'
-import filters from "~/mixins/filters";
+import {mapGetters} from 'vuex'
 
 export default {
-	mixins: [filters],
 	computed: {
 		...mapGetters({
-			callbackCar: 'modal/modal-callback/callbackCar'
+			modalData: 'modal/modal-main/modalData'
 		}),
-	},
-	methods:{
-		...mapMutations({
-			setModalMain: 'modal/modal-main/SET_MODAL_MAIN',
-		})
-	},
-	props: {
-		info: {
-			type: Object,
-			default: () => {
-			}
-		}
 	}
 }
 </script>

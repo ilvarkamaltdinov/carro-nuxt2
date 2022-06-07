@@ -4,7 +4,7 @@
 			<nuxt-link
 					to="/used"
 					class="site-list__link">
-			  В наличии
+				В наличии
 			</nuxt-link>
 		</li>
 		<li class="site-list__item">

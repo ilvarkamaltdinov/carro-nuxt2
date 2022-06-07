@@ -5,18 +5,29 @@ export default {
             lang: 'ru'
         },
         meta: [
-            {charset: 'utf-8'},
+            {charset: 'UTF-8'},
+
             {name: 'robots', content: 'noindex, nofollow'},
+            {name: 'theme-color', content: 'ED2939'},
+            {name: 'http-equiv="X-UA-Compatible', content: 'ie=edge'},
             {name: 'viewport', content: 'width=device-width, initial-scale=1'},
             {hid: 'description', name: 'description', content: ''},
             {name: 'format-detection', content: 'telephone=no'}
         ],
         link: [
-            {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
+            {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico', sizes: 'any'},
+            {rel: 'apple-touch-icon', href: '/apple-touch-icon.png'},
+            {rel: 'icon', type: 'image/x-icon', href: '/mask-icon.svg', color: '#ED2939'},
+            {rel: 'mask-icon', type: 'image/x-icon', href: '/favicon.svg', sizes: 'any'},
+            // {rel: 'manifest', href: '/manifest.json'},
+            // {rel: 'preload', as: 'font', href: '/fonts/golos-regular.woff2', type:"font/woff2", crossorigin: 'anonymous'},
+            // {rel: 'preload', as: 'font', href: '/fonts/golos-demibold.woff2', type:"font/woff2", crossorigin: 'anonymous'},
+            // {rel: 'preload', as: 'font', href: '/fonts/golos-ui-regular.woff2', type:"font/woff2", crossorigin: 'anonymous'},
+            // {rel: 'preload', as: 'font', href: '/fonts/golos-ui-bold.woff2', type:"font/woff2", crossorigin: 'anonymous'}
         ]
     },
     loading: {
-        color: '#013b70',
+        color: '#ED2939',
         height: '0',
         duration: 3000,
         continuous: true,
@@ -29,7 +40,8 @@ export default {
     plugins: [
         {src: '~/plugins/swiper.js'},
         {src: '~/plugins/rangeSlider.js', mode: 'client'},
-        {src: '~/plugins/inputmask.js'}
+        {src: '~/plugins/inputmask.js'},
+        {src: '~/plugins/slideToggle.js'},
         // { src:'~/plugins/helpers.js' },
         // { src:'~/plugins/slideToggle.js' },
         // { src: "plugins/pagination.js", mode: 'client' },
@@ -71,8 +83,7 @@ export default {
             plugins: [
                 {removeViewBox: false},
                 {removeDimensions: true},
-                {removeAttrs: {attrs: 'fill'}},
-
+                {removeAttrs: {attrs: 'fill'}}
             ]
         }
     },

@@ -2,10 +2,10 @@
 	<form class="form">
 		<fieldset class="form__fieldset">
 			<label
-					:class="{'form__field-wrap--car-active':currentCar}"
+					:class="{'form__field-wrap--car-active' : currentCar}"
 					class="form__field-wrap form__field-wrap--car">
 				<button class="form__field"
-				        @click.prevent="setModalMain(modalChooseCar)">
+				        @click.prevent="choseCar()">
 					
 					{{ currentCar ? currentCar.name : 'Выбрать автомобиль' }}
 				
@@ -103,14 +103,26 @@ export default {
 		}
 	},
 	methods: {
+		...mapActions({
+			openModal: 'modal/modal-main/openModal',
+			calculate: 'form/form-credit/calculate'
+		}),
+		choseCar() {
+			let payload = {
+				modal_component: 'modal-choose-car',
+				modal_title: 'Выберите автомобиль',
+				// modal_sub_title: carInfo.name
+			}
+			this.openModal(payload)
+		},
+		
+		
 		...mapMutations({
 			setModalMain: 'modal/modal-main/SET_MODAL_MAIN',
 			//записываю выбранную машину в модуль с формой из модуля с модалкой
 			setCurrentCar: 'form/form-credit/SET_CURRENT_CAR'
 		}),
-		...mapActions({
-			calculate: 'form/form-credit/calculate'
-		}),
+		
 		changePeriod(value) {
 			this.calculate({period: value})
 		},

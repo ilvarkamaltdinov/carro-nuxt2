@@ -20,6 +20,7 @@
   border-radius: 50px;
   display: inline-block;
   transition: $transitionHover;
+  white-space: nowrap;
 
   &:hover {
     transition: $transitionHover;

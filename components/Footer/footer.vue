@@ -57,9 +57,9 @@
 						</nuxt-link>
 					</li>
 					<li class="page-footer__links-item">
-						<a class="page-footer__link"
-						   href="">Автосалоны-партнеры
-						</a>
+						<nuxt-link to="/dealers" class="page-footer__link"
+						           href="">Автосалоны-партнеры
+						</nuxt-link>
 					</li>
 					<li class="page-footer__links-item">
 						<a class="page-footer__link"

@@ -4,10 +4,10 @@
 			<h1 class="visually-hidden">Автомобили с пробегом в Москве</h1>
 			<div class="page-main__promo grid__col-8">
 				<slider-index />
-				<stories-desktop />
+				<component :is="storiesComponent" />
 			</div>
 			<form-index />
-			<catalog-index-desktop />
+			<component :is="catalogComponent"/>
 			<featured />
 			<video-about />
 		</div>
@@ -15,8 +15,28 @@
 
 </template>
 <script>
-import CatalogIndexDesktop from "../components/catalog/catalog-index-desktop";
 export default {
-	components: {CatalogIndexDesktop}
+	data() {
+		return {
+			storiesComponent: 'stories',
+			catalogComponent: 'catalog-index'
+		}
+	},
+	methods: {
+		setMobile() {
+			this.storiesComponent = 'stories'
+			this.catalogComponent = 'catalog-index'
+		},
+		setDesktop() {
+			this.storiesComponent = 'stories-desktop'
+			this.catalogComponent = 'catalog-index-desktop'
+		}
+	},
+	mounted() {
+		window.innerWidth < 1200 ?
+				this.setMobile()
+				: this.setDesktop()
+		
+	}
 }
 </script>

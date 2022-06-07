@@ -7,6 +7,17 @@
   margin-bottom: 16px;
 }
 
+.text__links {
+  display: flex;
+  align-items: center;
+
+  > * {
+    &:first-child {
+      margin-right: 16px;
+    }
+  }
+}
+
 .text__list-item {
   display: flex;
   align-items: center;
@@ -74,11 +85,16 @@
   }
 
   .text__figure {
-    margin-bottom: -32px;
+    margin-bottom: -48px;
   }
 
   .text__figure-img {
     width: 280px;
+    transition: $transitionHover;
+
+    &:hover {
+      transform: translateY(-8px);    transition: $transitionHover;
+    }
   }
 
   .text__wrap--figure .text__figure {

@@ -8,6 +8,10 @@
   padding-top: 0;
 }
 
+.catalog__title-link {
+  display: flex;
+}
+
 .catalog__img-link,
 .catalog__call-card {
   display: block;
@@ -141,6 +145,10 @@
 
 .catalog__credit-price {
   @include font-features;
+}
+
+.catalog__dealer-item {
+  @include white-back;
 }
 
 @media (max-width: $iphone-se-only) {
@@ -277,6 +285,11 @@
 }
 
 @media (min-width: $desktop-width) {
+  .catalog__dealer-item {
+    @include white-back-l;
+    grid-column: span 6;
+  }
+
   .catalog__item--vertical .catalog__img {
     border-radius: $borderRadius;
     overflow: hidden;
@@ -300,7 +313,7 @@
   }
 
   .catalog__filter--aside {
-    top: 24px;
+    top: 40px;
     position: sticky;
   }
 

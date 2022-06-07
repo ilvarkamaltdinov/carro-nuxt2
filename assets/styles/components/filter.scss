@@ -13,6 +13,12 @@
   display: flex;
 }
 
+.filter__menu-text {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .filter__button {
   &:first-child {
     margin-right: 16px;

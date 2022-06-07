@@ -40,9 +40,9 @@ export default {
       return formatter.format(value);
     },
     access_acredit(price) {
-      let procent = 4.9;
+      let percent = 4.9;
       let n = 84;
-      let coef_i = procent / 12 / 100;
+      let coef_i = percent / 12 / 100;
       let K =
         (coef_i * Math.pow(1 + coef_i, n)) / (Math.pow(1 + coef_i, n) - 1);
       let A = Math.round(K * price);

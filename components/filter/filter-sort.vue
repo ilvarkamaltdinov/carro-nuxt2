@@ -3,7 +3,7 @@
 		<div class="filter__catalog-wrap">
 			<div class="filter__buttons-wrap">
 				<div class="filter__buttons-filter">
-					<button-filter />
+					<button-filter @click="openFilter()" />
 				</div>
 				<div class="filter__buttons-sort select">
 					<div class="button button--action button--text filter__button"
@@ -43,34 +43,49 @@
 	</div>
 </template>
 <script>
+import {mapActions, mapGetters, mapMutations} from "vuex";
+
 export default {
-	props: {
-		sort: {
-			type: String,
-			default: ''
-		}
-	},
 	data() {
 		return {
 			isActive: false,
 		}
 	},
 	computed: {
+		...mapGetters({
+			sort: 'filters/filters/sort'
+		}),
 		currentSort() {
 			if (this.sort === 'price|asc') {
-				return 'Цена: по возрастанию'
+				return 'Цена: Сначала дешевле'
 			} else if (this.sort === 'price|desc') {
-				return 'Цена: по убыванию'
+				return 'Цена: Сначала дороже'
 			} else if (this.sort === 'run|asc') {
-				return 'Пробег: по возрастанию'
+				return 'Пробег: Минимальный пробег'
 			} else if (this.sort === 'year|desc') {
-				return 'Год: по убыванию'
+				return 'Год: Сначала новее'
 			}
 		}
 	},
 	methods: {
-		sortChosen(sort) {
-			this.$emit('sortChosen', sort)
+		...mapActions({
+			getFilters: 'filters/filters/getFilters',
+			openModal: 'modal/modal-main/openModal'
+		}),
+		...mapMutations({
+			setSort: 'filters/filters/SET_SORT'
+		}),
+		openFilter() {
+			let payload = {
+				modal_component: 'modal-filter',
+				modal_data: 'filter-mobile',
+				modal_title: 'Фильтр',
+			}
+			this.openModal(payload)
+		},
+		async sortChosen(sort) {
+			this.setSort(sort)
+			await this.getFilters()
 		}
 	}
 }

@@ -43,7 +43,7 @@ export const getters = {
 export const actions = {
     async getModels({commit, state}, payload) {
         let variables = {
-            site_id: 7,
+            site_id: 21,
             mark_slug: state.currentMark.slug
         }
         let client = this.app.apolloProvider.defaultClient
@@ -56,7 +56,7 @@ export const actions = {
     },
     async getGenerations({commit, state}, payload) {
         let variables = {
-            site_id: 7,
+            site_id: 21,
             mark_slug: state.currentMark.slug,
             folder_slug: payload.slug
         }
@@ -70,7 +70,7 @@ export const actions = {
     },
     async getCars({commit, state}, payload) {
         let variables = {
-            site_id: 7,
+            site_id: 21,
             page: 1,
             limit: 10,
             mark_slug: state.currentMark.slug,

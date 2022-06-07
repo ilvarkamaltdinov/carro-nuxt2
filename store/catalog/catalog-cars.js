@@ -10,7 +10,7 @@ export const getters = {
 }
 export const actions = {
     async getCatalogCars ({commit}, payload) {
-        let variables = {site_id: 7}
+        let variables = {site_id: 21}
         let client = this.app.apolloProvider.defaultClient
         let offers = await client.query(
             {

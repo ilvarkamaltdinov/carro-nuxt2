@@ -1,76 +1,56 @@
 <template>
-	
-	<section class="modal modal--credit">
-		<div class="heading-group heading-group--modal">
-			<div class="heading-group__wrap">
-				<h2 class="heading heading--h1">Заявка на автокредит
-					<span class="heading__promo"> 4.9%</span>
-				</h2>
-				<span class="heading-group__label">{{ creditCar.name }}</span>
-			</div>
-			<button class="modal__close"
-			        @click="setModalMain(false)">
-				<svg-icon class="modal__close-icon"
-				          name="icon-close-s" />
-			</button>
-		</div>
-		<div class="modal__wrap">
-			<div class="application application--modal grid__col-12 grid grid--application grid--application-modal">
-				<div class="application__form grid__col-4">
-					<div class="heading-group heading-group--form">
-						<div class="heading-group__wrap">
-							<h2 class="heading heading--h2">Автокредит
-								<span class="heading__promo"> 4.9%</span>
-							</h2>
-							<span class="heading-group__label">Получите 100% одобрение</span>
-						</div>
-						<rating-form/>
+	<div class="modal__wrap">
+		<div class="application application--modal grid__col-12 grid grid--application grid--application-modal">
+			<div class="application__form grid__col-4">
+				<div class="heading-group heading-group--form">
+					<div class="heading-group__wrap">
+						<h2 class="heading heading--h2">Автокредит
+							<span class="heading__promo"> 4.9%</span>
+						</h2>
+						<span class="heading-group__label">Получите 100% одобрение</span>
 					</div>
-					<form-car-credit/>
+					<rating-form />
 				</div>
-				<div class="application__catalog application__catalog--modal catalog grid__col-4">
-					<catalog-item :has-buttons="false" :info="creditCar"/>
+				<form-car-credit />
+			</div>
+			<div class="application__catalog application__catalog--modal catalog grid__col-4">
+				<catalog-item :has-buttons="false"
+				              :info="modalData" />
+			</div>
+			<div class="application__banks grid__col-4">
+				<div class="application__banks-form">
+					<img class="application__banks-img"
+					     src="~/static/img/banks/logo-tinkoff.svg"
+					     alt="" />
+					<div class="application__banks-text">и еще 5 банков</div>
 				</div>
-				<div class="application__banks grid__col-4">
-					<div class="application__banks-form">
-						<img class="application__banks-img"
-						     src="~/static/img/banks/logo-tinkoff.svg"
+				<div class="application__form-img-wrap">
+					<picture>
+						<source type="image/webp"
+						        media="(min-width: 768px)"
+						        srcset="~/static/img/form-picture@1x.webp 1x, ~/static/img/form-picture@2x.webp 2x" />
+						<source media="(min-width: 768px)"
+						        srcset="~/static/img/form-picture@1x.png 1x, ~/static/img/form-picture@2x.png 2x" />
+						<img class="application__form-img"
+						     src="~/static/img/form-picture@1x.png"
+						     srcset="~/static/img/form-picture@2x.png 2x"
+						     loading="lazy"
 						     alt="" />
-						<div class="application__banks-text">и еще 5 банков</div>
-					</div>
-					<div class="application__form-img-wrap">
-						<picture>
-							<source type="image/webp"
-							        media="(min-width: 768px)"
-							        srcset="~/static/img/form-picture@1x.webp 1x, ~/static/img/form-picture@2x.webp 2x" />
-							<source media="(min-width: 768px)"
-							        srcset="~/static/img/form-picture@1x.png 1x, ~/static/img/form-picture@2x.png 2x" />
-							<img class="application__form-img"
-							     src="~/static/img/form-picture@1x.png"
-							     srcset="~/static/img/form-picture@2x.png 2x"
-							     loading="lazy"
-							     alt="" />
-						</picture>
-					</div>
+					</picture>
 				</div>
 			</div>
-			<benefits-modal/>
 		</div>
-	</section>
+		<benefits-modal />
+	</div>
 </template>
 <script>
-import {mapGetters, mapMutations} from 'vuex'
+import {mapGetters} from 'vuex'
 
 export default {
 	computed: {
 		...mapGetters({
-			creditCar: 'modal/modal-credit/creditCar'
+			modalData: 'modal/modal-main/modalData'
 		}),
 	},
-	methods:{
-		...mapMutations({
-			setModalMain: 'modal/modal-main/SET_MODAL_MAIN',
-		})
-	}
 }
 </script>
