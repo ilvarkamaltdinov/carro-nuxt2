@@ -49,11 +49,11 @@ export default {
 		}
 	},
 	async mounted() {
-		window.innerWidth < 1200 ?
-							this.desktop = false
-							:this.desktop = true
 		await this.clearFilters()
 		await this.getFilters()
+		window.innerWidth < 1200 ?
+				this.desktop = false
+				:this.desktop = true
 	},
 	methods: {
 		...mapActions({

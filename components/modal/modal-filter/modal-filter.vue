@@ -44,14 +44,19 @@ export default {
 			modalData: 'modal/modal-main/modalData'
 		}),
 		component() {
-			if (this.modalData === 'mark' || this.modalData === 'drive-type'|| this.modalData === 'engine-type' || this.modalData === 'gearbox') {
+			if (this.modalData === 'mark' ||
+					this.modalData === 'drive-type'||
+					this.modalData === 'engine-type' ||
+					this.modalData === 'gearbox') {
 				return `modal-filter-${this.modalData}`
 			}
+			
 			if (this.modalData === 'model') {
 				return this.chosenMarkArray.length ?
 						'modal-filter-model' :
 						'modal-filter-mark'
 			}
+			
 			if (this.modalData === 'generation') {
 				if (!this.chosenMarkArray.length) {
 					return 'modal-filter-mark'
@@ -61,6 +66,7 @@ export default {
 					return 'modal-filter-generation'
 				}
 			}
+			
 			if (this.modalData === 'filter-mobile'){
 				return 'modal-filter-mobile'
 			}
@@ -106,24 +112,7 @@ export default {
 			getFilters: 'filters/filters/getFilters',
 		}),
 		check(type) {
-			if (type.modal === 'marks') {
-				this.marks = type.data
-			}
-			if (type.modal === 'models') {
-				this.models = type.data
-			}
-			if (type.modal === 'generations') {
-				this.generations = type.data
-			}
-			if (type.modal === 'engineTypes') {
-				this.engineTypes = type.data
-			}
-			if (type.modal === 'driveTypes') {
-				this.driveTypes = type.data
-			}
-			if (type.modal === 'gearboxes') {
-				this.gearboxes = type.data
-			}
+			this[type.modal] = type.data
 		},
 		async filter() {
 			this.setUrl()
@@ -141,6 +130,8 @@ export default {
 			this.setChosenEngineTypeArray(this.engineTypes)
 			this.setChosenDriveTypeArray(this.driveTypes)
 			this.setChosenGearboxArray(this.gearboxes)
+			
+			
 			await this.closeModal()
 			await this.getFilters()
 			

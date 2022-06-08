@@ -14,7 +14,7 @@
 								          name="icon-year" />
 							</div>
 							<div class="car__tech-content">
-								2020
+								{{ car.year }}
 							</div>
 						</li>
 						<li class="car__tech-item">
@@ -23,7 +23,7 @@
 								          name="icon-gear" />
 							</div>
 							<div class="car__tech-content">
-								АКПП
+								{{ car.gearbox.title }}
 							</div>
 						</li>
 						<li class="car__tech-item">
@@ -32,7 +32,7 @@
 								          name="icon-mileage" />
 							</div>
 							<div class="car__tech-content">
-								107 520 км
+								{{ car.run | run }} км
 							</div>
 						</li>
 						<li class="car__tech-item">
@@ -41,7 +41,7 @@
 								          name="icon-volume" />
 							</div>
 							<div class="car__tech-content">
-								2.5 л
+								{{ car.engine_volume }} л
 							</div>
 						</li>
 						<li class="car__tech-item">
@@ -50,7 +50,7 @@
 								          name="icon-engine" />
 							</div>
 							<div class="car__tech-content">
-								222 л.с.
+								{{ car.engine_power }} л.с.
 							</div>
 						</li>
 						<li class="car__tech-item">
@@ -59,7 +59,7 @@
 								          name="icon-fuel" />
 							</div>
 							<div class="car__tech-content">
-								Бензин
+								{{ car.engineType.title }}
 							</div>
 						</li>
 						<li class="car__tech-item">
@@ -68,7 +68,7 @@
 								          name="icon-form" />
 							</div>
 							<div class="car__tech-content">
-								Седан
+								{{ car.bodyType.title }}
 							</div>
 						</li>
 						<li class="car__tech-item">
@@ -77,7 +77,7 @@
 								          name="icon-wd" />
 							</div>
 							<div class="car__tech-content">
-								Задний
+								{{ car.driveType.title  }}
 							</div>
 						</li>
 						<!--TODO Цвет в карточке авто-->
@@ -96,7 +96,7 @@
 								          name="icon-owners" />
 							</div>
 							<div class="car__tech-content">
-								Более 3-x
+								{{car.owner.title}}
 							</div>
 						</li>
 					</ul>
@@ -172,3 +172,15 @@
 		<div class="swiper-pagination"></div>
 	</div>
 </template>
+<script>
+import filters from "~/mixins/filters";
+import {mapGetters} from "vuex";
+export default {
+	mixins: [filters],
+	computed:{
+		...mapGetters({
+			car: 'catalog/catalog-cars/car'
+		})
+	}
+}
+</script>

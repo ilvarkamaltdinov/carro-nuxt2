@@ -22,10 +22,10 @@ export default {
 					links: [
 						{
 							name: 'Легковые',
-							link: ''
+							link: '/used'
 						},{
 							name: 'Коммерческие',
-							link: ''
+							link: '/used'
 						},
 					]
 				},

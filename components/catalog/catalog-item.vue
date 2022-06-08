@@ -125,6 +125,11 @@
 					<li class="catalog__tech-item">{{ info.driveType.title }}</li>
 				</ul>
 			</div>
+			<!--TODO сделать ссылкой картчоку-->
+			<button @click="toCar(info)"
+			        class="button--action">Подробнее
+			</button>
+			<!--TODO сделать ссылкой картчоку-->
 			<slot name=buttons></slot>
 		</article>
 	</div>
@@ -163,10 +168,19 @@ export default {
 			default: true
 		}
 	},
+	methods: {
+		...mapMutations({
+			setCar: 'catalog/catalog-cars/SET_CAR'
+		}),
+		toCar(info) {
+			this.setCar(info)
+			this.$router.push(`/used/${info.mark.slug}/${info.folder.slug}/${info.generation.slug}/${info.external_id}`)
+		}
+	},
 	mounted() {
 		window.innerWidth < 1200 ?
 				this.isMobile = true
-				:this.isMobile = false
+				: this.isMobile = false
 		
 	}
 }

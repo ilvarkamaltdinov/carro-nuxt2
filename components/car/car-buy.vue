@@ -2,11 +2,11 @@
 	<div class="car__buy">
 		<div class="car__price-block">
 			<div class="car__price">
-				5 520 000 ₽
+				{{ car.price | toCurrency }}
 			</div>
 			<tippy-question />
 			<div class="car__price-payment">
-				В кредит от 32 500 ₽ / мес.
+				В кредит от {{ car.price | access_acredit }} / мес.
 			</div>
 		</div>
 		<div class="car__buy-block">
@@ -39,3 +39,15 @@
 	</div>
 	<!--TODO car__buy--fixed-->
 </template>
+<script>
+import filters from "~/mixins/filters";
+import {mapGetters} from "vuex";
+export default {
+	mixins: [filters],
+	computed:{
+		...mapGetters({
+			car: 'catalog/catalog-cars/car'
+		})
+	}
+}
+</script>

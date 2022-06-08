@@ -12,6 +12,7 @@
 		<transition name="fade">
 			<!--TODO анимация главной модалки-->
 			<div v-if="modal"
+			     @click="closeModal()"
 			     class="overlay"></div>
 		</transition>
 		<Nuxt />
@@ -19,9 +20,14 @@
 	</div>
 </template>
 <script>
-import {mapGetters} from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
 
 export default {
+	methods: {
+		...mapActions({
+			closeModal: 'modal/modal-main/closeModal'
+		})
+	},
 	computed: {
 		...mapGetters({
 			modal: 'modal/modal-main/modal',
@@ -32,14 +38,10 @@ export default {
 	}
 }
 </script>
-<style lang="scss"
-       scoped>
-
-
+<style lang="scss">
 .fade-enter-active, .fade-leave-active {
 	transition: opacity .16s;
 }
-
 .fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */
 {
 	opacity: 0;
@@ -62,8 +64,7 @@ export default {
 }
 
 
-
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1200px) {
 	.fade-enter-active, .fade-leave-active {
 		transition: opacity .16s;
 	}

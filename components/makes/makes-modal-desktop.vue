@@ -1,5 +1,4 @@
 <template>
-	
 	<div class="makes">
 		<div class="makes__wrap">
 			<ul class="makes__list makes__list--popular">

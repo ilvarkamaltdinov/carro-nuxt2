@@ -90,6 +90,7 @@ export default {
 			chosenDriveTypeArray: 'filters/filters/chosenDriveTypeArray',
 		}),
 		marksSelectTitle() {
+			console.log(1111,this.chosenMarkArray)
 			return this.chosenMarkArray.length ?
 					this.chosenMarkArray.map(val => val.title).join(', ')
 					: 'Марка'

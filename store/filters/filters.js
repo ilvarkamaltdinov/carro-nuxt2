@@ -121,6 +121,7 @@ export const actions = {
     async getChosen({commit, dispatch, state}) {
         //если обновил или зашел по прямой ссылке
         if (!state.chosen.mark_array.length) {
+            console.log('получаю массив выбранных')
             //получаю марки
             await dispatch('getMarks')
             //получаю модели
@@ -139,32 +140,13 @@ export const actions = {
         }
         commit('SET_LOADING', false)
     },
-
-    async clearChosen({commit}) {
-        commit('SET_CHOSEN_MARK_ARRAY', [])
-        commit('SET_CHOSEN_MODEL_ARRAY', [])
-        commit('SET_CHOSEN_GENERATION_ARRAY', [])
-        commit('SET_CHOSEN_ENGINE_TYPE_ARRAY', [])
-        commit('SET_CHOSEN_DRIVE_TYPE_ARRAY', [])
-        commit('SET_CHOSEN_GEARBOX_ARRAY', [])
-    },
-    async clearQueries({commit}) {
-        commit('SET_QUERIES_MARKS_SLUG', [])
-        commit('SET_QUERIES_MODELS_SLUG', [])
-        commit('SET_QUERIES_GENERATIONS_SLUG', [])
-        commit('SET_QUERIES_ENGINE_TYPES_ID', [])
-        commit('SET_QUERIES_DRIVE_TYPES_ID', [])
-        commit('SET_QUERIES_GEARBOXES_ID', [])
-    },
-
-    async clearFilters({dispatch}) {
+    async clearFilters({state, commit}) {
         // TODO небольшой баг при выборе одной марки
         // выбрать марку
         // затем выбрать еще несколько марок
         // из-за смены урла вызывается этот метод
-        dispatch('clearChosen');
-        dispatch('clearQueries');
-
+        await commit('CLEAR_CHOSEN')
+        await commit('CLEAR_QUERIES')
     },
     async getFilters({commit, dispatch, state}) {
         commit('SET_LOADING', true)
@@ -258,6 +240,27 @@ export const actions = {
     },
 }
 export const mutations = {
+    CLEAR_CHOSEN(state) {
+        state.chosen = {
+            mark_array: [],
+            model_array: [],
+            generation_array: [],
+            engine_type_array: [],
+            drive_type_array: [],
+            gearbox_array: []
+        }
+    },
+    CLEAR_QUERIES(state) {
+        state.queries = {
+            marks_slug: [],
+            models_slug: [],
+            generations_slug: [],
+            engine_types_id: [],
+            drive_types_id: [],
+            gearboxes_id: []
+        }
+    },
+
     SET_FILTERS(state, data) {
         state.filters = data
     },

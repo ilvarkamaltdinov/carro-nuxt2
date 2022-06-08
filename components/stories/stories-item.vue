@@ -1,5 +1,6 @@
 <template>
-	<li class="stories__item">
+	<li class="stories__item"
+	    @click="setStoriesModal(true)">
 		<div class="stories__figure">
 			<picture>
 				<source type="image/webp"
@@ -20,7 +21,14 @@
 	</li>
 </template>
 <script>
+import {mapMutations} from "vuex";
+
 export default {
+	methods: {
+		...mapMutations({
+			setStoriesModal: 'stories/stories/SET_STORIES_MODAL'
+		})
+	},
 	props: {
 		index: {
 			type: Number,

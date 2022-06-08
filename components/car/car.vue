@@ -4,12 +4,12 @@
 			<div class="heading-group heading-group--h1 grid__col-6">
 				<div class="heading-group__wrap">
 					<heading-h1>
-						Land Rover Range Rover Sport
+						{{car.mark.title}} 	{{car.folder.title}}
 					</heading-h1>
 					<span class="heading-group__label heading-group__label--car">
-						I Рестайлинг [2009 - 2013]
+						{{car.generation.name}}
 						<span class="heading-group__year">
-							2020
+							{{car.year}}
 						</span>
 					</span>
 				</div>
@@ -30,7 +30,7 @@
 		</div>
 		<div class="car__slider-wrap">
 			<div class="grid grid--container">
-				//TODO-slider
+				<car-slider/>
 			</div>
 		</div>
 		<div class="grid grid--car grid--container grid__col-12">
@@ -39,7 +39,21 @@
 		</div>
 		<div class="grid grid--container">
 			<benefits-car/>
-			<car-credit/>
+			<!--<car-credit/>-->
 		</div>
 	</section>
 </template>
+<script>
+import {mapGetters} from "vuex";
+
+export default {
+	mounted() {
+		console.log(this.car)
+	},
+	computed:{
+		...mapGetters({
+			car: 'catalog/catalog-cars/car'
+		})
+	}
+}
+</script>
