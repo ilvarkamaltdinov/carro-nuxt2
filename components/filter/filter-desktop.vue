@@ -11,32 +11,40 @@
 				<li class="filter__menu-item"
 				    @click="openFilterModal('mark')">
 					<div class="filter__menu-text">
-						{{ marksSelectTitle }}
+						{{ mark_select_title }}
 					</div>
 					<svg-icon class="filter__arrow"
 					          name="icon-arrow" />
 				</li>
 				<li class="filter__menu-item"
-				    @click="openFilterModal('model')">
+				    @click="openFilterModal('folder')">
 					<div class="filter__menu-text">
-						{{ modelSelectTitle }}
+						{{ folder_select_title }}
 					</div>
 					<svg-icon class="filter__arrow"
 					          name="icon-arrow"></svg-icon>
 				</li>
 				<li class="filter__menu-item"
+				    v-if="showGeneration"
 				    @click="openFilterModal('generation')">
 					<div class="filter__menu-text">
-						{{ generationSelectTitle }}
+						{{ generation_select_title }}
 					</div>
 					<svg-icon class="filter__arrow"
 					          name="icon-arrow"></svg-icon>
 				</li>
-				<li v-if="allFilters"
-				    class="filter__menu-item"
+				<li class="filter__menu-item"
 				    @click="openFilterModal('engine-type')">
 					<div class="filter__menu-text">
-						{{ engineTypeSelectTitle }}
+						{{ engine_type_select_title }}
+					</div>
+					<svg-icon class="filter__arrow"
+					          name="icon-arrow"></svg-icon>
+				</li>
+				<li class="filter__menu-item"
+				    @click="openFilterModal('body-type')">
+					<div class="filter__menu-text">
+						{{ body_type_select_title }}
 					</div>
 					<svg-icon class="filter__arrow"
 					          name="icon-arrow"></svg-icon>
@@ -45,7 +53,7 @@
 				    class="filter__menu-item"
 				    @click="openFilterModal('gearbox')">
 					<div class="filter__menu-text">
-						{{ gearboxSelectTitle }}
+						{{ gearbox_select_title }}
 					</div>
 					<svg-icon class="filter__arrow"
 					          name="icon-arrow"></svg-icon>
@@ -54,10 +62,21 @@
 				    class="filter__menu-item"
 				    @click="openFilterModal('drive-type')">
 					<div class="filter__menu-text">
-						{{ driveTypeSelectTitle }}
+						{{ drive_type_select_title }}
 					</div>
 					<svg-icon class="filter__arrow"
 					          name="icon-arrow"></svg-icon>
+				</li>
+			</ul>
+			<ul v-if="allFilters"
+			    class="filter__menu-list filter__menu-list--more">
+				<li class="filter__menu-group">
+					<h2 class="heading heading--h3">Цена</h2>
+					<range-price />
+				</li>
+				<li class="filter__menu-group">
+					<h2 class="heading heading--h3">Год</h2>
+					<range-year />
 				</li>
 			</ul>
 			<div class="filters__more">
@@ -65,23 +84,13 @@
 					{{ allFilters ? 'Скрыть фильтры' : 'Больше фильтров' }}
 				</button-show>
 			</div>
-			<!--<ul v-if="allFilters"-->
-			<!--    class="filter__menu-list filter__menu-list&#45;&#45;more">-->
-			<!--	<li class="filter__menu-group">-->
-			<!--		<h2 class="heading heading&#45;&#45;h3">Цена</h2>-->
-			<!--		<range-price />-->
-			<!--	</li>-->
-			<!--	<li class="filter__menu-group">-->
-			<!--		<h2 class="heading heading&#45;&#45;h3">Год</h2>-->
-			<!--		<range-year />-->
-			<!--	</li>-->
-			<!--</ul>-->
+			
 		</div>
 	</section>
 </template>
 <script>
 
-import {mapActions, mapGetters} from 'vuex'
+import {mapActions, mapGetters, mapMutations} from 'vuex'
 
 export default {
 	data() {
@@ -91,56 +100,60 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			chosenMarkArray: 'filters/filters/chosenMarkArray',
-			chosenModelArray: 'filters/filters/chosenModelArray',
-			chosenGenerationArray: 'filters/filters/chosenGenerationArray',
-			chosenEngineTypeArray: 'filters/filters/chosenEngineTypeArray',
-			chosenGearboxArray: 'filters/filters/chosenGearboxArray',
-			chosenDriveTypeArray: 'filters/filters/chosenDriveTypeArray',
+			chosen: 'filters/filters/chosen'
 		}),
-		marksSelectTitle() {
-			return this.chosenMarkArray.length ?
-					this.chosenMarkArray.map(val => val.title).join(', ')
-					: 'Марка'
+		mark_select_title() {
+			return this.chosen.mark?.map(val => val.title).join(', ') || 'Марка'
 		},
-		modelSelectTitle() {
-			return this.chosenModelArray.length ?
-					this.chosenModelArray.map(val => val.title).join(', ')
-					: 'Модель'
+		folder_select_title() {
+			return this.chosen.folder?.map(val => val.title).join(', ') || 'Модель'
 		},
-		generationSelectTitle() {
-			return this.chosenGenerationArray.length ?
-					this.chosenGenerationArray.map(val => val.title).join(', ')
-					: 'Поколение'
+		generation_select_title() {
+			return this.chosen.generation?.map(val => val.title).join(', ') || 'Поколение'
 		},
-		engineTypeSelectTitle() {
-			return this.chosenEngineTypeArray.length ?
-					this.chosenEngineTypeArray.map(val => val.title).join(', ')
-					: 'Двигатель'
+		engine_type_select_title() {
+			return this.chosen.engineType?.map(val => val.title).join(', ') || 'Двигатель'
 		},
-		driveTypeSelectTitle() {
-			return this.chosenDriveTypeArray.length ?
-					this.chosenDriveTypeArray.map(val => val.title).join(', ')
-					: 'Привод'
+		drive_type_select_title() {
+			return this.chosen.driveType?.map(val => val.title).join(', ') || 'Привод'
 		},
-		gearboxSelectTitle() {
-			return this.chosenGearboxArray.length ?
-					this.chosenGearboxArray.map(val => val.title).join(', ')
-					: 'КПП'
+		body_type_select_title() {
+			return this.chosen.bodyType?.map(val => val.title).join(', ') || 'Кузов'
 		},
+		gearbox_select_title() {
+			return this.chosen.gearbox?.map(val => val.title).join(', ') || 'КПП'
+		},
+		showGeneration(){
+			return this.chosen.mark?.length === 1 && this.chosen.folder?.length === 1;
+		}
 	},
 	methods: {
+		...mapMutations({
+			setAllChosen:'filters/filters/SET_ALL_CHOSEN'
+		}),
 		...mapActions({
 			openModal: 'modal/modal-main/openModal',
 		}),
 		openFilterModal(type) {
+			let modalComponent
+			if (type === 'mark' ||
+					type === 'drive-type' ||
+					type === 'generation' ||
+					type === 'engine-type' ||
+					type === 'body-type' ||
+					type === 'gearbox') {
+				modalComponent = `modal-filter-${type}`
+			}
+			if (type === 'folder') {
+				modalComponent = this.chosen.mark ? 'modal-filter-folder' : 'modal-filter-mark'
+			}
 			let payload = {
 				modal_component: `modal-filter`,
 				modal_title: 'Фильтр',
-				modal_data: type
+				modal_data: {type: modalComponent}
 			}
 			this.openModal(payload)
 		}
-	}
+	},
 }
 </script>

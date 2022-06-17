@@ -1,6 +1,6 @@
 <template>
 	<div class="filter__menu-list">
-		<checkbox-filter v-for="item in gearboxesList"
+		<checkbox-filter v-for="item in gearbox_list"
 		                 :key="item.id"
 		                 :is-check="isChecked(item)"
 		                 @click="checkItem(item)">
@@ -19,15 +19,15 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			chosenGearboxArray: 'filters/filters/chosenGearboxArray',
-			filters: 'filters/filters/filters'
+			filters: 'filters/filters/filters',
+			chosen: 'filters/filters/chosen'
 		}),
-		gearboxesList() {
+		gearbox_list() {
 			return this.filters.gearbox
 		},
 	},
 	mounted() {
-		this.gearboxes = [...this.chosenGearboxArray]
+		this.gearboxes = this.chosen.gearbox || []
 	},
 	methods: {
 		isChecked(gearbox) {
@@ -40,7 +40,7 @@ export default {
 				this.gearboxes.push(gearbox)
 			}
 			this.$emit('check', {
-				modal: 'gearboxes',
+				type: 'gearbox',
 				data: this.gearboxes
 			})
 		}

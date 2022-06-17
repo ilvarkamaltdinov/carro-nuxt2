@@ -6,49 +6,78 @@
 				       placeholder="Дата рождения"
 				       type="text"
 				       name="date"
-				       value="2015" />
+				       v-model="from" />
 			</label>
 			<label class="form__field-wrap form__field-wrap--range">
 				<input class="form__field"
 				       placeholder="Дата рождения"
 				       type="text"
 				       name="date"
-				       value="2018" />
+				       v-model="to" />
 			</label>
 		</div>
 		<range-slider
+				v-if="filterYear"
 				range-class="range-year"
-				:options="getPriceOptions()"
-				@input="changePrice">
+				:options="getYearOptions">
 		</range-slider>
 	</div>
 </template>
 <script>
+import {mapActions, mapGetters, mapMutations} from "vuex";
+
 export default {
-	data(){
-		return{
-			min:'235000',
-			max:'2500000',
-			
-			minValue:'',
-			maxValue:'',
+	data() {
+		return {
+			from: '',
+			to: ''
 		}
 	},
-	methods: {
-		changePrice(value){
-			console.log(111111, value)
-			// this.$emit('changePeriod', value)
+	watch: {
+		filters() {
+			this.from = this.filters.year[0]
+			this.to = this.filters.year[1]
+		}
+	},
+	computed: {
+		...mapGetters({
+			filters: 'filters/filters/filters',
+			chosen: 'filters/filters/chosen'
+		}),
+		filterYear() {
+			return this.filters.year
 		},
-		getPriceOptions() {
-			// const startFromPeriod = this.creditRange.indexOf(this.value);
+		getYearOptions() {
 			return {
-				type:'double',
+				type: 'double',
 				grid: false,
-				min: this.min,
-				max: this.max,
-				from: "0",
-				to: "1250000",
-			};
+				step: 1,
+				min: String(this.filterYear?.[0]),
+				max: String(this.filterYear?.[1]),
+				onFinish: (event) => this.sendYear(event),
+				onChange: (event) => this.changeYear(event)
+			}
+		}
+	},
+	mounted() {
+		this.from = this.filterYear?.[0]
+		this.to = this.filterYear?.[1]
+	},
+	methods: {
+		...mapActions({
+			getFilters: 'filters/filters/getFilters'
+		}),
+		...mapMutations({
+			setChosen: 'filters/filters/SET_CHOSEN'
+		}),
+		async sendYear() {
+			this.setChosen({key: 'yearFrom', value: this.from})
+			this.setChosen({key: 'yearTo', value: this.to})
+			await this.getFilters()
+		},
+		changeYear(event) {
+			this.from = event.from
+			this.to = event.to
 		}
 	}
 }

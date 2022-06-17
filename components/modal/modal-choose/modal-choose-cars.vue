@@ -6,21 +6,7 @@
 			<div class="grid__col-8">
 				<filter-sort />
 				<div class="catalog__list grid grid--catalog">
-					<catalog-item v-for="item in cars"
-					              :key="item.id"
-					              grid-four
-					              :info="item">
-						
-						
-						<template v-slot:buttons>
-							<catalog-item-buttons choose-button
-							                      :active-like="likesArray.some(id => id === String(item.id))"
-							                      @chooseClick="chooseClick(item)"
-							                      @favoriteClick="favoriteClick(item)"
-							                      @callClick="callClick(item)" />
-						</template>
-					
-					</catalog-item>
+					<catalog-item-small-desktop :has-buttons="false" :offer="modalData"/>
 				</div>
 				<button-more>Показать больше</button-more>
 			</div>

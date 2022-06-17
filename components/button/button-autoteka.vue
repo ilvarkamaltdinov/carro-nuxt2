@@ -1,5 +1,5 @@
 <template>
-	<button class="button button--action button--autoteka button--text"
+	<button @click.prevent="$emit('click')" class="button button--action button--autoteka button--text"
 	        type="button">
 		<svg-icon class="button__icon icon"
 		          name="icon-autoteka"/>

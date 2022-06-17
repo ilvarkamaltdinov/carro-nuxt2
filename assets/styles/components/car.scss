@@ -199,9 +199,34 @@
   }
 }
 
-@media (min-width: $desktop-width) {
+@media (min-width: $tablet-width) and (max-width: $tablet-width-max) {
+  .car .grid {
+    &:first-of-type {
+      grid-row-gap: 24px;
+    }
+  }
+
+  .car .grid--car > * {
+    grid-column: span 8;
+  }
+
+  .car__buy {
+    margin-bottom: 0;
+  }
+
+  .car__top-buttons {
+    margin-right: auto;
+  }
+
+  .car__credit-wrap .catalog__item--desktop-form {
+    display: none;
+  }
+
+}
+
+@media (min-width: $tablet-width) {
   .car__credit-wrap.grid {
-    margin-bottom: 24px;
+    margin-bottom: 0;
   }
 
   .car__slider-wrap {
@@ -289,16 +314,6 @@
     overflow: visible;
   }
 
-  .car__buy {
-    grid-column: 7 / 13;
-    height: fit-content;
-    position: sticky;
-    top: 153px;
-    margin-bottom: 24px;
-    padding: 24px;
-    padding-bottom: 16px;
-  }
-
   .car__credit {
     grid-column: 1 / 7;
   }
@@ -326,5 +341,17 @@
 
   .car__info-group {
     padding: 24px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .car__buy {
+    grid-column: 7 / 13;
+    height: fit-content;
+    position: sticky;
+    top: 153px;
+    margin-bottom: 24px;
+    padding: 24px;
+    padding-bottom: 16px;
   }
 }

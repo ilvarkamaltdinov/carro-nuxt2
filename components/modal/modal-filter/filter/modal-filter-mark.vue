@@ -36,7 +36,8 @@ export default {
 	computed: {
 		...mapGetters({
 			filters: 'filters/filters/filters',
-			chosenMarkArray: 'filters/filters/chosenMarkArray',
+			chosen: 'filters/filters/chosen'
+			
 		}),
 		marksList() {
 			return this.filters.mark.map(mark => {
@@ -46,7 +47,7 @@ export default {
 		}
 	},
 	mounted() {
-		this.marks = [...this.chosenMarkArray]
+		this.marks = this.chosen.mark || []
 	},
 	methods: {
 		isChecked(mark) {
@@ -59,7 +60,7 @@ export default {
 				this.marks.push(mark)
 			}
 			this.$emit('check', {
-				modal: 'marks',
+				type: 'mark',
 				data: this.marks
 			})
 		}

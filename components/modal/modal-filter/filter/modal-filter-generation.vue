@@ -1,17 +1,12 @@
 <template>
 	<div>
-		<div class="modal__choose-group"
-		     v-for="model in modelList"
-		     :key="model.id">
-			<div class="heading heading--h2">{{ model.title }}</div>
-			<div class="filter__menu-list">
-				<checkbox-filter v-for="generation in model.generations"
-				                 :key="generation.id"
-				                 :is-check="isChecked(generation)"
-				                 @click="checkModel(generation)">
-					{{ generation.title }}
-				</checkbox-filter>
-			</div>
+		<div class="filter__menu-list">
+			<checkbox-filter v-for="generation in generation_list"
+			                 :key="generation.id"
+			                 :is-check="isChecked(generation)"
+			                 @click="checkModel(generation)">
+				{{ generation.title }}
+			</checkbox-filter>
 		</div>
 	</div>
 </template>
@@ -26,16 +21,15 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			chosenModelArray: 'filters/filters/chosenModelArray',
-			chosenGenerationArray: 'filters/filters/chosenGenerationArray',
-			filters: 'filters/filters/filters'
+			filters: 'filters/filters/filters',
+			chosen: 'filters/filters/chosen'
 		}),
-		modelList() {
-			return this.chosenModelArray
+		generation_list() {
+			return this.filters.generation
 		},
 	},
 	mounted() {
-		this.generations = [...this.chosenGenerationArray]
+		this.generations = this.chosen.generation || []
 	},
 	methods: {
 		isChecked(generation) {
@@ -48,7 +42,7 @@ export default {
 				this.generations.push(generation)
 			}
 			this.$emit('check', {
-				modal: 'generations',
+				type: 'generation',
 				data: this.generations
 			})
 		}

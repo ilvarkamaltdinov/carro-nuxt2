@@ -4,49 +4,70 @@
 			<label class="form__field-wrap form__field-wrap--range">
 				<input class="form__field"
 				       placeholder="Цена от"
-				       v-model="minValue"
-				       type="tel"/>
+				       v-model="from"
+				       type="tel" />
 			</label>
 			<label class="form__field-wrap form__field-wrap--range">
 				<input class="form__field"
 				       placeholder="Цена до"
-				       v-model="maxValue"
+				       v-model="to"
 				       type="tel" />
 			</label>
 		</div>
 		<range-slider
+				v-if="filterPrice"
 				range-class="range-period"
-				:options="getPriceOptions()"
-				@input="changePrice">
+				:options="getPriceOptions">
 		</range-slider>
 	</div>
 </template>
 <script>
+import {mapGetters} from "vuex";
+
 export default {
-	data(){
-		return{
-			min:'235000',
-			max:'2500000',
-			
-			minValue:'',
-			maxValue:'',
+	data() {
+		return {
+			from: '',
+			to: ''
 		}
 	},
-	methods: {
-		changePrice(value){
-			console.log(111111, value)
-			// this.$emit('changePeriod', value)
+	watch: {
+		filters() {
+			this.from = this.filters.price[0]
+			this.to = this.filters.price[1]
+		}
+	},
+	computed: {
+		...mapGetters({
+			filters: 'filters/filters/filters',
+			chosen: 'filters/filters/chosen'
+		}),
+		filterPrice() {
+			return this.filters.price
 		},
 		getPriceOptions() {
-			// const startFromPeriod = this.creditRange.indexOf(this.value);
 			return {
-				type:'double',
+				type: 'double',
 				grid: false,
-				min: this.min,
-				max: this.max,
-				from: "0",
-				to: "1250000",
-			};
+				step: 100000,
+				min: String(this.filterPrice?.[0]),
+				max: String(this.filterPrice?.[1]),
+				onFinish: (event) => this.sendPrice(event),
+				onChange: (event) => this.changePrice(event)
+			}
+		}
+	},
+	mounted() {
+		this.from = this.filterPrice?.[0]
+		this.to = this.filterPrice?.[1]
+	},
+	methods: {
+		sendPrice() {
+			console.log(this.from, this.to)
+		},
+		changePrice(event) {
+			this.from = event.from
+			this.to = event.to
 		}
 	}
 }

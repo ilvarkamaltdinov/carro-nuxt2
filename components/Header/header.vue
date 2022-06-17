@@ -47,7 +47,7 @@
 				</nav>
 				<ul class="page-header__buttons">
 					<li class="page-header__buttons-item"
-					    v-if="mobile">
+					    v-if="isMobile">
 						<a class="page-header__buttons-link"
 						   href="">
 							<svg-icon class="icon"
@@ -80,8 +80,7 @@
 						    v-for="index in 8"
 						    :key="index">
 							<nuxt-link :to="'/used/' + allMarks[index].slug"
-							           class="makes__link"
-							           href="">
+							           class="makes__link">
 								<div class="makes__title">{{ allMarks[index].title }}</div>
 								<div class="makes__count">{{ allMarks[index].offers_count }}</div>
 							</nuxt-link>
@@ -109,13 +108,9 @@
 import {mapGetters, mapMutations, mapActions} from 'vuex'
 
 export default {
-	data() {
-		return {
-			mobile: true,
-		}
-	},
 	computed: {
 		...mapGetters({
+			isMobile: 'isMobile',
 			modalMenu: 'modal/modal-menu/modalMenu',
 			modalMarks: 'modal/modal-marks/modalMarks',
 			allMarks: 'marks/marks/allMarks',
@@ -124,9 +119,6 @@ export default {
 	},
 	mounted() {
 		this.getLikes()
-		window.innerWidth < 1200 ?
-				this.mobile = true :
-				this.mobile = false
 	},
 	methods: {
 		...mapMutations({

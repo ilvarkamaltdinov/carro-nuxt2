@@ -3,13 +3,15 @@
 		<div class="makes__wrap">
 			<ul class="makes__list makes__list--popular">
 				<makes-item-popular v-for="(item, index) in 10"
-				                    @click="markClick(allMarks[item])"
+				                    :slug="allMarks[item].slug"
+				                    @click="setModalMarks(false)"
 				                    :title="allMarks[item].title"
 				                    :key="index" />
 			</ul>
 			<ul class="makes__list makes__list--all">
 				<makes-item v-for="(item, index) in allMarks"
-				            @click="markClick(allMarks[item])"
+				            :slug="item.slug"
+				            @click="setModalMarks(false)"
 				            :key="index"
 				            :item="item">
 					{{ item.title }}

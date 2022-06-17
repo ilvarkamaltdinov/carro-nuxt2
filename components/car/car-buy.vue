@@ -2,28 +2,28 @@
 	<div class="car__buy">
 		<div class="car__price-block">
 			<div class="car__price">
-				{{ car.price | toCurrency }}
+				{{ offer.price | toCurrency }}
 			</div>
 			<tippy-question />
 			<div class="car__price-payment">
-				В кредит от {{ car.price | access_acredit }} / мес.
+				В кредит от {{ offer.price | access_acredit }} / мес.
 			</div>
 		</div>
 		<div class="car__buy-block">
-			<button class="button button--credit-pay button--link">
+			<button @click.prevent="creditClick(offer)" class="button button--credit-pay button--link">
 				Рассрочка
 			</button>
-			<button class="button button--trade-in button--link">
+			<button @click.prevent="creditClick(offer)" class="button button--trade-in button--link">
 				Trade-In
 			</button>
-			<button class="button button--credit">
+			<button @click.prevent="creditClick(offer)" class="button button--credit">
 				Купить в кредит
 			</button>
 		</div>
 		<div class="car__actions-block">
 			<rating />
 			<div class="car__actions-buttons">
-				<button-autoteka />
+				<button-autoteka @click="autoteka(offer)"/>
 				<button-favorite />
 				<button-compare />
 				<button-call />
@@ -41,13 +41,38 @@
 </template>
 <script>
 import filters from "~/mixins/filters";
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 export default {
 	mixins: [filters],
 	computed:{
 		...mapGetters({
-			car: 'catalog/catalog-cars/car'
+			offer: 'catalog/catalog-cars/offer',
+			likesArray: 'favorite/favorite/likesArray'
 		})
+	},
+	methods: {
+		...mapActions({
+			liked: 'favorite/favorite/liked',
+			openModal: 'modal/modal-main/openModal'
+		}),
+		creditClick(carInfo) {
+			let payload = {
+				modal_data: carInfo,
+				modal_component: 'modal-credit',
+				modal_title: 'Заявка на автокредит',
+				modal_sub_title: carInfo.name
+			}
+			this.openModal(payload)
+		},
+		autoteka(carInfo) {
+			let payload = {
+				modal_data: carInfo,
+				modal_component: 'modal-autoteka',
+				modal_title: 'Отчет «Автотеки» от 21.02',
+				modal_sub_title: carInfo.name
+			}
+			this.openModal(payload)
+		},
 	}
 }
 </script>

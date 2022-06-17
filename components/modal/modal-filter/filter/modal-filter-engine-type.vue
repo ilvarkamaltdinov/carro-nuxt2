@@ -1,6 +1,6 @@
 <template>
 	<div class="filter__menu-list">
-		<checkbox-filter v-for="item in engineTypesList"
+		<checkbox-filter v-for="item in engine_type_list"
 		                 :key="item.id"
 		                 :is-check="isChecked(item)"
 		                 @click="checkItem(item)">
@@ -19,15 +19,15 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			chosenEngineTypeArray: 'filters/filters/chosenEngineTypeArray',
-			filters: 'filters/filters/filters'
+			filters: 'filters/filters/filters',
+			chosen: 'filters/filters/chosen'
 		}),
-		engineTypesList() {
+		engine_type_list() {
 			return this.filters.engineType
 		},
 	},
 	mounted() {
-		this.engineTypes = [...this.chosenEngineTypeArray]
+		this.engineTypes = this.chosen.engineType || []
 	},
 	methods: {
 		isChecked(engineType) {
@@ -40,7 +40,7 @@ export default {
 				this.engineTypes.push(engineType)
 			}
 			this.$emit('check', {
-				modal: 'engineTypes',
+				type: 'engineType',
 				data: this.engineTypes
 			})
 		}

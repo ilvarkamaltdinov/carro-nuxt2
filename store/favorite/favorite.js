@@ -14,7 +14,7 @@ export const actions = {
     liked({commit, dispatch, state}, payload) {
 
         let result = state.likesArray
-        let carId = String(payload.id)
+        let carId = String(payload)
 
 
 

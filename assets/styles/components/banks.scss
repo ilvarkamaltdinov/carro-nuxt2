@@ -67,7 +67,7 @@
     @include font-small;
     color: white;
     background-color: $colorPrimary;
-    box-shadow: $shadow;
+    box-shadow: $shadowHover;
     font-weight: $fontDemiBold;
   }
 }
@@ -78,11 +78,11 @@
   }
 }
 
-@media (min-width: $desktop-width) {
+@media (min-width: $tablet-width) {
   .banks__item {
     &::before {
-      top: -16px;
-      left: -16px;
+      top: -12px;
+      left: -12px;
     }
   }
 

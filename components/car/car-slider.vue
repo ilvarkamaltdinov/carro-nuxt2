@@ -2,7 +2,7 @@
 	<div class="car__slider slider-car grid__col-12">
 		<div class="swiper swiper--car">
 			<div class="swiper-wrapper">
-				<car-slider-item :src="img.medium || img.original || img.thumb" v-for="img in car.images" :key="img.thumb"/>
+				<car-slider-item :src="img.medium" v-for="img in offer.images" :key="img.thumb"/>
 			</div>
 		</div>
 		<button class="swiper-button swiper-button-prev">
@@ -20,7 +20,7 @@ import AOS from "aos";
 export default {
 	computed:{
 		...mapGetters({
-			car: 'catalog/catalog-cars/car'
+			offer: 'catalog/catalog-cars/offer'
 		})
 	},
 	mounted() {

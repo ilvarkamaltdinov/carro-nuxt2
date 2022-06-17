@@ -52,6 +52,16 @@
   }
 }
 
+@media (min-width: $tablet-width) {
+  .benefits__list--car {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 24px;
+  }
+}
+
+
 @media (min-width: $desktop-width) {
   .benefits__list--car {
     display: flex;

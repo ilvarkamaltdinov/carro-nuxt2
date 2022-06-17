@@ -1,19 +1,19 @@
 <template>
-	<div>
+	<div class="modal__wrap">
 		<div class="filter filter--modal">
 			<ul class="filter__menu-list">
 				<li class="filter__menu-item"
 				    @click="openFilterModal('mark')">
 					<div class="filter__menu-text">
-						{{ marksSelectTitle }}
+						{{ mark_select_title }}
 					</div>
 					<svg-icon class="filter__arrow"
 					          name="icon-arrow" />
 				</li>
 				<li class="filter__menu-item"
-				    @click="openFilterModal('model')">
+				    @click="openFilterModal('folder')">
 					<div class="filter__menu-text">
-						{{ modelSelectTitle }}
+						{{ folder_select_title }}
 					</div>
 					<svg-icon class="filter__arrow"
 					          name="icon-arrow"></svg-icon>
@@ -21,7 +21,7 @@
 				<li class="filter__menu-item"
 				    @click="openFilterModal('generation')">
 					<div class="filter__menu-text">
-						{{ generationSelectTitle }}
+						{{ generation_select_title }}
 					</div>
 					<svg-icon class="filter__arrow"
 					          name="icon-arrow"></svg-icon>
@@ -29,7 +29,7 @@
 				<li class="filter__menu-item"
 				    @click="openFilterModal('engine-type')">
 					<div class="filter__menu-text">
-						{{ engineTypeSelectTitle }}
+						{{ engine_type_select_title }}
 					</div>
 					<svg-icon class="filter__arrow"
 					          name="icon-arrow"></svg-icon>
@@ -37,7 +37,7 @@
 				<li class="filter__menu-item"
 				    @click="openFilterModal('gearbox')">
 					<div class="filter__menu-text">
-						{{ gearboxSelectTitle }}
+						{{ gearbox_select_title }}
 					</div>
 					<svg-icon class="filter__arrow"
 					          name="icon-arrow"></svg-icon>
@@ -45,7 +45,7 @@
 				<li class="filter__menu-item"
 				    @click="openFilterModal('drive-type')">
 					<div class="filter__menu-text">
-						{{ driveTypeSelectTitle }}
+						{{ drive_type_select_title }}
 					</div>
 					<svg-icon class="filter__arrow"
 					          name="icon-arrow"></svg-icon>
@@ -82,42 +82,37 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			chosenMarkArray: 'filters/filters/chosenMarkArray',
-			chosenModelArray: 'filters/filters/chosenModelArray',
-			chosenGenerationArray: 'filters/filters/chosenGenerationArray',
-			chosenEngineTypeArray: 'filters/filters/chosenEngineTypeArray',
-			chosenGearboxArray: 'filters/filters/chosenGearboxArray',
-			chosenDriveTypeArray: 'filters/filters/chosenDriveTypeArray',
+			filter: 'filters/filters/filters',
+			chosen: 'filters/filters/chosen'
 		}),
-		marksSelectTitle() {
-			console.log(1111,this.chosenMarkArray)
-			return this.chosenMarkArray.length ?
-					this.chosenMarkArray.map(val => val.title).join(', ')
+		mark_select_title() {
+			return this.chosen.mark ?
+					this.chosen.mark.map(val => val.title).join(', ')
 					: 'Марка'
 		},
-		modelSelectTitle() {
-			return this.chosenModelArray.length ?
-					this.chosenModelArray.map(val => val.title).join(', ')
+		folder_select_title() {
+			return this.chosen.folder ?
+					this.chosen.folder.map(val => val.title).join(', ')
 					: 'Модель'
 		},
-		generationSelectTitle() {
-			return this.chosenGenerationArray.length ?
-					this.chosenGenerationArray.map(val => val.title).join(', ')
+		generation_select_title() {
+			return this.chosen.generation ?
+					this.chosen.generation.map(val => val.title).join(', ')
 					: 'Поколение'
 		},
-		engineTypeSelectTitle() {
-			return this.chosenEngineTypeArray.length ?
-					this.chosenEngineTypeArray.map(val => val.title).join(', ')
+		engine_type_select_title() {
+			return this.chosen.engineType ?
+					this.chosen.engineType.map(val => val.title).join(', ')
 					: 'Двигатель'
 		},
-		driveTypeSelectTitle() {
-			return this.chosenDriveTypeArray.length ?
-					this.chosenDriveTypeArray.map(val => val.title).join(', ')
+		drive_type_select_title() {
+			return this.chosen.driveType ?
+					this.chosen.driveType.map(val => val.title).join(', ')
 					: 'Привод'
 		},
-		gearboxSelectTitle() {
-			return this.chosenGearboxArray.length ?
-					this.chosenGearboxArray.map(val => val.title).join(', ')
+		gearbox_select_title() {
+			return this.chosen.gearbox ?
+					this.chosen.gearbox.map(val => val.title).join(', ')
 					: 'КПП'
 		},
 	},
@@ -126,10 +121,20 @@ export default {
 			openModal: 'modal/modal-main/openModal',
 		}),
 		openFilterModal(type) {
+			let modalComponent
+			if (type === 'mark' ||
+					type === 'drive-type' ||
+					type === 'engine-type' ||
+					type === 'gearbox') {
+				modalComponent = `modal-filter-${type}`
+			}
+			if (type === 'folder') {
+				modalComponent = this.chosen.mark ? 'modal-filter-folder' : 'modal-filter-mark'
+			}
 			let payload = {
 				modal_component: `modal-filter`,
 				modal_title: 'Фильтр',
-				modal_data: type
+				modal_data: {type: modalComponent}
 			}
 			this.openModal(payload)
 		}

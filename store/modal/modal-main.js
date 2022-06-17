@@ -31,7 +31,7 @@ export const actions = {
         commit('SET_MODAL', true)
     },
     async closeModal({commit}) {
-        commit('SET_MODAL', false)
+        await commit('SET_MODAL', false)
     },
 }
 

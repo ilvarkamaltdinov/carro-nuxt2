@@ -1,16 +1,16 @@
 <template>
 	<li class="makes__item">
 		<!--TODO добавить класс makes__item--active-->
-		<a hreflang="" @click.prevent="$emit('click')"
-		   href=""
-		   class="makes__link">
+		<nuxt-link :to="'/used/'+slug"
+		           @click.native="$emit('click')"
+		           class="makes__link">
 			<div class="makes__title">
-				{{ item.title || item.name}}
+				{{ item.title || item.name }}
 			</div>
 			<div class="makes__qty">
 				{{ item.offers_count }}
 			</div>
-		</a>
+		</nuxt-link>
 	</li>
 </template>
 <script>
@@ -20,6 +20,10 @@ export default {
 			type: Object,
 			default: () => {
 			}
+		},
+		slug: {
+			type: String,
+			default: ''
 		}
 	},
 }

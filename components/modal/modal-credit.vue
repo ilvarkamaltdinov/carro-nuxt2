@@ -14,8 +14,7 @@
 				<form-car-credit />
 			</div>
 			<div class="application__catalog application__catalog--modal catalog grid__col-4">
-				<catalog-item :has-buttons="false"
-				              :info="modalData" />
+				<catalog-item-small-desktop :has-buttons="false" :offer="modalData"/>
 			</div>
 			<div class="application__banks grid__col-4">
 				<div class="application__banks-form">

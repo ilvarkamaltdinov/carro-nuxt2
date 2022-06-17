@@ -6,16 +6,11 @@
 }
 
 @media (min-width: $tablet-width) {
-
-}
-
-@media (min-width: $desktop-width) {
   .grid {
     display: grid;
-    grid-template-columns: repeat(12, $gridColumnWidth);
-    gap: $gridGapWidth;
-    max-width: $gridDesktopWidth;
-    // row-gap: 24px;
+    grid-template-columns: repeat(8, $gridColumnWidth);
+    gap: $gridGapTabletWidth;
+    max-width: $gridTabletWidth;
     width: 100%;
     margin: auto;
     grid-auto-flow: dense;
@@ -29,7 +24,7 @@
     row-gap: 24px;
   }
 
-  .grid--catalog {
+  .grid.grid--catalog {
     grid-template-columns: repeat(8, $gridColumnWidth);
     row-gap: 24px;
   }
@@ -46,7 +41,7 @@
     grid-template-rows: auto;
   }
 
-  .grid--header {
+  .grid.grid--header {
     grid-row-gap: 0;
   }
 
@@ -91,7 +86,7 @@
   }
 
   .grid__col-12 {
-    grid-column: span 12;
+    grid-column: span 8;
   }
 
   .grid--application {
@@ -105,6 +100,40 @@
   .grid--application-modal {
     grid-template-columns: repeat(8, $gridColumnWidth);
     grid-template-rows: auto 1fr;
-    margin-bottom: 0;
+    margin-bottom: 16px;
+  }
+}
+
+@media (min-width: $tablet-width) and (max-width: $tablet-width-max) {
+  .grid--featured {
+    grid-template-rows: repeat(4, 266px);
+  }
+
+  .grid__col-5 {
+    grid-column: span 8;
+  }
+
+  .grid__col-7.text__wrap--figure {
+    grid-column: span 8;
+  }
+
+  .grid__col-7 {
+    grid-column: span 4;
+  }
+
+  .grid__col-9 {
+    grid-column: span 8;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .grid {
+    grid-template-columns: repeat(12, $gridColumnWidth);
+    max-width: $gridDesktopWidth;
+    gap: $gridGapWidth;
+  }
+
+  .grid__col-12 {
+    grid-column: span 12;
   }
 }

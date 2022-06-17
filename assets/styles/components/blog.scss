@@ -66,13 +66,26 @@
   }
 }
 
-@media (min-width: $desktop-width) {
+
+@media (min-width: $tablet-width) {
   .blog__list {
     display: grid;
     grid-gap: 24px;
     grid-template-columns: repeat(3, auto);
-    grid-auto-rows: 240px;
+    grid-auto-rows: 320px;
     grid-auto-flow: dense;
+  }
+}
+
+@media (min-width: $tablet-width) and (max-width: $tablet-width-max) {
+  .blog__item {
+    grid-column: span 3;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .blog__list {
+    grid-auto-rows: 240px;
   }
 
   .blog__item--horizontal {

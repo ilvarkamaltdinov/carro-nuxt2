@@ -1,11 +1,11 @@
 <template>
 	<div class="modal__wrap">
 		<div class="filter filter--modal">
-			<component :is="component"
+			<component :is="modalData.type"
 			           @check="check" />
 		</div>
 		<div class="page-main__button-fixed">
-			<button-fixed @click="filter"> {total} </button-fixed>
+			<button-fixed @click="filter">{total}</button-fixed>
 		</div>
 	</div>
 </template>
@@ -15,155 +15,256 @@ import {mapActions, mapGetters, mapMutations} from "vuex";
 export default {
 	data() {
 		return {
-			marks: [],
-			models: [],
-			generations: [],
-			engineTypes: [],
-			driveTypes: [],
-			gearboxes: []
+			checkDependencies: {
+				mark: [
+					'folder',
+					'generation',
+				],
+				folder: [
+					'generation',
+				]
+			}
 		}
-	},
-	mounted() {
-		this.marks = [...this.chosenMarkArray]
-		this.models = [...this.chosenModelArray]
-		this.generations = [...this.chosenGenerationArray]
-		this.engineTypes = [...this.chosenEngineTypeArray]
-		this.driveTypes = [...this.chosenDriveTypeArray]
-		this.gearboxes = [...this.chosenGearboxArray]
 	},
 	computed: {
 		...mapGetters({
 			filters: 'filters/filters/filters',
-			chosenMarkArray: 'filters/filters/chosenMarkArray',
-			chosenModelArray: 'filters/filters/chosenModelArray',
-			chosenGenerationArray: 'filters/filters/chosenGenerationArray',
-			chosenEngineTypeArray: 'filters/filters/chosenEngineTypeArray',
-			chosenDriveTypeArray: 'filters/filters/chosenDriveTypeArray',
-			chosenGearboxArray: 'filters/filters/chosenGearboxArray',
-			
+			chosen: 'filters/filters/chosen',
 			modalData: 'modal/modal-main/modalData'
 		}),
-		component() {
-			if (this.modalData === 'mark' ||
-					this.modalData === 'drive-type'||
-					this.modalData === 'engine-type' ||
-					this.modalData === 'gearbox') {
-				return `modal-filter-${this.modalData}`
-			}
-			
-			if (this.modalData === 'model') {
-				return this.chosenMarkArray.length ?
-						'modal-filter-model' :
-						'modal-filter-mark'
-			}
-			
-			if (this.modalData === 'generation') {
-				if (!this.chosenMarkArray.length) {
-					return 'modal-filter-mark'
-				} else if (!this.chosenModelArray.length) {
-					return 'modal-filter-model'
-				} else {
-					return 'modal-filter-generation'
-				}
-			}
-			
-			if (this.modalData === 'filter-mobile'){
-				return 'modal-filter-mobile'
-			}
-		},
-		
-		markSlugArray() {
-			return this.marks.map(val => val.slug)
-		},
-		modelSlugArray() {
-			return this.models.map(val => val.slug)
-		},
-		generationSlugArray() {
-			return this.generations.map(val => val.slug)
-		},
-		engineTypeIdArray() {
-			return this.engineTypes.map(val => val.id)
-		},
-		driveTypeIdArray() {
-			return this.driveTypes.map(val => val.id)
-		},
-		gearboxIdArray() {
-			return this.gearboxes.map(val => val.id)
-		},
 	},
 	methods: {
 		...mapMutations({
-			setChosenMarkArray: 'filters/filters/SET_CHOSEN_MARK_ARRAY',
-			setChosenModelArray: 'filters/filters/SET_CHOSEN_MODEL_ARRAY',
-			setChosenGenerationArray: 'filters/filters/SET_CHOSEN_GENERATION_ARRAY',
-			setChosenEngineTypeArray: 'filters/filters/SET_CHOSEN_ENGINE_TYPE_ARRAY',
-			setChosenDriveTypeArray: 'filters/filters/SET_CHOSEN_DRIVE_TYPE_ARRAY',
-			setChosenGearboxArray: 'filters/filters/SET_CHOSEN_GEARBOX_ARRAY',
-			
-			setQueriesMarksSlug: 'filters/filters/SET_QUERIES_MARKS_SLUG',
-			setQueriesModelsSlug: 'filters/filters/SET_QUERIES_MODELS_SLUG',
-			setQueriesGenerationsSlug: 'filters/filters/SET_QUERIES_GENERATIONS_SLUG',
-			setQueriesEngineTypesId: 'filters/filters/SET_QUERIES_ENGINE_TYPES_ID',
-			setQueriesDriveTypesId: 'filters/filters/SET_QUERIES_DRIVE_TYPES_ID',
-			setQueriesGearboxesId: 'filters/filters/SET_QUERIES_GEARBOXES_ID'
+			setChosen: 'filters/filters/SET_CHOSEN',
+			unsetChosen: 'filters/filters/UNSET_CHOSEN',
+			setIsClick: 'filters/filters/SET_IS_CLICK'
 		}),
 		...mapActions({
 			closeModal: 'modal/modal-main/closeModal',
-			getFilters: 'filters/filters/getFilters',
+			getFilters: 'filters/filters/getFilters'
+			
 		}),
-		check(type) {
-			this[type.modal] = type.data
+		check(data) {
+			this.setChosen({key: data.type, value: data.data})
+			//очищаю поля при выборе марки
+			this.checkDependencies[data.type]?.forEach(value => {
+				this.unsetChosen(value)
+			})
 		},
+		// TODO проверка что поколение выбрано только при 1ой марки и 1ой модели
+		// checkGeneration() {
+		// 	if (this.chosen.mark?.length !== 1 || this.chosen.folder?.length !== 1){
+		// 		this.setChosen({key: 'generation', value: null})
+		// 	}
+		// },
 		async filter() {
-			this.setUrl()
-			
-			this.setQueriesMarksSlug(this.markSlugArray)
-			this.setQueriesModelsSlug(this.modelSlugArray)
-			this.setQueriesGenerationsSlug(this.generationSlugArray)
-			this.setQueriesEngineTypesId(this.engineTypeIdArray)
-			this.setQueriesDriveTypesId(this.driveTypeIdArray)
-			this.setQueriesGearboxesId(this.gearboxIdArray)
-			
-			this.setChosenMarkArray(this.marks)
-			this.setChosenModelArray(this.models)
-			this.setChosenGenerationArray(this.generations)
-			this.setChosenEngineTypeArray(this.engineTypes)
-			this.setChosenDriveTypeArray(this.driveTypes)
-			this.setChosenGearboxArray(this.gearboxes)
-			
-			
+			await this.setIsClick(true)
+			// this.checkGeneration()
 			await this.closeModal()
-			await this.getFilters()
-			
+			await this.setUrl();
+			await this.getFilters(false)
 		},
 		setUrl() {
-			//TODO нет логики для выбора 1 марки и далее + навести тут порядок
-			if (this.marks.length === 1) {
-				this.$router.push('/used/' + this.marks[0].slug)
-				if (this.models.length === 1) {
-					this.$router.push('/used/' + this.marks[0].slug + '/' + this.models[0].slug)
-				} else {
-					this.$router.push({
-						path: '/used/' + this.marks[0].slug,
-						query: {
-							folder_slug_array: this.modelSlugArray
-						}
-					})
+			let mark_slug_array = this.chosen.mark?.map(item => item.slug)
+			let folder_slug_array = this.chosen.folder?.map(item => item.slug)
+			let generation_slug_array = this.chosen.generation?.map(item => item.slug)
+			
+			
+			let engine_type_slug_array = this.chosen.engineType?.map(item => item.slug)
+			let engine_type_id_array = this.chosen.engineType?.map(item => item.id)
+			let body_type_slug_array = this.chosen.bodyType?.map(item => item.slug)
+			let body_type_id_array = this.chosen.bodyType?.map(item => item.id)
+			
+			
+			let gearbox_id_array = this.chosen.gearbox?.map(item => item.id)
+			let drive_type_id_array = this.chosen.driveType?.map(item => item.id)
+			
+			let url = ''
+			let query = {}
+			
+			//TODO МАРКА
+			if (mark_slug_array?.length === 1) {
+				url = mark_slug_array[0]
+			} else {
+				query['mark_slug_array'] = mark_slug_array
+			}
+			
+			//TODO МОДЕЛЬ
+			if (mark_slug_array?.length === 1) {
+				if (folder_slug_array?.length === 1) {
+					url = mark_slug_array[0] + '/' + folder_slug_array[0]
+					if (engine_type_slug_array?.length === 1) {
+						url = mark_slug_array[0] + '/' + folder_slug_array[0] + '/' + engine_type_slug_array[0]
+					}
+				} else if (folder_slug_array?.length > 1) {
+					query['folder_slug_array'] = folder_slug_array
+					if (engine_type_slug_array) {
+						query['engine_type_id_array'] = engine_type_id_array
+					}
 				}
 			} else {
-				this.$router.push({
-					path: '/used', query:
-							{
-								mark_slug_array: this.markSlugArray,
-								folder_slug_array: this.modelSlugArray,
-								generation_slug_array: this.generationSlugArray,
-								engine_type_id_array: this.engineTypeIdArray,
-								drive_type_id_array: this.driveTypeIdArray,
-								gearbox_id_array: this.gearboxIdArray,
-							}
-				})
+				query['folder_slug_array'] = folder_slug_array
 			}
-		},
+			
+			//TODO ПОКОЛЕНИЕ
+			if (mark_slug_array?.length === 1) {
+				if (folder_slug_array?.length === 1) {
+					if (generation_slug_array?.length === 1) {
+						url = mark_slug_array[0] + '/' + folder_slug_array[0] + '/' + generation_slug_array[0]
+					} else if (generation_slug_array?.length > 1) {
+						query['generation_slug_array'] = generation_slug_array
+					}
+				}
+			}
+			//TODO ДВИГАТЕЛЬ
+			if (mark_slug_array?.length === 1) {
+				if (folder_slug_array?.length === 1) {
+					if (generation_slug_array?.length === 1) {
+						query['engine_type_id_array'] = engine_type_id_array
+					}
+				} else if (!folder_slug_array && engine_type_slug_array?.length === 1) {
+					if (body_type_slug_array?.length === 1) {
+						query['engine_type_id_array'] = engine_type_id_array
+					} else {
+						url = mark_slug_array?.[0] + '/' + engine_type_slug_array[0]
+					}
+				}
+			} else {
+				query['engine_type_id_array'] = engine_type_id_array
+			}
+			
+			//TODO КУЗОВ
+			if (mark_slug_array?.length === 1) {
+				if (folder_slug_array?.length === 1) {
+					if (generation_slug_array?.length === 1) {
+						query['body_type_id_array'] = body_type_id_array
+					}
+					if (engine_type_slug_array?.length === 1) {
+						query['body_type_id_array'] = body_type_id_array
+					}
+				} else if (!folder_slug_array) {
+					if (body_type_slug_array?.length === 1) {
+						url = mark_slug_array?.[0] + '/' + body_type_slug_array[0]
+					} else {
+						query['body_type_id_array'] = body_type_id_array
+					}
+				}
+			} else {
+				query['body_type_id_array'] = body_type_id_array
+			}
+			
+			
+			//TODO КОРОБКА
+			if (gearbox_id_array?.length >= 1) {
+				query['gearbox_id_array'] = gearbox_id_array
+			}
+			//TODO ПРИВОД
+			if (drive_type_id_array?.length >= 1) {
+				query['drive_type_id_array'] = drive_type_id_array
+			}
+			
+			this.$router.push({
+				path: '/used' + (url !== '' ? '/' + url : ''),
+				query
+			})
+			
+		}
+		// setUrl() {
+		// 	let mark_slug = false
+		// 	let folder_slug = false
+		// 	let body_type_slug = false
+		// 	let engine_type_slug = false
+		//
+		//
+		// 	let url = '/used/'
+		// 	let query = {
+		// 		mark_slug_array: [],
+		// 		folder_slug_array: [],
+		// 		generation_slug_array: [],
+		// 		engine_type_id_array: [],
+		// 		drive_type_id_array: [],
+		// 		gearbox_id_array: [],
+		// 	}
+		//
+		//
+		// 	//одна марка
+		// 	if (this.chosen.mark?.length === 1) {
+		// 		url += this.chosen.mark[0].slug
+		// 		mark_slug = true
+		//
+		// 		// TODO то что может идти после марки
+		// 		//одна модель
+		// 		if (this.chosen.folder?.length === 1) {
+		// 			url += '/' + this.chosen.folder[0].slug
+		// 			folder_slug = true
+		// 			//одно поколение
+		// 			if (this.chosen.generation?.length === 1) {
+		// 				url += '/' + this.chosen.generation[0].slug
+		// 			}
+		// 			// несколько поколений
+		// 			else {
+		// 				query['generation_slug_array'] = this.chosen.generation?.map(item => item.slug)
+		// 			}
+		// 		}
+		//
+		// 		//один тип двигателя
+		// 		if (this.chosen.engineType?.length === 1
+		// 				&& (mark_slug || folder_slug)) {
+		// 			if(!body_type_slug){
+		// 				url += '/' + this.chosen.engineType[0].slug
+		// 				engine_type_slug = true
+		// 			} else{
+		// 				engine_type_slug = false
+		// 				query['engine_type_id_array'] = this.chosen.engineType?.map(item => item.id)
+		// 			}
+		// 		}
+		//
+		// 		//один тип кузова
+		// 		if (this.chosen.bodyType?.length === 1
+		// 				&& (mark_slug || folder_slug)) {
+		// 			if(!engine_type_slug){
+		// 				url += '/' + this.chosen.bodyType[0].slug
+		// 				body_type_slug = true
+		// 			} else{
+		// 				body_type_slug = false
+		// 				query['body_type_id_array'] = this.chosen.bodyType?.map(item => item.id)
+		// 			}
+		// 		}
+		// 		if (this.chosen.bodyType?.length === 1
+		// 				&& (!mark_slug || !folder_slug)) {
+		// 				query['body_type_id_array'] = this.chosen.bodyType?.map(item => item.id)
+		// 			}
+		// 		if (this.chosen.engineType?.length === 1
+		// 				&& (!mark_slug || !folder_slug)) {
+		// 			query['engine_type_id_array'] = this.chosen.engineType?.map(item => item.id)
+		// 		}
+		//
+		//
+		//
+		// 		// // несколько моделей
+		// 		// else {
+		// 		// 	query['folder_slug_array'] = this.chosen.folder?.map(item => item.slug)
+		// 		// }
+		// 	}
+		// 	//несколько марок
+		// 	else {
+		// 		query['mark_slug_array'] = this.chosen.mark?.map(item => item.slug)
+		// 		query['folder_slug_array'] = this.chosen.folder?.map(item => item.slug)
+		// 		query['engine_type_id_array'] = this.chosen.engineType?.map(item => item.id)
+		// 	}
+		//
+		// 	// query['drive_type_id_array'] = this.chosen.driveType?.map(item => item.id)
+		// 	// query['gearbox_id_array'] = this.chosen.gearbox?.map(item => item.id)
+		//
+		// 	// if (!this.$route.params.model) {
+		// 	// 	query['engine_type_id_array'] = this.chosen.engineType?.map(item => item.id)
+		// 	// }
+		//
+		// 	this.$router.push({
+		// 		path: url,
+		// 		query: query
+		// 	})
+		// }
 	}
 }
 </script>

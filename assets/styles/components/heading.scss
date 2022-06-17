@@ -21,10 +21,6 @@
 }
 
 @media (min-width: $tablet-width) {
-
-}
-
-@media (min-width: $desktop-width) {
   .heading--h1 {
     @include font-desktop-h1;
     margin-bottom: 32px;

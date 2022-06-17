@@ -42,6 +42,7 @@ export default {
         {src: '~/plugins/rangeSlider.js', mode: 'client'},
         {src: '~/plugins/inputmask.js'},
         {src: '~/plugins/slideToggle.js'},
+        {src: '~/plugins/lodash.js'}
         // { src:'~/plugins/helpers.js' },
         // { src:'~/plugins/slideToggle.js' },
         // { src: "plugins/pagination.js", mode: 'client' },
@@ -67,6 +68,7 @@ export default {
     // },
     components: true,
     router: {
+        prefetchLinks: false,
         linkExactActiveClass: 'active'
     },
     modules: [
@@ -90,16 +92,16 @@ export default {
     apollo: {
         clientConfigs: {
             default: {
-                httpEndpoint: 'https://api.carro.ru/graphql',
+                httpEndpoint: 'https://devapi.carro.ru/graphql'
             }
         }
     },
     build: {
         loaders: {
             scss: {
-                implementation: require('sass'),
-            },
-        },
+                implementation: require('sass')
+            }
+        }
     },
     publicRuntimeConfig: {
         api_domain: process.env.API_DOMAIN,

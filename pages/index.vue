@@ -4,16 +4,18 @@
 			<h1 class="visually-hidden">Автомобили с пробегом в Москве</h1>
 			<div class="page-main__promo grid__col-8">
 				<slider-index />
-				<component :is="storiesComponent" />
+				<component :is="isMobile ? 'stories' : 'stories-desktop'" />
 			</div>
 			<form-index />
-			<component :is="catalogComponent" />
+			<component :is="isMobile ? 'catalog-list-index-mobile' : 'catalog-list-index-desktop'" />
 			<featured />
 			<video-about />
 		</div>
 		<transition name="fade">
-			<div v-if="storiesModal" class="stories__modal_wrapper-wrap">
-				<div @click="setStoriesModal(false)" class="overlay"></div>
+			<div v-if="storiesModal"
+			     class="stories__modal_wrapper-wrap">
+				<div @click="setStoriesModal(false)"
+				     class="overlay"></div>
 				<stories-modal />
 			</div>
 		</transition>
@@ -26,37 +28,23 @@ export default {
 	data() {
 		return {
 			storiesComponent: 'stories',
-			catalogComponent: 'catalog-index'
 		}
 	},
 	computed: {
 		...mapGetters({
-			storiesModal: 'stories/stories/storiesModal'
+			storiesModal: 'stories/stories/storiesModal',
+			isMobile: 'isMobile'
 		})
 	},
 	methods: {
 		...mapMutations({
 			setStoriesModal: 'stories/stories/SET_STORIES_MODAL'
 		}),
-		setMobile() {
-			this.storiesComponent = 'stories'
-			this.catalogComponent = 'catalog-index'
-		},
-		setDesktop() {
-			this.storiesComponent = 'stories-desktop'
-			this.catalogComponent = 'catalog-index-desktop'
-		}
-	},
-	mounted() {
-		window.innerWidth < 1200 ?
-				this.setMobile()
-				: this.setDesktop()
-		
 	}
 }
 </script>
 <style>
-.stories__modal_wrapper-wrap{
+.stories__modal_wrapper-wrap {
 	z-index: 300;
 	position: fixed;
 	width: 100%;

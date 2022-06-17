@@ -3,7 +3,7 @@
 }
 
 .heading-group .heading {
-  margin-bottom: 4px;
+  margin-bottom: 12px;
 }
 
 .heading-group__label {
@@ -42,16 +42,14 @@
 }
 
 @media (min-width: $tablet-width) {
-
-}
-
-@media (min-width: $desktop-width) {
   .heading-group--h1 {
     margin-bottom: 0;
+    grid-column: span 8;
   }
 
   .heading-group__wrap {
     flex-shrink: 0;
+    max-width: 100%;
   }
 
   .heading-group--filter {
@@ -71,5 +69,11 @@
 
   .heading-group--h1 .rating {
     display: none;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .heading-group--h1 {
+    grid-column: span 12;
   }
 }

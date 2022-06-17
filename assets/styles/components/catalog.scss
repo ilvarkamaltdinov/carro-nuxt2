@@ -151,6 +151,10 @@
   @include white-back;
 }
 
+.catalog__filter--aside {
+  display: none;
+}
+
 @media (max-width: $iphone-se-only) {
   .catalog__item--small .catalog__title,
   .catalog__item--small .catalog__credit-price {
@@ -196,10 +200,10 @@
     margin-right: 8px;
   }
 
-  .catalog__filter {
-    display: flex;
-    justify-content: space-between;
-  }
+  //.catalog__filter {
+  //  display: flex;
+  //  justify-content: space-between;
+  //}
 
   // catalog-item-small
 
@@ -284,7 +288,7 @@
   }
 }
 
-@media (min-width: $desktop-width) {
+@media (min-width: $tablet-width) {
   .catalog__dealer-item {
     @include white-back-l;
     grid-column: span 6;
@@ -428,5 +432,21 @@
 
   .catalog__item--desktop-form .catalog__info-wrap {
     margin-bottom: 0;
+  }
+}
+
+@media (min-width: $tablet-width) and (max-width: $tablet-width-max) {
+  .catalog__filter {
+    margin-top: -32px;
+  }
+
+  .catalog__img .swiper__buttons-wrapper {
+    right: 12px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .catalog__filter--aside {
+    display: block;
   }
 }

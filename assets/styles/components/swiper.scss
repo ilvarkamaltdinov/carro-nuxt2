@@ -121,7 +121,7 @@
   }
 }
 
-@media (min-width: $desktop-width) {
+@media (min-width: $tablet-width) {
   .swiper--stories-modal .swiper-button {
     position: absolute;
     top: calc(50% - 20px);
@@ -136,6 +136,12 @@
     right: 40px;
   }
 
+  .swiper--index {
+    margin: 0 -16px;
+    padding-bottom: 105px;
+    margin-bottom: -56px;
+  }
+
   .swiper--progress .swiper-pagination-bullet .swiper-pagination-bar,
   .swiper--progress
     .swiper-pagination-bullet-active
@@ -145,11 +151,6 @@
 
   .slider-index__item {
     overflow: visible;
-  }
-
-  .swiper--index {
-    margin: -100px;
-    padding: 100px;
   }
 
   .swiper--catalog {
@@ -166,5 +167,12 @@
     &:not(.swiper-slide-visible) {
       opacity: 0;
     }
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .swiper--index {
+    margin: -100px;
+    padding: 100px;
   }
 }

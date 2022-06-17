@@ -1,12 +1,12 @@
 <template>
   <div class="error_page">
-    404 page
+    {{error.statusCode}}
   </div>
 </template>
 
 <script>
 export default {
-
+	props: ['error']
 }
 </script>
 

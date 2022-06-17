@@ -34,7 +34,22 @@
   }
 }
 
-@media (min-width: $desktop-width) {
+@media (min-width: $tablet-width) and (max-width: $tablet-width-max) {
+  .dealers__item-img {
+    aspect-ratio: 3 / 4;
+  }
+
+  .dealers__item {
+    grid-column: span 4;
+  }
+
+  .dealers__item--catalog .dealers__item-img {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+
+@media (min-width: $tablet-width) {
   .dealers__item {
     padding: 32px;
     display: flex;
@@ -55,6 +70,7 @@
 
   .dealers__features {
     flex-grow: 1;
-    margin-right: 40px;
+    margin-right: 64px;
+    flex-shrink: 0;
   }
 }

@@ -3,8 +3,7 @@
 		<h2 class="heading heading--h2">Подборки</h2>
 		<ul class="featured__list grid grid--featured">
 			<li class="featured__item featured__item--sedan">
-				<a class="featured__link"
-				   href="">
+				<nuxt-link to="/used/sedan" class="featured__link">
 					<div class="featured__about">
 						<h3 class="featured__title">Седаны</h3>
 						<div class="featured__text">Классический форм-фактор для тех, кто ценит комфорт и динамику</div>
@@ -14,11 +13,10 @@
 						<div class="glass featured__glass featured__glass--big"></div>
 						<featured-img img="1"/>
 					</div>
-				</a>
+				</nuxt-link>
 			</li>
 			<li class="featured__item featured__item--family">
-				<a class="featured__link"
-				   href="">
+				<nuxt-link to="/used/for-family" class="featured__link">
 					<div class="featured__about">
 						<h3 class="featured__title">Семейные</h3>
 						<div class="featured__text">Вместительные модели для семейных поездок</div>
@@ -28,11 +26,10 @@
 						<div class="glass featured__glass featured__glass--big"></div>
 						<featured-img img="2"/>
 					</div>
-				</a>
+				</nuxt-link>
 			</li>
 			<li class="featured__item featured__item--women">
-				<a class="featured__link"
-				   href="">
+				<nuxt-link to="/used/for-woman" class="featured__link">
 					<div class="featured__about">
 						<h3 class="featured__title">Для нее</h3>
 						<div class="featured__text">Изящные модели для прекрасной половины</div>
@@ -42,11 +39,10 @@
 						<div class="glass featured__glass featured__glass--big"></div>
 						<featured-img img="3"/>
 					</div>
-				</a>
+				</nuxt-link>
 			</li>
 			<li class="featured__item featured__item--business">
-				<a class="featured__link"
-				   href="">
+				<nuxt-link to="/used/business-class" class="featured__link">
 					<div class="featured__about">
 						<img class="featured__label"
 						     src="img/featured/featured-label.svg"
@@ -59,11 +55,10 @@
 						<div class="glass featured__glass featured__glass--big"></div>
 						<featured-img img="4"/>
 					</div>
-				</a>
+				</nuxt-link>
 			</li>
 			<li class="featured__item featured__item--allroad">
-				<a class="featured__link"
-				   href="">
+				<nuxt-link to="/used/allroad" class="featured__link">
 					<div class="featured__about">
 						<h3 class="featured__title">Внедорожники</h3>
 						<div class="featured__text">Преодолевайте препятствия с внедорожниками 4WD</div>
@@ -73,11 +68,10 @@
 						<div class="glass featured__glass featured__glass--big"></div>
 						<featured-img img="5"/>
 					</div>
-				</a>
+				</nuxt-link>
 			</li>
 			<li class="featured__item featured__item--taxi">
-				<a class="featured__link"
-				   href="">
+				<nuxt-link to="/used/for-taxi" class="featured__link">
 					<div class="featured__about">
 						<h3 class="featured__title">Для такси</h3>
 						<div class="featured__text">Самые надежные модели для такси</div>
@@ -87,7 +81,7 @@
 						<div class="glass featured__glass featured__glass--big"></div>
 						<featured-img img="6"/>
 					</div>
-				</a>
+				</nuxt-link>
 			</li>
 		</ul>
 		<button-more>Все подборки</button-more>

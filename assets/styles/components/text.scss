@@ -10,12 +10,9 @@
 .text__links {
   display: flex;
   align-items: center;
-
-  > * {
-    &:first-child {
-      margin-right: 16px;
-    }
-  }
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 24px;
 }
 
 .text__list-item {
@@ -51,7 +48,7 @@
   }
 }
 
-@media (min-width: $desktop-width) {
+@media (min-width: $tablet-width) {
   .text__img--blog {
     width: 100%;
     margin: 32px 0;
@@ -104,6 +101,12 @@
     margin-left: 24px;
   }
 
+  .text__img-wrap {
+    margin: 0 -32px;
+  }
+}
+
+@media (min-width: $desktop-width) {
   .text__img-wrap {
     margin: 0 -64px;
   }

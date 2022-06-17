@@ -80,6 +80,7 @@ $retina-dppx: 1.5dppx;
 
 $tablet-width: 768px;
 $small-desktop-width: 992px;
+$tablet-width-max: 1199px;
 $desktop-width: 1200px;
 $mobile-width-only: 767px;
 $iphone-mini-only: 320px;
@@ -97,9 +98,11 @@ $rating-border: 4px;
 
 // Container
 
+$gridTabletWidth: 737px;
 $gridDesktopWidth: 1128px;
 $gridColumnWidth: 72px;
 $gridGapWidth: 24px;
+$gridGapTabletWidth: 23px;
 
 // Root
 

@@ -1,5 +1,5 @@
 <template>
-	<div class="car__info grid__col-6">
+	<div class="car__info grid__col-6" v-if="offer">
 		<div class="car__info-tabs">
 			<tabs-list-tech />
 		</div>
@@ -14,7 +14,7 @@
 								          name="icon-year" />
 							</div>
 							<div class="car__tech-content">
-								{{ car.year }}
+								{{ offer.year }}
 							</div>
 						</li>
 						<li class="car__tech-item">
@@ -23,7 +23,7 @@
 								          name="icon-gear" />
 							</div>
 							<div class="car__tech-content">
-								{{ car.gearbox.title }}
+								{{ offer.gearbox.title }}
 							</div>
 						</li>
 						<li class="car__tech-item">
@@ -32,7 +32,7 @@
 								          name="icon-mileage" />
 							</div>
 							<div class="car__tech-content">
-								{{ car.run | run }} км
+								{{ offer.run | run }} км
 							</div>
 						</li>
 						<li class="car__tech-item">
@@ -41,7 +41,7 @@
 								          name="icon-volume" />
 							</div>
 							<div class="car__tech-content">
-								{{ car.engine_volume }} л
+								{{ offer.engine_volume }} л
 							</div>
 						</li>
 						<li class="car__tech-item">
@@ -50,7 +50,7 @@
 								          name="icon-engine" />
 							</div>
 							<div class="car__tech-content">
-								{{ car.engine_power }} л.с.
+								{{ offer.engine_power }} л.с.
 							</div>
 						</li>
 						<li class="car__tech-item">
@@ -59,7 +59,7 @@
 								          name="icon-fuel" />
 							</div>
 							<div class="car__tech-content">
-								{{ car.engineType.title }}
+								{{ offer.engineType.title }}
 							</div>
 						</li>
 						<li class="car__tech-item">
@@ -68,7 +68,7 @@
 								          name="icon-form" />
 							</div>
 							<div class="car__tech-content">
-								{{ car.bodyType.title }}
+								{{ offer.bodyType.title }}
 							</div>
 						</li>
 						<li class="car__tech-item">
@@ -77,7 +77,7 @@
 								          name="icon-wd" />
 							</div>
 							<div class="car__tech-content">
-								{{ car.driveType.title  }}
+								{{ offer.driveType.title  }}
 							</div>
 						</li>
 						<!--TODO Цвет в карточке авто-->
@@ -96,12 +96,12 @@
 								          name="icon-owners" />
 							</div>
 							<div class="car__tech-content">
-								{{car.owner.title}}
+								{{offer.owner.title}}
 							</div>
 						</li>
 					</ul>
 				</div>
-				<div class="swiper-slide car__info-group car__info-group--options">
+				<div v-if="equipment_group_list.length" class="swiper-slide car__info-group car__info-group--options">
 					<div class="heading-group">
 						<div class="heading-group__wrap">
 							<h2 class="heading heading--h2">
@@ -113,14 +113,12 @@
 						</div>
 					</div>
 					<div class="car__info-options features">
-						<div class="features__group">
-							<h3 class="heading heading--h3"> Безопасность</h3>
+						<div class="features__group" v-for="group in equipment_group_list" :key="group.title">
+							<h3 class="heading heading--h3">{{group.title}}</h3>
 							<ul class="features__list">
-								<li class="features__item">Антипробуксовочная система</li>
-								<li class="features__item">Бортовой компьютер</li>
-								<li class="features__item">Датчик света</li>
-								<li class="features__item">Иммобилайзер</li>
-								<li class="features__item">Камера заднего вида</li>
+								<li class="features__item" v-for="value in group.values" :key="value">
+									{{value}}
+								</li>
 							</ul>
 						</div>
 					</div>
@@ -179,8 +177,12 @@ export default {
 	mixins: [filters],
 	computed:{
 		...mapGetters({
-			car: 'catalog/catalog-cars/car'
-		})
+			offer: 'catalog/catalog-cars/offer'
+		}),
+		equipment_group_list(){
+			return this.offer.equipment_groups
+		}
+		
 	}
 }
 </script>

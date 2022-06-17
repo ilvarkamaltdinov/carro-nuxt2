@@ -147,7 +147,7 @@
 @media (max-width: $mobile-width-only) {
 }
 
-@media (min-width: $desktop-width) {
+@media (min-width: $tablet-width) {
   .slider-index__heading {
     @include font-desktop-h2;
   }

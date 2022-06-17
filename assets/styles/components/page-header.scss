@@ -184,11 +184,13 @@
   }
 }
 
-@media (min-width: $tablet-width) {
-
+@media (min-width: $tablet-width) and (max-width: $tablet-width-max) {
+  .page-header__nav-wrap {
+    max-width: calc(100% - 132px);
+  }
 }
 
-@media (min-width: $desktop-width) {
+@media (min-width: $tablet-width) {
   .page-header__buttons-item--search {
     display: none;
   }
@@ -209,12 +211,6 @@
 
   .page-header__wrap {
     padding: 12px 0;
-  }
-
-  .page-header__nav--desktop.main-nav {
-    display: flex;
-    visibility: visible;
-    opacity: 1;
   }
 
   .page-header {
@@ -252,5 +248,13 @@
 
   .page-header__container {
     padding-top: 0;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .page-header__nav--desktop.main-nav {
+    display: flex;
+    visibility: visible;
+    opacity: 1;
   }
 }

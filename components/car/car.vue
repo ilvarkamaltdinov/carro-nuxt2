@@ -1,15 +1,15 @@
 <template>
-	<section class="page-main__car car">
+	<section class="page-main__car car" v-if="offer">
 		<div class="grid grid--container">
 			<div class="heading-group heading-group--h1 grid__col-6">
 				<div class="heading-group__wrap">
 					<heading-h1>
-						{{car.mark.title}} 	{{car.folder.title}}
+						{{ offer.mark.title }} {{ offer.folder.title }}
 					</heading-h1>
 					<span class="heading-group__label heading-group__label--car">
-						{{car.generation.name}}
+						{{ offer.generation.name }}
 						<span class="heading-group__year">
-							{{car.year}}
+							{{ offer.year }}
 						</span>
 					</span>
 				</div>
@@ -28,9 +28,10 @@
 				</a>
 			</div>
 		</div>
+	
 		<div class="car__slider-wrap">
 			<div class="grid grid--container">
-				<car-slider/>
+				<car-slider />
 			</div>
 		</div>
 		<div class="grid grid--car grid--container grid__col-12">
@@ -38,21 +39,18 @@
 			<car-info />
 		</div>
 		<div class="grid grid--container">
-			<benefits-car/>
+			<benefits-car />
 			<!--<car-credit/>-->
 		</div>
 	</section>
 </template>
 <script>
-import {mapGetters} from "vuex";
+import {mapGetters} from 'vuex'
 
 export default {
-	mounted() {
-		console.log(this.car)
-	},
-	computed:{
+	computed: {
 		...mapGetters({
-			car: 'catalog/catalog-cars/car'
+			offer: 'catalog/catalog-cars/offer'
 		})
 	}
 }

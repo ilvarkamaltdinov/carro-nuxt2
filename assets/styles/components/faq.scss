@@ -39,7 +39,6 @@
   line-height: 1.5;
   transition: all 0.3s;
   padding-right: 48px;
-  @include font-mobile-h3;
 }
 
 .faq__answer {
@@ -50,6 +49,20 @@
 
 .faq__heading {
   margin-top: 0;
+}
+
+@media (min-width: $tablet-width) {
+  .faq__item {
+    padding: 24px;
+
+    &::after {
+      top: 28px;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
 
 @media (min-width: $desktop-width) {
@@ -80,18 +93,6 @@
   .faq__nav-item {
     &:last-child .faq__ancor {
       margin-bottom: 0;
-    }
-  }
-
-  .faq__item {
-    padding: 24px;
-
-    &::after {
-      top: 28px;
-    }
-
-    &:hover {
-      cursor: pointer;
     }
   }
 

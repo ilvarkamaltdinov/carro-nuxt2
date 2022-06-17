@@ -36,8 +36,8 @@
 				</div>
 			</div>
 			<div class="filter__buttons-wrap">
-				<button-view-s />
-				<button-view-l />
+				<button-view-s @click="changeView('s')"/>
+				<button-view-l @click="changeView('l')"/>
 			</div>
 		</div>
 	</div>
@@ -73,11 +73,15 @@ export default {
 			openModal: 'modal/modal-main/openModal'
 		}),
 		...mapMutations({
-			setSort: 'filters/filters/SET_SORT'
+			setSort: 'filters/filters/SET_SORT',
+			setView:'catalog/catalog-cars/SET_VIEW'
 		}),
+		changeView(type){
+			this.setView(type)
+		},
 		openFilter() {
 			let payload = {
-				modal_component: 'modal-filter',
+				modal_component: 'modal-filter-mobile',
 				modal_data: 'filter-mobile',
 				modal_title: 'Фильтр',
 			}

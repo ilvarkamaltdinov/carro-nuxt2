@@ -124,7 +124,15 @@
   }
 }
 
-@media (min-width: $desktop-width) {
+@media (min-width: $tablet-width) and (max-width: $tablet-width-max) {
+  .stories__list {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
+
+@media (min-width: $tablet-width) {
   .stories__close {
     width: 40px;
     height: 40px;

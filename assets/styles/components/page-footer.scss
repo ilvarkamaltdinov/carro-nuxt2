@@ -118,7 +118,7 @@
   margin-right: 8px;
 }
 
-@media (max-width: $mobile-width-only) {
+@media (max-width: $tablet-width-max) {
   .page-footer__links,
   .page-footer__cars,
   .page-footer__credits {
@@ -129,8 +129,8 @@
 @media (min-width: $tablet-width) {
   .page-footer__top {
     &::before {
-      width: 40000px;
-      left: calc(50% - 20000px);
+      width: 12500px;
+      left: calc(50% - 6250px);
     }
   }
 }
@@ -139,6 +139,13 @@
   .page-footer {
     padding-bottom: 32px;
     margin-top: 160px;
+  }
+
+  .page-footer__top {
+    &::before {
+      width: 40000px;
+      left: calc(50% - 20000px);
+    }
   }
 
   .page-footer__logo {

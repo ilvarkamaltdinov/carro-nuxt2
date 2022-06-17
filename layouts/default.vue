@@ -20,13 +20,21 @@
 	</div>
 </template>
 <script>
-import {mapActions, mapGetters} from 'vuex'
+import {mapActions, mapGetters, mapMutations} from 'vuex'
 
 export default {
 	methods: {
 		...mapActions({
 			closeModal: 'modal/modal-main/closeModal'
+		}),
+		...mapMutations({
+			setIsMobile: 'SET_IS_MOBILE'
 		})
+	},
+	mounted() {
+		window.innerWidth < 737 ?
+				this.setIsMobile(true) :
+				this.setIsMobile(false)
 	},
 	computed: {
 		...mapGetters({
@@ -34,6 +42,7 @@ export default {
 			modalMenu: 'modal/modal-menu/modalMenu',
 			modalMain: 'modal/modal-main/modalMain',
 			modalMainComponent: 'modal/modal-main/modalMainComponent',
+			isMobile: 'isMobile'
 		})
 	}
 }
@@ -42,6 +51,7 @@ export default {
 .fade-enter-active, .fade-leave-active {
 	transition: opacity .16s;
 }
+
 .fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */
 {
 	opacity: 0;

@@ -8,13 +8,15 @@ query offerFilters(
     $sort: String,
     $generation_slug_array: [String],
     $engine_type_id_array: [Int],
+    $body_type_id_array: [Int],
     $gearbox_id_array: [Int],
-    $gearbox_id: Int,
-    $body_type_id: Int,
     $drive_type_id_array: [Int],
-    $owner_id: Int,
+    $owner_id_array:[Int],
     $year_from: Int,
-    $year_to: Int
+    $year_to: Int,
+    $price_from: Int,
+    $price_to: Int,
+    $url: String
 ) {
     offerFilters(
         page: $page,
@@ -25,30 +27,33 @@ query offerFilters(
         sort: $sort,
         generation_slug_array: $generation_slug_array,
         engine_type_id_array: $engine_type_id_array,
+        body_type_id_array: $body_type_id_array,
         gearbox_id_array: $gearbox_id_array,
-        gearbox_id: $gearbox_id,
-        body_type_id: $body_type_id,
         drive_type_id_array: $drive_type_id_array,
-        owner_id: $owner_id,
+        owner_id_array: $owner_id_array,
         year_from: $year_from,
         year_to: $year_to,
-        category: $category
+        price_from: $price_from,
+        price_to: $price_to,
+        category: $category,
+        url:$url
     )
     {
         mark{
             title
             id
             slug
-            folders{
-                title
-                id
-                slug
-                generations{
-                    title
-                    id
-                    slug
-                }
-            }
+        }
+        folder{
+            title
+            id
+            slug
+            mark_id
+        }
+        generation{
+            title
+            id
+            slug
         }
         bodyType{
             title
@@ -76,6 +81,53 @@ query offerFilters(
             slug
         }
         year
+        price
+        chosen{
+            mark{
+                title
+                id
+                slug
+            }
+            folder{
+                title
+                id
+                slug
+                mark_id
+            }
+            generation{
+                title
+                id
+                slug
+            }
+            gearbox{
+                title
+                id
+                slug
+            }
+            engineType{
+                title
+                id
+                slug
+            }
+            driveType{
+                title
+                id
+                slug
+            }
+            bodyType{
+                title
+                id
+                slug
+            }
+            owner{
+                title
+                id
+                slug
+            }
+            yearFrom
+            yearTo
+
+        }
     }
     offers(
         page: $page,
@@ -83,17 +135,19 @@ query offerFilters(
         site_id: $site_id,
         mark_slug_array: $mark_slug_array,
         folder_slug_array: $folder_slug_array,
+        sort: $sort,
         generation_slug_array: $generation_slug_array,
         engine_type_id_array: $engine_type_id_array,
+        body_type_id_array: $body_type_id_array,
         gearbox_id_array: $gearbox_id_array,
-        sort: $sort,
-        gearbox_id: $gearbox_id,
-        body_type_id: $body_type_id,
         drive_type_id_array: $drive_type_id_array,
-        owner_id: $owner_id,
+        owner_id_array: $owner_id_array,
         year_from: $year_from,
         year_to: $year_to,
-        category: $category
+        price_from: $price_from,
+        price_to: $price_to,
+        category: $category,
+        url:$url
     ) {
         data {
             id
@@ -115,8 +169,6 @@ query offerFilters(
             }
             images {
                 thumb
-                medium
-                original
             }
             owner {
                 id

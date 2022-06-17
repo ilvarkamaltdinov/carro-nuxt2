@@ -10,10 +10,6 @@
   display: flex;
 }
 
-.tabs__item {
-  margin-right: 16px;
-}
-
 .tabs__link {
   border: 1px solid $colorDivider;
   padding: 8px 16px;
@@ -36,6 +32,10 @@
 }
 
 @media (max-width: $mobile-width-only) {
+  .tabs__item {
+    margin-right: 16px;
+  }
+
   .tabs--modal {
     margin: 0 -16px;
     width: 100%;
@@ -44,5 +44,13 @@
 
   .tabs__list {
     @include horizontal-scroll;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .tabs__list {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 16px;
   }
 }

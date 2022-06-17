@@ -6,7 +6,7 @@
   @include hover;
 }
 
-@media (max-width: $mobile-width-only) {
+@media (max-width: $tablet-width-max) {
   .site-list {
     margin-bottom: 24px;
   }

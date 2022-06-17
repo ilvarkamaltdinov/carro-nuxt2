@@ -21,8 +21,7 @@
 					<form-car-callback />
 				</div>
 				<div class="application__catalog application__catalog--modal catalog grid__col-4">
-					<catalog-item :has-buttons="false"
-					              :info="modalData" />
+					<catalog-item-small-desktop :has-buttons="false" :offer="modalData"/>
 				</div>
 			</div>
 			<benefits-modal />
@@ -31,8 +30,11 @@
 </template>
 <script>
 import {mapGetters} from 'vuex'
+import CatalogItemSmallDesktop from "../catalog/catalog-item/catalog-item-small-desktop";
 
 export default {
+	components: {CatalogItemSmallDesktop},
+	
 	computed: {
 		...mapGetters({
 			modalData: 'modal/modal-main/modalData'
