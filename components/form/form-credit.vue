@@ -72,7 +72,7 @@ export default {
 			bdate: '',
 			phone: '',
 			modalChooseCar: {
-				component: 'modal-choose-car',
+				component: 'modal-choose',
 				visibility: true
 			},
 			credit: {
@@ -86,7 +86,7 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			currentCar: 'modal/modal-choose-car/currentCar',
+			currentCar: 'modal/modal-choose/currentCar',
 			rangePeriodValues: 'form/form-credit/rangePeriodValues',
 			rangePaymentValues: 'form/form-credit/rangePaymentValues',
 			rangePeriodValue: 'form/form-credit/rangePeriodValue',
@@ -109,9 +109,9 @@ export default {
 		}),
 		choseCar() {
 			let payload = {
-				modal_component: 'modal-choose-car',
+				modal_component: 'modal-choose',
 				modal_title: 'Выберите автомобиль',
-				// modal_sub_title: carInfo.name
+				modal_sub_title: '10 560 автомобилей в наличии'
 			}
 			this.openModal(payload)
 		},
