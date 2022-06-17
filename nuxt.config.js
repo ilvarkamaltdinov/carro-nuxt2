@@ -42,7 +42,8 @@ export default {
         {src: '~/plugins/rangeSlider.js', mode: 'client'},
         {src: '~/plugins/inputmask.js'},
         {src: '~/plugins/slideToggle.js'},
-        {src: '~/plugins/lodash.js'}
+        {src: '~/plugins/lodash.js'},
+        {src: '~/plugins/helpers.js'}
         // { src:'~/plugins/helpers.js' },
         // { src:'~/plugins/slideToggle.js' },
         // { src: "plugins/pagination.js", mode: 'client' },
