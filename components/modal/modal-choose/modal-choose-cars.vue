@@ -22,10 +22,10 @@ export default {
 	methods: {
 		...mapMutations({
 			setCallbackCar: 'modal/modal-callback/SET_CALLBACK_CAR',
-			setCurrentCar: 'modal/modal-choose-car/SET_CURRENT_CAR'
+			setCurrentCar: 'modal/modal-choose/SET_CURRENT_CAR'
 		}),
 		...mapActions({
-			chooseGeneration: 'modal/modal-choose-car/chooseGeneration',
+			chooseGeneration: 'modal/modal-choose/chooseGeneration',
 			closeModal:'modal/modal-main/closeModal'
 		}),
 		chooseClick(carInfo) {
@@ -35,7 +35,7 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			cars: 'modal/modal-choose-car/cars'
+			cars: 'modal/modal-choose/cars'
 		})
 	}
 }

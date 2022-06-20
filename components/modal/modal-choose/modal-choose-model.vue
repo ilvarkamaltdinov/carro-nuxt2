@@ -16,7 +16,7 @@ import {mapGetters} from 'vuex'
 export default {
 	computed: {
 		...mapGetters({
-			currentModel: 'modal/modal-choose-car/currentModel'
+			currentModel: 'modal/modal-choose/currentModel'
 		})
 	}
 }

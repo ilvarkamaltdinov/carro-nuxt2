@@ -59,14 +59,14 @@ export default {
 	data() {
 		return {
 			modalChooseCar: {
-				component: 'modal-choose-car',
+				component: 'modal-choose',
 				visibility: true
 			},
 		}
 	},
 	computed: {
 		...mapGetters({
-			currentCar: 'modal/modal-choose-car/currentCar'
+			currentCar: 'modal/modal-choose/currentCar'
 		})
 	},
 	methods: {

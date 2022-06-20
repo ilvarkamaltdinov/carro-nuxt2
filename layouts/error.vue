@@ -1,6 +1,6 @@
 <template>
   <div class="error_page">
-    {{error.statusCode}}
+    404 page
   </div>
 </template>
 

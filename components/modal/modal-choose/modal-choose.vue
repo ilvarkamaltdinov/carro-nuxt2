@@ -7,19 +7,19 @@
 				    role="tablist">
 					<tabs-item :is-active="tabComponent === 'marks'"
 					           @click="tabClick('marks')">
-						{{ currentMark ? '1. ' + currentMark.title : '1. Выбрать марку' }}
+						{{ currentMark ? '1. ' + currentMark.title : '1. Марка' }}
 					</tabs-item>
 					
 					<tabs-item :is-active="tabComponent === 'models'"
-					           :class="{'disabled':!currentModel}"
+					           :class="{'disabled':!currentMark}"
 					           @click="tabClick('models')">
-						{{ currentModel ? '2. ' + currentModel.title : '2. Выбрать модель' }}
+						{{ currentModel ? '2. ' + currentModel.title : '2. Модель' }}
 					</tabs-item>
 					
 					<tabs-item :is-active="tabComponent === 'cars'"
 					           :class="{'disabled':!currentGeneration}"
 					           @click="tabClick('cars')">
-						3. Выбрать автомобиль
+						3. Автомобиль
 					</tabs-item>
 				</ul>
 			</div>
@@ -35,10 +35,10 @@ export default {
 		...mapGetters({
 			allMarksCount: 'marks/marks/allMarksCount',
 			
-			currentMark: 'modal/modal-choose-car/currentMark',
-			currentModel: 'modal/modal-choose-car/currentModel',
-			currentGeneration: 'modal/modal-choose-car/currentGeneration',
-			tabComponent: 'modal/modal-choose-car/tabComponent'
+			currentMark: 'modal/modal-choose/currentMark',
+			currentModel: 'modal/modal-choose/currentModel',
+			currentGeneration: 'modal/modal-choose/currentGeneration',
+			tabComponent: 'modal/modal-choose/tabComponent'
 		}),
 		currentComponent() {
 			if (this.tabComponent === 'marks') {
@@ -54,8 +54,7 @@ export default {
 	},
 	methods: {
 		...mapMutations({
-			setModalMain: 'modal/modal-main/SET_MODAL_MAIN',
-			setTabComponent: 'modal/modal-choose-car/SET_TAB_COMPONENT'
+			setTabComponent: 'modal/modal-choose/SET_TAB_COMPONENT'
 		}),
 		tabClick(index) {
 			this.setTabComponent(index)
