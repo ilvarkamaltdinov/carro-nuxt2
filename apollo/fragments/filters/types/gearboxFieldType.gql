@@ -1,0 +1,5 @@
+fragment GearboxFieldType on GearboxField {
+  title
+  id
+  slug
+}

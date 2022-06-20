@@ -1,208 +1,69 @@
-query offerFilters(
-    $site_id: Int,
-    $page: Int,
-    $limit: Int,
-    $category: String,
-    $mark_slug_array: [String],
-    $folder_slug_array: [String],
-    $sort: String,
-    $generation_slug_array: [String],
-    $engine_type_id_array: [Int],
-    $body_type_id_array: [Int],
-    $gearbox_id_array: [Int],
-    $drive_type_id_array: [Int],
-    $owner_id_array:[Int],
-    $year_from: Int,
-    $year_to: Int,
-    $price_from: Int,
-    $price_to: Int,
-    $url: String
-) {
-    offerFilters(
-        page: $page,
-        limit: $limit,
-        site_id: $site_id,
-        mark_slug_array: $mark_slug_array,
-        folder_slug_array: $folder_slug_array,
-        sort: $sort,
-        generation_slug_array: $generation_slug_array,
-        engine_type_id_array: $engine_type_id_array,
-        body_type_id_array: $body_type_id_array,
-        gearbox_id_array: $gearbox_id_array,
-        drive_type_id_array: $drive_type_id_array,
-        owner_id_array: $owner_id_array,
-        year_from: $year_from,
-        year_to: $year_to,
-        price_from: $price_from,
-        price_to: $price_to,
-        category: $category,
-        url:$url
-    )
-    {
-        mark{
-            title
-            id
-            slug
-        }
-        folder{
-            title
-            id
-            slug
-            mark_id
-        }
-        generation{
-            title
-            id
-            slug
-        }
-        bodyType{
-            title
-            id
-            slug
-        }
-        engineType{
-            title
-            id
-            slug
-        }
-        driveType{
-            title
-            id
-            slug
-        }
-        owner{
-            title
-            id
-            slug
-        }
-        gearbox{
-            title
-            id
-            slug
-        }
-        year
-        price
-        chosen{
-            mark{
-                title
-                id
-                slug
-            }
-            folder{
-                title
-                id
-                slug
-                mark_id
-            }
-            generation{
-                title
-                id
-                slug
-            }
-            gearbox{
-                title
-                id
-                slug
-            }
-            engineType{
-                title
-                id
-                slug
-            }
-            driveType{
-                title
-                id
-                slug
-            }
-            bodyType{
-                title
-                id
-                slug
-            }
-            owner{
-                title
-                id
-                slug
-            }
-            yearFrom
-            yearTo
+#import "../fragments/filters/offerFilterValues.gql"
+#import "../fragments/offer/offerPagination.gql"
 
-        }
-    }
-    offers(
-        page: $page,
-        limit: $limit,
-        site_id: $site_id,
-        mark_slug_array: $mark_slug_array,
-        folder_slug_array: $folder_slug_array,
-        sort: $sort,
-        generation_slug_array: $generation_slug_array,
-        engine_type_id_array: $engine_type_id_array,
-        body_type_id_array: $body_type_id_array,
-        gearbox_id_array: $gearbox_id_array,
-        drive_type_id_array: $drive_type_id_array,
-        owner_id_array: $owner_id_array,
-        year_from: $year_from,
-        year_to: $year_to,
-        price_from: $price_from,
-        price_to: $price_to,
-        category: $category,
-        url:$url
-    ) {
-        data {
-            id
-            name
-            price
-            run
-            year
-            engine_power
-            engine_volume
-            mark {
-                id
-                slug
-                title
-            }
-            folder {
-                id
-                slug
-                title
-            }
-            images {
-                thumb
-            }
-            owner {
-                id
-                title
-                number
-            }
-            driveType {
-                id
-                title
-                name
-            }
-            bodyType {
-                id
-                title
-                name
-            }
-            gearbox {
-                id
-                title
-                name
-            }
-            engineType {
-                id
-                title
-                name
-            }
-            external_id
-            external_unique_id
-            generation {
-                id
-                slug
-                name
-            }
-        }
-        last_page
-    }
+query offerFilters(
+  $site_id: Int,
+  $page: Int,
+  $limit: Int,
+  $category: String,
+  $mark_slug_array: [String],
+  $folder_slug_array: [String],
+  $sort: String,
+  $generation_slug_array: [String],
+  $engine_type_id_array: [Int],
+  $body_type_id_array: [Int],
+  $gearbox_id_array: [Int],
+  $drive_type_id_array: [Int],
+  $owner_id_array:[Int],
+  $year_from: Int,
+  $year_to: Int,
+  $price_from: Int,
+  $price_to: Int,
+  $url: String
+) {
+  offerFilters(
+    page: $page,
+    limit: $limit,
+    site_id: $site_id,
+    mark_slug_array: $mark_slug_array,
+    folder_slug_array: $folder_slug_array,
+    sort: $sort,
+    generation_slug_array: $generation_slug_array,
+    engine_type_id_array: $engine_type_id_array,
+    body_type_id_array: $body_type_id_array,
+    gearbox_id_array: $gearbox_id_array,
+    drive_type_id_array: $drive_type_id_array,
+    owner_id_array: $owner_id_array,
+    year_from: $year_from,
+    year_to: $year_to,
+    price_from: $price_from,
+    price_to: $price_to,
+    category: $category,
+    url:$url
+  )
+  {
+    ... OfferFilterValues
+  }
+  offers(
+    page: $page,
+    limit: $limit,
+    site_id: $site_id,
+    mark_slug_array: $mark_slug_array,
+    folder_slug_array: $folder_slug_array,
+    sort: $sort,
+    generation_slug_array: $generation_slug_array,
+    engine_type_id_array: $engine_type_id_array,
+    body_type_id_array: $body_type_id_array,
+    gearbox_id_array: $gearbox_id_array,
+    drive_type_id_array: $drive_type_id_array,
+    owner_id_array: $owner_id_array,
+    year_from: $year_from,
+    year_to: $year_to,
+    price_from: $price_from,
+    price_to: $price_to,
+    category: $category,
+    url:$url
+  ) {
+    ... OfferPagination
+  }
 }
