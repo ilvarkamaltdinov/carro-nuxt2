@@ -1,4 +1,5 @@
 .makes__link {
+  cursor: pointer;
   display: flex;
   align-items: center;
   transition: $transitionHover;
@@ -22,6 +23,7 @@
 }
 
 .makes__letters-link {
+  cursor: pointer;
   @include font-desktop-h2;
 }
 

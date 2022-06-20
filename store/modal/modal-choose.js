@@ -6,11 +6,13 @@ export const state = () => ({
     tabComponent: 'marks',
     models: [],
     generations: [],
-    cars: [],
+    offers: [],
     currentMark: null,
     currentModel: null,
     currentGeneration: null,
     currentCar: null,
+    loading: true,
+    sort: 'price|asc'
 })
 export const getters = {
     tabComponent: (state) => {
@@ -19,6 +21,9 @@ export const getters = {
     // --------- Выбранная марка, модель, поколение, автомобиль
     currentMark: (state) => {
         return state.currentMark
+    },
+    sort: (state) => {
+        return state.sort
     },
     currentModel: (state) => {
         return state.currentModel
@@ -36,14 +41,17 @@ export const getters = {
     generations: (state) => {
         return state.generations
     },
-    cars: (state) => {
-        return state.cars
+    offers: (state) => {
+        return state.offers
+    },
+    loading: (state) => {
+        return state.loading
     }
 }
 export const actions = {
     async getModels({commit, state}, payload) {
         let variables = {
-            site_id: 21,
+            site_id: $nuxt.context.$config.site_id,
             mark_slug: state.currentMark.slug
         }
         let client = this.app.apolloProvider.defaultClient
@@ -56,7 +64,7 @@ export const actions = {
     },
     async getGenerations({commit, state}, payload) {
         let variables = {
-            site_id: 21,
+            site_id: $nuxt.context.$config.site_id,
             mark_slug: state.currentMark.slug,
             folder_slug: payload.slug
         }
@@ -68,11 +76,13 @@ export const actions = {
             })
         commit('SET_GENERATIONS', generations.data.generations)
     },
-    async getCars({commit, state}, payload) {
+    async getOffers({commit, state}) {
+        commit('SET_LOADING', true)
         let variables = {
-            site_id: 21,
+            site_id: $nuxt.context.$config.site_id,
             page: 1,
             limit: 10,
+            sort: state.sort,
             mark_slug: state.currentMark.slug,
             folder_slug: state.currentModel.slug,
             generation_slug: state.currentGeneration.slug
@@ -83,7 +93,8 @@ export const actions = {
                 query: usedOffers,
                 variables: Object.assign(variables)
             })
-        commit('SET_CARS', cars.data.offers.data)
+        commit('SET_OFFERS', cars.data.offers.data)
+        commit('SET_LOADING', false)
     },
 
     chooseMark({commit, dispatch}, payload) {
@@ -103,7 +114,7 @@ export const actions = {
     },
     chooseGeneration({commit, dispatch}, payload) {
         commit('SET_CURRENT_GENERATION', payload);
-        dispatch('getCars', payload);
+        dispatch('getOffers', payload);
         commit('SET_TAB_COMPONENT', 'cars');
     },
 
@@ -121,8 +132,8 @@ export const mutations = {
     SET_GENERATIONS(state, data) {
         state.generations = data
     },
-    SET_CARS(state, data) {
-        state.cars = data
+    SET_OFFERS(state, data) {
+        state.offers = data
     },
     SET_CURRENT_MODEL(state, data) {
         state.currentModel = data
@@ -132,5 +143,11 @@ export const mutations = {
     },
     SET_CURRENT_CAR(state, data) {
         state.currentCar = data
-    }
+    },
+    SET_LOADING(state, data) {
+        state.loading = data
+    },
+    SET_MODAL_SORT(state, data) {
+        state.sort = data
+    },
 }

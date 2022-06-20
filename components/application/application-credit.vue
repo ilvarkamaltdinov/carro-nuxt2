@@ -18,9 +18,8 @@
 				</div>
 				<form-credit />
 			</div>
-			
 			<div v-if="currentCar" class="application__catalog catalog grid__col-8">
-				<catalog-item inline :info="currentCar"/>
+				<catalog-item-large-desktop :has-buttons="false" :offer="currentCar"/>
 			</div>
 			<button v-else class="application__choose-car grid__col-8"
 			        @click="chooseCar">
@@ -71,7 +70,7 @@
 	</section>
 </template>
 <script>
-import {mapGetters, mapMutations} from 'vuex'
+import {mapActions, mapGetters, mapMutations} from 'vuex'
 
 export default {
 	data() {
@@ -95,11 +94,16 @@ export default {
 		}
 	},
 	methods: {
-		...mapMutations({
-			setModalMain: 'modal/modal-main/SET_MODAL_MAIN'
+		...mapActions({
+			openModal: 'modal/modal-main/openModal'
 		}),
 		chooseCar() {
-			this.setModalMain(this.modalChooseCar)
+			let payload = {
+				modal_component: 'modal-choose',
+				modal_title: 'Выберите автомобиль',
+				modal_sub_title: '10 560 автомобилей в наличии'
+			}
+			this.openModal(payload)
 		}
 	}
 }

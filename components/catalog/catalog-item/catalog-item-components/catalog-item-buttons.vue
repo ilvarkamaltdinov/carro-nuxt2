@@ -5,20 +5,24 @@
 			                 @click="like()" />
 			<button-call @click="call" />
 		</div>
-		<button-credit v-if="!chooseButton"
+		<button-choose v-if="choose"
+		               @click="chooseClick(offer)">
+			{{ currentCar === offer ? 'Выбрано' : 'Выбрать' }}
+		</button-choose>
+		<button-credit v-else
 		               @click="credit" />
-		<button-choose v-else
-		               @click="$emit('chooseClick')" />
+	
 	</div>
 </template>
 
 <script>
-import {mapActions, mapGetters} from "vuex";
+import {mapActions, mapGetters, mapMutations} from "vuex";
 
 export default {
 	computed: {
 		...mapGetters({
-			likesArray: 'favorite/favorite/likesArray'
+			likesArray: 'favorite/favorite/likesArray',
+			currentCar: 'modal/modal-choose/currentCar'
 		})
 	},
 	props: {
@@ -27,16 +31,24 @@ export default {
 			default: () => {
 			}
 		},
-		chooseButton: {
+		choose: {
 			type: Boolean,
 			default: false
-		}
+		},
 	},
 	methods: {
 		...mapActions({
 			liked: 'favorite/favorite/liked',
-			openModal: 'modal/modal-main/openModal'
+			openModal: 'modal/modal-main/openModal',
+			closeModal: 'modal/modal-main/closeModal',
 		}),
+		...mapMutations({
+			setCurrentCar: 'modal/modal-choose/SET_CURRENT_CAR'
+		}),
+		async chooseClick(offer) {
+			this.setCurrentCar(offer)
+			this.closeModal()
+		},
 		async like() {
 			await this.liked(this.offer.external_id)
 		},

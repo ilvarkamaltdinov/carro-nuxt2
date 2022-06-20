@@ -6,7 +6,8 @@
 				<makes-item v-for="item in generations"
 				            :link="false"
 				            :active="item === currentGeneration"
-				            @click="chooseGeneration(item)"
+				            :for-chose-modal="true"
+				            @choose="chooseGeneration(item)"
 				            :item="item"
 				            :key="item.id" />
 			</ul>

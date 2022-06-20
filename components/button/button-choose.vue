@@ -1,5 +1,5 @@
 <template>
 	<button class="button button--credit" @click="$emit('click')">
-		Выбрать
+		<slot></slot>
 	</button>
 </template>

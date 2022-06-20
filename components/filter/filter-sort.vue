@@ -36,8 +36,8 @@
 				</div>
 			</div>
 			<div class="filter__buttons-wrap">
-				<button-view-s @click="changeView('s')"/>
-				<button-view-l @click="changeView('l')"/>
+				<button-view-s @click="changeView('s')" />
+				<button-view-l @click="changeView('l')" />
 			</div>
 		</div>
 	</div>
@@ -49,34 +49,45 @@ export default {
 	data() {
 		return {
 			isActive: false,
+			sortList: {
+				'price|asc': 'Цена: Сначала дешевле',
+				'price|desc': 'Цена: Сначала дороже',
+				'run|asc': 'Пробег: Минимальный пробег',
+				'year|desc': 'Год: Сначала новее'
+			}
+		}
+	},
+	props: {
+		modal: {
+			type: Boolean,
+			default: false
 		}
 	},
 	computed: {
 		...mapGetters({
-			sort: 'filters/filters/sort'
+			sort_in_filter: 'filters/filters/sort',
+			sort_in_modal: 'modal/modal-choose/sort',
 		}),
 		currentSort() {
-			if (this.sort === 'price|asc') {
-				return 'Цена: Сначала дешевле'
-			} else if (this.sort === 'price|desc') {
-				return 'Цена: Сначала дороже'
-			} else if (this.sort === 'run|asc') {
-				return 'Пробег: Минимальный пробег'
-			} else if (this.sort === 'year|desc') {
-				return 'Год: Сначала новее'
+			if (this.modal) {
+				return this.sortList[this.sort_in_modal]
+			} else{
+				return this.sortList[this.sort_in_filter]
 			}
 		}
 	},
 	methods: {
 		...mapActions({
 			getFilters: 'filters/filters/getFilters',
+			getOffers: 'modal/modal-choose/getOffers',
 			openModal: 'modal/modal-main/openModal'
 		}),
 		...mapMutations({
 			setSort: 'filters/filters/SET_SORT',
-			setView:'catalog/catalog-cars/SET_VIEW'
+			setModalSort: 'modal/modal-choose/SET_MODAL_SORT',
+			setView: 'catalog/catalog-cars/SET_VIEW'
 		}),
-		changeView(type){
+		changeView(type) {
 			this.setView(type)
 		},
 		openFilter() {
@@ -88,8 +99,14 @@ export default {
 			this.openModal(payload)
 		},
 		async sortChosen(sort) {
-			this.setSort(sort)
-			await this.getFilters()
+			if (this.modal) {
+				this.setModalSort(sort)
+				await this.getOffers()
+			} else {
+				this.setSort(sort)
+				await this.getFilters()
+			}
+			
 		}
 	}
 }

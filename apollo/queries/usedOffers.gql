@@ -1,3 +1,4 @@
+#import "../fragments/offer/offerPagination.gql"
 query usedOffers(
   $site_id: Int!,
   $page: Int!,
@@ -11,7 +12,8 @@ query usedOffers(
   $drive_type_id: Int,
   $owner_id: Int,
   $year_from: Int,
-  $year_to: Int
+  $year_to: Int,
+  $external_id_array: [Int],
 ) {
   offers(
     page: $page,
@@ -26,57 +28,9 @@ query usedOffers(
     drive_type_id: $drive_type_id,
     owner_id: $owner_id,
     year_from: $year_from,
-    year_to: $year_to
+    year_to: $year_to,
+    external_id_array: $external_id_array,
   ) {
-    data {
-      id
-      name
-      price
-      run
-      year
-      engine_power
-      engine_volume
-      mark {
-        id
-        slug
-        title
-      }
-      folder {
-        id
-        slug
-        title
-      }
-      images {
-        thumb
-      }
-      owner {
-        id
-        title
-        number
-      }
-      driveType {
-        id
-        title
-        name
-      }
-      gearbox {
-        id
-        title
-        name
-      }
-      engineType {
-        id
-        title
-        name
-      }
-      external_id
-      external_unique_id
-      generation {
-        id
-        slug
-        name
-      }
-    }
-    last_page
+    ... OfferPagination
   }
 }

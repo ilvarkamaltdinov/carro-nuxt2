@@ -106,6 +106,7 @@ export default {
     },
     publicRuntimeConfig: {
         api_domain: process.env.API_DOMAIN,
+        api_endpoint: process.env.API_ENDPOINT,
         domain: process.env.DOMAIN,
         site_id: process.env.SITE_ID
     }

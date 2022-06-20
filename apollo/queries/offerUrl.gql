@@ -1,0 +1,22 @@
+#import "../fragments/union/offerUrl.gql"
+#import "../fragments/union/offerUrlFilterPagination.gql"
+
+query offerUrl(
+    $site_id: Int,
+    $url: String
+) {
+    offerUrl(
+        site_id: $site_id
+        url: $url
+    )
+    {
+        __typename
+        ... on OfferUrlType {
+            ... OfferUrl
+        }
+        ... on OfferUrlFilterPaginationType {
+            ... OfferUrlFilterPagination
+        }
+    }
+}
+

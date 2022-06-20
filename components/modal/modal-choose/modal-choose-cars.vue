@@ -4,9 +4,13 @@
 		<section class="page-main__catalog catalog grid">
 			<h2 class="visually-hidden">Автомобили в наличии</h2>
 			<div class="grid__col-8">
-				<filter-sort />
-				<div class="catalog__list grid grid--catalog">
-					<catalog-item-small-desktop :has-buttons="false" :offer="modalData"/>
+				<filter-sort modal/>
+				<skeleton-catalog-desktop-small v-if="loading"/>
+				<div v-else class="catalog__list grid grid--catalog">
+					<catalog-item-small-desktop v-for="offer in offers"
+					                            :offer="offer"
+					                            :choose="true"
+					                            :key="offer.id" />
 				</div>
 				<button-more>Показать больше</button-more>
 			</div>
@@ -17,7 +21,10 @@
 <script>
 import {mapActions, mapGetters, mapMutations} from 'vuex'
 import catalogButtonEvents from "~/mixins/catalog/catalog-button-events";
+
 export default {
+	components: {},
+	
 	mixins: [catalogButtonEvents],
 	methods: {
 		...mapMutations({
@@ -25,8 +32,7 @@ export default {
 			setCurrentCar: 'modal/modal-choose/SET_CURRENT_CAR'
 		}),
 		...mapActions({
-			chooseGeneration: 'modal/modal-choose/chooseGeneration',
-			closeModal:'modal/modal-main/closeModal'
+			closeModal: 'modal/modal-main/closeModal'
 		}),
 		chooseClick(carInfo) {
 			this.setCurrentCar(carInfo)
@@ -35,7 +41,8 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			cars: 'modal/modal-choose/cars'
+			offers: 'modal/modal-choose/offers',
+			loading: 'modal/modal-choose/loading'
 		})
 	}
 }

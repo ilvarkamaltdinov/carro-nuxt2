@@ -10,7 +10,7 @@
 			<rating />
 			<catalog-item-tech-list :offer="offer" />
 		</div>
-		<catalog-item-buttons v-if="hasButtons"
+		<catalog-item-buttons :choose="choose" v-if="hasButtons"
 		                      :offer="offer" />
 	</article>
 </template>
@@ -20,6 +20,10 @@ import filters from "~/mixins/filters";
 export default {
 	mixins: [filters],
 	props: {
+		choose:{
+			type: Boolean,
+			default: false
+		},
 		hasButtons: {
 			type: Boolean,
 			default: true

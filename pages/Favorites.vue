@@ -4,7 +4,7 @@
 			<crumbs :crumbs="crumbs"/>
 		</div>
 		<div class="grid grid--container">
-			<catalog-offers/>
+			<catalog-favorites/>
 		</div>
 	</main>
 </template>

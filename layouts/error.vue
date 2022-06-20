@@ -13,6 +13,7 @@ export default {
 <style scoped lang="scss">
   .error_page{
     font-size: 64px;
+	  padding-top: 240px;
     display: flex;
     align-items: center;
     justify-content: center;
