@@ -2,7 +2,7 @@
 	<div class="catalog__title-wrap">
 		<div class="catalog__title">
 			<h3 class="catalog__heading">
-				<nuxt-link @click.native="getOffer(offer)"
+				<nuxt-link @click.native="setOfferClick(true)"
 				           :to="`/used/${offer.mark.slug}/${offer.folder.slug}/${offer.external_id}`"
 				           class="catalog__title-link">
 					<span class="catalog__title">
@@ -18,13 +18,13 @@
 </template>
 <script>
 import filters from "~/mixins/filters";
-import {mapActions} from "vuex";
+import {mapMutations} from "vuex";
 
 export default {
 	mixins: [filters],
 	methods: {
-		...mapActions({
-			getOffer: 'catalog/catalog-cars/getOffer'
+		...mapMutations({
+			setOfferClick: 'catalog/catalog-cars/SET_OFFER_CLICK'
 		})
 	},
 	props: {

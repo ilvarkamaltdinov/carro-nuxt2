@@ -11,13 +11,9 @@
 	</section>
 </template>
 <script>
-import catalog from "~/mixins/catalog/catalog-index";
-import catalogButtonEvents from "~/mixins/catalog/catalog-button-events";
 import {mapGetters} from "vuex";
 
 export default {
-	components: {},
-	
 	computed: {
 		...mapGetters({
 			offers: 'filters/filters/offers',

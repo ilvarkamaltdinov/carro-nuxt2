@@ -28,7 +28,6 @@
 				</a>
 			</div>
 		</div>
-	
 		<div class="car__slider-wrap">
 			<div class="grid grid--container">
 				<car-slider />
@@ -45,13 +44,37 @@
 	</section>
 </template>
 <script>
-import {mapGetters} from 'vuex'
-
+import {mapGetters, mapMutations} from 'vuex'
+import usedOffer from "~/apollo/queries/usedOffer"
 export default {
 	computed: {
 		...mapGetters({
 			offer: 'catalog/catalog-cars/offer'
 		})
+	},
+	async fetch(){
+		let variables = {
+			site_id: this.$config.site_id,
+			mark_slug: this.$route.params.mark,
+			folder_slug: this.$route.params.model,
+			external_id: Number(this.$route.params.car)
+		}
+		let response = await this.offerRequest(variables)
+		this.setOffer(response.data.offer)
+	},
+	methods:{
+		...mapMutations({
+			setOffer: 'catalog/catalog-cars/SET_OFFER'
+		}),
+		offerRequest(variables) {
+			let client = this.$apolloProvider.defaultClient
+			return client.query(
+					{
+						query: usedOffer,
+						variables: this.$removeEmptyObjects(variables),
+						fetchPolicy: 'network-only'
+					})
+		},
 	}
 }
 </script>

@@ -3,13 +3,12 @@
 		<div class="grid">
 			<crumbs :crumbs="crumbs" />
 		</div>
-		<div class="grid grid--container">
-			<catalog-used/>
-		</div>
+		<catalog-used/>
 	</main>
 </template>
 <script>
 export default {
+	layout: 'catalogLayout',
 	data() {
 		return {
 			crumbs: [

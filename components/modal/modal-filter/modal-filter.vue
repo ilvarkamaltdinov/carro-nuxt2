@@ -62,7 +62,7 @@ export default {
 			// this.checkGeneration()
 			await this.closeModal()
 			await this.setUrl();
-			await this.getFilters(false)
+			// await this.getFilters(false)
 		},
 		setUrl() {
 			let mark_slug_array = this.chosen.mark?.map(item => item.slug)

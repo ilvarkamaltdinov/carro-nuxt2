@@ -29,7 +29,7 @@ export default {
 			loop: true,
 			autoplayDisableOnInteraction: false,
 			autoplay: false,
-			slidesPerView: 1.1,
+			slidesPerView: 2.1,
 			centeredSlides: true,
 			watchSlidesProgress: true,
 			spaceBetween: 8,

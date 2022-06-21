@@ -3,22 +3,21 @@
 		<div class="grid">
 			<!--<crumbs :crumbs="crumbs"/>-->
 		</div>
-		<div class="grid grid--container">
-			<component :is="currentComponent"/>
-		</div>
+		<component :is="currentComponent"/>
 	</main>
 </template>
 <script>
 import {mapGetters} from "vuex";
 
 export default {
+	layout: 'catalogLayout',
 	computed: {
 		...mapGetters({
 			chosen: 'filters/filters/chosen',
 			carPage:'filters/filters/carPage'
 		}),
 		currentComponent(){
-			return  this.carPage ? 'car' :'catalog-used'
+			return this.carPage ? 'car' :'catalog-used'
 		}
 		// crumbs() {
 		// 	return [

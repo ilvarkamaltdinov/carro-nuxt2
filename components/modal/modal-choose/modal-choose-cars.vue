@@ -20,12 +20,7 @@
 </template>
 <script>
 import {mapActions, mapGetters, mapMutations} from 'vuex'
-import catalogButtonEvents from "~/mixins/catalog/catalog-button-events";
-
 export default {
-	components: {},
-	
-	mixins: [catalogButtonEvents],
 	methods: {
 		...mapMutations({
 			setCallbackCar: 'modal/modal-callback/SET_CALLBACK_CAR',

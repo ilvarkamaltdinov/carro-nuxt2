@@ -1,9 +1,11 @@
 import usedOffers from '~/apollo/queries/usedOffers'
 import usedOffer from '~/apollo/queries/usedOffer'
+
 export const state = () => ({
     catalogCars: null,
     offer: null,
-    view: 's'
+    view: 's',
+    isOfferCLick: false
 })
 export const getters = {
     catalogCars: (state) => {
@@ -12,12 +14,15 @@ export const getters = {
     offer: (state) => {
         return state.offer
     },
+    isOfferCLick: (state) => {
+        return state.isOfferCLick
+    },
     view: (state) => {
         return state.view
     },
 }
 export const actions = {
-    async getOffer({commit}, payload){
+    async getOffer({commit}, payload) {
         let variables = {
             site_id: $nuxt.context.$config.site_id,
             mark_slug: payload.mark.slug,
@@ -47,10 +52,15 @@ export const mutations = {
     SET_CATALOG_CARS(state, data) {
         state.catalogCars = data
     },
-    SET_OFFER(state, data){
+    SET_OFFER(state, data) {
         state.offer = data
+        state.isOfferCLick = false
     },
-    SET_VIEW(state, data){
+    SET_VIEW(state, data) {
         state.view = data
+    },
+    SET_OFFER_CLICK(state, data) {
+        console.log('offerClickChanged')
+        state.isOfferCLick = data
     }
 }

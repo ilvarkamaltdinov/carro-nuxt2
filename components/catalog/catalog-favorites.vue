@@ -2,10 +2,16 @@
 	<section class="page-main__catalog catalog grid__col-12">
 		<heading-h2>Понравившиеся автомобили</heading-h2>
 		<skeleton-catalog-desktop-small v-if="loading" />
-		<component :is="component"
-		           v-for="offer in liked_offers"
-		           :offer="offer"
-		           :key="offer.id" />
+		<div v-else class="catalog__list grid grid__col-12">
+			<component :is="component"
+			           v-for="offer in liked_offers"
+			           :offer="offer"
+			           :key="offer.id" />
+		</div>
+		<div v-if="liked_offers.length === 0">
+			Нет выбранных автомобилей
+		</div>
+		
 		<!--<button-more />-->
 	</section>
 </template>
