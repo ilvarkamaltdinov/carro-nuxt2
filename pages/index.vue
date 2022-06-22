@@ -4,10 +4,10 @@
 			<h1 class="visually-hidden">Автомобили с пробегом в Москве</h1>
 			<div class="page-main__promo grid__col-8">
 				<slider-index />
-				<component :is="isMobile ? 'stories' : 'stories-desktop'" />
+				<component :is="$device.isMobile ? 'stories' : 'stories-desktop'" />
 			</div>
 			<form-index />
-			<component :is="isMobile ? 'catalog-list-index-mobile' : 'catalog-list-index-desktop'" />
+			<component :is="$device.isMobile ? 'catalog-list-index-mobile' : 'catalog-list-index-desktop'" />
 			<featured />
 			<video-about />
 		</div>
@@ -32,8 +32,7 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			storiesModal: 'stories/stories/storiesModal',
-			isMobile: 'isMobile'
+			storiesModal: 'stories/stories/storiesModal'
 		})
 	},
 	methods: {

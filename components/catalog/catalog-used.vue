@@ -12,7 +12,7 @@
 			</div>
 			<div class="grid__col-8">
 				<filter-sort />
-				<component :is="isMobile ? 'catalog-list-used-mobile' : 'catalog-list-used-desktop'" />
+				<component :is="$device.isMobile ? 'catalog-list-used-mobile' : 'catalog-list-used-desktop'" />
 				<!--<button-more>Показать больше</button-more>-->
 				<!--<pagination />-->
 			</div>
@@ -26,9 +26,6 @@ import capitalizeFirstLetter from "~/mixins/capitalizeFirstLetter";
 export default {
 	mixins: [capitalizeFirstLetter],
 	computed: {
-		...mapGetters({
-			isMobile: 'isMobile',
-		}),
 		// currentHeading() {
 		// 	if (this.$route.params.mark) {
 		// 		return this.capitalizeFirstLetter(this.$route.params.mark) + ' с пробегом'

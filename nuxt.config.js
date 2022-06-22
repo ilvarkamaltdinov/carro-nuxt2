@@ -77,6 +77,7 @@ export default {
         '@nuxtjs/style-resources',
         '@nuxtjs/svg-sprite',
         '@nuxtjs/apollo',
+        '@nuxtjs/device',
         '@nuxtjs/axios',
         '@nuxtjs/sitemap'
     ],

@@ -47,7 +47,7 @@
 				</nav>
 				<ul class="page-header__buttons">
 					<li class="page-header__buttons-item"
-					    v-if="isMobile">
+					    v-if="$device.isMobile">
 						<a class="page-header__buttons-link"
 						   href="">
 							<svg-icon class="icon"
@@ -110,7 +110,6 @@ import {mapGetters, mapMutations, mapActions} from 'vuex'
 export default {
 	computed: {
 		...mapGetters({
-			isMobile: 'isMobile',
 			modalMenu: 'modal/modal-menu/modalMenu',
 			modalMarks: 'modal/modal-marks/modalMarks',
 			allMarks: 'marks/marks/allMarks',

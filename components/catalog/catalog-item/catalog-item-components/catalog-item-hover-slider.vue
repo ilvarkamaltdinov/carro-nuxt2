@@ -1,6 +1,6 @@
 <template>
   <div class="top_slider">
-    <div class="mobile_slider" v-if="isMobile">
+    <div class="mobile_slider" v-if="$device.isMobile">
       <img v-for="(img,  index) in photos" :key="index" :src="img.thumb"  alt="image"/>
     </div>
     <div class="catalog__car_img" v-else>
@@ -36,11 +36,6 @@ export default {
     }
   },
   computed: {
-    isMobile() {
-      if (process.client) {
-        return !window.matchMedia("(min-width: 576px)").matches;
-      }
-    },
    coverSrc() {
     return this.forceCoverPhoto
       ? this.forceCoverPhoto

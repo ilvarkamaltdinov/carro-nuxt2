@@ -6,10 +6,3 @@
 		<Footer />
 	</div>
 </template>
-<script>
-import mobileCheck from "~/mixins/mobileCheck";
-
-export default {
-	mixins: [mobileCheck],
-}
-</script>

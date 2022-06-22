@@ -11,11 +11,10 @@ import {mapActions, mapGetters, mapMutations} from "vuex"
 import capitalizeFirstLetter from "~/mixins/capitalizeFirstLetter";
 import offerFilters from "~/apollo/queries/offerFilters";
 import offerUrl from "~/apollo/queries/offerUrl";
-import mobileCheck from "~/mixins/mobileCheck";
 
 export default {
 	middleware: 'test',
-	mixins: [capitalizeFirstLetter, mobileCheck],
+	mixins: [capitalizeFirstLetter],
 	// watch: {
 	// 	'$route'() {
 	// 		console.log(1111111)
@@ -114,7 +113,6 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			isMobile: 'isMobile',
 			isOfferCLick: 'catalog/catalog-cars/isOfferCLick'
 		})
 	}

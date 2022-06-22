@@ -30,6 +30,8 @@
         "vuejs-paginate": "^2.1.0"
     },
     "devDependencies": {
+        "@nuxt/types": "^2.15.8",
+        "@nuxtjs/device": "^2.1.0",
         "@nuxtjs/style-resources": "^1.2.1",
         "sass": "^1.43.4",
         "sass-loader": "10.1.1",

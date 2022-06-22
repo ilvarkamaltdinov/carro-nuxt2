@@ -27,11 +27,8 @@ export default {
 		}
 	},
 	computed: {
-		...mapGetters({
-			isMobile: 'isMobile'
-		}),
 		component() {
-			return this.isMobile ? 'catalog-item-large-mobile' : 'catalog-item-small-desktop'
+			return this.$device.isMobile ? 'catalog-item-large-mobile' : 'catalog-item-small-desktop'
 		}
 	},
 	async mounted() {

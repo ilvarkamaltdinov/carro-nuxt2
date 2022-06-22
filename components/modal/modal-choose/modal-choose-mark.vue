@@ -1,5 +1,5 @@
 <template>
-	<div class="modal__wrap" v-if="isMobile">
+	<div class="modal__wrap" v-if="$device.isMobile">
 		<makes for-chose-modal/>
 	</div>
 	<div class="modal__wrap" v-else>
@@ -11,10 +11,6 @@
 import {mapGetters} from "vuex";
 
 export default {
-	computed: {
-		...mapGetters({
-			isMobile: 'isMobile'
-		})
-	}
+
 }
 </script>

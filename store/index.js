@@ -2,25 +2,7 @@ export const strict = false
 import usedMarks from '~/apollo/queries/usedMarks'
 import usedOffer from '~/apollo/queries/usedOffer'
 import offerFilters from '~/apollo/queries/offerFilters'
-export const state = () => ({
-    isMobile: true
-})
-export const getters = {
-    isMobile: (state) => {
-        return state.isMobile
-    }
-}
-
-export const mutations = {
-    SET_IS_MOBILE(state, data) {
-        state.isMobile = data
-    },
-}
-
 export const actions = {
-    async fetch(){
-        console.log(11111, this)
-    },
     async nuxtServerInit({dispatch, commit}, {app, $config, route, $stringToArray}) {
         let client = app.apolloProvider.defaultClient
         // TODO ПОЛУЧАЮ СПИСОК МАРОК
