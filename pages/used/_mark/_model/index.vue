@@ -7,6 +7,7 @@
 	</main>
 </template>
 <script>
+
 export default {
 	layout: 'catalogLayout',
 }

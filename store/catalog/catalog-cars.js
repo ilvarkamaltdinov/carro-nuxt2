@@ -66,7 +66,6 @@ export const mutations = {
         state.view = data
     },
     SET_OFFER_CLICK(state, data) {
-        console.log('offerClickChanged')
         state.isOfferClick = data
     }
 }

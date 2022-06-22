@@ -1,5 +1,6 @@
 import offerFilters from '~/apollo/queries/offerFilters'
 import _ from 'lodash'
+import offerUrl from "~/apollo/queries/offerUrl";
 
 export const state = () => ({
     loading: true,
@@ -7,15 +8,15 @@ export const state = () => ({
     sort: 'price|asc',
     offers: null,
     chosen: {},
-    carPage: false,
+    lastUsedPage: '',
     isClick: false
 })
 export const getters = {
     filters: (state) => {
         return state.filters
     },
-    carPage: (state) => {
-        return state.carPage
+    lastUsedPage: (state) => {
+        return state.lastUsedPage
     },
     chosen: (state) => {
         return state.chosen
@@ -30,43 +31,11 @@ export const getters = {
         return state.offers
     },
     isClick: (state) => {
-      return state.isClick
+        return state.isClick
     }
 }
 export const actions = {
-    async getFilters({commit}, {$config, route, $stringToArray}) {
-        console.log($config, route, $stringToArray)
-        // commit('SET_LOADING', true)
-        // let variables = {
-        //     site_id: this.$config.site_id,
-        //     url: $nuxt.$route.path,
-        //     mark_slug_array: $nuxt.$stringToArray($nuxt.$route.query.mark_slug_array),
-        //     folder_slug_array: $nuxt.$stringToArray($nuxt.$route.query.folder_slug_array),
-        //     generation_slug_array: $nuxt.$stringToArray($nuxt.$route.query.generation_slug_array),
-        //     engine_type_id_array: $nuxt.$numberToArray($nuxt.$route.query.engine_type_id_array),
-        //     gearbox_id_array: $nuxt.$numberToArray($nuxt.$route.query.gearbox_id_array),
-        //     drive_type_id_array: $nuxt.$numberToArray($nuxt.$route.query.drive_type_id_array),
-        //     body_type_id_array: $nuxt.$numberToArray($nuxt.$route.query.body_type_id_array),
-        // }
-        // try {
-        //     let client = $nuxt.$apolloProvider.defaultClient
-        //     let response = await client.query(
-        //         {
-        //             query: offerFilters,
-        //             variables: $nuxt.$removeEmptyObjects(variables),
-        //             fetchPolicy: 'network-only'
-        //         })
-        //     commit('SET_FILTERS', response.data.offerFilters)
-        //     commit('SET_ALL_CHOSEN', response.data.offerFilters.chosen)
-        //     commit('SET_OFFERS', response.data.offers)
-        //     commit('SET_LOADING', false)
-        //
-        // }
-        // catch (error) {
-        //     console.log(error)
-        //     this.$nuxt.error({statusCode: 404})
-        // }
-    }
+
 }
 export const mutations = {
     SET_FILTERS(state, data) {
@@ -90,10 +59,10 @@ export const mutations = {
     SET_OFFERS(state, data) {
         state.offers = data
     },
-    SET_CAR_PAGE(state, data) {
-        state.carPage = data
+    SET_LAST_USED_PAGE(state, data) {
+        state.lastUsedPage = data
     },
-    SET_IS_CLICK(state, data){
-      state.isClick = data
+    SET_IS_CLICK(state, data) {
+        state.isClick = data
     }
 }

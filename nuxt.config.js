@@ -70,6 +70,7 @@ export default {
     components: true,
     router: {
         prefetchLinks: false,
+        linkActiveClass: 'active',
         linkExactActiveClass: 'active'
     },
     modules: [

@@ -3,10 +3,11 @@
 		<div class="grid">
 			<crumbs :crumbs="crumbs" />
 		</div>
-		<catalog-used/>
+		<catalog-used />
 	</main>
 </template>
 <script>
+
 export default {
 	layout: 'catalogLayout',
 	data() {

@@ -3,7 +3,7 @@
 		<div class="grid">
 			<!--<crumbs :crumbs="crumbs"/>-->
 		</div>
-		<component :is="currentComponent"/>
+		<component :is="currentComponent" />
 	</main>
 </template>
 <script>
@@ -14,10 +14,10 @@ export default {
 	computed: {
 		...mapGetters({
 			chosen: 'filters/filters/chosen',
-			carPage:'filters/filters/carPage'
+			lastUsedPage: 'filters/filters/lastUsedPage'
 		}),
-		currentComponent(){
-			return this.carPage ? 'car' :'catalog-used'
+		currentComponent() {
+			return this.lastUsedPage === 'car' ? 'car' : 'catalog-used'
 		}
 		// crumbs() {
 		// 	return [

@@ -39,6 +39,5 @@ export const actions = {
         //     }
         //     console.log(variables)
         // }
-
     }
 }

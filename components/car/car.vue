@@ -52,6 +52,9 @@ export default {
 			offer: 'catalog/catalog-cars/offer'
 		})
 	},
+	destroyed() {
+		this.setLastUsedPage('')
+	},
 	async fetch(){
 		let variables = {
 			site_id: this.$config.site_id,
@@ -64,7 +67,8 @@ export default {
 	},
 	methods:{
 		...mapMutations({
-			setOffer: 'catalog/catalog-cars/SET_OFFER'
+			setOffer: 'catalog/catalog-cars/SET_OFFER',
+			setLastUsedPage: 'filters/filters/SET_LAST_USED_PAGE'
 		}),
 		offerRequest(variables) {
 			let client = this.$apolloProvider.defaultClient
