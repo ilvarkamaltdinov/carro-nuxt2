@@ -5,7 +5,7 @@ export const state = () => ({
     catalogCars: null,
     offer: null,
     view: 's',
-    isOfferCLick: false
+    isOfferClick: false
 })
 export const getters = {
     catalogCars: (state) => {
@@ -14,14 +14,20 @@ export const getters = {
     offer: (state) => {
         return state.offer
     },
-    isOfferCLick: (state) => {
-        return state.isOfferCLick
+    isOfferClick: (state) => {
+        return state.isOfferClick
     },
     view: (state) => {
         return state.view
     },
 }
 export const actions = {
+
+  async defineOfferUrl(context, payload){
+    console.log(context)
+  },
+
+
     async getOffer({commit}, payload) {
         let variables = {
             site_id: $nuxt.context.$config.site_id,
@@ -54,13 +60,13 @@ export const mutations = {
     },
     SET_OFFER(state, data) {
         state.offer = data
-        state.isOfferCLick = false
+        state.isOfferClick = false
     },
     SET_VIEW(state, data) {
         state.view = data
     },
     SET_OFFER_CLICK(state, data) {
         console.log('offerClickChanged')
-        state.isOfferCLick = data
+        state.isOfferClick = data
     }
 }

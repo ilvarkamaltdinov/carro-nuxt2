@@ -14,7 +14,7 @@ import offerUrl from "~/apollo/queries/offerUrl";
 import mobileCheck from "~/mixins/mobileCheck";
 
 export default {
-	// middleware: 'test',
+	middleware: 'test',
 	mixins: [capitalizeFirstLetter, mobileCheck],
 	// watch: {
 	// 	'$route'() {
@@ -103,7 +103,7 @@ export default {
 				url: this.$route.path,
 			}
 			let client = this.$apolloProvider.defaultClient
-			
+
 			return client.query(
 					{
 						query: offerUrl,

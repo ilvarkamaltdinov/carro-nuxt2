@@ -7,7 +7,8 @@ export const state = () => ({
     sort: 'price|asc',
     offers: null,
     chosen: {},
-    carPage: false
+    carPage: false,
+    isClick: false
 })
 export const getters = {
     filters: (state) => {
@@ -27,6 +28,9 @@ export const getters = {
     },
     offers: (state) => {
         return state.offers
+    },
+    isClick: (state) => {
+      return state.isClick
     }
 }
 export const actions = {
@@ -88,5 +92,8 @@ export const mutations = {
     },
     SET_CAR_PAGE(state, data) {
         state.carPage = data
+    },
+    SET_IS_CLICK(state, data){
+      state.isClick = data
     }
 }
