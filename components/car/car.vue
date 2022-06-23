@@ -44,7 +44,7 @@
 	</section>
 </template>
 <script>
-import {mapGetters, mapMutations} from 'vuex'
+import {mapActions, mapGetters, mapMutations} from 'vuex'
 import usedOffer from "~/apollo/queries/usedOffer"
 export default {
 	computed: {
@@ -52,33 +52,26 @@ export default {
 			offer: 'catalog/catalog-cars/offer'
 		})
 	},
-	destroyed() {
-		this.setLastUsedPage('')
-	},
-	async fetch(){
+  async fetch(){
 		let variables = {
 			site_id: this.$config.site_id,
 			mark_slug: this.$route.params.mark,
 			folder_slug: this.$route.params.model,
 			external_id: Number(this.$route.params.car)
 		}
-		let response = await this.offerRequest(variables)
+		let response = await this.request({query:usedOffer, variables: variables})
 		this.setOffer(response.data.offer)
 	},
 	methods:{
 		...mapMutations({
 			setOffer: 'catalog/catalog-cars/SET_OFFER',
-			setLastUsedPage: 'filters/filters/SET_LAST_USED_PAGE'
+			setLastUsedPage: 'filters/filters/SET_LAST_USED_PAGE',
+      setFilterClick: 'filters/filters/SET_IS_FILTER_CLICK',
+      setIsOfferClick: 'filters/filters/SET_IS_OFFER_CLICK'
 		}),
-		offerRequest(variables) {
-			let client = this.$apolloProvider.defaultClient
-			return client.query(
-					{
-						query: usedOffer,
-						variables: this.$removeEmptyObjects(variables),
-						fetchPolicy: 'network-only'
-					})
-		},
+    ...mapActions({
+      request: 'filters/filters/request',
+    }),
 	}
 }
 </script>

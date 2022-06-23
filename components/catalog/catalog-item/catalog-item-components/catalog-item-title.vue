@@ -24,10 +24,10 @@ export default {
   mixins: [filters],
   methods: {
     ...mapMutations({
-      setLastUsedPage: 'filters/filters/SET_LAST_USED_PAGE'
+      setIsOfferClick: 'filters/filters/SET_IS_OFFER_CLICK'
     }),
     async linkClick(){
-      await this.setLastUsedPage('car')
+      this.setIsOfferClick(true)
       await this.$router.push(`/used/${this.offer.mark.slug}/${this.offer.folder.slug}/${this.offer.external_id}`)
     }
   },
