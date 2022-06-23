@@ -1,6 +1,4 @@
-import offerFilters from '~/apollo/queries/offerFilters'
 import _ from 'lodash'
-import offerUrl from "~/apollo/queries/offerUrl";
 
 export const state = () => ({
     loading: true,
@@ -8,15 +6,16 @@ export const state = () => ({
     sort: 'price|asc',
     offers: null,
     chosen: {},
-    lastUsedPage: '',
-    isClick: false
+    componentCatalog: '',
+    isFilterClick: false,
+    isOfferClick: false
 })
 export const getters = {
     filters: (state) => {
         return state.filters
     },
-    lastUsedPage: (state) => {
-        return state.lastUsedPage
+    componentCatalog: (state) => {
+        return state.componentCatalog
     },
     chosen: (state) => {
         return state.chosen
@@ -30,12 +29,27 @@ export const getters = {
     offers: (state) => {
         return state.offers
     },
-    isClick: (state) => {
-        return state.isClick
+    isFilterClick: (state) => {
+      return state.isFilterClick
+    },
+    isOfferClick: (state) => {
+      return state.isOfferClick
     }
 }
 export const actions = {
-
+  async request({}, {query, variables}) {
+    let assignVariables = {
+      site_id: this.$config.site_id
+    }
+    let client = this.app.apolloProvider.defaultClient
+    let params = {...assignVariables, ...variables}
+    return await client.query(
+      {
+        query: query,
+        variables: this.$removeEmptyObjects(params),
+        fetchPolicy: 'no-cache'
+      })
+  }
 }
 export const mutations = {
     SET_FILTERS(state, data) {
@@ -59,10 +73,13 @@ export const mutations = {
     SET_OFFERS(state, data) {
         state.offers = data
     },
-    SET_LAST_USED_PAGE(state, data) {
-        state.lastUsedPage = data
+    SET_COMPONENT_CATALOG(state, data) {
+        state.componentCatalog = data
     },
-    SET_IS_CLICK(state, data) {
-        state.isClick = data
+    SET_IS_FILTER_CLICK(state, data){
+      state.isFilterClick = data
+    },
+    SET_IS_OFFER_CLICK(state, data){
+      state.isOfferClick = data
     }
 }

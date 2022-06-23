@@ -14,10 +14,10 @@ export default {
 	computed: {
 		...mapGetters({
 			chosen: 'filters/filters/chosen',
-			lastUsedPage: 'filters/filters/lastUsedPage'
+      componentCatalog: 'filters/filters/componentCatalog'
 		}),
 		currentComponent() {
-			return this.lastUsedPage === 'car' ? 'car' : 'catalog-used'
+			return this.componentCatalog === 'car' ? 'car' : 'catalog-used'
 		}
 		// crumbs() {
 		// 	return [
