@@ -21,7 +21,7 @@
 				          name="icon-arrow"></svg-icon>
 			</button>
 		</div>
-		<!--<button-more @click.native="toCatalog">Все автомобили</button-more>-->
+		<button-more @click.native="toCatalog">Все автомобили</button-more>
 	</section>
 
 </template>
@@ -31,20 +31,26 @@ import {mapActions, mapGetters} from "vuex";
 export default {
 	computed: {
 		...mapGetters({
-			offers: 'filters/filters/offers',
+			offers: 'catalog/catalog-cars/offers',
 		}),
 		offers_list() {
 			return this.offers.data
 		}
 	},
+	methods:{
+		toCatalog(){
+			this.$router.push('/used')
+		}
+	},
 	async mounted() {
+		//TODO при клике на клонированную карточку редиректит с обновлением страницы
 		let sliderCatalog = await new swiper.default('.catalog--slider .swiper', {
 			modules: [swiper.Navigation, swiper.Autoplay],
-			loop: false,
-			autoplayDisableOnInteraction: true,
+			loop: true,
+			// autoplayDisableOnInteraction: true,
 			autoplay: false,
 			slidesPerView: 3,
-			initialSlide: 1,
+			initialSlide: 3,
 			centeredSlides: true,
 			watchSlidesProgress: true,
 			spaceBetween: 24,

@@ -2,14 +2,14 @@ import usedOffers from '~/apollo/queries/usedOffers'
 import usedOffer from '~/apollo/queries/usedOffer'
 
 export const state = () => ({
-    catalogCars: null,
+    offers: [],
     offer: null,
     view: 's',
     isOfferClick: false
 })
 export const getters = {
-    catalogCars: (state) => {
-        return state.catalogCars
+    offers: (state) => {
+        return state.offers
     },
     offer: (state) => {
         return state.offer
@@ -22,12 +22,6 @@ export const getters = {
     },
 }
 export const actions = {
-
-  async defineOfferUrl(context, payload){
-    console.log(context)
-  },
-
-
     async getOffer({commit}, payload) {
         let variables = {
             site_id: $nuxt.context.$config.site_id,
@@ -43,7 +37,7 @@ export const actions = {
             })
         commit('SET_OFFER', response.data.offer)
     },
-    async getCatalogCars({commit}, payload) {
+    async getOffers({commit}, payload) {
         let variables = {site_id: $nuxt.context.$config.site_id}
         let client = this.app.apolloProvider.defaultClient
         let offers = await client.query(
@@ -51,12 +45,12 @@ export const actions = {
                 query: usedOffers,
                 variables: Object.assign(variables, payload)
             })
-        commit('SET_CATALOG_CARS', offers.data.offers.data)
+        commit('SET_OFFERS', offers.data.offers.data)
     },
 }
 export const mutations = {
-    SET_CATALOG_CARS(state, data) {
-        state.catalogCars = data
+    SET_OFFERS(state, data) {
+        state.offers = data
     },
     SET_OFFER(state, data) {
         state.offer = data

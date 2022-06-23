@@ -27,6 +27,7 @@ export default {
       setLastUsedPage: 'filters/filters/SET_LAST_USED_PAGE'
     }),
     async linkClick(){
+			console.log('кликнул на тайтл в тачке')
       await this.setLastUsedPage('car')
       await this.$router.push(`/used/${this.offer.mark.slug}/${this.offer.folder.slug}/${this.offer.external_id}`)
     }
