@@ -16,7 +16,7 @@ import {mapGetters} from "vuex";
 export default {
 	computed: {
 		...mapGetters({
-			offers: 'filters/filters/offers',
+			offers: 'catalog/catalog-cars/offers',
 		}),
 		offers_list() {
 			return this.offers.data

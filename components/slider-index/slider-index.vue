@@ -6,165 +6,10 @@
 			<!-- Additional required wrapper-->
 			<div class="swiper-wrapper">
 				<!-- Slides-->
-				<div class="swiper-slide">
-					<div class="slider-index__item">
-						<div class="slider-index__media-wrap">
-							<div class="slider-index__media">
-								<picture>
-									<source type="image/webp"
-									        media="(min-width: 768px)"
-									        srcset="img/slider-index/slider-index-1/slider-index-element-1@1x.webp 1x, img/slider-index/slider-index-1/slider-index-element-1@2x.webp 2x" />
-									<source media="(min-width: 768px)"
-									        srcset="img/slider-index/slider-index-1/slider-index-element-1@1x.jpg 1x, img/slider-index/slider-index-1/slider-index-element-1@2x.jpg 2x" />
-									<source type="image/webp"
-									        srcset="img/slider-index/slider-index-1/slider-index-element-1@1x.webp 1x, img/slider-index/slider-index-1/slider-index-element-1@2x.webp 2x" />
-									<img class="slider-index__media slider-index__media--element"
-									     src="img/slider-index/slider-index-1/slider-index-element-1.png"
-									     loading="lazy"
-									     alt=""
-									     data-aos="fade-up"
-									     data-aos-duration="750"
-									     data-aos-easing="ease-in-out"
-									     data-aos-mirror="true" />
-								</picture>
-								<picture>
-									<source type="image/webp"
-									        media="(min-width: 768px)"
-									        srcset="img/slider-index/slider-index-1/slider-index-car-1@1x.webp 1x, img/slider-index/slider-index-1/slider-index-car-1@2x.webp 2x" />
-									<source media="(min-width: 768px)"
-									        srcset="img/slider-index/slider-index-1/slider-index-car-1@1x.jpg 1x, img/slider-index/slider-index-1/slider-index-car-1@2x.jpg 2x" />
-									<source type="image/webp"
-									        srcset="img/slider-index/slider-index-1/slider-index-car-1@1x.webp 1x, img/slider-index/slider-index-1/slider-index-car-1@2x.webp 2x" />
-									<img class="slider-index__media slider-index__media--car"
-									     src="img/slider-index/slider-index-1/slider-index-car-1.png"
-									     loading="lazy"
-									     alt=""
-									     data-aos="fade-right"
-									     data-aos-duration=" 750"
-									     data-aos-easing="ease-in-out"
-									     data-aos-mirror="true" />
-								</picture>
-							</div>
-						</div>
-						<div class="slider-index__text-wrap">
-							<div class="slider-index__circle"
-							     data-aos="fade-up-left"
-							     data-aos-duration="750"
-							     data-aos-easing="ease-in-out"
-							     data-aos-mirror="true"></div>
-							<div class="slider-index__text">
-								<div class="slider-index__heading">Рассрочка 0% от Совкомбанка</div>
-								<div class="slider-index__content">Успей купить авто на выгодных условиях</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="slider-index__item">
-						<div class="slider-index__media-wrap">
-							<div class="slider-index__media">
-								<picture>
-									<source type="image/webp"
-									        media="(min-width: 768px)"
-									        srcset="img/slider-index/slider-index-1/slider-index-element-1@1x.webp 1x, img/slider-index/slider-index-1/slider-index-element-1@2x.webp 2x" />
-									<source media="(min-width: 768px)"
-									        srcset="img/slider-index/slider-index-1/slider-index-element-1@1x.jpg 1x, img/slider-index/slider-index-1/slider-index-element-1@2x.jpg 2x" />
-									<source type="image/webp"
-									        srcset="img/slider-index/slider-index-1/slider-index-element-1@1x.webp 1x, img/slider-index/slider-index-1/slider-index-element-1@2x.webp 2x" />
-									<img class="slider-index__media slider-index__media--element"
-									     src="img/slider-index/slider-index-1/slider-index-element-1.png"
-									     loading="lazy"
-									     alt=""
-									     data-aos="fade-up"
-									     data-aos-duration="750"
-									     data-aos-easing="ease-in-out"
-									     data-aos-mirror="true" />
-								</picture>
-								<picture>
-									<source type="image/webp"
-									        media="(min-width: 768px)"
-									        srcset="img/slider-index/slider-index-1/slider-index-car-1@1x.webp 1x, img/slider-index/slider-index-1/slider-index-car-1@2x.webp 2x" />
-									<source media="(min-width: 768px)"
-									        srcset="img/slider-index/slider-index-1/slider-index-car-1@1x.jpg 1x, img/slider-index/slider-index-1/slider-index-car-1@2x.jpg 2x" />
-									<source type="image/webp"
-									        srcset="img/slider-index/slider-index-1/slider-index-car-1@1x.webp 1x, img/slider-index/slider-index-1/slider-index-car-1@2x.webp 2x" />
-									<img class="slider-index__media slider-index__media--car"
-									     src="img/slider-index/slider-index-1/slider-index-car-1.png"
-									     loading="lazy"
-									     alt=""
-									     data-aos="fade-right"
-									     data-aos-duration="750"
-									     data-aos-easing="ease-in-out"
-									     data-aos-mirror="true" />
-								</picture>
-							</div>
-						</div>
-						<div class="slider-index__text-wrap">
-							<div class="slider-index__circle"
-							     data-aos="fade-up-left"
-							     data-aos-duration="750"
-							     data-aos-easing="ease-in-out"
-							     data-aos-mirror="true"></div>
-							<div class="slider-index__text">
-								<div class="slider-index__heading">Рассрочка 0% от Совкомбанка</div>
-								<div class="slider-index__content">Успей купить авто на выгодных условиях</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="slider-index__item">
-						<div class="slider-index__media-wrap">
-							<div class="slider-index__media">
-								<picture>
-									<source type="image/webp"
-									        media="(min-width: 768px)"
-									        srcset="img/slider-index/slider-index-1/slider-index-element-1@1x.webp 1x, img/slider-index/slider-index-1/slider-index-element-1@2x.webp 2x" />
-									<source media="(min-width: 768px)"
-									        srcset="img/slider-index/slider-index-1/slider-index-element-1@1x.jpg 1x, img/slider-index/slider-index-1/slider-index-element-1@2x.jpg 2x" />
-									<source type="image/webp"
-									        srcset="img/slider-index/slider-index-1/slider-index-element-1@1x.webp 1x, img/slider-index/slider-index-1/slider-index-element-1@2x.webp 2x" />
-									<img class="slider-index__media slider-index__media--element"
-									     src="img/slider-index/slider-index-1/slider-index-element-1.png"
-									     loading="lazy"
-									     alt=""
-									     data-aos="fade-up"
-									     data-aos-duration="750"
-									     data-aos-easing="ease-in-out"
-									     data-aos-mirror="true" />
-								</picture>
-								<picture>
-									<source type="image/webp"
-									        media="(min-width: 768px)"
-									        srcset="img/slider-index/slider-index-1/slider-index-car-1@1x.webp 1x, img/slider-index/slider-index-1/slider-index-car-1@2x.webp 2x" />
-									<source media="(min-width: 768px)"
-									        srcset="img/slider-index/slider-index-1/slider-index-car-1@1x.jpg 1x, img/slider-index/slider-index-1/slider-index-car-1@2x.jpg 2x" />
-									<source type="image/webp"
-									        srcset="img/slider-index/slider-index-1/slider-index-car-1@1x.webp 1x, img/slider-index/slider-index-1/slider-index-car-1@2x.webp 2x" />
-									<img class="slider-index__media slider-index__media--car"
-									     src="img/slider-index/slider-index-1/slider-index-car-1.png"
-									     loading="lazy"
-									     alt=""
-									     data-aos="fade-right"
-									     data-aos-duration="750"
-									     data-aos-easing="ease-in-out"
-									     data-aos-mirror="true" />
-								</picture>
-							</div>
-						</div>
-						<div class="slider-index__text-wrap">
-							<div class="slider-index__circle"
-							     data-aos="fade-up-left"
-							     data-aos-duration="750"
-							     data-aos-easing="ease-in-out"
-							     data-aos-mirror="true"></div>
-							<div class="slider-index__text">
-								<div class="slider-index__heading">Рассрочка 0% от Совкомбанка</div>
-								<div class="slider-index__content">Успей купить авто на выгодных условиях</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				<slider-index-slide v-for="slide in slides"
+				                    :slide="slide"
+				                    :key="slide.id" />
+			
 			</div>
 			<!-- If we need pagination-->
 			<div class="swiper-pagination"></div>
@@ -181,6 +26,52 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 
 export default {
+	data() {
+		return {
+			slides: [
+				{
+					id: 1,
+					heading:'Рассрочка 0% от Совкомбанка',
+					content:'Успей купить авто на выгодных условиях'
+				},
+				{
+					id: 2,
+					heading:'Автокредит ВТБ',
+					content:'Лучшие условия для клиентов carro.ru'
+				},
+				{
+					id: 3,
+					heading:'Рассрочка от Сбера и Сетелем',
+					content:'Лучшие условия для клиентов CARRO'
+				},
+				{
+					id: 4,
+					heading:'Заморозили цены и ставки',
+					content:'Успей купить автомобиль по старой цене'
+				},
+				{
+					id: 5,
+					heading:'2-й комплект резины в подарок',
+					content:'При покупке автомобиля в кредит'
+				},
+				{
+					id: 6,
+					heading:'Супер-автокредит от 4.9% годовых',
+					content:'Скидка до 150 000 ₽, одобрение по паспорту и В/У, взнос от 0%'
+				},
+				{
+					id: 7,
+					heading:' Читайте наш Telegram-канал',
+					content:'Последние поступления, акции, новости'
+				},
+				{
+					id: 8,
+					heading:'Обменяй авто <br/> по Trade-In',
+					content:'Выгода до 250 000 ₽, рыночная цена, оформление 30 мин.'
+				}
+			]
+		}
+	},
 	mounted() {
 		const sliderIndexSwiper = new swiper.default('.slider-index .swiper', {
 			modules: [swiper.Navigation, swiper.Pagination, swiper.Autoplay],
