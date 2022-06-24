@@ -1,22 +1,40 @@
-<template lang="pug">
-	ul.pagination
-		li.pagination__item
-			a.pagination__link(href="") 1
-		li.pagination__item
-			a.pagination__link(href="") 2
-		li.pagination__item
-			a.pagination__link(href="") 3
-		li.pagination__item
-			a.pagination__link(href="") 4
-		li.pagination__item.pagination__item--active
-			a.pagination__link(href="") 5
-		li.pagination__item
-			a.pagination__link(href="") 6
-		li.pagination__item
-			a.pagination__link(href="") 7
-		li.pagination__item
-			a.pagination__link(href="") ...
-		li.pagination__item
-			a.pagination__link(href="") 99
-
+<template>
+	<client-only>
+		<paginate
+				v-model="currentPagination"
+				v-if="offers.last_page > 1"
+				:page-count="offers.last_page"
+				:page-range="7"
+				:click-handler="paginationCLick"
+				:active-class="'pagination__item--active'"
+				:page-link-class="'pagination__link'"
+				:page-class="'pagination__item'"
+				:container-class="'pagination'"
+				prev-text="назад"
+				next-text="вперед">
+		</paginate>
+	</client-only>
 </template>
+<script>
+export default {
+	props: {
+		offers: Object
+	},
+	computed: {
+		currentPagination: {
+			get() {
+				return Number(this.$route.query.page || 1)
+			},
+			set(pageNum) {
+				this.$router.push({query: {page: pageNum}});
+			}
+		}
+	},
+	methods: {
+		paginationCLick(pageNum) {
+			window.scrollTo(0, 0)
+			this.$router.push({path: this.$route.fullPath, query: {page:pageNum}});
+		}
+	}
+}
+</script>

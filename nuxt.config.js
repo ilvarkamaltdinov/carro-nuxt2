@@ -40,6 +40,7 @@ export default {
     plugins: [
         {src: '~/plugins/swiper.js'},
         {src: '~/plugins/rangeSlider.js', mode: 'client'},
+        {src: "plugins/pagination.js", mode: 'client'},
         {src: '~/plugins/inputmask.js'},
         {src: '~/plugins/slideToggle.js'},
         {src: '~/plugins/lodash.js'},

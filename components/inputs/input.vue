@@ -1,5 +1,6 @@
 <template>
-	<input ref="input" class="form__field"
+	<input ref="input"
+	       class="form__field"
 	       :placeholder="placeholder"
 	       :value="value"
 	       @input="$emit('input', $event.target.value)"
@@ -33,6 +34,8 @@ export default {
 		if (this.mask === 'phone') {
 			let im = new Inputmask({
 				mask: "+7 (#99) 999-99-99",
+				oncomplete:()=> this.$emit('phoneMaskComplete'),
+				onincomplete:()=> this.$emit('onincomplete'),
 				definitions: {
 					"#": {
 						validator: "[1234569]",

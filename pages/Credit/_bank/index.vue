@@ -12,6 +12,10 @@
 </template>
 <script>
 export default {
+	validate({ params, query, store }) {
+		return true // if the params are valid
+		// return false // will stop Nuxt to render the route and display the error page
+	},
 	data() {
 		return {
 			crumbs: [

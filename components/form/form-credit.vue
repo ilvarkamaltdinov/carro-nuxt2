@@ -29,22 +29,28 @@
 				</div>
 			</div>
 		</fieldset>
+		<div>
+		</div>
 		<fieldset class="form__fieldset">
-			<label class="form__field-wrap">
+			<label class="form__field-wrap"
+			       :class="{'form__field-wrap--success' : form.name.value.length >= 2}">
 				<inputs-input placeholder="ФИО"
-				              v-model="name"
-				              @input="error = ''"
+				              v-model="form.name.value"
 				              type="text" />
 			</label>
-			<label class="form__field-wrap">
+			<label class="form__field-wrap"
+			       :class="{'form__field-wrap--success' : form.date.valid}">
 				<inputs-input placeholder="Дата рождения"
-				              v-model="bdate"
+				              v-model="form.date.value"
 				              mask="date"
 				              type="tel" />
 			</label>
-			<label class="form__field-wrap">
+			<label class="form__field-wrap"
+			       :class="{'form__field-wrap--success' : form.phone.valid}">
 				<inputs-input placeholder="Телефон"
-				              v-model="phone"
+				              @phoneMaskComplete="form.phone.valid = true"
+				              @onincomplete="form.phone.valid = null"
+				              v-model="form.phone.value"
 				              mask="phone"
 				              type="tel" />
 			</label>
@@ -67,10 +73,21 @@ export default {
 	},
 	data() {
 		return {
+			form: {
+				name: {
+					valid: null,
+					value: '',
+				},
+				date: {
+					valid: null,
+					value: ''
+				},
+				phone: {
+					valid: null,
+					value: ''
+				}
+			},
 			error: '',
-			name: '',
-			bdate: '',
-			phone: '',
 			modalChooseCar: {
 				component: 'modal-choose',
 				visibility: true
@@ -107,6 +124,9 @@ export default {
 			openModal: 'modal/modal-main/openModal',
 			calculate: 'form/form-credit/calculate'
 		}),
+		...mapMutations({
+			setCurrentCar: 'form/form-credit/SET_CURRENT_CAR'
+		}),
 		choseCar() {
 			let payload = {
 				modal_component: 'modal-choose',
@@ -115,13 +135,6 @@ export default {
 			}
 			this.openModal(payload)
 		},
-		
-		
-		...mapMutations({
-			setModalMain: 'modal/modal-main/SET_MODAL_MAIN',
-			//записываю выбранную машину в модуль с формой из модуля с модалкой
-			setCurrentCar: 'form/form-credit/SET_CURRENT_CAR'
-		}),
 		
 		changePeriod(value) {
 			this.calculate({period: value})

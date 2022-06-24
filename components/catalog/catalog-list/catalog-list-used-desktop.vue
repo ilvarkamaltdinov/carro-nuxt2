@@ -9,6 +9,7 @@
 			           :key="offer.id"
 			           v-for="offer in offers_list" />
 		</div>
+		<pagination v-if="offers" :offers="offers"/>
 	</div>
 </template>
 <script>
