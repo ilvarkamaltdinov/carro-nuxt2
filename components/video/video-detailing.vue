@@ -11,12 +11,12 @@
 				<picture>
 					<source type="image/webp"
 					        media="(min-width: 768px)"
-					        srcset="~/static/img/video/iphone@1x.webp 1x, ~/static/img/video/iphone@2x.webp 2x" />
+					        srcset="~/assets/img/video/iphone@1x.webp 1x, ~/assets/img/video/iphone@2x.webp 2x" />
 					<source media="(min-width: 768px)"
-					        srcset="~/static/img/video/iphone@1x.png 1x, ~/static/img/video/iphone@2x.png 2x" />
+					        srcset="~/assets/img/video/iphone@1x.png 1x, ~/assets/img/video/iphone@2x.png 2x" />
 					<img class="video__img"
-					     src="~/static/img/video/iphone@1x.png"
-					     srcset="~/static/img/video/iphone@2x.png 2x"
+					     src="~/assets/img/video/iphone@1x.png"
+					     srcset="~/assets/img/video/iphone@2x.png 2x"
 					     loading="lazy"
 					     alt="" />
 				</picture>

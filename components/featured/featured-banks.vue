@@ -96,7 +96,7 @@
 				    :key="bank.id">
 					<div class="banks__main">
 						<img class="banks__img"
-						     src="~/static/img/banks/logo-tinkoff.svg"
+						     src="~/assets/img/banks/logo-tinkoff.svg"
 						     alt="" />
 						<rating-bank />
 					</div>

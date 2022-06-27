@@ -81,10 +81,11 @@ export default {
         '@nuxtjs/apollo',
         '@nuxtjs/device',
         '@nuxtjs/axios',
-        '@nuxtjs/sitemap'
+        '@nuxtjs/sitemap',
+        '@nuxt/image'
     ],
     svgSprite: {
-        input: '~/static/icons/',
+        input: '~/assets/icons/',
         svgoConfig: {
             plugins: [
                 {removeViewBox: false},

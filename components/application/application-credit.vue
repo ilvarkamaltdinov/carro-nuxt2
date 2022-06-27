@@ -34,7 +34,7 @@
 			<div class="application__banks grid__col-5">
 				<div class="application__banks-form">
 					<img class="application__banks-img application__banks-img--alfa"
-					     src="~/static/img/banks/logo-alfa.svg"
+					     src="~/assets/img/banks/logo-alfa.svg"
 					     alt="" />
 					<nuxt-link to="/banks"
 					           class="application__banks-text">и еще 5 банков
@@ -44,12 +44,12 @@
 					<picture>
 						<source type="image/webp"
 						        media="(min-width: 768px)"
-						        srcset="~/static/img/banks/bank-alfa@1x.webp 1x, ~/static/img/banks/bank-alfa@2x.webp 2x" />
+						        srcset="~/assets/img/banks/bank-alfa@1x.webp 1x, ~/assets/img/banks/bank-alfa@2x.webp 2x" />
 						<source media="(min-width: 768px)"
-						        srcset="~/static/img/banks/bank-alfa@1x.png 1x, ~/static/img/banks/bank-alfa@2x.png 2x" />
+						        srcset="~/assets/img/banks/bank-alfa@1x.png 1x, ~/assets/img/banks/bank-alfa@2x.png 2x" />
 						<img class="application__form-img"
-						     src="~/static/img/banks/bank-alfa@1x.png"
-						     srcset="~/static/img/banks/bank-alfa@2x.png 2x"
+						     src="~/assets/img/banks/bank-alfa@1x.png"
+						     srcset="~/assets/img/banks/bank-alfa@2x.png 2x"
 						     loading="lazy"
 						     alt="" />
 					</picture>

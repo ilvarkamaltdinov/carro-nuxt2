@@ -2,7 +2,7 @@
 	<div>
 		<div class="modal__options">
 			<img class="modal__logo"
-			     src="~/static/img/dealers/logos/logo-autograd.svg"
+			     src="~/assets/img/dealers/logos/logo-autograd.svg"
 			     loading="lazy"
 			     alt="" />
 			<div class="modal__buttons">

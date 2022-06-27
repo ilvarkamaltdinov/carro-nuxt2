@@ -1,7 +1,7 @@
 <template>
   <div class="top_slider">
     <div class="mobile_slider" v-if="$device.isMobile">
-      <img v-for="(img,  index) in photos" :key="index" :src="img.thumb"  alt="image"/>
+	    <nuxt-picture lazy v-for="(img,  index) in photos" :key="index" :src="img.thumb"/>
     </div>
     <div class="catalog__car_img" v-else>
       <img :src="coverSrc" @load="onImgLoad" :class="class_name"  alt=""/>

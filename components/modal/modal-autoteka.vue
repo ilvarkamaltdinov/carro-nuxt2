@@ -2,7 +2,7 @@
 	<div>
 		<div class="modal__options">
 			<img class="modal__logo"
-			     src="~/static/img/logo-autoteka.svg"
+			     src="~/assets/img/logo-autoteka.svg"
 			     loading="lazy"
 			     alt="" />
 			<div class="modal__buttons">

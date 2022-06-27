@@ -50,10 +50,10 @@
 				<picture>
 					<source type="image/webp"
 					        media="(min-width: 768px)"
-					        srcset="~/static/img/dealers/photos/autograd/dealer-3@1x.webp 1x,~/static/img/dealers/photos/autograd/dealer-3@2x.webp 2x" />
+					        srcset="~/assets/img/dealers/photos/autograd/dealer-3@1x.webp 1x,~/assets/img/dealers/photos/autograd/dealer-3@2x.webp 2x" />
 					<img class="dealers__item-img"
-					     src="~/static/img/dealers/photos/autograd/dealer-3@1x.jpg"
-					     srcset="~/static/img/dealers/photos/autograd/dealer-3@2x.jpg 2x"
+					     src="~/assets/img/dealers/photos/autograd/dealer-3@1x.jpg"
+					     srcset="~/assets/img/dealers/photos/autograd/dealer-3@2x.jpg 2x"
 					     loading="lazy"
 					     alt="" />
 				</picture>
@@ -100,10 +100,10 @@
 				<picture>
 					<source type="image/webp"
 					        media="(min-width: 768px)"
-					        srcset="~/static/img/dealers/photos/autograd/dealer-3@1x.webp 1x,~/static/img/dealers/photos/autograd/dealer-3@2x.webp 2x" />
+					        srcset="~/assets/img/dealers/photos/autograd/dealer-3@1x.webp 1x,~/assets/img/dealers/photos/autograd/dealer-3@2x.webp 2x" />
 					<img class="dealers__item-img"
-					     src="~/static/img/dealers/photos/autograd/dealer-3@1x.jpg"
-					     srcset="~/static/img/dealers/photos/autograd/dealer-3@2x.jpg 2x"
+					     src="~/assets/img/dealers/photos/autograd/dealer-3@1x.jpg"
+					     srcset="~/assets/img/dealers/photos/autograd/dealer-3@2x.jpg 2x"
 					     loading="lazy"
 					     alt="" />
 				</picture>

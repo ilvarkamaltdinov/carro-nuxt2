@@ -20,7 +20,7 @@
 						</div>
 						<div class="featured__review-picture">
 							<img class="featured__review-img"
-							     :src="require('~/static/img/reviews/reviews-'+ item.img +'.jpg')"
+							     :src="require('~/assets/img/reviews/reviews-'+ item.img +'.jpg')"
 							     alt="" />
 						</div>
 					</div>

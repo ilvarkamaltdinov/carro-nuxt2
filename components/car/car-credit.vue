@@ -23,7 +23,7 @@
 		<div class="application__banks grid__col-5">
 			<div class="application__banks-form">
 				<img class="application__banks-img"
-				     src="~/static/img/banks/logo-tinkoff.svg"
+				     src="~/assets/img/banks/logo-tinkoff.svg"
 				     alt=""
 				/>
 				<div class="application__banks-text">
@@ -34,12 +34,12 @@
 				<picture>
 					<source type="image/webp"
 					        media="(min-width: 768px)"
-					        srcset="~/static/img/form-picture@1x.webp 1x, ~/static/img/form-picture@2x.webp 2x" />
+					        srcset="~/assets/img/form-picture@1x.webp 1x, ~/assets/img/form-picture@2x.webp 2x" />
 					<source media="(min-width: 768px)"
-					        srcset="~/static/img/form-picture@1x.png 1x, ~/static/img/form-picture@2x.png 2x" />
+					        srcset="~/assets/img/form-picture@1x.png 1x, ~/assets/img/form-picture@2x.png 2x" />
 					<img class="application__form-img"
-					     src="~/static/img/form-picture@1x.png"
-					     srcset="~/static/img/form-picture@2x.png 2x"
+					     src="~/assets/img/form-picture@1x.png"
+					     srcset="~/assets/img/form-picture@2x.png 2x"
 					     loading="lazy"
 					     alt="" />
 				</picture>

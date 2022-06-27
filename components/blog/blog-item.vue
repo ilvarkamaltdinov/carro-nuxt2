@@ -30,12 +30,12 @@
 							<picture>
 								<source type="image/webp"
 								        media="(min-width: 768px)"
-								        srcset="~/static/img/blog/blog-1@1x.webp 1x,~/static/img/blog/blog-1@2x.webp 2x" />
+								        srcset="~/assets/img/blog/blog-1@1x.webp 1x,~/assets/img/blog/blog-1@2x.webp 2x" />
 								<source media="(min-width: 768px)"
-								        srcset="~/static/img/blog/blog-1@1x.jpg 1x,~/static/img/blog/blog-1@2x.jpg 2x" />
+								        srcset="~/assets/img/blog/blog-1@1x.jpg 1x,~/assets/img/blog/blog-1@2x.jpg 2x" />
 								<img class="text__img text__img--blog"
-								     src="~/static/img/blog/blog-1@1x.jpg"
-								     srcset="~/static/img/blog/blog-1@2x.jpg 2x"
+								     src="~/assets/img/blog/blog-1@1x.jpg"
+								     srcset="~/assets/img/blog/blog-1@2x.jpg 2x"
 								     loading="lazy"
 								     alt="" />
 							</picture>
@@ -72,12 +72,12 @@
 						<picture>
 							<source type="image/webp"
 							        media="(min-width: 768px)"
-							        srcset="~/static/img/blog/blog-1@1x.webp 1x,~/static/img/blog/blog-1@2x.webp 2x" />
+							        srcset="~/assets/img/blog/blog-1@1x.webp 1x,~/assets/img/blog/blog-1@2x.webp 2x" />
 							<source media="(min-width: 768px)"
-							        srcset="~/static/img/blog/blog-1@1x.jpg 1x,~/static/img/blog/blog-1@2x.jpg 2x" />
+							        srcset="~/assets/img/blog/blog-1@1x.jpg 1x,~/assets/img/blog/blog-1@2x.jpg 2x" />
 							<img class="blog__img"
-							     src="~/static/img/blog/blog-1@1x.jpg"
-							     srcset="~/static/img/blog/blog-1@2x.jpg 2x"
+							     src="~/assets/img/blog/blog-1@1x.jpg"
+							     srcset="~/assets/img/blog/blog-1@2x.jpg 2x"
 							     loading="lazy"
 							     alt="" />
 						</picture>
@@ -96,12 +96,12 @@
 						<picture>
 							<source type="image/webp"
 							        media="(min-width: 768px)"
-							        srcset="~/static/img/blog/blog-1@1x.webp 1x,~/static/img/blog/blog-1@2x.webp 2x" />
+							        srcset="~/assets/img/blog/blog-1@1x.webp 1x,~/assets/img/blog/blog-1@2x.webp 2x" />
 							<source media="(min-width: 768px)"
-							        srcset="~/static/img/blog/blog-1@1x.jpg 1x,~/static/img/blog/blog-1@2x.jpg 2x" />
+							        srcset="~/assets/img/blog/blog-1@1x.jpg 1x,~/assets/img/blog/blog-1@2x.jpg 2x" />
 							<img class="blog__img"
-							     src="~/static/img/blog/blog-1@1x.jpg"
-							     srcset="~/static/img/blog/blog-1@2x.jpg 2x"
+							     src="~/assets/img/blog/blog-1@1x.jpg"
+							     srcset="~/assets/img/blog/blog-1@2x.jpg 2x"
 							     loading="lazy"
 							     alt="" />
 						</picture>
@@ -120,12 +120,12 @@
 						<picture>
 							<source type="image/webp"
 							        media="(min-width: 768px)"
-							        srcset="~/static/img/blog/blog-1@1x.webp 1x,~/static/img/blog/blog-1@2x.webp 2x" />
+							        srcset="~/assets/img/blog/blog-1@1x.webp 1x,~/assets/img/blog/blog-1@2x.webp 2x" />
 							<source media="(min-width: 768px)"
-							        srcset="~/static/img/blog/blog-1@1x.jpg 1x,~/static/img/blog/blog-1@2x.jpg 2x" />
+							        srcset="~/assets/img/blog/blog-1@1x.jpg 1x,~/assets/img/blog/blog-1@2x.jpg 2x" />
 							<img class="blog__img"
-							     src="~/static/img/blog/blog-1@1x.jpg"
-							     srcset="~/static/img/blog/blog-1@2x.jpg 2x"
+							     src="~/assets/img/blog/blog-1@1x.jpg"
+							     srcset="~/assets/img/blog/blog-1@2x.jpg 2x"
 							     loading="lazy"
 							     alt="" />
 						</picture>
@@ -144,12 +144,12 @@
 						<picture>
 							<source type="image/webp"
 							        media="(min-width: 768px)"
-							        srcset="~/static/img/blog/blog-1@1x.webp 1x,~/static/img/blog/blog-1@2x.webp 2x" />
+							        srcset="~/assets/img/blog/blog-1@1x.webp 1x,~/assets/img/blog/blog-1@2x.webp 2x" />
 							<source media="(min-width: 768px)"
-							        srcset="~/static/img/blog/blog-1@1x.jpg 1x,~/static/img/blog/blog-1@2x.jpg 2x" />
+							        srcset="~/assets/img/blog/blog-1@1x.jpg 1x,~/assets/img/blog/blog-1@2x.jpg 2x" />
 							<img class="blog__img"
-							     src="~/static/img/blog/blog-1@1x.jpg"
-							     srcset="~/static/img/blog/blog-1@2x.jpg 2x"
+							     src="~/assets/img/blog/blog-1@1x.jpg"
+							     srcset="~/assets/img/blog/blog-1@2x.jpg 2x"
 							     loading="lazy"
 							     alt="" />
 						</picture>
@@ -168,12 +168,12 @@
 						<picture>
 							<source type="image/webp"
 							        media="(min-width: 768px)"
-							        srcset="~/static/img/blog/blog-1@1x.webp 1x,~/static/img/blog/blog-1@2x.webp 2x" />
+							        srcset="~/assets/img/blog/blog-1@1x.webp 1x,~/assets/img/blog/blog-1@2x.webp 2x" />
 							<source media="(min-width: 768px)"
-							        srcset="~/static/img/blog/blog-1@1x.jpg 1x,~/static/img/blog/blog-1@2x.jpg 2x" />
+							        srcset="~/assets/img/blog/blog-1@1x.jpg 1x,~/assets/img/blog/blog-1@2x.jpg 2x" />
 							<img class="blog__img"
-							     src="~/static/img/blog/blog-1@1x.jpg"
-							     srcset="~/static/img/blog/blog-1@2x.jpg 2x"
+							     src="~/assets/img/blog/blog-1@1x.jpg"
+							     srcset="~/assets/img/blog/blog-1@2x.jpg 2x"
 							     loading="lazy"
 							     alt="" />
 						</picture>
@@ -192,12 +192,12 @@
 						<picture>
 							<source type="image/webp"
 							        media="(min-width: 768px)"
-							        srcset="~/static/img/blog/blog-1@1x.webp 1x,~/static/img/blog/blog-1@2x.webp 2x" />
+							        srcset="~/assets/img/blog/blog-1@1x.webp 1x,~/assets/img/blog/blog-1@2x.webp 2x" />
 							<source media="(min-width: 768px)"
-							        srcset="~/static/img/blog/blog-1@1x.jpg 1x,~/static/img/blog/blog-1@2x.jpg 2x" />
+							        srcset="~/assets/img/blog/blog-1@1x.jpg 1x,~/assets/img/blog/blog-1@2x.jpg 2x" />
 							<img class="blog__img"
-							     src="~/static/img/blog/blog-1@1x.jpg"
-							     srcset="~/static/img/blog/blog-1@2x.jpg 2x"
+							     src="~/assets/img/blog/blog-1@1x.jpg"
+							     srcset="~/assets/img/blog/blog-1@2x.jpg 2x"
 							     loading="lazy"
 							     alt="" />
 						</picture>
@@ -216,12 +216,12 @@
 						<picture>
 							<source type="image/webp"
 							        media="(min-width: 768px)"
-							        srcset="~/static/img/blog/blog-1@1x.webp 1x,~/static/img/blog/blog-1@2x.webp 2x" />
+							        srcset="~/assets/img/blog/blog-1@1x.webp 1x,~/assets/img/blog/blog-1@2x.webp 2x" />
 							<source media="(min-width: 768px)"
-							        srcset="~/static/img/blog/blog-1@1x.jpg 1x,~/static/img/blog/blog-1@2x.jpg 2x" />
+							        srcset="~/assets/img/blog/blog-1@1x.jpg 1x,~/assets/img/blog/blog-1@2x.jpg 2x" />
 							<img class="blog__img"
-							     src="~/static/img/blog/blog-1@1x.jpg"
-							     srcset="~/static/img/blog/blog-1@2x.jpg 2x"
+							     src="~/assets/img/blog/blog-1@1x.jpg"
+							     srcset="~/assets/img/blog/blog-1@2x.jpg 2x"
 							     loading="lazy"
 							     alt="" />
 						</picture>
@@ -240,12 +240,12 @@
 						<picture>
 							<source type="image/webp"
 							        media="(min-width: 768px)"
-							        srcset="~/static/img/blog/blog-1@1x.webp 1x,~/static/img/blog/blog-1@2x.webp 2x" />
+							        srcset="~/assets/img/blog/blog-1@1x.webp 1x,~/assets/img/blog/blog-1@2x.webp 2x" />
 							<source media="(min-width: 768px)"
-							        srcset="~/static/img/blog/blog-1@1x.jpg 1x,~/static/img/blog/blog-1@2x.jpg 2x" />
+							        srcset="~/assets/img/blog/blog-1@1x.jpg 1x,~/assets/img/blog/blog-1@2x.jpg 2x" />
 							<img class="blog__img"
-							     src="~/static/img/blog/blog-1@1x.jpg"
-							     srcset="~/static/img/blog/blog-1@2x.jpg 2x"
+							     src="~/assets/img/blog/blog-1@1x.jpg"
+							     srcset="~/assets/img/blog/blog-1@2x.jpg 2x"
 							     loading="lazy"
 							     alt="" />
 						</picture>
@@ -264,12 +264,12 @@
 						<picture>
 							<source type="image/webp"
 							        media="(min-width: 768px)"
-							        srcset="~/static/img/blog/blog-1@1x.webp 1x,~/static/img/blog/blog-1@2x.webp 2x" />
+							        srcset="~/assets/img/blog/blog-1@1x.webp 1x,~/assets/img/blog/blog-1@2x.webp 2x" />
 							<source media="(min-width: 768px)"
-							        srcset="~/static/img/blog/blog-1@1x.jpg 1x,~/static/img/blog/blog-1@2x.jpg 2x" />
+							        srcset="~/assets/img/blog/blog-1@1x.jpg 1x,~/assets/img/blog/blog-1@2x.jpg 2x" />
 							<img class="blog__img"
-							     src="~/static/img/blog/blog-1@1x.jpg"
-							     srcset="~/static/img/blog/blog-1@2x.jpg 2x"
+							     src="~/assets/img/blog/blog-1@1x.jpg"
+							     srcset="~/assets/img/blog/blog-1@2x.jpg 2x"
 							     loading="lazy"
 							     alt="" />
 						</picture>

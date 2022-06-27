@@ -64,7 +64,7 @@
     content: "";
     display: block;
     position: absolute;
-    background-image: url("~/static/img/icon-arrow--black.svg");
+    background-image: url("~/assets/img/icon-arrow--black.svg");
     top: 32px;
     right: 32px;
     background-size: contain;
@@ -116,7 +116,7 @@
     position: absolute;
     content: "";
     display: block;
-    background-image: url("~/static/img/form-arrow.svg");
+    background-image: url("~/assets/img/form-arrow.svg");
     width: 16px;
     height: 8px;
     background-repeat: no-repeat;
@@ -166,7 +166,7 @@
 
 .form-new__filled {
   position: absolute;
-  background-image: url("~/static/img/icon-check.svg");
+  background-image: url("~/assets/img/icon-check.svg");
   width: 16px;
   height: 16px;
   right: 24px;

@@ -35,12 +35,12 @@
 					<picture>
 						<source type="image/webp"
 						        media="(min-width: 768px)"
-						        srcset="~/static/img/catalog/catalog-car-1@1x.webp 1x, ~/static/img/catalog/catalog-car-1@2x.webp 2x" />
+						        srcset="~/assets/img/catalog/catalog-car-1@1x.webp 1x, ~/assets/img/catalog/catalog-car-1@2x.webp 2x" />
 						<source media="(min-width: 768px)"
-						        srcset="~/static/img/catalog/catalog-car-1@1x.jpg 1x, ~/static/img/catalog/catalog-car-1@2x.jpg 2x" />
+						        srcset="~/assets/img/catalog/catalog-car-1@1x.jpg 1x, ~/assets/img/catalog/catalog-car-1@2x.jpg 2x" />
 						<img class="lazyload"
-						     src="~/static/img/catalog/catalog-car-1@1x.jpg"
-						     srcset="~/static/img/catalog/catalog-car-1@2x.jpg 2x"
+						     src="~/assets/img/catalog/catalog-car-1@1x.jpg"
+						     srcset="~/assets/img/catalog/catalog-car-1@2x.jpg 2x"
 						     alt="" />
 					</picture>
 				</div>

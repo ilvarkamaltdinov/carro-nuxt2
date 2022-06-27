@@ -2,14 +2,14 @@
 	<div class="catalog__filter filter">
 		<div class="filter__catalog-wrap">
 			<div class="filter__buttons-wrap">
-				<div class="filter__buttons-filter">
+				<div class="filter__buttons-filter" v-if="!modal">
 					<button-filter @click="openFilter()" />
 				</div>
 				<div class="filter__buttons-sort select">
 					<div class="button button--action button--text filter__button"
 					     @click="isActive = !isActive">
 						<svg-icon class="button__icon"
-						          name="icon-sort"></svg-icon>
+						          name="icon-sort"/>
 						<span class="button__text">{{ currentSort }}</span>
 						<transition name="modal">
 							<ul v-show="isActive"

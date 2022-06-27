@@ -7,12 +7,12 @@
 					<picture>
 						<source type="image/webp"
 						        media="(min-width: 768px)"
-						        srcset="~/static/img/figures/figure-3@1x.webp 1x, ~/static/img/figures/figure-3@2x.webp 2x" />
+						        srcset="~/assets/img/figures/figure-3@1x.webp 1x, ~/assets/img/figures/figure-3@2x.webp 2x" />
 						<source media="(min-width: 768px)"
-						        srcset="~/static/img/figures/figure-3@1x.png 1x, ~/static/img/figures/figure-3@2x.png 2x" />
+						        srcset="~/assets/img/figures/figure-3@1x.png 1x, ~/assets/img/figures/figure-3@2x.png 2x" />
 						<img class="text__figure-img"
-						     src="~/static/img/figures/figure-3@1x.png"
-						     srcset="~/static/img/figures/figure-3@2x.png 2x"
+						     src="~/assets/img/figures/figure-3@1x.png"
+						     srcset="~/assets/img/figures/figure-3@2x.png 2x"
 						     loading="lazy"
 						     alt="" />
 					</picture>

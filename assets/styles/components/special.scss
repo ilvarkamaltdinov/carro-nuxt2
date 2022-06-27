@@ -56,63 +56,63 @@
 }
 
 .special__item--first {
-  background-image: url("~/static/img/special/special-first.jpg");
+  background-image: url("~/assets/img/special/special-first.jpg");
 }
 
 .special__item--family {
-  background-image: url("~/static/img/special/special-family.jpg");
+  background-image: url("~/assets/img/special/special-family.jpg");
 }
 
 .special__item--trade {
-  background-image: url("~/static/img/special/special-trade.jpg");
+  background-image: url("~/assets/img/special/special-trade.jpg");
 }
 
 .special__item--credit {
-  background-image: url("~/static/img/special/special-credit.jpg");
+  background-image: url("~/assets/img/special/special-credit.jpg");
 }
 
 .special__item--kia {
   &:nth-child(1) {
-    background-image: url("~/static/img/models/kia-1.jpg");
+    background-image: url("~/assets/img/models/kia-1.jpg");
   }
   &:nth-child(2) {
-    background-image: url("~/static/img/models/kia-2.jpg");
+    background-image: url("~/assets/img/models/kia-2.jpg");
   }
   &:nth-child(3) {
-    background-image: url("~/static/img/models/kia-3.jpg");
+    background-image: url("~/assets/img/models/kia-3.jpg");
   }
   &:nth-child(4) {
-    background-image: url("~/static/img/models/kia-4.jpg");
+    background-image: url("~/assets/img/models/kia-4.jpg");
   }
 }
 
 .special__item--skoda {
   &:nth-child(1) {
-    background-image: url("~/static/img/models/skoda-1.jpg");
+    background-image: url("~/assets/img/models/skoda-1.jpg");
   }
   &:nth-child(2) {
-    background-image: url("~/static/img/models/skoda-2.jpg");
+    background-image: url("~/assets/img/models/skoda-2.jpg");
   }
   &:nth-child(3) {
-    background-image: url("~/static/img/models/skoda-3.jpg");
+    background-image: url("~/assets/img/models/skoda-3.jpg");
   }
   &:nth-child(4) {
-    background-image: url("~/static/img/models/skoda-4.jpg");
+    background-image: url("~/assets/img/models/skoda-4.jpg");
   }
 }
 
 .special__item--hyundai {
   &:nth-child(1) {
-    background-image: url("~/static/img/models/hyundai-1.jpg");
+    background-image: url("~/assets/img/models/hyundai-1.jpg");
   }
   &:nth-child(2) {
-    background-image: url("~/static/img/models/hyundai-2.jpg");
+    background-image: url("~/assets/img/models/hyundai-2.jpg");
   }
   &:nth-child(3) {
-    background-image: url("~/static/img/models/hyundai-3.jpg");
+    background-image: url("~/assets/img/models/hyundai-3.jpg");
   }
   &:nth-child(4) {
-    background-image: url("~/static/img/models/hyundai-4.jpg");
+    background-image: url("~/assets/img/models/hyundai-4.jpg");
   }
 }
 

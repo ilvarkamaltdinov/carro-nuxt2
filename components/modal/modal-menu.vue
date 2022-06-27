@@ -98,10 +98,6 @@ export default {
 						{
 							name: 'Банки-партнеры',
 							link: '/banks'
-						},
-						{
-							name: 'Предложения',
-							link: '/offers'
 						}
 					]
 				},

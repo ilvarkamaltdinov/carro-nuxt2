@@ -1,5 +1,4 @@
 <template>
-	
 	<section class="page-main__catalog catalog grid">
 		<div class="heading-group heading-group--h1 grid__col-12">
 			<div class="heading-group__wrap">
@@ -22,14 +21,14 @@
 					<picture>
 						<source type="image/webp"
 						        media="(min-width: 768px)"
-						        srcset="~/static/img/dealers/photos/autograd/dealer-3@1x.webp 1x,~/static/img/dealers/photos/autograd/dealer-3@2x.webp 2x" />
+						        srcset="~/assets/img/dealers/photos/autograd/dealer-3@1x.webp 1x,~/assets/img/dealers/photos/autograd/dealer-3@2x.webp 2x" />
 						<img class="dealers__item-img"
-						     src="~/static/img/dealers/photos/autograd/dealer-3@1x.jpg"
-						     srcset="~/static/img/dealers/photos/autograd/dealer-3@2x.jpg 2x"
+						     src="~/assets/img/dealers/photos/autograd/dealer-3@1x.jpg"
+						     srcset="~/assets/img/dealers/photos/autograd/dealer-3@2x.jpg 2x"
 						     loading="lazy"
 						     alt="" />
 					</picture>
-					<button-show>Подробнее о дилере</button-show>
+					<!--<button-show>Подробнее о дилере</button-show>-->
 					<a class="button button--show button--show-link"
 					   href=""
 					   target="_blank">Сайт автоцентра
@@ -50,14 +49,14 @@
 					<picture>
 						<source type="image/webp"
 						        media="(min-width: 768px)"
-						        srcset="~/static/img/dealers/photos/autograd/dealer-3@1x.webp 1x,~/static/img/dealers/photos/autograd/dealer-3@2x.webp 2x" />
+						        srcset="~/assets/img/dealers/photos/autograd/dealer-3@1x.webp 1x,~/assets/img/dealers/photos/autograd/dealer-3@2x.webp 2x" />
 						<img class="dealers__item-img"
-						     src="~/static/img/dealers/photos/autograd/dealer-3@1x.jpg"
-						     srcset="~/static/img/dealers/photos/autograd/dealer-3@2x.jpg 2x"
+						     src="~/assets/img/dealers/photos/autograd/dealer-3@1x.jpg"
+						     srcset="~/assets/img/dealers/photos/autograd/dealer-3@2x.jpg 2x"
 						     loading="lazy"
 						     alt="" />
 					</picture>
-					<button-show>Подробнее о дилере</button-show>
+					<!--<button-show>Подробнее о дилере</button-show>-->
 					<a class="button button--show button--show-link"
 					   href=""
 					   target="_blank">Сайт автоцентра
@@ -65,13 +64,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="grid__col-4">
-			<filter-desktop/>
-		</div>
-		<div class="grid__col-8">
-			<filter-sort/>
-			<button-typical text="Показать больше" class="button--link button--more"/>
-			<pagination/>
-		</div>
+		<!--<div class="grid__col-4">-->
+		<!--	<filter-desktop/>-->
+		<!--</div>-->
+		<!--<div class="grid__col-8">-->
+		<!--	<filter-sort/>-->
+		<!--	&lt;!&ndash;<button-typical text="Показать больше" class="button&#45;&#45;link button&#45;&#45;more"/>&ndash;&gt;-->
+		<!--	&lt;!&ndash;<pagination/>&ndash;&gt;-->
+		<!--</div>-->
 	</section>
 </template>
