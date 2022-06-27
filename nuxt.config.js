@@ -105,7 +105,11 @@ export default {
             scss: {
                 implementation: require('sass')
             }
-        }
+        },
+        extend(config, ctx) {}, // blah blah
+    },
+    server: {
+      host: "0.0.0.0"
     },
     publicRuntimeConfig: {
         api_domain: process.env.API_DOMAIN,
