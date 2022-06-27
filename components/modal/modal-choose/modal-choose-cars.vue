@@ -7,7 +7,7 @@
 				<filter-sort modal/>
 				<skeleton-catalog-desktop-small v-if="loading"/>
 				<div v-else class="catalog__list grid grid--catalog">
-					<catalog-item-small-desktop v-for="offer in offers"
+					<component :is="component" v-for="offer in offers"
 					                            :offer="offer"
 					                            :choose="true"
 					                            :key="offer.id" />
@@ -38,7 +38,10 @@ export default {
 		...mapGetters({
 			offers: 'modal/modal-choose/offers',
 			loading: 'modal/modal-choose/loading'
-		})
+		}),
+		component(){
+			return  this.$device.isMobile ? 'catalog-item-small-mobile' : 'catalog-item-small-desktop'
+		}
 	}
 }
 </script>

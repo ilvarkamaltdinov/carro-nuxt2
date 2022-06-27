@@ -14,7 +14,7 @@
 				<form-car-credit />
 			</div>
 			<div class="application__catalog application__catalog--modal catalog grid__col-4">
-				<catalog-item-small-desktop :has-buttons="false" :offer="modalData"/>
+				<component :is="component" :has-buttons="false" :offer="modalData"/>
 			</div>
 			<div class="application__banks grid__col-4">
 				<div class="application__banks-form">
@@ -50,6 +50,9 @@ export default {
 		...mapGetters({
 			modalData: 'modal/modal-main/modalData'
 		}),
+		component(){
+			return  this.$device.isMobile ? 'catalog-item-large-mobile' : 'catalog-item-small-desktop'
+		}
 	},
 }
 </script>

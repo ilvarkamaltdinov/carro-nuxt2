@@ -23,7 +23,7 @@
 				<catalog-item-tech-list small :offer="offer"/>
 			</div>
 		</div>
-		<catalog-item-buttons :offer="offer"/>
+		<catalog-item-buttons v-if="hasButtons" :offer="offer"/>
 	</article>
 </template>
 <script>
@@ -35,6 +35,10 @@ export default {
 			type: Object,
 			default: () => {
 			}
+		},
+		hasButtons: {
+			type: Boolean,
+			default: true
 		}
 	}
 }
