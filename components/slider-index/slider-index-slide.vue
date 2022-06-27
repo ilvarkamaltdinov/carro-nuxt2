@@ -5,7 +5,8 @@
 		   href="">
 			<div class="slider-index__media-wrap">
 				<div class="slider-index__media">
-					<nuxt-picture :src="'/slider-index/slider-index-'+ slide.id +'/slider-index-element-'+ slide.id +'@1x.jpg'"/>
+					<nuxt-picture quality="100" :imgAttrs="{class:'slider-index__media slider-index__media--element'}" :src="`img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@2x.png`"/>
+					<nuxt-picture quality="100" :imgAttrs="{class:'slider-index__media slider-index__media--car'}" :src="`img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@2x.png`"/>
 					<!--<picture>-->
 					<!--	<source type="image/webp"-->
 					<!--	        media="(min-width: 768px)"-->

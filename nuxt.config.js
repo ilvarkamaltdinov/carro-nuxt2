@@ -87,6 +87,9 @@ export default {
     serverMiddleware: {
         '/_ipx': '~/server/middleware/ipx.js'
     },
+    image: {
+        dir: 'assets/img'
+    },
     svgSprite: {
         input: '~/assets/icons/',
         svgoConfig: {
