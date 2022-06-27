@@ -84,6 +84,9 @@ export default {
         '@nuxtjs/sitemap',
         '@nuxt/image'
     ],
+    serverMiddleware: {
+        '/_ipx': '~/server/middleware/ipx.js'
+    },
     svgSprite: {
         input: '~/assets/icons/',
         svgoConfig: {
