@@ -122,9 +122,7 @@
 							</ul>
 						</div>
 					</div>
-					<button-show>
-						Показать больше
-					</button-show>
+					<button-typical text="Показать больше" class="button--show"/>
 				</div>
 				<div class="swiper-slide car__info-group car__info-group--options">
 					<div class="heading-group">
@@ -173,7 +171,9 @@
 <script>
 import filters from "~/mixins/filters";
 import {mapGetters} from "vuex";
+import ButtonTypical from "@/components/button/button-typical";
 export default {
+	components: {ButtonTypical},
 	mixins: [filters],
 	computed:{
 		...mapGetters({

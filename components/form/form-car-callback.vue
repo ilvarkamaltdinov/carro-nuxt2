@@ -23,7 +23,7 @@
 			<checkbox-passport />
 			<checkbox-agree />
 		</fieldset>
-		<button-form-callback @click="callbackSubmit" />
+		<button-typical @click="callbackSubmit()" text="Перезвоните мне" button-class="button--credit button--form"/>
 	</form>
 </template>
 <script>

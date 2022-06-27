@@ -1,5 +1,6 @@
 <template>
-	<form class="form">
+	<form class="form"
+	      @submit.prevent="sendForm()">
 		<fieldset class="form__fieldset">
 			<label
 					:class="{'form__field-wrap--car-active' : currentCar}"
@@ -33,14 +34,16 @@
 		</div>
 		<fieldset class="form__fieldset">
 			<label class="form__field-wrap"
-			       :class="{'form__field-wrap--success' : form.name.value.length >= 2}">
+			       :class="{'form__field-wrap--success' : form.name.value.length >= 2, 'form__field-wrap--error': form.name.valid === false}">
 				<inputs-input placeholder="ФИО"
+				              @input="form.name.valid = null"
 				              v-model="form.name.value"
 				              type="text" />
 			</label>
 			<label class="form__field-wrap"
-			       :class="{'form__field-wrap--success' : form.date.valid}">
+			       :class="{'form__field-wrap--success' : form.date.valid, 'form__field-wrap--error': form.date.valid === false}">
 				<inputs-input placeholder="Дата рождения"
+				              @input="form.date.valid = null"
 				              v-model="form.date.value"
 				              mask="date"
 				              type="tel" />
@@ -56,7 +59,11 @@
 			</label>
 			<checkbox-agree />
 		</fieldset>
-		<button-form />
+		<div class="error" v-if="error">
+			{{error}}
+		</div>
+		<button-typical text="Оставить заявку"
+		                button-class="button--credit button--form" />
 	</form>
 </template>
 <script>
@@ -128,6 +135,7 @@ export default {
 			setCurrentCar: 'form/form-credit/SET_CURRENT_CAR'
 		}),
 		choseCar() {
+			this.error = ''
 			let payload = {
 				modal_component: 'modal-choose',
 				modal_title: 'Выберите автомобиль',
@@ -135,13 +143,68 @@ export default {
 			}
 			this.openModal(payload)
 		},
-		
 		changePeriod(value) {
 			this.calculate({period: value})
 		},
 		changePayment(value) {
 			this.calculate({payment: value})
-		}
+		},
+		checkForm() {
+			if(!this.currentCar){
+				this.error = 'Выберите автомобиль'
+				return false
+			}
+			if (this.form.name.value.length < 2) {
+				this.form.name.valid = false
+				return false
+			}
+			if(this.form.date.value === '' || this.form.date.value.split('_').length > 1){
+				this.form.date.valid = false
+				return false
+			}
+			return true;
+		},
+		sendForm() {
+			if (this.checkForm()) {
+				let formData = {
+					external_id: this.currentCar?.external_id,
+					site_id: this.$config.site_id,
+					type: 'credit',
+					client_name: this.form.name.value,
+					client_phone: this.form.phone.value,
+					client_age: this.form.date.value,
+					credit_initial_fee: this.rangePaymentValue,
+					credit_period: this.rangePeriodValue,
+					// utm_source: localStorage.utm_source || '',
+					// utm_medium: localStorage.utm_medium || '',
+					// utm_campaign: localStorage.utm_campaign || '',
+					// utm_term: localStorage.utm_term || '',
+					// utm_content: localStorage.utm_content || '',
+				}
+				console.log(formData)
+				// try {
+				// 	const res = this.$apollo.mutate({
+				// 		mutation: FEEDBACK,
+				// 		variables: formData
+				// 	}).then((response) => {
+				// 		let metrikParams = {
+				// 			eventName: 'thanks',
+				// 			ecommerceId: response.data.feedback.id,
+				// 			ecommerceProductsId: this.data.external_id,
+				// 			ecommerceProductsName: this.data.name,
+				// 			ecommerceProductsPrice: this.data.price,
+				// 			ecommerceProductsBrand: this.data.mark.title,
+				// 			ecommerceProductsCategory: `С пробегом/${this.data.mark.title}/${this.data.folder.title}/${this.data.name}`,
+				// 			ecommerceProductsQuantity: "1",
+				// 		}
+				// 		this.$router.push({name: 'thanks', params:{metrikParams}});
+				// 	});
+				// }
+				// catch (e) {
+				// 	console.error(e)
+				// }
+			}
+		},
 	}
 }
 </script>

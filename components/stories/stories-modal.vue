@@ -29,7 +29,7 @@
 									     alt="" />
 								</picture>
 							</div>
-							<button-more>Заявка на автокредит</button-more>
+							<button-typical text="Заявка на автокредит" class="button--link button--more"/>
 						</div>
 					</div>
 					<div class="swiper-slide">
@@ -52,7 +52,7 @@
 									     alt="" />
 								</picture>
 							</div>
-							<button-more>Заявка на автокредит</button-more>
+							<button-typical text="Заявка на автокредит" class="button--link button--more"/>
 						</div>
 					</div>
 					<div class="swiper-slide">
@@ -75,7 +75,7 @@
 									     alt="" />
 								</picture>
 							</div>
-							<button-more>Заявка на автокредит</button-more>
+							<button-typical text="Заявка на автокредит" class="button--link button--more"/>
 						</div>
 					</div>
 				</div>

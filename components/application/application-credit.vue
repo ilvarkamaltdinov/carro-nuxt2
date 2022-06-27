@@ -1,9 +1,8 @@
 <template>
-	
 	<section class="page-main__application application grid">
 		<div class="heading-group heading-group--h1">
 			<div class="heading-group__wrap">
-				<h1 class="heading heading--h1">{{currentTitle}}</h1>
+				<h1 class="heading heading--h1">{{ currentTitle }}</h1>
 				<span class="heading-group__label">Банк перезвонит вам в течение 15 минут</span>
 			</div>
 		</div>
@@ -18,13 +17,16 @@
 				</div>
 				<form-credit />
 			</div>
-			<div v-if="currentCar" class="application__catalog catalog grid__col-8">
-				<catalog-item-large-desktop :has-buttons="false" :offer="currentCar"/>
+			<div v-if="currentCar"
+			     class="application__catalog catalog grid__col-8">
+				<catalog-item-large-desktop :has-buttons="false"
+				                            :offer="currentCar" />
 			</div>
-			<button v-else class="application__choose-car grid__col-8"
+			<button v-else
+			        class="application__choose-car grid__col-8"
 			        @click="chooseCar">
 				<svg-icon class="application__choose-car-icon"
-				          name="icon-form"></svg-icon>
+				          name="icon-form" />
 				<span class="application__choose-car-text">Выберите автомобиль</span>
 			</button>
 			
@@ -33,9 +35,9 @@
 					<img class="application__banks-img application__banks-img--alfa"
 					     src="~/static/img/banks/logo-alfa.svg"
 					     alt="" />
-					<a class="application__banks-text"
-					   href="">и еще 5 банков
-					</a>
+					<nuxt-link to="/banks"
+					           class="application__banks-text">и еще 5 банков
+					</nuxt-link>
 				</div>
 				<div class="application__form-img-wrap">
 					<picture>
@@ -58,11 +60,11 @@
 					<div class="application__terms-text">Ставка по кредиту</div>
 				</div>
 				<div class="application__terms-item">
-					<div class="application__terms-number application__terms-number--term">24 мес.</div>
+					<div class="application__terms-number application__terms-number--term">{{ totalSum ? (rangePeriodValue + ' мес.') : '-' }}</div>
 					<div class="application__terms-text">Срок автокредита</div>
 				</div>
 				<div class="application__terms-item">
-					<div class="application__terms-number application__terms-number--payment">54 520 ₽</div>
+					<div class="application__terms-number application__terms-number--payment">{{ totalSum || '-' }}</div>
 					<div class="application__terms-text">Ежемеясячный платеж</div>
 				</div>
 			</div>
@@ -83,11 +85,14 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			currentCar: 'modal/modal-choose/currentCar'
+			currentCar: 'modal/modal-choose/currentCar',
+			bank: 'banks/bank',
+			totalSum: 'form/form-credit/totalSum',
+			rangePeriodValue: 'form/form-credit/rangePeriodValue'
 		}),
-		currentTitle(){
-			if(this.$route.params.bank){
-				return 'Автокредит в ' + this.$route.params.bank
+		currentTitle() {
+			if (this.bank.id) {
+				return 'Автокредит в ' + this.bank.name
 			} else {
 				return 'Заявка на автокредит'
 			}

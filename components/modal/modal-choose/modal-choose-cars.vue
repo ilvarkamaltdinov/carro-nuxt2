@@ -12,7 +12,7 @@
 					                            :choose="true"
 					                            :key="offer.id" />
 				</div>
-				<button-more>Показать больше</button-more>
+				<button-typical text="Показать больше" class="button--link button--more"/>
 			</div>
 		</section>
 	</div>

@@ -50,7 +50,7 @@ export default {
 						},
 						{
 							name: 'Выкуп',
-							link: '/inProcess'
+							link: '/buyout'
 						},
 						{
 							name: 'Такси+',

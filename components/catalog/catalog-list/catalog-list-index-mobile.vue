@@ -7,7 +7,7 @@
 			                           :offer="offer"
 			                           :key="offer.id" />
 		</div>
-		<button-more>Все автомобили</button-more>
+		<button-typical text="Все автомобили" class="button--link button--more"/>
 	</section>
 </template>
 <script>

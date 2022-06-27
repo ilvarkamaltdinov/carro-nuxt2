@@ -4,7 +4,8 @@
 			<crumbs :crumbs="crumbs"/>
 		</div>
 		<div class="grid grid--container">
-			<featured-reviews />
+			<application-buyout/>
+			<benefits-car/>
 		</div>
 	</main>
 </template>
@@ -19,8 +20,8 @@ export default {
 					active: false
 				},
 				{
-					name: 'Отзывы',
-					route: '/reviews',
+					name: 'Выкуп',
+					route: '/buyOut',
 					active: true
 				}
 			]

@@ -84,7 +84,7 @@
 				</nuxt-link>
 			</li>
 		</ul>
-		<button-more>Все подборки</button-more>
+		<button-typical text="Все подборки" class="button--link button--more"/>
 	</section>
 </template>
 <script>export default {

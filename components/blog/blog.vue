@@ -229,7 +229,7 @@
 					</a>
 				</li>
 			</ul>
-			<button-more>Показать больше</button-more>
+			<button-typical text="Показать больше" class="button--link button--more"/>
 		</div>
 		<div class="blog__wrap grid__col-12">
 			<h2 class="heading heading--h2">Статьи</h2>
@@ -451,7 +451,7 @@
 					</a>
 				</li>
 			</ul>
-			<button-more>Показать больше</button-more>
+			<button-typical text="Показать больше" class="button--link button--more"/>
 		</div>
 		<div class="blog__wrap grid__col-12">
 			<h2 class="heading heading--h2">Рейтинги</h2>
@@ -673,7 +673,7 @@
 					</a>
 				</li>
 			</ul>
-			<button-more>Показать больше</button-more>
+			<button-typical text="Показать больше" class="button--link button--more"/>
 		</div>
 	</section>
 </template>

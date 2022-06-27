@@ -13,40 +13,61 @@
 				<svg-icon name="icon-form"
 				          class="icon form__car-icon" />
 			</label>
-			<checkbox-credit/>
+			<checkbox :value="creditAgree"
+			          @change="creditAgree = !creditAgree"
+			          label="Хочу купить автомобиль в кредит" />
 		</fieldset>
-		<fieldset class="form__fieldset">
-			<range-period :value="rangePeriodValue"
-			              :values="rangePeriodValues"
-			              @changePeriod="changePeriod" />
-			<range-payment :sum="currentPaymentSum | toCurrency"
-			               :value="rangePaymentValue + '%'"
-			               :values="rangePaymentValues"
-			               @changePayment="changePayment" />
-			<div class="form__total">
-				<div class="form__total-label">Ваш платеж:</div>
-				<div class="form__total-payment">
-					{{ isTotalSum }}
+		<VueSlideToggle :open="creditAgree"
+		                :duration="500">
+			<fieldset class="form__fieldset">
+				<range-period :value="rangePeriodValue"
+				              :values="rangePeriodValues"
+				              @changePeriod="changePeriod" />
+				<range-payment :sum="currentPaymentSum | toCurrency"
+				               :value="rangePaymentValue + '%'"
+				               :values="rangePaymentValues"
+				               @changePayment="changePayment" />
+				<div class="form__total">
+					<div class="form__total-label">Ваш платеж:</div>
+					<div class="form__total-payment">
+						{{ isTotalSum }}
+					</div>
 				</div>
-			</div>
-		</fieldset>
+			</fieldset>
+		</VueSlideToggle>
+	
 		<fieldset class="form__fieldset">
 			<label class="form__field-wrap">
-				<input class="form__field" placeholder="Ваш автомобиль" name="name" type="text" value=""/>
+				<input class="form__field"
+				       placeholder="Ваш автомобиль"
+				       name="name"
+				       type="text"
+				       value="" />
 			</label>
 			<label class="form__field-wrap">
-				<input class="form__field" placeholder="ФИО" name="name" type="text" value=""/>
+				<input class="form__field"
+				       placeholder="ФИО"
+				       name="name"
+				       type="text"
+				       value="" />
 			</label>
 			<label class="form__field-wrap form__field-wrap--success">
-				<input class="form__field" placeholder="Дата рождения" type="text" name="date" value="01.08.1992"/>
+				<input class="form__field"
+				       placeholder="Дата рождения"
+				       type="text"
+				       name="date"
+				       value="01.08.1992" />
 			</label>
 			<label class="form__field-wrap">
-				<input class="form__field" placeholder="Телефон" name="phone" type="tel"/>
+				<input class="form__field"
+				       placeholder="Телефон"
+				       name="phone"
+				       type="tel" />
 			</label>
-			<checkbox-passport/>
-			<checkbox-agree/>
+			<checkbox-passport />
+			<checkbox-agree />
 		</fieldset>
-		<button-form/>
+		<button-typical text="Оставить заявку" button-class="button--credit button--form" />
 	</form>
 	
 	<!--//- include ../benefits/benefits-credit-->
@@ -66,6 +87,7 @@ export default {
 	},
 	data() {
 		return {
+			creditAgree: false,
 			error: '',
 			name: '',
 			bdate: '',

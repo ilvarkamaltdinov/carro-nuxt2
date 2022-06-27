@@ -22,7 +22,7 @@
 						{{ folder_select_title }}
 					</div>
 					<svg-icon class="filter__arrow"
-					          name="icon-arrow"></svg-icon>
+					          name="icon-arrow"/>
 				</li>
 				<li class="filter__menu-item"
 				    v-if="showGeneration"
@@ -31,7 +31,7 @@
 						{{ generation_select_title }}
 					</div>
 					<svg-icon class="filter__arrow"
-					          name="icon-arrow"></svg-icon>
+					          name="icon-arrow"/>
 				</li>
 				<li class="filter__menu-item"
 				    @click="openFilterModal('engine-type')">
@@ -39,7 +39,7 @@
 						{{ engine_type_select_title }}
 					</div>
 					<svg-icon class="filter__arrow"
-					          name="icon-arrow"></svg-icon>
+					          name="icon-arrow"/>
 				</li>
 				<li class="filter__menu-item"
 				    @click="openFilterModal('body-type')">
@@ -47,7 +47,7 @@
 						{{ body_type_select_title }}
 					</div>
 					<svg-icon class="filter__arrow"
-					          name="icon-arrow"></svg-icon>
+					          name="icon-arrow"/>
 				</li>
 				<li v-if="allFilters"
 				    class="filter__menu-item"
@@ -56,7 +56,7 @@
 						{{ gearbox_select_title }}
 					</div>
 					<svg-icon class="filter__arrow"
-					          name="icon-arrow"></svg-icon>
+					          name="icon-arrow"/>
 				</li>
 				<li v-if="allFilters"
 				    class="filter__menu-item"
@@ -65,7 +65,7 @@
 						{{ drive_type_select_title }}
 					</div>
 					<svg-icon class="filter__arrow"
-					          name="icon-arrow"></svg-icon>
+					          name="icon-arrow"/>
 				</li>
 			</ul>
 			<ul v-if="allFilters"
@@ -80,9 +80,7 @@
 				</li>
 			</ul>
 			<div class="filters__more">
-				<button-show @click="allFilters = !allFilters">
-					{{ allFilters ? 'Скрыть фильтры' : 'Больше фильтров' }}
-				</button-show>
+				<button-typical :text="allFilters ? 'Скрыть' : 'Больше фильтров'" class="button--show" @click="allFilters = !allFilters"/>
 			</div>
 			
 		</div>
@@ -91,8 +89,10 @@
 <script>
 
 import {mapActions, mapGetters, mapMutations} from 'vuex'
+import ButtonTypical from "@/components/button/button-typical";
 
 export default {
+	components: {ButtonTypical},
 	data() {
 		return {
 			allFilters: false,

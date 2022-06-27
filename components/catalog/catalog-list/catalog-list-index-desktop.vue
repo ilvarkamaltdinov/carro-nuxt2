@@ -14,14 +14,14 @@
 			</div>
 			<button class="swiper-button swiper-button-prev">
 				<svg-icon class="swiper-button__icon"
-				          name="icon-arrow"></svg-icon>
+				          name="icon-arrow"/>
 			</button>
 			<button class="swiper-button swiper-button-next">
 				<svg-icon class="swiper-button__icon"
-				          name="icon-arrow"></svg-icon>
+				          name="icon-arrow"/>
 			</button>
 		</div>
-		<button-more @click.native="toCatalog">Все автомобили</button-more>
+		<button-typical @click.native="toCatalog()" text="Все автомобили" class="button--link button--more"/>
 	</section>
 
 </template>

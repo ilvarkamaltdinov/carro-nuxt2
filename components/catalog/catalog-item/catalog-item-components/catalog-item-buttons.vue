@@ -5,13 +5,14 @@
 			                 @click="like()" />
 			<button-call @click="call" />
 		</div>
-		<button-choose v-if="choose"
-		               @click="chooseClick(offer)">
-			{{ currentCar === offer ? 'Выбрано' : 'Выбрать' }}
-		</button-choose>
-		<button-credit v-else
-		               @click="credit" />
-	
+		<button-typical v-if="choose"
+		                @click="chooseClick(offer)"
+		                :text="currentCar === offer ? 'Выбрано' : 'Выбрать'"
+		                button-class="button--credit" />
+		<button-typical v-else
+		                @click="credit()"
+		                text="Купить в кредит"
+		                button-class="button--credit" />
 	</div>
 </template>
 

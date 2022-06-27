@@ -22,9 +22,11 @@
 			</nuxt-link>
 		</li>
 		<li class="site-list__item">
-			<a class="site-list__link"
-			   href="">Выкуп
-			</a>
+			<nuxt-link
+					to="/buyout"
+					class="site-list__link">
+				Выкуп
+			</nuxt-link>
 		</li>
 		<li class="site-list__item">
 			<nuxt-link

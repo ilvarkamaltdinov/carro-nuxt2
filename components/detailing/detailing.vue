@@ -19,7 +19,7 @@
 							<span class="detailing__sale">Еще -10% за онлайн-заявку</span>
 						</div>
 					</div>
-					<button-detailing />
+					<button-typical text="Заказать услугу" button-class="button--credit" />
 				</li>
 				<li class="detailing__item">
 					<div class="detailing__main">
@@ -30,7 +30,7 @@
 							<span class="detailing__sale">Еще -10% за онлайн-заявку</span>
 						</div>
 					</div>
-					<button-detailing />
+					<button-typical text="Заказать услугу" button-class="button--credit" />
 				</li>
 				<li class="detailing__item">
 					<div class="detailing__main">
@@ -41,7 +41,7 @@
 							<span class="detailing__sale">Еще -10% за онлайн-заявку</span>
 						</div>
 					</div>
-					<button-detailing />
+					<button-typical text="Заказать услугу" button-class="button--credit" />
 				</li>
 			</ul>
 		</div>

@@ -70,7 +70,7 @@
 		</div>
 		<div class="grid__col-8">
 			<filter-sort/>
-			<button-more>Показать больше</button-more>
+			<button-typical text="Показать больше" class="button--link button--more"/>
 			<pagination/>
 		</div>
 	</section>

@@ -15,17 +15,8 @@
 				</div>
 			</div>
 			<div class="car__top-buttons grid__col-6">
-				<button class="button button--icon button--link">
-					Обратный звонок
-					<svg-icon class="icon"
-					          name="icon-callback" />
-				</button>
-				<a href="tel:+74952452342"
-				   class="button button--icon button--link">
-					+7 495 245-23-42
-					<svg-icon class="icon"
-					          name="icon-call" />
-				</a>
+				<button-typical text="Обратный звонок" class="button--icon button--link" icon="icon-callback"/>
+				<button-typical text="+7 495 245-23-42" class="button--icon button--link" icon="icon-call"/>
 			</div>
 		</div>
 		<div class="car__slider-wrap">
@@ -65,7 +56,6 @@ export default {
 	methods:{
 		...mapMutations({
 			setOffer: 'catalog/catalog-cars/SET_OFFER',
-			setLastUsedPage: 'filters/filters/SET_LAST_USED_PAGE',
       setFilterClick: 'filters/filters/SET_IS_FILTER_CLICK',
       setIsOfferClick: 'filters/filters/SET_IS_OFFER_CLICK'
 		}),

@@ -13,16 +13,7 @@
 			<div class="grid__col-8">
 				<filter-sort />
 				<component :is="$device.isMobile ? 'catalog-list-used-mobile' : 'catalog-list-used-desktop'" />
-				<!--<button-more>Показать больше</button-more>-->
-				
-				<!--<paginate-->
-				<!--		v-if="offers.last_page > 1 && hasPagination"-->
-				<!--		:page-count="offers.last_page"-->
-				<!--		:click-handler="clickCallback"-->
-				<!--		:prev-text="'Назад'"-->
-				<!--		:next-text="'Вперед'"-->
-				<!--		:container-class="'pagination'">-->
-				<!--</paginate>-->
+				<!--<button-typical text="Показать больше" class="button&#45;&#45;link button&#45;&#45;more"/>-->
 			</div>
 		</section>
 	</div>

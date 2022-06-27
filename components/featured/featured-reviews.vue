@@ -28,7 +28,7 @@
 					          name="icon-play"></svg-icon>
 				</li>
 			</ul>
-			<button-more @click="total += 9">Показать больше</button-more>
+			<button-typical @click="total += 9" text="Показать больше" class="button--link button--more"/>
 		</div>
 	</section>
 </template>

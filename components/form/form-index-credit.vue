@@ -49,7 +49,7 @@
 			</label>
 			<checkbox-agree />
 		</fieldset>
-		<button-form />
+		<button-typical text="Оставить заявку" button-class="button--credit button--form" />
 	</form>
 </template>
 <script>

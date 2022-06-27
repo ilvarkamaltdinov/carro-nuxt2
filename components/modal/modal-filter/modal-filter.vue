@@ -5,7 +5,7 @@
 			           @check="check" />
 		</div>
 		<div class="page-main__button-fixed">
-			<button-fixed @click="filter">{total}</button-fixed>
+			<button-typical @click="filter" text="Показать автомобили" button-class="button--credit  button--fixed" />
 		</div>
 	</div>
 </template>

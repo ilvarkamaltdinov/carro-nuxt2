@@ -4,15 +4,11 @@
 		<div class="catalog__list grid grid__col-12">
 			<catalog-item v-for="i in carsCount" :key="i"/>
 		</div>
-		<button-more/>
+		<button-typical text="Все автомобили" class="button--link button--more"/>
 	</section>
 </template>
 <script>
-
-import ButtonMore from "../button/button-more";
-
 export default {
-	components: {ButtonMore},
 	data() {
 		return {
 			carsCount: 6
