@@ -9,21 +9,26 @@
 		</div>
 		<div class="grid__col-12 grid grid--application">
 			<form-trade-in/>
-			<div v-if="currentCar" class="application__catalog catalog grid__col-8">
-				<catalog-item inline :info="currentCar"/>
+			
+			<div v-if="currentCar"
+			     class="application__catalog catalog grid__col-8">
+				<catalog-item-large-desktop :has-buttons="false"
+				                            :offer="currentCar" />
 			</div>
-			<button v-else class="application__choose-car grid__col-8"
+			<button v-else
+			        class="application__choose-car grid__col-8"
 			        @click="chooseCar">
 				<svg-icon class="application__choose-car-icon"
-				          name="icon-form"></svg-icon>
+				          name="icon-form" />
 				<span class="application__choose-car-text">Выберите автомобиль</span>
 			</button>
+			
 			<div class="application__banks grid__col-5">
 				<div class="application__banks-form">
 					<img class="application__banks-img"
 					     src="~/static/img/banks/logo-tinkoff.svg"
 					     alt="" />
-					<div class="application__banks-text">и еще 5 банков</div>
+					<nuxt-link to="/banks" class="application__banks-text">и еще 5 банков</nuxt-link>
 				</div>
 				<div class="application__form-img-wrap">
 					<picture>
@@ -46,11 +51,11 @@
 					<div class="application__terms-text">Ставка по кредиту</div>
 				</div>
 				<div class="application__terms-item">
-					<div class="application__terms-number application__terms-number--term">24 мес.</div>
+					<div class="application__terms-number application__terms-number--term">{{ totalSum ? (rangePeriodValue + ' мес.') : '-' }}</div>
 					<div class="application__terms-text">Срок автокредита</div>
 				</div>
 				<div class="application__terms-item">
-					<div class="application__terms-number application__terms-number--payment">54 520 ₽</div>
+					<div class="application__terms-number application__terms-number--payment">{{ totalSum || '-' }}</div>
 					<div class="application__terms-text">Ежемеясячный платеж</div>
 				</div>
 			</div>
@@ -59,7 +64,7 @@
 
 </template>
 <script>
-import {mapGetters, mapMutations} from 'vuex'
+import {mapActions, mapGetters, mapMutations} from 'vuex'
 
 export default {
 	data() {
@@ -72,15 +77,22 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			currentCar: 'modal/modal-choose/currentCar'
+			currentCar: 'modal/modal-choose/currentCar',
+			totalSum: 'form/form-credit/totalSum',
+			rangePeriodValue: 'form/form-credit/rangePeriodValue'
 		})
 	},
 	methods: {
-		...mapMutations({
-			setModalMain: 'modal/modal-main/SET_MODAL_MAIN'
+		...mapActions({
+			openModal: 'modal/modal-main/openModal'
 		}),
 		chooseCar() {
-			this.setModalMain(this.modalChooseCar)
+			let payload = {
+				modal_component: 'modal-choose',
+				modal_title: 'Выберите автомобиль',
+				modal_sub_title: '10 560 автомобилей в наличии'
+			}
+			this.openModal(payload)
 		}
 	}
 }

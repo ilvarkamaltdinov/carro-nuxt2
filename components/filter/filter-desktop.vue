@@ -82,7 +82,6 @@
 			<div class="filters__more">
 				<button-typical :text="allFilters ? 'Скрыть' : 'Больше фильтров'" class="button--show" @click="allFilters = !allFilters"/>
 			</div>
-			
 		</div>
 	</section>
 </template>

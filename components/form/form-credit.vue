@@ -3,8 +3,8 @@
 	      @submit.prevent="sendForm()">
 		<fieldset class="form__fieldset">
 			<label
-					:class="{'form__field-wrap--car-active' : currentCar}"
-					class="form__field-wrap form__field-wrap--car">
+					:class="{'form__field-wrap--car-active' : currentCar, 'form__field-wrap--error':error === 'invalid_car'}"
+					class="form__field-wrap form__field-wrap--car ">
 				<button class="form__field"
 				        @click.prevent="choseCar()">
 					
@@ -49,8 +49,9 @@
 				              type="tel" />
 			</label>
 			<label class="form__field-wrap"
-			       :class="{'form__field-wrap--success' : form.phone.valid}">
+			       :class="{'form__field-wrap--success' : form.phone.valid, 'form__field-wrap--error': form.phone.valid === false}">
 				<inputs-input placeholder="Телефон"
+				              @input="form.phone.valid = null"
 				              @phoneMaskComplete="form.phone.valid = true"
 				              @onincomplete="form.phone.valid = null"
 				              v-model="form.phone.value"
@@ -59,9 +60,6 @@
 			</label>
 			<checkbox-agree />
 		</fieldset>
-		<div class="error" v-if="error">
-			{{error}}
-		</div>
 		<button-typical text="Оставить заявку"
 		                button-class="button--credit button--form" />
 	</form>
@@ -69,6 +67,7 @@
 <script>
 import {mapGetters, mapMutations, mapActions} from 'vuex'
 import filters from "~/mixins/filters";
+import FEEDBACK from "~/apollo/queries/feedback.gql";
 
 export default {
 	mixins: [filters],
@@ -150,16 +149,21 @@ export default {
 			this.calculate({payment: value})
 		},
 		checkForm() {
-			if(!this.currentCar){
-				this.error = 'Выберите автомобиль'
+			if (!this.currentCar) {
+				this.error = 'invalid_car'
+				window.scrollTo(0, 0)
 				return false
 			}
 			if (this.form.name.value.length < 2) {
 				this.form.name.valid = false
 				return false
 			}
-			if(this.form.date.value === '' || this.form.date.value.split('_').length > 1){
+			if (this.form.date.value === '' || this.form.date.value.split('_').length > 1) {
 				this.form.date.valid = false
+				return false
+			}
+			if (!this.form.phone.valid) {
+				this.form.phone.valid = false
 				return false
 			}
 			return true;
@@ -167,7 +171,7 @@ export default {
 		sendForm() {
 			if (this.checkForm()) {
 				let formData = {
-					external_id: this.currentCar?.external_id,
+					external_id: this.currentCar.external_id,
 					site_id: this.$config.site_id,
 					type: 'credit',
 					client_name: this.form.name.value,
@@ -181,28 +185,27 @@ export default {
 					// utm_term: localStorage.utm_term || '',
 					// utm_content: localStorage.utm_content || '',
 				}
-				console.log(formData)
-				// try {
-				// 	const res = this.$apollo.mutate({
-				// 		mutation: FEEDBACK,
-				// 		variables: formData
-				// 	}).then((response) => {
-				// 		let metrikParams = {
-				// 			eventName: 'thanks',
-				// 			ecommerceId: response.data.feedback.id,
-				// 			ecommerceProductsId: this.data.external_id,
-				// 			ecommerceProductsName: this.data.name,
-				// 			ecommerceProductsPrice: this.data.price,
-				// 			ecommerceProductsBrand: this.data.mark.title,
-				// 			ecommerceProductsCategory: `С пробегом/${this.data.mark.title}/${this.data.folder.title}/${this.data.name}`,
-				// 			ecommerceProductsQuantity: "1",
-				// 		}
-				// 		this.$router.push({name: 'thanks', params:{metrikParams}});
-				// 	});
-				// }
-				// catch (e) {
-				// 	console.error(e)
-				// }
+				try {
+					const res = this.$apollo.mutate({
+						mutation: FEEDBACK,
+						variables: formData
+					}).then((response) => {
+						console.log(response)
+						// let metrikParams = {
+						// 	eventName: 'thanks',
+						// 	ecommerceId: response.data.feedback.id,
+						// 	ecommerceProductsId: this.data.external_id,
+						// 	ecommerceProductsName: this.data.name,
+						// 	ecommerceProductsPrice: this.data.price,
+						// 	ecommerceProductsBrand: this.data.mark.title,
+						// 	ecommerceProductsCategory: `С пробегом/${this.data.mark.title}/${this.data.folder.title}/${this.data.name}`,
+						// 	ecommerceProductsQuantity: "1",
+						// }
+						// this.$router.push({name: 'thanks', params: {metrikParams}});
+					});
+				} catch (e) {
+					console.error(e)
+				}
 			}
 		},
 	}

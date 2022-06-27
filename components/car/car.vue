@@ -30,7 +30,7 @@
 		</div>
 		<div class="grid grid--container">
 			<benefits-car />
-			<!--<car-credit/>-->
+			<car-credit :offer="offer"/>
 		</div>
 	</section>
 </template>

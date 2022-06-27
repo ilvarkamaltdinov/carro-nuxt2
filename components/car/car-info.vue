@@ -113,7 +113,7 @@
 						</div>
 					</div>
 					<div class="car__info-options features">
-						<div class="features__group" v-for="group in equipment_group_list" :key="group.title">
+						<div v-if="index === 0" class="features__group" v-for="(group, index) in equipment_group_list" :key="group.title">
 							<h3 class="heading heading--h3">{{group.title}}</h3>
 							<ul class="features__list">
 								<li class="features__item" v-for="value in group.values" :key="value">
@@ -122,7 +122,7 @@
 							</ul>
 						</div>
 					</div>
-					<button-typical text="Показать больше" class="button--show"/>
+					<button-typical @click="moreInfo(offer)" text="Показать больше" class="button--show"/>
 				</div>
 				<div class="swiper-slide car__info-group car__info-group--options">
 					<div class="heading-group">
@@ -158,9 +158,7 @@
 								<li class="features__item">c 9:00 до 21:00 без выходных</li>
 							</ul>
 						</div>
-						<button-show>
-							Подробнее о дилере
-						</button-show>
+						<button-typical text="Подробнее о дилере" class="button--show"/>
 					</div>
 				</div>
 			</div>
@@ -170,7 +168,7 @@
 </template>
 <script>
 import filters from "~/mixins/filters";
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 import ButtonTypical from "@/components/button/button-typical";
 export default {
 	components: {ButtonTypical},
@@ -183,6 +181,20 @@ export default {
 			return this.offer.equipment_groups
 		}
 		
+	},
+	methods:{
+		...mapActions({
+			openModal: 'modal/modal-main/openModal'
+		}),
+		moreInfo(carInfo){
+			let payload = {
+				modal_data: carInfo,
+				modal_component: 'modal-complect',
+				modal_title: 'Комплектация',
+				modal_sub_title: carInfo.name
+			}
+			this.openModal(payload)
+		},
 	}
 }
 </script>

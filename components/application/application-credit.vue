@@ -17,6 +17,7 @@
 				</div>
 				<form-credit />
 			</div>
+			
 			<div v-if="currentCar"
 			     class="application__catalog catalog grid__col-8">
 				<catalog-item-large-desktop :has-buttons="false"

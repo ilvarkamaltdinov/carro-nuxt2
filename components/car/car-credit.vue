@@ -18,7 +18,7 @@
 			<form-car-credit />
 		</div>
 		<div class="application__catalog catalog grid__col-8">
-			<catalog-item-desktop-form />
+			<catalog-item-large-desktop :has-buttons="false" :offer="offer" />
 		</div>
 		<div class="application__banks grid__col-5">
 			<div class="application__banks-form">
@@ -32,8 +32,16 @@
 			</div>
 			<div class="application__form-img-wrap">
 				<picture>
-					<source type="image/webp" media="(min-width: 768px)" srcset="img/form-picture@1x.webp 1x, img/form-picture@2x.webp 2x"/>
-					<source media="(min-width: 768px)" srcset="img/form-picture@1x.png 1x, img/form-picture@2x.png 2x"/><img class="application__form-img" src="img/form-picture@1x.png" srcset="img/form-picture@2x.png 2x" loading="lazy" alt=""/>
+					<source type="image/webp"
+					        media="(min-width: 768px)"
+					        srcset="~/static/img/form-picture@1x.webp 1x, ~/static/img/form-picture@2x.webp 2x" />
+					<source media="(min-width: 768px)"
+					        srcset="~/static/img/form-picture@1x.png 1x, ~/static/img/form-picture@2x.png 2x" />
+					<img class="application__form-img"
+					     src="~/static/img/form-picture@1x.png"
+					     srcset="~/static/img/form-picture@2x.png 2x"
+					     loading="lazy"
+					     alt="" />
 				</picture>
 			</div>
 		</div>
@@ -55,10 +63,12 @@
 				</div>
 			</div>
 		</div>
-		
+	
 	</div>
 </template>
 <script>export default {
-	components: {}
+	props: {
+		offer: Object
+	}
 }
 </script>
