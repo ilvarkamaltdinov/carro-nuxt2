@@ -11,7 +11,7 @@
 				<catalog-item-tech-list :offer="offer" />
 			</div>
 		</div>
-		<catalog-item-buttons v-if="hasButtons" :offer="offer"/>
+		<catalog-item-buttons :choose="choose" v-if="hasButtons" :offer="offer"/>
 	</article>
 </template>
 <script>
@@ -21,6 +21,10 @@ import AOS from "aos";
 export default {
 	mixins: [filters],
 	props: {
+		choose:{
+			type: Boolean,
+			default: false
+		},
 		offer: {
 			type: Object,
 			default: () => {

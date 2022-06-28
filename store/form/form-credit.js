@@ -1,30 +1,30 @@
 export const state = () => ({
-    rangePeriodValues: [
-        "2",
-        "6",
-        "12",
-        "24",
-        "36",
-        "48",
-        "60",
-        "72",
-        "84"
-    ],
-    rangePaymentValues: [
-        '0%',
-        '10%',
-        '20%',
-        '30%',
-        '40%',
-        '50%',
-        '60%',
-        '70%'
-    ],
+    // rangePeriodValues: [
+    //     "2",
+    //     "6",
+    //     "12",
+    //     "24",
+    //     "36",
+    //     "48",
+    //     "60",
+    //     "72",
+    //     "84"
+    // ],
+    // rangePaymentValues: [
+    //     '0%',
+    //     '10%',
+    //     '20%',
+    //     '30%',
+    //     '40%',
+    //     '50%',
+    //     '60%',
+    //     '70%'
+    // ],
     percent_credit: '4.9%',
     rangePeriodValue: '48',
     rangePaymentValue: 0,
     currentCar: null,
-    totalSum: null,
+    totalSum: null
 })
 export const getters = {
     rangePeriodValues: (state) => {
@@ -44,8 +44,7 @@ export const getters = {
     },
     totalSum: (state) => {
         return state.totalSum
-    },
-
+    }
 }
 export const actions = {
     async calculate({commit, dispatch, state, getters}, payload) {
@@ -57,7 +56,6 @@ export const actions = {
                 commit('SET_RANGE_PAYMENT_VALUE', parseInt(payload.payment))
             }
         }
-
         if (state.currentCar) {
             let creditProc = 4.9;
             let car_price = state.currentCar.price;
@@ -80,8 +78,7 @@ export const actions = {
                 commit('SET_TOTAL_SUM',  String(A).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1 ") + " ₽")
             }
         }
-    },
-
+    }
 }
 export const mutations = {
     SET_CURRENT_CAR(state, data) {
@@ -95,5 +92,5 @@ export const mutations = {
     },
     SET_TOTAL_SUM(state, data) {
         state.totalSum = data
-    },
+    }
 }

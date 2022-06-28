@@ -1,4 +1,5 @@
 <template>
+	<!--TODO не делаю @click.prevent так как блокирует событие @submit на формах-->
 	<button class="button"
 	        :class="buttonClass"
 	        @click="$emit('click')">

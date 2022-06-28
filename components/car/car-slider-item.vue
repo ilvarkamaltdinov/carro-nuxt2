@@ -1,5 +1,4 @@
 <template>
-	
 	<div class="slider-car__item swiper-slide">
 		<a class="slider-car__link"
 		   data-fancybox="gallery"

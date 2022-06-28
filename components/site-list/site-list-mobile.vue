@@ -4,7 +4,10 @@
 		    class="site-list__item site-list__item--group"
 		    v-for="(item, index) in list"
 		    :key="item.title">
-			<div class="site-list__link site-list__link--group">{{ item.title }}</div>
+			<div class="site-list__link site-list__link--group"
+			:class="{'site-list__link--group-active': activeNav === index}">
+				{{ item.title }}
+			</div>
 			<VueSlideToggle :open="activeNav === index"
 			                :duration="500">
 				<ul class="site-list__group-list">

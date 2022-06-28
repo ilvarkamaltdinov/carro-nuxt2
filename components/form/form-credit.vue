@@ -1,7 +1,8 @@
 <template>
 	<form class="form"
-	      @submit.prevent="sendForm()">
-		<fieldset class="form__fieldset">
+	      @submit.prevent="submitForm()">
+		<fieldset v-if="hasChose"
+		          class="form__fieldset">
 			<label
 					:class="{'form__field-wrap--car-active' : currentCar, 'form__field-wrap--error':error === 'invalid_car'}"
 					class="form__field-wrap form__field-wrap--car ">
@@ -15,23 +16,7 @@
 				          class="icon form__car-icon" />
 			</label>
 		</fieldset>
-		<fieldset class="form__fieldset">
-			<range-period :value="rangePeriodValue"
-			              :values="rangePeriodValues"
-			              @changePeriod="changePeriod" />
-			<range-payment :sum="currentPaymentSum | toCurrency"
-			               :value="rangePaymentValue + '%'"
-			               :values="rangePaymentValues"
-			               @changePayment="changePayment" />
-			<div class="form__total">
-				<div class="form__total-label">Ваш платеж:</div>
-				<div class="form__total-payment">
-					{{ isTotalSum }}
-				</div>
-			</div>
-		</fieldset>
-		<div>
-		</div>
+		<form-credit-calculator :params="creditParams" :offer="offer" />
 		<fieldset class="form__fieldset">
 			<label class="form__field-wrap"
 			       :class="{'form__field-wrap--success' : form.name.value.length >= 2, 'form__field-wrap--error': form.name.valid === false}">
@@ -70,12 +55,12 @@ import filters from "~/mixins/filters";
 import FEEDBACK from "~/apollo/queries/feedback.gql";
 
 export default {
-	mixins: [filters],
-	watch: {
-		currentCar() {
-			this.setCurrentCar(this.currentCar)
-			this.calculate()
-		}
+	props: {
+		hasChose: {
+			type: Boolean,
+			default: true
+		},
+		offer: Object
 	},
 	data() {
 		return {
@@ -94,41 +79,44 @@ export default {
 				}
 			},
 			error: '',
-			modalChooseCar: {
-				component: 'modal-choose',
-				visibility: true
-			},
-			credit: {
-				range_payment: "0%",
-				range_period: "84 мес",
-				year_percent: "4.9%",
-				range_sum: '',
-				payment_sum: ''
+			creditParams: {
+				rangePeriodValues: [
+					"2",
+					"6",
+					"12",
+					"24",
+					"36",
+					"48",
+					"60",
+					"72",
+					"84"
+				],
+				rangePaymentValues: [
+					'0%',
+					'10%',
+					'20%',
+					'30%',
+					'40%',
+					'50%',
+					'60%',
+					'70%'
+				],
+				period: 24,
+				payment: 10,
+				percent: 4.9,
 			}
 		}
 	},
 	computed: {
 		...mapGetters({
 			currentCar: 'modal/modal-choose/currentCar',
-			rangePeriodValues: 'form/form-credit/rangePeriodValues',
-			rangePaymentValues: 'form/form-credit/rangePaymentValues',
-			rangePeriodValue: 'form/form-credit/rangePeriodValue',
-			rangePaymentValue: 'form/form-credit/rangePaymentValue',
-			totalSum: 'form/form-credit/totalSum'
 		}),
-		isTotalSum() {
-			return this.totalSum ? this.totalSum + '/ мес.' : '0 ₽/ мес'
-		},
-		currentPaymentSum() {
-			return this.rangePaymentValue !== 0 && this.currentCar
-					? this.currentCar.price * this.rangePaymentValue / 100
-					: '0 ₽'
-		}
+		
 	},
 	methods: {
 		...mapActions({
 			openModal: 'modal/modal-main/openModal',
-			calculate: 'form/form-credit/calculate'
+			sendForm: 'form/form/sendForm'
 		}),
 		...mapMutations({
 			setCurrentCar: 'form/form-credit/SET_CURRENT_CAR'
@@ -142,17 +130,13 @@ export default {
 			}
 			this.openModal(payload)
 		},
-		changePeriod(value) {
-			this.calculate({period: value})
-		},
-		changePayment(value) {
-			this.calculate({payment: value})
-		},
 		checkForm() {
-			if (!this.currentCar) {
-				this.error = 'invalid_car'
-				window.scrollTo(0, 0)
-				return false
+			if(this.hasChose){
+				if (!this.currentCar) {
+					this.error = 'invalid_car'
+					window.scrollTo(0, 0)
+					return false
+				}
 			}
 			if (this.form.name.value.length < 2) {
 				this.form.name.valid = false
@@ -168,46 +152,21 @@ export default {
 			}
 			return true;
 		},
-		sendForm() {
+		async submitForm() {
 			if (this.checkForm()) {
 				let formData = {
-					external_id: this.currentCar.external_id,
-					site_id: this.$config.site_id,
+					external_id: this.hasChose ? this.currentCar.external_id : this.offer.external_id,
 					type: 'credit',
 					client_name: this.form.name.value,
 					client_phone: this.form.phone.value,
 					client_age: this.form.date.value,
-					credit_initial_fee: this.rangePaymentValue,
-					credit_period: this.rangePeriodValue,
-					// utm_source: localStorage.utm_source || '',
-					// utm_medium: localStorage.utm_medium || '',
-					// utm_campaign: localStorage.utm_campaign || '',
-					// utm_term: localStorage.utm_term || '',
-					// utm_content: localStorage.utm_content || '',
+					//TODO эмитить данные из калькулятора в этот компонент
+					// credit_initial_fee: this.rangePaymentValue,
+					// credit_period: this.rangePeriodValue,
 				}
-				try {
-					const res = this.$apollo.mutate({
-						mutation: FEEDBACK,
-						variables: formData
-					}).then((response) => {
-						console.log(response)
-						// let metrikParams = {
-						// 	eventName: 'thanks',
-						// 	ecommerceId: response.data.feedback.id,
-						// 	ecommerceProductsId: this.data.external_id,
-						// 	ecommerceProductsName: this.data.name,
-						// 	ecommerceProductsPrice: this.data.price,
-						// 	ecommerceProductsBrand: this.data.mark.title,
-						// 	ecommerceProductsCategory: `С пробегом/${this.data.mark.title}/${this.data.folder.title}/${this.data.name}`,
-						// 	ecommerceProductsQuantity: "1",
-						// }
-						// this.$router.push({name: 'thanks', params: {metrikParams}});
-					});
-				} catch (e) {
-					console.error(e)
-				}
+				await this.sendForm(formData)
 			}
-		},
+		}
 	}
 }
 </script>

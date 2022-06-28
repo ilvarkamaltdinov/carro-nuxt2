@@ -2,7 +2,7 @@
 	<div class="form__block form__block--range range">
 		<label class="form__range-wrap">
 			<span class="form__range-name">Срок кредитования, мес.:</span>
-			<span class="form__range-value">{{ value }} мес.</span>
+			<span class="form__range-value">{{ period }}</span>
 		</label>
 		<client-only>
 			<range-slider
@@ -27,14 +27,9 @@ export default {
 		}
 	},
 	props: {
-		values: {
-			type: Array,
-			default: () => []
-		},
-		value: {
-			type: String,
-			default: ''
-		}
+		values: Array,
+		value: String,
+		period: String,
 	},
 	methods: {
 		changePeriod(value) {

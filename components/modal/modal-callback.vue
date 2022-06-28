@@ -18,7 +18,7 @@
 							<span class="heading-group__label">Перезвоним в течение 5 минут</span>
 						</div>
 					</div>
-					<form-car-callback />
+					<form-car-callback :offer="modalData"/>
 				</div>
 				<div class="application__catalog application__catalog--modal catalog grid__col-4">
 					<catalog-item-small-desktop :has-buttons="false" :offer="modalData"/>

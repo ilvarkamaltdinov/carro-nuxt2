@@ -11,7 +11,7 @@
 					</div>
 					<rating-form />
 				</div>
-				<form-car-credit />
+				<form-credit :has-chose="false" :offer="modalData"/>
 			</div>
 			<div class="application__catalog application__catalog--modal catalog grid__col-4">
 				<component :is="component" :has-buttons="false" :offer="modalData"/>
@@ -21,21 +21,10 @@
 					<img class="application__banks-img"
 					     src="~/assets/img/banks/logo-tinkoff.svg"
 					     alt="" />
-					<div class="application__banks-text">и еще 5 банков</div>
+					<nuxt-link to="/banks" class="application__banks-text">и еще 5 банков</nuxt-link>
 				</div>
 				<div class="application__form-img-wrap">
-					<picture>
-						<source type="image/webp"
-						        media="(min-width: 768px)"
-						        srcset="~/assets/img/form-picture@1x.webp 1x, ~/assets/img/form-picture@2x.webp 2x" />
-						<source media="(min-width: 768px)"
-						        srcset="~/assets/img/form-picture@1x.png 1x, ~/assets/img/form-picture@2x.png 2x" />
-						<img class="application__form-img"
-						     src="~/assets/img/form-picture@1x.png"
-						     srcset="~/assets/img/form-picture@2x.png 2x"
-						     loading="lazy"
-						     alt="" />
-					</picture>
+					<nuxt-picture quality="100" :imgAttrs="{class:'application__form-img'}" src="img/form-picture@2x.png"/>
 				</div>
 			</div>
 		</div>

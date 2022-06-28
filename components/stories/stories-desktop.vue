@@ -14,12 +14,12 @@
 		<button ref="prev"
 		        class="swiper-button swiper-button-prev">
 			<svg-icon class="swiper-button__icon"
-			          name="icon-arrow"></svg-icon>
+			          name="icon-arrow"/>
 		</button>
 		<button ref="next"
 		        class="swiper-button swiper-button-next">
 			<svg-icon class="swiper-button__icon"
-			          name="icon-arrow"></svg-icon>
+			          name="icon-arrow"/>
 		</button>
 	</section>
 </template>

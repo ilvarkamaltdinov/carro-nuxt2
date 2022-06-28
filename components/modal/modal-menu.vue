@@ -4,7 +4,7 @@
 		<h2 class="visually-hidden">Меню сайта</h2>
 		<div class="modal__wrap grid grid__container">
 			<nav class="main-nav main-nav--modal grid__col-12">
-				<component :list="siteList" :is="mobile ? 'site-list-mobile': 'site-list'"/>
+				<component :list="siteList" :is="$device.isMobile ? 'site-list-mobile': 'site-list'"/>
 				<social/>
 			</nav>
 		</div>
@@ -15,7 +15,6 @@
 export default {
 	data(){
 		return{
-			mobile: true,
 			siteList: [
 				{
 					title: 'Автомобили',
@@ -103,11 +102,6 @@ export default {
 				},
 			]
 		}
-	},
-	mounted() {
-		window.innerWidth < 1200 ?
-				this.mobile = true :
-				this.mobile = false
-	},
+	}
 }
 </script>

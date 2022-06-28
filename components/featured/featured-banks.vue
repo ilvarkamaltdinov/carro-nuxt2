@@ -95,8 +95,7 @@
 				    v-for="bank in banks"
 				    :key="bank.id">
 					<div class="banks__main">
-						<img class="banks__img"
-						     src="~/assets/img/banks/logo-tinkoff.svg"
+						<img class="banks__img" :src="require(`~/assets/img/banks/${bank.slug}.svg`)"
 						     alt="" />
 						<rating-bank />
 					</div>

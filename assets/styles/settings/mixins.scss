@@ -277,6 +277,14 @@ div {
 
 // Hovers
 
+@mixin hover-card {
+  transition: $transitionHover;
+
+  &:hover {
+    box-shadow: $shadowHoverCard;
+  }
+}
+
 @mixin hover {
   transition: $transitionHover;
   color: $transitionHover;

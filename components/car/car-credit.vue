@@ -15,10 +15,12 @@
 				</div>
 				<rating-form />
 			</div>
-			<form-car-credit />
+			<form-credit :has-chose="false"
+			             :offer="offer" />
 		</div>
 		<div class="application__catalog catalog grid__col-8">
-			<catalog-item-large-desktop :has-buttons="false" :offer="offer" />
+			<catalog-item-large-desktop :has-buttons="false"
+			                            :offer="offer" />
 		</div>
 		<div class="application__banks grid__col-5">
 			<div class="application__banks-form">
@@ -66,7 +68,8 @@
 	
 	</div>
 </template>
-<script>export default {
+<script>
+export default {
 	props: {
 		offer: Object
 	}

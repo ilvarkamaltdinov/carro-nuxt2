@@ -5,6 +5,15 @@
   margin-top: 112px;
 }
 
+.page-footer__link {
+  color: $colorLink;
+  transition: $transitionHover;
+
+  &:hover {
+    color: $colorLinkHover;
+  }
+}
+
 .page-footer__top {
   width: 100%;
   height: 32px;
@@ -24,6 +33,17 @@
     background-color: white;
     border-radius: 100%;
   }
+}
+
+.page-footer__insurance-logo {
+  height: 24px;
+  display: inline-block;
+  padding: 0 8px;
+  box-sizing: content-box;
+  margin-top: -9px;
+  position: relative;
+  top: 7px;
+  filter: grayscale(1);
 }
 
 .page-footer__logo {
@@ -55,7 +75,7 @@
     position: absolute;
     left: calc(50% - 30px);
     bottom: -20px;
-    background-image: url("~/assets/img/logo-footer-shadow.png");
+    background-image: url("../img/logo-footer-shadow.png");
     background-size: contain;
     background-repeat: no-repeat;
     transition: $transitionHover;
@@ -198,15 +218,6 @@
   .page-footer__links-item {
     &:not(:last-child) {
       margin-right: 24px;
-    }
-  }
-
-  .page-footer__link {
-    color: $colorLink;
-    transition: $transitionHover;
-
-    &:hover {
-      color: $colorLinkHover;
     }
   }
 

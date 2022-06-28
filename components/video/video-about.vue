@@ -7,18 +7,7 @@
 				<svg-icon class="video__play-icon" name="icon-play"/>
 			</button>
 			<div class="video__img-wrap">
-				<picture>
-					<source type="image/webp"
-					        media="(min-width: 768px)"
-					        srcset="img/video/iphone@1x.webp 1x, img/video/iphone@2x.webp 2x" />
-					<source media="(min-width: 768px)"
-					        srcset="img/video/iphone@1x.png 1x, img/video/iphone@2x.png 2x" />
-					<img class="video__img"
-					     src="img/video/iphone@1x.png"
-					     srcset="img/video/iphone@2x.png 2x"
-					     loading="lazy"
-					     alt="" />
-				</picture>
+				<nuxt-picture quality="100" :imgAttrs="{class:'video__img'}" src="img/video/iphone@2x.png"/>
 			</div>
 			<p class="video__text">Узнай, почему на carro.ru лучшие цены в России!</p>
 		</div>
