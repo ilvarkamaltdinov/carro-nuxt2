@@ -61,7 +61,9 @@
 					<div class="application__terms-text">Ставка по кредиту</div>
 				</div>
 				<div class="application__terms-item">
-					<div class="application__terms-number application__terms-number--term">{{ totalSum ? (rangePeriodValue + ' мес.') : '-' }}</div>
+					<div class="application__terms-number application__terms-number--term">
+						{{ totalSum ? (rangePeriodValue + ' мес.') : '-' }}
+					</div>
 					<div class="application__terms-text">Срок автокредита</div>
 				</div>
 				<div class="application__terms-item">
@@ -84,6 +86,9 @@ export default {
 			},
 		}
 	},
+	destroyed() {
+		this.setBank({})
+	},
 	computed: {
 		...mapGetters({
 			currentCar: 'modal/modal-choose/currentCar',
@@ -102,6 +107,9 @@ export default {
 	methods: {
 		...mapActions({
 			openModal: 'modal/modal-main/openModal'
+		}),
+		...mapMutations({
+			setBank: 'banks/SET_BANK'
 		}),
 		chooseCar() {
 			let payload = {
