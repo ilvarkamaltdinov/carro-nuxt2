@@ -16,7 +16,7 @@
 				          class="icon form__car-icon" />
 			</label>
 		</fieldset>
-		<form-credit-calculator :params="creditParams" :offer="offer" />
+		<form-credit-calculator :params="creditParams" :offer="offer || currentCar" />
 		<fieldset class="form__fieldset">
 			<label class="form__field-wrap"
 			       :class="{'form__field-wrap--success' : form.name.value.length >= 2, 'form__field-wrap--error': form.name.valid === false}">

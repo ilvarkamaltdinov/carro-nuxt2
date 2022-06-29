@@ -2,7 +2,7 @@
 	<div class="car__slider slider-car grid__col-12">
 		<div class="swiper swiper--car">
 			<div class="swiper-wrapper">
-				<car-slider-item :src="img.medium" v-for="(img, index) in offer.images" :key="index"/>
+				<car-slider-item :src="img.medium" v-for="img in offer.images" :key="img.medium"/>
 			</div>
 		</div>
 		<button class="swiper-button swiper-button-prev">
@@ -14,17 +14,21 @@
 	</div>
 </template>
 <script>
+
 import {mapGetters} from "vuex";
 import AOS from "aos";
-
+let sliderCarSwiper
 export default {
 	computed:{
 		...mapGetters({
 			offer: 'catalog/catalog-cars/offer'
 		})
 	},
+	destroyed() {
+		console.log(swiper)
+	},
 	mounted() {
-		const sliderCarSwiper = new swiper.default('.car__slider .swiper', {
+		new swiper.default('.car__slider .swiper', {
 			modules: [swiper.Navigation, swiper.Pagination, swiper.Autoplay],
 			loop: true,
 			autoplayDisableOnInteraction: false,

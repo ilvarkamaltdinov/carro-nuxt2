@@ -14,7 +14,7 @@
 				<img class="slider__car-img"
 				     :src="src"
 				     :srcset="src"
-				     loading="lazy"
+				     loading=""
 				     alt="" />
 			</picture>
 		</a>

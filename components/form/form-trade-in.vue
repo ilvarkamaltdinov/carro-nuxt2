@@ -1,8 +1,9 @@
 <template>
-	<form class="form application__form grid__col-4">
+	<form class="form application__form grid__col-4"
+	      @submit.prevent="submitForm()">
 		<fieldset class="form__fieldset">
 			<label
-					:class="{'form__field-wrap--car-active' : currentCar}"
+					:class="{'form__field-wrap--car-active' : currentCar, 'form__field-wrap--error':error === 'invalid_car'}"
 					class="form__field-wrap form__field-wrap--car">
 				<button class="form__field"
 				        @click.prevent="choseCar()">
@@ -13,61 +14,53 @@
 				<svg-icon name="icon-form"
 				          class="icon form__car-icon" />
 			</label>
-			<checkbox :value="creditAgree"
-			          @change="creditAgree = !creditAgree"
+			<checkbox :value="hasCredit"
+			          @change="hasCredit = !hasCredit"
 			          label="Хочу купить автомобиль в кредит" />
 		</fieldset>
-		<VueSlideToggle :open="creditAgree"
+		<VueSlideToggle :open="hasCredit"
 		                :duration="500">
-			<fieldset class="form__fieldset">
-				<range-period :value="rangePeriodValue"
-				              :values="rangePeriodValues"
-				              @changePeriod="changePeriod" />
-				<range-payment :sum="currentPaymentSum | toCurrency"
-				               :value="rangePaymentValue + '%'"
-				               :values="rangePaymentValues"
-				               @changePayment="changePayment" />
-				<div class="form__total">
-					<div class="form__total-label">Ваш платеж:</div>
-					<div class="form__total-payment">
-						{{ isTotalSum }}
-					</div>
-				</div>
-			</fieldset>
+			<form-credit-calculator :params="creditParams"
+			                        :offer="currentCar" />
 		</VueSlideToggle>
-	
 		<fieldset class="form__fieldset">
-			<label class="form__field-wrap">
-				<input class="form__field"
-				       placeholder="Ваш автомобиль"
-				       name="name"
-				       type="text"
-				       value="" />
+			<label class="form__field-wrap"
+			       :class="{'form__field-wrap--success' : form.car.value.length >= 2, 'form__field-wrap--error': form.car.valid === false}">
+				<inputs-input placeholder="Ваш автомобиль"
+				              @input="form.car.valid = null"
+				              v-model="form.car.value"
+				              type="text" />
 			</label>
-			<label class="form__field-wrap">
-				<input class="form__field"
-				       placeholder="ФИО"
-				       name="name"
-				       type="text"
-				       value="" />
+			<label class="form__field-wrap"
+			       :class="{'form__field-wrap--success' : form.name.value.length >= 2, 'form__field-wrap--error': form.name.valid === false}">
+				<inputs-input placeholder="ФИО"
+				              @input="form.name.valid = null"
+				              v-model="form.name.value"
+				              type="text" />
 			</label>
-			<label class="form__field-wrap form__field-wrap--success">
-				<input class="form__field"
-				       placeholder="Дата рождения"
-				       type="text"
-				       name="date"
-				       value="01.08.1992" />
+			<label class="form__field-wrap"
+			       :class="{'form__field-wrap--success' : form.date.valid, 'form__field-wrap--error': form.date.valid === false}">
+				<inputs-input placeholder="Дата рождения"
+				              @input="form.date.valid = null"
+				              v-model="form.date.value"
+				              mask="date"
+				              type="tel" />
 			</label>
-			<label class="form__field-wrap">
-				<input class="form__field"
-				       placeholder="Телефон"
-				       name="phone"
-				       type="tel" />
+			<label class="form__field-wrap"
+			       :class="{'form__field-wrap--success' : form.phone.valid, 'form__field-wrap--error': form.phone.valid === false}">
+				<inputs-input placeholder="Телефон"
+				              @input="form.phone.valid = null"
+				              @phoneMaskComplete="form.phone.valid = true"
+				              @onincomplete="form.phone.valid = null"
+				              v-model="form.phone.value"
+				              mask="phone"
+				              type="tel" />
 			</label>
 			<checkbox-passport />
 			<checkbox-agree />
 		</fieldset>
-		<button-typical text="Оставить заявку" button-class="button--credit button--form" />
+		<button-typical text="Оставить заявку"
+		                button-class="button--credit button--form" />
 	</form>
 	
 	<!--//- include ../benefits/benefits-credit-->
@@ -79,56 +72,78 @@ import filters from "~/mixins/filters";
 
 export default {
 	mixins: [filters],
-	watch: {
-		currentCar() {
-			this.setCurrentCar(this.currentCar)
-			this.calculate()
-		}
+	props: {
+		hasChose: {
+			type: Boolean,
+			default: true
+		},
+		offer: Object
 	},
 	data() {
 		return {
-			creditAgree: false,
+			hasCredit: false,
 			error: '',
-			name: '',
-			bdate: '',
-			phone: '',
-			modalChooseCar: {
-				component: 'modal-choose',
-				visibility: true
+			form: {
+				car: {
+					valid: null,
+					value: '',
+				},
+				name: {
+					valid: null,
+					value: '',
+				},
+				date: {
+					valid: null,
+					value: ''
+				},
+				phone: {
+					valid: null,
+					value: ''
+				}
 			},
-			credit: {
-				range_payment: "0%",
-				range_period: "84 мес",
-				year_percent: "4.9%",
-				range_sum: '',
-				payment_sum: ''
+			creditParams: {
+				rangePeriodValues: [
+					"2",
+					"6",
+					"12",
+					"24",
+					"36",
+					"48",
+					"60",
+					"72",
+					"84"
+				],
+				rangePaymentValues: [
+					'0%',
+					'10%',
+					'20%',
+					'30%',
+					'40%',
+					'50%',
+					'60%',
+					'70%'
+				],
+				period: 24,
+				payment: 10,
+				percent: 4.9,
 			}
 		}
 	},
 	computed: {
 		...mapGetters({
 			currentCar: 'modal/modal-choose/currentCar',
-			rangePeriodValues: 'form/form-credit/rangePeriodValues',
-			rangePaymentValues: 'form/form-credit/rangePaymentValues',
-			rangePeriodValue: 'form/form-credit/rangePeriodValue',
-			rangePaymentValue: 'form/form-credit/rangePaymentValue',
-			totalSum: 'form/form-credit/totalSum'
 		}),
-		isTotalSum() {
-			return this.totalSum ? this.totalSum + '/ мес.' : '0 ₽/ мес'
-		},
-		currentPaymentSum() {
-			return this.rangePaymentValue !== 0 && this.currentCar
-					? this.currentCar.price * this.rangePaymentValue / 100
-					: '0 ₽'
-		}
 	},
 	methods: {
 		...mapActions({
 			openModal: 'modal/modal-main/openModal',
-			calculate: 'form/form-credit/calculate'
+			sendForm: 'form/form/sendForm'
+		}),
+		...mapMutations({
+			setCurrentCar: 'form/form-credit/SET_CURRENT_CAR'
 		}),
 		choseCar() {
+			this.error = ''
 			let payload = {
 				modal_component: 'modal-choose',
 				modal_title: 'Выберите автомобиль',
@@ -136,19 +151,47 @@ export default {
 			}
 			this.openModal(payload)
 		},
-		
-		
-		...mapMutations({
-			setModalMain: 'modal/modal-main/SET_MODAL_MAIN',
-			//записываю выбранную машину в модуль с формой из модуля с модалкой
-			setCurrentCar: 'form/form-credit/SET_CURRENT_CAR'
-		}),
-		
-		changePeriod(value) {
-			this.calculate({period: value})
+		checkForm() {
+			if(this.hasChose){
+				if (!this.currentCar) {
+					this.error = 'invalid_car'
+					window.scrollTo(0, 0)
+					return false
+				}
+			}
+			if (this.form.car.value.length < 2) {
+				this.form.car.valid = false
+				return false
+			}
+			if (this.form.name.value.length < 2) {
+				this.form.name.valid = false
+				return false
+			}
+			if (this.form.date.value === '' || this.form.date.value.split('_').length > 1) {
+				this.form.date.valid = false
+				return false
+			}
+			if (!this.form.phone.valid) {
+				this.form.phone.valid = false
+				return false
+			}
+			return true;
 		},
-		changePayment(value) {
-			this.calculate({payment: value})
+		async submitForm() {
+			console.log(1)
+			if (this.checkForm()) {
+				let formData = {
+					external_id: this.hasChose ? this.currentCar.external_id : this.offer.external_id,
+					type: 'credit',
+					client_name: this.form.name.value,
+					client_phone: this.form.phone.value,
+					client_age: this.form.date.value,
+					//TODO эмитить данные из калькулятора в этот компонент
+					// credit_initial_fee: this.rangePaymentValue,
+					// credit_period: this.rangePeriodValue,
+				}
+				await this.sendForm(formData)
+			}
 		}
 	}
 }

@@ -122,7 +122,7 @@
 							</ul>
 						</div>
 					</div>
-					<button-typical @click="moreInfo(offer)" text="Показать больше" class="button--show"/>
+					<button-typical @click="moreInfoComplectation(offer)" text="Показать больше" class="button--show"/>
 				</div>
 				<div class="swiper-slide car__info-group car__info-group--options">
 					<div class="heading-group">
@@ -158,7 +158,7 @@
 								<li class="features__item">c 9:00 до 21:00 без выходных</li>
 							</ul>
 						</div>
-						<button-typical text="Подробнее о дилере" class="button--show"/>
+						<button-typical @click="moreInfoDiller(offer)" text="Подробнее о дилере" class="button--show"/>
 					</div>
 				</div>
 			</div>
@@ -186,7 +186,16 @@ export default {
 		...mapActions({
 			openModal: 'modal/modal-main/openModal'
 		}),
-		moreInfo(carInfo){
+		moreInfoDiller(carInfo){
+			let payload = {
+				modal_data: carInfo,
+				modal_component: 'modal-dealer',
+				modal_title: 'Автоцентр «АвтоГрадъ»',
+				modal_sub_title:'Старейший автодилер Москвы'
+			}
+			this.openModal(payload)
+		},
+		moreInfoComplectation(carInfo){
 			let payload = {
 				modal_data: carInfo,
 				modal_component: 'modal-complect',

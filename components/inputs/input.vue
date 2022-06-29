@@ -31,11 +31,19 @@ export default {
 		}
 	},
 	mounted() {
+		if (this.mask === 'number') {
+			let im = new Inputmask({
+				regex: "[0-9]*",
+				placeholder: this.placeholder,
+				showMaskOnHover: false
+			});
+			im.mask(this.$refs.input);
+		}
 		if (this.mask === 'phone') {
 			let im = new Inputmask({
 				mask: "+7 (#99) 999-99-99",
-				oncomplete:()=> this.$emit('phoneMaskComplete'),
-				onincomplete:()=> this.$emit('onincomplete'),
+				oncomplete: () => this.$emit('phoneMaskComplete'),
+				onincomplete: () => this.$emit('onincomplete'),
 				definitions: {
 					"#": {
 						validator: "[1234569]",
