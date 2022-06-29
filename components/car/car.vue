@@ -21,7 +21,7 @@
 		</div>
 		<div class="car__slider-wrap">
 			<div class="grid grid--container">
-				<car-slider />
+				<car-slider/>
 			</div>
 		</div>
 		<div class="grid grid--car grid--container grid__col-12">
@@ -38,6 +38,11 @@
 import {mapActions, mapGetters, mapMutations} from 'vuex'
 import usedOffer from "~/apollo/queries/usedOffer"
 export default {
+	data(){
+		return{
+			// loadSlider:false
+		}
+	},
 	computed: {
 		...mapGetters({
 			offer: 'catalog/catalog-cars/offer'
@@ -53,6 +58,11 @@ export default {
 		let response = await this.request({query:usedOffer, variables: variables})
 		this.setOffer(response.data.offer)
 	},
+	// mounted() {
+	// 	setTimeout(()=>{
+	// 		this.loadSlider = true
+	// 	},300)
+	// },
 	methods:{
 		...mapMutations({
 			setOffer: 'catalog/catalog-cars/SET_OFFER',

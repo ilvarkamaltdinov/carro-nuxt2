@@ -18,7 +18,7 @@ export default {
             {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico', sizes: 'any'},
             {rel: 'apple-touch-icon', href: '/apple-touch-icon.png'},
             {rel: 'icon', type: 'image/x-icon', href: '/mask-icon.svg', color: '#ED2939'},
-            {rel: 'mask-icon', type: 'image/x-icon', href: '/favicon.svg', sizes: 'any'},
+            {rel: 'mask-icon', type: 'image/x-icon', href: '/favicon.svg', sizes: 'any'}
             // {rel: 'manifest', href: '/manifest.json'},
             // {rel: 'preload', as: 'font', href: '/fonts/golos-regular.woff2', type:"font/woff2", crossorigin: 'anonymous'},
             // {rel: 'preload', as: 'font', href: '/fonts/golos-demibold.woff2', type:"font/woff2", crossorigin: 'anonymous'},
@@ -113,10 +113,11 @@ export default {
                 implementation: require('sass')
             }
         },
-        extend(config, ctx) {}, // blah blah
+        extend(config, ctx) {
+        } // blah blah
     },
     server: {
-      host: "0.0.0.0"
+        host: "0.0.0.0"
     },
     publicRuntimeConfig: {
         api_domain: process.env.API_DOMAIN,
