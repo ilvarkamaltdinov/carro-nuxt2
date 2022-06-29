@@ -13,7 +13,7 @@
 			<button @click.prevent="creditClick(offer)" class="button button--credit-pay button--link">
 				Рассрочка
 			</button>
-			<button @click.prevent="creditClick(offer)" class="button button--trade-in button--link">
+			<button @click.prevent="tradeInClick(offer)" class="button button--trade-in button--link">
 				Trade-In
 			</button>
 			<button @click.prevent="creditClick(offer)" class="button button--credit">
@@ -60,6 +60,15 @@ export default {
 				modal_data: carInfo,
 				modal_component: 'modal-credit',
 				modal_title: 'Заявка на автокредит',
+				modal_sub_title: carInfo.name
+			}
+			this.openModal(payload)
+		},
+		tradeInClick(carInfo) {
+			let payload = {
+				modal_data: carInfo,
+				modal_component: 'modal-tradeIn',
+				modal_title: 'Заявка на Trade-In',
 				modal_sub_title: carInfo.name
 			}
 			this.openModal(payload)

@@ -1,7 +1,8 @@
 <template>
 	<form class="form application__form grid__col-4"
 	      @submit.prevent="submitForm()">
-		<fieldset class="form__fieldset">
+		<fieldset v-if="hasChose"
+		          class="form__fieldset">
 			<label
 					:class="{'form__field-wrap--car-active' : currentCar, 'form__field-wrap--error':error === 'invalid_car'}"
 					class="form__field-wrap form__field-wrap--car">
@@ -14,14 +15,14 @@
 				<svg-icon name="icon-form"
 				          class="icon form__car-icon" />
 			</label>
-			<checkbox :value="hasCredit"
-			          @change="hasCredit = !hasCredit"
-			          label="Хочу купить автомобиль в кредит" />
 		</fieldset>
+		<checkbox :value="hasCredit"
+		          @change="hasCredit = !hasCredit"
+		          label="Хочу купить автомобиль в кредит" />
 		<VueSlideToggle :open="hasCredit"
 		                :duration="500">
 			<form-credit-calculator :params="creditParams"
-			                        :offer="currentCar" />
+			                        :offer="offer || currentCar"/>
 		</VueSlideToggle>
 		<fieldset class="form__fieldset">
 			<label class="form__field-wrap"
@@ -62,16 +63,11 @@
 		<button-typical text="Оставить заявку"
 		                button-class="button--credit button--form" />
 	</form>
-	
-	<!--//- include ../benefits/benefits-credit-->
-
 </template>
 <script>
 import {mapGetters, mapMutations, mapActions} from 'vuex'
-import filters from "~/mixins/filters";
 
 export default {
-	mixins: [filters],
 	props: {
 		hasChose: {
 			type: Boolean,
@@ -152,7 +148,7 @@ export default {
 			this.openModal(payload)
 		},
 		checkForm() {
-			if(this.hasChose){
+			if (this.hasChose) {
 				if (!this.currentCar) {
 					this.error = 'invalid_car'
 					window.scrollTo(0, 0)
@@ -178,7 +174,6 @@ export default {
 			return true;
 		},
 		async submitForm() {
-			console.log(1)
 			if (this.checkForm()) {
 				let formData = {
 					external_id: this.hasChose ? this.currentCar.external_id : this.offer.external_id,

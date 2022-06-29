@@ -16,33 +16,33 @@ import _ from "lodash";
 export default {
 	watch: {
 		'$route'() {
-        this.checkUrl()
+			this.checkUrl()
 		}
 	},
 	async fetch() {
-			await this.checkUrl()
+		await this.checkUrl()
 	},
-  computed: {
-    ...mapGetters({
-      isFilterClick: 'filters/filters/isFilterClick',
-      isOfferClick: 'filters/filters/isOfferClick'
-    })
-  },
+	computed: {
+		...mapGetters({
+			isFilterClick: 'filters/filters/isFilterClick',
+			isOfferClick: 'filters/filters/isOfferClick'
+		})
+	},
 	methods: {
 		...mapMutations({
 			setComponentCatalog: 'filters/filters/SET_COMPONENT_CATALOG',
-      setIsFilterClick: 'filters/filters/SET_IS_FILTER_CLICK',
-      setIsOfferClick: 'filters/filters/SET_IS_OFFER_CLICK'
+			setIsFilterClick: 'filters/filters/SET_IS_FILTER_CLICK',
+			setIsOfferClick: 'filters/filters/SET_IS_OFFER_CLICK',
 		}),
-    ...mapActions({
-      request: 'filters/filters/request',
-    }),
-    async filterRequest(assignVariables){
-      let response = await this.request({query: offerFilters, variables: assignVariables})
-      await this.changingFilters(response.data.offerFilters)
-      await this.changingOffers(response.data.offers)
-      this.setIsFilterClick(false)
-    },
+		...mapActions({
+			request: 'filters/filters/request',
+		}),
+		async filterRequest(assignVariables) {
+			let response = await this.request({query: offerFilters, variables: assignVariables})
+			await this.changingFilters(response.data.offerFilters)
+			await this.changingOffers(response.data.offers)
+			this.setIsFilterClick(false)
+		},
 		async changingFilters(payload) {
 			await this.$store.commit('filters/filters/SET_FILTERS', payload)
 			await this.$store.commit('filters/filters/SET_ALL_CHOSEN', payload.chosen)
@@ -52,39 +52,36 @@ export default {
 			await this.$store.commit('filters/filters/SET_LOADING', false)
 		},
 		async checkUrl() {
-      // Если клик по объявлению, сразу показываем компонент объявления
-      if(this.isOfferClick){
-        this.setComponentCatalog('car')
-        this.setIsOfferClick(false)
-        return
-      }
-      await this.$store.commit('filters/filters/SET_LOADING', true)
-      // всегда компонент каталога
-      await this.setComponentCatalog('catalog-used')
-      //Запрос на определение что это, когда 4 элемента в урл и нет клика по фильтру
+			// Если клик по объявлению, сразу показываем компонент объявления
+			if (this.isOfferClick) {
+				this.setComponentCatalog('car')
+				this.setIsOfferClick(false)
+				return
+			}
+			await this.$store.commit('filters/filters/SET_LOADING', true)
+			// всегда компонент каталога
+			await this.setComponentCatalog('catalog-used')
+			//Запрос на определение что это, когда 4 элемента в урл и нет клика по фильтру
 			if (this.$route.params.car && !this.isFilterClick) {
 				try {
-					let response = await this.request({query : offerUrl, variables: {url: this.$route.path}})
+					let response = await this.request({query: offerUrl, variables: {url: this.$route.path}})
 					let typeName = response.data.offerUrl.__typename
 					let assignVariables = response.data.offerUrl
 					delete assignVariables.__typename;
 					if (typeName === 'OfferUrlFilterPaginationType') {
-            // Если это результат для фильтра, отправляем запрос
+						// Если это результат для фильтра, отправляем запрос
 						await this.filterRequest(this._.pickBy(assignVariables))
-					}
-					else if (typeName === 'OfferUrlType') {
-            // Если это авто, просто показываем компонент, запрос отправится в компоненте
+					} else if (typeName === 'OfferUrlType') {
+						// Если это авто, просто показываем компонент, запрос отправится в компоненте
 						this.setComponentCatalog('car')
 					}
 				} catch (e) {
 					this.$nuxt.error({statusCode: 404})
 				}
-			}
-			else {
-        await this.filterRequest({
-					site_id: this.$config.site_id,
+			} else {
+				await this.filterRequest({
 					url: this.$route.path,
-					page: Number(this.$route.query.page),
+					page: Number(this.$route.query.page) || 1,
 					mark_slug_array: this.$stringToArray(this.$route.query.mark_slug_array),
 					folder_slug_array: this.$stringToArray(this.$route.query.folder_slug_array),
 					generation_slug_array: this.$stringToArray(this.$route.query.generation_slug_array),
@@ -95,6 +92,6 @@ export default {
 				})
 			}
 		},
-  }
+	}
 }
 </script>

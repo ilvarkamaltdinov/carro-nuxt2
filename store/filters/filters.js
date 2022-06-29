@@ -136,7 +136,7 @@ export const actions = {
             query['drive_type_id_array'] = drive_type_id_array
         }
         this.app.router.push({
-            path: '/used' + (url !== '' ? '/' + url : ''),
+            path: '/'+ this.app.context.params.category + (url !== '' ? '/' + url : ''),
             query
         })
     },

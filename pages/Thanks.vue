@@ -4,11 +4,13 @@
 			<crumbs :crumbs="crumbs" />
 		</div>
 		<div class="grid grid--container">
-			<thanks />
+			<thanks v-if="userCar"/>
 		</div>
 	</main>
 </template>
 <script>
+import {mapGetters} from "vuex";
+
 export default {
 	data() {
 		return {
@@ -25,6 +27,11 @@ export default {
 				}
 			]
 		}
+	},
+	computed: {
+		...mapGetters({
+			userCar: 'form/form/userCar',
+		})
 	}
 }
 </script>

@@ -1,5 +1,17 @@
 import FEEDBACK from "@/apollo/queries/feedback";
 
+export const state = () => ({
+    userName: null,
+    userCar: null,
+})
+export const getters = {
+    userName: (state) => {
+        return state.userName
+    },
+    userCar: (state) => {
+        return state.userCar
+    }
+}
 export const actions = {
     //TODO как будет время сделать валидацию в сторе
 
@@ -20,21 +32,34 @@ export const actions = {
     //     return {valid: true, checkingForm:_form}
     // },
 
-    async sendForm({}, variables) {
-        let assignVariables = {
-            site_id: this.$config.site_id
-        }
-        let client = this.app.apolloProvider.defaultClient
-        let params = {...assignVariables, ...variables}
-        await client.mutate(
-            {
-                mutation: FEEDBACK,
-                variables: this.$removeEmptyObjects(params)
-            }).then(({data}) => {
-            console.log(data)
-        }).catch(error => {
-            console.log(error)
-        })
+    async sendForm({commit}, variables) {
+        commit('SET_USER_CAR', variables.car)
+        commit('SET_USER_NAME', variables.formData.client_name)
+        this.app.router.push('/thanks');
+        // let assignVariables = {
+        //     site_id: this.$config.site_id
+        // }
+
+        // let client = this.app.apolloProvider.defaultClient
+        // let params = {...assignVariables, ...variables}
+        // await client.mutate(
+        //     {
+        //         mutation: FEEDBACK,
+        //         variables: this.$removeEmptyObjects(params)
+        //     }).then(({data}) => {
+        //     console.log(data)
+        // }).catch(error => {
+        //     console.log(error)
+        // })
+
     }
 
+}
+export const mutations = {
+    SET_USER_NAME(state, data) {
+        state.userName = data
+    },
+    SET_USER_CAR(state, data) {
+        state.userCar = data
+    },
 }

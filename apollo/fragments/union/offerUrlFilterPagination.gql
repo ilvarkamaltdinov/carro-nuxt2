@@ -5,4 +5,5 @@ fragment OfferUrlFilterPagination on OfferUrlFilterPaginationType {
     year_from
     engine_type_id_array
     body_type_id_array
+    category
 }

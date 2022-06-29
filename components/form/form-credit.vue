@@ -111,7 +111,6 @@ export default {
 		...mapGetters({
 			currentCar: 'modal/modal-choose/currentCar',
 		}),
-		
 	},
 	methods: {
 		...mapActions({

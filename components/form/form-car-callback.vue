@@ -1,5 +1,6 @@
 <template>
-	<form class="form" @submit.prevent="submitForm()">
+	<form class="form"
+	      @submit.prevent="submitForm()">
 		<fieldset class="form__fieldset">
 			<label class="form__field-wrap"
 			       :class="{'form__field-wrap--success' : form.name.value.length >= 2, 'form__field-wrap--error': form.name.valid === false}">
@@ -88,7 +89,7 @@ export default {
 					client_phone: this.form.phone.value,
 					client_age: this.form.date.value
 				}
-				await this.sendForm(formData)
+				await this.sendForm({formData: formData, car: this.offer})
 			}
 		},
 	}

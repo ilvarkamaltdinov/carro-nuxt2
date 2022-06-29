@@ -23,29 +23,7 @@
 			                            :offer="offer" />
 		</div>
 		<div class="application__banks grid__col-5">
-			<div class="application__banks-form">
-				<img class="application__banks-img"
-				     src="~/assets/img/banks/logo-tinkoff.svg"
-				     alt=""
-				/>
-				<div class="application__banks-text">
-					и еще 5 банков
-				</div>
-			</div>
-			<div class="application__form-img-wrap">
-				<picture>
-					<source type="image/webp"
-					        media="(min-width: 768px)"
-					        srcset="~/assets/img/form-picture@1x.webp 1x, ~/assets/img/form-picture@2x.webp 2x" />
-					<source media="(min-width: 768px)"
-					        srcset="~/assets/img/form-picture@1x.png 1x, ~/assets/img/form-picture@2x.png 2x" />
-					<img class="application__form-img"
-					     src="~/assets/img/form-picture@1x.png"
-					     srcset="~/assets/img/form-picture@2x.png 2x"
-					     loading="lazy"
-					     alt="" />
-				</picture>
-			</div>
+			<application-banks/>
 		</div>
 		<div class="application__terms grid__col-3">
 			<div class="application__terms-item">

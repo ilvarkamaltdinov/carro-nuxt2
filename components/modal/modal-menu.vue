@@ -24,7 +24,7 @@ export default {
 							link: '/used'
 						},{
 							name: 'Коммерческие',
-							link: '/used'
+							link: '/commercial'
 						},
 					]
 				},
@@ -96,7 +96,7 @@ export default {
 					links: [
 						{
 							name: 'Банки-партнеры',
-							link: '/banks'
+							link: '/banks-partners'
 						}
 					]
 				},

@@ -108,6 +108,12 @@
 import {mapGetters, mapMutations, mapActions} from 'vuex'
 
 export default {
+	watch: {
+		'$route'() {
+			this.closeModal()
+			this.setModalMenu(false)
+		}
+	},
 	computed: {
 		...mapGetters({
 			modalMenu: 'modal/modal-menu/modalMenu',
@@ -116,16 +122,14 @@ export default {
 			likesArray: 'favorite/favorite/likesArray'
 		})
 	},
-	mounted() {
-		this.getLikes()
-	},
 	methods: {
 		...mapMutations({
 			setModalMenu: 'modal/modal-menu/setModalMenu',
-			setModalMarks: 'modal/modal-marks/setModalMarks'
+			setModalMarks: 'modal/modal-marks/setModalMarks',
 		}),
 		...mapActions({
-			getLikes: 'favorite/favorite/getLikes'
+			getLikes: 'favorite/favorite/getLikes',
+			closeModal: 'modal/modal-main/closeModal'
 		})
 	}
 }
