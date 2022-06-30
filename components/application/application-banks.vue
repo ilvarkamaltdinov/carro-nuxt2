@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="application__banks">
 		<div class="application__banks-form">
 			<img class="application__banks-img application__banks-img--alfa"
 			     :src="require(`~/assets/img/banks/${bankSlug}.svg`)"

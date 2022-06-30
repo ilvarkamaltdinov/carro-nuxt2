@@ -1,5 +1,6 @@
 <template>
-	<form class="form application__form grid__col-4"
+	<form class="form"
+	      :class="{'application__form grid__col-4': !isModal}"
 	      @submit.prevent="submitForm()">
 		<fieldset v-if="hasChose"
 		          class="form__fieldset">
@@ -72,6 +73,10 @@ export default {
 		hasChose: {
 			type: Boolean,
 			default: true
+		},
+		isModal:{
+			type: Boolean,
+			default: false
 		},
 		offer: Object
 	},

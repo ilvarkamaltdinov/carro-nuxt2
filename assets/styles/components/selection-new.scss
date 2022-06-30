@@ -1,6 +1,6 @@
 .selection-new {
   padding-bottom: 188px;
-  background-image: url("~/assets/img/selection-new/selection--mobile.jpg");
+  background-image: url("../img/selection-new/selection--mobile.jpg");
   background-size: 100% 400px;
   background-repeat: no-repeat;
   background-position: top;
@@ -59,7 +59,7 @@
 @media (min-width: $tablet-width) {
   .selection-new {
     background-position: center;
-    background-image: url("~/assets/img/selection-new/selection.jpg");
+    background-image: url("../img/selection-new/selection.jpg");
     background-size: 100% 400px;
     margin-bottom: 80px;
   }

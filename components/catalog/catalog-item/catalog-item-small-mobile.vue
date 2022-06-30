@@ -17,17 +17,22 @@
 			</a>
 		</div>
 		<div class="catalog__info">
-			<catalog-item-title :offer="offer"/>
-			<catalog-item-price :offer="offer"/>
-			<div class="catalog__tech">
-				<catalog-item-tech-list small :offer="offer"/>
+			<catalog-item-title :offer="offer" />
+			<catalog-item-price :offer="offer" />
+			<div class="catalog__tech"
+			     :class="{'catalog__tech—no-buttons':!hasButtons}">
+				<catalog-item-tech-list small
+				                        :offer="offer" />
 			</div>
 		</div>
-		<catalog-item-buttons :choose="choose" v-if="hasButtons" :offer="offer"/>
+		<catalog-item-buttons :choose="choose"
+		                      v-if="hasButtons"
+		                      :offer="offer" />
 	</article>
 </template>
 <script>
 import filters from "~/mixins/filters";
+
 export default {
 	mixins: [filters],
 	props: {
@@ -36,7 +41,7 @@ export default {
 			default: () => {
 			}
 		},
-		choose:{
+		choose: {
 			type: Boolean,
 			default: false
 		},

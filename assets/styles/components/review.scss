@@ -19,7 +19,7 @@
   border: none;
   top: 16px;
   right: 16px;
-  background-image: url("~/assets/img/close.svg");
+  background-image: url("../img/close.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 40%;
@@ -42,7 +42,7 @@
     content: "";
     display: block;
     position: absolute;
-    background-image: url("~/assets/img/car.svg");
+    background-image: url("../img/car.svg");
     background-position: center;
     background-size: 240px;
     width: 100%;
@@ -162,7 +162,7 @@
     display: block;
     width: 32px;
     height: 24px;
-    background-image: url("~/assets/img/icon-comas.svg");
+    background-image: url("../img/icon-comas.svg");
     background-color: white;
     background-repeat: no-repeat;
     background-size: 50%;

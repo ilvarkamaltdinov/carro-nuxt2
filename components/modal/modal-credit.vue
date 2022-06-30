@@ -16,9 +16,7 @@
 			<div class="application__catalog application__catalog--modal catalog grid__col-4">
 				<component :is="component" :has-buttons="false" :offer="modalData"/>
 			</div>
-			<div class="application__banks grid__col-4">
-				<application-banks/>
-			</div>
+			<application-banks class="grid__col-4"/>
 		</div>
 		<benefits-modal />
 	</div>

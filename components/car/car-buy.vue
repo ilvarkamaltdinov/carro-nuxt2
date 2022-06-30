@@ -24,9 +24,10 @@
 			<rating />
 			<div class="car__actions-buttons">
 				<button-autoteka @click="autoteka(offer)"/>
-				<button-favorite />
+				<button-favorite :active="likesArray.some(id => id === String(offer.external_id))"
+				                 @click="like()" />
 				<button-compare />
-				<button-call />
+				<button-call @click="callback(offer)"/>
 			</div>
 		</div>
 		<div class="car__stock">
@@ -47,7 +48,7 @@ export default {
 	computed:{
 		...mapGetters({
 			offer: 'catalog/catalog-cars/offer',
-			likesArray: 'favorite/favorite/likesArray'
+			likesArray: 'favorite/favorite/likesArray',
 		})
 	},
 	methods: {
@@ -55,10 +56,22 @@ export default {
 			liked: 'favorite/favorite/liked',
 			openModal: 'modal/modal-main/openModal'
 		}),
+		async like() {
+			await this.liked(this.offer.external_id)
+		},
 		creditClick(carInfo) {
 			let payload = {
 				modal_data: carInfo,
 				modal_component: 'modal-credit',
+				modal_title: 'Заявка на автокредит',
+				modal_sub_title: carInfo.name
+			}
+			this.openModal(payload)
+		},
+		callback(carInfo) {
+			let payload = {
+				modal_data: carInfo,
+				modal_component: 'modal-callback',
 				modal_title: 'Заявка на автокредит',
 				modal_sub_title: carInfo.name
 			}

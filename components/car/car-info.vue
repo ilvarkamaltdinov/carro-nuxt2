@@ -162,8 +162,8 @@
 					</div>
 				</div>
 			</div>
+			<div class="swiper-pagination"></div>
 		</div>
-		<div class="swiper-pagination"></div>
 	</div>
 </template>
 <script>
@@ -180,7 +180,6 @@ export default {
 		equipment_group_list(){
 			return this.offer.equipment_groups
 		}
-		
 	},
 	methods:{
 		...mapActions({
@@ -204,6 +203,22 @@ export default {
 			}
 			this.openModal(payload)
 		},
+	},
+	mounted() {
+		if(this.$device.isMobile){
+			new swiper.default('.swiper--car-info.swiper', {
+				modules: [swiper.Navigation, swiper.Pagination, swiper.Autoplay],
+				loop: true,
+				autoplayDisableOnInteraction: false,
+				autoplay: false,
+				autoHeight: true,
+				spaceBetween: 24,
+				pagination: {
+					el: '.car__info .swiper-pagination',
+					type: 'bullets',
+				},
+			})
+		}
 	}
 }
 </script>

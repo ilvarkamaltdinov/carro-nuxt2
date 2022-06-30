@@ -200,10 +200,10 @@
     margin-right: 8px;
   }
 
-  //.catalog__filter {
-  //  display: flex;
-  //  justify-content: space-between;
-  //}
+  .catalog__filter {
+    display: flex;
+    justify-content: space-between;
+  }
 
   // catalog-item-small
 
@@ -448,5 +448,9 @@
 @media (min-width: $desktop-width) {
   .catalog__filter--aside {
     display: block;
+  }
+
+  .catalog__item {
+    @include hover-card;
   }
 }

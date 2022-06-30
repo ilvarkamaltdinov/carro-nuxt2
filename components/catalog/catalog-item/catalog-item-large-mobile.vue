@@ -1,17 +1,22 @@
 <template>
 	<article class="catalog__item catalog__item--vertical grid__col-4">
 		<div class="catalog__offer">
-			<catalog-item-title :offer="offer"/>
-			<catalog-item-price :offer="offer"/>
+			<catalog-item-title :offer="offer" />
+			<catalog-item-price :offer="offer" />
 		</div>
 		<div class="catalog__img">
-			<catalog-item-img v-for="img in offer.images" :key="img.thumb" :img="img.thumb"/>
+			<catalog-item-img v-for="img in offer.images"
+			                  :key="img.thumb"
+			                  :img="img.thumb" />
 		</div>
-		<div class="catalog__tech">
+		<div class="catalog__tech"
+		     :class="{'catalog__tech—no-buttons':!hasButtons}">
 			<rating />
-			<catalog-item-tech-list :offer="offer"/>
+			<catalog-item-tech-list :offer="offer" />
 		</div>
-		<catalog-item-buttons :choose="choose" v-if="hasButtons" :offer="offer" />
+		<catalog-item-buttons :choose="choose"
+		                      v-if="hasButtons"
+		                      :offer="offer" />
 	</article>
 </template>
 <script>
@@ -25,7 +30,7 @@ export default {
 			default: () => {
 			}
 		},
-		choose:{
+		choose: {
 			type: Boolean,
 			default: false
 		},

@@ -4,7 +4,9 @@
 			<tabs-item :is-active="index === activeTab"
 			           v-for="(tab, index) in tabsItems"
 			           :key="index"
-			           :tab-text="tab" />
+			           :tab-text="tab">
+				{{tab}}
+			</tabs-item>
 		</ul>
 	</div>
 </template>

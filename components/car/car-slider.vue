@@ -25,7 +25,24 @@ export default {
 	computed: {
 		...mapGetters({
 			offer: 'catalog/catalog-cars/offer'
-		})
+		}),
+		slidesPerView(){
+			if(this.$device.isMobile){
+				return 1.1
+			} else{
+				return 2
+			}
+		},
+		centeredSlides(){
+			return this.$device.isMobile;
+		},
+		slidesSpaceBetween(){
+			if(this.$device.isMobile){
+				return 8
+			} else{
+				return 24
+			}
+		}
 	},
 	methods:{
 		...mapMutations({
@@ -41,21 +58,10 @@ export default {
 			loop: true,
 			autoplayDisableOnInteraction: false,
 			autoplay: false,
-			slidesPerView: 2.1,
-			centeredSlides: true,
+			slidesPerView: this.slidesPerView,
+			centeredSlides: this.centeredSlides,
 			watchSlidesProgress: true,
-			spaceBetween: 8,
-			breakpoints: {
-				768: {
-					slidesPerView: 2,
-					spaceBetween: 24,
-					centeredSlides: false,
-					navigation: {
-						nextEl: '.swiper-button-next',
-						prevEl: '.swiper-button-prev',
-					},
-				}
-			}
+			spaceBetween: this.slidesSpaceBetween,
 		})
 		AOS.init({
 			once: true

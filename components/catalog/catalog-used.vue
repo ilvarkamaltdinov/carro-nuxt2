@@ -7,7 +7,7 @@
 					<!--<span class="heading-group__label">121212 автомобиля в наличии</span>-->
 				</div>
 			</div>
-			<div class="grid__col-4">
+			<div class="grid__col-4" v-if="!$device.isMobile">
 				<filter-desktop />
 			</div>
 			<div class="grid__col-8">

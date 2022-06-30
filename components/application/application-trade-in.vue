@@ -22,10 +22,7 @@
 				          name="icon-form" />
 				<span class="application__choose-car-text">Выберите автомобиль</span>
 			</button>
-			
-			<div class="application__banks grid__col-5">
-				<application-banks/>
-			</div>
+			<application-banks class="grid__col-5"/>
 			<div class="application__terms grid__col-3">
 				<div class="application__terms-item">
 					<div class="application__terms-number application__terms-number--stake">4.9%</div>

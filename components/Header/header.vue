@@ -122,6 +122,9 @@ export default {
 			likesArray: 'favorite/favorite/likesArray'
 		})
 	},
+	mounted() {
+		this.getLikes()
+	},
 	methods: {
 		...mapMutations({
 			setModalMenu: 'modal/modal-menu/setModalMenu',

@@ -1,5 +1,4 @@
 .makes__link {
-  cursor: pointer;
   display: flex;
   align-items: center;
   transition: $transitionHover;
@@ -23,7 +22,6 @@
 }
 
 .makes__letters-link {
-  cursor: pointer;
   @include font-desktop-h2;
 }
 
@@ -51,14 +49,13 @@
     padding: 8px 16px;
     background-color: $colorBg;
     border-radius: $borderRadiusSmall;
+
     &:hover {
-      background-color: $colorBgActive;
-    }
-    &-active{
       background-color: $colorBgActive;
     }
   }
 }
+
 .makes__list--header .makes__link {
   & > * {
     transition: $transitionHover;

@@ -31,7 +31,7 @@
     display: block;
     width: 16px;
     height: 16px;
-    background: url("~/assets/img/icons/icon-check.svg");
+    background: url("../img/icons/icon-check.svg");
     background-size: contain;
     background-repeat: no-repeat;
     margin-right: 8px;
@@ -40,7 +40,7 @@
 
 .features__item--problem {
   &::before {
-    background: url("~/assets/img/icons/icon-check-problem.svg");
+    background: url("../img/icons/icon-check-problem.svg");
   }
 }
 

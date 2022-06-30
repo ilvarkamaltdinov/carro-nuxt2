@@ -26,6 +26,7 @@
 		</div>
 		<div class="grid grid--car grid--container grid__col-12">
 			<car-buy />
+			<car-fixed :offer="offer"/>
 			<car-info />
 		</div>
 		<div class="grid grid--container">

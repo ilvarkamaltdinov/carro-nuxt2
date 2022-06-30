@@ -18,13 +18,11 @@
 			<form-credit :has-chose="false"
 			             :offer="offer" />
 		</div>
-		<div class="application__catalog catalog grid__col-8">
+		<div class="application__catalog catalog grid__col-8" v-if="!$device.isMobile" >
 			<catalog-item-large-desktop :has-buttons="false"
 			                            :offer="offer" />
 		</div>
-		<div class="application__banks grid__col-5">
-			<application-banks/>
-		</div>
+		<application-banks class="grid__col-5"/>
 		<div class="application__terms grid__col-3">
 			<div class="application__terms-item">
 				<div class="application__terms-number application__terms-number--stake">
