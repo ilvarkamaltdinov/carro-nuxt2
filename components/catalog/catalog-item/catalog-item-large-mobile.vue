@@ -10,7 +10,7 @@
 			                  :img="img.thumb" />
 		</div>
 		<div class="catalog__tech"
-		     :class="{'catalog__tech—no-buttons':!hasButtons}">
+		     :class="{'catalog__tech--no-buttons':!hasButtons}">
 			<rating />
 			<catalog-item-tech-list :offer="offer" />
 		</div>

@@ -39,6 +39,11 @@
     height: 4px;
     border-radius: $borderRadiusSmall;
     background-color: $colorPrimaryLight;
+    transition: opacity $transitionHover;
+
+    &:hover {
+      opacity: 0.6;
+    }
   }
 
   .swiper-pagination-progress {
@@ -55,6 +60,10 @@
 
 .slider-index .swiper-pagination-bullet-active {
   background-color: transparent;
+
+  &:hover {
+    cursor: default;
+  }
 
   .swiper-pagination-progress {
     animation-name: countingBar;
@@ -115,7 +124,11 @@
   bottom: 0;
   position: absolute;
   width: calc(50% - 16px);
-  margin: 16px;
+  margin: 8px 16px;
+  padding: 24px 0;
+  height: 16px;
+  align-items: center;
+  z-index: 50;
 }
 
 .slider-index__media-wrap {

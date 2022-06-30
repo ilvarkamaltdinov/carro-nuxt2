@@ -121,6 +121,10 @@
   margin-bottom: 16px;
 }
 
+.catalog__tech.catalog__tech--no-buttons {
+  margin-bottom: 0
+}
+
 .catalog__tech-item {
   @include font-features;
   color: $colorTextSecondary;

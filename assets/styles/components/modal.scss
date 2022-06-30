@@ -85,6 +85,11 @@
 }
 
 @media (max-width: $mobile-width-only) {
+  .modal {
+    top: auto;
+    bottom: 0;
+  }
+
   .modal--makes {
     @include modal-menu;
     @include border-top;

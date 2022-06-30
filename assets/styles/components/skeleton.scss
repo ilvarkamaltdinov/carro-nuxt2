@@ -9,7 +9,7 @@
 }
 
 .skeleton__content {
-  border-radius: 4px;
+  border-radius: 6px;
   height: 24px;
   background-color: $colorBg;
 
@@ -29,6 +29,48 @@
 .skeleton__item--s .skeleton__content--img {
   aspect-ratio: 4 / 3;
   height: auto;
+}
+
+.skeleton__content--darker {
+  background-color: $colorBgActive;
+  opacity: 0.8;
+}
+
+.skeleton__content.skeleton__content--heading {
+  height: 24px;
+  margin-bottom: 12px;
+}
+
+.skeleton__car-img {
+  display: flex;
+  position: relative;
+}
+
+.skeleton__car-img > * {
+  aspect-ratio: 4 / 3;
+  width: calc(100% - 32px);
+  height: auto;
+  margin: auto;
+}
+
+.skeleton__item.skeleton__item--car-buy {
+  height: 242px;
+  border-radius: 6px;
+}
+
+.skeleton__divider {
+  height: 1px;
+  width: 100%;
+  @include border-bottom;
+  margin: 16px 0;
+  opacity: 0.5;
+}
+
+.skeleton__car-img > * {
+  &:first-child {
+    position: absolute;
+    right: calc(100% - 8px);
+  }
 }
 
 @media (max-width: $mobile-width-only) {
@@ -57,6 +99,10 @@
     margin-bottom: 0;
   }
 
+  .skeleton.skeleton--car .grid--container {
+    margin-bottom: 16px;
+  }
+
   .skeleton__item--s .skeleton__content--buttons {
     &:last-child {
       grid-column: span 2;
@@ -65,6 +111,55 @@
 
   .skeleton__item--l {
     display: none;
+  }
+
+  .skeleton__car-img > * {
+    &:last-child {
+      display: none;
+    }
+
+    &:nth-child(3) {
+      position: absolute;
+      left: calc(100% - 8px);
+    }
+  }
+
+  .skeleton__car-top > * {
+    &:nth-child(3),
+    &:nth-child(4) {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .skeleton__car-img > * {
+    max-height: 100%;
+    margin-bottom: 24px!important;
+    height: -webkit-fill-available;
+
+    &:first-child {
+      position: absolute;
+      right: calc(100% + 24px);
+    }
+
+    &:nth-child(4) {
+      position: absolute;
+      left: calc(100% + 24px);
+    }
+  }
+
+  .skeleton__content--heading {
+    grid-column: span 12;
+  }
+
+  .skeleton__car-top {
+    gap: 0;
+    margin-bottom: 12px;
+  }
+
+  .skeleton__item--car-buy {
+    grid-column: span 8;
   }
 }
 
@@ -102,5 +197,22 @@
 
   .skeleton__item--s {
     display: none;
+  }
+
+  .skeleton__car-top {
+    margin-bottom: 24px;
+  }
+
+  .skeleton__item--car-buy {
+    grid-column: span 6;
+  }
+
+  .skeleton__car-top > * {
+    grid-column: span 12;
+
+    &:nth-child(3),
+    &:nth-child(4) {
+      display: none;
+    }
   }
 }

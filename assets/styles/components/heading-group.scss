@@ -76,4 +76,8 @@
   .heading-group--h1 {
     grid-column: span 12;
   }
+
+  .heading-group--h1.grid__col-6 {
+    grid-column: span 6;
+  }
 }

@@ -1,5 +1,5 @@
 <template>
-	<section class="page-main__car car" v-if="offer">
+	<section class="page-main__car car" v-if="offer && loaded">
 		<div class="grid grid--container">
 			<div class="heading-group heading-group--h1 grid__col-6">
 				<div class="heading-group__wrap">
@@ -15,33 +15,42 @@
 				</div>
 			</div>
 			<div class="car__top-buttons grid__col-6">
-				<button-typical text="Обратный звонок" class="button--icon button--link" icon="icon-callback"/>
-				<button-typical text="+7 495 245-23-42" class="button--icon button--link" icon="icon-call"/>
+				<button-typical text="Обратный звонок"
+				                class="button--icon button--link"
+				                icon="icon-callback" />
+				<button-typical text="+7 495 245-23-42"
+				                class="button--icon button--link"
+				                icon="icon-call" />
 			</div>
 		</div>
 		<div class="car__slider-wrap">
 			<div class="grid grid--container">
-				<car-slider/>
+				<car-slider />
 			</div>
 		</div>
 		<div class="grid grid--car grid--container grid__col-12">
 			<car-buy />
-			<car-fixed :offer="offer"/>
+			<transition name="slide-fade">
+				<car-fixed v-if="showFixed" />
+			</transition>
 			<car-info />
 		</div>
 		<div class="grid grid--container">
 			<benefits-car />
-			<car-credit :offer="offer"/>
+			<car-credit :offer="offer" />
 		</div>
 	</section>
+	<skeleton-car v-else/>
 </template>
 <script>
 import {mapActions, mapGetters, mapMutations} from 'vuex'
 import usedOffer from "~/apollo/queries/usedOffer"
+
 export default {
-	data(){
-		return{
-			// loadSlider:false
+	data() {
+		return {
+			showFixed: false,
+			loaded: false
 		}
 	},
 	computed: {
@@ -49,30 +58,37 @@ export default {
 			offer: 'catalog/catalog-cars/offer'
 		})
 	},
-  async fetch(){
+	async fetch() {
 		let variables = {
 			site_id: this.$config.site_id,
 			mark_slug: this.$route.params.mark,
 			folder_slug: this.$route.params.model,
 			external_id: Number(this.$route.params.car)
 		}
-		let response = await this.request({query:usedOffer, variables: variables})
+		let response = await this.request({query: usedOffer, variables: variables})
 		this.setOffer(response.data.offer)
 	},
-	// mounted() {
-	// 	setTimeout(()=>{
-	// 		this.loadSlider = true
-	// 	},300)
-	// },
-	methods:{
+	beforeMount() {
+		window.addEventListener('scroll', this.handleScroll);
+		setTimeout(()=>{
+			this.loaded = true
+		},500)
+	},
+	beforeDestroy() {
+		window.removeEventListener('scroll', this.handleScroll);
+	},
+	methods: {
 		...mapMutations({
 			setOffer: 'catalog/catalog-cars/SET_OFFER',
-      setFilterClick: 'filters/filters/SET_IS_FILTER_CLICK',
-      setIsOfferClick: 'filters/filters/SET_IS_OFFER_CLICK'
+			setFilterClick: 'filters/filters/SET_IS_FILTER_CLICK',
+			setIsOfferClick: 'filters/filters/SET_IS_OFFER_CLICK'
 		}),
-    ...mapActions({
-      request: 'filters/filters/request',
-    }),
+		...mapActions({
+			request: 'filters/filters/request',
+		}),
+		handleScroll() {
+			this.showFixed = process.client && this.$device.isMobile && window.scrollY > 499;
+		}
 	}
 }
 </script>

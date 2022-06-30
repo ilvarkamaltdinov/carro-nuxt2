@@ -6,7 +6,7 @@
 			<catalog-item-title :offer="offer" />
 			<catalog-item-price :offer="offer" />
 		</div>
-		<div class="catalog__tech" :class="{'catalog__tech—no-buttons':!hasButtons}">
+		<div class="catalog__tech" :class="{'catalog__tech--no-buttons':!hasButtons}">
 			<rating />
 			<catalog-item-tech-list :offer="offer" />
 		</div>

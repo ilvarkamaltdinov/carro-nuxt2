@@ -31,11 +31,9 @@ import {mapActions, mapGetters} from "vuex";
 
 export default {
 	mixins: [filters],
-	props: {
-		offer: Object
-	},
 	computed: {
 		...mapGetters({
+			offer: 'catalog/catalog-cars/offer',
 			likesArray: 'favorite/favorite/likesArray'
 		})
 	},

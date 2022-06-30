@@ -20,7 +20,7 @@
 			<catalog-item-title :offer="offer" />
 			<catalog-item-price :offer="offer" />
 			<div class="catalog__tech"
-			     :class="{'catalog__tech—no-buttons':!hasButtons}">
+			     :class="{'catalog__tech--no-buttons':!hasButtons}">
 				<catalog-item-tech-list small
 				                        :offer="offer" />
 			</div>

@@ -2,13 +2,12 @@
 	<article class="catalog__item catalog__item--desktop-l grid__col-8">
 		<catalog-item-swiper :slider-id="offer.external_id"
 		                     :images="offer.images" />
-		<div class="catalog__info-wrap">
+		<div class="catalog__info-wrap" :class="{'catalog__info-wrap--no-buttons':!hasButtons}">
 			<div class="catalog__info">
 				<catalog-item-title :offer="offer" />
 				<catalog-item-price :offer="offer" />
 			</div>
-			<div class="catalog__tech"
-			     :class="{'catalog__tech—no-buttons':!hasButtons}">
+			<div class="catalog__tech">
 				<rating />
 				<catalog-item-tech-list :offer="offer" />
 			</div>
