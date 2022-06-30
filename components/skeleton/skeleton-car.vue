@@ -1,5 +1,4 @@
 <template>
-	
 	<div class="skeleton skeleton--car">
 		<div class="skeleton__car-top grid grid--container">
 			<div class="skeleton__content skeleton__content--darker skeleton__content--heading"></div>

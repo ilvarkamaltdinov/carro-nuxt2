@@ -5,7 +5,8 @@ export const state = () => ({
     offers: [],
     offer: null,
     view: 's',
-    isOfferClick: false
+    isOfferClick: false,
+    carPageLoaded: false
 })
 export const getters = {
     offers: (state) => {
@@ -19,6 +20,9 @@ export const getters = {
     },
     view: (state) => {
         return state.view
+    },
+    carPageLoaded: (state) => {
+        return state.carPageLoaded
     },
 }
 export const actions = {
@@ -58,6 +62,9 @@ export const mutations = {
     },
     SET_VIEW(state, data) {
         state.view = data
+    },
+    SET_CAR_PAGE_LOADED(state, data) {
+        state.carPageLoaded = data
     },
     SET_OFFER_CLICK(state, data) {
         state.isOfferClick = data
