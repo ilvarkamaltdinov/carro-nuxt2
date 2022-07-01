@@ -89,6 +89,8 @@ export default {
 					gearbox_id_array: this.$numberToArray(this.$route.query.gearbox_id_array),
 					drive_type_id_array: this.$numberToArray(this.$route.query.drive_type_id_array),
 					body_type_id_array: this.$numberToArray(this.$route.query.body_type_id_array),
+					price_from: Number(this.$route.query.price_from),
+					price_to: Number(this.$route.query.price_to)
 				})
 			}
 		},

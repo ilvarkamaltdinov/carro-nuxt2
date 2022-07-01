@@ -15,10 +15,10 @@ export default {
             {name: 'format-detection', content: 'telephone=no'}
         ],
         link: [
+            {rel: 'mask-icon', type: 'image/x-icon', href: '/favicon.svg', sizes: 'any'},
             {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico', sizes: 'any'},
             {rel: 'apple-touch-icon', href: '/apple-touch-icon.png'},
             {rel: 'icon', type: 'image/x-icon', href: '/mask-icon.svg', color: '#ED2939'},
-            {rel: 'mask-icon', type: 'image/x-icon', href: '/favicon.svg', sizes: 'any'}
             // {rel: 'manifest', href: '/manifest.json'},
             // {rel: 'preload', as: 'font', href: '/fonts/golos-regular.woff2', type:"font/woff2", crossorigin: 'anonymous'},
             // {rel: 'preload', as: 'font', href: '/fonts/golos-demibold.woff2', type:"font/woff2", crossorigin: 'anonymous'},
@@ -34,7 +34,7 @@ export default {
         throttle: 0
     },
     css: [
-        '~assets/styles/index.scss',
+        '~assets/styles/index.scss'
         // {src: '@fancyapps/ui/dist/fancybox.css', lang: 'css'}
     ],
     plugins: [
@@ -109,6 +109,7 @@ export default {
         }
     },
     build: {
+        extractCSS: true,
         loaders: {
             scss: {
                 implementation: require('sass')
