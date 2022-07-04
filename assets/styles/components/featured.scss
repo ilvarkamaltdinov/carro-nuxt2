@@ -607,6 +607,11 @@
 }
 
 @media (min-width: $desktop-width) {
+  .featured__item--sedan .featured__img,
+  .featured__item--tinkoff .featured__img {
+    width: 440px;
+  }
+
   .featured__item--allroad {
     grid-row: 1 / 3;
     grid-column: 9 / 13;

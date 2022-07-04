@@ -97,6 +97,7 @@
   z-index: 50;
   color: white;
   @include font-small;
+  white-space: normal;
 }
 
 .stories__list {

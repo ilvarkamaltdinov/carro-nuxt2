@@ -46,6 +46,21 @@
   }
 }
 
+.filter__menu-item--loading {
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    border-radius: 4px;
+    height: 4px;
+    width: 100%;
+    position: absolute;
+    background-color: $colorBg;
+    height: 24px;
+  }
+}
+
 .filter__arrow {
   width: 16px;
   height: 16px;

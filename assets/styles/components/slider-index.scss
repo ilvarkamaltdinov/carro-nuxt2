@@ -125,8 +125,6 @@
   position: absolute;
   width: calc(50% - 16px);
   margin: 8px 16px;
-  padding: 24px 0;
-  height: 16px;
   align-items: center;
   z-index: 50;
 }
@@ -203,6 +201,11 @@
 }
 
 @media (min-width: $desktop-width) {
+  .slider-index .swiper-pagination {
+    padding: 24px 0;
+    height: 16px;
+  }
+
   .slider-index__item {
     &:hover .slider-index__circle {
       transform: scale(1.04);
