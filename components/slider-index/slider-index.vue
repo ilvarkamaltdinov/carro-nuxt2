@@ -9,7 +9,7 @@
 				<slider-index-slide v-for="slide in slides"
 				                    :slide="slide"
 				                    :key="slide.id" />
-			
+
 			</div>
 			<!-- If we need pagination-->
 			<div class="swiper-pagination"></div>

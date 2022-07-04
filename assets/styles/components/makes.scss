@@ -4,6 +4,10 @@
   transition: $transitionHover;
 }
 
+.makes__link.active {
+  color: $colorPrimary;
+}
+
 .makes__title {
   margin-right: 6px;
   @include font-features-strong;
