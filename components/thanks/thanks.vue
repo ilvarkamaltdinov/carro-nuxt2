@@ -3,7 +3,7 @@
 	<section class="page-main__thanks thanks grid">
 		<div class="heading-group heading-group--h1">
 			<div class="heading-group__wrap">
-				<h1 class="heading heading--h1">Заявка успешно отправлена
+				<h1 class="heading heading--h1">{{pageTitle}}
 					<span class="heading__promo"></span>
 				</h1>
 				<span class="heading-group__label">Автокредит предварительно одобрен</span>
@@ -18,9 +18,11 @@
 				</div>
 				<div class="text__content">
 					
-					<p class="text__p">{{ userName }}, автомобиль {{ userCar.mark.title }} {{ userCar.folder.title }} {{ userCar.generation.name }} {{ userCar.engine_volume }}
-					                   {{ userCar.gearbox.title }} ({{  userCar.engine_power }} л.с.) {{  userCar.year }} закреплен за вашей
-						
+					<p class="text__p">{{ userName }}, автомобиль {{ userCar.mark.title }} {{ userCar.folder.title }}
+					                   {{ userCar.generation.name }} {{ userCar.engine_volume }}
+					                   {{ userCar.gearbox.title }} ({{ userCar.engine_power }} л.с.) {{ userCar.year }} закреплен
+					                   за вашей
+					
 					                   заявкой #838280. Менеджер свяжется с вами в ближайшее время. Спасибо, что выбрали нас!
 					</p>
 					<p class="text__p">После подтверждения заявки вас пригласят в автоцентр для прохождения бесплатного
@@ -33,7 +35,8 @@
 				</div>
 			</div>
 			<div class="thanks__catalog catalog catalog--single grid__col-4">
-				<catalog-item-small-desktop :has-buttons="false" :offer="userCar"/>
+				<catalog-item-small-desktop :has-buttons="false"
+				                            :offer="userCar" />
 			</div>
 		</div>
 		<div class="thanks__benefits grid__col-12">
@@ -45,6 +48,9 @@
 import {mapGetters} from "vuex";
 
 export default {
+	props: {
+		pageTitle: String
+	},
 	computed: {
 		...mapGetters({
 			userName: 'form/form/userName',

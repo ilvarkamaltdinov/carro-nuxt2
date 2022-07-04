@@ -3,12 +3,15 @@
 		<div class="grid">
 			<!--<crumbs :crumbs="crumbs" />-->
 		</div>
-		<catalog-used />
+		<catalog-used :page-title="pageTitle"/>
 	</main>
 </template>
 <script>
 
+import seoTags from "@/mixins/seoTags";
+
 export default {
+	mixins:[seoTags],
 	layout: 'catalogLayout',
 }
 </script>

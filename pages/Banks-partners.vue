@@ -4,15 +4,17 @@
 			<crumbs :crumbs="crumbs" />
 		</div>
 		<div class="grid grid--container">
-			<featured-banks />
+			<featured-banks :title="pageTitle"/>
 		</div>
 	</main>
 </template>
 <script>
 import banks from "~/apollo/queries/banks"
 import {mapActions, mapMutations} from "vuex";
+import seoTags from "@/mixins/seoTags";
 
 export default {
+	mixins:[seoTags],
 	data() {
 		return {
 			crumbs: [
@@ -29,17 +31,5 @@ export default {
 			]
 		}
 	},
-	methods: {
-		...mapMutations({
-			setBanks:'banks/SET_BANKS'
-		}),
-		...mapActions({
-			request: 'filters/filters/request',
-		}),
-	},
-	async fetch() {
-		let response = await this.request({query: banks, variables: {}})
-		await this.setBanks(response.data.banks)
-	}
 }
 </script>

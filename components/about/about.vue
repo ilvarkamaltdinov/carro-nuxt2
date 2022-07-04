@@ -1,9 +1,9 @@
 <template>
-	
 	<section class="page-main__about about grid">
 		<div class="heading-group heading-group--h1">
 			<div class="heading-group__wrap">
-				<h1 class="heading heading--h1">О портале
+				<h1 class="heading heading--h1">
+					{{pageTitle}}
 					<span class="heading__promo"></span>
 				</h1>
 				<span class="heading-group__label">Находим лучшие автомобили с 2015 года</span>
@@ -12,7 +12,9 @@
 		<div class="about__block grid__col-12 grid text">
 			<div class="grid__col-8 text__wrap text__wrap--figure">
 				<div class="text__figure figure">
-					<nuxt-picture quality="100" :imgAttrs="{class:'text__figure-img'}" src="img/figures/figure-4@2x.png"/>
+					<nuxt-picture quality="100"
+					              :imgAttrs="{class:'text__figure-img'}"
+					              src="img/figures/figure-4@2x.png" />
 				</div>
 				<div class="text__content">
 					<h2 class="heading heading--h2">Коротко о главном</h2>
@@ -64,3 +66,10 @@
 		</div>
 	</section>
 </template>
+<script>
+export default {
+	props: {
+		pageTitle: String
+	}
+}
+</script>

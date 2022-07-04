@@ -2,7 +2,7 @@
 	<section class="page-main__application application grid">
 		<div class="heading-group heading-group--h1">
 			<div class="heading-group__wrap">
-				<h1 class="heading heading--h1">{{ currentTitle }}</h1>
+				<h1 class="heading heading--h1">{{ pageTitle }}</h1>
 				<span class="heading-group__label">Банк перезвонит вам в течение 15 минут</span>
 			</div>
 		</div>
@@ -13,7 +13,7 @@
 						<h2 class="heading heading--h2">Заполните заявку</h2>
 						<span class="heading-group__label">Получите 100% одобрение</span>
 					</div>
-					<rating-form />
+					<rating :max="100" :rating="100" />
 				</div>
 				<form-credit />
 			</div>
@@ -54,6 +54,9 @@
 import {mapActions, mapGetters, mapMutations} from 'vuex'
 
 export default {
+	props: {
+		pageTitle: String
+	},
 	data() {
 		return {
 			modalChooseCar: {
@@ -72,13 +75,6 @@ export default {
 			totalSum: 'form/form-credit/totalSum',
 			rangePeriodValue: 'form/form-credit/rangePeriodValue'
 		}),
-		currentTitle() {
-			if (this.bank.id) {
-				return 'Автокредит в ' + this.bank.name
-			} else {
-				return 'Заявка на автокредит'
-			}
-		}
 	},
 	methods: {
 		...mapActions({

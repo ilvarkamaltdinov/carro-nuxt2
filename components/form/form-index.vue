@@ -8,7 +8,7 @@
 				</h2>
 				<span class="heading-group__label">Получите 100% одобрение</span>
 			</div>
-			<rating-form />
+			<rating :max="5" :rating="1" />
 		</div>
 		<form-credit :offer="currentCar" />
 	</div>

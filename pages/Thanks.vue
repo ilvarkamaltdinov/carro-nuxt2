@@ -4,14 +4,16 @@
 			<crumbs :crumbs="crumbs" />
 		</div>
 		<div class="grid grid--container">
-			<thanks v-if="userCar"/>
+			<thanks :page-title="pageTitle" v-if="userCar"/>
 		</div>
 	</main>
 </template>
 <script>
 import {mapGetters} from "vuex";
+import seoTags from "@/mixins/seoTags";
 
 export default {
+	mixins:[seoTags],
 	data() {
 		return {
 			crumbs: [

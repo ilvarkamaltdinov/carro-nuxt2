@@ -3,14 +3,16 @@
 		<div class="grid">
 			<!--<crumbs :crumbs="crumbs"/>-->
 		</div>
-		<component :is="currentComponent" />
+		<component :is="currentComponent" :page-title="pageTitle"/>
 	</main>
 </template>
 <script>
 import {mapGetters} from "vuex";
+import seoTags from "@/mixins/seoTags";
 
 export default {
 	layout: 'catalogLayout',
+	mixins:[seoTags],
 	computed: {
 		...mapGetters({
 			chosen: 'filters/filters/chosen',

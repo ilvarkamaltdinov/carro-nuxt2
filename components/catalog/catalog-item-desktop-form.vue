@@ -44,7 +44,7 @@
 				</div>
 			</div>
 			<div class="catalog__tech">
-				<rating/>
+				<rating :max="100" :rating="100" />
 				<ul class="catalog__tech-list">
 					<li class="catalog__tech-item">132 000 км</li>
 					<li class="catalog__tech-item">5.5 л / 388 л.с.</li>

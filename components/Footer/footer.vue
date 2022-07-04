@@ -54,7 +54,7 @@
 						</nuxt-link>
 					</li>
 					<li class="page-footer__links-item">
-						<nuxt-link to="/contacts"
+						<nuxt-link to="/contact"
 						           class="page-footer__link"
 						           href="">Контакты
 						</nuxt-link>

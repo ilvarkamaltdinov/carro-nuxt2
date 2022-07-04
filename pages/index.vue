@@ -1,7 +1,7 @@
 <template>
 	<main class="page-main">
 		<div class="grid grid--container">
-			<h1 class="visually-hidden">Автомобили с пробегом в Москве</h1>
+			<h1 class="visually-hidden">{{pageTitle}}</h1>
 			<div class="page-main__promo grid__col-8">
 				<slider-index />
 				<component :is="$device.isMobile ? 'stories' : 'stories-desktop'" />
@@ -23,8 +23,9 @@
 </template>
 <script>
 import {mapGetters, mapMutations} from "vuex";
-
+import seoTags from "@/mixins/seoTags";
 export default {
+	mixins:[seoTags],
 	data() {
 		return {
 			storiesComponent: 'stories',

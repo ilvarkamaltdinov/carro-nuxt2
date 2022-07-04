@@ -18,6 +18,7 @@ fragment OfferPagination on OfferTypePagination {
     category_enum
     price
     run
+    rating
     year
     engine_power
     engine_volume

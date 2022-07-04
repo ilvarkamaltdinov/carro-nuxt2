@@ -6,7 +6,7 @@
 				<div class="heading-group heading-group--h1 grid__col-6">
 					<div class="heading-group__wrap">
 						<heading-h1>
-							{{ offer.mark.title }} {{ offer.folder.title }}
+							{{ pageTitle}}
 						</heading-h1>
 						<span class="heading-group__label heading-group__label--car">
 							{{ offer.generation.name }}
@@ -51,6 +51,9 @@ import {mapActions, mapGetters, mapMutations} from 'vuex'
 import usedOffer from "~/apollo/queries/usedOffer"
 
 export default {
+	props: {
+		pageTitle: String
+	},
 	data() {
 		return {
 			showFixed: false,

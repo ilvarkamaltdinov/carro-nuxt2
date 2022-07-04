@@ -3,7 +3,7 @@
 	<section class="page-main__featured featured featured--reviews grid">
 		<div class="heading-group heading-group--h1">
 			<div class="heading-group__wrap">
-				<h1 class="heading heading--h1">Отзывы</h1>
+				<h1 class="heading heading--h1">{{ pageTitle }}</h1>
 				<span class="heading-group__label">Покупатели о наши партнерах</span>
 			</div>
 		</div>
@@ -28,12 +28,17 @@
 					          name="icon-play"></svg-icon>
 				</li>
 			</ul>
-			<button-typical @click="total += 9" text="Показать больше" class="button--link button--more"/>
+			<button-typical @click="total += 9"
+			                text="Показать больше"
+			                class="button--link button--more" />
 		</div>
 	</section>
 </template>
 <script>
 export default {
+	props: {
+		pageTitle: String
+	},
 	data() {
 		return {
 			total: 9,

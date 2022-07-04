@@ -1,6 +1,6 @@
 #import "../fragments/dealer/dealerList.gql"
 query dealers($site_id: Int!) {
-  dealer(site_id: $site_id) {
+  dealers(site_id: $site_id) {
     ...DealerList
   }
 }

@@ -70,7 +70,7 @@ export default {
 						},
 						{
 							name: 'Отзывы',
-							link: '/reviews'
+							link: '/reviews-dealers'
 						},
 						{
 							name: 'О портале',
@@ -83,7 +83,7 @@ export default {
 					links: [
 						{
 							name: 'Контакты',
-							link: '/contacts'
+							link: '/contact'
 						},
 						{
 							name: 'Предложения',

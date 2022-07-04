@@ -1,5 +1,12 @@
 fragment DealerList on Dealer {
     id
     phone
+    title
+    metro
+    short_description
     slug
+    address
+    rating
+    schedule
+    site
 }

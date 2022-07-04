@@ -8,7 +8,7 @@
 				<catalog-item-price :offer="offer" />
 			</div>
 			<div class="catalog__tech">
-				<rating />
+				<rating :max="100" :rating="100" />
 				<catalog-item-tech-list :offer="offer" />
 			</div>
 		</div>

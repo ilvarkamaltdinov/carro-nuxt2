@@ -14,7 +14,7 @@
 							<h2 class="heading heading--h2">АвтоГрадъ</h2>
 							<span class="heading-group__label">Старейший автоцентр Москвы</span>
 						</div>
-						<rating-dealer/>
+						<rating :max="100" :rating="100" />
 					</div>
 				</div>
 				<div class="dealers__item-img-wrap">
@@ -42,7 +42,7 @@
 							<h2 class="heading heading--h2">Prime</h2>
 							<span class="heading-group__label">Старейший автоцентр Москвы</span>
 						</div>
-						<rating-dealer/>
+						<rating :max="100" :rating="100" />
 					</div>
 				</div>
 				<div class="dealers__item-img-wrap">

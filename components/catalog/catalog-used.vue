@@ -3,11 +3,12 @@
 		<section class="page-main__catalog catalog grid">
 			<div class="heading-group heading-group--h1 grid__col-12">
 				<div class="heading-group__wrap">
-					<h1 class="heading heading--h1">Автомобили с пробегом</h1>
+					<h1 class="heading heading--h1">{{ pageTitle }}</h1>
 					<!--<span class="heading-group__label">121212 автомобиля в наличии</span>-->
 				</div>
 			</div>
-			<div class="grid__col-12" v-if="showFolderTabs">
+			<div class="grid__col-12"
+			     v-if="showFolderTabs">
 				<div class="tabs">
 					<ul class="tabs__list">
 						<li role="presentation"
@@ -39,6 +40,9 @@ import capitalizeFirstLetter from "~/mixins/capitalizeFirstLetter";
 
 export default {
 	mixins: [capitalizeFirstLetter],
+	props: {
+		pageTitle: String
+	},
 	// methods:{
 	// 	tabClick(tab){
 	// 		console.log(tab)

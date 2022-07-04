@@ -1,47 +1,74 @@
-<template lang="pug">
-	section.page-main__about.about.grid
-		.heading-group.heading-group--h1
-			.heading-group__wrap
-				h1.heading.heading--h1 Контакты
-					span.heading__promo
-				span.heading-group__label Свяжитесь с нами
-		
-		.about__block.grid__col-12.grid.text
-			.grid__col-7.text__wrap.text__wrap--figure
-				.text__figure.figure
-					picture
-						source(type="image/webp" media="(min-width: 768px)" srcset=`img/figures/figure-5@1x.webp 1x, img/figures/figure-5@2x.webp 2x`)
-						source(media="(min-width: 768px)" srcset=`img/figures/figure-5@1x.png 1x, img/figures/figure-5@2x.png 2x`)
-						img.text__figure-img(src=`img/figures/figure-5@1x.png` srcset=`img/figures/figure-5@2x.png 2x` loading="lazy" alt="")
-				
-				.text__content
-					
-					.text__contacts-group
-						.text__contacts-label Приобретения автомобиля:
-						a.text__contacts-item(href="tel:+79993522343") +7 (925) 351-24-22
-					
-					.text__contacts-group
-						.text__contacts-label Кредитный отдел:
-						a.text__contacts-item(href="tel:+79993522343") +7 (925) 351-24-22
-					
-					.text__contacts-group
-						.text__contacts-label Вопросы сотрудничества:
-						a.text__contacts-item(href="mailto:+79993522343") support@carro.ru
-			
-			.grid__col-5.text__wrap
-				.text__content
-					h2.heading.heading--h2 Юридическая информация
-					
-					.text__contacts-label Юридический адрес:
-					p.text__p 115487, г. Москва, ул. Нагатинская, д. 16/9
-					
-					.text__contacts-label Физический адрес:
-					p.text__p 117405, г. Москва, Варшавское шоссе, д. 170Г
-					
-					ul.text__list
-						li.text__list-item ООО «Ю-СТАЙЛ»
-						li.text__list-item ИНН: 7724398974
-						li.text__list-item ОГРН: 1177746078916
-						li.text__list-item КПП: 772401001
+<template>
+	
+	<section class="page-main__about about grid">
+		<div class="heading-group heading-group--h1">
+			<div class="heading-group__wrap">
+				<h1 class="heading heading--h1">{{pageTitle}}
+					<span class="heading__promo"></span>
+				</h1>
+				<span class="heading-group__label">Свяжитесь с нами</span>
+			</div>
+		</div>
+		<div class="about__block grid__col-12 grid text">
+			<div class="grid__col-7 text__wrap text__wrap--figure">
+				<div class="text__figure figure">
+					<picture>
+						<source type="image/webp"
+						        media="(min-width: 768px)"
+						        srcset="~/assets/img/figures/figure-5@1x.webp 1x, ~/assets/img/figures/figure-5@2x.webp 2x" />
+						<source media="(min-width: 768px)"
+						        srcset="~/assets/img/figures/figure-5@1x.png 1x, ~/assets/img/figures/figure-5@2x.png 2x" />
+						<img class="text__figure-img"
+						     src="~/assets/img/figures/figure-5@1x.png"
+						     srcset="~/assets/img/figures/figure-5@2x.png 2x"
+						     loading="lazy"
+						     alt="" />
+					</picture>
+				</div>
+				<div class="text__content">
+					<div class="text__contacts-group">
+						<div class="text__contacts-label">Приобретения автомобиля:</div>
+						<a class="text__contacts-item"
+						   href="tel:+79993522343">+7 (925) 351-24-22
+						</a>
+					</div>
+					<div class="text__contacts-group">
+						<div class="text__contacts-label">Кредитный отдел:</div>
+						<a class="text__contacts-item"
+						   href="tel:+79993522343">+7 (925) 351-24-22
+						</a>
+					</div>
+					<div class="text__contacts-group">
+						<div class="text__contacts-label">Вопросы сотрудничества:</div>
+						<a class="text__contacts-item"
+						   href="mailto:+79993522343">support@carro.ru
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="grid__col-5 text__wrap">
+				<div class="text__content">
+					<h2 class="heading heading--h2">Юридическая информация</h2>
+					<div class="text__contacts-label">Юридический адрес:</div>
+					<p class="text__p">115487, г. Москва, ул. Нагатинская, д. 16/9</p>
+					<div class="text__contacts-label">Физический адрес:</div>
+					<p class="text__p">117405, г. Москва, Варшавское шоссе, д. 170Г</p>
+					<ul class="text__list">
+						<li class="text__list-item">ООО «Ю-СТАЙЛ»</li>
+						<li class="text__list-item">ИНН: 7724398974</li>
+						<li class="text__list-item">ОГРН: 1177746078916</li>
+						<li class="text"></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
 
 </template>
+<script>
+export default {
+	props: {
+		pageTitle: String
+	}
+}
+</script>

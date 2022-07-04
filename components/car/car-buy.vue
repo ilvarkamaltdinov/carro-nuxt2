@@ -21,7 +21,7 @@
 			</button>
 		</div>
 		<div class="car__actions-block">
-			<rating />
+			<rating :max="100" :rating="100" />
 			<div class="car__actions-buttons">
 				<button-autoteka @click="autoteka(offer)"/>
 				<button-favorite :active="likesArray.some(id => id === String(offer.external_id))"

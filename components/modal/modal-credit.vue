@@ -9,7 +9,7 @@
 						</h2>
 						<span class="heading-group__label">Получите 100% одобрение</span>
 					</div>
-					<rating-form />
+					<rating :max="100" :rating="100" />
 				</div>
 				<form-credit :has-chose="false" :offer="modalData"/>
 			</div>

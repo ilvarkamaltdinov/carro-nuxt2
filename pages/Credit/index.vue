@@ -4,14 +4,17 @@
 			<crumbs :crumbs="crumbs"/>
 		</div>
 		<div class="grid grid--container">
-			<application-credit/>
+			<application-credit :page-title="pageTitle"/>
 			<benefits-car/>
 			<text-credit/>
 		</div>
 	</main>
 </template>
 <script>
+import seoTags from "@/mixins/seoTags";
+
 export default {
+	mixins:[seoTags],
 	data() {
 		return {
 			crumbs: [

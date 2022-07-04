@@ -4,12 +4,15 @@
 			<crumbs :crumbs="crumbs" />
 		</div>
 		<div class="grid grid--container">
-			<contacts />
+			<contacts :page-title="pageTitle"/>
 		</div>
 	</main>
 </template>
 <script>
+import seoTags from "@/mixins/seoTags";
+
 export default {
+	mixins:[seoTags],
 	data() {
 		return {
 			crumbs: [
@@ -20,7 +23,7 @@ export default {
 				},
 				{
 					name: 'Контакты',
-						route: '/contacts',
+						route: '/contact',
 					active: true
 				}
 			]

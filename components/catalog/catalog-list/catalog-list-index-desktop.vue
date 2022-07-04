@@ -28,7 +28,8 @@
 
 </template>
 <script>
-import {mapActions, mapGetters} from "vuex";
+import {mapActions, mapGetters, mapMutations} from "vuex";
+import usedOffers from "@/apollo/queries/usedOffers";
 
 export default {
 	data() {
@@ -77,6 +78,10 @@ export default {
 			]
 		}
 	},
+	async fetch() {
+		let response = await this.request({query: usedOffers, variables: {page: 0, limit: 10}})
+		this.setOffers(response.data.offers)
+	},
 	computed: {
 		...mapGetters({
 			offers: 'catalog/catalog-cars/offers',
@@ -86,13 +91,18 @@ export default {
 		}
 	},
 	methods: {
+		...mapActions({
+			request: 'filters/filters/request'
+		}),
+		...mapMutations({
+			setOffers:'catalog/catalog-cars/SET_OFFERS'
+		}),
 		toCatalog() {
 			this.$router.push('/used')
 		}
 	},
-	async mounted() {
-		//TODO при клике на клонированную карточку редиректит с обновлением страницы
-		let sliderCatalog = await new swiper.default('.catalog--slider .swiper', {
+	mounted() {
+		new swiper.default('.catalog--slider .swiper', {
 			modules: [swiper.Navigation, swiper.Autoplay],
 			loop: false,
 			// autoplayDisableOnInteraction: true,

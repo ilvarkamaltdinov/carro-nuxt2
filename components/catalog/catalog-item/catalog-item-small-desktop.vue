@@ -7,7 +7,7 @@
 			<catalog-item-price :offer="offer" />
 		</div>
 		<div class="catalog__tech" :class="{'catalog__tech--no-buttons':!hasButtons}">
-			<rating />
+			<rating :rating="offer.rating" :max="5"/>
 			<catalog-item-tech-list :offer="offer" />
 		</div>
 		<catalog-item-buttons :choose="choose" v-if="hasButtons"

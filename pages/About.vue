@@ -1,17 +1,19 @@
 <template>
-	
 	<main class="page-main">
 		<div class="grid">
 			<crumbs :crumbs="crumbs"/>
 		</div>
 		<div class="grid grid--container">
-			<about/>
+			<about :page-title="pageTitle"/>
 			<video-about/>
 		</div>
 	</main>
 </template>
 <script>
+import seoTags from "@/mixins/seoTags";
+
 export default {
+	mixins:[seoTags],
 	data(){
 		return{
 			crumbs:[

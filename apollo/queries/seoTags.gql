@@ -1,0 +1,7 @@
+query seoTags($site_id: Int!, $url: String!) {
+    seoTag(site_id: $site_id, url: $url) {
+        page_title
+        title
+        description
+    }
+}

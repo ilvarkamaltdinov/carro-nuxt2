@@ -1,6 +1,8 @@
 <template>
 	<section class="page-main__catalog catalog grid__col-12">
-		<heading-h2>Понравившиеся автомобили</heading-h2>
+		<h1 class="heading heading--h1">
+			{{pageTitle}}
+		</h1>
 		<skeleton-catalog-desktop-small v-if="loading" />
 		<div v-else class="catalog__list grid grid__col-12">
 			<component :is="component"
@@ -19,6 +21,9 @@ import usedOffers from "~/apollo/queries/usedOffers";
 import {mapGetters} from "vuex";
 
 export default {
+	props:{
+		pageTitle:String
+	},
 	data() {
 		return {
 			loading: true,

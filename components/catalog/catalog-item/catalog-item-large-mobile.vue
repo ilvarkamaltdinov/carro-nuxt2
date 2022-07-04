@@ -11,7 +11,7 @@
 		</div>
 		<div class="catalog__tech"
 		     :class="{'catalog__tech--no-buttons':!hasButtons}">
-			<rating />
+			<rating :max="100" :rating="100" />
 			<catalog-item-tech-list :offer="offer" />
 		</div>
 		<catalog-item-buttons :choose="choose"

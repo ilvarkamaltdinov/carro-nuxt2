@@ -143,7 +143,7 @@
 								Автоцентр «{{ offer.dealer.title }}»
 							</span>
 						</div>
-						<rating-dealer :rating="offer.dealer.rating"/>
+						<rating :rating="offer.dealer.rating" :max="100"/>
 					</div>
 					<div class="car__info-options features">
 						<div class="features__group">

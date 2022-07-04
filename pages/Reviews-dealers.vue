@@ -4,12 +4,15 @@
 			<crumbs :crumbs="crumbs"/>
 		</div>
 		<div class="grid grid--container">
-			<featured-reviews />
+			<featured-reviews :page-title="pageTitle"/>
 		</div>
 	</main>
 </template>
 <script>
+import seoTags from "@/mixins/seoTags";
+
 export default {
+	mixins:[seoTags],
 	data() {
 		return {
 			crumbs: [
@@ -20,7 +23,7 @@ export default {
 				},
 				{
 					name: 'Отзывы',
-					route: '/reviews',
+					route: '/reviews-dealers',
 					active: true
 				}
 			]
