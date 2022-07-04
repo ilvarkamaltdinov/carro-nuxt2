@@ -2,16 +2,16 @@
 	<div class="form__block form__block--range range">
 		<div class="form__range-wrap">
 			<label class="form__field-wrap form__field-wrap--range">
-				<input class="form__field"
-				       placeholder="Цена от"
-				       v-model="from"
-				       type="tel" />
+				<inputs-input placeholder="Цена от"
+				              v-model="from"
+				              mask="money"
+				              type="tel" />
 			</label>
 			<label class="form__field-wrap form__field-wrap--range">
-				<input class="form__field"
-				       placeholder="Цена до"
-				       v-model="to"
-				       type="tel" />
+				<inputs-input placeholder="Цена до"
+				              v-model="to"
+				              mask="money"
+				              type="tel" />
 			</label>
 		</div>
 		<range-slider
@@ -23,8 +23,10 @@
 </template>
 <script>
 import {mapGetters} from "vuex";
+import filters from "@/mixins/filters";
 
 export default {
+	mixins: [filters],
 	data() {
 		return {
 			from: '',
@@ -33,8 +35,8 @@ export default {
 	},
 	watch: {
 		filters() {
-			this.from = this.filters.price[0]
-			this.to = this.filters.price[1]
+			this.from = String(this.filters.price[0])
+			this.to = String(this.filters.price[1])
 		}
 	},
 	computed: {
@@ -58,16 +60,17 @@ export default {
 		}
 	},
 	mounted() {
-		this.from = this.filterPrice?.[0]
-		this.to = this.filterPrice?.[1]
+		this.from = String(this.filterPrice?.[0])
+		this.to = String(this.filterPrice?.[1])
 	},
 	methods: {
 		sendPrice() {
-			console.log(this.from, this.to)
+			this.$emit('change', [this.from, this.to])
 		},
 		changePrice(event) {
-			this.from = event.from
-			this.to = event.to
+			this.from = String(event.from)
+			this.to = String(event.to)
+			
 		}
 	}
 }

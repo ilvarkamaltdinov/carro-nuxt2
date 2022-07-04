@@ -3,6 +3,7 @@
 	       class="form__field"
 	       :placeholder="placeholder"
 	       :value="value"
+	       :inputmode="type==='tel' ? 'numeric' : ''"
 	       @input="$emit('input', $event.target.value)"
 	       :type="type" />
 </template>
@@ -31,6 +32,19 @@ export default {
 		}
 	},
 	mounted() {
+		if (this.mask === 'money') {
+			let im = new Inputmask({
+				alias: "decimal",
+				digits: 2,
+				placeholder: "",
+				autoGroup: true,
+				allowMinus: false,
+				rightAlign: false,
+				groupSeparator: " ", // <-- this is &puncsp;
+				radixPoint: " ",
+			});
+			im.mask(this.$refs.input);
+		}
 		if (this.mask === 'number') {
 			let im = new Inputmask({
 				regex: "[0-9]*",

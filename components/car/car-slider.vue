@@ -46,7 +46,8 @@ export default {
 	},
 	methods:{
 		...mapMutations({
-			setOffer: 'catalog/catalog-cars/SET_OFFER'
+			setOffer: 'catalog/catalog-cars/SET_OFFER',
+			setCarPageLoaded:'catalog/catalog-cars/SET_CAR_PAGE_LOADED',
 		})
 	},
 	destroyed() {
@@ -62,6 +63,12 @@ export default {
 			centeredSlides: this.centeredSlides,
 			watchSlidesProgress: true,
 			spaceBetween: this.slidesSpaceBetween,
+			on: {
+				init:()=> {
+					console.log(123)
+					this.setCarPageLoaded(true)
+				},
+			},
 		})
 		AOS.init({
 			once: true

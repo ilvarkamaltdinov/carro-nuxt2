@@ -15,7 +15,7 @@
 					{{ folder_select_title }}
 				</div>
 				<svg-icon class="filter__arrow"
-				          name="icon-arrow"/>
+				          name="icon-arrow" />
 			</li>
 			<li class="filter__menu-item"
 			    v-if="showGeneration"
@@ -24,23 +24,24 @@
 					{{ generation_select_title }}
 				</div>
 				<svg-icon class="filter__arrow"
-				          name="icon-arrow"/>
+				          name="icon-arrow" />
 			</li>
 			<li class="filter__menu-item"
-			    @click="openFilterModal('engine-type')">
+					@click="openFilterModal('engine-type')">
 				<div class="filter__menu-text">
 					{{ engine_type_select_title }}
 				</div>
 				<svg-icon class="filter__arrow"
-				          name="icon-arrow"/>
+				          name="icon-arrow" />
 			</li>
-			<li class="filter__menu-item"
+			<li v-if="allFilters"
+			    class="filter__menu-item"
 			    @click="openFilterModal('body-type')">
 				<div class="filter__menu-text">
 					{{ body_type_select_title }}
 				</div>
 				<svg-icon class="filter__arrow"
-				          name="icon-arrow"/>
+				          name="icon-arrow" />
 			</li>
 			<li v-if="allFilters"
 			    class="filter__menu-item"
@@ -49,7 +50,7 @@
 					{{ gearbox_select_title }}
 				</div>
 				<svg-icon class="filter__arrow"
-				          name="icon-arrow"/>
+				          name="icon-arrow" />
 			</li>
 			<li v-if="allFilters"
 			    class="filter__menu-item"
@@ -58,23 +59,25 @@
 					{{ drive_type_select_title }}
 				</div>
 				<svg-icon class="filter__arrow"
-				          name="icon-arrow"/>
+				          name="icon-arrow" />
 			</li>
 		</ul>
-		<ul v-if="allFilters"
-		    class="filter__menu-list filter__menu-list--more">
+		<div class="filter__more">
+			<button-typical :text="allFilters ? 'Скрыть Фильтры' : 'Больше фильтров'"
+			                class="button--show"
+			                :class="{'button--show-link':allFilters}"
+			                @click="allFilters = !allFilters" />
+		</div>
+		<ul class="filter__menu-list filter__menu-list--more">
 			<li class="filter__menu-group">
 				<h2 class="heading heading--h3">Цена</h2>
-				<range-price />
+				<range-price @change="changePrice"/>
 			</li>
 			<li class="filter__menu-group">
 				<h2 class="heading heading--h3">Год</h2>
 				<range-year />
 			</li>
 		</ul>
-		<div class="filters__more">
-			<button-typical :text="allFilters ? 'Скрыть' : 'Больше фильтров'" class="button--show" @click="allFilters = !allFilters"/>
-		</div>
 	</div>
 </template>
 
@@ -112,13 +115,13 @@ export default {
 		gearbox_select_title() {
 			return this.chosen.gearbox?.map(val => val.title).join(', ') || 'КПП'
 		},
-		showGeneration(){
+		showGeneration() {
 			return this.chosen.mark?.length === 1 && this.chosen.folder?.length === 1;
 		}
 	},
 	methods: {
 		...mapMutations({
-			setAllChosen:'filters/filters/SET_ALL_CHOSEN'
+			setAllChosen: 'filters/filters/SET_ALL_CHOSEN'
 		}),
 		...mapActions({
 			openModal: 'modal/modal-main/openModal',
@@ -142,6 +145,10 @@ export default {
 				modal_data: {type: modalComponent}
 			}
 			this.openModal(payload)
+		},
+		changePrice(priceArray){
+			this.$router.push({path: this.$route.fullPath, query: {price_from:priceArray[0],price_to:priceArray[1]}});
+			console.log(priceArray)
 		}
 	},
 }
