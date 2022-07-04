@@ -38,14 +38,13 @@ export default {
 			request: 'filters/filters/request',
 		}),
 		async filterRequest(assignVariables) {
-			try{
+			try {
 				let response = await this.request({query: offerFilters, variables: assignVariables})
 				await this.changingFilters(response.data.offerFilters)
 				await this.changingOffers(response.data.offers)
 				this.setIsFilterClick(false)
-			}
-			catch (error){
-				return this.$nuxt.error({ statusCode: 404, message: '404' })
+			} catch (error) {
+				return this.$nuxt.error({statusCode: 404, message: '404'})
 			}
 		},
 		async changingFilters(payload) {
@@ -97,7 +96,8 @@ export default {
 					price_from: Number(this.$route.query.price_from),
 					price_to: Number(this.$route.query.price_to),
 					year_from: Number(this.$route.query.year_from),
-					year_to: Number(this.$route.query.year_to)
+					year_to: Number(this.$route.query.year_to),
+					sort: this.$route.query.sort
 				})
 			}
 		},
