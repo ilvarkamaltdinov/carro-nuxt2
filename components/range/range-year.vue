@@ -16,11 +16,13 @@
 				       v-model="to" />
 			</label>
 		</div>
-		<range-slider
-				v-if="filterYear"
-				range-class="range-year"
-				:options="getYearOptions">
-		</range-slider>
+		<client-only>
+			<range-slider
+					v-if="filterYear"
+					range-class="range-year"
+					:options="getYearOptions">
+			</range-slider>
+		</client-only>
 	</div>
 </template>
 <script>
@@ -31,12 +33,6 @@ export default {
 		return {
 			from: '',
 			to: ''
-		}
-	},
-	watch: {
-		filters() {
-			this.from = this.filters.year[0]
-			this.to = this.filters.year[1]
 		}
 	},
 	computed: {
@@ -52,28 +48,30 @@ export default {
 				type: 'double',
 				grid: false,
 				step: 1,
-				min: String(this.filterYear?.[0]),
-				max: String(this.filterYear?.[1]),
+				from: Number(this.from),
+				to: Number(this.to),
+				min: Number(this.filterYear?.[0]),
+				max: Number(this.filterYear?.[1]),
 				onFinish: (event) => this.sendYear(event),
 				onChange: (event) => this.changeYear(event)
 			}
 		}
 	},
 	mounted() {
-		this.from = this.filterYear?.[0]
-		this.to = this.filterYear?.[1]
+		if (this.$route.query.year_from && this.$route.query.year_to) {
+			this.from = Number(this.$route.query.year_from)
+			this.to = Number(this.$route.query.year_to)
+		} else {
+			this.from = this.filterYear?.[0]
+			this.to = this.filterYear?.[1]
+		}
 	},
 	methods: {
-		...mapActions({
-			getFilters: 'filters/filters/getFilters'
-		}),
 		...mapMutations({
 			setChosen: 'filters/filters/SET_CHOSEN'
 		}),
 		async sendYear() {
-			this.setChosen({key: 'yearFrom', value: this.from})
-			this.setChosen({key: 'yearTo', value: this.to})
-			await this.getFilters()
+			await this.$router.push({path: this.$route.fullPath, query: {year_from: this.from, year_to: this.to}});
 		},
 		changeYear(event) {
 			this.from = event.from

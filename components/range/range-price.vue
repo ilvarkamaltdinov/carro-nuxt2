@@ -2,23 +2,27 @@
 	<div class="form__block form__block--range range">
 		<div class="form__range-wrap">
 			<label class="form__field-wrap form__field-wrap--range">
-				<inputs-input placeholder="Цена от"
-				              v-model="from"
-				              mask="money"
-				              type="tel" />
+				<input class="form__field"
+				       placeholder="Дата рождения"
+				       type="text"
+				       name="date"
+				       :value="from | toCurrency" />
 			</label>
 			<label class="form__field-wrap form__field-wrap--range">
-				<inputs-input placeholder="Цена до"
-				              v-model="to"
-				              mask="money"
-				              type="tel" />
+				<input class="form__field"
+				       placeholder="Дата рождения"
+				       type="text"
+				       name="date"
+				       :value="to | toCurrency" />
 			</label>
 		</div>
-		<range-slider
-				v-if="filterPrice"
-				range-class="range-period"
-				:options="getPriceOptions">
-		</range-slider>
+		<client-only>
+			<range-slider
+					v-if="filterPrice"
+					range-class="range-period"
+					:options="getPriceOptions">
+			</range-slider>
+		</client-only>
 	</div>
 </template>
 <script>
@@ -30,13 +34,9 @@ export default {
 	data() {
 		return {
 			from: '',
-			to: ''
-		}
-	},
-	watch: {
-		filters() {
-			this.from = String(this.filters.price[0])
-			this.to = String(this.filters.price[1])
+			to: '',
+			minPrice: String(this.filterPrice?.[0]),
+			maxPrice: String(this.filterPrice?.[1])
 		}
 	},
 	computed: {
@@ -45,32 +45,40 @@ export default {
 			chosen: 'filters/filters/chosen'
 		}),
 		filterPrice() {
-			return this.filters.price
+			if(this.filters){
+				return this.filters.price
+			}
 		},
 		getPriceOptions() {
 			return {
 				type: 'double',
 				grid: false,
-				step: 100000,
-				min: String(this.filterPrice?.[0]),
-				max: String(this.filterPrice?.[1]),
+				step: 10000,
+				from: Number(this.from),
+				to: Number(this.to),
+				min: Number(this.filterPrice?.[0]),
+				max: Number(this.filterPrice?.[1]),
 				onFinish: (event) => this.sendPrice(event),
 				onChange: (event) => this.changePrice(event)
 			}
 		}
 	},
 	mounted() {
-		this.from = String(this.filterPrice?.[0])
-		this.to = String(this.filterPrice?.[1])
+		if (this.$route.query.price_from && this.$route.query.price_to) {
+			this.from = Number(this.$route.query.price_from)
+			this.to = Number(this.$route.query.price_to)
+		} else {
+			this.from = this.filterPrice?.[0]
+			this.to = this.filterPrice?.[1]
+		}
 	},
 	methods: {
-		sendPrice() {
-			this.$emit('change', [this.from, this.to])
+		async sendPrice() {
+			await this.$router.push({path: this.$route.fullPath, query: {price_from: this.from, price_to: this.to}});
 		},
 		changePrice(event) {
-			this.from = String(event.from)
-			this.to = String(event.to)
-			
+			this.from = event.from
+			this.to =  event.to
 		}
 	}
 }

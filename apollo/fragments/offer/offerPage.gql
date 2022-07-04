@@ -1,0 +1,57 @@
+#import "./types/markType.gql"
+#import "./types/folderType.gql"
+#import "./types/generationType.gql"
+#import "./types/gearboxType.gql"
+#import "./types/engineTypeType.gql"
+#import "./types/driveTypeType.gql"
+#import "./types/bodyTypeType.gql"
+#import "./types/ownerType.gql"
+#import "./types/imageAllType.gql"
+#import "./types/equipmentType.gql"
+#import "./types/dealerType.gql"
+
+fragment OfferPage on Offer {
+    id
+    external_id
+    name
+    price
+    run
+    vin
+    year
+    createdAt(format: $dateFormat)
+    engine_power
+    engine_volume
+    images {
+    ... ImageAllType
+    }
+    mark {
+        ... MarkType
+    }
+    folder {
+        ... FolderType
+    }
+    owner {
+        ... OwnerType
+    }
+    driveType {
+        ... DriveTypeType
+    }
+    bodyType {
+        ... BodyTypeType
+    }
+    gearbox {
+        ... GearboxType
+    }
+    engineType {
+        ... EngineTypeType
+    }
+    generation {
+        ... GenerationType
+    }
+    equipment_groups{
+        ... EquipmentType
+    }
+    dealer{
+        ... DealerType
+    }
+}

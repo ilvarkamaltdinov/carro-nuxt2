@@ -37,7 +37,7 @@ export default {
 						},
 						{
 							name: 'Trade-In',
-							link: '/tradeIn'
+							link: '/exchange'
 						},
 						{
 							name: 'Рассрочка',

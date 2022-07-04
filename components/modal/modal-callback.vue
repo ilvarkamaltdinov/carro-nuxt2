@@ -2,11 +2,11 @@
 	<div>
 		<div class="modal__options">
 			<img class="modal__logo"
-			     src="~/assets/img/dealers/logos/logo-autograd.svg"
+			     :src="require(`~/assets/img/dealers/logos/logo-${modalData.dealer.slug}.svg`)"
 			     loading="lazy"
 			     alt="" />
 			<div class="modal__buttons">
-				<button-call-modal />
+				<button-call-modal :phone="modalData.dealer.phone"/>
 			</div>
 		</div>
 		<div class="modal__wrap">

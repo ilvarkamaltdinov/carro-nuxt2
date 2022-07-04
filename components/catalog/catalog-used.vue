@@ -7,10 +7,22 @@
 					<!--<span class="heading-group__label">121212 автомобиля в наличии</span>-->
 				</div>
 			</div>
-			<div class="grid__col-12">
-				табы
+			<div class="grid__col-12" v-if="showFolderTabs">
+				<div class="tabs">
+					<ul class="tabs__list">
+						<li role="presentation"
+						    v-for="tab in folders"
+						    class="tabs__item">
+							<nuxt-link class="tabs__link"
+							           :to="`/${$route.params.category}/${$route.params.mark}/${tab.slug}`">
+								{{ tab.title }}
+							</nuxt-link>
+						</li>
+					</ul>
+				</div>
 			</div>
-			<div class="grid__col-4" v-if="!$device.isMobile">
+			<div class="grid__col-4"
+			     v-if="!$device.isMobile">
 				<filter-desktop />
 			</div>
 			<div class="grid__col-8">
@@ -27,13 +39,24 @@ import capitalizeFirstLetter from "~/mixins/capitalizeFirstLetter";
 
 export default {
 	mixins: [capitalizeFirstLetter],
+	// methods:{
+	// 	tabClick(tab){
+	// 		console.log(tab)
+	// 		this.$route.pu
+	// 	}
+	// },
 	computed: {
-		// currentHeading() {
-		// 	if (this.$route.params.mark) {
-		// 		return this.capitalizeFirstLetter(this.$route.params.mark) + ' с пробегом'
-		// 	}
-		// 	return 'Автомобили с пробегом'
-		// },
-	}
+		...mapGetters({
+			filters: 'filters/filters/filters',
+			chosen: 'filters/filters/chosen'
+			
+		}),
+		folders() {
+			return this.filters.folder
+		},
+		showFolderTabs() {
+			return this.chosen?.mark?.length === 1 && !this.$route.query.folder_slug_array
+		}
+	},
 }
 </script>

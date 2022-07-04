@@ -34,11 +34,10 @@
 			В наличии в автоцентре
 			<a href=""
 			   class="car__stock-dealer">
-				«Автоградъ»
+				«{{ offer.dealer.title }}»
 			</a>
 		</div>
 	</div>
-	<!--TODO car__buy--fixed-->
 </template>
 <script>
 import filters from "~/mixins/filters";

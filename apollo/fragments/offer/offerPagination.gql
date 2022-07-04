@@ -7,6 +7,7 @@
 #import "./types/bodyTypeType.gql"
 #import "./types/ownerType.gql"
 #import "./types/imageThumbType.gql"
+#import "./types/dealerMiniType.gql"
 
 fragment OfferPagination on OfferTypePagination {
   data {
@@ -46,6 +47,9 @@ fragment OfferPagination on OfferTypePagination {
     }
     generation {
       ... GenerationType
+    }
+    dealer {
+      ... DealerMiniType
     }
   }
   last_page

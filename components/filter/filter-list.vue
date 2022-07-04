@@ -62,6 +62,7 @@
 				          name="icon-arrow" />
 			</li>
 		</ul>
+		
 		<div class="filter__more">
 			<button-typical :text="allFilters ? 'Скрыть Фильтры' : 'Больше фильтров'"
 			                class="button--show"
@@ -71,7 +72,7 @@
 		<ul class="filter__menu-list filter__menu-list--more">
 			<li class="filter__menu-group">
 				<h2 class="heading heading--h3">Цена</h2>
-				<range-price @change="changePrice"/>
+				<range-price/>
 			</li>
 			<li class="filter__menu-group">
 				<h2 class="heading heading--h3">Год</h2>
@@ -145,10 +146,6 @@ export default {
 				modal_data: {type: modalComponent}
 			}
 			this.openModal(payload)
-		},
-		changePrice(priceArray){
-			this.$router.push({path: this.$route.fullPath, query: {price_from:priceArray[0],price_to:priceArray[1]}});
-			console.log(priceArray)
 		}
 	},
 }

@@ -38,10 +38,15 @@ export default {
 			request: 'filters/filters/request',
 		}),
 		async filterRequest(assignVariables) {
-			let response = await this.request({query: offerFilters, variables: assignVariables})
-			await this.changingFilters(response.data.offerFilters)
-			await this.changingOffers(response.data.offers)
-			this.setIsFilterClick(false)
+			try{
+				let response = await this.request({query: offerFilters, variables: assignVariables})
+				await this.changingFilters(response.data.offerFilters)
+				await this.changingOffers(response.data.offers)
+				this.setIsFilterClick(false)
+			}
+			catch (error){
+				return this.$nuxt.error({ statusCode: 404, message: '404' })
+			}
 		},
 		async changingFilters(payload) {
 			await this.$store.commit('filters/filters/SET_FILTERS', payload)
@@ -90,7 +95,9 @@ export default {
 					drive_type_id_array: this.$numberToArray(this.$route.query.drive_type_id_array),
 					body_type_id_array: this.$numberToArray(this.$route.query.body_type_id_array),
 					price_from: Number(this.$route.query.price_from),
-					price_to: Number(this.$route.query.price_to)
+					price_to: Number(this.$route.query.price_to),
+					year_from: Number(this.$route.query.year_from),
+					year_to: Number(this.$route.query.year_to)
 				})
 			}
 		},

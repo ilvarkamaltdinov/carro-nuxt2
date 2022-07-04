@@ -95,9 +95,9 @@
 				    v-for="bank in banks"
 				    :key="bank.id">
 					<div class="banks__main">
-						<img class="banks__img" :src="require(`~/assets/img/banks/${bank.slug}.svg`)"
+						<img class="banks__img" :src="require(`~/assets/img/banks/logos/${bank.slug}.svg`)"
 						     alt="" />
-						<rating-bank />
+						<rating-bank :rating="bank.rating"/>
 					</div>
 					<ul class="banks__info">
 						<li class="banks__info-item">Заявок в месяц
