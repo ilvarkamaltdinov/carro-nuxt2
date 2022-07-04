@@ -15,7 +15,7 @@ export default {
 		}
 	},
 	mounted() {
-		this.$rangeSlider = ionRangeSlider.ionRangeSlider('.' + this.rangeClass, this.options);
+		ionRangeSlider.ionRangeSlider('.' + this.rangeClass, this.options);
 		let selector = document.querySelector('.' + this.rangeClass);
 		selector.addEventListener('input', (event) => {
 			this.$emit('input', event.target.value)

@@ -1,19 +1,17 @@
 <template>
-	<client-only>
-		<paginate
-				v-model="currentPagination"
-				v-if="offers.last_page > 1"
-				:page-count="offers.last_page"
-				:page-range="7"
-				:click-handler="paginationCLick"
-				:active-class="'pagination__item--active'"
-				:page-link-class="'pagination__link'"
-				:page-class="'pagination__item'"
-				:container-class="'pagination'"
-				prev-text="назад"
-				next-text="вперед">
-		</paginate>
-	</client-only>
+	<paginate
+			v-model="currentPagination"
+			v-if="offers.last_page > 1"
+			:page-count="offers.last_page"
+			:page-range="7"
+			:click-handler="paginationCLick"
+			:active-class="'pagination__item--active'"
+			:page-link-class="'pagination__link'"
+			:page-class="'pagination__item'"
+			:container-class="'pagination'"
+			prev-text="назад"
+			next-text="вперед">
+	</paginate>
 </template>
 <script>
 export default {

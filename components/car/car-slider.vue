@@ -65,7 +65,6 @@ export default {
 			spaceBetween: this.slidesSpaceBetween,
 			on: {
 				init:()=> {
-					console.log(123)
 					this.setCarPageLoaded(true)
 				},
 			},

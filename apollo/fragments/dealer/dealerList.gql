@@ -1,0 +1,5 @@
+fragment DealerList on Dealer {
+    id
+    phone
+    slug
+}

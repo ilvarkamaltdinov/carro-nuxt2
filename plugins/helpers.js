@@ -1,6 +1,6 @@
 import _ from 'lodash'
 export default ({app}, inject) => {
-  inject('stringToArray', input => Array.isArray(input) ? [...input] : (input ? [input] : null))
+  inject('stringToArray', input => Array.isArray(input) ? [...input] : (input ? [input] : []))
   inject('numberToArray', input => Array.isArray(input) ? [...input.map(item => Number(item))] : (input ? [Number(input)] : []))
   inject('removeEmptyObjects', obj => _(obj)
     .pickBy() // pick objects only

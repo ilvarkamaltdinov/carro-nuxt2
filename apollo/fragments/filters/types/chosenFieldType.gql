@@ -33,4 +33,6 @@ fragment ChosenFieldType on ChosenFieldType {
   }
   yearFrom
   yearTo
+  priceFrom
+  priceTo
 }

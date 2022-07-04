@@ -14,10 +14,8 @@
 </template>
 <script>
 import {mapGetters} from 'vuex'
-import FormTradeIn from "@/components/form/form-trade-in";
 
 export default {
-	components: {FormTradeIn},
 	computed: {
 		...mapGetters({
 			modalData: 'modal/modal-main/modalData'

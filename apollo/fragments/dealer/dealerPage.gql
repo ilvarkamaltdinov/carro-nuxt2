@@ -1,0 +1,15 @@
+fragment DealerPage on Dealer {
+    id
+    slug
+    title
+    city
+    address
+    metro
+    schedule
+    phone
+    coordinates
+    site
+    rating
+    short_description
+    description
+}

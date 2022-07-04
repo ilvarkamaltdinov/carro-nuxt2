@@ -1,5 +1,6 @@
 <template>
-	<div class="car__info grid__col-6" v-if="offer">
+	<div class="car__info grid__col-6"
+	     v-if="offer">
 		<div class="car__info-tabs">
 			<tabs-list-tech />
 		</div>
@@ -77,7 +78,7 @@
 								          name="icon-wd" />
 							</div>
 							<div class="car__tech-content">
-								{{ offer.driveType.title  }}
+								{{ offer.driveType.title }}
 							</div>
 						</li>
 						<!--TODO Цвет в карточке авто-->
@@ -96,12 +97,13 @@
 								          name="icon-owners" />
 							</div>
 							<div class="car__tech-content">
-								{{offer.owner.title}}
+								{{ offer.owner.title }}
 							</div>
 						</li>
 					</ul>
 				</div>
-				<div v-if="equipment_group_list.length" class="swiper-slide car__info-group car__info-group--options">
+				<div v-if="equipment_group_list.length"
+				     class="swiper-slide car__info-group car__info-group--options">
 					<div class="heading-group">
 						<div class="heading-group__wrap">
 							<h2 class="heading heading--h2">
@@ -113,16 +115,23 @@
 						</div>
 					</div>
 					<div class="car__info-options features">
-						<div v-if="index === 0" class="features__group" v-for="(group, index) in equipment_group_list" :key="group.title">
-							<h3 class="heading heading--h3">{{group.title}}</h3>
+						<div v-if="index === 0"
+						     class="features__group"
+						     v-for="(group, index) in equipment_group_list"
+						     :key="group.title">
+							<h3 class="heading heading--h3">{{ group.title }}</h3>
 							<ul class="features__list">
-								<li class="features__item" v-for="value in group.values" :key="value">
-									{{value}}
+								<li class="features__item"
+								    v-for="value in group.values"
+								    :key="value">
+									{{ value }}
 								</li>
 							</ul>
 						</div>
 					</div>
-					<button-typical @click="moreInfoComplectation(offer)" text="Показать больше" class="button--show"/>
+					<button-typical @click="moreInfoComplectation(offer)"
+					                text="Показать больше"
+					                class="button--show" />
 				</div>
 				<div class="swiper-slide car__info-group car__info-group--options">
 					<div class="heading-group">
@@ -131,34 +140,36 @@
 								Информация о дилере
 							</h2>
 							<span class="heading-group__label">
-								Автоцентр «АвтоГрадъ»
+								Автоцентр «{{ offer.dealer.title }}»
 							</span>
 						</div>
-						<rating-dealer />
+						<rating-dealer :rating="offer.dealer.rating"/>
 					</div>
 					<div class="car__info-options features">
 						<div class="features__group">
 							<h3 class="heading heading--h3">Адрес:</h3>
 							<ul class="features__list">
-								<li class="features__item">г. Москва, Варшавское шоссе, д. 170Е</li>
-								<li class="features__item">м. Аннино</li>
+								<li class="features__item">{{ offer.dealer.address }}</li>
+								<li class="features__item">м. {{ offer.dealer.metro }}</li>
 							</ul>
 						</div>
 						<div class="features__group">
 							<h3 class="heading heading--h3">Телефон:</h3>
 							<ul class="features__list">
 								<li class="features__item">
-									<a href="tel:+78007002211">+7 (800) 700-22-11</a>
+									<a href="tel:+78007002211">{{ offer.dealer.phone }}</a>
 								</li>
 							</ul>
 						</div>
 						<div class="features__group">
 							<h3 class="heading heading--h3">Режим работы:</h3>
 							<ul class="features__list">
-								<li class="features__item">c 9:00 до 21:00 без выходных</li>
+								<li class="features__item">{{ offer.dealer.schedule }}</li>
 							</ul>
 						</div>
-						<button-typical @click="moreInfoDiller(offer)" text="Подробнее о дилере" class="button--show"/>
+						<button-typical @click="moreInfoDiller(offer.dealer.slug)"
+						                text="Подробнее о дилере"
+						                class="button--show" />
 					</div>
 				</div>
 			</div>
@@ -169,32 +180,39 @@
 <script>
 import filters from "~/mixins/filters";
 import {mapActions, mapGetters} from "vuex";
-import ButtonTypical from "@/components/button/button-typical";
+import dealer from '~/apollo/queries/dealer.gql'
+
 export default {
-	components: {ButtonTypical},
 	mixins: [filters],
-	computed:{
+	computed: {
 		...mapGetters({
 			offer: 'catalog/catalog-cars/offer'
 		}),
-		equipment_group_list(){
+		equipment_group_list() {
 			return this.offer.equipment_groups
 		}
 	},
-	methods:{
+	methods: {
 		...mapActions({
-			openModal: 'modal/modal-main/openModal'
+			openModal: 'modal/modal-main/openModal',
+			request: 'filters/filters/request'
 		}),
-		moreInfoDiller(carInfo){
-			let payload = {
-				modal_data: carInfo,
-				modal_component: 'modal-dealer',
-				modal_title: 'Автоцентр «АвтоГрадъ»',
-				modal_sub_title:'Старейший автодилер Москвы'
+		async moreInfoDiller(dealerSlug) {
+			try {
+				let dealerData = await this.request({query: dealer, variables: {slug:dealerSlug}})
+				dealerData = dealerData.data.dealer
+				let payload = {
+					modal_data: dealerData,
+					modal_component: 'modal-dealer',
+					modal_title: `Автоцентр «${dealerData.title}»`,
+					modal_sub_title: `${dealerData.short_description}`
+				}
+				await this.openModal(payload)
+			} catch (e) {
+				console.log(e)
 			}
-			this.openModal(payload)
 		},
-		moreInfoComplectation(carInfo){
+		moreInfoComplectation(carInfo) {
 			let payload = {
 				modal_data: carInfo,
 				modal_component: 'modal-complect',
@@ -205,7 +223,7 @@ export default {
 		},
 	},
 	mounted() {
-		if(this.$device.isMobile){
+		if (this.$device.isMobile) {
 			new swiper.default('.swiper--car-info.swiper', {
 				modules: [swiper.Navigation, swiper.Pagination, swiper.Autoplay],
 				loop: true,

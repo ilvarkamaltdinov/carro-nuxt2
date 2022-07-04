@@ -16,7 +16,7 @@
 		</li>
 		<li class="site-list__item">
 			<nuxt-link
-					to="/tradeIn"
+					to="/exchange"
 					class="site-list__link">
 				Trade-In
 			</nuxt-link>
