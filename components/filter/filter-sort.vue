@@ -76,9 +76,16 @@ export default {
 			}
 		}
 	},
+	mounted() {
+		if( this.$route.query.sort && !this.modal){
+			this.sortChosen(this.$route.query.sort)
+		}
+		else{
+			this.sortChosen('price|asc')
+		}
+	},
 	methods: {
 		...mapActions({
-			getFilters: 'filters/filters/getFilters',
 			getOffers: 'modal/modal-choose/getOffers',
 			openModal: 'modal/modal-main/openModal'
 		}),
@@ -104,9 +111,8 @@ export default {
 				await this.getOffers()
 			} else {
 				this.setSort(sort)
-				await this.getFilters()
+				await this.$router.push({path: this.$route.fullPath, query: {sort: sort}});
 			}
-			
 		}
 	}
 }
