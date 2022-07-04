@@ -16,12 +16,20 @@
 }
 
 .pagination__item {
-  &:first-child .pagination__link {
+  &:first-child {
+    display: none;
+  }
+
+  &:last-child {
+    display: none;
+  }
+
+  &:first-of-type .pagination__link {
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
   }
 
-  &:last-child .pagination__link {
+  &:last-of-type .pagination__link {
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
   }
