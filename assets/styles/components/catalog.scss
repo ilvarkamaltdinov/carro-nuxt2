@@ -8,10 +8,6 @@
   padding-top: 0;
 }
 
-.catalog__img-link--active {
-  display: block;
-}
-
 .catalog__title-link {
   display: flex;
 }
@@ -460,5 +456,9 @@
 
   .catalog__item {
     @include hover-card;
+  }
+
+  .catalog__img-link.catalog__img-link--active {
+    display: block;
   }
 }
