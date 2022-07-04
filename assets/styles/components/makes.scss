@@ -4,7 +4,7 @@
   transition: $transitionHover;
 }
 
-.makes__link.active {
+.makes__link.active > * {
   color: $colorPrimary;
 }
 
