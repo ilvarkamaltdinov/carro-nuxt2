@@ -31,6 +31,14 @@ import filters from "@/mixins/filters";
 
 export default {
 	mixins: [filters],
+	// asyncData(ctx) {
+	// 	return {
+	// 		from: '',
+	// 		to: '',
+	// 		minPrice: String(this.filterPrice?.[0]),
+	// 		maxPrice: String(this.filterPrice?.[1])
+	// 	}
+	// },
 	data() {
 		return {
 			from: '',

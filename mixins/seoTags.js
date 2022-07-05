@@ -1,6 +1,4 @@
-import {mapActions} from "vuex";
 import seoTags from "@/apollo/queries/seoTags";
-import usedMarks from "@/apollo/queries/usedMarks";
 
 export default {
     async asyncData({app, $config, route}) {
@@ -16,31 +14,13 @@ export default {
             title: seo.data.seoTag.title,
         }
     },
-    methods: {
-        ...mapActions({
-            request: 'filters/filters/request'
-        })
-    },
-    async fetch() {
-        try {
-            let response = await this.request({
-                query: seoTags,
-                variables: {url: this.$route.path === '/' ? '/home' : this.$route.path}
-            })
-            this.description = response.data.seoTag.description
-            this.pageTitle = response.data.seoTag.page_title
-            this.title = response.data.seoTag.title
-        } catch (e) {
-            console.log(e)
-        }
-    },
     head() {
         return {
             title: `${this.title}`,
             link: [
                 {
                     rel: 'canonical',
-                    href: this.$config.domain
+                    href: this.$config.domain + this.$route.path
                 }
             ],
             meta: [
@@ -57,7 +37,7 @@ export default {
                 {
                     hid: 'og:url',
                     property: 'og:url',
-                    content: this.$config.domain + this.$route.fullPath,
+                    content: this.$config.domain + this.$route.path,
                 },
                 {
                     hid: 'og:title',
@@ -72,7 +52,7 @@ export default {
                 {
                     hid: 'og:image',
                     property: 'og:image',
-                    content: this.$config.domain + 'image.png'
+                    content: this.$config.domain + '/carro.png'
                 },
             ]
         }
