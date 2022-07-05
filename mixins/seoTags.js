@@ -1,12 +1,19 @@
 import {mapActions} from "vuex";
 import seoTags from "@/apollo/queries/seoTags";
+import usedMarks from "@/apollo/queries/usedMarks";
 
 export default {
-    data() {
+    async asyncData({app, $config, route}) {
+        let client = app.apolloProvider.defaultClient
+        let seo = await client.query(
+            {
+                query: seoTags,
+                variables: {site_id: $config.site_id, url: route.path}
+            })
         return {
-            description: '',
-            pageTitle: '',
-            title: '',
+            description: seo.data.seoTag.description,
+            pageTitle: seo.data.seoTag.page_title,
+            title: seo.data.seoTag.title,
         }
     },
     methods: {
