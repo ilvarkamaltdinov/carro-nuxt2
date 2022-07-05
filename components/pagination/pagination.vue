@@ -8,8 +8,6 @@
 			:active-class="'pagination__item--active'"
 			:page-link-class="'pagination__link'"
 			:page-class="'pagination__item'"
-			:prev-class="'pagination__item'"
-			:next-class="'pagination__item'"
 			:container-class="'pagination'"
 			prev-text="назад"
 			next-text="вперед">
