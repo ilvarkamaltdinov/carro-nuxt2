@@ -16,15 +16,18 @@ export default {
         ],
         link: [
             {rel: 'mask-icon', type: 'image/x-icon', href: '/favicon.svg', sizes: 'any'},
-            {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico', sizes: 'any'},
             {rel: 'apple-touch-icon', href: '/apple-touch-icon.png'},
             {rel: 'icon', type: 'image/x-icon', href: '/mask-icon.svg', color: '#ED2939'},
-            // {rel: 'manifest', href: '/manifest.json'},
-            // {rel: 'preload', as: 'font', href: '/fonts/golos-regular.woff2', type:"font/woff2", crossorigin: 'anonymous'},
-            // {rel: 'preload', as: 'font', href: '/fonts/golos-demibold.woff2', type:"font/woff2", crossorigin: 'anonymous'},
-            // {rel: 'preload', as: 'font', href: '/fonts/golos-ui-regular.woff2', type:"font/woff2", crossorigin: 'anonymous'},
-            // {rel: 'preload', as: 'font', href: '/fonts/golos-ui-bold.woff2', type:"font/woff2", crossorigin: 'anonymous'}
+            {rel: 'manifest', href: '/manifest.json'}
         ]
+    },
+    render: {
+        bundleRenderer: {
+            shouldPreload: (file, type) => {
+                return ['script', 'style', 'font'].includes(type)
+            }
+        }
+
     },
     loading: {
         color: '#ED2939',
@@ -34,13 +37,13 @@ export default {
         throttle: 0
     },
     css: [
-        '~assets/styles/index.scss'
+        '~/assets/styles/index.scss'
         // {src: '@fancyapps/ui/dist/fancybox.css', lang: 'css'}
     ],
     plugins: [
         {src: '~/plugins/swiper.js'},
         {src: '~/plugins/rangeSlider.js', mode: 'client'},
-        {src: "plugins/pagination.js", mode: 'client'},
+        {src: "~/plugins/pagination.js", mode: 'client'},
         {src: '~/plugins/inputmask.js'},
         {src: '~/plugins/slideToggle.js'},
         {src: '~/plugins/lodash.js'},

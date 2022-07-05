@@ -69,7 +69,7 @@
 			                :class="{'button--show-link':allFilters}"
 			                @click="allFilters = !allFilters" />
 		</div>
-		<ul class="filter__menu-list filter__menu-list--more">
+		<ul class="filter__menu-list filter__menu-list--more" v-if="offers.data.length > 1">
 			<li class="filter__menu-group">
 				<h2 class="heading heading--h3">Цена</h2>
 				<range-price/>
@@ -95,7 +95,8 @@ export default {
 		...mapGetters({
 			chosen: 'filters/filters/chosen',
 			filters: 'filters/filters/filters',
-			loading: 'filters/filters/loading'
+			loading: 'filters/filters/loading',
+			offers: 'filters/filters/offers',
 		}),
 		mark_select_title() {
 			return this.chosen.mark?.map(val => val.title).join(', ') || 'Марка'
