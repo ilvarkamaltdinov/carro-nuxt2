@@ -7,13 +7,12 @@
 					<button-filter @click="openFilter()" />
 				</div>
 				<div class="filter__buttons-sort select">
-					<div class="button button--action button--text filter__button"
-					     @click="isActive = !isActive">
+					<div class="button button--action button--text filter__button" @click="isActive = !isActive">
 						<svg-icon class="button__icon"
 						          :name="currentIcon" />
 						<span class="button__text">{{ currentSort }}</span>
 						<transition name="modal">
-							<ul v-show="isActive"
+							<ul v-if="!$device.isMobile" v-show="isActive"
 							    class="select__list">
 								<li class="select__item"
 								    @click="sortChosen('price|asc')">
@@ -68,7 +67,8 @@ export default {
 		...mapGetters({
 			sort_in_filter: 'filters/filters/sort',
 			sort_in_modal: 'modal/modal-choose/sort',
-			sort: 'filters/filters/sort'
+			sortModal: 'modal/modal-choose/sort', // СОРТИРОВКА ДЛЯ КАТАЛОГА
+			sort: 'filters/filters/sort' // СОРТИРОВКА ДЛЯ ФИЛЬТРОВ
 		}),
 		currentIcon() {
 			if (this.sort.split('|')[1]==='asc') {
@@ -96,8 +96,8 @@ export default {
 			openModal: 'modal/modal-main/openModal'
 		}),
 		...mapMutations({
-			setSort: 'filters/filters/SET_SORT',
-			setModalSort: 'modal/modal-choose/SET_MODAL_SORT',
+			setSort: 'filters/filters/SET_SORT', //СОРТИРВОКА ДЛЯ ФИЛЬТРОВ
+			setModalSort: 'modal/modal-choose/SET_MODAL_SORT',//СОРТИРВОКА ДЛЯ МОДАЛКИ КАТОАЛОГА
 			setView: 'catalog/catalog-cars/SET_VIEW'
 		}),
 		changeView(type) {

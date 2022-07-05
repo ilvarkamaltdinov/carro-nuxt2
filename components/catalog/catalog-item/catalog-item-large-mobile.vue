@@ -11,7 +11,9 @@
 		</div>
 		<div class="catalog__tech"
 		     :class="{'catalog__tech--no-buttons':!hasButtons}">
-			<rating :max="100" :rating="100" />
+			<rating @click="ratingClick"
+			        :rating="offer.rating"
+			        :max="5" />
 			<catalog-item-tech-list :offer="offer" />
 		</div>
 		<catalog-item-buttons :choose="choose"
@@ -21,6 +23,7 @@
 </template>
 <script>
 import filters from "~/mixins/filters";
+import {mapActions} from "vuex";
 
 export default {
 	mixins: [filters],
@@ -38,6 +41,20 @@ export default {
 			type: Boolean,
 			default: true
 		},
+	},
+	methods: {
+		...mapActions({
+			openModal: 'modal/modal-main/openModal'
+		}),
+		ratingClick() {
+			let payload = {
+				modal_data: this.offer,
+				modal_component: 'modal-rating',
+				modal_title: ' Состояние автомобиля',
+				modal_sub_title: this.offer.name
+			}
+			this.openModal(payload)
+		}
 	}
 }
 </script>

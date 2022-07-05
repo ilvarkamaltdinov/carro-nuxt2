@@ -25,7 +25,8 @@ export default {
 	computed: {
 		...mapGetters({
 			isFilterClick: 'filters/filters/isFilterClick',
-			isOfferClick: 'filters/filters/isOfferClick'
+			isOfferClick: 'filters/filters/isOfferClick',
+			sort: 'filters/filters/sort'
 		})
 	},
 	methods: {
@@ -98,7 +99,7 @@ export default {
 					price_to: Number(this.$route.query.price_to),
 					year_from: Number(this.$route.query.year_from),
 					year_to: Number(this.$route.query.year_to),
-					sort: this.$route.query.sort
+					sort: this.$route.query.sort || this.sort
 				})
 			}
 		},

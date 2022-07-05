@@ -27,11 +27,10 @@ export default {
                 return ['script', 'style', 'font'].includes(type)
             }
         }
-
     },
     loading: {
         color: '#ED2939',
-        height: '4px',
+        height: '2px',
         duration: 3000,
         continuous: true,
         throttle: 0

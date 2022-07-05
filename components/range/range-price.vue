@@ -3,16 +3,19 @@
 		<div class="form__range-wrap">
 			<label class="form__field-wrap form__field-wrap--range">
 				<input class="form__field"
-				       placeholder="Дата рождения"
-				       type="text"
+				       placeholder="Цена от"
+				       type="tel"
 				       name="date"
+				       inputmode="numeric"
+				       @change="changePriceFrom"
 				       :value="from | toCurrency" />
 			</label>
 			<label class="form__field-wrap form__field-wrap--range">
 				<input class="form__field"
-				       placeholder="Дата рождения"
-				       type="text"
+				       placeholder="Цена до"
+				       type="tel"
 				       name="date"
+				       inputmode="numeric"
 				       :value="to | toCurrency" />
 			</label>
 		</div>
@@ -45,7 +48,7 @@ export default {
 			chosen: 'filters/filters/chosen'
 		}),
 		filterPrice() {
-			if(this.filters){
+			if (this.filters) {
 				return this.filters.price
 			}
 		},
@@ -53,6 +56,7 @@ export default {
 			return {
 				type: 'double',
 				grid: false,
+				realTime: true,
 				step: 10000,
 				from: Number(this.from),
 				to: Number(this.to),
@@ -73,12 +77,16 @@ export default {
 		}
 	},
 	methods: {
+		changePriceFrom(e) {
+			this.from = Number(e.target.value.replace(/[^+\d]/g, ''))
+			this.sendPrice()
+		},
 		async sendPrice() {
 			await this.$router.push({path: this.$route.fullPath, query: {price_from: this.from, price_to: this.to}});
 		},
 		changePrice(event) {
 			this.from = event.from
-			this.to =  event.to
+			this.to = event.to
 		}
 	}
 }

@@ -2,7 +2,7 @@
 	<main class="page-main">
 		<div class="grid grid--container">
 			<section class="page-main__not-found not-found">
-				<div class="404__block">
+				<div class="not-found__block">
 					<picture>
 						<source type="image/webp"
 						        media="(min-width: 768px)"

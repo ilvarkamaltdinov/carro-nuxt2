@@ -3,16 +3,18 @@
 		<div class="form__range-wrap">
 			<label class="form__field-wrap form__field-wrap--range">
 				<input class="form__field"
-				       placeholder="Дата рождения"
-				       type="text"
+				       placeholder="Год от"
+				       type="tel"
 				       name="date"
+				       inputmode="numeric"
 				       v-model="from" />
 			</label>
 			<label class="form__field-wrap form__field-wrap--range">
 				<input class="form__field"
-				       placeholder="Дата рождения"
-				       type="text"
+				       placeholder="Год до"
+				       type="tel"
 				       name="date"
+				       inputmode="numeric"
 				       v-model="to" />
 			</label>
 		</div>

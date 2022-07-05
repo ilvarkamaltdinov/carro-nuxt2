@@ -1,17 +1,32 @@
 <template>
 	<section class="page-main__catalog catalog grid__col-12">
 		<heading-h2>Автомобили в наличии</heading-h2>
-		<tabs-list :tabs="tabs" />
+		<div class="tabs">
+			<ul class="tabs__list">
+				<li role="presentation"
+				    v-for="(tab, index) in tabs"
+				    :key="index"
+				    :class="{'tabs__item--active':index === activeTab}"
+				    class="tabs__item">
+					<button @click="tabClick(tab,index)" class="tabs__link" role="tab"
+					        data-toggle="tab">
+						{{ tab.title }}
+					</button>
+				</li>
+			</ul>
+		</div>
 		<div class="catalog__list grid">
 			<catalog-item-large-mobile v-for="offer in offers_list"
 			                           :offer="offer"
 			                           :key="offer.id" />
 		</div>
-		<button-typical text="Все автомобили" class="button--link button--more"/>
+		<button-typical @click="toCatalog" text="Все автомобили"
+		                class="button--link button--more" />
 	</section>
 </template>
 <script>
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters, mapMutations} from "vuex";
+import offers from "@/apollo/queries/offer/offers";
 
 export default {
 	data() {
@@ -49,7 +64,8 @@ export default {
 					title: "Седаны",
 					slug: 'test'
 				}
-			]
+			],
+			activeTab: 0,
 		}
 	},
 	computed: {
@@ -58,6 +74,24 @@ export default {
 		}),
 		offers_list() {
 			return this.offers.data
+		}
+	},
+	async fetch() {
+		let response = await this.request({query: offers, variables: {page: 0, limit: 10}})
+		this.setOffers(response.data.offers)
+	},
+	methods:{
+		...mapActions({
+			request: 'filters/filters/request'
+		}),
+		...mapMutations({
+			setOffers:'catalog/catalog-cars/SET_OFFERS'
+		}),
+		toCatalog() {
+			this.$router.push('/used')
+		},
+		tabClick(tab, index){
+			this.activeTab = index
 		}
 	}
 }
