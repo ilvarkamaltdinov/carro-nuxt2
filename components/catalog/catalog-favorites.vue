@@ -17,7 +17,7 @@
 	</section>
 </template>
 <script>
-import usedOffers from "~/apollo/queries/usedOffers";
+import offers from "@/apollo/queries/offer/offers";
 import {mapGetters} from "vuex";
 
 export default {
@@ -44,7 +44,7 @@ export default {
 				try {
 					let response = await client.query(
 							{
-								query: usedOffers,
+								query: offers,
 								variables: {
 									site_id: this.$config.site_id,
 									limit: 0,

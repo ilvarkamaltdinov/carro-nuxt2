@@ -1,5 +1,5 @@
-#import "../fragments/union/offerUrl.gql"
-#import "../fragments/union/offerUrlFilterPagination.gql"
+#import "../../fragments/union/offerUrl.gql"
+#import "../../fragments/union/offerUrlFilterPagination.gql"
 
 query offerUrl(
     $site_id: Int,

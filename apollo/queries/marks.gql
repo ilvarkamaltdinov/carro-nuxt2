@@ -1,4 +1,4 @@
-query usedMarks($site_id: Int!) {
+query marks($site_id: Int!) {
   marks(site_id: $site_id) {
     id,
     title,

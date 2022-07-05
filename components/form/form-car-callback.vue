@@ -35,7 +35,6 @@
 	</form>
 </template>
 <script>
-import FEEDBACK from "@/apollo/queries/feedback";
 import {mapActions} from "vuex";
 
 export default {

@@ -180,7 +180,7 @@
 <script>
 import filters from "~/mixins/filters";
 import {mapActions, mapGetters} from "vuex";
-import dealer from '~/apollo/queries/dealer.gql'
+import dealer from '@/apollo/queries/dealer/dealer.gql'
 
 export default {
 	mixins: [filters],

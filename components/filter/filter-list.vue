@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div v-if="!loading">
 		<ul class="filter__menu-list">
 			<li class="filter__menu-item"
 			    @click="openFilterModal('mark')">
@@ -27,7 +27,8 @@
 				          name="icon-arrow" />
 			</li>
 			<li class="filter__menu-item"
-					@click="openFilterModal('engine-type')">
+			    v-if="allFilters || !showGeneration"
+			    @click="openFilterModal('engine-type')">
 				<div class="filter__menu-text">
 					{{ engine_type_select_title }}
 				</div>
@@ -62,7 +63,6 @@
 				          name="icon-arrow" />
 			</li>
 		</ul>
-		
 		<div class="filter__more">
 			<button-typical :text="allFilters ? 'Скрыть Фильтры' : 'Больше фильтров'"
 			                class="button--show"
@@ -93,7 +93,9 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			chosen: 'filters/filters/chosen'
+			chosen: 'filters/filters/chosen',
+			filters: 'filters/filters/filters',
+			loading: 'filters/filters/loading'
 		}),
 		mark_select_title() {
 			return this.chosen.mark?.map(val => val.title).join(', ') || 'Марка'

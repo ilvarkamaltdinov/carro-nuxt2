@@ -1,4 +1,4 @@
-#import "../fragments/bank/bankListType.gql"
+#import "../../fragments/bank/bankListType.gql"
 query banks($site_id: Int!) {
   banks(site_id: $site_id) {
     ...BankListType

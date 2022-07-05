@@ -1,4 +1,4 @@
-import usedOffers from '~/apollo/queries/filtersCount'
+import offers from '~/apollo/queries/filtersCount'
 
 export const state = () => ({
     total: null,
@@ -19,7 +19,7 @@ export const actions = {
         let client = this.app.apolloProvider.defaultClient
         let response = await client.query(
             {
-                query: usedOffers,
+                query: offers,
                 variables: Object.assign(variables)
             })
         commit('SET_TOTAL', response.data.offers.total);

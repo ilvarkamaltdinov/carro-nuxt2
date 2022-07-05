@@ -54,4 +54,5 @@ fragment OfferPagination on OfferTypePagination {
     }
   }
   last_page
+  total
 }

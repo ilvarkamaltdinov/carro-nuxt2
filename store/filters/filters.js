@@ -8,7 +8,8 @@ export const state = () => ({
     chosen: {},
     componentCatalog: '',
     isFilterClick: false,
-    isOfferClick: false
+    isOfferClick: false,
+    filteredTotal: null,
 })
 export const getters = {
     filters: (state) => {
@@ -28,6 +29,9 @@ export const getters = {
     },
     offers: (state) => {
         return state.offers
+    },
+    filteredTotal: (state) => {
+        return state.filteredTotal
     },
     isFilterClick: (state) => {
         return state.isFilterClick
@@ -169,6 +173,9 @@ export const mutations = {
     },
     SET_LOADING(state, data) {
         state.loading = data
+    },
+    SET_FILTERED_TOTAL(state, data) {
+        state.filteredTotal = data
     },
     SET_SORT(state, data) {
         state.sort = data

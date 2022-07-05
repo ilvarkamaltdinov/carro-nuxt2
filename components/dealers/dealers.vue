@@ -64,8 +64,8 @@
 </template>
 <script>
 import {mapActions} from "vuex";
-import dealers from "@/apollo/queries/dealers";
-import dealer from "@/apollo/queries/dealer";
+import dealers from "@/apollo/queries/dealer/dealers";
+import dealer from "@/apollo/queries/dealer/dealer";
 
 export default {
 	data() {

@@ -80,9 +80,6 @@ export default {
 		if( this.$route.query.sort && !this.modal){
 			this.sortChosen(this.$route.query.sort)
 		}
-		// else{
-		// 	this.sortChosen('price|asc')
-		// }
 	},
 	methods: {
 		...mapActions({
@@ -110,7 +107,7 @@ export default {
 				this.setModalSort(sort)
 				await this.getOffers()
 			} else {
-				// this.setSort(sort)
+				this.setSort(sort)
 				await this.$router.push({path: this.$route.fullPath, query: {sort: sort}});
 			}
 		}

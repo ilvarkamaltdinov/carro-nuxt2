@@ -12,7 +12,7 @@
 </template>
 <script>
 import {mapActions, mapMutations} from "vuex";
-import bank from "@/apollo/queries/bank";
+import bank from "@/apollo/queries/bank/bank";
 
 export default {
 	data() {

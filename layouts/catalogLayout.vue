@@ -9,8 +9,8 @@
 <script>
 import {mapActions, mapGetters, mapMutations} from "vuex"
 // import capitalizeFirstLetter from "~/mixins/capitalizeFirstLetter";
-import offerFilters from "~/apollo/queries/offerFilters";
-import offerUrl from "~/apollo/queries/offerUrl";
+import offerFilters from "@/apollo/queries/offer/offerFilters";
+import offerUrl from "@/apollo/queries/offer/offerUrl";
 import _ from "lodash";
 
 export default {
@@ -53,6 +53,7 @@ export default {
 		},
 		async changingOffers(payload) {
 			await this.$store.commit('filters/filters/SET_OFFERS', payload)
+			await this.$store.commit('filters/filters/SET_FILTERED_TOTAL', payload.total)
 			await this.$store.commit('filters/filters/SET_LOADING', false)
 		},
 		async checkUrl() {

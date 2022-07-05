@@ -9,7 +9,7 @@
 	</main>
 </template>
 <script>
-import banks from "~/apollo/queries/banks"
+import banks from "@/apollo/queries/bank/banks"
 import {mapActions, mapMutations} from "vuex";
 import seoTags from "@/mixins/seoTags";
 
