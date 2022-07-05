@@ -1,6 +1,6 @@
 #import "./types/markType.gql"
 #import "./types/folderType.gql"
-#import "./types/generationType.gql"
+#import "./types/generationOfferType.gql"
 #import "./types/gearboxType.gql"
 #import "./types/engineTypeType.gql"
 #import "./types/driveTypeType.gql"
@@ -47,11 +47,12 @@ fragment OfferPagination on OfferTypePagination {
       ... EngineTypeType
     }
     generation {
-      ... GenerationType
+      ... GenerationOfferType
     }
     dealer {
       ... DealerMiniType
     }
   }
   last_page
+  total
 }

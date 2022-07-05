@@ -1,4 +1,4 @@
-#import "../fragments/dealer/dealerPage.gql"
+#import "../../fragments/dealer/dealerPage.gql"
 query dealer($site_id: Int!, $slug: String!) {
   dealer(site_id: $site_id,  slug: $slug) {
     ...DealerPage

@@ -48,7 +48,7 @@
 </template>
 <script>
 import {mapActions, mapGetters, mapMutations} from 'vuex'
-import usedOffer from "~/apollo/queries/usedOffer"
+import offer from "@/apollo/queries/offer/offer"
 
 export default {
 	props: {
@@ -72,7 +72,7 @@ export default {
 			folder_slug: this.$route.params.model,
 			external_id: Number(this.$route.params.car)
 		}
-		let response = await this.request({query: usedOffer, variables: variables})
+		let response = await this.request({query: offer, variables: variables})
 		this.setOffer(response.data.offer)
 	},
 	beforeMount() {

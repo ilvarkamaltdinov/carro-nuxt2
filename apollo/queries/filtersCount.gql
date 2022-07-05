@@ -1,4 +1,4 @@
-query usedOffers(
+query offers(
   $site_id: Int!,
   $page: Int!,
   $limit: Int!,

@@ -29,7 +29,7 @@
 </template>
 <script>
 import {mapActions, mapGetters, mapMutations} from "vuex";
-import usedOffers from "@/apollo/queries/usedOffers";
+import offers from "@/apollo/queries/offer/offers";
 
 export default {
 	data() {
@@ -79,7 +79,7 @@ export default {
 		}
 	},
 	async fetch() {
-		let response = await this.request({query: usedOffers, variables: {page: 0, limit: 10}})
+		let response = await this.request({query: offers, variables: {page: 0, limit: 10}})
 		this.setOffers(response.data.offers)
 	},
 	computed: {

@@ -1,5 +1,5 @@
-#import "../fragments/offer/offerPagination.gql"
-query usedOffers(
+#import "../../fragments/offer/offerPagination.gql"
+query offers(
   $site_id: Int!,
   $page: Int!,
   $limit: Int!,

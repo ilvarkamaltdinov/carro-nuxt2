@@ -13,6 +13,7 @@
 					<ul class="tabs__list">
 						<li role="presentation"
 						    v-for="tab in folders"
+						    :class="{'tabs__item--active':tab.slug === $route.params.model}"
 						    class="tabs__item">
 							<nuxt-link class="tabs__link"
 							           :to="`/${$route.params.category}/${$route.params.mark}/${tab.slug}`">
@@ -43,21 +44,11 @@ export default {
 	props: {
 		pageTitle: String
 	},
-	// methods:{
-	// 	tabClick(tab){
-	// 		console.log(tab)
-	// 		this.$route.pu
-	// 	}
-	// },
 	computed: {
 		...mapGetters({
-			filters: 'filters/filters/filters',
-			chosen: 'filters/filters/chosen'
-			
+			chosen: 'filters/filters/chosen',
+			folders: 'folders/folders/folders'
 		}),
-		folders() {
-			return this.filters.folder
-		},
 		showFolderTabs() {
 			return this.chosen?.mark?.length === 1 && !this.$route.query.folder_slug_array
 		}

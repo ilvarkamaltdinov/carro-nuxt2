@@ -18,7 +18,6 @@
 		</div>
 		<client-only>
 			<range-slider
-					v-if="filterPrice"
 					range-class="range-period"
 					:options="getPriceOptions">
 			</range-slider>
@@ -28,17 +27,10 @@
 <script>
 import {mapGetters} from "vuex";
 import filters from "@/mixins/filters";
+import seoTags from "@/apollo/queries/seoTags";
 
 export default {
 	mixins: [filters],
-	// asyncData(ctx) {
-	// 	return {
-	// 		from: '',
-	// 		to: '',
-	// 		minPrice: String(this.filterPrice?.[0]),
-	// 		maxPrice: String(this.filterPrice?.[1])
-	// 	}
-	// },
 	data() {
 		return {
 			from: '',

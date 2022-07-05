@@ -13,6 +13,7 @@
 			</div>
 		</div>
 		<catalog-item-buttons :choose="choose"
+		                      :long="true"
 		                      v-if="hasButtons"
 		                      :offer="offer" />
 	</article>

@@ -52,7 +52,7 @@
 <script>
 import {mapGetters, mapMutations, mapActions} from 'vuex'
 import filters from "~/mixins/filters";
-import FEEDBACK from "~/apollo/queries/feedback.gql";
+import FEEDBACK from "@/apollo/mutations/feedback.gql";
 
 export default {
 	props: {

@@ -1,6 +1,6 @@
 #import "./types/markType.gql"
 #import "./types/folderType.gql"
-#import "./types/generationType.gql"
+#import "./types/generationOfferType.gql"
 #import "./types/gearboxType.gql"
 #import "./types/engineTypeType.gql"
 #import "./types/driveTypeType.gql"
@@ -46,7 +46,7 @@ fragment OfferPage on Offer {
         ... EngineTypeType
     }
     generation {
-        ... GenerationType
+        ... GenerationOfferType
     }
     equipment_groups{
         ... EquipmentType

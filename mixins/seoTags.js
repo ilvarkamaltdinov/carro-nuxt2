@@ -1,13 +1,21 @@
 import seoTags from "@/apollo/queries/seoTags";
+import folders from "@/apollo/queries/folder/folders";
 
 export default {
-    async asyncData({app, $config, route}) {
+    async asyncData({app, $config, route, store}) {
         let client = app.apolloProvider.defaultClient
-        let seo = await client.query(
-            {
-                query: seoTags,
-                variables: {site_id: $config.site_id, url: route.path}
-            })
+        let seo = await client.query({
+            query: seoTags,
+            variables: {site_id: $config.site_id, url: route.path === '/' ? '/home' : route.path}
+        })
+        if (route.params.mark) {
+            let response = await client.query(
+                {
+                    query: folders,
+                    variables: {site_id: $config.site_id, mark_slug: route.params.mark}
+                })
+            store.commit('folders/folders/SET_FOLDERS', response.data.folders)
+        }
         return {
             description: seo.data.seoTag.description,
             pageTitle: seo.data.seoTag.page_title,

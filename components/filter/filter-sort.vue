@@ -2,14 +2,15 @@
 	<div class="catalog__filter filter">
 		<div class="filter__catalog-wrap">
 			<div class="filter__buttons-wrap">
-				<div class="filter__buttons-filter" v-if="!modal">
+				<div class="filter__buttons-filter"
+				     v-if="!modal">
 					<button-filter @click="openFilter()" />
 				</div>
 				<div class="filter__buttons-sort select">
 					<div class="button button--action button--text filter__button"
 					     @click="isActive = !isActive">
 						<svg-icon class="button__icon"
-						          name="icon-sort"/>
+						          :name="currentIcon" />
 						<span class="button__text">{{ currentSort }}</span>
 						<transition name="modal">
 							<ul v-show="isActive"
@@ -67,22 +68,27 @@ export default {
 		...mapGetters({
 			sort_in_filter: 'filters/filters/sort',
 			sort_in_modal: 'modal/modal-choose/sort',
+			sort: 'filters/filters/sort'
 		}),
+		currentIcon() {
+			if (this.sort.split('|')[1]==='asc') {
+				return 'icon-sort'
+			} else {
+				return 'icon-sort-alt'
+			}
+		},
 		currentSort() {
 			if (this.modal) {
 				return this.sortList[this.sort_in_modal]
-			} else{
+			} else {
 				return this.sortList[this.sort_in_filter]
 			}
 		}
 	},
 	mounted() {
-		if( this.$route.query.sort && !this.modal){
+		if (this.$route.query.sort && !this.modal) {
 			this.sortChosen(this.$route.query.sort)
 		}
-		// else{
-		// 	this.sortChosen('price|asc')
-		// }
 	},
 	methods: {
 		...mapActions({
@@ -110,7 +116,7 @@ export default {
 				this.setModalSort(sort)
 				await this.getOffers()
 			} else {
-				// this.setSort(sort)
+				this.setSort(sort)
 				await this.$router.push({path: this.$route.fullPath, query: {sort: sort}});
 			}
 		}

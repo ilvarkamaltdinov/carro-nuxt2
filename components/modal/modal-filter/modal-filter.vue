@@ -5,7 +5,8 @@
 			           @check="check" />
 		</div>
 		<div class="page-main__button-fixed">
-			<button-typical @click="filter" text="Показать автомобили" button-class="button--credit  button--fixed" />
+			<button-typical v-if="!$device.isMobile" @click="filter" text="Показать автомобили" button-class="button--credit  button--fixed" />
+			<button-typical v-else @click="back" text="Применить" button-class="button--credit  button--fixed" />
 		</div>
 	</div>
 </template>
@@ -41,6 +42,7 @@ export default {
 		}),
 		...mapActions({
 			closeModal: 'modal/modal-main/closeModal',
+			openModal: 'modal/modal-main/openModal',
 			setUrl:'filters/filters/setUrl'
 
 		}),
@@ -50,6 +52,13 @@ export default {
 			this.checkDependencies[data.type]?.forEach(value => {
 				this.unsetChosen(value)
 			})
+		},
+		async back(){
+			let payload = {
+				modal_component: `modal-filter-mobile`,
+				modal_title: 'Фильтр',
+			}
+			await this.openModal(payload)
 		},
 		// TODO проверка что поколение выбрано только при 1ой марки и 1ой модели
 		// checkGeneration() {

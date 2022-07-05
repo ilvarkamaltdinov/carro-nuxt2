@@ -1,6 +1,6 @@
-import usedFolders from '~/apollo/queries/usedFolders'
-import usedGeneration from '~/apollo/queries/usedGeneration'
-import usedOffers from '~/apollo/queries/usedOffers'
+import folders from '~/apollo/queries/folder/folders.gql'
+import generations from '~/apollo/queries/generations'
+import offers from '@/apollo/queries/offer/offers'
 
 export const state = () => ({
     tabComponent: 'marks',
@@ -55,12 +55,12 @@ export const actions = {
             mark_slug: state.currentMark.slug
         }
         let client = this.app.apolloProvider.defaultClient
-        let folders = await client.query(
+        let response = await client.query(
             {
-                query: usedFolders,
+                query: folders,
                 variables: Object.assign(variables)
             })
-        commit('SET_MODELS', folders.data.folders)
+        commit('SET_MODELS', response.data.folders)
     },
     async getGenerations({commit, state}, payload) {
         let variables = {
@@ -69,12 +69,12 @@ export const actions = {
             folder_slug: payload.slug
         }
         let client = this.app.apolloProvider.defaultClient
-        let generations = await client.query(
+        let response = await client.query(
             {
-                query: usedGeneration,
+                query: generations,
                 variables: Object.assign(variables)
             })
-        commit('SET_GENERATIONS', generations.data.generations)
+        commit('SET_GENERATIONS', response.data.generations)
     },
     async getOffers({commit, state}) {
         commit('SET_LOADING', true)
@@ -90,7 +90,7 @@ export const actions = {
         let client = this.app.apolloProvider.defaultClient
         let cars = await client.query(
             {
-                query: usedOffers,
+                query: offers,
                 variables: Object.assign(variables)
             })
         commit('SET_OFFERS', cars.data.offers.data)

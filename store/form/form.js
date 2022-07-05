@@ -1,4 +1,4 @@
-import FEEDBACK from "@/apollo/queries/feedback";
+import feedback from "@/apollo/mutations/feedback";
 
 export const state = () => ({
     userName: null,
@@ -44,7 +44,7 @@ export const actions = {
         // let params = {...assignVariables, ...variables}
         // await client.mutate(
         //     {
-        //         mutation: FEEDBACK,
+        //         mutation: feedback,
         //         variables: this.$removeEmptyObjects(params)
         //     }).then(({data}) => {
         //     console.log(data)

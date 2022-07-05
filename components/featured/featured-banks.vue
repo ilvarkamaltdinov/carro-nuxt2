@@ -133,7 +133,7 @@
 </template>
 <script>
 import {mapActions, mapGetters, mapMutations} from "vuex";
-import banks from "@/apollo/queries/banks";
+import banks from "@/apollo/queries/bank/banks";
 
 export default {
 	props: {

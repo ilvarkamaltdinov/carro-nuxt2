@@ -1,5 +1,5 @@
-import usedOffers from '~/apollo/queries/usedOffers'
-import usedOffer from '~/apollo/queries/usedOffer'
+import offers from '@/apollo/queries/offer/offers'
+import offer from '@/apollo/queries/offer/offer'
 
 export const state = () => ({
     offers: [],
@@ -36,7 +36,7 @@ export const actions = {
         let client = this.app.apolloProvider.defaultClient
         let response = await client.query(
             {
-                query: usedOffer,
+                query: offer,
                 variables: variables
             })
         commit('SET_OFFER', response.data.offer)
@@ -46,7 +46,7 @@ export const actions = {
         let client = this.app.apolloProvider.defaultClient
         let offers = await client.query(
             {
-                query: usedOffers,
+                query: offers,
                 variables: Object.assign(variables, payload)
             })
         commit('SET_OFFERS', offers.data.offers.data)

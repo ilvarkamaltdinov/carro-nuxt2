@@ -1,5 +1,5 @@
-#import "../fragments/filters/offerFilterValues.gql"
-#import "../fragments/offer/offerPagination.gql"
+#import "../../fragments/filters/offerFilterValues.gql"
+#import "../../fragments/offer/offerPagination.gql"
 
 query offerFilters(
   $site_id: Int,
