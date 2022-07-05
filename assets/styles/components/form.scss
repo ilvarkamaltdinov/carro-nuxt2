@@ -188,6 +188,10 @@
   }
 }
 
+.form__field-wrap--range .form__field {
+  padding-right: 8px;
+}
+
 .form__field--search-focus + .form__icon-search {
   fill: $colorText;
 }

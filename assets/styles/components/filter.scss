@@ -104,4 +104,10 @@
   .filter__menu-group .heading--h3 {
     margin-bottom: 8px;
   }
+
+  .filter__menu-list--more .filter__menu-group {
+    &:last-child {
+      margin-bottom: 24px;
+    }
+  }
 }
