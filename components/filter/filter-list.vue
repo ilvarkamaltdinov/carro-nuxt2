@@ -1,7 +1,8 @@
 <template>
-	<div v-if="!loading">
+	<div>
 		<ul class="filter__menu-list">
 			<li class="filter__menu-item"
+			    :class="{'filter__menu-item--loading':loading}"
 			    @click="openFilterModal('mark')">
 				<div class="filter__menu-text">
 					{{ mark_select_title }}
@@ -10,6 +11,7 @@
 				          name="icon-arrow" />
 			</li>
 			<li class="filter__menu-item"
+			    :class="{'filter__menu-item--loading':loading}"
 			    @click="openFilterModal('folder')">
 				<div class="filter__menu-text">
 					{{ folder_select_title }}
@@ -18,6 +20,7 @@
 				          name="icon-arrow" />
 			</li>
 			<li class="filter__menu-item"
+			    :class="{'filter__menu-item--loading':loading}"
 			    v-if="showGeneration"
 			    @click="openFilterModal('generation')">
 				<div class="filter__menu-text">
@@ -27,6 +30,7 @@
 				          name="icon-arrow" />
 			</li>
 			<li class="filter__menu-item"
+			    :class="{'filter__menu-item--loading':loading}"
 			    v-if="allFilters || !showGeneration"
 			    @click="openFilterModal('engine-type')">
 				<div class="filter__menu-text">
@@ -37,6 +41,7 @@
 			</li>
 			<li v-if="allFilters"
 			    class="filter__menu-item"
+			    :class="{'filter__menu-item--loading':loading}"
 			    @click="openFilterModal('body-type')">
 				<div class="filter__menu-text">
 					{{ body_type_select_title }}
@@ -46,6 +51,7 @@
 			</li>
 			<li v-if="allFilters"
 			    class="filter__menu-item"
+			    :class="{'filter__menu-item--loading':loading}"
 			    @click="openFilterModal('gearbox')">
 				<div class="filter__menu-text">
 					{{ gearbox_select_title }}
@@ -55,6 +61,7 @@
 			</li>
 			<li v-if="allFilters"
 			    class="filter__menu-item"
+			    :class="{'filter__menu-item--loading':loading}"
 			    @click="openFilterModal('drive-type')">
 				<div class="filter__menu-text">
 					{{ drive_type_select_title }}
@@ -69,10 +76,10 @@
 			                :class="{'button--show-link':allFilters}"
 			                @click="allFilters = !allFilters" />
 		</div>
-		<ul class="filter__menu-list filter__menu-list--more" v-if="offers.data.length > 1">
+		<ul class="filter__menu-list filter__menu-list--more">
 			<li class="filter__menu-group">
 				<h2 class="heading heading--h3">Цена</h2>
-				<range-price/>
+				<range-price />
 			</li>
 			<li class="filter__menu-group">
 				<h2 class="heading heading--h3">Год</h2>

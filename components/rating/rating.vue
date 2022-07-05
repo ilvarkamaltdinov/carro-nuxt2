@@ -1,5 +1,5 @@
 <template>
-	<div class="rating"
+	<div class="rating" @click="$emit('click')"
 	     :style="`--rating-number:${radingValue}; --rating-color:${ratingColor};`">{{ rating }}
 	</div>
 </template>

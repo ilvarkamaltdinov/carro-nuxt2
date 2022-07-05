@@ -9,7 +9,7 @@
 			     alt="image" />
 		</a>
 		<div class="tmb-wrap">
-			<div class="tmb-wrap-table">
+			<div class="tmb-wrap-table" @mouseleave="activeTab = 1">
 				<div @mousemove="activeTab = index"
 				     :class="{'active':index === activeTab}"
 				     v-for="index in limit"
