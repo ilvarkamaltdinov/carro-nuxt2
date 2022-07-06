@@ -131,7 +131,6 @@ export default {
 		}),
 		...mapActions({
 			getLikes: 'favorite/favorite/getLikes',
-			closeModal: 'modal/modal-main/closeModal'
 		})
 	}
 }

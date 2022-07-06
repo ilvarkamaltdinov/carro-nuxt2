@@ -19,7 +19,7 @@
 </template>
 <script>
 import filters from "~/mixins/filters";
-import {mapMutations} from "vuex";
+import {mapActions, mapMutations} from "vuex";
 
 export default {
 	mixins: [filters],
@@ -38,11 +38,15 @@ export default {
 		},
 	},
 	methods: {
+		...mapActions({
+			closeModal: 'modal/modal-main/closeModal'
+		}),
 		...mapMutations({
 			setIsOfferClick: 'filters/filters/SET_IS_OFFER_CLICK'
 		}),
 		async linkClick() {
-			this.setIsOfferClick(true)
+			await this.closeModal()
+			await this.setIsOfferClick(true)
 			await this.$router.push(`/${this.currentCategory}/${this.currentMark}/${this.currentFolder}/${this.currentId}`)
 		}
 	},
