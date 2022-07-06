@@ -110,7 +110,6 @@ import {mapGetters, mapMutations, mapActions} from 'vuex'
 export default {
 	watch: {
 		'$route'() {
-			this.closeModal()
 			this.setModalMenu(false)
 		}
 	},
