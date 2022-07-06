@@ -2,6 +2,7 @@ import _ from 'lodash'
 
 export const state = () => ({
     loading: true,
+    loadingRange: true,
     filters: {},
     sort: 'price|asc',
     offers: null,
@@ -23,6 +24,9 @@ export const getters = {
     },
     loading: (state) => {
         return state.loading
+    },
+    loadingRange: (state) => {
+        return state.loadingRange
     },
     sort: (state) => {
         return state.sort
@@ -140,7 +144,7 @@ export const actions = {
             query['drive_type_id_array'] = drive_type_id_array
         }
         this.app.router.push({
-            path: '/'+ this.app.context.params.category + (url !== '' ? '/' + url : ''),
+            path: '/' + this.app.context.params.category + (url !== '' ? '/' + url : ''),
             query
         })
     },
@@ -174,6 +178,9 @@ export const mutations = {
     SET_LOADING(state, data) {
         state.loading = data
     },
+    SET_LOADING_RANGE(state, data) {
+        state.loadingRange = data
+    },
     SET_FILTERED_TOTAL(state, data) {
         state.filteredTotal = data
     },
@@ -191,5 +198,5 @@ export const mutations = {
     },
     SET_IS_OFFER_CLICK(state, data) {
         state.isOfferClick = data
-    }
+    },
 }

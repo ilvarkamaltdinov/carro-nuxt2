@@ -34,6 +34,7 @@ export default {
 			setComponentCatalog: 'filters/filters/SET_COMPONENT_CATALOG',
 			setIsFilterClick: 'filters/filters/SET_IS_FILTER_CLICK',
 			setIsOfferClick: 'filters/filters/SET_IS_OFFER_CLICK',
+			setLoadingRange: 'filters/filters/SET_LOADING_RANGE',
 		}),
 		...mapActions({
 			request: 'filters/filters/request',
@@ -58,6 +59,9 @@ export default {
 			await this.$store.commit('filters/filters/SET_LOADING', false)
 		},
 		async checkUrl() {
+			if(!this.isFilterClick){
+				await this.setLoadingRange(true)
+			}
 			// Если клик по объявлению, сразу показываем компонент объявления
 			if (this.isOfferClick) {
 				this.setComponentCatalog('car')
@@ -101,6 +105,9 @@ export default {
 					year_to: Number(this.$route.query.year_to),
 					sort: this.$route.query.sort || this.sort
 				})
+			}
+			if(!this.isFilterClick){
+				await this.setLoadingRange(false)
 			}
 		},
 	}

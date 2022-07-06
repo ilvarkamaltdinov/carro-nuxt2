@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
+
 export default {
 	data() {
 		return {
@@ -26,8 +28,11 @@ export default {
 			paymentValue: this.params.payment
 		}
 	},
-	watch:{
-		offer(){
+	watch: {
+		offer() {
+			this.calculate()
+		},
+		percent(){
 			this.calculate()
 		}
 	},
@@ -36,17 +41,20 @@ export default {
 		params: Object
 	},
 	computed: {
-		currentPeriod(){
+		...mapGetters({
+			percent: 'banks/percent'
+		}),
+		currentPeriod() {
 			return String(this.periodValue) + ' мес.'
 		},
 		currentPaymentSum() {
-			if(this.offer) {
+			if (this.offer) {
 				return this.offer.price * this.paymentValue / 100
 			}
 		}
 	},
-	mounted(){
-		if(this.offer){
+	mounted() {
+		if (this.offer) {
 			this.calculate()
 		}
 	},
@@ -61,8 +69,8 @@ export default {
 			this.calculate()
 		},
 		calculate() {
-			if(this.offer){
-				let creditProc = this.params.percent;
+			if (this.offer) {
+				let creditProc = this.percent;
 				let car_price = this.offer.price;
 				let creditTime = this.periodValue;
 				let firstPay = this.paymentValue;
@@ -79,7 +87,7 @@ export default {
 				if (car_price) {
 					K = (i * Math.pow(1 + i, n)) / (Math.pow(1 + i, n) - 1);
 					A = Math.round(K * S);
-					this.total =String(A).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1 ") + " ₽"
+					this.total = String(A).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1 ") + " ₽"
 				}
 			}
 		}

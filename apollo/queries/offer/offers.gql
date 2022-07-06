@@ -13,10 +13,12 @@ query offers(
   $owner_id: Int,
   $year_from: Int,
   $year_to: Int,
+  $set: String,
   $external_id_array: [Int],
 ) {
   offers(
     page: $page,
+    set: $set,
     limit: $limit,
     site_id: $site_id,
     mark_slug_array: $mark_slug_array,

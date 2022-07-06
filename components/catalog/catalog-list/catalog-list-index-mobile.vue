@@ -6,9 +6,9 @@
 				<li role="presentation"
 				    v-for="(tab, index) in tabs"
 				    :key="index"
-				    :class="{'tabs__item--active':index === activeTab}"
+				    :class="{'tabs__item--active':tab.slug === set}"
 				    class="tabs__item">
-					<button @click="tabClick(tab,index)" class="tabs__link" role="tab"
+					<button @click="tabClick(tab)" class="tabs__link" role="tab"
 					        data-toggle="tab">
 						{{ tab.title }}
 					</button>
@@ -65,7 +65,7 @@ export default {
 					slug: 'test'
 				}
 			],
-			activeTab: 0,
+			set:'fresh'
 		}
 	},
 	computed: {
@@ -90,8 +90,8 @@ export default {
 		toCatalog() {
 			this.$router.push('/used')
 		},
-		tabClick(tab, index){
-			this.activeTab = index
+		tabClick(tab){
+			this.set = tab.set
 		}
 	}
 }

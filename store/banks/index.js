@@ -1,11 +1,14 @@
 export const state = () => ({
     banks: [],
-    bank: {}
-
+    bank: {},
+    percent: null
 })
 export const getters = {
     banks: (state) => {
         return state.banks
+    },
+    percent: (state) => {
+        return state.percent
     },
     bank: (state) => {
         return state.bank
@@ -36,5 +39,8 @@ export const mutations = {
     },
     SET_BANK(state, data) {
         state.bank = data
+    },
+    SET_PERCENT(state, data) {
+        state.percent = data
     },
 }

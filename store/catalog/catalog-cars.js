@@ -31,7 +31,7 @@ export const actions = {
             site_id: $nuxt.context.$config.site_id,
             mark_slug: payload.mark.slug,
             folder_slug: payload.folder.slug,
-            external_id: payload.external_id
+            external_id: payload.external_id,
         }
         let client = this.app.apolloProvider.defaultClient
         let response = await client.query(
@@ -44,12 +44,13 @@ export const actions = {
     async getOffers({commit}, payload) {
         let variables = {site_id: $nuxt.context.$config.site_id}
         let client = this.app.apolloProvider.defaultClient
-        let offers = await client.query(
+        let response = await client.query(
             {
                 query: offers,
                 variables: Object.assign(variables, payload)
             })
-        commit('SET_OFFERS', offers.data.offers.data)
+        console.log(response.data.offers.data)
+        commit('SET_OFFERS', response.data.offers.data)
     },
 }
 export const mutations = {

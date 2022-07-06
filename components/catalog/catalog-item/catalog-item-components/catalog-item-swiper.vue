@@ -4,7 +4,7 @@
 		<div class="swiper">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide"
-				     v-for="image in images"
+				     v-for="image in offer.images"
 				     :key="image.thumb">
 					<a class="catalog__img-link"
 					   href="">
@@ -21,6 +21,7 @@
 						</picture>
 					</a>
 				</div>
+				<catalog-item-call-card class="swiper-slide" :offer="offer"/>
 			</div>
 		</div>
 		<div class="swiper__buttons-wrapper">
@@ -43,9 +44,9 @@ export default {
 			type: Number,
 			default: null
 		},
-		images: {
-			type: Array,
-			default: () => []
+		offer: {
+			type: Object,
+			default: () => {}
 		}
 	},
 	async mounted() {

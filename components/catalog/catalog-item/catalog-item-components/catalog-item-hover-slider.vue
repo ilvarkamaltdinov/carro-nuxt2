@@ -1,19 +1,21 @@
-<template>
+<template xmlns="http://www.w3.org/1999/html">
 	<div class="catalog__img brazzers-daddy">
 		<a href
 		   class="catalog__img-link"
 		   :class="{'catalog__img-link--active':index === activeTab}"
-		   v-for="index in limit"
+		   v-for="(i,index) in limit"
 		   :key="index">
 			<img :src="images[index] ? images[index].thumb : ''"
 			     alt="image" />
 		</a>
 		<div class="tmb-wrap">
-			<div class="tmb-wrap-table" @mouseleave="activeTab = 1">
+			<div class="tmb-wrap-table"
+			     @mouseleave="activeTab = 0">
 				<div @mousemove="activeTab = index"
 				     :class="{'active':index === activeTab}"
-				     v-for="index in limit"
-				     :key="index"></div>
+				     v-for="(i,index) in limit"
+				     :key="index">
+				</div>
 			</div>
 		</div>
 	</div>
@@ -26,7 +28,7 @@ export default {
 	data() {
 		return {
 			limit: 7,
-			activeTab: 1,
+			activeTab: 0,
 		}
 	},
 }

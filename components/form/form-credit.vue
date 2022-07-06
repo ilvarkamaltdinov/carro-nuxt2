@@ -16,7 +16,8 @@
 				          class="icon form__car-icon" />
 			</label>
 		</fieldset>
-		<form-credit-calculator :params="creditParams" :offer="offer || currentCar" />
+		<form-credit-calculator :params="creditParams"
+		                        :offer="offer || currentCar" />
 		<fieldset class="form__fieldset">
 			<label class="form__field-wrap"
 			       :class="{'form__field-wrap--success' : form.name.value.length >= 2, 'form__field-wrap--error': form.name.valid === false}">
@@ -56,11 +57,20 @@ import FEEDBACK from "@/apollo/mutations/feedback.gql";
 
 export default {
 	props: {
+		bankRate: {
+			type: Number,
+			default: null
+		},
 		hasChose: {
 			type: Boolean,
 			default: true
 		},
 		offer: Object
+	},
+	watch: {
+		bankRate() {
+			this.setPercent(this.bankRate)
+		}
 	},
 	data() {
 		return {
@@ -118,6 +128,7 @@ export default {
 			sendForm: 'form/form/sendForm'
 		}),
 		...mapMutations({
+			setPercent: 'banks/SET_PERCENT',
 			setCurrentCar: 'form/form-credit/SET_CURRENT_CAR'
 		}),
 		choseCar() {
@@ -130,7 +141,7 @@ export default {
 			this.openModal(payload)
 		},
 		checkForm() {
-			if(this.hasChose){
+			if (this.hasChose) {
 				if (!this.currentCar) {
 					this.error = 'invalid_car'
 					window.scrollTo(0, 0)

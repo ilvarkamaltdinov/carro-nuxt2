@@ -8,7 +8,7 @@
 						<heading-h1>
 							{{ pageTitle}}
 						</heading-h1>
-						<span class="heading-group__label heading-group__label--car">
+						<span class="heading-group__label heading-group__label--car" v-if="offer.generation">
 							{{ offer.generation.name }}
 							<span class="heading-group__year">
 								{{ offer.year }}

@@ -8,6 +8,7 @@
 			<catalog-item-img v-for="img in offer.images"
 			                  :key="img.thumb"
 			                  :img="img.thumb" />
+			<catalog-item-call-card :offer="offer"/>
 		</div>
 		<div class="catalog__tech"
 		     :class="{'catalog__tech--no-buttons':!hasButtons}">
