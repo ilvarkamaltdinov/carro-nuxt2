@@ -73,6 +73,21 @@
   }
 }
 
+.skeleton__input-wrap {
+  display: flex;
+}
+
+.skeleton__input-wrap .skeleton__content--input {
+  &:first-child {
+    margin-right: 12px;
+  }
+}
+
+.skeleton__content--input {
+  height: 48px;
+  width: 100%;
+}
+
 @media (max-width: $mobile-width-only) {
   .skeleton--catalog {
     margin: 0 -16px;
