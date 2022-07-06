@@ -41,6 +41,19 @@
   margin-bottom: 16px;
 }
 
+.form__block--range-loading {
+  @include skeleton-loader;
+
+  &::after {
+    bottom: -14px;
+    height: 24px;
+  }
+}
+
+.form__block--range > input {
+  visibility: hidden;
+}
+
 .form__range-value {
   @include font-body-strong;
 }

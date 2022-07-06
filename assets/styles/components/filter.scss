@@ -47,18 +47,7 @@
 }
 
 .filter__menu-item--loading {
-  position: relative;
-
-  &::after {
-    content: "";
-    display: block;
-    border-radius: 4px;
-    height: 4px;
-    width: 100%;
-    position: absolute;
-    background-color: $colorBg;
-    height: 24px;
-  }
+  @include skeleton-loader;
 }
 
 .filter__arrow {
@@ -78,13 +67,6 @@
 
 .filter__menu-group {
   margin-bottom: 48px;
-}
-
-.filter__menu-group .range {
-  &::after {
-    top: auto;
-    bottom: -46px;
-  }
 }
 
 @media (min-width: $desktop-width) {

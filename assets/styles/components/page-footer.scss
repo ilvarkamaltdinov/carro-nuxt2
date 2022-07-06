@@ -92,7 +92,6 @@
 .page-footer__contacts {
   @include border-top;
   @include border-bottom;
-  border-color: $colorBg;
 }
 
 .page-footer__city-wrap {
@@ -111,7 +110,6 @@
   padding: 16px 0;
   @include border-top;
   @include border-bottom;
-  border-color: $colorBg;
 }
 
 .page-footer__disclaimer {
@@ -179,7 +177,6 @@
     padding: 16px 0;
     @include border-top;
     @include border-bottom;
-    border-color: $colorBg;
   }
 
   .page-footer__cars-stock-number {

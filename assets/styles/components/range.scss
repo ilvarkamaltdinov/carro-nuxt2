@@ -1,46 +1,6 @@
-
-
 .range {
   position: relative;
-
-  &::after {
-    content: "";
-    display: block;
-    // background-color: $colorTextSecondary;
-    pointer-events: none;
-    position: absolute;
-    border-radius: 4px;
-    top: 0;
-    left: -6px;
-    width: calc(100% + 12px);
-    height: 100%;
-    z-index: 25;
-    // background-color: $colorBg;
-    // background-image: linear-gradient(to right, transparent 0%, #e4e4e4 50%, transparent 100%);
-    // animation: loading 0.8s infinite, fade 1s 1s forwards;
-  }
 }
-
-// @keyframes loading {
-//   0% {
-//     background-position: -180px;
-//   }
-//   40%{
-//     background-position: 110%;
-//     }
-//   100% {
-//     background-position: 110%;
-//    }
-// }
-
-// @keyframes fade {
-//   10% {
-//     opacity: 0;
-//    }
-//   100% {
-//     opacity: 0;
-//    }
-// }
 
 .range .irs--flat .irs-handle {
   border-radius: 50%;
