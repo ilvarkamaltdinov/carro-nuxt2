@@ -12,6 +12,12 @@
   display: flex;
 }
 
+.catalog__no-cars {
+  margin: 24px 0;
+  padding-bottom: 24px;
+  @include border-bottom;
+}
+
 .catalog__img-link,
 .catalog__call-card {
   display: block;
