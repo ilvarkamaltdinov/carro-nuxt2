@@ -24,3 +24,9 @@
     @include border-bottom;
   }
 }
+
+@media (min-width: $desktop-width) {
+  .select {
+    cursor: pointer;
+  }
+}

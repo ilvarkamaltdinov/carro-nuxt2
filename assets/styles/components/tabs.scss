@@ -29,6 +29,10 @@
 .tabs__item--active .tabs__link {
   font-weight: $fontBold;
   background-color: $colorDivider;
+
+  &:hover {
+    cursor: default;
+  }
 }
 
 @media (max-width: $mobile-width-only) {

@@ -69,6 +69,14 @@
   margin-bottom: 48px;
 }
 
+.filter__menu-list--more .filter__menu-group.skeleton {
+  margin-bottom: 32px;
+
+  &:last-of-type {
+    margin-bottom: 16px;
+  }
+}
+
 @media (min-width: $desktop-width) {
   .filter__buttons-sort .filter__button {
     margin-right: 0;

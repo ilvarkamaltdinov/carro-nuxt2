@@ -452,6 +452,7 @@
 @media (min-width: $desktop-width) {
   .catalog__filter--aside {
     display: block;
+    margin-bottom: 0;
   }
 
   .catalog__item {
