@@ -3,7 +3,7 @@ import generations from '~/apollo/queries/generations'
 import offers from '@/apollo/queries/offer/offers'
 
 export const state = () => ({
-    tabComponent: 'marks',
+    tabComponent: 'mark',
     models: [],
     generations: [],
     offers: [],
@@ -98,9 +98,10 @@ export const actions = {
     },
 
     chooseMark({commit, dispatch}, payload) {
+
         commit('SET_CURRENT_MARK', payload);
         dispatch('getModels', payload);
-        commit('SET_TAB_COMPONENT', 'models');
+        commit('SET_TAB_COMPONENT', 'model');
 
         commit('SET_CURRENT_MODEL', null);
         commit('SET_CURRENT_GENERATION', null);
@@ -108,14 +109,14 @@ export const actions = {
     chooseModel({commit, dispatch}, payload) {
         commit('SET_CURRENT_MODEL', payload);
         dispatch('getGenerations', payload);
-
+        commit('SET_TAB_COMPONENT', 'generation');
         commit('SET_CURRENT_GENERATION', null);
 
     },
     chooseGeneration({commit, dispatch}, payload) {
         commit('SET_CURRENT_GENERATION', payload);
         dispatch('getOffers', payload);
-        commit('SET_TAB_COMPONENT', 'cars');
+        commit('SET_TAB_COMPONENT', 'car');
     },
 
 }

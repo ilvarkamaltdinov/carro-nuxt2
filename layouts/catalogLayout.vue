@@ -89,7 +89,7 @@ export default {
 					this.$nuxt.error({statusCode: 404})
 				}
 			} else {
-				await this.filterRequest({
+				await this.filterRequest(this._.pickBy({
 					url: this.$route.path,
 					page: Number(this.$route.query.page) || 1,
 					mark_slug_array: this.$stringToArray(this.$route.query.mark_slug_array),
@@ -104,7 +104,7 @@ export default {
 					year_from: Number(this.$route.query.year_from),
 					year_to: Number(this.$route.query.year_to),
 					sort: this.$route.query.sort || this.sort
-				})
+				}))
 			}
 			if(!this.isFilterClick){
 				await this.setLoadingRange(false)

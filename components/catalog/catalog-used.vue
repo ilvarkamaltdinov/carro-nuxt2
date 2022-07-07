@@ -30,7 +30,7 @@
 			<div class="grid__col-8">
 				<filter-sort />
 				<component :is="$device.isMobile ? 'catalog-list-used-mobile' : 'catalog-list-used-desktop'" />
-				<!--<button-typical text="Показать больше" class="button&#45;&#45;link button&#45;&#45;more"/>-->
+				<button-typical @click="moreOffers" text="Показать больше" class="button--link button--more"/>
 			</div>
 		</section>
 	</div>
@@ -53,5 +53,10 @@ export default {
 			return this.chosen?.mark?.length === 1 && !this.$route.query.folder_slug_array
 		}
 	},
+	methods:{
+		moreOffers(){
+			console.log('show more')
+		}
+	}
 }
 </script>
