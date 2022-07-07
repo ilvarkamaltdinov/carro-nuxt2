@@ -28,7 +28,7 @@
 	</div>
 </template>
 <script>
-import {mapGetters} from "vuex";
+import {mapGetters, mapMutations} from "vuex";
 import filters from "@/mixins/filters";
 import seoTags from "@/apollo/queries/seoTags";
 
@@ -77,11 +77,15 @@ export default {
 		}
 	},
 	methods: {
+		...mapMutations({
+			setIsFilterClick:'filters/filters/SET_IS_FILTER_CLICK'
+		}),
 		changePriceFrom(e) {
 			this.from = Number(e.target.value.replace(/[^+\d]/g, ''))
 			this.sendPrice()
 		},
 		async sendPrice() {
+			this.setIsFilterClick(true)
 			await this.$router.push({path: this.$route.fullPath, query: {price_from: this.from, price_to: this.to}});
 		},
 		changePrice(event) {

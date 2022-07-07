@@ -110,7 +110,6 @@ import {mapGetters, mapMutations, mapActions} from 'vuex'
 export default {
 	watch: {
 		'$route'() {
-			this.closeModal()
 			this.setModalMenu(false)
 		}
 	},
@@ -132,7 +131,6 @@ export default {
 		}),
 		...mapActions({
 			getLikes: 'favorite/favorite/getLikes',
-			closeModal: 'modal/modal-main/closeModal'
 		})
 	}
 }

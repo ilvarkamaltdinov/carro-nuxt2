@@ -127,6 +127,7 @@ export default {
         api_domain: process.env.API_DOMAIN,
         api_endpoint: process.env.API_ENDPOINT,
         domain: process.env.DOMAIN,
-        site_id: process.env.SITE_ID
+        site_id: process.env.SITE_ID,
+        default_percent:process.env.DEFAULT_PERCENT
     }
 }

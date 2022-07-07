@@ -1,8 +1,8 @@
 <template>
 	<div class="modal__wrap">
 		<div class="modal__choose-group">
-			<h3 class="heading heading--h2">Модель</h3>
-			<makes-models />
+			<h3 class="heading heading--h2">Поколение</h3>
+			<makes-generations/>
 		</div>
 	</div>
 </template>
@@ -12,7 +12,7 @@ import {mapGetters} from 'vuex'
 export default {
 	computed: {
 		...mapGetters({
-			currentModel: 'modal/modal-choose/currentModel'
+		
 		})
 	}
 }

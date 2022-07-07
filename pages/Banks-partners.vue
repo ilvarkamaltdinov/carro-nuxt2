@@ -4,7 +4,7 @@
 			<crumbs :crumbs="crumbs" />
 		</div>
 		<div class="grid grid--container">
-			<featured-banks :title="pageTitle"/>
+			<featured-banks :page-title="pageTitle"/>
 		</div>
 	</main>
 </template>

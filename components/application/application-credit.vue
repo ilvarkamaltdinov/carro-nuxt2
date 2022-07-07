@@ -15,9 +15,8 @@
 					</div>
 					<rating :max="100" :rating="100" />
 				</div>
-				<form-credit />
+				<form-credit :bank-rate="bank.rate"/>
 			</div>
-			
 			<div v-if="currentCar"
 			     class="application__catalog catalog grid__col-8">
 				<catalog-item-large-desktop :has-buttons="false"
@@ -31,22 +30,7 @@
 				<span class="application__choose-car-text">Выберите автомобиль</span>
 			</button>
 			<application-banks class="grid__col-5" :bank-slug="bank.slug"/>
-			<div class="application__terms grid__col-3">
-				<div class="application__terms-item">
-					<div class="application__terms-number application__terms-number--stake">4.9%</div>
-					<div class="application__terms-text">Ставка по кредиту</div>
-				</div>
-				<div class="application__terms-item">
-					<div class="application__terms-number application__terms-number--term">
-						{{ totalSum ? (rangePeriodValue + ' мес.') : '-' }}
-					</div>
-					<div class="application__terms-text">Срок автокредита</div>
-				</div>
-				<div class="application__terms-item">
-					<div class="application__terms-number application__terms-number--payment">{{ totalSum || '-' }}</div>
-					<div class="application__terms-text">Ежемеясячный платеж</div>
-				</div>
-			</div>
+			<application-terms class="grid__col-3"/>
 		</div>
 	</section>
 </template>
@@ -66,6 +50,7 @@ export default {
 		}
 	},
 	destroyed() {
+		this.setPercent(this.$config.default_percent)
 		this.setBank({})
 	},
 	computed: {
@@ -81,7 +66,8 @@ export default {
 			openModal: 'modal/modal-main/openModal'
 		}),
 		...mapMutations({
-			setBank: 'banks/SET_BANK'
+			setPercent: 'banks/SET_PERCENT',
+			setBank: 'banks/SET_BANK',
 		}),
 		chooseCar() {
 			let payload = {

@@ -1,7 +1,22 @@
 <template>
 	<section class="page-main__catalog catalog catalog--slider grid__col-12">
 		<heading-h2>Автомобили в наличии</heading-h2>
-		<tabs-list :tabs="tabs" />
+		<div class="tabs">
+			<ul class="tabs__list">
+				<li role="presentation"
+				    v-for="(tab, index) in tabs"
+				    :key="index"
+				    :class="{'tabs__item--active':tab.slug === set}"
+				    class="tabs__item">
+					<button @click="tabClick(tab)"
+					        class="tabs__link"
+					        role="tab"
+					        data-toggle="tab">
+						{{ tab.title }}
+					</button>
+				</li>
+			</ul>
+		</div>
 		<div class="catalog__list">
 			<div class="swiper swiper--catalog">
 				<div class="swiper-wrapper">
@@ -37,49 +52,50 @@ export default {
 			tabs: [
 				{
 					title: "Топ-предложения",
-					slug: 'test',
-					id: 1
+					slug: 'best'
 				},
 				{
 					title: "Свежие",
-					slug: 'test',
-					id: 2
+					slug: 'fresh'
 				},
 				{
 					title: "До 500 000 ₽",
-					slug: 'test',
-					id: 3
+					slug: 'before-500'
 				},
-				{
-					title: "Топ-выгода",
-					slug: 'test',
-					id: 4
-				},
+				// {
+				// 	title: "Топ-выгода",
+				// 	slug: 'test',
+				// },
 				{
 					title: "7-местные",
-					slug: 'test',
-					id: 5
+					slug: 'seats-7'
 				},
 				{
 					title: "До 2 владельцев",
-					slug: 'test',
-					id: 6
+					slug: 'owners-2'
 				},
 				{
 					title: "До 5 лет",
-					slug: 'test',
-					id: 7
+					slug: 'young'
 				},
 				{
 					title: "Седаны",
-					slug: 'test',
-					id: 8
+					slug: 'sedan'
+				},
+				{
+					title: "Премиум",
+					slug: 'premium'
 				}
-			]
+				// {
+				// 	title: "Внедорожники",
+				// 	slug: 'allroad'
+				// }
+			],
+			set: 'best'
 		}
 	},
 	async fetch() {
-		let response = await this.request({query: offers, variables: {page: 0, limit: 10}})
+		let response = await this.request({query: offers, variables: {page: 1, limit: 10, set: this.set}})
 		this.setOffers(response.data.offers)
 	},
 	computed: {
@@ -95,8 +111,13 @@ export default {
 			request: 'filters/filters/request'
 		}),
 		...mapMutations({
-			setOffers:'catalog/catalog-cars/SET_OFFERS'
+			setOffers: 'catalog/catalog-cars/SET_OFFERS'
 		}),
+		async tabClick(tab) {
+			this.set = tab.slug
+			let response = await this.request({query: offers, variables: {page: 0, limit: 10, set: this.set}})
+			this.setOffers(response.data.offers)
+		},
 		toCatalog() {
 			this.$router.push('/used')
 		}

@@ -70,9 +70,10 @@ export default {
 	},
 	methods: {
 		...mapMutations({
-			setChosen: 'filters/filters/SET_CHOSEN'
+			setIsFilterClick:'filters/filters/SET_IS_FILTER_CLICK'
 		}),
 		async sendYear() {
+			this.setIsFilterClick(true)
 			await this.$router.push({path: this.$route.fullPath, query: {year_from: this.from, year_to: this.to}});
 		},
 		changeYear(event) {

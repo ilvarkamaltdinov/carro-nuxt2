@@ -6,9 +6,11 @@
 				<li role="presentation"
 				    v-for="(tab, index) in tabs"
 				    :key="index"
-				    :class="{'tabs__item--active':index === activeTab}"
+				    :class="{'tabs__item--active':tab.slug === set}"
 				    class="tabs__item">
-					<button @click="tabClick(tab,index)" class="tabs__link" role="tab"
+					<button @click="tabClick(tab)"
+					        class="tabs__link"
+					        role="tab"
 					        data-toggle="tab">
 						{{ tab.title }}
 					</button>
@@ -34,38 +36,46 @@ export default {
 			tabs: [
 				{
 					title: "Топ-предложения",
-					slug: 'test'
+					slug: 'best'
 				},
 				{
 					title: "Свежие",
-					slug: 'test'
+					slug: 'fresh'
 				},
 				{
 					title: "До 500 000 ₽",
-					slug: 'test'
+					slug: 'before-500'
 				},
-				{
-					title: "Топ-выгода",
-					slug: 'test'
-				},
+				// {
+				// 	title: "Топ-выгода",
+				// 	slug: 'test',
+				// },
 				{
 					title: "7-местные",
-					slug: 'test'
+					slug: 'seats-7'
 				},
 				{
 					title: "До 2 владельцев",
-					slug: 'test'
+					slug: 'owners-2'
 				},
 				{
 					title: "До 5 лет",
-					slug: 'test'
+					slug: 'young'
 				},
 				{
 					title: "Седаны",
-					slug: 'test'
+					slug: 'sedan'
+				},
+				{
+					title: "Премиум",
+					slug: 'premium'
 				}
+				// {
+				// 	title: "Внедорожники",
+				// 	slug: 'allroad'
+				// }
 			],
-			activeTab: 0,
+			set: 'best'
 		}
 	},
 	computed: {
@@ -90,9 +100,11 @@ export default {
 		toCatalog() {
 			this.$router.push('/used')
 		},
-		tabClick(tab, index){
-			this.activeTab = index
-		}
+		async tabClick(tab) {
+			this.set = tab.slug
+			let response = await this.request({query: offers, variables: {page: 0, limit: 10, set: this.set}})
+			this.setOffers(response.data.offers)
+		},
 	}
 }
 </script>

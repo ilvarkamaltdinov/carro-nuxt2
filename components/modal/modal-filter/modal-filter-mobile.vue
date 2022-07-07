@@ -25,9 +25,9 @@ export default {
 				
 			}),
 			async filter() {
-				this.setIsFilterClick(true)
+				// this.setIsFilterClick(true)
 				await this.closeModal()
-				await this.setUrl();
+				// await this.setUrl();
 			}
 		}
 	}

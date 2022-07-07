@@ -1,6 +1,7 @@
 <template>
-	<div class="rating" @click="$emit('click')"
-	     :style="`--rating-number:${radingValue}; --rating-color:${ratingColor};`">{{ rating }}
+	<div class="rating"
+	     @click="$emit('click')"
+	     :style="`--rating-number:${ratingValue}; --rating-color:${ratingColor};`">{{ ratingText }}
 	</div>
 </template>
 <script>
@@ -10,7 +11,14 @@ export default {
 		max: Number
 	},
 	computed: {
-		radingValue() {
+		ratingText() {
+			if (this.max === 100) {
+				return this.rating
+			} else {
+				return parseFloat(this.rating).toFixed(1)
+			}
+		},
+		ratingValue() {
 			if (this.max === 100) {
 				return this.rating
 			} else {

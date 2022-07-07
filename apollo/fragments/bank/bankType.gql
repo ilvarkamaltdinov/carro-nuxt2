@@ -2,5 +2,6 @@ fragment BankType on Bank {
     id
     name
     slug
+    rate
     title
 }

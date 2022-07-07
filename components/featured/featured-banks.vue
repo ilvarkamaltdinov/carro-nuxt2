@@ -1,5 +1,4 @@
 <template>
-	
 	<section class="page-main__featured featured featured--banks grid">
 		<div class="heading-group heading-group--h1">
 			<div class="heading-group__wrap">

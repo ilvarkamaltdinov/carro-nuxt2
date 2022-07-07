@@ -4,7 +4,7 @@
 			<crumbs :crumbs="crumbs"/>
 		</div>
 		<div class="grid grid--container">
-			<application-credit />
+			<application-credit :page-title="pageTitle"/>
 			<benefits-car/>
 			<text-credit/>
 		</div>
@@ -13,8 +13,10 @@
 <script>
 import {mapActions, mapMutations} from "vuex";
 import bank from "@/apollo/queries/bank/bank";
+import seoTags from "@/mixins/seoTags";
 
 export default {
+	mixins:[seoTags],
 	data() {
 		return {
 			crumbs: [

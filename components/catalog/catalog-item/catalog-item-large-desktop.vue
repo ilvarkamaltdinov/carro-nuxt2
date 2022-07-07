@@ -1,7 +1,7 @@
 <template>
 	<article class="catalog__item catalog__item--desktop-l grid__col-8">
 		<catalog-item-swiper :slider-id="offer.external_id"
-		                     :images="offer.images" />
+		                     :offer="offer" />
 		<div class="catalog__info-wrap" :class="{'catalog__info-wrap--no-buttons':!hasButtons}">
 			<div class="catalog__info">
 				<catalog-item-title :offer="offer" />

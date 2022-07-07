@@ -2,4 +2,5 @@ fragment DealerMiniType on Dealer {
     id
     phone
     slug
+    title
 }
