@@ -105,6 +105,7 @@ export default {
 			// rangeLoading: !this.$device.isMobile
 		}
 	},
+	
 	computed: {
 		...mapGetters({
 			chosen: 'filters/filters/chosen',

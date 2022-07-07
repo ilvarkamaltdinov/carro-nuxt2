@@ -88,8 +88,9 @@ export default {
 				} catch (e) {
 					this.$nuxt.error({statusCode: 404})
 				}
-			} else {
-				await this.filterRequest(this._.pickBy({
+			}
+			else {
+				await this.filterRequest(this._.pickBy({ // TODO очищаю от пустых значений
 					url: this.$route.path,
 					page: Number(this.$route.query.page) || 1,
 					mark_slug_array: this.$stringToArray(this.$route.query.mark_slug_array),
