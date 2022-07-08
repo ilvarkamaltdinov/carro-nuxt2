@@ -3,7 +3,7 @@
 		<div class="modal__options">
 			<img class="modal__logo"
 			     :src="require(`~/assets/img/dealers/logos/logo-${modalData.dealer.slug}.svg`)"
-			     
+			     loading="lazy"
 			     alt="" />
 			<div class="modal__buttons">
 				<button-call-modal :phone="modalData.dealer.phone"/>

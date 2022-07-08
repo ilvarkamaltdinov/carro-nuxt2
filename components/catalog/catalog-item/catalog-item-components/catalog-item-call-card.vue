@@ -8,21 +8,17 @@
 			<span class="catalog__call-dealer">Автоцентр {{ offer.dealer.title }}</span>
 		</div>
 		<div class="catalog__call-img">
-			<!--<picture>-->
-			<!--	<source type="image/webp"-->
-			<!--	        media="(min-width: 768px)"-->
-			<!--	        :srcset="offer.images[0].thumb" />-->
-			<!--	<source media="(min-width: 768px)"-->
-			<!--	        :srcset="offer.images[0].thumb" />-->
-			<!--	<img class="lazyload"-->
-			<!--	     :src="offer.images[0].thumb"-->
-			<!--	     :srcset="offer.images[0].thumb"-->
-			<!--	     alt="" />-->
-			<!--</picture>-->
-			<img class="lazyload"
-			     :src="offer.images[0].thumb"
-			     :srcset="offer.images[0].thumb"
-			     alt="" />
+			<picture>
+				<source type="image/webp"
+				        media="(min-width: 768px)"
+				        :srcset="offer.images[0].thumb" />
+				<source media="(min-width: 768px)"
+				        :srcset="offer.images[0].thumb" />
+				<img class="lazyload"
+				     :src="offer.images[0].thumb"
+				     :srcset="offer.images[0].thumb"
+				     alt="" />
+			</picture>
 		</div>
 	</a>
 </template>

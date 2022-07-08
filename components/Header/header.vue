@@ -17,13 +17,13 @@
 					<nuxt-link class="page-header__logo"
 					           to="/">
 						<div class="page-header__logo-img-wrap">
-							<img data-src="~/assets/img/logo-part-1.svg"
-							     v-lazy-load
+							<img src="~/assets/img/logo-part-1.svg"
+							     alt="Портал проверенных автомобилей с пробегом — carro.ru"
 							     height="24"
 							     width="24"
 							     class="page-header__logo-circle">
-							<img data-src="~/assets/img/logo-part-2.svg"
-							     v-lazy-load
+							<img src="~/assets/img/logo-part-2.svg"
+							     alt="Портал проверенных автомобилей с пробегом — carro.ru"
 							     height="13"
 							     width="79"
 							     class="page-header__logo-letters">
@@ -38,7 +38,7 @@
 							       placeholder="Поиск по маркам"
 							       value="" />
 							<svg-icon class="form__icon-search icon"
-							          name="icon-search" />
+							          name="icon-search"/>
 						</label>
 					</div>
 				</div>
@@ -51,7 +51,7 @@
 						<a class="page-header__buttons-link"
 						   href="">
 							<svg-icon class="icon"
-							          name="icon-search" />
+							          name="icon-search"/>
 						</a>
 					</li>
 					<li class="page-header__buttons-item">
@@ -61,14 +61,14 @@
 							      class="page-header__favorites-count">{{ likesArray.length }}
 							</span>
 							<svg-icon class="icon"
-							          name="icon-favorites" />
+							          name="icon-favorites"/>
 						</nuxt-link>
 					</li>
 					<li class="page-header__buttons-item">
 						<a class="page-header__buttons-link"
 						   href="">
 							<svg-icon class="icon"
-							          name="icon-call" />
+							          name="icon-call"/>
 						</a>
 					</li>
 				</ul>
@@ -91,7 +91,7 @@
 				        @click.prevent="setModalMarks(!modalMarks)">
 					Все марки
 					<svg-icon class="page-header__makes-more-arrow icon"
-					          name="icon-arrow" />
+					          name="icon-arrow"/>
 				</button>
 			</nav>
 		</div>

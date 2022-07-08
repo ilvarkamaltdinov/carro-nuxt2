@@ -13,11 +13,9 @@
 					<!--	<img class="text__figure-img"-->
 					<!--	     src="~/assets/img/figures/figure-3@1x.png"-->
 					<!--	     srcset="~/assets/img/figures/figure-3@2x.png 2x"-->
-					<!--	     -->
+					<!--	     loading="lazy"-->
 					<!--	     alt="" />-->
 					<!--</picture>-->
-					<img class="text__figure-img"
-					     src="~/assets/img/figures/figure-3@1x.png" alt="" />
 				</div>
 				<div class="text__content">
 					<p class="text__p">Услуга Trade-In предполагает обмен Вашего старого автомобиля на более новый. Обмен

@@ -17,11 +17,9 @@
 				<!--	<img class="video__img"-->
 				<!--	     src="~/assets/img/video/iphone@1x.png"-->
 				<!--	     srcset="~/assets/img/video/iphone@2x.png 2x"-->
-				<!--	     -->
+				<!--	     loading="lazy"-->
 				<!--	     alt="" />-->
 				<!--</picture>-->
-				<img class="video__img"
-				     src="~/assets/img/video/iphone@1x.png" alt="" />
 			</div>
 			<p class="video__text">Узнай, почему на carro.ru лучшие цены в России!</p>
 		</div>

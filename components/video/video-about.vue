@@ -4,10 +4,21 @@
 		<div class="video__block"
 		     id="about-video">
 			<button class="video__play">
-				<svg-icon class="video__play-icon" name="icon-play"/>
+				<svg-icon class="video__play-icon"
+				          name="icon-play" />
 			</button>
 			<div class="video__img-wrap">
-				<nuxt-picture quality="100" :imgAttrs="{class:'video__img'}" src="img/video/iphone@2x.png"/>
+				<picture>
+					<source type="image/webp"
+					        media="(min-width: 768px)"
+					        :data-srcset="`${require(`~/assets/img/video/iphone@1x.webp`)} 1x, ${require(`~/assets/img/video/iphone@2x.webp`)} 2x`" />
+					<source media="(min-width: 768px)"
+					        :srcset="`${require(`~/assets/img/video/iphone@1x.png`)} 1x, ${require(`~/assets/img/video/iphone@2x.png`)} 2x`" />
+					<img class="video__img lazyload"
+					     data-src="~/assets/img/video/iphone@1x.png"
+					     :data-srcset="`${require(`~/assets/img/video/iphone@2x.png`)} 2x`"
+					     alt="" />
+				</picture>
 			</div>
 			<p class="video__text">Узнай, почему на carro.ru лучшие цены в России!</p>
 		</div>

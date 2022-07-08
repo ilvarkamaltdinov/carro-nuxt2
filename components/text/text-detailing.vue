@@ -13,11 +13,9 @@
 					<!--	<img class="text__figure-img"-->
 					<!--	     src="~/assets/img/figures/figure-6@1x.png"-->
 					<!--	     srcset="~/assets/img/figures/figure-6@2x.png 2x"-->
-					<!--	     -->
+					<!--	     loading="lazy"-->
 					<!--	     alt="" />-->
 					<!--</picture>-->
-					<img class="text__figure-img"
-					     src="~/assets/img/figures/figure-6@1x.png" alt="" />
 				</div>
 				<div class="text__content">
 					<p class="text__p">Хотите, чтобы Ваш автомобиль всегда выглядел, как с салона? Доверьте свое авто специалистам

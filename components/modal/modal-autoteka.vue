@@ -3,7 +3,7 @@
 		<div class="modal__options">
 			<img class="modal__logo"
 			     src="~/assets/img/logo-autoteka.svg"
-			     
+			     loading="lazy"
 			     alt="" />
 			<div class="modal__buttons">
 				<button-download />

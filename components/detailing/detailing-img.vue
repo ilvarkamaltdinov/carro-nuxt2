@@ -5,9 +5,7 @@
 	<!--	<img class="detailing__img"-->
 	<!--	     src="~/assets/img/detailing/detailing-1@1x.jpg"-->
 	<!--	     srcset="~/assets/img/detailing/detailing-1@2x.jpg 2x"-->
-	<!--	     -->
+	<!--	     loading="lazy"-->
 	<!--	     alt="" />-->
 	<!--</picture>-->
-	<img class="detailing__img"
-	     src="~/assets/img/detailing/detailing-1@1x.jpg" alt="" />
 </template>

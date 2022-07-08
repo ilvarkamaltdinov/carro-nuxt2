@@ -21,11 +21,9 @@
 					<!--	<img class="text__figure-img"-->
 					<!--	     src="~/assets/img/figures/figure-5@1x.png"-->
 					<!--	     srcset="~/assets/img/figures/figure-5@2x.png 2x"-->
-					<!--	     -->
+					<!--	     loading="lazy"-->
 					<!--	     alt="" />-->
 					<!--</picture>-->
-					<img class="text__figure-img"
-					     src="~/assets/img/figures/figure-5@1x.png" alt="" />
 				</div>
 				<div class="text__content">
 					<div class="text__contacts-group">

@@ -3,8 +3,6 @@
 		<h2 class="heading heading--h2 visually-hidden">Об услуге выкупа</h2>
 		<div class="text__wrap text__wrap--figure">
 			<div class="text__figure figure">
-				<img class="text__figure-img"
-				     src="~/assets/img/figures/figure-7@1x.png" alt="" />
 				<!--<picture>-->
 				<!--	<source type="image/webp"-->
 				<!--	        media="(min-width: 768px)"-->
@@ -14,7 +12,7 @@
 				<!--	<img class="text__figure-img"-->
 				<!--	     src="~/assets/img/figures/figure-7@1x.png"-->
 				<!--	     srcset="~/assets/img/figures/figure-7@2x.png 2x"-->
-				<!--	     -->
+				<!--	     loading="lazy"-->
 				<!--	     alt="" />-->
 				<!--</picture>-->
 			</div>

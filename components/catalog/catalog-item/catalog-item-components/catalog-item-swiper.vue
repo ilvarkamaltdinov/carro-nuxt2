@@ -8,21 +8,17 @@
 				     :key="image.thumb">
 					<a class="catalog__img-link"
 					   href="">
-						<!--<picture>-->
-						<!--	<source type="image/webp"-->
-						<!--	        media="(min-width: 768px)"-->
-						<!--	        :srcset="image.thumb" />-->
-						<!--	<source media="(min-width: 768px)"-->
-						<!--	        :srcset="image.thumb" />-->
-						<!--	<img class="lazyload"-->
-						<!--	     :src="image.tumb"-->
-						<!--	     :srcset="image.thumb"-->
-						<!--	     alt="" />-->
-						<!--</picture>-->
-						<img class="lazyload"
-						     :src="image.tumb"
-						     :srcset="image.thumb"
-						     alt="" />
+						<picture>
+							<source type="image/webp"
+							        media="(min-width: 768px)"
+							        :srcset="image.thumb" />
+							<source media="(min-width: 768px)"
+							        :srcset="image.thumb" />
+							<img class="lazyload"
+							     :src="image.tumb"
+							     :srcset="image.thumb"
+							     alt="" />
+						</picture>
 					</a>
 				</div>
 				<catalog-item-call-card class="swiper-slide" :offer="offer"/>
