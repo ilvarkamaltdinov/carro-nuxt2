@@ -77,15 +77,8 @@ export default {
         '@nuxtjs/device',
         '@nuxtjs/axios',
         '@nuxtjs/sitemap',
-        '@nuxt/image',
         '@nuxtjs/svg-sprite'
     ],
-    serverMiddleware: {
-        '/_ipx': '~/server/middleware/ipx.js'
-    },
-    image: {
-        dir: 'assets/img'
-    },
     svgSprite: {
         input: '~/assets/icons/',
         svgoConfig: {

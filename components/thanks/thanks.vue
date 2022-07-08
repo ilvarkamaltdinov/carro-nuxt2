@@ -12,9 +12,17 @@
 		<div class="thanks__block grid__col-12 grid text">
 			<div class="grid__col-8 text__wrap text__wrap--figure">
 				<div class="text__figure figure">
-					<nuxt-picture quality="100"
-					              :imgAttrs="{class:'text__figure-img'}"
-					              src="img/figures/figure-1@2x.png" />
+					<picture>
+						<source type="image/webp"
+						        media="(min-width: 768px)"
+						        :data-srcset="`${require(`~/assets/img/figures/figure-1@1x.webp`)} 1x, ${require(`~/assets/img/figures/figure-1@2x.webp`)} 2x`" />
+						<source media="(min-width: 768px)"
+						        :data-srcset="`${require(`~/assets/img/figures/figure-1@1x.png`)} 1x, ${require(`~/assets/img/figures/figure-1@2x.png`)} 2x`" />
+						<img class="text__figure-img lazyload"
+						     data-src="img/figures/figure-1@1x.png"
+						     :data-srcset="`${require(`~/assets/img/figures/figure-1@2x.png`)} 2x`"
+						     alt="" />
+					</picture>
 				</div>
 				<div class="text__content">
 					

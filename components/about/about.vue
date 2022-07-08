@@ -3,7 +3,7 @@
 		<div class="heading-group heading-group--h1">
 			<div class="heading-group__wrap">
 				<h1 class="heading heading--h1">
-					{{pageTitle}}
+					{{ pageTitle }}
 					<span class="heading__promo"></span>
 				</h1>
 				<span class="heading-group__label">Находим лучшие автомобили с 2015 года</span>
@@ -12,9 +12,17 @@
 		<div class="about__block grid__col-12 grid text">
 			<div class="grid__col-8 text__wrap text__wrap--figure">
 				<div class="text__figure figure">
-					<nuxt-picture quality="100"
-					              :imgAttrs="{class:'text__figure-img'}"
-					              src="img/figures/figure-4@2x.png" />
+					<picture>
+						<source type="image/webp"
+						        media="(min-width: 768px)"
+						        :data-srcset="`${require(`~/assets/img/figures/figure-4@1x.webp`)} 1x, ${require(`~/assets/img/figures/figure-4@2x.webp`)} 2x`" />
+						<source media="(min-width: 768px)"
+						        :data-srcset="`${require(`~/assets/img/figures/figure-4@1x.png`)} 1x, ${require(`~/assets/img/figures/figure-4@2x.png`)} 2x`" />
+						<img class="text__figure-img lazyload"
+						     data-src="img/figures/figure-4@1x.png"
+						     :data-srcset="`${require(`~/assets/img/figures/figure-4@2x.png`)} 2x`"
+						     alt="" />
+					</picture>
 				</div>
 				<div class="text__content">
 					<h2 class="heading heading--h2">Коротко о главном</h2>

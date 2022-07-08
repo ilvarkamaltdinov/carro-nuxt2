@@ -16,7 +16,7 @@
 								<p class="stories__modal-text"> Подарки, выгодная процентная ставка, Trade-In как первый взнос.</p>
 							</div>
 							<div class="stories__modal-img-wrap">
-								<nuxt-picture quality="100" :imgAttrs="{class:'stories__modal-img'}" :src="`img/stories/stories-modal/stories-modal-1@2x.png`"/>
+								<!--<nuxt-picture quality="100" :imgAttrs="{class:'stories__modal-img'}" :src="`img/stories/stories-modal/stories-modal-1@2x.png`"/>-->
 							</div>
 							<button-typical text="Заявка на автокредит" class="button--link button--more"/>
 						</div>
