@@ -5,8 +5,10 @@
 		   href="">
 			<div class="slider-index__media-wrap">
 				<div class="slider-index__media">
-					<nuxt-picture quality="100" :imgAttrs="{class:'slider-index__media slider-index__media--element'}" :src="`img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@2x.png`"/>
-					<nuxt-picture quality="100" :imgAttrs="{class:'slider-index__media slider-index__media--car'}" :src="`img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@2x.png`"/>
+					<img class="slider-index__media slider-index__media--element" v-lazy-load :data-src="require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@2x.png`)" alt="">
+					<img class="slider-index__media slider-index__media--car" v-lazy-load :data-src="require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@2x.png`)" alt="">
+					<!--<nuxt-picture quality="100" :imgAttrs="{class:'slider-index__media slider-index__media&#45;&#45;element'}" :src=""/>-->
+					<!--<nuxt-picture quality="100" :imgAttrs="{class:'slider-index__media slider-index__media&#45;&#45;car'}" :src="``"/>-->
 				</div>
 			</div>
 			<div class="slider-index__text-wrap">

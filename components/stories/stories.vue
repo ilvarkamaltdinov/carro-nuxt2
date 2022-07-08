@@ -2,12 +2,10 @@
 	<section class="page-main__stories stories">
 		<h2 class="visually-hidden">Акции и спецпредложения</h2>
 		<ul class="stories__list">
-			<stories-item :index="index+1"
-			              v-for="(item, index) in storiesItems"
-			              :key="index">
-				{{ item }}
-				{{ index }}
-			</stories-item>
+			<stories-item :stories="item"
+			              @click="openStories(item.stories)"
+			              v-for="item in stories"
+			              :key="item.id" />
 		</ul>
 	</section>
 </template>

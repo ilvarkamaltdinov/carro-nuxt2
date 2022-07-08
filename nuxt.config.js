@@ -85,7 +85,8 @@ export default {
         '@nuxtjs/device',
         '@nuxtjs/axios',
         '@nuxtjs/sitemap',
-        '@nuxt/image'
+        '@nuxt/image',
+        ['nuxt-lazy-load', {directiveOnly: true}]
     ],
     serverMiddleware: {
         '/_ipx': '~/server/middleware/ipx.js'
@@ -128,6 +129,6 @@ export default {
         api_endpoint: process.env.API_ENDPOINT,
         domain: process.env.DOMAIN,
         site_id: process.env.SITE_ID,
-        default_percent:process.env.DEFAULT_PERCENT
+        default_percent: process.env.DEFAULT_PERCENT
     }
 }

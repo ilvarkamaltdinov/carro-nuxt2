@@ -1,5 +1,5 @@
 <template>
-	<nuxt-picture quality="100" :imgAttrs="{class:'featured__img'}" :src="`img/featured/featured-${img}@2x.png`"/>
+	<img :data-src="require(`~/assets/img/featured/featured-${img}@2x.png`)" v-lazy-load>
 </template>
 <script>
 export default {

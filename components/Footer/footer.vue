@@ -2,18 +2,21 @@
 	<footer class="page-footer">
 		<div class="page-footer__top"></div>
 		<div class="page-footer__logo">
-			<picture>
-				<source type="image/webp"
-				        media="(min-width: 768px)"
-				        srcset="~/assets/img/logo-footer@1x.webp 1x, ~/assets/img/logo-footer@2x.webp 2x" />
-				<source media="(min-width: 768px)"
-				        srcset="~/assets/img/logo-footer@1x.png 1x, ~/assets/img/logo-footer@2x.png 2x" />
-				<img class="page-footer__logo-img"
-				     src="~/assets/img/logo-footer@1x.png"
-				     srcset="~/assets/img/logo-footer@2x.png 2x"
-				     loading="lazy"
-				     alt="" />
-			</picture>
+			<img class="page-footer__logo-img"
+			     src="~/assets/img/logo-footer@1x.png"
+			     alt="" />
+			<!--<picture>-->
+			<!--	<source type="image/webp"-->
+			<!--	        media="(min-width: 768px)"-->
+			<!--	        srcset="~/assets/img/logo-footer@1x.webp 1x, ~/assets/img/logo-footer@2x.webp 2x" />-->
+			<!--	<source media="(min-width: 768px)"-->
+			<!--	        srcset="~/assets/img/logo-footer@1x.png 1x, ~/assets/img/logo-footer@2x.png 2x" />-->
+			<!--	<img class="page-footer__logo-img"-->
+			<!--	     src="~/assets/img/logo-footer@1x.png"-->
+			<!--	     srcset="~/assets/img/logo-footer@2x.png 2x"-->
+			<!--	     -->
+			<!--	     alt="" />-->
+			<!--</picture>-->
 		</div>
 		<div class="page-footer__wrap grid grid--footer">
 			<div class="page-footer__contacts grid__col-12">
@@ -86,13 +89,15 @@
 				<div class="page-footer__cars-stock">Автомобилей в наличии:
 					<span class="page-footer__cars-stock-number">{{ allMarksCount }}</span>
 				</div>
-				<footer-marks/>
+				<footer-marks />
 			</div>
 			<div class="page-footer__disclaimer grid__col-12">
 				
 				<p class="page-footer__disclaimer-p">
-					Годовая ставка автокредита варьируется от 4.9% до 16,5% и зависит от конкретного банка, суммы займа и кредитной
-					программы. Минимальный срок погашения от 61 дня, максимальный - 84 месяца. При этом любые дополнительные комисси
+					Годовая ставка автокредита варьируется от 4.9% до 16,5% и зависит от конкретного банка, суммы займа и
+					кредитной
+					программы. Минимальный срок погашения от 61 дня, максимальный - 84 месяца. При этом любые дополнительные
+					комисси
 					автопорталом CARRO не взимаются.
 				</p>
 				

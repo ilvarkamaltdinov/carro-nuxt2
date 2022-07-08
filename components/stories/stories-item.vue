@@ -1,28 +1,19 @@
 <template>
 	<li class="stories__item"
-	    @click="setStoriesModal(true)">
+	    @click="$emit('click')">
 		<div class="stories__figure">
-			<nuxt-picture quality="100" :imgAttrs="{class:'stories__img'}" :src="`img/stories/stories-${index}@2x.png`"/>
+			<img v-lazy-load :data-src="require(`~/assets/img/stories/stories-${stories.id}@2x.png`)"
+			     alt="stories-image">
 		</div>
 		<div class="stories__text">
-			<slot></slot>
+			{{stories.title}}
 		</div>
 	</li>
 </template>
 <script>
-import {mapMutations} from "vuex";
-
 export default {
-	methods: {
-		...mapMutations({
-			setStoriesModal: 'stories/stories/SET_STORIES_MODAL'
-		})
-	},
 	props: {
-		index: {
-			type: Number,
-			default: null
-		}
+		stories: Object
 	}
 }
 </script>

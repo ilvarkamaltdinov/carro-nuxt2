@@ -30,7 +30,6 @@
 			<div class="grid__col-8">
 				<filter-sort />
 				<component :is="$device.isMobile ? 'catalog-list-used-mobile' : 'catalog-list-used-desktop'" />
-				<button-typical @click="moreOffers" text="Показать больше" class="button--link button--more"/>
 			</div>
 		</section>
 	</div>

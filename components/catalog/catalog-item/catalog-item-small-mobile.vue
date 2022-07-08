@@ -3,17 +3,21 @@
 		<div class="catalog__img">
 			<a class="catalog__img-link"
 			   href="">
-				<picture>
-					<source type="image/webp"
-					        media="(min-width: 768px)"
-					        :srcset="offer.images[0].thumb">
-					<source media="(min-width: 768px)"
-					        :srcset="offer.images[0].thumb">
-					<img class=" ls-is-cached lazyloaded"
-					     :src="offer.images[0].thumb"
-					     :srcset="offer.images[0].thumb"
-					     alt="">
-				</picture>
+				<!--<picture>-->
+				<!--	<source type="image/webp"-->
+				<!--	        media="(min-width: 768px)"-->
+				<!--	        :srcset="offer.images[0].thumb">-->
+				<!--	<source media="(min-width: 768px)"-->
+				<!--	        :srcset="offer.images[0].thumb">-->
+				<!--	<img class=" ls-is-cached lazyloaded"-->
+				<!--	     :src="offer.images[0].thumb"-->
+				<!--	     :srcset="offer.images[0].thumb"-->
+				<!--	     alt="">-->
+				<!--</picture>-->
+				<img class=" ls-is-cached lazyloaded"
+				     :src="offer.images[0].thumb"
+				     :srcset="offer.images[0].thumb"
+				     alt="">
 			</a>
 		</div>
 		<div class="catalog__info">

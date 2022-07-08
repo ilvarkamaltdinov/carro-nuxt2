@@ -5,8 +5,7 @@
 		   :class="{'catalog__img-link--active':index === activeTab}"
 		   v-for="(i,index) in limit"
 		   :key="index">
-			<img :src="images[index] ? images[index].thumb : ''"
-			     alt="image" />
+			<img v-lazy-load :data-src="images[index] ? images[index].thumb : ''"/>
 		</a>
 		<div class="tmb-wrap">
 			<div class="tmb-wrap-table"

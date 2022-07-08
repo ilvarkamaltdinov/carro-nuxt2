@@ -18,17 +18,23 @@
 					</div>
 				</div>
 				<div class="dealers__item-img-wrap">
-					<picture>
-						<source type="image/webp"
-						        media="(min-width: 768px)"
-						        srcset="~/assets/img/dealers/photos/autograd/dealer-3@1x.webp 1x,~/assets/img/dealers/photos/autograd/dealer-3@2x.webp 2x" />
-						<img class="dealers__item-img"
-						     src="~/assets/img/dealers/photos/autograd/dealer-3@1x.jpg"
-						     srcset="~/assets/img/dealers/photos/autograd/dealer-3@2x.jpg 2x"
-						     loading="lazy"
-						     alt="" />
-					</picture>
+					<!--<picture>-->
+					<!--	<source type="image/webp"-->
+					<!--	        media="(min-width: 768px)"-->
+					<!--	        srcset="~/assets/img/dealers/photos/autograd/dealer-3@1x.webp 1x,~/assets/img/dealers/photos/autograd/dealer-3@2x.webp 2x" />-->
+					<!--	<img class="dealers__item-img"-->
+					<!--	     src="~/assets/img/dealers/photos/autograd/dealer-3@1x.jpg"-->
+					<!--	     srcset="~/assets/img/dealers/photos/autograd/dealer-3@2x.jpg 2x"-->
+					<!--	     -->
+					<!--	     alt="" />-->
+					<!--</picture>-->
+					<img class="dealers__item-img"
+					     src="~/assets/img/dealers/photos/autograd/dealer-3@1x.jpg"
+					
+					     alt="" />
 					<!--<button-show>Подробнее о дилере</button-show>-->
+					<!--<button-show>Подробнее о дилере</button-show>--2x
+					>
 					<a class="button button--show button--show-link"
 					   href=""
 					   target="_blank">Сайт автоцентра
@@ -46,16 +52,19 @@
 					</div>
 				</div>
 				<div class="dealers__item-img-wrap">
-					<picture>
-						<source type="image/webp"
-						        media="(min-width: 768px)"
-						        srcset="~/assets/img/dealers/photos/autograd/dealer-3@1x.webp 1x,~/assets/img/dealers/photos/autograd/dealer-3@2x.webp 2x" />
-						<img class="dealers__item-img"
-						     src="~/assets/img/dealers/photos/autograd/dealer-3@1x.jpg"
-						     srcset="~/assets/img/dealers/photos/autograd/dealer-3@2x.jpg 2x"
-						     loading="lazy"
-						     alt="" />
-					</picture>
+					<!--<picture>-->
+					<!--	<source type="image/webp"-->
+					<!--	        media="(min-width: 768px)"-->
+					<!--	        srcset="~/assets/img/dealers/photos/autograd/dealer-3@1x.webp 1x,~/assets/img/dealers/photos/autograd/dealer-3@2x.webp 2x" />-->
+					<!--	<img class="dealers__item-img"-->
+					<!--	     src="~/assets/img/dealers/photos/autograd/dealer-3@1x.jpg"-->
+					<!--	     srcset="~/assets/img/dealers/photos/autograd/dealer-3@2x.jpg 2x"-->
+					<!--	     -->
+					<!--	     alt="" />-->
+					<!--</picture>-->
+					<img class="dealers__item-img"
+					     src="~/assets/img/dealers/photos/autograd/dealer-3@1x.jpg"
+					     alt="" />
 					<!--<button-show>Подробнее о дилере</button-show>-->
 					<a class="button button--show button--show-link"
 					   href=""

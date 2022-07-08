@@ -4,7 +4,7 @@
 			<button-autoteka @click="autoteka(offer)" v-if="long" />
 			<button-favorite :active="likesArray.some(id => id === String(offer.external_id))"
 			                 @click="like()" />
-			<button-compare v-if="long" />
+			<!--<button-compare v-if="long" />-->
 			<button-call @click="call" />
 		</div>
 		<div class="catalog__actions-main" v-if="long">
