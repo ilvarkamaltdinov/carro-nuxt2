@@ -129,8 +129,8 @@ export default {
 			// autoplayDisableOnInteraction: true,
 			autoplay: false,
 			slidesPerView: 3,
-			initialSlide: 1,
-			centeredSlides: true,
+			initialSlide: 0,
+			// centeredSlides: true,
 			watchSlidesProgress: true,
 			spaceBetween: 24,
 			navigation: {

@@ -14,7 +14,7 @@ export const actions = {
         let response = await client.query(
             {
                 query: marks,
-                variables: {site_id: $config.site_id}
+                variables: {site_id: $config.site_id, category: 'used'}
             })
         commit('marks/marks/SET_ALL_MARKS', response.data.marks)
     },

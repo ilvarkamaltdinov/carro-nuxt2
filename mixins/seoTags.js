@@ -12,8 +12,9 @@ export default {
             let response = await client.query(
                 {
                     query: folders,
-                    variables: {site_id: $config.site_id, mark_slug: route.params.mark}
+                    variables: {site_id: $config.site_id, mark_slug: route.params.mark, category: route.params.category}
                 })
+            console.log(response)
             store.commit('folders/folders/SET_FOLDERS', response.data.folders)
         }
         return {

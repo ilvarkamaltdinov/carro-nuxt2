@@ -14,6 +14,12 @@ export default {
 			default: ''
 		}
 	},
+	// watch:{
+	// 	options(){
+	// 		const selector = document.querySelector('.' + this.rangeClass);
+	// 		console.log(selector)
+	// 	}
+	// },
 	mounted() {
 		ionRangeSlider.ionRangeSlider('.' + this.rangeClass, this.options);
 		let selector = document.querySelector('.' + this.rangeClass);

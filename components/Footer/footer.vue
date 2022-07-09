@@ -64,20 +64,21 @@
 						           href="">Автосалоны-партнеры
 						</nuxt-link>
 					</li>
-					<li class="page-footer__links-item">
-						<a class="page-footer__link"
-						   href="">Вакансии
-						</a>
-					</li>
+					<!--<li class="page-footer__links-item">-->
+					<!--	<a class="page-footer__link"-->
+					<!--	   href="">Вакансии-->
+					<!--	</a>-->
+					<!--</li>-->
 					<li class="page-footer__links-item">
 						<a class="page-footer__link"
 						   href="">Пользовательское соглашение
 						</a>
 					</li>
 					<li class="page-footer__links-item">
-						<a class="page-footer__link"
-						   href="">Карта сайта
-						</a>
+						<nuxt-link to="/sitemap"
+						           class="page-footer__link">
+							Карта сайта
+						</nuxt-link>
 					</li>
 				</ul>
 			</div>
@@ -85,13 +86,15 @@
 				<div class="page-footer__cars-stock">Автомобилей в наличии:
 					<span class="page-footer__cars-stock-number">{{ allMarksCount }}</span>
 				</div>
-				<footer-marks/>
+				<footer-marks />
 			</div>
 			<div class="page-footer__disclaimer grid__col-12">
 				
 				<p class="page-footer__disclaimer-p">
-					Годовая ставка автокредита варьируется от 4.9% до 16,5% и зависит от конкретного банка, суммы займа и кредитной
-					программы. Минимальный срок погашения от 61 дня, максимальный - 84 месяца. При этом любые дополнительные комисси
+					Годовая ставка автокредита варьируется от 4.9% до 16,5% и зависит от конкретного банка, суммы займа и
+					кредитной
+					программы. Минимальный срок погашения от 61 дня, максимальный - 84 месяца. При этом любые дополнительные
+					комисси
 					автопорталом CARRO не взимаются.
 				</p>
 				
