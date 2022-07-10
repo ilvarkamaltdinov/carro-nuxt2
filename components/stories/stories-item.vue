@@ -1,5 +1,6 @@
 <template>
 	<li class="stories__item"
+	    :class="{'swiper-slide': !$device.isMobile}"
 	    @click="$emit('click')">
 		<div class="stories__figure">
 			<img class="stories__img lazyload" :data-src="require(`~/assets/img/stories/stories-${stories.id}@2x.png`)"

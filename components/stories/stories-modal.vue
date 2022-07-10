@@ -2,7 +2,7 @@
 	<div class="stories stories--modal">
 		<div class="stories__modal-wrap">
 			<!--TODO кнопка закрытия сториз нужна ли? и если нужна сделать больше z-index-->
-			<button class="stories__close" @click="setStoriesModal(false)">
+			<button class="stories__close" @click="closeStories()">
 				<svg-icon class="stories__close-icon"
 				          name="icon-close-s"/>
 			</button>
