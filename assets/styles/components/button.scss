@@ -139,6 +139,12 @@
   }
 }
 
+.button--show-active {
+  &::before {
+    display: none;
+  }
+}
+
 .button--show-link {
   &::after,
   &::before {
