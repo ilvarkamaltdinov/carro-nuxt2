@@ -3,7 +3,7 @@
 		<div class="catalog__title">
 			<h3 class="catalog__heading">
 				<nuxt-link event=""
-				           @click.native="linkClick()"
+				           @click.native="$emit('linkClick')"
 				           :to="`/${currentCategory}/${currentMark}/${currentFolder}/${currentId}`"
 				           class="catalog__title-link">
 					<span class="catalog__title">
@@ -36,19 +36,6 @@ export default {
 		currentId() {
 			return this.offer.external_id
 		},
-	},
-	methods: {
-		...mapActions({
-			closeModal: 'modal/modal-main/closeModal'
-		}),
-		...mapMutations({
-			setIsOfferClick: 'filters/filters/SET_IS_OFFER_CLICK'
-		}),
-		async linkClick() {
-			await this.closeModal()
-			await this.setIsOfferClick(true)
-			await this.$router.push(`/${this.currentCategory}/${this.currentMark}/${this.currentFolder}/${this.currentId}`)
-		}
 	},
 	props: {
 		offer: {

@@ -1,5 +1,7 @@
 export const state = () => ({
     modal: false,
+    openModalCount: 0,
+    oldModalData: null,
     modalTitle: '',
     modalSubTitle: '',
     modalData: {},
@@ -20,18 +22,47 @@ export const getters = {
     },
     modalComponent: (state) => {
         return state.modalComponent
-    }
+    },
+    oldModalData: (state) => {
+        return state.oldModalData
+    },
 }
 export const actions = {
-    async openModal({commit}, payload) {
-        commit('SET_MODAL_TITLE', payload.modal_title)
-        commit('SET_MODAL_SUB_TITLE', payload.modal_sub_title)
-        commit('SET_MODAL_DATA', payload.modal_data)
-        commit('SET_MODAL_COMPONENT', payload.modal_component)
-        commit('SET_MODAL', true)
+    async openModal({state, commit}, payload) {
+        commit('SET_OPEN_MODAL_COUNT', state.openModalCount += 1)
+        if (state.openModalCount > 1) {
+            await commit('SET_OPEN_MODAL_DATA', {
+                modalTitle: state.modalTitle,
+                modalSubTitle: state.modalSubTitle,
+                modalData: state.modalData,
+                modalComponent: state.modalComponent
+            })
+            commit('SET_MODAL_TITLE', payload.modal_title)
+            commit('SET_MODAL_SUB_TITLE', payload.modal_sub_title)
+            commit('SET_MODAL_DATA', payload.modal_data)
+            commit('SET_MODAL_COMPONENT', payload.modal_component)
+            commit('SET_MODAL', true)
+        } else {
+            commit('SET_MODAL_TITLE', payload.modal_title)
+            commit('SET_MODAL_SUB_TITLE', payload.modal_sub_title)
+            commit('SET_MODAL_DATA', payload.modal_data)
+            commit('SET_MODAL_COMPONENT', payload.modal_component)
+            commit('SET_MODAL', true)
+
+        }
+
     },
-    async closeModal({commit}) {
-        await commit('SET_MODAL', false)
+    async closeModal({state, commit}) {
+        if(state.openModalCount > 1){
+            commit('SET_MODAL_COMPONENT', state.oldModalData.modalComponent)
+            commit('SET_MODAL_TITLE', state.oldModalData.modalTitle)
+            commit('SET_MODAL_SUB_TITLE', state.oldModalData.modalSubTitle)
+            commit('SET_MODAL_DATA', state.oldModalData.modalData)
+        }
+        else{
+            commit('SET_MODAL', false)
+        }
+        commit('SET_OPEN_MODAL_COUNT', state.openModalCount -= 1)
     },
 }
 
@@ -50,5 +81,11 @@ export const mutations = {
     },
     SET_MODAL_COMPONENT(state, data) {
         state.modalComponent = data
-    }
+    },
+    SET_OPEN_MODAL_COUNT(state, data) {
+        state.openModalCount = data
+    },
+    SET_OPEN_MODAL_DATA(state, data) {
+        state.oldModalData = data
+    },
 }

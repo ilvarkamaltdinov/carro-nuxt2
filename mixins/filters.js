@@ -39,6 +39,10 @@ export default {
       });
       return formatter.format(value);
     },
+    toCurrencyValue(value) {
+      let formatter = new Intl.NumberFormat('ru-RU').format(value);
+      return formatter
+    },
     access_acredit(price) {
       let percent = 4.9;
       let n = 84;

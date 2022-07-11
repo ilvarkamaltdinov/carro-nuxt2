@@ -14,6 +14,7 @@
 	</main>
 </template>
 <script>
+import {mapGetters, mapMutations} from "vuex";
 import seoTags from "@/mixins/seoTags";
 export default {
 	mixins:[seoTags]
