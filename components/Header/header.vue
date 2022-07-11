@@ -4,7 +4,7 @@
 			<div class="page-header__wrap grid__col-12">
 				<div class="page-header__logo-block">
 					<label class="page-header__toggle hamburger"
-					       @change="setModalMenu(!modalMenu)"
+					       @change="burgerClick()"
 					       for="hamburger">
 						<input id="hamburger"
 						       :checked="modalMenu"
@@ -38,7 +38,7 @@
 							       placeholder="Поиск по маркам"
 							       value="" />
 							<svg-icon class="form__icon-search icon"
-							          name="icon-search"/>
+							          name="icon-search" />
 						</label>
 					</div>
 				</div>
@@ -51,7 +51,7 @@
 						<a class="page-header__buttons-link"
 						   href="">
 							<svg-icon class="icon"
-							          name="icon-search"/>
+							          name="icon-search" />
 						</a>
 					</li>
 					<li class="page-header__buttons-item">
@@ -61,14 +61,14 @@
 							      class="page-header__favorites-count">{{ likesArray.length }}
 							</span>
 							<svg-icon class="icon"
-							          name="icon-favorites"/>
+							          name="icon-favorites" />
 						</nuxt-link>
 					</li>
 					<li class="page-header__buttons-item">
 						<a class="page-header__buttons-link"
 						   href="">
 							<svg-icon class="icon"
-							          name="icon-call"/>
+							          name="icon-call" />
 						</a>
 					</li>
 				</ul>
@@ -80,6 +80,7 @@
 						    v-for="index in 8"
 						    :key="index">
 							<nuxt-link :to="'/used/' + allMarks[index].slug"
+							           @click.native="navMarkClick()"
 							           class="makes__link">
 								<div class="makes__title">{{ allMarks[index].title }}</div>
 								<div class="makes__count">{{ allMarks[index].offers_count }}</div>
@@ -88,10 +89,10 @@
 					</ul>
 				</div>
 				<button class="page-header__makes-more"
-				        @click.prevent="setModalMarks(!modalMarks)">
+				        @click.prevent="allMarksClick()">
 					Все марки
 					<svg-icon class="page-header__makes-more-arrow icon"
-					          name="icon-arrow"/>
+					          name="icon-arrow" />
 				</button>
 			</nav>
 		</div>
@@ -129,6 +130,18 @@ export default {
 			setModalMenu: 'modal/modal-menu/setModalMenu',
 			setModalMarks: 'modal/modal-marks/setModalMarks',
 		}),
+		burgerClick() {
+			this.setModalMenu(!this.modalMenu)
+			this.setModalMarks(false)
+		},
+		navMarkClick() {
+			this.setModalMenu(false)
+			this.setModalMarks(false)
+		},
+		allMarksClick() {
+			this.setModalMarks(!this.modalMarks)
+			this.setModalMenu(false)
+		},
 		...mapActions({
 			getLikes: 'favorite/favorite/getLikes',
 		})
