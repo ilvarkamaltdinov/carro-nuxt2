@@ -17,6 +17,9 @@
     justify-content: center;
     align-items: center;
     margin: 0 16px;
+
+    border: 1px solid $colorBgActive;
+    border-radius: 6px;
   }
 
   .pagination__arrow {
@@ -60,8 +63,7 @@
     aspect-ratio: 1 / 1;
     color: $colorBgActive;
     padding: 16px;
-    border: 1px solid $colorBgActive;
-    border-right: none;
+    border-right: 1px solid $colorBgActive;
 
     &:hover {
       color: $colorText;
@@ -69,15 +71,13 @@
   }
 
   .pagination__item {
-    &:first-child .pagination__link {
-      border-top-left-radius: 6px;
-      border-bottom-left-radius: 6px;
+    &:first-child,
+    &:last-child {
+      display: none;
     }
 
-    &:last-child .pagination__link {
-      border-top-right-radius: 6px;
-      border-bottom-right-radius: 6px;
-      border-right: 1px solid $colorBgActive;
+    &:nth-last-child(2) .pagination__link {
+      border-right: none;
     }
   }
 }
