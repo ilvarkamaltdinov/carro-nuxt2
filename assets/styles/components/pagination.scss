@@ -4,50 +4,80 @@
   }
 }
 
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 24px;
-}
-
-.pagination__item--active .pagination__link {
-  color: $colorText;
-}
-
-.pagination__item {
-  &:first-child {
-    display: none;
+@media (min-width: $tablet-width) {
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    align-items: center;
   }
 
-  &:last-child {
-    display: none;
+  .pagination__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 16px;
   }
 
-  &:first-of-type .pagination__link {
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
+  .pagination__arrow {
+    display: block;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    fill: $colorBgActive;
+    transition: $transitionHover;
+
+    &:hover {
+      fill: $colorText;
+    }
   }
 
-  &:last-of-type .pagination__link {
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
+  .pagination__arrow--prev {
+    transform: rotate(90deg);
   }
 
-  &:last-child .pagination__link {
-    border-right: 1px solid $colorBgActive;
+  .pagination__arrow--next {
+    transform: rotate(-90deg);
   }
-}
 
-.pagination__link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-  aspect-ratio: 1 / 1;
-  color: $colorBgActive;
-  padding: 16px;
-  border: 1px solid $colorBgActive;
-  border-right: none;
+  .pagination__arrow-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .pagination__item--active .pagination__link {
+    color: $colorText;
+  }
+
+  .pagination__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    aspect-ratio: 1 / 1;
+    color: $colorBgActive;
+    padding: 16px;
+    border: 1px solid $colorBgActive;
+    border-right: none;
+
+    &:hover {
+      color: $colorText;
+    }
+  }
+
+  .pagination__item {
+    &:first-child .pagination__link {
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+    }
+
+    &:last-child .pagination__link {
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+      border-right: 1px solid $colorBgActive;
+    }
+  }
 }
