@@ -84,7 +84,7 @@
 			</div>
 			<div class="page-footer__cars grid__col-12">
 				<div class="page-footer__cars-stock">Автомобилей в наличии:
-					<span class="page-footer__cars-stock-number">{{ allMarksCount }}</span>
+					<span class="page-footer__cars-stock-number">{{ allMarksCount | toCurrencyValue}}</span>
 				</div>
 				<footer-marks />
 			</div>
@@ -134,8 +134,10 @@
 </template>
 <script>
 import {mapGetters} from 'vuex'
+import filters from "@/mixins/filters";
 
 export default {
+	mixins:[filters],
 	computed: {
 		...mapGetters({
 			allMarksCount: 'marks/marks/allMarksCount',

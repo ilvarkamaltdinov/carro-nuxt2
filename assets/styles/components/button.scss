@@ -95,7 +95,6 @@
 .button--option {
   color: $colorLink;
   background-color: $colorBgButton;
-  width: 100%;
   margin-top: 16px;
   height: 48px;
   width: 48px;
@@ -123,7 +122,6 @@
   &::after {
     margin-left: 8px;
   }
-
   &::after,
   &::before {
     content: "";
@@ -134,7 +132,6 @@
     width: 10px;
     top: 1px;
   }
-
   &::before {
     right: 10px;
     order: 2;
