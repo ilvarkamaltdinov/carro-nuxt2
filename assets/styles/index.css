@@ -1,9 +1,9 @@
 /* Error: Can't find stylesheet to import.
  *   ,
- * 2 | @import "swiper/swiper.scss";
- *   |         ^^^^^^^^^^^^^^^^^^^^
+ * 1 | @import "normalize.css/normalize";
+ *   |         ^^^^^^^^^^^^^^^^^^^^^^^^^
  *   '
- *   settings/libs.scss 2:9   @import
+ *   settings/libs.scss 1:9   @import
  *   settings/index.scss 8:9  @import
  *   index.scss 1:9           root stylesheet */
 
@@ -15,5 +15,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a   \2577 \a 2 \2502  @import \"swiper/swiper.scss\";\a   \2502          ^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   settings/libs.scss 2:9   @import\a   settings/index.scss 8:9  @import\a   index.scss 1:9           root stylesheet";
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @import \"normalize.css/normalize\";\a   \2502          ^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   settings/libs.scss 1:9   @import\a   settings/index.scss 8:9  @import\a   index.scss 1:9           root stylesheet";
 }

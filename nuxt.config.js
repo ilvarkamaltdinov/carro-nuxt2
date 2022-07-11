@@ -37,7 +37,6 @@ export default {
     },
     css: [
         '~/assets/styles/index.scss'
-        // {src: '@fancyapps/ui/dist/fancybox.css', lang: 'css'}
     ],
     plugins: [
         {src: '~/plugins/swiper.js'},

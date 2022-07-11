@@ -20,6 +20,7 @@
         "inputmask": "^5.0.5",
         "ipx": "^0.9.9",
         "lodash": "^4.17.21",
+        "normalize.css": "^8.0.1",
         "nuxt": "^2.15.7",
         "nuxt-lazysizes": "^1.4.2",
         "nuxt-start": "^2.15.8",
