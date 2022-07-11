@@ -3,18 +3,18 @@
 		<h2 class="heading heading--h2 visually-hidden">Об услуге выкупа</h2>
 		<div class="text__wrap text__wrap--figure">
 			<div class="text__figure figure">
-				<picture>
-					<source type="image/webp"
-					        media="(min-width: 768px)"
-					        srcset="~/assets/img/figures/figure-7@1x.webp 1x, ~/assets/img/figures/figure-7@2x.webp 2x" />
-					<source media="(min-width: 768px)"
-					        srcset="~/assets/img/figures/figure-7@1x.png 1x, ~/assets/img/figures/figure-7@2x.png 2x" />
-					<img class="text__figure-img"
-					     src="~/assets/img/figures/figure-7@1x.png"
-					     srcset="~/assets/img/figures/figure-7@2x.png 2x"
-					     loading="lazy"
-					     alt="" />
-				</picture>
+				<!--<picture>-->
+				<!--	<source type="image/webp"-->
+				<!--	        media="(min-width: 768px)"-->
+				<!--	        srcset="~/assets/img/figures/figure-7@1x.webp 1x, ~/assets/img/figures/figure-7@2x.webp 2x" />-->
+				<!--	<source media="(min-width: 768px)"-->
+				<!--	        srcset="~/assets/img/figures/figure-7@1x.png 1x, ~/assets/img/figures/figure-7@2x.png 2x" />-->
+				<!--	<img class="text__figure-img"-->
+				<!--	     src="~/assets/img/figures/figure-7@1x.png"-->
+				<!--	     srcset="~/assets/img/figures/figure-7@2x.png 2x"-->
+				<!--	     loading="lazy"-->
+				<!--	     alt="" />-->
+				<!--</picture>-->
 			</div>
 			<div class="text__content">
 				<p class="text__p">CARRO предложит лучшую цену на рынке за Ваш автомобиль. Забудьте об авто-аукционах, встречах

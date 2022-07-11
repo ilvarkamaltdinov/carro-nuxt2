@@ -49,7 +49,6 @@ export const actions = {
                 query: offers,
                 variables: Object.assign(variables, payload)
             })
-        console.log(response.data.offers.data)
         commit('SET_OFFERS', response.data.offers.data)
     },
 }

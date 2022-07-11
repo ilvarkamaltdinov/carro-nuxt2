@@ -4,43 +4,19 @@
 			<h1 class="visually-hidden">{{pageTitle}}</h1>
 			<div class="page-main__promo grid__col-8">
 				<slider-index />
-				<component :is="$device.isMobile ? 'stories' : 'stories-desktop'" />
+				<stories/>
 			</div>
 			<form-index />
 			<component :is="$device.isMobile ? 'catalog-list-index-mobile' : 'catalog-list-index-desktop'" />
 			<featured />
 			<video-about />
 		</div>
-		<transition name="fade">
-			<div v-if="storiesModal"
-			     class="stories__modal_wrapper-wrap">
-				<div @click="setStoriesModal(false)"
-				     class="overlay"></div>
-				<stories-modal />
-			</div>
-		</transition>
 	</main>
 </template>
 <script>
-import {mapGetters, mapMutations} from "vuex";
 import seoTags from "@/mixins/seoTags";
 export default {
-	mixins:[seoTags],
-	data() {
-		return {
-			storiesComponent: 'stories',
-		}
-	},
-	computed: {
-		...mapGetters({
-			storiesModal: 'stories/stories/storiesModal'
-		})
-	},
-	methods: {
-		...mapMutations({
-			setStoriesModal: 'stories/stories/SET_STORIES_MODAL'
-		}),
-	}
+	mixins:[seoTags]
 }
 </script>
 <style>

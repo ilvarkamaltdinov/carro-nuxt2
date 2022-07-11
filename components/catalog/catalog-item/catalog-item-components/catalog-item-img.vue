@@ -1,6 +1,6 @@
 <template>
 	<a class="catalog__img-link">
-		<img :src="img" alt="image">
+		<img class="lazyload" :data-src="img" alt="image">
 	</a>
 </template>
 <script>

@@ -48,13 +48,6 @@ export default {
         {src: '~/plugins/lodash.js'},
         {src: '~/plugins/tippy.js'},
         {src: '~/plugins/helpers.js'}
-        // { src:'~/plugins/helpers.js' },
-        // { src:'~/plugins/slideToggle.js' },
-        // { src: "plugins/pagination.js", mode: 'client' },
-        // { src: "~/plugins/fancyapps-ui.js", mode: 'client' },
-        //
-        // { src: '~/plugins/ymapPlugin.js', mode: 'client' },
-        // '~/plugins/lodash'
     ],
     //TODO sitemap
     // sitemap: {
@@ -80,19 +73,12 @@ export default {
     modules: [
         ['vue-scrollto/nuxt', {duration: 300}],
         '@nuxtjs/style-resources',
-        '@nuxtjs/svg-sprite',
         '@nuxtjs/apollo',
         '@nuxtjs/device',
         '@nuxtjs/axios',
         '@nuxtjs/sitemap',
-        '@nuxt/image'
+        '@nuxtjs/svg-sprite'
     ],
-    serverMiddleware: {
-        '/_ipx': '~/server/middleware/ipx.js'
-    },
-    image: {
-        dir: 'assets/img'
-    },
     svgSprite: {
         input: '~/assets/icons/',
         svgoConfig: {
@@ -110,24 +96,29 @@ export default {
             }
         }
     },
+    buildModules: ['nuxt-lazysizes'],
+    lazySizes: {
+        extendAssetUrls: {
+            img: ['src', 'srcset', 'data-src', 'data-srcset'],
+            source: ['src', 'srcset', 'data-src', 'data-srcset']
+        }
+    },
     build: {
         extractCSS: true,
         loaders: {
             scss: {
                 implementation: require('sass')
             }
-        },
-        extend(config, ctx) {
-        } // blah blah
+        }
     },
-    server: {
-        host: "0.0.0.0"
-    },
+    // server: {
+    //     host: "0.0.0.0"
+    // },
     publicRuntimeConfig: {
         api_domain: process.env.API_DOMAIN,
         api_endpoint: process.env.API_ENDPOINT,
         domain: process.env.DOMAIN,
         site_id: process.env.SITE_ID,
-        default_percent:process.env.DEFAULT_PERCENT
+        default_percent: process.env.DEFAULT_PERCENT
     }
 }

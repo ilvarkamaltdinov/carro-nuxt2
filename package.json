@@ -21,6 +21,7 @@
         "ipx": "^0.9.9",
         "lodash": "^4.17.21",
         "nuxt": "^2.15.7",
+        "nuxt-lazysizes": "^1.4.2",
         "nuxt-start": "^2.15.8",
         "pug": "^3.0.2",
         "pug-plain-loader": "^1.1.0",
@@ -32,12 +33,12 @@
         "vuejs-paginate": "^2.1.0"
     },
     "devDependencies": {
-        "@nuxt/image": "^0.7.1",
         "@nuxt/types": "^2.15.8",
         "@nuxtjs/device": "^2.1.0",
         "@nuxtjs/style-resources": "^1.2.1",
         "sass": "^1.43.4",
         "sass-loader": "10.1.1",
-        "vue-yandex-maps": "^0.10.10"
+        "vue-yandex-maps": "^0.10.10",
+        "webp-loader": "^0.6.0"
     }
 }

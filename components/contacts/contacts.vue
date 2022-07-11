@@ -12,18 +12,18 @@
 		<div class="about__block grid__col-12 grid text">
 			<div class="grid__col-7 text__wrap text__wrap--figure">
 				<div class="text__figure figure">
-					<picture>
-						<source type="image/webp"
-						        media="(min-width: 768px)"
-						        srcset="~/assets/img/figures/figure-5@1x.webp 1x, ~/assets/img/figures/figure-5@2x.webp 2x" />
-						<source media="(min-width: 768px)"
-						        srcset="~/assets/img/figures/figure-5@1x.png 1x, ~/assets/img/figures/figure-5@2x.png 2x" />
-						<img class="text__figure-img"
-						     src="~/assets/img/figures/figure-5@1x.png"
-						     srcset="~/assets/img/figures/figure-5@2x.png 2x"
-						     loading="lazy"
-						     alt="" />
-					</picture>
+					<!--<picture>-->
+					<!--	<source type="image/webp"-->
+					<!--	        media="(min-width: 768px)"-->
+					<!--	        srcset="~/assets/img/figures/figure-5@1x.webp 1x, ~/assets/img/figures/figure-5@2x.webp 2x" />-->
+					<!--	<source media="(min-width: 768px)"-->
+					<!--	        srcset="~/assets/img/figures/figure-5@1x.png 1x, ~/assets/img/figures/figure-5@2x.png 2x" />-->
+					<!--	<img class="text__figure-img"-->
+					<!--	     src="~/assets/img/figures/figure-5@1x.png"-->
+					<!--	     srcset="~/assets/img/figures/figure-5@2x.png 2x"-->
+					<!--	     loading="lazy"-->
+					<!--	     alt="" />-->
+					<!--</picture>-->
 				</div>
 				<div class="text__content">
 					<div class="text__contacts-group">
