@@ -7,12 +7,14 @@
 					<button-filter @click="openFilter()" />
 				</div>
 				<div class="filter__buttons-sort select">
-					<div class="button button--action button--text filter__button" @click="isActive = !isActive">
+					<div class="button button--action button--text filter__button"
+					     @click="isActive = !isActive">
 						<svg-icon class="button__icon"
 						          :name="currentIcon" />
 						<span class="button__text">{{ currentSort }}</span>
 						<transition name="modal">
-							<ul v-if="!$device.isMobile" v-show="isActive"
+							<ul v-if="!$device.isMobile"
+							    v-show="isActive"
 							    class="select__list">
 								<li class="select__item"
 								    @click="sortChosen('price|asc')">
@@ -36,8 +38,8 @@
 				</div>
 			</div>
 			<div class="filter__buttons-wrap">
-				<button-view-s @click="changeView('s')" />
-				<button-view-l @click="changeView('l')" />
+				<button-view-s :modal="modal" @click="changeView('s')" />
+				<button-view-l :modal="modal" @click="changeView('l')" />
 			</div>
 		</div>
 	</div>
@@ -65,13 +67,14 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			sort_in_filter: 'filters/filters/sort',
-			sort_in_modal: 'modal/modal-choose/sort',
 			sortModal: 'modal/modal-choose/sort', // СОРТИРОВКА ДЛЯ КАТАЛОГА
-			sort: 'filters/filters/sort' // СОРТИРОВКА ДЛЯ ФИЛЬТРОВ
+			sort: 'filters/filters/sort', // СОРТИРОВКА ДЛЯ ФИЛЬТРОВ
+			viewModal:'modal/modal-choose/view', // ОТОБРАЖЕНИЕ ДЛЯ КАТАЛОГА
+			viewFilter:'filters/filters/view', // ОТОБРАЖЕНИЕ ДЛЯ ФИЛЬТРОВ
+			
 		}),
 		currentIcon() {
-			if (this.sort.split('|')[1]==='asc') {
+			if (this.sort.split('|')[1] === 'asc') {
 				return 'icon-sort'
 			} else {
 				return 'icon-sort-alt'
@@ -79,9 +82,9 @@ export default {
 		},
 		currentSort() {
 			if (this.modal) {
-				return this.sortList[this.sort_in_modal]
+				return this.sortList[this.sortModal]
 			} else {
-				return this.sortList[this.sort_in_filter]
+				return this.sortList[this.sort]
 			}
 		}
 	},
@@ -98,15 +101,25 @@ export default {
 		...mapMutations({
 			setSort: 'filters/filters/SET_SORT', //СОРТИРВОКА ДЛЯ ФИЛЬТРОВ
 			setModalSort: 'modal/modal-choose/SET_MODAL_SORT',//СОРТИРВОКА ДЛЯ МОДАЛКИ КАТОАЛОГА
-			setView: 'catalog/catalog-cars/SET_VIEW',
-			setLoading:'filters/filters/SET_LOADING'
+			setViewCatalog: 'modal/modal-choose/SET_VIEW',//ОТОБРАЖЕНИЕ ДЛЯ МОДАЛКИ
+			setViewFilters: 'filters/filters/SET_VIEW',//ОТОБРАЖЕНИЕ ДЛЯ ФИЛЬТРОВ
+			setLoadingFilters: 'filters/filters/SET_LOADING',
+			setLoadingCatalog: 'modal/modal-choose/SET_LOADING'
 		}),
 		async changeView(type) {
-			await this.setLoading(true)
-			await this.setView(type)
-			setTimeout(()=>{
-				this.setLoading(false)
-			},200)
+			if (this.modal) {
+				await this.setLoadingCatalog(true)
+				await this.setViewCatalog(type)
+				setTimeout(() => {
+					this.setLoadingCatalog(false)
+				}, 300)
+			} else {
+				await this.setLoadingFilters(true)
+				await this.setViewFilters(type)
+				setTimeout(() => {
+					this.setLoadingFilters(false)
+				}, 300)
+			}
 		},
 		openFilter() {
 			let payload = {

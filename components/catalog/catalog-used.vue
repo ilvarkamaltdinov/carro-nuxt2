@@ -31,7 +31,7 @@
 				<filter-desktop />
 			</div>
 			<div class="grid__col-8">
-				<filter-sort />
+				<filter-sort/>
 				<component :is="$device.isMobile ? 'catalog-list-used-mobile' : 'catalog-list-used-desktop'" />
 			</div>
 		</section>

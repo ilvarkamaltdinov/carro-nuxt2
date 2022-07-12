@@ -12,6 +12,7 @@ export const state = () => ({
     currentGeneration: null,
     currentCar: null,
     loading: true,
+    view:'s',
     sort: 'price|asc'
 })
 export const getters = {
@@ -24,6 +25,9 @@ export const getters = {
     },
     sort: (state) => {
         return state.sort
+    },
+    view: (state) => {
+        return state.view
     },
     currentModel: (state) => {
         return state.currentModel
@@ -124,6 +128,7 @@ export const mutations = {
     SET_TAB_COMPONENT(state, data) {
         state.tabComponent = data
     },
+
     SET_CURRENT_MARK(state, data) {
         state.currentMark = data
     },
@@ -147,6 +152,12 @@ export const mutations = {
     },
     SET_LOADING(state, data) {
         state.loading = data
+    },
+    SET_SORT(state, data) {
+        state.sort = data
+    },
+    SET_VIEW(state, data) {
+        state.view = data
     },
     SET_MODAL_SORT(state, data) {
         state.sort = data

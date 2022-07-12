@@ -7,7 +7,7 @@
 				<stories/>
 			</div>
 			<form-index />
-			<component :is="$device.isMobile ? 'catalog-list-index-mobile' : 'catalog-list-index-desktop'" />
+			<catalog-list-index/>
 			<featured />
 			<video-about />
 		</div>

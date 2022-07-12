@@ -29,12 +29,12 @@ export default {
 	
 	computed: {
 		...mapGetters({
-			view: 'catalog/catalog-cars/view',
+			view: 'filters/filters/view',
 			offers: 'filters/filters/offers',
 			loading: 'filters/filters/loading',
 		}),
 		skeleton() {
-			return this.view === 's' ? 'skeleton-card-desktop-small' : 'skeleton-card-desktop-large'
+			return this.view === 's' ? 'skeleton-card-small' : 'skeleton-card-large'
 		},
 		catalog() {
 			return this.view === 's' ? 'catalog-item-small-desktop' : 'catalog-item-large-desktop'

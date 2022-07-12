@@ -9,8 +9,7 @@
 			              v-for="item in stories"
 			              :key="item.id" />
 		</ul>
-		<div v-else
-		     class="swiper swiper--stories">
+		<div v-else class="swiper swiper--stories">
 			<ul class="stories__list swiper-wrapper">
 				<stories-item :story="item"
 				              @click="openStories(item)"
@@ -42,16 +41,14 @@ export default {
 			stories: []
 		}
 	},
-	async fetch() {
-		let response = await this.request({query: stories, variables: {}})
-		this.stories = response.data.stories
-	},
 	computed: {
 		...mapGetters({
 			storiesModal: 'stories/stories/storiesModal'
 		})
 	},
-	mounted() {
+	async mounted() {
+		let response = await this.request({query: stories, variables: {}})
+		this.stories = response.data.stories
 		const sliderStories = new swiper.default('.stories--desktop .swiper', {
 			modules: [swiper.Navigation, swiper.Autoplay],
 			autoplayDisableOnInteraction: false,

@@ -77,14 +77,14 @@
 			                @click="allFilters = !allFilters" />
 		</div>
 		<ul class="filter__menu-list filter__menu-list--more">
-			<skeleton-catalog-filter-range title="Цена"
+			<skeleton-filter-range title="Цена"
 			                               v-if="loadingRange" />
 			<li class="filter__menu-group"
 			    v-else>
 				<h2 class="heading heading--h3">Цена</h2>
 				<range-price />
 			</li>
-			<skeleton-catalog-filter-range title="Год"
+			<skeleton-filter-range title="Год"
 			                               v-if="loadingRange" />
 			<li class="filter__menu-group"
 			    v-else>

@@ -5,7 +5,6 @@ export const state = () => ({
     offers: [],
     offer: null,
     loading: true,
-    view: 's',
     isOfferClick: false,
     carPageLoaded: false
 })
@@ -55,6 +54,7 @@ export const actions = {
                 variables: Object.assign(variables, payload)
             })
         await commit('SET_OFFERS', response.data.offers.data)
+        console.log(123)
         await commit('SET_LOADING', false)
     },
 }
@@ -65,9 +65,6 @@ export const mutations = {
     SET_OFFER(state, data) {
         state.offer = data
         state.isOfferClick = false
-    },
-    SET_VIEW(state, data) {
-        state.view = data
     },
     SET_CAR_PAGE_LOADED(state, data) {
         state.carPageLoaded = data

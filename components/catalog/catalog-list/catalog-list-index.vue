@@ -1,5 +1,5 @@
 <template>
-	<section class="page-main__catalog catalog grid__col-12">
+	<section class="page-main__catalog catalog grid__col-12" :class="{'catalog--slider':!$device.isMobile}">
 		<heading-h2>Автомобили в наличии</heading-h2>
 		<div class="tabs">
 			<ul class="tabs__list">
@@ -17,15 +17,17 @@
 				</li>
 			</ul>
 		</div>
+		
 		<div v-if="loading" class="catalog__list grid">
-			<skeleton-card-desktop-small v-for="i in 3" :key="i"/>
+			<component :is="$device.isMobile ? 'skeleton-card-large' : 'skeleton-card-small'" v-for="i in 3" :key="i"/>
 		</div>
-		<div class="catalog__list grid" v-else>
-			<catalog-item-large-mobile v-for="offer in offers_list"
-			                           :offer="offer"
-			                           :key="offer.id" />
+		<div v-else-if="$device.isMobile" class="catalog__list grid">
+			<catalog-item-large-mobile v-for="offer in offers_list" :offer="offer" :key="offer.id" />
 		</div>
-		<button-typical @click="toCatalog" text="Все автомобили"
+		<catalog-index-swiper v-else :offers="offers_list"/>
+		
+		<button-typical @click="toCatalog"
+		                text="Все автомобили"
 		                class="button--link button--more" />
 	</section>
 </template>
@@ -90,25 +92,31 @@ export default {
 			return this.offers.data
 		}
 	},
-	async fetch() {
-		let response = await this.request({query: offers, variables: {page: 0, limit: 10}})
-		this.setOffers(response.data.offers)
-	},
-	methods:{
+	methods: {
 		...mapActions({
 			request: 'filters/filters/request'
 		}),
 		...mapMutations({
-			setOffers:'catalog/catalog-cars/SET_OFFERS'
+			setOffers: 'catalog/catalog-cars/SET_OFFERS',
+			setLoading: 'catalog/catalog-cars/SET_LOADING'
 		}),
 		toCatalog() {
 			this.$router.push('/used')
 		},
-		async tabClick(tab) {
-			this.set = tab.slug
+		async getOffers() {
+			await this.setLoading(true)
 			let response = await this.request({query: offers, variables: {page: 0, limit: 10, set: this.set}})
 			this.setOffers(response.data.offers)
+			await this.setLoading(false)
 		},
+		tabClick(tab) {
+			this.set = tab.slug
+			this.getOffers()
+		},
+	},
+	mounted() {
+		this.getOffers()
+		
 	}
 }
 </script>

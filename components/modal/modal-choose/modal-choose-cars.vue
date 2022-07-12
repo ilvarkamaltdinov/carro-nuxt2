@@ -5,7 +5,9 @@
 			<h2 class="visually-hidden">Автомобили в наличии</h2>
 			<div class="grid__col-8">
 				<filter-sort modal />
-				<skeleton-catalog-desktop-small v-if="loading" />
+				<div class="catalog__list grid grid--catalog" v-if="loading">
+					<component :is="skeleton" v-for="i in 4" :key="i"/>
+				</div>
 				<div v-else
 				     class="catalog__list grid grid--catalog">
 					<component :is="component"
@@ -41,8 +43,16 @@ export default {
 		...mapGetters({
 			offers: 'modal/modal-choose/offers',
 			loading: 'modal/modal-choose/loading',
-			view: 'catalog/catalog-cars/view'
+			view: 'modal/modal-choose/view'
 		}),
+		skeleton(){
+			if(this.view === 's'){
+				return 'skeleton-card-small'
+			} else {
+				return 'skeleton-card-large'
+			}
+		
+		},
 		component() {
 			if(this.view === 's'){
 				return this.$device.isMobile ? 'catalog-item-small-mobile' : 'catalog-item-small-desktop'

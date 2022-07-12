@@ -77,7 +77,7 @@ export default {
 			modules: [swiper.Navigation, swiper.Pagination, swiper.Autoplay],
 			loop: true,
 			autoplayDisableOnInteraction: false,
-			autoplay: false,
+			autoplay: true,
 			slidesPerView: 1,
 			autoHeight: true,
 			watchSlidesProgress: true,

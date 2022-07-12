@@ -1,13 +1,13 @@
 <template>
 	<div class="makes__letters">
 		<ul class="makes__letters-list">
-			<makes-letters-item v-scroll-to="{
-				el: '#' + item,
-        container: '.modal',
-        offset: -24,
-			}"
-			                    v-for="(item, index) in alphabetMarks"
-			                    :key="index">
+			<makes-letters-item v-for="(item, index) in alphabetMarks"
+			                    :key="index"
+			                    v-scroll-to="{
+														el: '#' + item,
+										        container: '.modal_wrap',
+										        offset: -24,
+													}">
 				{{ item }}
 			</makes-letters-item>
 		</ul>

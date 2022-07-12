@@ -16,7 +16,7 @@ export default {
         ],
         link: [
             {rel: 'mask-icon', type: 'image/x-icon', href: '/favicon.svg', sizes: 'any'},
-            {rel: 'apple-touch-icon', href: '/apple-touch-icon.png'},
+            {rel: 'apple-touch-icon', href: '/apple-touch-icon.png'}
             // {rel: 'icon', type: 'image/x-icon', href: '/mask-icon.svg', color: '#ED2939'},
             // {rel: 'manifest', href: '/manifest.json'}
         ]

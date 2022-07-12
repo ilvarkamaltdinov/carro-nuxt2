@@ -1,9 +1,9 @@
 <template>
 	<div>
-		<component :is="skeleton"
-		           v-if="loading" />
-		<div v-else
-		     class="catalog__list">
+		<div v-if="loading" class="catalog__list" :class="{'grid grid--catalog': !$device.isMobile}">
+			<component :is="skeleton" v-for="i in 4" :key="i"/>
+		</div>
+		<div v-else class="catalog__list">
 			<component :is="catalog"
 			           :offer="offer"
 			           :key="offer.id"
@@ -17,12 +17,12 @@ import {mapGetters} from "vuex";
 export default {
 	computed: {
 		...mapGetters({
-			view: 'catalog/catalog-cars/view',
+			view: 'filters/filters/view',
 			offers: 'filters/filters/offers',
 			loading: 'filters/filters/loading',
 		}),
 		skeleton() {
-			return this.view === 's' ? 'skeleton-catalog-small' : 'skeleton-catalog-large'
+			return this.view === 's' ? 'skeleton-card-small' : 'skeleton-card-large'
 		},
 		catalog() {
 			return this.view === 's' ? 'catalog-item-small-mobile' : 'catalog-item-large-mobile'

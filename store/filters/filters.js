@@ -5,6 +5,7 @@ export const state = () => ({
     loadingRange: true,
     filters: {},
     sort: 'price|asc',
+    view: 's',
     offers: null,
     chosen: {},
     componentCatalog: '',
@@ -30,6 +31,9 @@ export const getters = {
     },
     sort: (state) => {
         return state.sort
+    },
+    view: (state) => {
+        return state.view
     },
     offers: (state) => {
         return state.offers
@@ -198,5 +202,8 @@ export const mutations = {
     },
     SET_IS_OFFER_CLICK(state, data) {
         state.isOfferClick = data
+    },
+    SET_VIEW(state, data) {
+        state.view = data
     },
 }
