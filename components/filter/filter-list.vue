@@ -71,7 +71,7 @@
 			</li>
 		</ul>
 		<div class="filter__more">
-			<button-typical :text="allFilters ? 'Меньше Фильтров' : 'Больше фильтров'"
+			<button-typical :text="allFilters ? 'Меньше фильтров' : 'Больше фильтров'"
 			                class="button--show"
 			                :class="{'button--show-active': allFilters }"
 			                @click="allFilters = !allFilters" />

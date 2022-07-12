@@ -21,6 +21,7 @@ export default {
             // {rel: 'manifest', href: '/manifest.json'}
         ]
     },
+    resourceHints: false,
     render: {
         bundleRenderer: {
             shouldPreload: (file, type) => {

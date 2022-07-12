@@ -1,9 +1,10 @@
 <template>
 	<div class="pagination">
-		<button class="pagination__arrow pagination__arrow--prev">
-			<!--<svg class="pagination__arrow-icon" viewBox="0 0 24 24">-->
-			<!--	<use xlink:href="img/sprite.svg#icon-arrow"></use>-->
-			<!--</svg>-->
+		<button v-if="this.$route.query.page && Number(this.$route.query.page) !== 1"
+		        class="pagination__arrow pagination__arrow--prev"
+		        @click="arrowClick('prev')">
+			<svg-icon class="pagination__arrow-icon"
+			          name="icon-arrow" />
 		</button>
 		<paginate
 				v-model="currentPagination"
@@ -17,13 +18,12 @@
 				:prev-link-class="'pagination__item'"
 				:next-link-class="'pagination__item'"
 				:container-class="'pagination__list'">
-			<span slot="prevContent">Changed previous button</span>
-			<span slot="nextContent">Changed next button</span>
 		</paginate>
-		<button class="pagination__arrow pagination__arrow--next">
-			<!--<svg class="pagination__arrow-icon" viewBox="0 0 24 24">-->
-			<!--	<use xlink:href="img/sprite.svg#icon-arrow"></use>-->
-			<!--</svg>-->
+		<button v-if="offers.last_page !== Number(this.$route.query.page)"
+		        class="pagination__arrow pagination__arrow--next"
+		        @click="arrowClick('next')">
+			<svg-icon class="pagination__arrow-icon"
+			          name="icon-arrow" />
 		</button>
 	</div>
 </template>
@@ -45,7 +45,22 @@ export default {
 	methods: {
 		paginationCLick(pageNum) {
 			window.scrollTo(0, 0)
-			this.$router.push({path: this.$route.fullPath, query: {page:pageNum}});
+			this.$router.push({path: this.$route.fullPath, query: {page: pageNum}});
+		},
+		arrowClick(type) {
+			console.log(this.offers.last_page)
+			if (this.$route.query.page) {
+				let pageNum = Number(this.$route.query.page)
+				if (type === 'next') {
+					pageNum++
+				} else if (type === 'prev' && pageNum !== 1) {
+					pageNum--
+				}
+				this.$router.push({path: this.$route.fullPath, query: {page: '' + pageNum}});
+				window.scrollTo(0, 0)
+			} else {
+				this.$router.push({path: this.$route.fullPath, query: {page: '2'}});
+			}
 		}
 	}
 }

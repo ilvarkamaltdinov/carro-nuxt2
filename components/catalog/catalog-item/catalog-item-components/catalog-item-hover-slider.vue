@@ -9,9 +9,9 @@
 			     @mouseleave="mouseLeave">
 				<div v-if="photos && photos.length > 0 && index <= limit"
 				     v-for="(photo, index) in photos"
-				     class="active"
+				     :class="{'active':index === activeTmb}"
 				     :key="index"
-				     @mouseover="mouseOver(photo.thumb)">
+				     @mouseover="mouseOver(index, photo.thumb)">
 				</div>
 			</div>
 		</div>
@@ -21,6 +21,7 @@
 export default {
 	data() {
 		return {
+			activeTmb: 0,
 			class_name: 'load',
 			isLoaded: false,
 			limit: 7,
@@ -48,7 +49,8 @@ export default {
 		onImgLoad() {
 			this.class_name = 'loaded';
 		},
-		mouseOver(photo) {
+		mouseOver(index, photo) {
+			this.activeTmb = index
 			if (this.forceCoverPhoto !== null) {
 				this.class_name = 'load';
 			}
@@ -56,19 +58,22 @@ export default {
 			this.forceCoverPhoto = photo;
 		},
 		mouseLeave() {
+			this.activeTmb = 0
 			this.forceCoverPhoto = null;
 			this.class_name = 'loaded';
 		}
 	}
 }
 </script>
-<style scoped lang="scss">
+<style scoped
+       lang="scss">
 img.load {
 	filter: blur(5px);
 	transition: filter .5s;
 	will-change: filter;
 }
- img.loaded {
+
+img.loaded {
 	filter: blur(0);
 }
 </style>
