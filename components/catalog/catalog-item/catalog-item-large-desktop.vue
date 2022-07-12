@@ -4,7 +4,7 @@
 		                     :offer="offer" />
 		<div class="catalog__info-wrap" :class="{'catalog__info-wrap--no-buttons':!hasButtons}">
 			<div class="catalog__info">
-				<catalog-item-title :offer="offer" />
+				<catalog-item-title @linkClick="linkClick" :offer="offer" />
 				<catalog-item-price :offer="offer" />
 			</div>
 			<div class="catalog__tech">
@@ -23,7 +23,7 @@
 <script>
 import filters from "~/mixins/filters";
 import AOS from "aos";
-import {mapActions} from "vuex";
+import {mapActions, mapMutations} from "vuex";
 
 export default {
 	mixins: [filters],
@@ -42,9 +42,27 @@ export default {
 			default: true
 		},
 	},
+	computed: {
+		currentCategory() {
+			return this.offer.category_enum
+		},
+		currentMark() {
+			return this.offer.mark.slug
+		},
+		currentFolder() {
+			return this.offer.folder.slug
+		},
+		currentId() {
+			return this.offer.external_id
+		},
+	},
 	methods: {
 		...mapActions({
-			openModal: 'modal/modal-main/openModal'
+			openModal: 'modal/modal-main/openModal',
+			closeModal:'modal/modal-main/closeModal'
+		}),
+		...mapMutations({
+			setIsOfferClick: 'filters/filters/SET_IS_OFFER_CLICK'
 		}),
 		ratingClick() {
 			let payload = {
@@ -54,7 +72,12 @@ export default {
 				modal_sub_title: this.offer.name
 			}
 			this.openModal(payload)
-		}
+		},
+		async linkClick() {
+			await this.closeModal()
+			await this.setIsOfferClick(true)
+			await this.$router.push(`/${this.currentCategory}/${this.currentMark}/${this.currentFolder}/${this.currentId}`)
+		},
 	}
 }
 </script>
