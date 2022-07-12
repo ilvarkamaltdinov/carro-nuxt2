@@ -54,12 +54,8 @@ export default {
 			})
 		},
 		async back(){
-			this.setIsFilterClick(true)
-			let payload = {
-				modal_component: `modal-filter-mobile`,
-				modal_title: 'Фильтр',
-			}
-			await this.openModal(payload)
+			await this.setIsFilterClick(true)
+			await this.closeModal();
 			await this.setUrl();
 		},
 		// TODO проверка что поколение выбрано только при 1ой марки и 1ой модели
