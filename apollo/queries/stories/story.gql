@@ -1,0 +1,12 @@
+#import "../../fragments/story/storyContent.gql"
+query storyContents(
+    $site_id: Int!,
+    $story_id:Int
+) {
+    storyContents(
+        site_id: $site_id,
+        story_id: $story_id,
+    ) {
+        ... StoryContent
+    }
+}

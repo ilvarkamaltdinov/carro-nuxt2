@@ -17,27 +17,10 @@
 				</li>
 			</ul>
 		</div>
-		<div class="catalog__list">
-			{{loading}}
-			<div class="swiper swiper--catalog">
-				<div class="swiper-wrapper">
-					<skeleton-catalog-desktop-small :items="3" v-if="loading"/>
-					<catalog-item-small-desktop v-else
-							slide
-							:key="offer.id"
-							v-for="offer in offers_list"
-							:offer="offer" />
-				</div>
-			</div>
-			<button class="swiper-button swiper-button-prev">
-				<svg-icon class="swiper-button__icon"
-				          name="icon-arrow" />
-			</button>
-			<button class="swiper-button swiper-button-next">
-				<svg-icon class="swiper-button__icon"
-				          name="icon-arrow" />
-			</button>
+		<div v-if="loading" class="catalog__list grid">
+			<skeleton-card-desktop-small v-for="i in 3" :key="i"/>
 		</div>
+		<catalog-index-swiper v-else :offers="offers_list"/>
 		<button-typical @click.native="toCatalog()"
 		                text="Все автомобили"
 		                class="button--link button--more" />
@@ -128,23 +111,6 @@ export default {
 		toCatalog() {
 			this.$router.push('/used')
 		}
-	},
-	mounted() {
-		new swiper.default('.catalog--slider .swiper', {
-			modules: [swiper.Navigation, swiper.Autoplay],
-			loop: false,
-			// autoplayDisableOnInteraction: true,
-			autoplay: false,
-			slidesPerView: 3,
-			initialSlide: 0,
-			// centeredSlides: true,
-			watchSlidesProgress: true,
-			spaceBetween: 24,
-			navigation: {
-				nextEl: '.catalog--slider .swiper-button-next',
-				prevEl: '.catalog--slider .swiper-button-prev',
-			},
-		});
 	},
 }
 </script>

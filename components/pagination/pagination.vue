@@ -16,7 +16,7 @@
 				:page-class="'pagination__item'"
 				:prev-link-class="'pagination__item'"
 				:next-link-class="'pagination__item'"
-				:container-class="'pagination__list\n'">
+				:container-class="'pagination__list'">
 			<span slot="prevContent">Changed previous button</span>
 			<span slot="nextContent">Changed next button</span>
 		</paginate>

@@ -1,0 +1,10 @@
+fragment Story on Story {
+  id
+  title
+  image {
+    tiny,
+    tiny_webp,
+    thumb,
+    thumb_webp
+  }
+}

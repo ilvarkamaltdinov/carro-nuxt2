@@ -1,0 +1,10 @@
+#import "../../fragments/story/story.gql"
+query stories(
+  $site_id: Int!
+) {
+  stories(
+    site_id: $site_id,
+  ) {
+    ... Story
+  }
+}
