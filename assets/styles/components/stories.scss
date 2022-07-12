@@ -40,6 +40,7 @@
   width: 32px;
   height: 32px;
   top: 16px;
+  z-index: 50;
 }
 
 .stories__close-icon {
@@ -161,7 +162,7 @@
   }
 
   .stories--desktop .swiper-button-prev {
-    left: -64px;
+    left: 16px;
   }
 
   .stories__modal {

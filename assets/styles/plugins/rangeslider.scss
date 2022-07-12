@@ -225,7 +225,7 @@ Build date: 2019-12-19 16:51:02
 }
 .irs--flat .irs-grid-text {
   color: $colorTextSecondary;
-  @include font-features;
+  @include font-small;
 }
 .irs--big {
   height: 55px;
