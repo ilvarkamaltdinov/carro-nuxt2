@@ -22,10 +22,10 @@ export default {
 			loading: 'filters/filters/loading',
 		}),
 		skeleton() {
-			return this.view === 's' ? 'skeleton-card-small' : 'skeleton-card-large'
+			return this.view === 's' ?'skeleton-card-large' : 'skeleton-card-small'
 		},
 		catalog() {
-			return this.view === 's' ? 'catalog-item-small-mobile' : 'catalog-item-large-mobile'
+			return this.view === 's' ? 'catalog-item-large-mobile' : 'catalog-item-small-mobile'
 		},
 		offers_list() {
 			return this.offers ? this.offers.data : []
