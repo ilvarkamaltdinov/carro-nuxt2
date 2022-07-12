@@ -96,8 +96,7 @@
 
   .modal--makes {
     @include modal-menu;
-    @include border-top;
-    top: 104px;
+    top: 105px;
     width: 100%;
   }
 
@@ -159,13 +158,12 @@
 @media (min-width: $desktop-width) {
   .modal.modal--makes,
   .modal.modal--menu {
-    top: 129px;
+    top: 130px;
     height: auto;
     padding-bottom: 40px;
     left: 0;
     width: 100%;
     box-shadow: $shadowModal;
-    @include border-top;
   }
 
   .modal--menu .modal__wrap {

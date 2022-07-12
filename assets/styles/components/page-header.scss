@@ -5,6 +5,7 @@
   position: relative;
   overflow: hidden;
   margin-bottom: 16px;
+  @include border-bottom;
 }
 
 .page-header__logo-img-wrap {
