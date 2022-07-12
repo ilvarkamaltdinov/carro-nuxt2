@@ -17,7 +17,10 @@
 				</li>
 			</ul>
 		</div>
-		<div class="catalog__list grid">
+		<div v-if="loading" class="catalog__list grid">
+			<skeleton-card-desktop-small v-for="i in 3" :key="i"/>
+		</div>
+		<div class="catalog__list grid" v-else>
 			<catalog-item-large-mobile v-for="offer in offers_list"
 			                           :offer="offer"
 			                           :key="offer.id" />
@@ -81,6 +84,7 @@ export default {
 	computed: {
 		...mapGetters({
 			offers: 'catalog/catalog-cars/offers',
+			loading: 'catalog/catalog-cars/loading'
 		}),
 		offers_list() {
 			return this.offers.data

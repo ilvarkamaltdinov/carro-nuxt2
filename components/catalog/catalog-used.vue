@@ -18,6 +18,9 @@
 							<nuxt-link class="tabs__link"
 							           :to="`/${$route.params.category}/${$route.params.mark}/${tab.slug}`">
 								{{ tab.title }}
+								<span class="tabs__count">
+									{{ tab.offers_count }}
+								</span>
 							</nuxt-link>
 						</li>
 					</ul>

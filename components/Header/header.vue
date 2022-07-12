@@ -89,6 +89,7 @@
 					</ul>
 				</div>
 				<button class="page-header__makes-more"
+				        :class="{'page-header__makes-more--active':modalMarks}"
 				        @click.prevent="allMarksClick()">
 					Все марки
 					<svg-icon class="page-header__makes-more-arrow icon"

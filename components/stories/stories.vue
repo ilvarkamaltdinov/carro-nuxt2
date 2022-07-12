@@ -1,14 +1,6 @@
 <template>
 	<section class="page-main__stories stories"
 	         :class="{'stories--desktop grid__col-8':!$device.isMobile}">
-		<transition name="fade">
-			<div v-if="storiesModal"
-			     class="stories__modal_wrapper-wrap">
-				<div @click="closeStories()"
-				     class="overlay"></div>
-				<stories-modal />
-			</div>
-		</transition>
 		<h2 class="visually-hidden">Акции и спецпредложения</h2>
 		<ul class="stories__list"
 		    v-if="$device.isMobile">

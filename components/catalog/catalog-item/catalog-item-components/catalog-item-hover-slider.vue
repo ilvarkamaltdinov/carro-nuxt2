@@ -9,6 +9,7 @@
 			     @mouseleave="mouseLeave">
 				<div v-if="photos && photos.length > 0 && index <= limit"
 				     v-for="(photo, index) in photos"
+				     class="active"
 				     :key="index"
 				     @mouseover="mouseOver(photo.thumb)">
 				</div>
