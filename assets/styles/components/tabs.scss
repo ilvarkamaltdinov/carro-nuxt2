@@ -26,6 +26,11 @@
   @include font-features;
 }
 
+.tabs__count {
+  margin-left: 6px;
+  color: $colorPrimary;
+}
+
 .tabs__item--active .tabs__link {
   font-weight: $fontBold;
   background-color: $colorDivider;
