@@ -145,7 +145,6 @@ export default {
 			return true;
 		},
 		async submitForm() {
-			console.log(1)
 			if (this.checkForm()) {
 				let formData = {
 					type: 'credit',

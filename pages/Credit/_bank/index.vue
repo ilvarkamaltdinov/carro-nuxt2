@@ -47,7 +47,7 @@ export default {
 			await this.setBank(response.data.bank)
 		}
 		catch (error){
-			console.log(1111, error)
+			console.log(error)
 		}
 	},
 

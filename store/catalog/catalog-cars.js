@@ -4,6 +4,7 @@ import offer from '@/apollo/queries/offer/offer'
 export const state = () => ({
     offers: [],
     offer: null,
+    loading: true,
     view: 's',
     isOfferClick: false,
     carPageLoaded: false
@@ -24,6 +25,9 @@ export const getters = {
     carPageLoaded: (state) => {
         return state.carPageLoaded
     },
+    loading: (state) => {
+        return state.loading
+    },
 }
 export const actions = {
     async getOffer({commit}, payload) {
@@ -42,6 +46,7 @@ export const actions = {
         commit('SET_OFFER', response.data.offer)
     },
     async getOffers({commit}, payload) {
+        await commit('SET_LOADING', true)
         let variables = {site_id: $nuxt.context.$config.site_id}
         let client = this.app.apolloProvider.defaultClient
         let response = await client.query(
@@ -49,7 +54,8 @@ export const actions = {
                 query: offers,
                 variables: Object.assign(variables, payload)
             })
-        commit('SET_OFFERS', response.data.offers.data)
+        await commit('SET_OFFERS', response.data.offers.data)
+        await commit('SET_LOADING', false)
     },
 }
 export const mutations = {
@@ -65,6 +71,9 @@ export const mutations = {
     },
     SET_CAR_PAGE_LOADED(state, data) {
         state.carPageLoaded = data
+    },
+    SET_LOADING(state, data) {
+        state.loading = data
     },
     SET_OFFER_CLICK(state, data) {
         state.isOfferClick = data

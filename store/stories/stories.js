@@ -1,3 +1,5 @@
+import story from "@/apollo/queries/stories/story";
+
 export const state = () => ({
     storiesModal: false,
     stories: {}
@@ -11,8 +13,18 @@ export const getters = {
     }
 }
 export const actions = {
-    async openStories({commit}, payload) {
-        await commit('SET_STORIES', payload)
+    async openStories({commit, dispatch}, payload) {
+        let variables = {
+            site_id: $nuxt.context.$config.site_id,
+            story_id: payload.id
+        }
+        let client = this.app.apolloProvider.defaultClient
+        let response = await client.query(
+            {
+                query: story,
+                variables: Object.assign(variables)
+            })
+        await commit('SET_STORIES', response.data.storyContents)
         await commit('SET_STORIES_MODAL', true)
     },
     async closeStories({commit}) {

@@ -1,7 +1,8 @@
 <template>
 	<div>
-		<component :is="skeleton"
-		           v-if="loading" />
+		<div v-if="loading" class="catalog__list" :class="{'grid grid--catalog': !$device.isMobile}">
+			<component :is="skeleton" v-for="i in 4" :key="i"/>
+		</div>
 		<div v-else class="catalog__list grid grid--catalog">
 			<component :is="catalog"
 			           :offer="offer"
@@ -24,6 +25,8 @@
 import {mapGetters} from "vuex";
 
 export default {
+	components: {},
+	
 	computed: {
 		...mapGetters({
 			view: 'catalog/catalog-cars/view',
@@ -31,7 +34,7 @@ export default {
 			loading: 'filters/filters/loading',
 		}),
 		skeleton() {
-			return this.view === 's' ? 'skeleton-catalog-desktop-small' : 'skeleton-catalog-desktop-large'
+			return this.view === 's' ? 'skeleton-card-desktop-small' : 'skeleton-card-desktop-large'
 		},
 		catalog() {
 			return this.view === 's' ? 'catalog-item-small-desktop' : 'catalog-item-large-desktop'

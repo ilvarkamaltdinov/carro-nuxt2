@@ -98,10 +98,15 @@ export default {
 		...mapMutations({
 			setSort: 'filters/filters/SET_SORT', //СОРТИРВОКА ДЛЯ ФИЛЬТРОВ
 			setModalSort: 'modal/modal-choose/SET_MODAL_SORT',//СОРТИРВОКА ДЛЯ МОДАЛКИ КАТОАЛОГА
-			setView: 'catalog/catalog-cars/SET_VIEW'
+			setView: 'catalog/catalog-cars/SET_VIEW',
+			setLoading:'filters/filters/SET_LOADING'
 		}),
-		changeView(type) {
-			this.setView(type)
+		async changeView(type) {
+			await this.setLoading(true)
+			await this.setView(type)
+			setTimeout(()=>{
+				this.setLoading(false)
+			},200)
 		},
 		openFilter() {
 			let payload = {

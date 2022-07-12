@@ -6,20 +6,19 @@
 				<div class="swiper-slide"
 				     v-for="image in offer.images"
 				     :key="image.thumb">
-					<a class="catalog__img-link"
-					   href="">
+					<nuxt-link to="/" class="catalog__img-link">
 						<picture>
 							<source type="image/webp"
 							        media="(min-width: 768px)"
-							        :srcset="image.thumb" />
+							        :data-srcset="image.thumb" />
 							<source media="(min-width: 768px)"
-							        :srcset="image.thumb" />
+							        :data-srcset="image.thumb" />
 							<img class="lazyload"
-							     :src="image.tumb"
-							     :srcset="image.thumb"
+							     :data-src="image.tumb"
+							     :data-srcset="image.thumb"
 							     alt="" />
 						</picture>
-					</a>
+					</nuxt-link>
 				</div>
 				<catalog-item-call-card class="swiper-slide" :offer="offer"/>
 			</div>
