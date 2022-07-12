@@ -32,8 +32,7 @@
 								</picture>
 							</div>
 							<nuxt-link @click.native="buttonClick" :to="story.button_link"
-							           :class="{'button--blue':story.button_color ==='blue', 'button--credit':story.button_color ==='red'}"
-							           class="button">
+							           class="button button--credit">
 								{{ story.button_title }}
 							</nuxt-link>
 						</div>
