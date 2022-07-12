@@ -31,7 +31,8 @@
 									     alt="stories-image" />
 								</picture>
 							</div>
-							<nuxt-link @click.native="buttonClick" :to="story.button_link"
+							<nuxt-link @click.native="buttonClick"
+							           :to="story.button_link"
 							           class="button button--credit">
 								{{ story.button_title }}
 							</nuxt-link>
@@ -63,21 +64,29 @@ export default {
 		...mapActions({
 			closeStories: 'stories/stories/closeStories'
 		}),
-		buttonClick(){
+		buttonClick() {
 			this.closeStories()
 		},
-		test(){
+		test() {
 			console.log('esc')
 		}
 	},
 	mounted() {
 		const sliderStories = new swiper.default('.swiper--stories-modal.swiper', {
-			modules: [swiper.Navigation, swiper.Autoplay],
+			modules: [swiper.Navigation, swiper.Pagination, swiper.Autoplay],
 			autoplayDisableOnInteraction: false,
 			spaceBetween: 16,
-			autoplay: false,
+			autoplay: true,
 			watchSlidesProgress: true,
 			slidesPerView: 1,
+			pagination: {
+				el: '.swiper--stories-modal .swiper-pagination',
+				clickable: 'true',
+				type: 'bullets',
+				renderBullet: function (index, className) {
+					return '<span class="' + className + '">' + '<span class="swiper-pagination-bar"></span>' + '<span class="swiper-pagination-progress"></span>' + '</span>';
+				},
+			},
 			navigation: {
 				nextEl: '.swiper--stories-modal .swiper-button-next',
 				prevEl: '.swiper--stories-modal .swiper-button-prev',

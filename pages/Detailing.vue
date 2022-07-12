@@ -6,6 +6,7 @@
 		<div class="grid grid--container">
 			<detailing/>
 			<text-detailing/>
+			<video-about/>
 		</div>
 	</main>
 </template>
