@@ -1,7 +1,8 @@
 <template>
 	<div class="rating"
 	     @click="$emit('click')"
-	     :style="`--rating-number:${ratingValue}; --rating-color:${ratingColor};`">{{ ratingText }}
+	     :style="`--rating-number:${ratingValue}; --rating-color:${ratingColor};`">
+		{{ ratingText }}
 	</div>
 </template>
 <script>

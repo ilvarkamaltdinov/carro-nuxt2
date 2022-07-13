@@ -5,18 +5,23 @@
 		       id="checkbox-agree"
 		       name="checkbox-agree"
 		       type="checkbox"
-		       @change="$emit('change', $event)"
-		       :value="value" />
+		       @change="$emit('change', checked)"
+		       v-model="checked" />
 		<svg-icon name="icon-checkmark"
-		          :class="{'checkbox__icon--checked':value}"
+		          :class="{'checkbox__icon--checked':checked}"
 		          class="checkbox__icon" />
-		<span class="form__checkbox-text" v-html="label"></span>
+		<span class="form__checkbox-text"
+		      v-html="label"></span>
 	</label>
 </template>
 <script>
 export default {
+	data() {
+		return {
+			checked: false
+		}
+	},
 	props: {
-		value: Boolean,
 		label: String
 	}
 }

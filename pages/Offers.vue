@@ -1,26 +1,30 @@
 <template>
 	<main class="page-main">
 		<div class="grid">
-			<crumbs :crumbs="crumbs"/>
+			<crumbs :crumbs="crumbs" />
 		</div>
 		<div class="grid grid--container">
-			<catalog-offers/>
+			<catalog-used :page-title="pageTitle" />
 		</div>
 	</main>
 </template>
 <script>
+import seoTags from "@/mixins/seoTags";
+
 export default {
-	data(){
-		return{
-			crumbs:[
+	mixins: [seoTags],
+	layout: 'catalogLayout',
+	data() {
+		return {
+			crumbs: [
 				{
-					name:'Главная',
-					route:'/',
+					name: 'Главная',
+					route: '/',
 					active: false
 				},
 				{
-					name:'Предложения',
-					route:'/offers',
+					name: 'Предложения',
+					route: '/offers',
 					active: true
 				}
 			]

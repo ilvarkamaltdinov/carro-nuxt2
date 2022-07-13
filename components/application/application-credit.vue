@@ -8,13 +8,6 @@
 		</div>
 		<div class="grid__col-12 grid grid--application">
 			<div class="application__form grid__col-4">
-				<div class="heading-group heading-group--form">
-					<div class="heading-group__wrap">
-						<h2 class="heading heading--h2">Заполните заявку</h2>
-						<span class="heading-group__label">Получите одобрение за 5 минут</span>
-					</div>
-					<rating :max="100" :rating="100" />
-				</div>
 				<form-credit :bank-rate="bank.rate"/>
 			</div>
 			<div v-if="currentCar"
@@ -29,7 +22,7 @@
 				          name="icon-form" />
 				<span class="application__choose-car-text">Выберите автомобиль</span>
 			</button>
-			<application-banks class="grid__col-5" :bank-slug="bank.slug"/>
+			<application-banks class="grid__col-5"/>
 			<application-terms class="grid__col-3"/>
 		</div>
 	</section>

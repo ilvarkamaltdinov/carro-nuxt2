@@ -2,7 +2,7 @@
 	<section class="page-main__detailing detailing grid">
 		<div class="heading-group heading-group--h1">
 			<div class="heading-group__wrap">
-				<h1 class="heading heading--h1">Детейлинг</h1>
+				<h1 class="heading heading--h1">{{ pageTitile }}</h1>
 				<span class="heading-group__label">С вниманием к деталям</span>
 			</div>
 		</div>
@@ -23,8 +23,11 @@
 					</li>
 				</ul>
 			</div>
-			<ul v-if="categories.length" class="detailing__list grid">
-				<li class="detailing__item" v-for="station in stations" :key="station.id">
+			<ul v-if="categories.length"
+			    class="detailing__list grid">
+				<li class="detailing__item"
+				    v-for="station in stations"
+				    :key="station.id">
 					<div class="detailing__main">
 						<picture>
 							<source type="image/webp"
@@ -52,14 +55,17 @@ import {mapActions} from "vuex";
 import stationCategory from "@/apollo/queries/stationCategory";
 
 export default {
+	props: {
+		pageTitile: String
+	},
 	data() {
 		return {
 			activeTab: 0,
 			categories: []
 		}
 	},
-	computed:{
-		stations(){
+	computed: {
+		stations() {
 			return this.categories.length ? this.categories[this.activeTab].stations : []
 		}
 	},

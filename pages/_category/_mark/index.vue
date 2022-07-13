@@ -14,7 +14,7 @@ import {mapMutations} from "vuex";
 
 export default {
 	mixins:[seoTags],
-	layout: 'catalogLayout',
+	layout: 'catalog',
 	methods:{
 		...mapMutations({
 			setFolders:'folders/folders/SET_FOLDERS'

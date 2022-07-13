@@ -1,7 +1,7 @@
 <template>
 	<div class="application__terms">
 		<div class="application__terms-item">
-			<div class="application__terms-number application__terms-number--stake">{{ percent }}%</div>
+			<div class="application__terms-number application__terms-number--stake"> от {{ percent }}%</div>
 			<div class="application__terms-text">Ставка по кредиту</div>
 		</div>
 		<div class="application__terms-item">
@@ -27,8 +27,13 @@ import {mapGetters} from "vuex";
 export default {
 	computed: {
 		...mapGetters({
-			percent: 'banks/percent'
-		})
+			bank: 'banks/bank'
+		}),
+		percent() {
+			// Динамично меняет процентную ставку в зависимости от банка
+			// return this.bank.rate ? this.bank.rate : this.$config.default_percent
+			return this.$config.default_percent
+		},
 	}
 }
 </script>

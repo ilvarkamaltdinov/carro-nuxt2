@@ -27,31 +27,33 @@
 		</VueSlideToggle>
 		<fieldset class="form__fieldset">
 			<label class="form__field-wrap"
-			       :class="{'form__field-wrap--success' : form.car.value.length >= 2, 'form__field-wrap--error': form.car.valid === false}">
+			       :class="carClass">
 				<inputs-input placeholder="Ваш автомобиль"
-				              @input="form.car.valid = null"
+				              @input="handlerInput('car')"
 				              v-model="form.car.value"
 				              type="text" />
 			</label>
 			<label class="form__field-wrap"
-			       :class="{'form__field-wrap--success' : form.name.value.length >= 2, 'form__field-wrap--error': form.name.valid === false}">
+			       :class="nameClass">
 				<inputs-input placeholder="ФИО"
-				              @input="form.name.valid = null"
+				              @input="handlerInput('name')"
 				              v-model="form.name.value"
 				              type="text" />
 			</label>
 			<label class="form__field-wrap"
-			       :class="{'form__field-wrap--success' : form.date.valid, 'form__field-wrap--error': form.date.valid === false}">
+			       :class="dateClass">
 				<inputs-input placeholder="Дата рождения"
-				              @input="form.date.valid = null"
+				              @input="handlerInput('date')"
+				              @dateMaskComplete="form.date.valid = true"
+				              @onincomplete="form.date.valid = null"
 				              v-model="form.date.value"
 				              mask="date"
 				              type="tel" />
 			</label>
 			<label class="form__field-wrap"
-			       :class="{'form__field-wrap--success' : form.phone.valid, 'form__field-wrap--error': form.phone.valid === false}">
+			       :class="phoneClass">
 				<inputs-input placeholder="Телефон"
-				              @input="form.phone.valid = null"
+				              @input="handlerInput('phone')"
 				              @phoneMaskComplete="form.phone.valid = true"
 				              @onincomplete="form.phone.valid = null"
 				              v-model="form.phone.value"
@@ -67,8 +69,10 @@
 </template>
 <script>
 import {mapGetters, mapMutations, mapActions} from 'vuex'
+import formValidation from "@/mixins/formValidation";
 
 export default {
+	mixins: [formValidation],
 	props: {
 		hasChose: {
 			type: Boolean,
@@ -84,24 +88,6 @@ export default {
 		return {
 			hasCredit: false,
 			error: '',
-			form: {
-				car: {
-					valid: null,
-					value: '',
-				},
-				name: {
-					valid: null,
-					value: '',
-				},
-				date: {
-					valid: null,
-					value: ''
-				},
-				phone: {
-					valid: null,
-					value: ''
-				}
-			},
 			creditParams: {
 				rangePeriodValues: [
 					"2",
@@ -126,7 +112,6 @@ export default {
 				],
 				period: 24,
 				payment: 10,
-				percent: 4.9,
 			}
 		}
 	},

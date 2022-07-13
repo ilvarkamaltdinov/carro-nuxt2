@@ -6,9 +6,10 @@
 				<div class="heading-group heading-group--h1 grid__col-6">
 					<div class="heading-group__wrap">
 						<heading-h1>
-							{{ pageTitle}}
+							{{ pageTitle }}
 						</heading-h1>
-						<span class="heading-group__label heading-group__label--car" v-if="offer.generation">
+						<span class="heading-group__label heading-group__label--car"
+						      v-if="offer.generation">
 							{{ offer.generation.name }}
 							<span class="heading-group__year">
 								{{ offer.year }}
@@ -38,7 +39,7 @@
 				<car-info />
 			</div>
 			<div class="grid grid--container">
-				<benefits-car />
+				<benefits :benefits="benefitsCar" />
 				<car-credit :offer="offer" />
 			</div>
 		</section>
@@ -62,7 +63,8 @@ export default {
 	computed: {
 		...mapGetters({
 			offer: 'catalog/catalog-cars/offer',
-			carPageLoaded: 'catalog/catalog-cars/carPageLoaded'
+			carPageLoaded: 'catalog/catalog-cars/carPageLoaded',
+			benefitsCar: 'benefits/benefitsCar'
 		})
 	},
 	async fetch() {

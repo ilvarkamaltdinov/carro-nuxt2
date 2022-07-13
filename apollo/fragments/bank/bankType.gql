@@ -5,4 +5,10 @@ fragment BankType on Bank {
     rate
     title
     image
+    image_car {
+        thumb
+        small
+        thumb_webp
+        small_webp
+    }
 }

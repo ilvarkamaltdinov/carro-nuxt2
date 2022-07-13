@@ -11,7 +11,7 @@
 import seoTags from "@/mixins/seoTags";
 
 export default {
-	layout: 'catalogLayout',
+	layout: 'catalog',
 	mixins:[seoTags],
 	data() {
 		return {

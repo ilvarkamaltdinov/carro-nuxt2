@@ -1,10 +1,10 @@
 <template>
 	<main class="page-main">
 		<div class="grid">
-			<crumbs :crumbs="crumbs"/>
+			<crumbs :crumbs="crumbs" />
 		</div>
 		<div class="grid grid--container">
-			<dealers :page-title="pageTitle"/>
+			<dealers :page-title="pageTitle" />
 		</div>
 	</main>
 </template>
@@ -12,18 +12,18 @@
 import seoTags from "@/mixins/seoTags";
 
 export default {
-	mixins:[seoTags],
-	data(){
-		return{
-			crumbs:[
+	mixins: [seoTags],
+	data() {
+		return {
+			crumbs: [
 				{
-					name:'Главная',
-					route:'/',
+					name: 'Главная',
+					route: '/',
 					active: false
 				},
 				{
-					name:'Автосалоны',
-					route:'/dealers',
+					name: 'Автосалоны',
+					route: '/dealers',
 					active: true
 				}
 			]

@@ -42,8 +42,13 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			percent: 'banks/percent'
+			bank: 'banks/bank'
 		}),
+		percent() {
+			// Динамично меняет процентную ставку в зависимости от банка
+			// return this.bank.rate ? this.bank.rate : this.$config.default_percent
+			return this.$config.default_percent
+		},
 		currentPeriod() {
 			return String(this.periodValue) + ' мес.'
 		},

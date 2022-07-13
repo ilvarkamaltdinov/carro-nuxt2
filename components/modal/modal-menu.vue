@@ -41,11 +41,11 @@ export default {
 						},
 						{
 							name: 'Рассрочка',
-							link: '/inProcess'
+							link: '/rassrochka'
 						},
 						{
 							name: 'Бесплатный подбор',
-							link: '/inProcess'
+							link: '/besplatnyij-podbor-avtomobilya'
 						},
 						{
 							name: 'Выкуп',
@@ -57,7 +57,7 @@ export default {
 						},
 						{
 							name: 'Детейлинг',
-							link: '/detailing'
+							link: '/uslugi-servisa'
 						},
 					]
 				},
@@ -83,7 +83,7 @@ export default {
 					links: [
 						{
 							name: 'Контакты',
-							link: '/contact'
+							link: '/contacts'
 						},
 						{
 							name: 'Предложения',

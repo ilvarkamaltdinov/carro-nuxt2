@@ -53,13 +53,13 @@
 						</nuxt-link>
 					</li>
 					<li class="page-footer__links-item">
-						<nuxt-link to="/contact"
+						<nuxt-link to="/contacts"
 						           class="page-footer__link"
 						           href="">Контакты
 						</nuxt-link>
 					</li>
 					<li class="page-footer__links-item">
-						<nuxt-link to="/dealers"
+						<nuxt-link to="/contact"
 						           class="page-footer__link"
 						           href="">Автосалоны-партнеры
 						</nuxt-link>
