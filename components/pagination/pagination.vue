@@ -1,6 +1,6 @@
 <template>
 	<div class="pagination">
-		<button v-if="this.$route.query.page && Number(this.$route.query.page) !== 1"
+		<button v-if="this.$route.query.page && Number(this.$route.query.page) !== 1 && offers.last_page > 1"
 		        class="pagination__arrow pagination__arrow--prev"
 		        @click="arrowClick('prev')">
 			<svg-icon class="pagination__arrow-icon"
@@ -19,7 +19,7 @@
 				:next-link-class="'pagination__item'"
 				:container-class="'pagination__list'">
 		</paginate>
-		<button v-if="offers.last_page !== Number(this.$route.query.page)"
+		<button v-if="offers.last_page !== Number(this.$route.query.page)  && offers.last_page > 1"
 		        class="pagination__arrow pagination__arrow--next"
 		        @click="arrowClick('next')">
 			<svg-icon class="pagination__arrow-icon"

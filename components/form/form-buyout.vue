@@ -18,16 +18,8 @@
 			</label>
 			<label class="form__field-wrap form__field-wrap--select"
 			       :class="{'form__field-wrap--success' : form.year.value !== 'Год', 'form__field-wrap--error': form.year.valid === false}">
-				<select class="form__field form__field--select"
-				        @input="form.year.valid = null"
-				        v-model="form.year.value">
-					<option value="Год">Год</option>
-					<option :value="year"
-					        :key="year"
-					        v-for="year in _.range(2003, new Date().getFullYear()+1)">
-						{{ year }}
-					</option>
-				</select>
+				<inputs-select :value="form.year.value"
+				               @input="form.year.valid = null" />
 				<svg-icon class="form__field-arrow"
 				          name="icon-arrow" />
 			</label>
