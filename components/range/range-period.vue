@@ -1,7 +1,7 @@
 <template>
 	<div class="form__block form__block--range range">
 		<label class="form__range-wrap">
-			<span class="form__range-name">Срок кредитования, мес.:</span>
+			<span class="form__range-name">{{ text }}</span>
 			<span class="form__range-value">{{ period }}</span>
 		</label>
 		<client-only>
@@ -27,6 +27,7 @@ export default {
 		}
 	},
 	props: {
+		text: String,
 		values: Array,
 		value: String,
 		period: String,

@@ -8,7 +8,7 @@
 		</div>
 		<div class="grid__col-12 grid grid--application">
 			<div class="application__form grid__col-4">
-				<form-credit :bank-rate="bank.rate"/>
+				<form-installment :bank-rate="bank.rate"/>
 			</div>
 			<div v-if="currentCar"
 			     class="application__catalog catalog grid__col-8">

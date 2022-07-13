@@ -1,12 +1,11 @@
 <template>
 	<main class="page-main">
 		<div class="grid">
-			<crumbs :crumbs="crumbs" />
+			<crumbs :crumbs="crumbs"/>
 		</div>
 		<div class="grid grid--container">
-			<application-installment :page-title="pageTitle" />
-			<benefits :benefits="benefitsCredit" />
-			<text-installment />
+			<application-free-select :page-title="pageTitle"/>
+			<benefits :benefits="benefitsBuyout"/>
 		</div>
 	</main>
 </template>
@@ -25,8 +24,8 @@ export default {
 					active: false
 				},
 				{
-					name: 'Рассрочка',
-					route: '/rassrochka',
+					name: 'Бесплатный автоподбор',
+					route: '/besplatnyij-podbor-avtomobilya',
 					active: true
 				}
 			],
@@ -34,7 +33,7 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			benefitsCredit: 'benefits/benefitsCredit'
+			benefitsBuyout: 'benefits/benefitsBuyout'
 		})
 	}
 }

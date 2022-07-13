@@ -1,6 +1,7 @@
 <template>
 	<fieldset class="form__fieldset">
 		<range-period :value="String(periodValue)"
+		              :text="installment ? 'Период рассрочки:' :'Срок кредитования, мес.:'"
 		              :values="params.rangePeriodValues"
 		              :period="currentPeriod"
 		              @changePeriod="changePeriod" />
@@ -32,13 +33,17 @@ export default {
 		offer() {
 			this.calculate()
 		},
-		percent(){
+		percent() {
 			this.calculate()
 		}
 	},
 	props: {
 		offer: Object,
-		params: Object
+		params: Object,
+		installment: {
+			type: Boolean,
+			default: false
+		}
 	},
 	computed: {
 		...mapGetters({
@@ -75,7 +80,7 @@ export default {
 		},
 		calculate() {
 			if (this.offer) {
-				let creditProc = this.percent;
+				let creditProc = this.installment ? 1 : this.percent;
 				let car_price = this.offer.price;
 				let creditTime = this.periodValue;
 				let firstPay = this.paymentValue;

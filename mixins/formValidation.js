@@ -12,7 +12,11 @@ export default {
                 },
                 year: {
                     valid: null,
-                    value: 'Год',
+                    value: 'Год от',
+                },
+                gearbox: {
+                    valid: null,
+                    value: 'КПП',
                 },
                 run: {
                     valid: null,
@@ -35,10 +39,20 @@ export default {
                     value: ''
                 },
                 agree: false,
-            }
+            },
         }
     },
     computed: {
+        years_range() {
+            return this._.range(2003, new Date().getFullYear() + 1)
+        },
+        gearboxes() {
+            return [
+                'Автомат',
+                'механическая',
+                'Автомат вариатор',
+            ]
+        },
         //ВАШ АВТОМОБИЛЬ
         car_valid() {
             return this.form.car.value.length >= 2
@@ -83,7 +97,7 @@ export default {
         },
         //ГОД
         year_valid() {
-            return this.form.year.value !== 'Год'
+            return this.form.year.value !== 'Год от'
         },
         year_invalid() {
             return this.form.year.valid === false
@@ -92,6 +106,20 @@ export default {
             if (this.year_valid) {
                 return 'form__field-wrap--success'
             } else if (this.year_invalid) {
+                return 'form__field-wrap--error'
+            }
+        },
+        //КОРОБКА
+        gearbox_valid() {
+            return this.form.gearbox.value !== 'КПП'
+        },
+        gearbox_invalid() {
+            return this.form.gearbox.valid === false
+        },
+        gearboxClass() {
+            if (this.gearbox_valid) {
+                return 'form__field-wrap--success'
+            } else if (this.gearbox_invalid) {
                 return 'form__field-wrap--error'
             }
         },
@@ -158,6 +186,10 @@ export default {
         },
         handlerInput(type) {
             this.form[type].valid = null
-        }
+        },
+        changeSelect($event, type) {
+            this.form[type].valid = null
+            this.form[type].value = $event
+        },
     }
 }

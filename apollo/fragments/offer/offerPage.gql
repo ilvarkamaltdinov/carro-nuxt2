@@ -18,6 +18,7 @@ fragment OfferPage on Offer {
     run
     vin
     year
+    rating
     createdAt(format: $dateFormat)
     engine_power
     engine_volume

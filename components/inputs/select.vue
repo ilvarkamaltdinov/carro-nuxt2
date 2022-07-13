@@ -1,24 +1,26 @@
 <template>
 	<select v-if="$device.isMobile"
 	        class="form__field form__field--select"
-	        @change="changeSelect(event)"
+	        @change="changeSelect()"
 	        :value="value">
-		<option value="Год">Год</option>
-		<option :value="year"
-		        :key="year"
-		        v-for="year in _.range(2003, new Date().getFullYear()+1)">
-			{{ year }}
+		<option :value="value">{{value}}</option>
+		<option :value="option"
+		        :key="option"
+		        v-for="option in options">
+			{{ option }}
 		</option>
 	</select>
 	<div v-else
-	     class="form__field form__field--select select" @click="isOpen = !isOpen">
+	     class="form__field form__field--select select"
+	     @click="isOpen = !isOpen">
 		<span>{{ value }}</span>
-		<ul class="select__list" v-if="isOpen">
+		<ul class="select__list"
+		    v-if="isOpen">
 			<li class="select__item"
-			    @click.prevent="$emit('input', year)"
-			    v-for="year in yearRange"
-			    :key="year">
-				{{ year }}
+			    @click="$emit('input', option)"
+			    v-for="option in options"
+			    :key="option">
+				{{ option }}
 			</li>
 		</ul>
 	</div>
@@ -32,26 +34,13 @@ export default {
 		}
 	},
 	props: {
-		value: [String, Number]
+		value: [String, Number],
+		options: Array
 	},
-	computed:{
-		yearRange(){
-			return _.range(2003, new Date().getFullYear()+1)
-		}
-	},
-	methods:{
-		changeSelect(){
+	methods: {
+		changeSelect() {
 			this.$emit('input', event.target.value)
 		}
 	}
 }
 </script>
-<style>
-.form__field--select {
-	overflow: visible !important;
-}
-
-.select__list {
-	z-index: 1;
-}
-</style>
