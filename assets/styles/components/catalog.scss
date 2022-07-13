@@ -2,14 +2,29 @@
   background-color: white;
   padding: 16px;
   box-shadow: $shadow;
+  transition: box-shadow 0.3s!important;
+}
+
+.catalog__item .rating {
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 .catalog--modal .catalog__filter {
   padding-top: 0;
 }
 
+.catalog__title {
+  transition: $transitionHover;
+}
+
 .catalog__title-link {
   display: flex;
+
+  &:hover .catalog__title {
+    color: $colorPrimary;
+  }
 }
 
 .catalog__no-cars {

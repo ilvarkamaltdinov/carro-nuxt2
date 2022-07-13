@@ -3,17 +3,32 @@
 }
 
 .benefits__link {
+  transition: $transitionHover;
   @include white-back;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &:hover {
+    box-shadow: $shadowHoverCard;
+    transform: scale(1.02);
+  }
+
+  &:hover * {
+    color: $colorPrimary;
+  }
+
+  &:hover .benefits__icon {
+    fill: $colorPrimary;
+  }
 }
 
 .benefits__icon {
   width: 24px;
   height: 24px;
   flex-shrink: 0;
+  transition: $transitionHover;
 }
 
 .benefits__text,
@@ -21,6 +36,7 @@
   text-align: left;
   @include font-small;
   white-space: normal;
+  transition: $transitionHover;
 }
 
 .benefits__icon {

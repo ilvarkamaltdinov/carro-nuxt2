@@ -10,6 +10,11 @@
 
   .crumbs__link {
     display: block;
+    transition: $transitionHover;
+
+    &:hover {
+      color: $colorPrimary;
+    }
   }
 
   .crumbs__item {

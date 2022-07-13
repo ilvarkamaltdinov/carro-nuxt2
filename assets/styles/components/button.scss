@@ -23,7 +23,7 @@
   }
 }
 
-.button--link {
+.button.button--link {
   color: $colorLink;
   background-color: $colorBgButton;
   width: max-content;
@@ -139,6 +139,10 @@
     right: 10px;
     order: 2;
     transform: rotate(90deg);
+  }
+
+  &:hover {
+    opacity: 0.6;
   }
 }
 

@@ -17,6 +17,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  transition: $transitionHover;
 }
 
 .filter__button {
@@ -39,10 +40,19 @@
   justify-content: space-between;
   align-items: center;
   padding: 16px 0;
+  transition: $transitionHover;
   @include border-bottom;
 
   &:hover {
     cursor: pointer;
+  }
+
+  &:hover .filter__menu-text {
+    color: $colorPrimary;
+  }
+
+  &:hover .filter__arrow {
+    fill: $colorPrimary;
   }
 }
 
@@ -70,7 +80,7 @@
 }
 
 .filter__menu-list--more .filter__menu-group.skeleton {
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 
   &:last-of-type {
     margin-bottom: 16px;

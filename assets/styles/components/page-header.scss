@@ -61,6 +61,10 @@
   padding: 16px 12px;
   box-sizing: content-box;
   position: relative;
+
+  &:hover .icon {
+    fill: $colorPrimary;
+  }
 }
 
 .page-header__makes-list {
@@ -85,7 +89,16 @@
   align-items: center;
   padding: 14px 16px;
   color: $colorPrimary;
+  transition: $transitionHover;
   @include font-features-strong;
+
+  &:hover {
+    color: $colorPrimaryDark;
+  }
+
+  &:hover .page-header__makes-more-arrow {
+    fill: $colorPrimaryDark;
+  }
 }
 
 .page-header__makes-more-arrow {

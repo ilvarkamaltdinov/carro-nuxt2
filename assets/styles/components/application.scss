@@ -28,6 +28,11 @@
   color: $colorLink;
   position: relative;
   top: -2px;
+  transition: $transitionHover;
+
+  &:hover {
+    opacity: 0.6;
+  }
 }
 
 .application__banks {
