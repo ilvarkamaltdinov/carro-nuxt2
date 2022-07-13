@@ -1,5 +1,6 @@
 .select {
   position: relative;
+  overflow: visible;
 }
 
 .select__list {
@@ -11,6 +12,7 @@
   left: 0;
   max-height: 320px;
   overflow: scroll;
+  z-index: 25;
 }
 
 .select__item {

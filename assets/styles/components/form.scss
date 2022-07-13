@@ -123,6 +123,7 @@
 
 .form__field-wrap--select {
   position: relative;
+  overflow: visible;
 
   &::after {
     content: "";
