@@ -68,7 +68,9 @@ export default {
 		}
 		if (this.mask === 'date') {
 			let im = new Inputmask({
-				mask: "99/99/9999"
+				mask: "99/99/9999",
+				oncomplete: () => this.$emit('dateMaskComplete'),
+				onincomplete: () => this.$emit('onincomplete'),
 			});
 			im.mask(this.$refs.input);
 		}

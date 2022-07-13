@@ -23,20 +23,7 @@
 				<span class="application__choose-car-text">Выберите автомобиль</span>
 			</button>
 			<application-banks class="grid__col-5"/>
-			<div class="application__terms grid__col-3">
-				<div class="application__terms-item">
-					<div class="application__terms-number application__terms-number--stake">4.9%</div>
-					<div class="application__terms-text">Ставка по кредиту</div>
-				</div>
-				<div class="application__terms-item">
-					<div class="application__terms-number application__terms-number--term">{{ totalSum ? (rangePeriodValue + ' мес.') : '-' }}</div>
-					<div class="application__terms-text">Срок автокредита</div>
-				</div>
-				<div class="application__terms-item">
-					<div class="application__terms-number application__terms-number--payment">{{ totalSum || '-' }}</div>
-					<div class="application__terms-text">Ежемеясячный платеж</div>
-				</div>
-			</div>
+			<application-terms class="grid__col-3"/>
 		</div>
 	</section>
 
@@ -60,7 +47,7 @@ export default {
 		...mapGetters({
 			currentCar: 'modal/modal-choose/currentCar',
 			totalSum: 'form/form-credit/totalSum',
-			rangePeriodValue: 'form/form-credit/rangePeriodValue'
+			bank: 'banks/bank'
 		})
 	},
 	methods: {

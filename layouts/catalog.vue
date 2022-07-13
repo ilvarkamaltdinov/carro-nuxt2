@@ -14,6 +14,7 @@ import offerUrl from "@/apollo/queries/offer/offerUrl";
 import _ from "lodash";
 
 export default {
+	name: "catalog",
 	watch: {
 		'$route'() {
 			this.checkUrl()
@@ -59,7 +60,7 @@ export default {
 			await this.$store.commit('filters/filters/SET_LOADING', false)
 		},
 		async checkUrl() {
-			if(!this.isFilterClick){
+			if (!this.isFilterClick) {
 				await this.setLoadingRange(true)
 			}
 			// Если клик по объявлению, сразу показываем компонент объявления
@@ -88,10 +89,10 @@ export default {
 				} catch (e) {
 					this.$nuxt.error({statusCode: 404})
 				}
-			}
-			else {
+			} else {
+				// console.log(this.$route.path)
 				await this.filterRequest(this._.pickBy({ // TODO очищаю от пустых значений
-					url: this.$route.path,
+					url: this.$route.path === '/offers' ? '/used' : this.$route.path,
 					page: Number(this.$route.query.page) || 1,
 					mark_slug_array: this.$stringToArray(this.$route.query.mark_slug_array),
 					folder_slug_array: this.$stringToArray(this.$route.query.folder_slug_array),
@@ -107,7 +108,7 @@ export default {
 					sort: this.$route.query.sort || this.sort
 				}))
 			}
-			if(!this.isFilterClick){
+			if (!this.isFilterClick) {
 				await this.setLoadingRange(false)
 			}
 		},

@@ -1,93 +1,87 @@
 <template>
-	<form class="form"
-	      @submit.prevent="submitForm()">
-		<fieldset v-if="hasChose"
-		          class="form__fieldset">
-			<label
-					:class="{'form__field-wrap--car-active' : currentCar, 'form__field-wrap--error':error === 'invalid_car'}"
-					class="form__field-wrap form__field-wrap--car ">
-				<button class="form__field"
-				        @click.prevent="choseCar()">
+	<div>
+		<div class="heading-group heading-group--form">
+			<div class="heading-group__wrap">
+				<h2 class="heading heading--h2">
+					Автокредит
+					<span class="heading__promo">
+						{{ percent }} %
+					</span>
+				</h2>
+				<span class="heading-group__label">Получите одобрение за 5 минут</span>
+			</div>
+			<rating :max="100"
+			        :rating="formProgress" />
+		</div>
+		<form class="form"
+		      @submit.prevent="submitForm()">
+			<fieldset v-if="hasChose"
+			          class="form__fieldset">
+				<label
+						:class="{'form__field-wrap--car-active' : currentCar, 'form__field-wrap--error':error === 'invalid_car'}"
+						class="form__field-wrap form__field-wrap--car ">
+					<button class="form__field"
+					        @click.prevent="choseCar()">
+						
+						{{ currentCar ? currentCar.name : 'Выбрать автомобиль' }}
 					
-					{{ currentCar ? currentCar.name : 'Выбрать автомобиль' }}
-				
-				</button>
-				<svg-icon name="icon-form"
-				          class="icon form__car-icon" />
-			</label>
-		</fieldset>
-		<form-credit-calculator :params="creditParams"
-		                        :offer="offer || currentCar" />
-		<fieldset class="form__fieldset">
-			<label class="form__field-wrap"
-			       :class="{'form__field-wrap--success' : form.name.value.length >= 2, 'form__field-wrap--error': form.name.valid === false}">
-				<inputs-input placeholder="ФИО"
-				              @input="form.name.valid = null"
-				              v-model="form.name.value"
-				              type="text" />
-			</label>
-			<label class="form__field-wrap"
-			       :class="{'form__field-wrap--success' : form.date.valid, 'form__field-wrap--error': form.date.valid === false}">
-				<inputs-input placeholder="Дата рождения"
-				              @input="form.date.valid = null"
-				              v-model="form.date.value"
-				              mask="date"
-				              type="tel" />
-			</label>
-			<label class="form__field-wrap"
-			       :class="{'form__field-wrap--success' : form.phone.valid, 'form__field-wrap--error': form.phone.valid === false}">
-				<inputs-input placeholder="Телефон"
-				              @input="form.phone.valid = null"
-				              @phoneMaskComplete="form.phone.valid = true"
-				              @onincomplete="form.phone.valid = null"
-				              v-model="form.phone.value"
-				              mask="phone"
-				              type="tel" />
-			</label>
-			<checkbox-agree />
-		</fieldset>
-		<button-typical text="Оставить заявку"
-		                button-class="button--credit button--form" />
-	</form>
+					</button>
+					<svg-icon name="icon-form"
+					          class="icon form__car-icon" />
+				</label>
+			</fieldset>
+			<form-credit-calculator :params="creditParams"
+			                        :offer="offer || currentCar" />
+			<fieldset class="form__fieldset">
+				<label class="form__field-wrap"
+				       :class="nameClass">
+					<inputs-input placeholder="ФИО"
+					              @input="handlerInput('name')"
+					              v-model="form.name.value"
+					              type="text" />
+				</label>
+				<label class="form__field-wrap"
+				       :class="dateClass">
+					<inputs-input placeholder="Дата рождения"
+					              @input="handlerInput('date')"
+					              @dateMaskComplete="form.date.valid = true"
+					              @onincomplete="form.date.valid = null"
+					              v-model="form.date.value"
+					              mask="date"
+					              type="tel" />
+				</label>
+				<label class="form__field-wrap"
+				       :class="phoneClass">
+					<inputs-input placeholder="Телефон"
+					              @input="handlerInput('phone')"
+					              @phoneMaskComplete="form.phone.valid = true"
+					              @onincomplete="form.phone.valid = null"
+					              v-model="form.phone.value"
+					              mask="phone"
+					              type="tel" />
+				</label>
+				<checkbox @change="agree" label="Согласен на обработку личных данных" />
+			</fieldset>
+			<button-typical text="Оставить заявку"
+			                button-class="button--credit button--form" />
+		</form>
+	</div>
 </template>
 <script>
 import {mapGetters, mapMutations, mapActions} from 'vuex'
-import filters from "~/mixins/filters";
-import FEEDBACK from "@/apollo/mutations/feedback.gql";
+import formValidation from "@/mixins/formValidation";
 
 export default {
+	mixins: [formValidation],
 	props: {
-		bankRate: {
-			type: Number,
-			default: null
-		},
 		hasChose: {
 			type: Boolean,
 			default: true
 		},
 		offer: Object
 	},
-	watch: {
-		bankRate() {
-			this.setPercent(this.bankRate)
-		}
-	},
 	data() {
 		return {
-			form: {
-				name: {
-					valid: null,
-					value: '',
-				},
-				date: {
-					valid: null,
-					value: ''
-				},
-				phone: {
-					valid: null,
-					value: ''
-				}
-			},
 			error: '',
 			creditParams: {
 				rangePeriodValues: [
@@ -113,14 +107,35 @@ export default {
 				],
 				period: 24,
 				payment: 10,
-				percent: 4.9,
 			}
 		}
 	},
 	computed: {
 		...mapGetters({
 			currentCar: 'modal/modal-choose/currentCar',
+			bank: 'banks/bank'
 		}),
+		percent() {
+			// Динамично меняет процентную ставку в зависимости от банка
+			// return this.bank.rate ? this.bank.rate : this.$config.default_percent
+			return this.$config.default_percent
+		},
+		formProgress() {
+			let progress = 30
+			if (this.currentCar || this.offer) {
+				progress += 30
+			}
+			if (this.name_valid) {
+				progress += 10
+			}
+			if (this.date_valid) {
+				progress += 10
+			}
+			if (this.phone_valid) {
+				progress += 10
+			}
+			return progress
+		}
 	},
 	methods: {
 		...mapActions({

@@ -11,7 +11,11 @@
 			<button-typical @click="tradeIn(offer)"
 			                text="Trade-In"
 			                button-class="button--trade-in button--link" />
-			<button-typical @click="credit()"
+			<button-typical v-if="choose"
+			                @click="chooseClick(offer)"
+			                :text="currentCar === offer ? 'Выбрано' : 'Выбрать'"
+			                button-class="button--credit" />
+			<button-typical v-else @click="credit()"
 			                text="Купить в кредит"
 			                button-class="button--credit" />
 		</div>

@@ -12,7 +12,7 @@ import seoTags from "@/mixins/seoTags";
 
 export default {
 	mixins:[seoTags],
-	layout: 'catalogLayout',
+	layout: 'catalog',
 }
 </script>
 <!--<script>-->

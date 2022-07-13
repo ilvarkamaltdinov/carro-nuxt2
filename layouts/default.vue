@@ -12,6 +12,7 @@
 import {mapActions} from "vuex";
 
 export default {
+	name: "default",
 	methods: {
 		...mapActions({
 			closeStories: 'stories/stories/closeStories'

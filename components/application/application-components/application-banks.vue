@@ -2,35 +2,40 @@
 	<div class="application__banks">
 		<div class="application__banks-form">
 			<img class="application__banks-img application__banks-img--alfa"
-			     :src="require(`~/assets/img/banks/logos/${bankSlug}.svg`)"
+			     :src="bankLogo"
 			     alt="bank" />
 			<nuxt-link to="/banks-partners"
 			           @click.native="banksClick"
-			           class="application__banks-text">и еще 5 банков
+			           class="application__banks-text">и еще 25 банков
 			</nuxt-link>
 		</div>
 		<div class="application__form-img-wrap">
-			<img :src="require(`~/assets/img/banks/images/${bankSlug}.png`)"
+			<img :src="bankImage"
 			     alt="bank" />
 		</div>
 	</div>
 </template>
 
 <script>
-import {mapActions} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
-	props: {
-		bankSlug: {
-			type: String,
-			default: 'alfa-bank'
+	computed: {
+		...mapGetters({
+			bank: 'banks/bank'
+		}),
+		bankLogo() {
+			return this.bank.image ? this.bank.image : require('~/assets/img/banks/logo-alfa.svg')
+		},
+		bankImage() {
+			return this.bank.image_car ? this.bank.image_car.small_webp : require('~/assets/img/banks/image-alfa.png')
 		}
 	},
-	methods:{
+	methods: {
 		...mapActions({
 			closeModal: 'modal/modal-main/closeModal'
 		}),
-		async banksClick(){
+		async banksClick() {
 			await this.closeModal()
 		}
 	}

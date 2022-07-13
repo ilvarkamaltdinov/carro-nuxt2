@@ -3,14 +3,16 @@
 		<h1 class="heading heading--h1">
 			{{pageTitle}}
 		</h1>
-		<skeleton-catalog-desktop-small v-if="loading" />
+		<div v-if="loading" class="catalog__list grid grid__col-12">
+			<skeleton-card-small  v-for="i in 3" :key="i"/>
+		</div>
 		<div v-else class="catalog__list grid grid__col-12">
 			<component :is="component"
 			           v-for="offer in liked_offers"
 			           :offer="offer"
 			           :key="offer.id" />
 		</div>
-		<div v-if="liked_offers.length === 0">
+		<div v-if="liked_offers.length === 0 && !loading">
 			Нет выбранных автомобилей
 		</div>
 		<!--<button-more />-->
