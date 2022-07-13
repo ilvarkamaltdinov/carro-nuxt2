@@ -3,28 +3,28 @@
 	      @submit.prevent="submitForm()">
 		<fieldset class="form__fieldset">
 			<label class="form__field-wrap"
-			       :class="{'form__field-wrap--success' : form.mark.value.length >= 2, 'form__field-wrap--error': form.mark.valid === false}">
+			       :class="markClass">
 				<inputs-input placeholder="Марка"
-				              @input="form.mark.valid = null"
+				              @input="handlerInput('mark')"
 				              v-model="form.mark.value"
 				              type="text" />
 			</label>
 			<label class="form__field-wrap"
-			       :class="{'form__field-wrap--success' : form.model.value.length >= 1, 'form__field-wrap--error': form.model.valid === false}">
+			       :class="modelClass">
 				<inputs-input placeholder="Модель"
-				              @input="form.model.valid = null"
+				              @input="handlerInput('model')"
 				              v-model="form.model.value"
 				              type="text" />
 			</label>
 			<label class="form__field-wrap form__field-wrap--select"
-			       :class="{'form__field-wrap--success' : form.year.value !== 'Год', 'form__field-wrap--error': form.year.valid === false}">
+			       :class="yearClass">
 				<inputs-select :value="form.year.value"
-				               @input="form.year.valid = null" />
+				               @input="changeYearSelect" />
 				<svg-icon class="form__field-arrow"
 				          name="icon-arrow" />
 			</label>
 			<label class="form__field-wrap"
-			       :class="{'form__field-wrap--success' : form.run.value.length >= 1, 'form__field-wrap--error': form.run.valid === false}">
+			       :class="runClass">
 				<inputs-input placeholder="Пробег"
 				              @input="form.run.valid = null"
 				              v-model="form.run.value"
@@ -32,24 +32,26 @@
 				              type="text" />
 			</label>
 			<label class="form__field-wrap"
-			       :class="{'form__field-wrap--success' : form.name.value.length >= 2, 'form__field-wrap--error': form.name.valid === false}">
+			       :class="nameClass">
 				<inputs-input placeholder="ФИО"
-				              @input="form.name.valid = null"
+				              @input="handlerInput('name')"
 				              v-model="form.name.value"
 				              type="text" />
 			</label>
 			<label class="form__field-wrap"
-			       :class="{'form__field-wrap--success' : form.date.valid, 'form__field-wrap--error': form.date.valid === false}">
+			       :class="dateClass">
 				<inputs-input placeholder="Дата рождения"
-				              @input="form.date.valid = null"
+				              @input="handlerInput('date')"
+				              @dateMaskComplete="form.date.valid = true"
+				              @onincomplete="form.date.valid = null"
 				              v-model="form.date.value"
 				              mask="date"
 				              type="tel" />
 			</label>
 			<label class="form__field-wrap"
-			       :class="{'form__field-wrap--success' : form.phone.valid, 'form__field-wrap--error': form.phone.valid === false}">
+			       :class="phoneClass">
 				<inputs-input placeholder="Телефон"
-				              @input="form.phone.valid = null"
+				              @input="handlerInput('phone')"
 				              @phoneMaskComplete="form.phone.valid = true"
 				              @onincomplete="form.phone.valid = null"
 				              v-model="form.phone.value"
@@ -62,48 +64,19 @@
 	</form>
 </template>
 <script>
-import {mapGetters, mapMutations, mapActions} from 'vuex'
-import filters from "~/mixins/filters";
+import {mapActions} from 'vuex'
+import formValidation from "@/mixins/formValidation";
 
 export default {
-	data() {
-		return {
-			form: {
-				mark: {
-					valid: null,
-					value: '',
-				},
-				model: {
-					valid: null,
-					value: '',
-				},
-				year: {
-					valid: null,
-					value: 'Год',
-				},
-				run: {
-					valid: null,
-					value: '',
-				},
-				name: {
-					valid: null,
-					value: '',
-				},
-				date: {
-					valid: null,
-					value: ''
-				},
-				phone: {
-					valid: null,
-					value: ''
-				}
-			},
-		}
-	},
+	mixins: [formValidation],
 	methods: {
 		...mapActions({
 			sendForm: 'form/form/sendForm'
 		}),
+		changeYearSelect(year) {
+			this.form.year.valid = null
+			this.form.year.value = year
+		},
 		checkForm() {
 			if (this.form.mark.value.length < 2) {
 				this.form.mark.valid = false

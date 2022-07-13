@@ -2,6 +2,22 @@ export default {
     data() {
         return {
             form: {
+                mark: {
+                    valid: null,
+                    value: '',
+                },
+                model: {
+                    valid: null,
+                    value: '',
+                },
+                year: {
+                    valid: null,
+                    value: 'Год',
+                },
+                run: {
+                    valid: null,
+                    value: '',
+                },
                 car: {
                     valid: null,
                     value: '',
@@ -34,6 +50,62 @@ export default {
             if (this.car_valid) {
                 return 'form__field-wrap--success'
             } else if (this.car_invalid) {
+                return 'form__field-wrap--error'
+            }
+        },
+        //МАРКА
+        mark_valid() {
+            return this.form.mark.value.length >= 2
+        },
+        mark_invalid() {
+            return this.form.mark.valid === false
+        },
+        markClass() {
+            if (this.mark_valid) {
+                return 'form__field-wrap--success'
+            } else if (this.mark_invalid) {
+                return 'form__field-wrap--error'
+            }
+        },
+        //МОДЕЛЬ
+        model_valid() {
+            return this.form.model.value.length >= 1
+        },
+        model_invalid() {
+            return this.form.model.valid === false
+        },
+        modelClass() {
+            if (this.model_valid) {
+                return 'form__field-wrap--success'
+            } else if (this.model_invalid) {
+                return 'form__field-wrap--error'
+            }
+        },
+        //ГОД
+        year_valid() {
+            return this.form.year.value !== 'Год'
+        },
+        year_invalid() {
+            return this.form.year.valid === false
+        },
+        yearClass() {
+            if (this.year_valid) {
+                return 'form__field-wrap--success'
+            } else if (this.year_invalid) {
+                return 'form__field-wrap--error'
+            }
+        },
+        //ПРОБЕГ
+        run_valid() {
+            return this.form.run.value.length >= 1
+        },
+        run_invalid() {
+            return this.form.run.valid === false
+        },
+        runClass() {
+            if (this.run_valid) {
+                return 'form__field-wrap--success'
+            } else if (this.run_invalid) {
                 return 'form__field-wrap--error'
             }
         },
