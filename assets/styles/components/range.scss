@@ -64,10 +64,14 @@
 
   .range .irs--flat .irs-handle {
 
-    &:hover,
-    &:active {
-      cursor: pointer;
+    &:hover {
+      cursor: grab;
       transform: scale(1.1);
+    }
+
+    &:focus,
+    &:active {
+      cursor: grabbing;
     }
   }
 }
