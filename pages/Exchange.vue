@@ -5,13 +5,14 @@
 		</div>
 		<div class="grid grid--container">
 			<application-trade-in :page-title="pageTitle"/>
-			<benefits-car/>
+			<benefits :benefits="benefitsTradeIn"/>
 			<text-trade-in/>
 		</div>
 	</main>
 </template>
 <script>
 import seoTags from "@/mixins/seoTags";
+import {mapGetters} from "vuex";
 
 export default {
 	mixins:[seoTags],
@@ -30,6 +31,11 @@ export default {
 				}
 			]
 		}
+	},
+	computed: {
+		...mapGetters({
+			benefitsTradeIn: 'benefits/benefitsTradeIn'
+		})
 	}
 }
 </script>

@@ -24,7 +24,7 @@
 					<catalog-item-small-desktop :has-buttons="false" :offer="modalData"/>
 				</div>
 			</div>
-			<benefits-modal />
+			<benefits modal :benefits="benefitsCredit"/>
 		</div>
 	</div>
 </template>
@@ -37,7 +37,8 @@ export default {
 	
 	computed: {
 		...mapGetters({
-			modalData: 'modal/modal-main/modalData'
+			modalData: 'modal/modal-main/modalData',
+			benefitsCredit: 'benefits/benefitsCredit'
 		}),
 	}
 }

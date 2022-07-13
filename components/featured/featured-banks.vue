@@ -107,7 +107,7 @@
 				    :key="bank.id">
 					<div class="banks__main">
 						<img class="banks__img"
-						     :src="require(`~/assets/img/banks/logos/${bank.slug}.svg`)"
+						     :src="bank.image"
 						     alt="" />
 						<rating :max="100" :rating="bank.rating" />
 					</div>

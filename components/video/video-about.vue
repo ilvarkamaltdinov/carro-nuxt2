@@ -3,11 +3,26 @@
 		<h2 class="visually-hidden">Видео о портале carro.ru</h2>
 		<div class="video__block"
 		     id="about-video">
-			<button class="video__play">
+			<button v-if="!isVideo" class="video__play"
+			        @click="isVideo = true">
 				<svg-icon class="video__play-icon"
 				          name="icon-play" />
 			</button>
-			<div class="video__img-wrap">
+			<div v-if="isVideo"
+			     class="youtube"
+			     id="pf0hQmzZ6sE"
+			     style="width:100%; height:100%;">
+				<iframe id="yt-iframe"
+				        width="560"
+				        height="315"
+				        src="https://www.youtube.com/embed/67RlWpltRSY"
+				        title="YouTube video player"
+				        frameborder="0"
+				        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+				        allowfullscreen></iframe>
+			</div>
+			<div v-else
+			     class="video__img-wrap">
 				<picture>
 					<source type="image/webp"
 					        media="(min-width: 768px)"
@@ -22,8 +37,14 @@
 			</div>
 			<p class="video__text">Узнай, почему на carro.ru лучшие цены в России!</p>
 		</div>
-		<!--<div class="youtube"-->
-		<!--     id="pf0hQmzZ6sE"-->
-		<!--     style="width:100%; height:100%;"></div>-->
 	</section>
 </template>
+<script>
+export default {
+	data() {
+		return {
+			isVideo: false
+		}
+	}
+}
+</script>

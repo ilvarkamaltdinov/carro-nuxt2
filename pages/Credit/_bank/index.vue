@@ -5,13 +5,13 @@
 		</div>
 		<div class="grid grid--container">
 			<application-credit :page-title="pageTitle"/>
-			<benefits-car/>
+			<benefits :benefits="benefitsCredit"/>
 			<text-credit/>
 		</div>
 	</main>
 </template>
 <script>
-import {mapActions, mapMutations} from "vuex";
+import {mapActions, mapGetters, mapMutations} from "vuex";
 import bank from "@/apollo/queries/bank/bank";
 import seoTags from "@/mixins/seoTags";
 
@@ -32,6 +32,11 @@ export default {
 				}
 			]
 		}
+	},
+	computed: {
+		...mapGetters({
+			benefitsCredit: 'benefits/benefitsCredit'
+		})
 	},
 	methods:{
 		...mapActions({

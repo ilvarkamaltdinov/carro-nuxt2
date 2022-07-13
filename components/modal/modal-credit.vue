@@ -9,16 +9,20 @@
 						</h2>
 						<span class="heading-group__label">Получите 100% одобрение</span>
 					</div>
-					<rating :max="100" :rating="100" />
+					<rating :max="100"
+					        :rating="100" />
 				</div>
-				<form-credit :has-chose="false" :offer="modalData"/>
+				<form-credit :has-chose="false"
+				             :offer="modalData" />
 			</div>
 			<div class="application__catalog application__catalog--modal catalog grid__col-4">
-				<component :is="component" :has-buttons="false" :offer="modalData"/>
+				<component :is="component"
+				           :has-buttons="false"
+				           :offer="modalData" />
 			</div>
-			<application-banks class="grid__col-4"/>
+			<application-banks class="grid__col-4" />
 		</div>
-		<benefits-modal />
+		<benefits modal :benefits="benefitsCredit"/>
 	</div>
 </template>
 <script>
@@ -27,10 +31,11 @@ import {mapGetters} from 'vuex'
 export default {
 	computed: {
 		...mapGetters({
-			modalData: 'modal/modal-main/modalData'
+			modalData: 'modal/modal-main/modalData',
+			benefitsCredit: 'benefits/benefitsCredit'
 		}),
-		component(){
-			return  this.$device.isMobile ? 'catalog-item-large-mobile' : 'catalog-item-small-desktop'
+		component() {
+			return this.$device.isMobile ? 'catalog-item-large-mobile' : 'catalog-item-small-desktop'
 		}
 	},
 }

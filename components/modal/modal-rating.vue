@@ -2,7 +2,8 @@
 	<div>
 		<div class="modal__options">
 			<div class="modal__rating">
-				<rating :rating="5" :max="5"/>
+				<rating :rating="modalData.rating"
+				        :max="5" />
 				<div class="modal__rating-text">
 					<h3 class="heading heading--h3">Общее состояние</h3>
 				</div>
@@ -22,7 +23,8 @@
 				</div>
 				<div class="features__group">
 					<div class="features__rating">
-						<rating :rating="5" :max="5"/>
+						<rating :rating="5"
+						        :max="5" />
 						<div class="features__item">
 							<h3 class="heading heading--h3">Кузов</h3>
 						</div>
@@ -37,7 +39,8 @@
 				</div>
 				<div class="features__group">
 					<div class="features__rating">
-						<rating :rating="5" :max="5"/>
+						<rating :rating="5"
+						        :max="5" />
 						<div class="features__item">
 							<h3 class="heading heading--h3">Кузов</h3>
 						</div>
@@ -54,3 +57,14 @@
 		</div>
 	</div>
 </template>
+<script>
+import {mapGetters} from "vuex";
+
+export default {
+	computed: {
+		...mapGetters({
+			modalData: 'modal/modal-main/modalData'
+		})
+	}
+}
+</script>

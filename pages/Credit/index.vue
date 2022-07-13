@@ -1,20 +1,21 @@
 <template>
 	<main class="page-main">
 		<div class="grid">
-			<crumbs :crumbs="crumbs"/>
+			<crumbs :crumbs="crumbs" />
 		</div>
 		<div class="grid grid--container">
-			<application-credit :page-title="pageTitle"/>
-			<benefits-car/>
-			<text-credit/>
+			<application-credit :page-title="pageTitle" />
+			<benefits :benefits="benefitsCredit" />
+			<text-credit />
 		</div>
 	</main>
 </template>
 <script>
 import seoTags from "@/mixins/seoTags";
+import {mapGetters} from "vuex";
 
 export default {
-	mixins:[seoTags],
+	mixins: [seoTags],
 	data() {
 		return {
 			crumbs: [
@@ -28,8 +29,13 @@ export default {
 					route: '/credit',
 					active: true
 				}
-			]
+			],
 		}
+	},
+	computed: {
+		...mapGetters({
+			benefitsCredit: 'benefits/benefitsCredit'
+		})
 	}
 }
 </script>

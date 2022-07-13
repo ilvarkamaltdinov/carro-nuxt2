@@ -6,4 +6,5 @@ fragment BankListType on Bank {
     approval
     rating
     rate
+    image
 }

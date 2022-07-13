@@ -4,4 +4,5 @@ fragment BankType on Bank {
     slug
     rate
     title
+    image
 }
