@@ -2,7 +2,7 @@
   background-color: white;
   padding: 16px;
   box-shadow: $shadow;
-  transition-property: opacity,box-shadow,background;
+  transition-property: opacity,box-shadow,background!important;
 }
 
 .catalog__item .rating {
