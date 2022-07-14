@@ -21,6 +21,10 @@
   fill: transparent;
 }
 
+.checkbox--error .checkbox__icon {
+  border-color: $colorError;
+}
+
 .checkbox__icon--checked {
   background-color: $colorLink;
   border-color: $colorLink;
