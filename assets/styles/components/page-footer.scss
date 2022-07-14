@@ -129,6 +129,22 @@
   @include font-small;
 }
 
+.page-footer__legal-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  @include border-bottom;
+
+  border-bottom-color: $colorBg;
+}
+
+.page-footer__legal-item {
+  font-size: 12px;
+}
+
 .page-footer__city {
   color: $colorLink;
   display: flex;
@@ -160,6 +176,12 @@
 }
 
 @media (min-width: $desktop-width) {
+  .page-footer__legal-list {
+    display: flex;
+    flex-direction: row;
+    padding-top: 0;
+  }
+
   .page-footer {
     padding-bottom: 32px;
     margin-top: 160px;

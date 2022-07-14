@@ -2,6 +2,11 @@
   display: flex;
   align-items: center;
   margin-bottom: 16px;
+
+  &:hover .checkbox__text {
+    color: $colorPrimary;
+    transition: $transitionHover;
+  }
 }
 
 .checkbox--filter {
@@ -19,6 +24,10 @@
   border: 1px solid $colorDivider;
   background-color: transparent;
   fill: transparent;
+}
+
+.checkbox--error .checkbox__icon {
+  border-color: $colorError;
 }
 
 .checkbox__icon--checked {
