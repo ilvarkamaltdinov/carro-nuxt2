@@ -2,7 +2,42 @@
 	<div class="car__info grid__col-6"
 	     v-if="offer">
 		<div class="car__info-tabs">
-			<tabs-list-tech />
+			<div class="tabs">
+				<ul class="tabs__list"
+				    id="tabs"
+				    role="tablist">
+					<li role="presentation"
+					    class="tabs__item"
+					    :class="{'tabs__item--active': activeTab === 'Характеристики'}">
+						<button @click="tabClick('Характеристики')"
+						        class="tabs__link"
+						        role="tab"
+						        data-toggle="tab">
+							Характеристики
+						</button>
+					</li>
+					<li role="presentation"
+					    class="tabs__item"
+					    :class="{'tabs__item--active': activeTab === 'Комплектация'}">
+						<button v-if="equipment_group_list.length" @click="tabClick('Комплектация')"
+						        class="tabs__link"
+						        role="tab"
+						        data-toggle="tab">
+							Комплектация
+						</button>
+					</li>
+					<li role="presentation"
+					    class="tabs__item"
+					    :class="{'tabs__item--active': activeTab === 'О дилере'}">
+						<button @click="tabClick('О дилере')"
+						        class="tabs__link"
+						        role="tab"
+						        data-toggle="tab">
+							О дилере
+						</button>
+					</li>
+				</ul>
+			</div>
 		</div>
 		<div class="swiper swiper--car-info">
 			<div class="car__info-groups swiper-wrapper">
@@ -148,10 +183,11 @@
 								рейтинг дилера
 							</div>
 							<template v-slot:trigger>
-								<rating :rating="offer.dealer.rating" :max="5"/>
+								<rating :rating="offer.dealer.rating"
+								        :max="5" />
 							</template>
 						</tippy>
-						
+					
 					</div>
 					<div class="car__info-options features">
 						<div class="features__group">
@@ -191,6 +227,11 @@ import {mapActions, mapGetters} from "vuex";
 import dealer from '@/apollo/queries/dealer/dealer.gql'
 
 export default {
+	data() {
+		return {
+			activeTab: 'Характеристики',
+		}
+	},
 	mixins: [filters],
 	computed: {
 		...mapGetters({
@@ -203,11 +244,14 @@ export default {
 	methods: {
 		...mapActions({
 			openModal: 'modal/modal-main/openModal',
-			request: 'filters/filters/request'
+			request: 'request'
 		}),
+		tabClick(tab){
+			console.log(tab)
+		},
 		async moreInfoDiller(dealerSlug) {
 			try {
-				let dealerData = await this.request({query: dealer, variables: {slug:dealerSlug}})
+				let dealerData = await this.request({query: dealer, variables: {slug: dealerSlug}})
 				dealerData = dealerData.data.dealer
 				let payload = {
 					modal_data: dealerData,

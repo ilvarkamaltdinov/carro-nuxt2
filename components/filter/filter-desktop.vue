@@ -41,7 +41,6 @@ export default {
 					declension = few;
 				}
 			}
-			console.log(count, one, few, many)
 			return declension;
 		}
 	}

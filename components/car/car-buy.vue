@@ -40,7 +40,7 @@
 		</div>
 		<div class="car__stock">
 			В наличии в автоцентре
-			<a href=""
+			<a href="#" @click.prevent="moreInfoDiller(offer.dealer.slug)"
 			   class="car__stock-dealer">
 				«{{ offer.dealer.title }}»
 			</a>
@@ -50,6 +50,7 @@
 <script>
 import filters from "~/mixins/filters";
 import {mapActions, mapGetters} from "vuex";
+import dealer from "@/apollo/queries/dealer/dealer";
 export default {
 	mixins: [filters],
 	computed:{
@@ -61,8 +62,24 @@ export default {
 	methods: {
 		...mapActions({
 			liked: 'favorite/favorite/liked',
-			openModal: 'modal/modal-main/openModal'
+			openModal: 'modal/modal-main/openModal',
+			request: 'request'
 		}),
+		async moreInfoDiller(dealerSlug) {
+			try {
+				let dealerData = await this.request({query: dealer, variables: {slug: dealerSlug}})
+				dealerData = dealerData.data.dealer
+				let payload = {
+					modal_data: dealerData,
+					modal_component: 'modal-dealer',
+					modal_title: `Автоцентр «${dealerData.title}»`,
+					modal_sub_title: `${dealerData.short_description}`
+				}
+				await this.openModal(payload)
+			} catch (e) {
+				console.log(e)
+			}
+		},
 		async like() {
 			await this.liked(this.offer.external_id)
 		},

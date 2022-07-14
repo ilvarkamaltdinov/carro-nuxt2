@@ -47,7 +47,8 @@ export default {
         {src: '~/plugins/slideToggle.js'},
         {src: '~/plugins/lodash.js'},
         {src: '~/plugins/tippy.js'},
-        {src: '~/plugins/helpers.js'}
+        {src: '~/plugins/helpers.js'},
+        {src: '~/plugins/ymaps.js', mode: 'client'}
     ],
     //TODO sitemap
     // sitemap: {
