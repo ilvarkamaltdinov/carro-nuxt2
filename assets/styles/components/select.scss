@@ -7,9 +7,9 @@
   @include white-back;
   padding: 0 16px;
   position: absolute;
-  top: 64px;
-  width: 100%;
-  left: 0;
+  top: 58px;
+  width: calc(100% + 8px);
+  left: -4px;
   max-height: 320px;
   overflow: scroll;
   z-index: 25;
@@ -21,6 +21,12 @@
   text-align: left;
   @include font-body;
   margin: 0 -16px;
+  transition: $transitionHover;
+
+  &:hover {
+    color: $colorPrimary;
+    cursor: pointer;
+  }
 
   &:not(:last-child) {
     @include border-bottom;
