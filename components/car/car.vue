@@ -39,7 +39,7 @@
 				<car-info />
 			</div>
 			<div class="grid grid--container">
-				<benefits :benefits="benefitsCar" />
+				<benefits class="car__benefits" :benefits="benefitsCar" />
 				<car-credit :offer="offer" />
 			</div>
 		</section>
