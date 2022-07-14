@@ -8,6 +8,7 @@
 #import "./types/ownerType.gql"
 #import "./types/imageThumbType.gql"
 #import "./types/dealerMiniType.gql"
+#import "./types/ColorType.gql"
 
 fragment OfferPagination on OfferTypePagination {
   data {
@@ -18,6 +19,9 @@ fragment OfferPagination on OfferTypePagination {
     category_enum
     price
     run
+    color {
+      ... ColorType
+    }
     rating {
       rating_total
       rating_body

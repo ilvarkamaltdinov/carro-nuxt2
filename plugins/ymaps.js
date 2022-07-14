@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import YmapPlugin from 'vue-yandex-maps'
+Vue.use(YmapPlugin)
 
-const settings = { // you may define your apiKey, lang and version or skip this.
-    apiKey: 'xxx',
-    lang: 'ru_RU',
-    version: '2.1'
-}
-Vue.use(YmapPlugin, settings)
+// or for a single instance
+import { yandexMap, ymapMarker } from 'vue-yandex-maps'
+new Vue({
+    components: { yandexMap, ymapMarker }
+})
 

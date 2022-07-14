@@ -128,14 +128,14 @@ export default {
 			}
 			this.openModal(payload)
 		},
-		autoteka(carInfo) {
+		async autoteka(carInfo) {
 			let payload = {
 				modal_data: carInfo,
 				modal_component: 'modal-autoteka',
 				modal_title: 'Отчет «Автотеки» от 21.02',
 				modal_sub_title: carInfo.name
 			}
-			this.openModal(payload)
+			await this.openModal(payload)
 		},
 	}
 }

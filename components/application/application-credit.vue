@@ -12,9 +12,11 @@
 			</div>
 			<div v-if="currentCar"
 			     class="application__catalog catalog grid__col-8">
-				<catalog-item-large-desktop :has-buttons="false"
-				                            :offer="currentCar" />
+				<component :is="component"
+				           :has-buttons="false"
+				           :offer="currentCar" />
 			</div>
+			
 			<button v-else
 			        class="application__choose-car grid__col-8"
 			        @click="chooseCar">
@@ -51,8 +53,10 @@ export default {
 			currentCar: 'modal/modal-choose/currentCar',
 			bank: 'banks/bank',
 			totalSum: 'form/form-credit/totalSum',
-			rangePeriodValue: 'form/form-credit/rangePeriodValue'
 		}),
+		component() {
+			return this.$device.isMobile ? 'catalog-item-large-mobile' : 'catalog-item-large-desktop'
+		}
 	},
 	methods: {
 		...mapActions({

@@ -10,12 +10,16 @@ export default {
 	props: {
 		rating: Number,
 		max: Number,
-		percent: Boolean
+		percent: Boolean,
+		bank: {
+			type: Boolean,
+			default: false
+		}
 	},
 	computed: {
 		ratingText() {
 			if (this.max === 100) {
-				return parseFloat(this.rating).toFixed(1)
+				return this.bank ? parseFloat(this.rating).toFixed(1) : this.rating
 			} else {
 				return parseFloat(this.rating).toFixed(1)
 			}

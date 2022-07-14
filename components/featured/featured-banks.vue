@@ -114,7 +114,7 @@
 								рейтинг банка
 							</div>
 							<template v-slot:trigger>
-								<rating :max="100" :rating="bank.rating" />
+								<rating bank :max="100" :rating="bank.rating" />
 							</template>
 						</tippy>
 					

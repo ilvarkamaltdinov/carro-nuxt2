@@ -53,7 +53,9 @@
 			</div>
 			<div class="modal__dealer-map">
 				<h3 class="heading heading--h3">Автоцентр на карте:</h3>
-				<div class="map map--dealer"></div>
+				<div class="map map--dealer">
+					<map-dealer :settings="{coordinates:modalData.coordinates}"/>
+				</div>
 			</div>
 		</div>
 	</div>

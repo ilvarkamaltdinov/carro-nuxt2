@@ -36,7 +36,7 @@ export default {
 			gearbox: {
 				'mechanical': 'МКПП',
 				'cvt': 'Вариатор',
-				'robot':'РКПП',
+				'robot':'Робот',
 				'automatic':'АКПП',
 			}
 			

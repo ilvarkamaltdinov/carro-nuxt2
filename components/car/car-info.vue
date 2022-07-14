@@ -59,7 +59,7 @@
 								          name="icon-gear" />
 							</div>
 							<div class="car__tech-content">
-								{{ offer.gearbox.title }}
+								{{ currentGerabox }}
 							</div>
 						</li>
 						<li class="car__tech-item">
@@ -230,6 +230,12 @@ export default {
 	data() {
 		return {
 			activeTab: 'Характеристики',
+			gearbox: {
+				'mechanical': 'МКПП',
+				'cvt': 'Вариатор',
+				'robot':'Робот',
+				'automatic':'АКПП',
+			}
 		}
 	},
 	mixins: [filters],
@@ -237,6 +243,9 @@ export default {
 		...mapGetters({
 			offer: 'catalog/catalog-cars/offer'
 		}),
+		currentGerabox() {
+			return this.gearbox[this.offer.gearbox.name] || this.offer.gearbox.title
+		},
 		equipment_group_list() {
 			return this.offer.equipment_groups
 		}
