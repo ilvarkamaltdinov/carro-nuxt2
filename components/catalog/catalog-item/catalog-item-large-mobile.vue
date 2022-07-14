@@ -7,14 +7,13 @@
 		<div class="catalog__img">
 			<catalog-item-img v-for="img in offer.images"
 			                  :key="img.thumb"
-			                  :img="img.thumb" />
+			                  :offer="offer" />
 			<catalog-item-call-card :offer="offer"/>
 		</div>
 		<div class="catalog__tech"
 		     :class="{'catalog__tech--no-buttons':!hasButtons}">
-			<rating @click="ratingClick"
-			        :rating="offer.rating"
-			        :max="5" />
+			<rating-car @click="ratingClick"
+			            :rating="offer.rating"/>
 			<catalog-item-tech-list :offer="offer" />
 		</div>
 		<catalog-item-buttons :choose="choose"
@@ -67,7 +66,7 @@ export default {
 		}),
 		ratingClick() {
 			let payload = {
-				modal_data: this.offer,
+				modal_data: this.offer.rating,
 				modal_component: 'modal-rating',
 				modal_title: ' Состояние автомобиля',
 				modal_sub_title: this.offer.name

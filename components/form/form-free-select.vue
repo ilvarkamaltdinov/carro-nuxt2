@@ -30,11 +30,19 @@
 				<svg-icon class="form__field-arrow"
 				          name="icon-arrow" />
 			</label>
+			<label class="form__field-wrap form__field-wrap--select"
+			       :class="engineTypeClass">
+				<inputs-select :value="form.engineType.value"
+				               :options="engineTypes"
+				               @input="changeSelect( $event, 'engineType')" />
+				<svg-icon class="form__field-arrow"
+				          name="icon-arrow" />
+			</label>
 			<label class="form__field-wrap"
-			       :class="runClass">
-				<inputs-input placeholder="Пробег"
-				              @input="form.run.valid = null"
-				              v-model="form.run.value"
+			       :class="priceClass">
+				<inputs-input placeholder="Цена до"
+				              @input="handlerInput('price')"
+				              v-model="form.price.value"
 				              mask="number"
 				              type="text" />
 			</label>
@@ -46,16 +54,6 @@
 				              type="text" />
 			</label>
 			<label class="form__field-wrap"
-			       :class="dateClass">
-				<inputs-input placeholder="Дата рождения"
-				              @input="handlerInput('date')"
-				              @dateMaskComplete="form.date.valid = true"
-				              @onincomplete="form.date.valid = null"
-				              v-model="form.date.value"
-				              mask="date"
-				              type="tel" />
-			</label>
-			<label class="form__field-wrap"
 			       :class="phoneClass">
 				<inputs-input placeholder="Телефон"
 				              @input="handlerInput('phone')"
@@ -65,6 +63,7 @@
 				              mask="phone"
 				              type="tel" />
 			</label>
+			<checkbox @change="agree" label="Согласен на обработку личных данных" />
 		</fieldset>
 		<button-typical text="Оставить заявку"
 		                button-class="button--credit button--form" />

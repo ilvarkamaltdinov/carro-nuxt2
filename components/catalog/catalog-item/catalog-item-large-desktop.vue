@@ -8,9 +8,8 @@
 				<catalog-item-price :offer="offer" />
 			</div>
 			<div class="catalog__tech">
-				<rating @click="ratingClick"
-				        :rating="offer.rating"
-				        :max="5" />
+				<rating-car @click="ratingClick"
+				            :rating="offer.rating"/>
 				<catalog-item-tech-list :offer="offer" />
 			</div>
 		</div>
@@ -66,7 +65,7 @@ export default {
 		}),
 		ratingClick() {
 			let payload = {
-				modal_data: this.offer,
+				modal_data: this.offer.rating,
 				modal_component: 'modal-rating',
 				modal_title: ' Состояние автомобиля',
 				modal_sub_title: this.offer.name

@@ -1,9 +1,8 @@
 <template>
-	
 	<section class="page-main__thanks thanks grid">
 		<div class="heading-group heading-group--h1">
 			<div class="heading-group__wrap">
-				<h1 class="heading heading--h1">{{pageTitle}}
+				<h1 class="heading heading--h1">{{ pageTitle }}
 					<span class="heading__promo"></span>
 				</h1>
 				<span class="heading-group__label">Автокредит предварительно одобрен</span>
@@ -48,7 +47,7 @@
 			</div>
 		</div>
 		<div class="thanks__benefits grid__col-12">
-			<benefits-car />
+			<benefits :benefits="benefitsCar" />
 		</div>
 	</section>
 </template>
@@ -63,6 +62,7 @@ export default {
 		...mapGetters({
 			userName: 'form/form/userName',
 			userCar: 'form/form/userCar',
+			benefitsCar: 'benefits/benefitsCar'
 		})
 	}
 }

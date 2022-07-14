@@ -19,7 +19,8 @@
 			<label class="form__field-wrap form__field-wrap--select"
 			       :class="yearClass">
 				<inputs-select :value="form.year.value"
-				               @input="changeYearSelect" />
+				               :options="years_range"
+				               @input="changeSelect( $event, 'year')" />
 				<svg-icon class="form__field-arrow"
 				          name="icon-arrow" />
 			</label>

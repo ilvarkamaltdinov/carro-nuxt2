@@ -18,7 +18,12 @@ fragment OfferPagination on OfferTypePagination {
     category_enum
     price
     run
-    rating
+    rating {
+      rating_total
+      rating_body
+      rating_interior
+      rating_technical
+    }
     year
     engine_power
     engine_volume

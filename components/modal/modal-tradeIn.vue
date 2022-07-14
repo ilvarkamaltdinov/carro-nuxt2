@@ -9,7 +9,7 @@
 			</div>
 			<application-banks class="grid__col-4"/>
 		</div>
-		<benefits-modal />
+		<benefits modal :benefits="benefitsTradeIn"/>
 	</div>
 </template>
 <script>
@@ -18,7 +18,8 @@ import {mapGetters} from 'vuex'
 export default {
 	computed: {
 		...mapGetters({
-			modalData: 'modal/modal-main/modalData'
+			modalData: 'modal/modal-main/modalData',
+			benefitsTradeIn: 'benefits/benefitsTradeIn'
 		}),
 		component(){
 			return  this.$device.isMobile ? 'catalog-item-large-mobile' : 'catalog-item-small-desktop'

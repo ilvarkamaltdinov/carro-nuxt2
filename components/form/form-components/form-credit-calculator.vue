@@ -72,11 +72,11 @@ export default {
 		changePeriod(value) {
 			this.periodValue = parseInt(value)
 			this.calculate()
-			
 		},
 		changePayment(value) {
 			this.paymentValue = parseInt(value)
 			this.calculate()
+			
 		},
 		calculate() {
 			if (this.offer) {
@@ -100,6 +100,8 @@ export default {
 					this.total = String(A).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1 ") + " ₽"
 				}
 			}
+			this.$emit('changePeriod', this.periodValue)
+			this.$emit('changePayment', this.paymentValue)
 		}
 	}
 }
