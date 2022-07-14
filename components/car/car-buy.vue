@@ -4,7 +4,7 @@
 			<div class="car__price">
 				{{ offer.price | toCurrency }}
 			</div>
-			<tippy-question />
+			<tippy-question text="test test"/>
 			<div class="car__price-payment">
 				В кредит от {{ offer.price | access_acredit }} / мес.
 			</div>
@@ -21,7 +21,15 @@
 			</button>
 		</div>
 		<div class="car__actions-block">
-			<rating-car :max="5" :rating="offer.rating" @click="ratingClick"/>
+			<tippy arrow>
+				<div class="tippy-text">
+					рейтинг автомобиля
+				</div>
+				<template v-slot:trigger>
+					<rating-car @click="ratingClick"
+					            :rating="offer.rating"/>
+				</template>
+			</tippy>
 			<div class="car__actions-buttons">
 				<button-autoteka @click="autoteka(offer)"/>
 				<button-favorite :active="likesArray.some(id => id === String(offer.external_id))"

@@ -18,7 +18,7 @@
 							<span class="heading-group__label">Перезвоним в течение 5 минут</span>
 						</div>
 					</div>
-					<form-car-callback :offer="modalData"/>
+					<form-callback :offer="modalData"/>
 				</div>
 				<div class="application__catalog application__catalog--modal catalog grid__col-4">
 					<catalog-item-small-desktop :has-buttons="false" :offer="modalData"/>
@@ -30,11 +30,7 @@
 </template>
 <script>
 import {mapGetters} from 'vuex'
-import CatalogItemSmallDesktop from "../catalog/catalog-item/catalog-item-small-desktop";
-
 export default {
-	components: {CatalogItemSmallDesktop},
-	
 	computed: {
 		...mapGetters({
 			modalData: 'modal/modal-main/modalData',

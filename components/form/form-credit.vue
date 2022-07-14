@@ -10,9 +10,17 @@
 				</h2>
 				<span class="heading-group__label">Получите одобрение за 5 минут</span>
 			</div>
-			<rating :max="100"
-			        percent
-			        :rating="formProgress" />
+			<tippy arrow>
+				<div class="tippy-text">
+					Вероятность одобрения заявки
+				</div>
+				<template v-slot:trigger>
+					<rating :max="100"
+					        percent
+					        :rating="formProgress" />
+				</template>
+			</tippy>
+		
 		</div>
 		<form class="form"
 		      @submit.prevent="submitForm()">
@@ -64,8 +72,13 @@
 					              mask="phone"
 					              type="tel" />
 				</label>
-				<checkbox @change="agree"
-				          label="Согласен на обработку личных данных" />
+				<checkbox-form :error="error === 'agreeRf'"
+				               @change="changeCheckbox($event,'agreeRf')"
+				               label="Подтверждаю наличие гражданства РФ" />
+				<checkbox-form :error="error === 'agree'"
+				               @change="changeCheckbox($event,'agree')"
+				               label="Согласен на"
+				               link="обработку личных данных" />
 			</fieldset>
 			<button-typical v-if="!buttonDisabled"
 			                text="Оставить заявку"
@@ -88,7 +101,6 @@ export default {
 	},
 	data() {
 		return {
-			error: '',
 			creditParams: {
 				rangePeriodValues: [
 					"2",
@@ -140,6 +152,12 @@ export default {
 			if (this.phone_valid) {
 				progress += 10
 			}
+			if (this.form.agree) {
+				progress += 4
+			}
+			if (this.form.agreeRf) {
+				progress += 4
+			}
 			return progress
 		}
 	},
@@ -180,6 +198,14 @@ export default {
 			}
 			if (!this.form.phone.valid) {
 				this.form.phone.valid = false
+				return false
+			}
+			if (!this.form.agree) {
+				this.error = 'agree'
+				return false
+			}
+			if (!this.form.agreeRf) {
+				this.error = 'agreeRf'
 				return false
 			}
 			return true;

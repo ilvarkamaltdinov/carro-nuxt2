@@ -8,8 +8,15 @@
 				<catalog-item-price :offer="offer" />
 			</div>
 			<div class="catalog__tech">
-				<rating-car @click="ratingClick"
-				            :rating="offer.rating"/>
+				<tippy arrow>
+					<div class="tippy-text">
+						рейтинг автомобиля
+					</div>
+					<template v-slot:trigger>
+						<rating-car @click="ratingClick"
+						            :rating="offer.rating"/>
+					</template>
+				</tippy>
 				<catalog-item-tech-list :offer="offer" />
 			</div>
 		</div>

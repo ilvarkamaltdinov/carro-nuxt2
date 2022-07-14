@@ -30,7 +30,9 @@
 					                   {{ userCar.gearbox.title }} ({{ userCar.engine_power }} л.с.) {{ userCar.year }} закреплен
 					                   за вашей
 					
-					                   заявкой #838280. Менеджер свяжется с вами в ближайшее время. Спасибо, что выбрали нас!
+					                   заявкой
+						<b>#{{ userOrderId }}</b>
+					                   . Менеджер свяжется с вами в ближайшее время. Спасибо, что выбрали нас!
 					</p>
 					<p class="text__p">После подтверждения заявки вас пригласят в автоцентр для прохождения бесплатного
 					                   тест-драйва и оформления сделки. Обратите внимание, что оплата возможна как за наличные,
@@ -52,17 +54,26 @@
 	</section>
 </template>
 <script>
-import {mapGetters} from "vuex";
+import {mapGetters, mapMutations} from "vuex";
 
 export default {
 	props: {
 		pageTitle: String
 	},
+	methods: {
+		...mapMutations({
+			clear: 'form/form/CLEAR_DATA'
+		})
+	},
+	destroyed() {
+		this.clear()
+	},
 	computed: {
 		...mapGetters({
 			userName: 'form/form/userName',
 			userCar: 'form/form/userCar',
-			benefitsCar: 'benefits/benefitsCar'
+			benefitsCar: 'benefits/benefitsCar',
+			userOrderId: 'form/form/userOrderId'
 		})
 	}
 }

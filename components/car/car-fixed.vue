@@ -5,7 +5,7 @@
 				<div class="car__price">
 					{{ offer.price | toCurrency }}
 				</div>
-				<tippy-question />
+				<tippy-question text="test test"/>
 				<div class="car__price-payment">
 					В кредит от {{ offer.price | access_acredit }} / мес.
 				</div>
