@@ -3,32 +3,37 @@
 	      @submit.prevent="submitForm()">
 		<fieldset class="form__fieldset">
 			<label class="form__field-wrap"
-			       :class="{'form__field-wrap--success' : form.name.value.length >= 2, 'form__field-wrap--error': form.name.valid === false}">
+			       :class="nameClass">
 				<inputs-input placeholder="ФИО"
-				              @input="form.name.valid = null"
+				              @input="handlerInput('name')"
 				              v-model="form.name.value"
 				              type="text" />
 			</label>
 			<label class="form__field-wrap"
-			       :class="{'form__field-wrap--success' : form.date.valid, 'form__field-wrap--error': form.date.valid === false}">
+			       :class="dateClass">
 				<inputs-input placeholder="Дата рождения"
-				              @input="form.date.valid = null"
+				              @input="handlerInput('date')"
+				              @dateMaskComplete="form.date.valid = true"
+				              @onincomplete="form.date.valid = null"
 				              v-model="form.date.value"
 				              mask="date"
 				              type="tel" />
 			</label>
 			<label class="form__field-wrap"
-			       :class="{'form__field-wrap--success' : form.phone.valid, 'form__field-wrap--error': form.phone.valid === false}">
+			       :class="phoneClass">
 				<inputs-input placeholder="Телефон"
-				              @input="form.phone.valid = null"
+				              @input="handlerInput('phone')"
 				              @phoneMaskComplete="form.phone.valid = true"
 				              @onincomplete="form.phone.valid = null"
 				              v-model="form.phone.value"
 				              mask="phone"
 				              type="tel" />
 			</label>
-			<checkbox-passport />
-			<checkbox-agree />
+			<checkbox-form @change="changeCheckbox($event,'agreeRf')"
+			          label="Подтверждаю наличие гражданства РФ" />
+			<checkbox-form @change="changeCheckbox($event,'agree')"
+			          label="Согласен на"
+								link="обработку личных данных"/>
 		</fieldset>
 		<button-typical text="Перезвоните мне"
 		                button-class="button--credit button--form" />
@@ -36,33 +41,17 @@
 </template>
 <script>
 import {mapActions} from "vuex";
+import formValidation from "@/mixins/formValidation";
 
 export default {
+	mixins: [formValidation],
 	props: {
 		offer: Object
 	},
-	data() {
-		return {
-			form: {
-				name: {
-					valid: null,
-					value: '',
-				},
-				date: {
-					valid: null,
-					value: ''
-				},
-				phone: {
-					valid: null,
-					value: ''
-				}
-			},
-			error: '',
-		}
-	},
 	methods: {
 		...mapActions({
-			sendForm: 'form/form/sendForm'
+			sendForm: 'form/form/sendForm',
+			closeModal: 'modal/modal-main/closeModal'
 		}),
 		checkForm() {
 			if (this.form.name.value.length < 2) {
@@ -77,18 +66,28 @@ export default {
 				this.form.phone.valid = false
 				return false
 			}
+			if (!this.form.agree) {
+				this.error = 'agree'
+				return false
+			}
+			if (!this.form.agreeRf) {
+				this.error = 'agreeRf'
+				return false
+			}
 			return true;
 		},
 		async submitForm() {
 			if (this.checkForm()) {
 				let formData = {
+					car: this.offer,
 					external_id: this.offer.external_id,
 					type: 'callback',
 					client_name: this.form.name.value,
 					client_phone: this.form.phone.value,
 					client_age: this.form.date.value
 				}
-				await this.sendForm({formData: formData, car: this.offer})
+				await this.closeModal()
+				await this.sendForm(formData)
 			}
 		},
 	}

@@ -40,18 +40,20 @@ export default {
                 },
                 name: {
                     valid: null,
-                    value: 'test',
+                    value: '',
                 },
                 date: {
                     valid: null,
-                    value: '03/05/199'
+                    value: ''
                 },
                 phone: {
                     valid: null,
-                    value: '+7 (999) 999-99-9'
+                    value: ''
                 },
-                agree: false,
+                agree: true,
+                agreeRf: true,
             },
+            error: ''
         }
     },
     computed: {
@@ -231,8 +233,9 @@ export default {
         },
     },
     methods: {
-        agree(checkboxData) {
-            this.agree = checkboxData
+        changeCheckbox($event, type) {
+            this.form[type] = $event
+            this.error = ''
         },
         changePeriod(value) {
             this.form.periodValue = value

@@ -62,7 +62,13 @@
 					              mask="phone"
 					              type="tel" />
 				</label>
-				<checkbox @change="agree" label="Согласен на обработку личных данных" />
+				<checkbox-form :error="error === 'agreeRf'"
+				          @change="changeCheckbox($event,'agreeRf')"
+				          label="Подтверждаю наличие гражданства РФ" />
+				<checkbox-form :error="error === 'agree'"
+				          @change="changeCheckbox($event,'agree')"
+				          label="Согласен на"
+				          link="обработку личных данных" />
 			</fieldset>
 			<button-typical text="Оставить заявку"
 			                button-class="button--credit button--form" />

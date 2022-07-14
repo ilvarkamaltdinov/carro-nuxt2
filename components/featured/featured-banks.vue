@@ -109,7 +109,15 @@
 						<img class="banks__img"
 						     :src="bank.image"
 						     alt="" />
-						<rating :max="100" :rating="bank.rating" />
+						<tippy arrow>
+							<div class="tippy-text">
+								рейтинг банка
+							</div>
+							<template v-slot:trigger>
+								<rating :max="100" :rating="bank.rating" />
+							</template>
+						</tippy>
+					
 					</div>
 					<ul class="banks__info">
 						<li class="banks__info-item">Заявок в месяц

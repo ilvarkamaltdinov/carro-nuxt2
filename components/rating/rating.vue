@@ -2,19 +2,20 @@
 	<div class="rating"
 	     @click="$emit('click')"
 	     :style="`--rating-number:${ratingValue}; --rating-color:${ratingColor};`">
-		{{ ratingText }}
+		{{ ratingText }}{{ percent ? '%' : '' }}
 	</div>
 </template>
 <script>
 export default {
 	props: {
 		rating: Number,
-		max: Number
+		max: Number,
+		percent: Boolean
 	},
 	computed: {
 		ratingText() {
 			if (this.max === 100) {
-				return this.rating
+				return parseFloat(this.rating).toFixed(1)
 			} else {
 				return parseFloat(this.rating).toFixed(1)
 			}

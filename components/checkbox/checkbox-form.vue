@@ -1,8 +1,7 @@
 <template>
 	<label class="form__checkbox-wrap checkbox"
-	       for="checkbox-agree">
+	       :class="{'checkbox--error':error}">
 		<input class="form__checkbox visually-hidden"
-		       id="checkbox-agree"
 		       name="checkbox-agree"
 		       type="checkbox"
 		       @change="$emit('change', checked)"
@@ -10,19 +9,27 @@
 		<svg-icon name="icon-checkmark"
 		          :class="{'checkbox__icon--checked':checked}"
 		          class="checkbox__icon" />
-		<span class="form__checkbox-text"
-		      v-html="label"></span>
+		<span class="form__checkbox-text">{{ label }}
+			<a href="/privacy"
+			   target="_blank">{{ link }}
+			</a>
+		</span>
 	</label>
 </template>
 <script>
 export default {
 	data() {
 		return {
-			checked: false
+			checked: true
 		}
 	},
 	props: {
-		label: String
+		label: String,
+		link: String,
+		error: {
+			type: Boolean,
+			default: false
+		}
 	}
 }
 </script>

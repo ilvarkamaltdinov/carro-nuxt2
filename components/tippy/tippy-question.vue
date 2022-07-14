@@ -1,5 +1,8 @@
 <template>
-	<tippy :content="'Hello'" arrow>
+	<tippy arrow>
+		<div class="tippy-text">
+			{{ text }}
+		</div>
 		<template v-slot:trigger>
 			<div class="tippy tippy--question">
 				<svg-icon name="icon-question"
@@ -8,3 +11,10 @@
 		</template>
 	</tippy>
 </template>
+<script>
+export default {
+	props: {
+		text: String
+	}
+}
+</script>

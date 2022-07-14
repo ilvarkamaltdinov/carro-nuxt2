@@ -26,7 +26,8 @@ export default {
 		return {
 			total: null,
 			periodValue: this.params.period,
-			paymentValue: this.params.payment
+			paymentValue: this.params.payment,
+			paymentPriceValue: null
 		}
 	},
 	watch: {
@@ -93,6 +94,7 @@ export default {
 				} else {
 					S = car_price;
 				}
+				this.paymentPriceValue = (car_price - (car_price * firstPay) / 100).toString() + ` руб. (${firstPay}%)`
 				let K = 0;
 				if (car_price) {
 					K = (i * Math.pow(1 + i, n)) / (Math.pow(1 + i, n) - 1);
@@ -101,7 +103,7 @@ export default {
 				}
 			}
 			this.$emit('changePeriod', this.periodValue)
-			this.$emit('changePayment', this.paymentValue)
+			this.$emit('changePayment', this.paymentPriceValue)
 		}
 	}
 }
