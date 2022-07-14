@@ -3,6 +3,7 @@ import feedback from "@/apollo/mutations/feedback";
 export const state = () => ({
     userName: null,
     userCar: null,
+    buttonDisabled: false,
 })
 export const getters = {
     userName: (state) => {
@@ -10,6 +11,9 @@ export const getters = {
     },
     userCar: (state) => {
         return state.userCar
+    },
+    buttonDisabled: (state) => {
+        return state.buttonDisabled
     }
 }
 export const actions = {
@@ -33,25 +37,29 @@ export const actions = {
     // },
 
     async sendForm({commit}, variables) {
+        commit('SET_BUTTON_DISABLED', true)
         commit('SET_USER_CAR', variables.car)
-        commit('SET_USER_NAME', variables.formData.client_name)
+        delete variables.car // Удаляю тачку чтобы не ушла на сервак
+        commit('SET_USER_NAME', variables.client_name)
         this.app.router.push('/thanks');
-        // let assignVariables = {
-        //     site_id: this.$config.site_id
-        // }
+        commit('SET_BUTTON_DISABLED', false)
+        let assignVariables = {
+            site_id: this.$config.site_id
+        }
+        let client = this.app.apolloProvider.defaultClient
+        let params = {...assignVariables, ...variables}
 
-        // let client = this.app.apolloProvider.defaultClient
-        // let params = {...assignVariables, ...variables}
+        console.log(params)
         // await client.mutate(
         //     {
         //         mutation: feedback,
         //         variables: this.$removeEmptyObjects(params)
         //     }).then(({data}) => {
+        //     commit('SET_BUTTON_DISABLED', false)
         //     console.log(data)
         // }).catch(error => {
         //     console.log(error)
         // })
-
     }
 
 }
@@ -61,5 +69,8 @@ export const mutations = {
     },
     SET_USER_CAR(state, data) {
         state.userCar = data
+    },
+    SET_BUTTON_DISABLED(state, data) {
+        state.buttonDisabled = data
     },
 }

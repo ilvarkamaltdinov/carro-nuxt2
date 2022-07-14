@@ -10,7 +10,7 @@
 			</div>
 		</div>
 		<div class="car__buy-block">
-			<button @click.prevent="creditClick(offer)" class="button button--credit-pay button--link">
+			<button @click.prevent="installmentClick(offer)" class="button button--credit-pay button--link">
 				Рассрочка
 			</button>
 			<button @click.prevent="tradeInClick(offer)" class="button button--trade-in button--link">
@@ -21,12 +21,12 @@
 			</button>
 		</div>
 		<div class="car__actions-block">
-			<rating :max="100" :rating="100" />
+			<rating-car :max="5" :rating="offer.rating" @click="ratingClick"/>
 			<div class="car__actions-buttons">
 				<button-autoteka @click="autoteka(offer)"/>
 				<button-favorite :active="likesArray.some(id => id === String(offer.external_id))"
 				                 @click="like()" />
-				<button-compare />
+				<!--<button-compare />-->
 				<button-call @click="callback(offer)"/>
 			</div>
 		</div>
@@ -76,11 +76,29 @@ export default {
 			}
 			this.openModal(payload)
 		},
+		ratingClick(){
+			let payload = {
+				modal_data: this.offer.rating,
+				modal_component: 'modal-rating',
+				modal_title: ' Состояние автомобиля',
+				modal_sub_title: this.offer.name
+			}
+			this.openModal(payload)
+		},
 		tradeInClick(carInfo) {
 			let payload = {
 				modal_data: carInfo,
 				modal_component: 'modal-tradeIn',
 				modal_title: 'Заявка на Trade-In',
+				modal_sub_title: carInfo.name
+			}
+			this.openModal(payload)
+		},
+		installmentClick(carInfo) {
+			let payload = {
+				modal_data: carInfo,
+				modal_component: 'modal-installment',
+				modal_title: 'Заявка на рассрочку',
 				modal_sub_title: carInfo.name
 			}
 			this.openModal(payload)

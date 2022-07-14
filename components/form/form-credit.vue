@@ -11,6 +11,7 @@
 				<span class="heading-group__label">Получите одобрение за 5 минут</span>
 			</div>
 			<rating :max="100"
+			        percent
 			        :rating="formProgress" />
 		</div>
 		<form class="form"
@@ -30,8 +31,11 @@
 					          class="icon form__car-icon" />
 				</label>
 			</fieldset>
-			<form-credit-calculator :params="creditParams"
-			                        :offer="offer || currentCar" />
+			<form-credit-calculator
+					@changePeriod="changePeriod"
+					@changePayment="changePayment"
+					:params="creditParams"
+					:offer="offer || currentCar" />
 			<fieldset class="form__fieldset">
 				<label class="form__field-wrap"
 				       :class="nameClass">
@@ -60,9 +64,11 @@
 					              mask="phone"
 					              type="tel" />
 				</label>
-				<checkbox @change="agree" label="Согласен на обработку личных данных" />
+				<checkbox @change="agree"
+				          label="Согласен на обработку личных данных" />
 			</fieldset>
-			<button-typical text="Оставить заявку"
+			<button-typical v-if="!buttonDisabled"
+			                text="Оставить заявку"
 			                button-class="button--credit button--form" />
 		</form>
 	</div>
@@ -140,6 +146,7 @@ export default {
 	methods: {
 		...mapActions({
 			openModal: 'modal/modal-main/openModal',
+			closeModal: 'modal/modal-main/closeModal',
 			sendForm: 'form/form/sendForm'
 		}),
 		...mapMutations({
@@ -180,15 +187,16 @@ export default {
 		async submitForm() {
 			if (this.checkForm()) {
 				let formData = {
+					car: this.currentCar || this.offer, //нужно для страницы thanks
 					external_id: this.hasChose ? this.currentCar.external_id : this.offer.external_id,
 					type: 'credit',
 					client_name: this.form.name.value,
 					client_phone: this.form.phone.value,
 					client_age: this.form.date.value,
-					//TODO эмитить данные из калькулятора в этот компонент
-					// credit_initial_fee: this.rangePaymentValue,
-					// credit_period: this.rangePeriodValue,
+					credit_initial_fee: this.form.paymentValue.toString(),
+					credit_period: this.form.periodValue.toString(),
 				}
+				await this.closeModal()
 				await this.sendForm(formData)
 			}
 		}

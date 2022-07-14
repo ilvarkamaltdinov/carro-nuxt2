@@ -1,5 +1,7 @@
 <template>
-	<div class="catalog__img brazzers-daddy">
+	<nuxt-link :to="`/${currentCategory}/${currentMark}/${currentFolder}/${currentId}`"
+	           @click.native="$emit('linkClick')"
+	           class="catalog__img brazzers-daddy">
 		<img :src="coverSrc"
 		     @load="onImgLoad"
 		     :class="class_name"
@@ -15,7 +17,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</nuxt-link>
 </template>
 <script>
 export default {
@@ -25,16 +27,13 @@ export default {
 			class_name: 'load',
 			isLoaded: false,
 			limit: 7,
-			photos: this.images,
+			photos: this.offer.images,
 			forceCoverPhoto: null,
-			placeholderUrl: this.images[0].thumb
+			placeholderUrl: this.offer.images[0].thumb
 		}
 	},
 	props: {
-		images: {
-			type: Array,
-			default: () => []
-		},
+		offer: Object,
 	},
 	computed: {
 		coverSrc() {
@@ -43,6 +42,18 @@ export default {
 					: this.photos.length > 0
 							? this.photos[0].thumb
 							: this.placeholderUrl;
+		},
+		currentCategory() {
+			return this.offer.category_enum
+		},
+		currentMark() {
+			return this.offer.mark.slug
+		},
+		currentFolder() {
+			return this.offer.folder.slug
+		},
+		currentId() {
+			return this.offer.external_id
 		}
 	},
 	methods: {

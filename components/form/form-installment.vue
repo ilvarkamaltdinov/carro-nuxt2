@@ -3,9 +3,9 @@
 		<div class="heading-group heading-group--form">
 			<div class="heading-group__wrap">
 				<h2 class="heading heading--h2">
-					Автокредит
+					Рассрочка
 					<span class="heading__promo">
-						{{ percent }} %
+						0 %
 					</span>
 				</h2>
 				<span class="heading-group__label">Получите одобрение за 5 минут</span>
@@ -30,7 +30,9 @@
 					          class="icon form__car-icon" />
 				</label>
 			</fieldset>
-			<form-credit-calculator :params="creditParams"
+			<form-credit-calculator
+					installment
+					:params="creditParams"
 			                        :offer="offer || currentCar" />
 			<fieldset class="form__fieldset">
 				<label class="form__field-wrap"
@@ -91,12 +93,9 @@ export default {
 					"24",
 					"36",
 					"48",
-					"60",
-					"72",
-					"84"
+					"60"
 				],
 				rangePaymentValues: [
-					'0%',
 					'10%',
 					'20%',
 					'30%',

@@ -1,7 +1,11 @@
+import {mapGetters} from "vuex";
+
 export default {
     data() {
         return {
             form: {
+                paymentValue: null,
+                periodValue: null,
                 mark: {
                     valid: null,
                     value: '',
@@ -12,9 +16,21 @@ export default {
                 },
                 year: {
                     valid: null,
-                    value: 'Год',
+                    value: 'Год от',
+                },
+                gearbox: {
+                    valid: null,
+                    value: 'КПП',
+                },
+                engineType: {
+                    valid: null,
+                    value: 'Двигатель',
                 },
                 run: {
+                    valid: null,
+                    value: '',
+                },
+                price: {
                     valid: null,
                     value: '',
                 },
@@ -24,21 +40,41 @@ export default {
                 },
                 name: {
                     valid: null,
-                    value: '',
+                    value: 'test',
                 },
                 date: {
                     valid: null,
-                    value: ''
+                    value: '03/05/199'
                 },
                 phone: {
                     valid: null,
-                    value: ''
+                    value: '+7 (999) 999-99-9'
                 },
                 agree: false,
-            }
+            },
         }
     },
     computed: {
+        ...mapGetters({
+            buttonDisabled: 'form/form/buttonDisabled'
+        }),
+        years_range() {
+            return this._.range(2003, new Date().getFullYear() + 1)
+        },
+        gearboxes() {
+            return [
+                'Автомат',
+                'механическая',
+                'Автомат вариатор',
+            ]
+        },
+        engineTypes() {
+            return [
+                'Дизельный',
+                'Бензиновый',
+                'Гибридный',
+            ]
+        },
         //ВАШ АВТОМОБИЛЬ
         car_valid() {
             return this.form.car.value.length >= 2
@@ -67,6 +103,20 @@ export default {
                 return 'form__field-wrap--error'
             }
         },
+        //ЦЕНА
+        price_valid() {
+            return this.form.price.value.length >= 2
+        },
+        price_invalid() {
+            return this.form.price.valid === false
+        },
+        priceClass() {
+            if (this.price_valid) {
+                return 'form__field-wrap--success'
+            } else if (this.price_invalid) {
+                return 'form__field-wrap--error'
+            }
+        },
         //МОДЕЛЬ
         model_valid() {
             return this.form.model.value.length >= 1
@@ -83,7 +133,7 @@ export default {
         },
         //ГОД
         year_valid() {
-            return this.form.year.value !== 'Год'
+            return this.form.year.value !== 'Год от'
         },
         year_invalid() {
             return this.form.year.valid === false
@@ -92,6 +142,34 @@ export default {
             if (this.year_valid) {
                 return 'form__field-wrap--success'
             } else if (this.year_invalid) {
+                return 'form__field-wrap--error'
+            }
+        },
+        //КОРОБКА
+        gearbox_valid() {
+            return this.form.gearbox.value !== 'КПП'
+        },
+        gearbox_invalid() {
+            return this.form.gearbox.valid === false
+        },
+        gearboxClass() {
+            if (this.gearbox_valid) {
+                return 'form__field-wrap--success'
+            } else if (this.gearbox_invalid) {
+                return 'form__field-wrap--error'
+            }
+        },
+        //ДВИГАТЕЛЬ
+        engine_type_valid() {
+            return this.form.engineType.value !== 'Двигатель'
+        },
+        engine_type_invalid() {
+            return this.form.engineType.valid === false
+        },
+        engineTypeClass() {
+            if (this.engine_type_valid) {
+                return 'form__field-wrap--success'
+            } else if (this.engine_type_invalid) {
                 return 'form__field-wrap--error'
             }
         },
@@ -156,8 +234,18 @@ export default {
         agree(checkboxData) {
             this.agree = checkboxData
         },
+        changePeriod(value) {
+            this.form.periodValue = value
+        },
+        changePayment(value) {
+            this.form.paymentValue = value
+        },
         handlerInput(type) {
             this.form[type].valid = null
-        }
+        },
+        changeSelect($event, type) {
+            this.form[type].valid = null
+            this.form[type].value = $event
+        },
     }
 }

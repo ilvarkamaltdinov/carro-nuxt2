@@ -1,16 +1,15 @@
 <template>
 	<article class="catalog__item catalog__item--vertical"
 	         :class="{'grid__col-4':!slide, 'swiper-slide':slide}">
-		<catalog-item-hover-slider @linkClick.native="linkClick" :images="offer.images" />
+		<catalog-item-hover-slider @linkClick.native="linkClick" :offer="offer" />
 		<div class="catalog__info">
 			<catalog-item-title @linkClick="linkClick" :offer="offer" />
 			<catalog-item-price :offer="offer" />
 		</div>
 		<div class="catalog__tech"
 		     :class="{'catalog__tech--no-buttons':!hasButtons}">
-			<rating @click="ratingClick"
-			        :rating="offer.rating"
-			        :max="5" />
+			<rating-car @click="ratingClick"
+			        :rating="offer.rating"/>
 			<catalog-item-tech-list :offer="offer" />
 		</div>
 		<catalog-item-buttons :choose="choose"
@@ -72,7 +71,7 @@ export default {
 		},
 		ratingClick() {
 			let payload = {
-				modal_data: this.offer,
+				modal_data: this.offer.rating,
 				modal_component: 'modal-rating',
 				modal_title: ' Состояние автомобиля',
 				modal_sub_title: this.offer.name

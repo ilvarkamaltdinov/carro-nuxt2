@@ -2,7 +2,7 @@
 	<div>
 		<div class="modal__options">
 			<div class="modal__rating">
-				<rating :rating="modalData.rating"
+				<rating :rating="modalData.rating_total"
 				        :max="5" />
 				<div class="modal__rating-text">
 					<h3 class="heading heading--h3">Общее состояние</h3>
@@ -23,7 +23,7 @@
 				</div>
 				<div class="features__group">
 					<div class="features__rating">
-						<rating :rating="5"
+						<rating :rating="modalData.rating_body"
 						        :max="5" />
 						<div class="features__item">
 							<h3 class="heading heading--h3">Кузов</h3>
@@ -39,10 +39,26 @@
 				</div>
 				<div class="features__group">
 					<div class="features__rating">
-						<rating :rating="5"
+						<rating :rating="modalData.rating_interior"
 						        :max="5" />
 						<div class="features__item">
-							<h3 class="heading heading--h3">Кузов</h3>
+							<h3 class="heading heading--h3">Интерьер</h3>
+						</div>
+					</div>
+					<div class="features__list features__list--column">
+						<div class="features__item features__item--rating">Кузов в отличном состоянии</div>
+						<div class="features__item features__item--rating">Кузов в отличном состоянии</div>
+						<div class="features__item features__item--rating">Кузов в отличном состоянии</div>
+						<div class="features__item features__item--rating">Кузов в отличном состоянии</div>
+						<div class="features__item features__item--rating features__item--problem">Кузов в отличном состоянии</div>
+					</div>
+				</div>
+				<div class="features__group">
+					<div class="features__rating">
+						<rating :rating="modalData.rating_technical"
+						        :max="5" />
+						<div class="features__item">
+							<h3 class="heading heading--h3">Технические характеристики</h3>
 						</div>
 					</div>
 					<div class="features__list features__list--column">
