@@ -38,6 +38,10 @@ export default {
                     valid: null,
                     value: '',
                 },
+                client_car:{
+                    valid: null,
+                    value: '',
+                },
                 name: {
                     valid: null,
                     value: '',

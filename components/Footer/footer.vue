@@ -70,9 +70,10 @@
 					<!--	</a>-->
 					<!--</li>-->
 					<li class="page-footer__links-item">
-						<a class="page-footer__link"
-						   href="">Пользовательское соглашение
-						</a>
+						<nuxt-link to="/privacy"
+						           class="page-footer__link">
+							Пользовательское соглашение
+						</nuxt-link>
 					</li>
 					<li class="page-footer__links-item">
 						<nuxt-link to="/sitemap"
@@ -83,22 +84,23 @@
 				</ul>
 			</div>
 			<div class="page-footer__cars grid__col-12">
-				<div class="page-footer__cars-stock">Автомобилей в наличии:
-					<span class="page-footer__cars-stock-number">{{ allMarksCount | toCurrencyValue}}</span>
+				<div class="page-footer__cars-stock">
+					Автомобилей в наличии:
+					<span class="page-footer__cars-stock-number">{{ allMarksCount | toCurrencyValue }}</span>
 				</div>
 				<footer-marks />
 			</div>
-      <div class="page-footer__legal grid__col-12">
-        <ul class="page-footer__legal-list">
-          <li class="page-footer__legal-item">ООО «Ю-СТАЙЛ»</li>
-          <li class="page-footer__legal-item">ОГРН: 1177746078916</li>
-          <li class="page-footer__legal-item">ИНН / КПП: 7724398974 / 772401001</li>
-          <li class="page-footer__legal-item">Юр. адрес: 115487, г. Москва, ул. Нагатинская, 16/9</li>
-          <li class="page-footer__legal-item">Физ. адрес: 117405, г. Москва, Варшавское шоссе, 170Г</li>
-        </ul>
-      </div>
+			<div class="page-footer__legal grid__col-12">
+				<ul class="page-footer__legal-list">
+					<li class="page-footer__legal-item">ООО «Ю-СТАЙЛ»</li>
+					<li class="page-footer__legal-item">ОГРН: 1177746078916</li>
+					<li class="page-footer__legal-item">ИНН / КПП: 7724398974 / 772401001</li>
+					<li class="page-footer__legal-item">Юр. адрес: 115487, г. Москва, ул. Нагатинская, 16/9</li>
+					<li class="page-footer__legal-item">Физ. адрес: 117405, г. Москва, Варшавское шоссе, 170Г</li>
+				</ul>
+			</div>
 			<div class="page-footer__disclaimer grid__col-12">
-
+				
 				<p class="page-footer__disclaimer-p">
 					Годовая ставка автокредита варьируется от 4.9% до 16,5% и зависит от конкретного банка, суммы займа и
 					кредитной
@@ -106,25 +108,25 @@
 					комисси
 					автопорталом CARRO не взимаются.
 				</p>
-
+				
 				<p class="page-footer__disclaimer-p">
 					В случае невозвращения в условленный срок суммы автокредита или суммы процентов по автокредиту банк-партнер
 					оставляет за собой право начислить штраф за просрочку платежа в среднем размере 0,1% от первоначальной суммы
 					автокредита. При несоблюдении условий погашения автокредита данные о нарушителе могут быть переданы в
 					специальный реестр должников и коллекторское агентство для взыскания задолженности.
 				</p>
-
+				
 				<p class="page-footer__disclaimer-p">
 					Данный Интернет-сайт носит исключительно информационный характер и ни при каких условиях не является публичной
 					офертой, определяемой положениями Статьи 437 Гражданского кодекса РФ. Для получения подробной информации о
 					наличии и стоимости указанных товаров и (или) услуг, пожалуйста, обращайтесь к менеджерам
 					автосалонов-партнеров.
 				</p>
-
+				
 				<p class="page-footer__disclaimer-p">
 					Кредит предоставляется банком АО «Тинькофф Банк» (Лицензия ЦБ РФ № 2673 от 24.03.2015).
 				</p>
-
+				
 				<p class="page-footer__disclaimer-p">
 					<span>Обязательное страхование гражданской ответственности владельцев транспортных средств осуществляется АО
 					      «Тинькофф Страхование»
@@ -146,7 +148,7 @@ import {mapGetters} from 'vuex'
 import filters from "@/mixins/filters";
 
 export default {
-	mixins:[filters],
+	mixins: [filters],
 	computed: {
 		...mapGetters({
 			allMarksCount: 'marks/marks/allMarksCount',

@@ -1,6 +1,6 @@
 <template>
 	<tippy arrow>
-		<div class="tippy-text">
+		<div class="tippy__text">
 			{{ text }}
 		</div>
 		<template v-slot:trigger>

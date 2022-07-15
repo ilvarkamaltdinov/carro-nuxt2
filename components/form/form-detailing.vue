@@ -51,7 +51,7 @@ export default {
 	methods: {
 		...mapActions({
 			sendForm: 'form/form/sendForm',
-			closeModal: 'modal/modal-main/closeModal'
+			closeModal: 'modal/modal-main/closeModal',
 		}),
 		checkForm() {
 			if (this.form.name.value.length < 2) {
@@ -79,9 +79,7 @@ export default {
 		async submitForm() {
 			if (this.checkForm()) {
 				let formData = {
-					chosen_car: this.offer,
-					external_id: this.offer.external_id,
-					type: 'callback',
+					type: 'station',
 					client_name: this.form.name.value,
 					client_phone: this.form.phone.value,
 					client_age: this.form.date.value

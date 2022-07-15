@@ -179,7 +179,7 @@
 							</span>
 						</div>
 						<tippy arrow>
-							<div class="tippy-text">
+							<div class="tippy__text">
 								рейтинг дилера
 							</div>
 							<template v-slot:trigger>

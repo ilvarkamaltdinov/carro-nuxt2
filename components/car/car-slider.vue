@@ -63,6 +63,10 @@ export default {
 			centeredSlides: this.centeredSlides,
 			watchSlidesProgress: true,
 			spaceBetween: this.slidesSpaceBetween,
+			navigation: {
+				nextEl: '.car__slider .swiper-button-next',
+				prevEl: '.car__slider .swiper-button-prev',
+			},
 			on: {
 				init:()=> {
 					this.setCarPageLoaded(true)

@@ -6,14 +6,15 @@
 		</div>
 		<div class="application__terms-item">
 			<div class="application__terms-number application__terms-number--term">
-				<!--{{ totalSum ? (rangePeriodValue + ' мес.') : '-' }}-->
-				-
+				{{ periodValue ? periodValue + ' мес.' : '-' }}
 			</div>
 			<div class="application__terms-text">Срок автокредита</div>
 		</div>
 		<div class="application__terms-item">
-			<div class="application__terms-number application__terms-number--payment">
-				<!--{{ totalSum || '-' }}-->
+			<div class="application__terms-number application__terms-number--payment" v-if="monthPayment">
+				{{ monthPayment | toCurrency }}
+			</div>
+			<div v-else class="application__terms-number application__terms-number--payment">
 				-
 			</div>
 			<div class="application__terms-text">Ежемеясячный платеж</div>
@@ -23,11 +24,15 @@
 
 <script>
 import {mapGetters} from "vuex";
+import filters from "@/mixins/filters";
 
 export default {
+	mixins: [filters],
 	computed: {
 		...mapGetters({
-			bank: 'banks/bank'
+			bank: 'banks/bank',
+			periodValue: 'form/form/periodValue',
+			monthPayment: 'form/form/monthPayment'
 		}),
 		percent() {
 			// Динамично меняет процентную ставку в зависимости от банка

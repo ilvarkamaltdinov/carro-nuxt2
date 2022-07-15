@@ -22,7 +22,7 @@
 		</div>
 		<div class="car__actions-block">
 			<tippy arrow>
-				<div class="tippy-text">
+				<div class="tippy__text">
 					рейтинг автомобиля
 				</div>
 				<template v-slot:trigger>

@@ -8,32 +8,33 @@
 				<span class="heading-group__label">{{ currentTitle }}</span>
 			</div>
 		</div>
-		<div class="thanks__block grid__col-12 grid text">
-			<div class="grid__col-8 text__wrap text__wrap--figure">
-				<div class="text__figure figure">
-					<picture>
-						<source type="image/webp"
-						        media="(min-width: 768px)"
-						        :data-srcset="`${require(`~/assets/img/figures/figure-1@1x.webp`)} 1x, ${require(`~/assets/img/figures/figure-1@2x.webp`)} 2x`" />
-						<source media="(min-width: 768px)"
-						        :data-srcset="`${require(`~/assets/img/figures/figure-1@1x.png`)} 1x, ${require(`~/assets/img/figures/figure-1@2x.png`)} 2x`" />
-						<img class="text__figure-img lazyload"
-						     data-src="img/figures/figure-1@1x.png"
-						     :data-srcset="`${require(`~/assets/img/figures/figure-1@2x.png`)} 2x`"
-						     alt="" />
-					</picture>
-				</div>
-				<div class="text__content"
-				     v-html="currentText"></div>
-			</div>
-			<div class="thanks__catalog catalog catalog--single grid__col-4">
-				<catalog-item-small-desktop :has-buttons="false"
-				                            :offer="userCar" />
-			</div>
-		</div>
-		<div class="thanks__benefits grid__col-12">
-			<benefits :benefits="benefitsCar" />
-		</div>
+		<!--<div class="thanks__block grid__col-12 grid text">-->
+		<!--	<div class="grid__col-8 text__wrap text__wrap&#45;&#45;figure">-->
+		<!--		<div class="text__figure figure">-->
+		<!--			<picture>-->
+		<!--				<source type="image/webp"-->
+		<!--				        media="(min-width: 768px)"-->
+		<!--				        :data-srcset="`${require(`~/assets/img/figures/figure-1@1x.webp`)} 1x, ${require(`~/assets/img/figures/figure-1@2x.webp`)} 2x`" />-->
+		<!--				<source media="(min-width: 768px)"-->
+		<!--				        :data-srcset="`${require(`~/assets/img/figures/figure-1@1x.png`)} 1x, ${require(`~/assets/img/figures/figure-1@2x.png`)} 2x`" />-->
+		<!--				<img class="text__figure-img lazyload"-->
+		<!--				     data-src="img/figures/figure-1@1x.png"-->
+		<!--				     :data-srcset="`${require(`~/assets/img/figures/figure-1@2x.png`)} 2x`"-->
+		<!--				     alt="" />-->
+		<!--			</picture>-->
+		<!--		</div>-->
+		<!--		<div class="text__content"-->
+		<!--		     v-html="currentText"></div>-->
+		<!--	</div>-->
+		<!--	<div v-if="userCar"-->
+		<!--	     class="thanks__catalog catalog catalog&#45;&#45;single grid__col-4">-->
+		<!--		<catalog-item-small-desktop :has-buttons="false"-->
+		<!--		                            :offer="userCar" />-->
+		<!--	</div>-->
+		<!--</div>-->
+		<!--<div class="thanks__benefits grid__col-12">-->
+		<!--	<benefits :benefits="benefitsCar" />-->
+		<!--</div>-->
 	</section>
 </template>
 <script>
@@ -49,6 +50,10 @@ export default {
 				credit: 'Автокредит предварительно одобрен',
 				buyout: 'Выкуп автомобиля',
 				callback: 'Обратный звонок',
+				select: 'Автоподбор',
+				tradeIn: 'TradeIn',
+				installment: 'Рассрочка',
+				station: 'Услуга',
 			},
 		}
 	},
@@ -89,8 +94,12 @@ export default {
             тест-драйва и оформления сделки. Обратите внимание, что оплата возможна как за наличные,
             так и посредством безналичного расчета!</p>
 						<p class="text__p">И еще. Передайте менеджеру, что пришли по объявлению на CARRO, чтобы получить подарок и бесплатный комплект шин.</p>`,
-				buyout: ``,
-				callback: ``
+				buyout: `текст выкупа`,
+				callback: `текст обратного звонка`,
+				select: `текст автоподбора`,
+				tradeIn: 'текст trade-in',
+				installment: 'текст рассрочки',
+				station: 'текст услуги',
 			}
 		}
 	}
