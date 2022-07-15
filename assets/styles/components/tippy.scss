@@ -1,3 +1,16 @@
+.tippy--question {
+  flex-shrink: 0;
+  fill: $colorLink;
+  width: 16px;
+  height: 16px;
+  display: flex;
+}
+
+.tippy__icon {
+  width: 16px;
+  height: 16px;
+}
+
 .tippy__text {
   color: white;
 }
