@@ -8,7 +8,7 @@
 #import "./types/ownerType.gql"
 #import "./types/imageThumbType.gql"
 #import "./types/dealerMiniType.gql"
-#import "./types/ColorType.gql"
+#import "./types/colorType.gql"
 
 fragment OfferPagination on OfferTypePagination {
   data {
