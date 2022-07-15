@@ -25,12 +25,22 @@ export const state = () => ({
             text_strong: 'в подарок',
             icon: 'tires'
         },
+        {
+          text: 'КАСКО',
+          text_strong: 'за наш счет',
+          icon: 'insurance'
+        },
     ],
     benefitsTradeIn: [
         {
-            text: 'Гарантия',
-            text_strong: '1 год',
-            icon: 'shield'
+          text: 'Гарантия',
+          text_strong: '1 год',
+          icon: 'shield'
+        },
+        {
+          text: 'Рыночная',
+          text_strong: 'цена',
+          icon: 'ruble'
         },
         {
             text: 'Автокредит',
@@ -48,26 +58,31 @@ export const state = () => ({
             icon: 'docs'
         },
         {
-            text: 'Зимняя резина',
-            text_strong: 'в подарок',
-            icon: 'tires'
+            text: 'Оформление',
+            text_strong: 'за 30 мин.',
+            icon: 'time'
         },
     ],
     benefitsBuyout: [
         {
-            text: 'Гарантия',
-            text_strong: '1 год',
-            icon: 'shield'
+            text: 'Мгновенная',
+            text_strong: 'выплата',
+            icon: 'credit-card'
         },
         {
-            text: 'Автокредит',
-            text_strong: 'от 4.9%',
-            icon: 'bank'
+          text: 'Рыночная',
+          text_strong: 'цена',
+          icon: 'ruble'
         },
         {
-            text: 'Trade-In как',
-            text_strong: 'первый взнос',
-            icon: 'trade-in'
+            text: 'Выезд',
+            text_strong: 'оценщика',
+            icon: 'form'
+        },
+        {
+            text: 'Оценка',
+            text_strong: 'бесплатно',
+            icon: 'engine'
         },
         {
             text: 'По паспорту',
@@ -75,37 +90,42 @@ export const state = () => ({
             icon: 'docs'
         },
         {
-            text: 'Зимняя резина',
-            text_strong: 'в подарок',
-            icon: 'tires'
+          text: 'Оформление',
+          text_strong: 'за 30 мин.',
+          icon: 'time'
         },
     ],
     benefitsCar: [
-        {
-            text: 'Гарантия',
-            text_strong: '1 год',
-            icon: 'shield'
-        },
-        {
-            text: 'Автокредит',
-            text_strong: 'от 4.9%',
-            icon: 'bank'
-        },
-        {
-            text: 'Trade-In как',
-            text_strong: 'первый взнос',
-            icon: 'trade-in'
-        },
-        {
-            text: 'По паспорту',
-            text_strong: 'и правам',
-            icon: 'docs'
-        },
-        {
-            text: 'Зимняя резина',
-            text_strong: 'в подарок',
-            icon: 'tires'
-        },
+      {
+        text: 'Гарантия',
+        text_strong: '1 год',
+        icon: 'shield'
+      },
+      {
+        text: 'Автокредит',
+        text_strong: 'от 4.9%',
+        icon: 'bank'
+      },
+      {
+        text: 'Trade-In как',
+        text_strong: 'первый взнос',
+        icon: 'trade-in'
+      },
+      {
+        text: 'По паспорту',
+        text_strong: 'и правам',
+        icon: 'docs'
+      },
+      {
+        text: 'Зимняя резина',
+        text_strong: 'в подарок',
+        icon: 'tires'
+      },
+      {
+        text: 'КАСКО',
+        text_strong: 'за наш счет',
+        icon: 'insurance'
+      },
     ],
 })
 export const getters = {
