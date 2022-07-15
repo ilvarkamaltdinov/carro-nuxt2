@@ -106,7 +106,7 @@ export default {
 					this.total = String(A).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1 ") + " ₽"
 					//для отображения в блоке рядом с выбранным банком
 					this.setPeriodValue(this.periodValue)
-					this.setMonthPaymentValue(this.total)
+					this.setMonthPaymentValue(A)
 					//
 				}
 			}

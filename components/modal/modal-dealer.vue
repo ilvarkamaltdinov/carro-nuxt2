@@ -7,7 +7,7 @@
 			     alt="" />
 			<div class="modal__buttons">
 				<button-callback />
-				<button-call-modal />
+				<button-call-modal :phone="modalData.phone"/>
 			</div>
 		</div>
 		<div class="modal__wrap">

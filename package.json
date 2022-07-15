@@ -28,6 +28,7 @@
         "pug-plain-loader": "^1.1.0",
         "swiper": "^8.0.6",
         "vue-lodash": "^2.1.2",
+        "vue-number-animation": "^1.1.2",
         "vue-scrollto": "^2.20.0",
         "vue-slide-toggle": "^1.1.1",
         "vue-tippy": "^4.14.0",
