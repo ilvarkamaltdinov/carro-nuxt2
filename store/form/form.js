@@ -1,11 +1,14 @@
 import feedback from "@/apollo/mutations/feedback";
 
 export const state = () => ({
+    periodValue: null,
+    monthPayment:null,
+
     userName: null,
     userCar: null,
     userOrderId: null,
     buttonDisabled: false,
-    formType:''
+    formType: ''
 })
 export const getters = {
     userName: (state) => {
@@ -22,6 +25,12 @@ export const getters = {
     },
     formType: (state) => {
         return state.formType
+    },
+    periodValue: (state) => {
+        return state.periodValue
+    },
+    monthPayment: (state) => {
+        return state.monthPayment
     }
 }
 export const actions = {
@@ -29,8 +38,8 @@ export const actions = {
         console.log(variables)
         await commit('SET_FORM_TYPE', variables.type)
         commit('SET_BUTTON_DISABLED', true)
-        commit('SET_USER_CAR', variables.car)
-        delete variables.car // Удаляю тачку чтобы не ушла на сервак
+        commit('SET_USER_CAR', variables.chosen_car)
+        delete variables.chosen_car // Удаляю тачку чтобы не ушла на сервак
         commit('SET_USER_NAME', variables.client_name)
         await this.app.router.push('/thanks');
         // let assignVariables = {
@@ -51,7 +60,7 @@ export const actions = {
 
 }
 export const mutations = {
-    CLEAR_DATA(state){
+    CLEAR_DATA(state) {
         state.userName = null
         state.userCar = null
         state.userOrderId = null
@@ -72,4 +81,10 @@ export const mutations = {
     SET_FORM_TYPE(state, data) {
         state.formType = data
     },
+    SET_PERIOD_VALUE(state, data) {
+        state.periodValue = data
+    },
+    SET_MONTH_PAYMENT_VALUE(state, data) {
+        state.monthPayment = data
+    }
 }

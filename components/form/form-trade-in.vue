@@ -17,13 +17,15 @@
 				          class="icon form__car-icon" />
 			</label>
 		</fieldset>
-		<checkbox :value="hasCredit"
-		          @change="hasCredit = !hasCredit"
-		          label="Хочу купить автомобиль в кредит" />
-		<VueSlideToggle :open="hasCredit"
+		<checkbox-form label="Купить авто в кредит"
+		               @change="isCredit = !isCredit" />
+		<VueSlideToggle :open="isCredit"
 		                :duration="500">
-			<form-credit-calculator :params="creditParams"
-			                        :offer="offer || currentCar"/>
+			<form-credit-calculator
+					@changePeriod="changePeriod"
+					@changePayment="changePayment"
+					:params="creditParams"
+					:offer="offer || currentCar" />
 		</VueSlideToggle>
 		<fieldset class="form__fieldset">
 			<label class="form__field-wrap"
@@ -61,12 +63,12 @@
 				              type="tel" />
 			</label>
 			<checkbox-form :error="error === 'agreeRf'"
-			          @change="changeCheckbox($event,'agreeRf')"
-			          label="Подтверждаю наличие гражданства РФ" />
+			               @change="changeCheckbox($event,'agreeRf')"
+			               label="Подтверждаю наличие гражданства РФ" />
 			<checkbox-form :error="error === 'agree'"
-			          @change="changeCheckbox($event,'agree')"
-			          label="Согласен на"
-			          link="обработку личных данных" />
+			               @change="changeCheckbox($event,'agree')"
+			               label="Согласен на"
+			               link="обработку личных данных" />
 		</fieldset>
 		<button-typical text="Оставить заявку"
 		                button-class="button--credit button--form" />
@@ -83,7 +85,7 @@ export default {
 			type: Boolean,
 			default: true
 		},
-		isModal:{
+		isModal: {
 			type: Boolean,
 			default: false
 		},
@@ -91,7 +93,7 @@ export default {
 	},
 	data() {
 		return {
-			hasCredit: false,
+			isCredit: true,
 			error: '',
 			creditParams: {
 				rangePeriodValues: [
@@ -166,19 +168,31 @@ export default {
 				this.form.phone.valid = false
 				return false
 			}
+			if (!this.form.agree) {
+				this.error = 'agree'
+				return false
+			}
+			if (!this.form.agreeRf) {
+				this.error = 'agreeRf'
+				return false
+			}
 			return true;
 		},
 		async submitForm() {
 			if (this.checkForm()) {
 				let formData = {
+					chosen_car: this.currentCar || this.offer, //нужно для страницы thanks
 					external_id: this.hasChose ? this.currentCar.external_id : this.offer.external_id,
-					type: 'credit',
+					type: 'tradeIn',
 					client_name: this.form.name.value,
 					client_phone: this.form.phone.value,
 					client_age: this.form.date.value,
-					//TODO эмитить данные из калькулятора в этот компонент
-					// credit_initial_fee: this.rangePaymentValue,
-					// credit_period: this.rangePeriodValue,
+					client_vehicle_mark: this.form.car.value,
+				}
+				if (this.isCredit) {
+					formData.comment = 'В кредит'
+					formData.credit_initial_fee = this.form.paymentValue.toString()
+					formData.credit_period = this.form.periodValue.toString()
 				}
 				await this.sendForm(formData)
 			}

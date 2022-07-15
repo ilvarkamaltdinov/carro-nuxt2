@@ -43,7 +43,8 @@
 							<span class="detailing__sale">Еще -10% за онлайн-заявку</span>
 						</div>
 					</div>
-					<button-typical text="Заказать услугу"
+					<button-typical @click="openDetailing(station)"
+					                text="Заказать услугу"
 					                button-class="button--credit" />
 				</li>
 			</ul>
@@ -71,8 +72,18 @@ export default {
 	},
 	methods: {
 		...mapActions({
-			request: 'request'
-		})
+			request: 'request',
+			openModal: 'modal/modal-main/openModal'
+		}),
+		async openDetailing(station) {
+			let payload = {
+				modal_data: station,
+				modal_component: 'modal-detailing',
+				modal_title: 'Заявка на услугу',
+				modal_sub_title: station.title
+			}
+			await this.openModal(payload)
+		}
 	},
 	async fetch() {
 		let response = await this.request({query: stationCategory, variables: {}})

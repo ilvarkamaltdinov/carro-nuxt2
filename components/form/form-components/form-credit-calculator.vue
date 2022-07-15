@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex";
+import {mapGetters, mapMutations} from "vuex";
 
 export default {
 	data() {
@@ -70,6 +70,10 @@ export default {
 		}
 	},
 	methods: {
+		...mapMutations({
+			setPeriodValue: 'form/form/SET_PERIOD_VALUE',
+			setMonthPaymentValue: 'form/form/SET_MONTH_PAYMENT_VALUE'
+		}),
 		changePeriod(value) {
 			this.periodValue = parseInt(value)
 			this.calculate()
@@ -94,17 +98,26 @@ export default {
 				} else {
 					S = car_price;
 				}
-				this.paymentPriceValue = (car_price - (car_price * firstPay) / 100).toString() + ` руб. (${firstPay}%)`
+				this.paymentPriceValue = ((car_price * firstPay) / 100).toString() + ` руб. (${firstPay}%)`
 				let K = 0;
 				if (car_price) {
 					K = (i * Math.pow(1 + i, n)) / (Math.pow(1 + i, n) - 1);
 					A = Math.round(K * S);
 					this.total = String(A).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1 ") + " ₽"
+					//для отображения в блоке рядом с выбранным банком
+					this.setPeriodValue(this.periodValue)
+					this.setMonthPaymentValue(A)
+					//
 				}
 			}
 			this.$emit('changePeriod', this.periodValue)
+			//для ЦРМКИ
 			this.$emit('changePayment', this.paymentPriceValue)
 		}
+	},
+	destroyed() {
+		this.setPeriodValue(null)
+		this.setMonthPaymentValue(null)
 	}
 }
 </script>

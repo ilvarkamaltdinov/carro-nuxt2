@@ -11,7 +11,7 @@
 				<span class="heading-group__label">Получите одобрение за 5 минут</span>
 			</div>
 			<tippy arrow>
-				<div class="tippy-text">
+				<div class="tippy__text">
 					Вероятность одобрения заявки
 				</div>
 				<template v-slot:trigger>
@@ -213,7 +213,7 @@ export default {
 		async submitForm() {
 			if (this.checkForm()) {
 				let formData = {
-					car: this.currentCar || this.offer, //нужно для страницы thanks
+					chosen_car: this.currentCar || this.offer, //нужно для страницы thanks
 					external_id: this.hasChose ? this.currentCar.external_id : this.offer.external_id,
 					type: 'credit',
 					client_name: this.form.name.value,

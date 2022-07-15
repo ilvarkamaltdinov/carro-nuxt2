@@ -49,6 +49,7 @@ export default {
         {src: '~/plugins/lodash.js'},
         {src: '~/plugins/tippy.js'},
         {src: '~/plugins/helpers.js'},
+        {src: '~/plugins/numberAnim.js', mode: 'client'},
         {src: '~/plugins/ymaps.js', mode: 'client'}
     ],
     //TODO sitemap

@@ -21,9 +21,7 @@
 					<button-typical text="Обратный звонок"
 					                class="button--icon button--link"
 					                icon="icon-callback" />
-					<button-typical text="+7 495 245-23-42"
-					                class="button--icon button--link"
-					                icon="icon-call" />
+					<button-call-modal :phone="offer.dealer.phone"/>
 				</div>
 			</div>
 			<div class="car__slider-wrap">

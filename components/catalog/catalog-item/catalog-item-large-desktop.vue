@@ -9,7 +9,7 @@
 			</div>
 			<div class="catalog__tech">
 				<tippy arrow>
-					<div class="tippy-text">
+					<div class="tippy__text">
 						рейтинг автомобиля
 					</div>
 					<template v-slot:trigger>

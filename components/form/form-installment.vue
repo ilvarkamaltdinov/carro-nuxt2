@@ -11,6 +11,7 @@
 				<span class="heading-group__label">Получите одобрение за 5 минут</span>
 			</div>
 			<rating :max="100"
+			        percent
 			        :rating="formProgress" />
 		</div>
 		<form class="form"
@@ -32,6 +33,8 @@
 			</fieldset>
 			<form-credit-calculator
 					installment
+					@changePeriod="changePeriod"
+					@changePayment="changePayment"
 					:params="creditParams"
 			                        :offer="offer || currentCar" />
 			<fieldset class="form__fieldset">
@@ -139,6 +142,12 @@ export default {
 			if (this.phone_valid) {
 				progress += 10
 			}
+			if (this.form.agree) {
+				progress += 4
+			}
+			if (this.form.agreeRf) {
+				progress += 4
+			}
 			return progress
 		}
 	},
@@ -180,19 +189,27 @@ export default {
 				this.form.phone.valid = false
 				return false
 			}
+			if (!this.form.agree) {
+				this.error = 'agree'
+				return false
+			}
+			if (!this.form.agreeRf) {
+				this.error = 'agreeRf'
+				return false
+			}
 			return true;
 		},
 		async submitForm() {
 			if (this.checkForm()) {
 				let formData = {
+					chosen_car: this.currentCar || this.offer, //нужно для страницы thanks
 					external_id: this.hasChose ? this.currentCar.external_id : this.offer.external_id,
-					type: 'credit',
+					type: 'installment',
 					client_name: this.form.name.value,
 					client_phone: this.form.phone.value,
 					client_age: this.form.date.value,
-					//TODO эмитить данные из калькулятора в этот компонент
-					// credit_initial_fee: this.rangePaymentValue,
-					// credit_period: this.rangePeriodValue,
+					credit_initial_fee: this.form.paymentValue.toString(),
+					credit_period: this.form.periodValue.toString(),
 				}
 				await this.sendForm(formData)
 			}
