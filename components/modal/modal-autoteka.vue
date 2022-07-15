@@ -78,7 +78,16 @@ export default {
 	},
 	data() {
 		return {
-			items: [
+		
+		}
+	},
+	mixins: [filters],
+	computed: {
+		...mapGetters({
+			modalData: 'modal/modal-main/modalData'
+		}),
+		items() {
+			return [
 				{
 					title: 'Не найдены ограничения на регистрацию',
 					text: 'Запрет регистрационных действий на машину накладывается, если у автовладельца есть неоплаченные штрафы и налоги, либо если имущество стало предметом спора.',
@@ -94,11 +103,11 @@ export default {
 					text: 'Мы проверили базы данных Федеральной нотариальной палаты (ФНП) и Национального бюро кредитных историй (НБКИ).',
 					isOpen: false,
 				},
-				// {
-				// 	title: `${this.modalData.owner.title} по ПТС` ,
-				// 	text: '',
-				// 	isOpen: false
-				// },
+				{
+					title: `${this.modalData.owner.title} по ПТС` ,
+					text: '',
+					isOpen: false
+				},
 				{
 					title: 'ДТП не найдены',
 					text: 'В отчёт не попадут аварии, которые произошли раньше 2015 года или не оформлялись в ГИБДД.',
@@ -145,12 +154,6 @@ export default {
 				},
 			]
 		}
-	},
-	mixins: [filters],
-	computed: {
-		...mapGetters({
-			modalData: 'modal/modal-main/modalData'
-		}),
 	}
 }
 </script>
