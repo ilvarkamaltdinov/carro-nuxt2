@@ -15,6 +15,46 @@
   margin-top: 24px;
 }
 
+.text__o-list {
+  list-style-type: none;
+  counter-reset: olItem;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.text__o-list-item {
+  counter-increment: olItem;
+  margin-bottom: 8px;
+  display: inline-flex;
+
+  &::before {
+    display: block;
+    content: counters(olItem, ".") " ";
+    margin-right: 12px;
+  }
+}
+
+.text__o-list-item--heading {
+  display: block;
+  margin-bottom: 24px;
+
+  &::before {
+    display: none;
+  }
+}
+
+.text__o-list-item--heading .heading {
+  display: flex;
+  align-items: flex-start;
+
+  &::before {
+    display: block;
+    content: counters(olItem, ".") ". ";
+    margin-right: 12px;
+  }
+}
+
 .text__list-item {
   display: flex;
   align-items: center;
