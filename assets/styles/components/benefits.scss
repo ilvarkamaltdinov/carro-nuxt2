@@ -75,6 +75,12 @@
     justify-content: flex-start;
     gap: 16px;
   }
+
+  .benefits--modal .benefits__item {
+    &:last-child {
+      display: none;
+    }
+  }
 }
 
 
