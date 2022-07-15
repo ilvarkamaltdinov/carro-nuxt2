@@ -94,7 +94,7 @@ export default {
 				this.form.model.valid = false
 				return false
 			}
-			if (this.form.year.value === 'Год') {
+			if (this.form.year.value === 'Год от') {
 				this.form.year.valid = false
 				return false
 			}
@@ -114,18 +114,27 @@ export default {
 				this.form.phone.valid = false
 				return false
 			}
+			if (!this.form.agree) {
+				this.error = 'agree'
+				return false
+			}
+			if (!this.form.agreeRf) {
+				this.error = 'agreeRf'
+				return false
+			}
 			return true;
 		},
 		async submitForm() {
 			if (this.checkForm()) {
 				let formData = {
-					type: 'credit',
+					type: 'buyout',
 					client_name: this.form.name.value,
 					client_phone: this.form.phone.value,
 					client_age: this.form.date.value,
-					//TODO эмитить данные из калькулятора в этот компонент
-					// credit_initial_fee: this.rangePaymentValue,
-					// credit_period: this.rangePeriodValue,
+					client_vehicle_mark: this.form.mark.value,
+					client_vehicle_model: this.form.model.value,
+					client_vehicle_run: this.form.run.value,
+					client_vehicle_year: this.form.year.value,
 				}
 				await this.sendForm(formData)
 			}

@@ -5,7 +5,7 @@
 				<h1 class="heading heading--h1">{{ pageTitle }}
 					<span class="heading__promo"></span>
 				</h1>
-				<span class="heading-group__label">Автокредит предварительно одобрен</span>
+				<span class="heading-group__label">{{ currentTitle }}</span>
 			</div>
 		</div>
 		<div class="thanks__block grid__col-12 grid text">
@@ -23,25 +23,8 @@
 						     alt="" />
 					</picture>
 				</div>
-				<div class="text__content">
-					
-					<p class="text__p">{{ userName }}, автомобиль {{ userCar.mark.title }} {{ userCar.folder.title }}
-					                   {{ userCar.generation.name }} {{ userCar.engine_volume }}
-					                   {{ userCar.gearbox.title }} ({{ userCar.engine_power }} л.с.) {{ userCar.year }} закреплен
-					                   за вашей
-					
-					                   заявкой
-						<b>#{{ userOrderId }}</b>
-					                   . Менеджер свяжется с вами в ближайшее время. Спасибо, что выбрали нас!
-					</p>
-					<p class="text__p">После подтверждения заявки вас пригласят в автоцентр для прохождения бесплатного
-					                   тест-драйва и оформления сделки. Обратите внимание, что оплата возможна как за наличные,
-					                   так и посредством безналичного расчета.
-					</p>
-					<p class="text__p">И еще. Передайте менеджеру, что пришли по объявлению на CARRO, чтобы получить подарок и
-					                   бесплатный комплект шин.
-					</p>
-				</div>
+				<div class="text__content"
+				     v-html="currentText"></div>
 			</div>
 			<div class="thanks__catalog catalog catalog--single grid__col-4">
 				<catalog-item-small-desktop :has-buttons="false"
@@ -60,6 +43,15 @@ export default {
 	props: {
 		pageTitle: String
 	},
+	data() {
+		return {
+			titles: {
+				credit: 'Автокредит предварительно одобрен',
+				buyout: 'Выкуп автомобиля',
+				callback: 'Обратный звонок',
+			},
+		}
+	},
 	methods: {
 		...mapMutations({
 			clear: 'form/form/CLEAR_DATA'
@@ -70,11 +62,37 @@ export default {
 	},
 	computed: {
 		...mapGetters({
+			formType: 'form/form/formType',
 			userName: 'form/form/userName',
 			userCar: 'form/form/userCar',
 			benefitsCar: 'benefits/benefitsCar',
 			userOrderId: 'form/form/userOrderId'
-		})
+		}),
+		currentTitle() {
+			return this.titles[this.formType]
+		},
+		currentText() {
+			return this.texts[this.formType]
+		},
+		texts() {
+			return {
+				credit: `
+						<p class="text__p"> ${this.userName}, автомобиль ${this.userCar.mark.title}
+						${this.userCar.folder.title}
+						${this.userCar.generation.name}
+						${this.userCar.engine_volume}
+						${this.userCar.gearbox.title}
+						(${this.userCar.engine_power} л.с.)
+						${this.userCar.year} закреплен за вашей заявкой <b>#${this.userOrderId}</b>.</p>
+						<p class="text__p"> Менеджер свяжется с вами в ближайшее время. Спасибо, что выбрали нас!</p>
+						<p class="text__p"> После подтверждения заявки вас пригласят в автоцентр для прохождения бесплатного
+            тест-драйва и оформления сделки. Обратите внимание, что оплата возможна как за наличные,
+            так и посредством безналичного расчета!</p>
+						<p class="text__p">И еще. Передайте менеджеру, что пришли по объявлению на CARRO, чтобы получить подарок и бесплатный комплект шин.</p>`,
+				buyout: ``,
+				callback: ``
+			}
+		}
 	}
 }
 </script>
