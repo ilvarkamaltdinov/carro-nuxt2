@@ -15,7 +15,7 @@ export default {
             {name: 'format-detection', content: 'telephone=no'}
         ],
         link: [
-            {rel: 'icon', href: '/favicon.svg', sizes: 'any'},
+            {rel: 'icon', href: '/favicon.ico', sizes: 'any'},
             {rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml'},
             {rel: 'apple-touch-icon', href: '/apple-touch-icon.png'}
             // {rel: 'icon', type: 'image/x-icon', href: '/mask-icon.svg', color: '#ED2939'},
