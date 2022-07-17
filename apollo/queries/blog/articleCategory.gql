@@ -1,0 +1,21 @@
+query articleCategory($site_id: Int! $url: String, $limit: Int) {
+    articleCategory(site_id: $site_id, url: $url) {
+        id
+        slug
+        page_title
+        url
+        articles(limit:$limit){
+            id
+            page_title
+            views
+            url
+            createdAt(format:"d.m.Y")
+            image_preview{
+                thumb
+                small
+                thumb_webp
+                small_webp
+            }
+        }
+    }
+}

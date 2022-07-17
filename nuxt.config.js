@@ -38,12 +38,14 @@ export default {
         throttle: 0
     },
     css: [
-        '~/assets/styles/index.scss'
+        '~/assets/styles/index.scss',
+        '@fancyapps/ui/dist/fancybox.css'
     ],
     plugins: [
         {src: '~/plugins/swiper.js'},
         {src: '~/plugins/rangeSlider.js', mode: 'client'},
         {src: "~/plugins/pagination.js", mode: 'client'},
+        {src: "~/plugins/fancyapps-ui.js", mode: 'client'},
         {src: '~/plugins/inputmask.js'},
         {src: '~/plugins/slideToggle.js'},
         {src: '~/plugins/lodash.js'},

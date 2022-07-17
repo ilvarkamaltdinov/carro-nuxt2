@@ -1,0 +1,18 @@
+query article($site_id: Int! $url: String) {
+    article(site_id: $site_id, url: $url) {
+        id
+        slug
+        page_title
+        url
+        views
+        body
+        createdAt(format:"d.m.Y")
+        image{
+            medium
+            large
+            medium_webp
+            large_webp
+        }
+
+    }
+}

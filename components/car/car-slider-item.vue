@@ -1,8 +1,8 @@
 <template>
 	<div class="slider-car__item swiper-slide">
-		<a class="slider-car__link"
+		<div class="slider-car__link"
 		   data-fancybox="gallery"
-		   :href="src"
+		   :data-src="src"
 		   tabindex="0">
 			<picture>
 				<source type="image/webp"
@@ -17,7 +17,7 @@
 				     loading=""
 				     alt="" />
 			</picture>
-		</a>
+		</div>
 	</div>
 </template>
 <script>
