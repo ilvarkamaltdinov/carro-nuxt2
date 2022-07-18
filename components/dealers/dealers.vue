@@ -17,8 +17,15 @@
 						<h2 class="heading heading--h2">{{ dealer.title }}</h2>
 						<span class="heading-group__label">{{ dealer.short_description }}</span>
 					</div>
-					<rating :max="5"
-					        :rating="dealer.rating" />
+					<tippy arrow>
+						<div class="tippy__text">
+							рейтинг дилера
+						</div>
+						<template v-slot:trigger>
+							<rating :rating="dealer.rating"
+							        :max="5" />
+						</template>
+					</tippy>
 				</div>
 				<div class="features__group">
 					<h3 class="heading heading--h3">Адрес:</h3>

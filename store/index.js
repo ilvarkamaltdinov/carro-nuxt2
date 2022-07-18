@@ -1,5 +1,6 @@
 export const strict = false
 import marks from '~/apollo/queries/marks'
+import settings from '~/apollo/queries/settings'
 
 export const actions = {
 
@@ -17,6 +18,18 @@ export const actions = {
                 variables: {site_id: $config.site_id, category: 'used'}
             })
         commit('marks/marks/SET_ALL_MARKS', response.data.marks)
+
+        //TODO НАСТРОЙКИ САЙТА
+        let currentSettings = {}
+        let settingsResponse = await client.query(
+            {
+                query: settings,
+                variables: {site_id: $config.site_id}
+            })
+        settingsResponse.data.settings.settings.map(value => {
+            currentSettings[value.key] = value.value
+        })
+        commit('settings/settings/SET_STINGS', currentSettings)
     },
     async request({}, {query, variables}) {
         let assignVariables = {
