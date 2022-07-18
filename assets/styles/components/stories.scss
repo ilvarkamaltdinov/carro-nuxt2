@@ -34,6 +34,11 @@
   text-align: center;
 }
 
+.stories--benefit .stories__modal {
+  height: fit-content;
+  aspect-ratio: auto;
+}
+
 .stories__close {
   position: absolute;
   right: 16px;
