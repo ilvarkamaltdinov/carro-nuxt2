@@ -4,6 +4,7 @@
 		<modal-wrap />
 		<Nuxt />
 		<Footer />
+		<modal-benefits/>
 	</div>
 </template>
 <script>

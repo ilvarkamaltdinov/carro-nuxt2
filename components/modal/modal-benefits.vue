@@ -1,7 +1,7 @@
 <template>
 	<transition name="fade">
 		<div v-if="benefitModal"
-		     class="stories__modal_wrapper-wrap">
+		     class="benefits__modal_wrapper-wrap">
 			<div @click="closeBenefit"
 			     class="overlay"></div>
 			<benefits-modal />
