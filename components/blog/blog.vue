@@ -10,6 +10,7 @@
 		</div>
 		<blog-category :list="category.articles"
 		               :title="category.page_title"
+		               :url="category.url"
 		               v-for="category in categories"
 		               :key="category.id" />
 	</section>

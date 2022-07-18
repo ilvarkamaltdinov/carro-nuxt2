@@ -8,6 +8,18 @@ query articlesPaginate($site_id: Int,  $category_url :String, $page: Int, $limit
         data
         {
             id
+            slug
+            page_title
+            url
+            views
+            body
+            createdAt(format:"d.m.Y")
+            image{
+                medium
+                large
+                medium_webp
+                large_webp
+            }
 
         }
     }

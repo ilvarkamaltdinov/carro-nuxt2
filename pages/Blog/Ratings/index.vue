@@ -1,5 +1,5 @@
 <template>
-	<blog-blog-category/>
+	<blog-category-page/>
 </template>
 
 <script>

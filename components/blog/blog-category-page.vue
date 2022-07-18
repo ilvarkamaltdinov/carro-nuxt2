@@ -8,15 +8,15 @@
 				<span class="heading-group__label">Лучшее из мира автомобилей</span>
 			</div>
 		</div>
-		<blog-category :list="category.articles"
-		               :title="category.page_title"
-		               v-for="category in categories"
-		               :key="category.id" />
+		<!--<blog-category :list="category.articles"-->
+		<!--               :title="category.page_title"-->
+		<!--               v-for="category in categories"-->
+		<!--               :key="category.id" />-->
 	</section>
 </template>
 <script>
 import {mapActions} from "vuex";
-import articleCategory from "@/apollo/queries/blog/articleCategory";
+import articlesPaginate from "@/apollo/queries/blog/articlesPaginate";
 
 export default {
 	methods: {
@@ -24,14 +24,21 @@ export default {
 			request: 'request'
 		})
 	},
-	data() {
-		return {
-			categories: []
-		}
-	},
+	// data() {
+	// 	return {
+	// 		categories: []
+	// 	}
+	// },
 	async fetch() {
-		let response = await this.request({query: articleCategory, variables: {limit: 7}})
-		this.categories = response.data.articleCategory
+		let response = await this.request({
+			query: articlesPaginate,
+			variables: {
+				limit: 10,
+				page: 1,
+				category_url: this.$route.fullPath
+			}
+		})
+		console.log(response.data.articlesPaginate.data)
 	},
 	mounted() {
 		window.scrollTo(0, 0)

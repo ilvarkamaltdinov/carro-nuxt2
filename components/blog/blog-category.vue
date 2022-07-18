@@ -29,7 +29,7 @@
 				</nuxt-link>
 			</li>
 		</ul>
-		<button-typical text="Показать больше"
+		<button-typical @click="$router.push(url)" text="Показать больше"
 		                class="button--link button--more" />
 	</div>
 </template>
@@ -48,6 +48,7 @@ export default {
 	},
 	props: {
 		title: String,
+		url: String,
 		list: Array
 	},
 	methods: {
