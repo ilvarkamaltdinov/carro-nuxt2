@@ -17,7 +17,8 @@
 						<h2 class="heading heading--h2">{{ dealer.title }}</h2>
 						<span class="heading-group__label">{{ dealer.short_description }}</span>
 					</div>
-					<rating :max="5" :rating="dealer.rating" />
+					<rating :max="5"
+					        :rating="dealer.rating" />
 				</div>
 				<div class="features__group">
 					<h3 class="heading heading--h3">Адрес:</h3>
@@ -41,23 +42,25 @@
 						<li class="features__item">без выходных</li>
 					</ul>
 				</div>
-				<button-typical @click="showMore(dealer.slug)" text="Подробнее о дилере" class="button--credit"/>
+				<button-typical @click="showMore(dealer.slug)"
+				                text="Подробнее о дилере"
+				                class="button--credit" />
 				<a class="button button--show button--show-link"
 				   :href="`${dealer.site}`"
 				   target="_blank">Сайт автоцентра
 				</a>
 			</div>
 			<div class="dealers__item-img-wrap">
-				<!--<picture>-->
-				<!--	<source type="image/webp"-->
-				<!--	        media="(min-width: 768px)"-->
-				<!--	        srcset="~/assets/img/dealers/photos/autograd/dealer-3@1x.webp 1x,~/assets/img/dealers/photos/autograd/dealer-3@2x.webp 2x" />-->
-				<!--	<img class="dealers__item-img"-->
-				<!--	     src="~/assets/img/dealers/photos/autograd/dealer-3@1x.jpg"-->
-				<!--	     srcset="~/assets/img/dealers/photos/autograd/dealer-3@2x.jpg 2x"-->
-				<!--	     loading="lazy"-->
-				<!--	     alt="" />-->
-				<!--</picture>-->
+				<picture>
+					<source type="image/webp"
+					        media="(min-width: 768px)"
+					        :data-srcset="`${dealer.images[0].small_webp} 1x, ${dealer.images[0].medium_webp} 2x`" />
+					<img class="dealers__item-img lazyload"
+					     :data-src="dealer.images[0].small"
+					     :data-srcset="`${dealer.images[0].medium} 2x`"
+					     loading="lazy"
+					     alt="" />
+				</picture>
 			</div>
 		</div>
 	</section>
@@ -81,9 +84,9 @@ export default {
 			request: 'filters/filters/request',
 			openModal: 'modal/modal-main/openModal',
 		}),
-		async showMore(dealerSlug){
+		async showMore(dealerSlug) {
 			try {
-				let dealerData = await this.request({query: dealer, variables: {slug:dealerSlug}})
+				let dealerData = await this.request({query: dealer, variables: {slug: dealerSlug}})
 				dealerData = dealerData.data.dealer
 				let payload = {
 					modal_data: dealerData,

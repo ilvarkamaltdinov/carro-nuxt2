@@ -7,7 +7,7 @@
 			     alt="" />
 			<div class="modal__buttons">
 				<button-callback />
-				<button-call-modal :phone="modalData.phone"/>
+				<button-call-modal :phone="modalData.phone" />
 			</div>
 		</div>
 		<div class="modal__wrap">
@@ -49,12 +49,42 @@
 			</div>
 			<div class="modal__dealer-photos">
 				<h3 class="heading heading--h3">Фотографии автоцентра:</h3>
-				<!--<dealer-slider></dealer-slider>-->
+				<div class="dealer">
+					<div class="swiper swiper--dealer dealer__slider"
+					     v-if="modalData.images">
+						<div class="swiper-wrapper">
+							<div class="dealer__item swiper-slide"
+							     v-for="(item, index) in modalData.images"
+							     :key="index">
+								<div class="dealer__link">
+									<picture>
+										<source type="image/webp"
+										        media="(min-width: 768px)"
+										        :data-srcset="`${item.small_webp} 1x, ${item.medium_webp} 2x`" />
+										<img class="dealer__img lazyload"
+										     :data-src="item.small"
+										     :data-srcset="`${item.medium} 2x`"
+										     loading="lazy"
+										     alt="" />
+									</picture>
+								</div>
+							</div>
+						</div>
+					</div>
+					<button class="swiper-button swiper-button-prev">
+						<svg-icon class="icon swiper-button__icon"
+						          name="icon-arrow" />
+					</button>
+					<button class="swiper-button swiper-button-next">
+						<svg-icon class="icon swiper-button__icon"
+						          name="icon-arrow" />
+					</button>
+				</div>
 			</div>
 			<div class="modal__dealer-map">
 				<h3 class="heading heading--h3">Автоцентр на карте:</h3>
 				<div class="map map--dealer">
-					<map-dealer :settings="{coordinates:modalData.coordinates}"/>
+					<map-dealer :settings="{coordinates:modalData.coordinates}" />
 				</div>
 			</div>
 		</div>
@@ -64,6 +94,26 @@
 import {mapGetters} from 'vuex'
 
 export default {
+	mounted() {
+		const sliderStories = new swiper.default('.dealer__slider.swiper', {
+			modules: [swiper.Navigation, swiper.Pagination, swiper.Autoplay],
+			loop: true,
+			autoplayDisableOnInteraction: false,
+			autoplay: true,
+			slidesPerView: 1.1,
+			centeredSlides: true,
+			spaceBetween: 8,
+			navigation: {
+				nextEl: '.modal__dealer-photos .swiper-button-next',
+				prevEl: '.modal__dealer-photos .swiper-button-prev',
+			},
+			breakpoints: {
+				768: {
+					spaceBetween: 24,
+				}
+			}
+		});
+	},
 	computed: {
 		...mapGetters({
 			modalData: 'modal/modal-main/modalData'
