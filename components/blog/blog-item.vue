@@ -270,6 +270,7 @@
 </template>
 <script>
 import declension from "@/mixins/declension";
+
 export default {
 	mixins: [declension],
 	props: {
