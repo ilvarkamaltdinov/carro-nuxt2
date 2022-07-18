@@ -1,3 +1,4 @@
+#import "../image/dealerImage.gql"
 fragment DealerPage on Dealer {
     id
     slug
@@ -12,4 +13,7 @@ fragment DealerPage on Dealer {
     rating
     short_description
     description
+    images {
+    ... DealerImage
+    }
 }

@@ -1,0 +1,14 @@
+query articlesPaginate($site_id: Int,  $category_url :String, $page: Int, $limit: Int) {
+    articlesPaginate(
+        site_id: $site_id,
+        category_url: $category_url,
+        page: $page
+        limit: $limit
+    ) {
+        data
+        {
+            id
+
+        }
+    }
+}

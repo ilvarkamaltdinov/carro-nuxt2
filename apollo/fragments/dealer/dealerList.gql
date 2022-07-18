@@ -1,3 +1,4 @@
+#import "../image/dealerImage.gql"
 fragment DealerList on Dealer {
     id
     phone
@@ -9,4 +10,7 @@ fragment DealerList on Dealer {
     rating
     schedule
     site
+    images {
+        ... DealerImage
+    }
 }

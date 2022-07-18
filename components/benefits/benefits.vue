@@ -1,11 +1,12 @@
 <template>
 	<div class="benefits grid__col-12"
-	:class="{'benefits--modal': modal}">
+	     :class="{'benefits--modal': modal}">
 		<ul class="benefits__list benefits__list--car">
 			<li class="benefits__item"
 			    v-for="(benefit, index) in benefits"
 			    :key="index">
-				<a class="benefits__link popup--link"
+				<a @click.prevent="openBenefit(benefit)"
+				   class="benefits__link popup--link"
 				   href="">
 					<svg-icon class="benefits__icon"
 					          :name="`icon-${benefit.icon}`" />
@@ -22,6 +23,8 @@
 </template>
 
 <script>
+import {mapActions} from "vuex";
+
 export default {
 	props: {
 		benefits: Array,
@@ -29,6 +32,11 @@ export default {
 			type: Boolean,
 			default: false
 		}
+	},
+	methods: {
+		...mapActions({
+			openBenefit: 'benefits/openBenefit'
+		})
 	}
 }
 </script>

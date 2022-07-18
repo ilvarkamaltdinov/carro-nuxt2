@@ -4,6 +4,7 @@
 		<Header />
 		<modal-wrap />
 		<modal-stories />
+		<modal-benefits/>
 		<Nuxt />
 		<Footer />
 	</div>

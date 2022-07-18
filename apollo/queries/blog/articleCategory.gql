@@ -1,5 +1,5 @@
-query articleCategory($site_id: Int! $url: String, $limit: Int) {
-    articleCategory(site_id: $site_id, url: $url) {
+query articleCategory($site_id: Int!, $limit: Int) {
+    articleCategory(site_id: $site_id) {
         id
         slug
         page_title
