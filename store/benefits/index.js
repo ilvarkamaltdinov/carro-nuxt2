@@ -37,11 +37,41 @@ export const state = () => ({
             text_strong: 'за наш счет',
             icon: 'insurance',
             description: 'description'
-        }
+        },
+        {
+            text: 'Рыночная',
+            text_strong: 'цена',
+            icon: 'ruble',
+            description: 'description'
+        },
+        {
+            text: 'Оформление',
+            text_strong: 'за 30 мин.',
+            icon: 'time',
+            description: 'description'
+        },
+        {
+            text: 'Мгновенная',
+            text_strong: 'выплата',
+            icon: 'credit-card',
+            description: 'description'
+        },
+        {
+            text: 'Выезд',
+            text_strong: 'оценщика',
+            icon: 'form',
+            description: 'description'
+        },
+        {
+            text: 'Оценка',
+            text_strong: 'бесплатно',
+            icon: 'engine',
+            description: 'description'
+        },
     ]
 })
 export const getters = {
-    benefits(state){
+    benefits(state) {
         return state.benefits
     },
     benefit: (state) => {
