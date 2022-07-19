@@ -29,7 +29,7 @@ export const actions = {
         settingsResponse.data.settings.settings.map(value => {
             currentSettings[value.key] = value.value
         })
-        commit('settings/settings/SET_STINGS', currentSettings)
+        commit('settings/settings/SET_SETTINGS', currentSettings)
     },
     async request({}, {query, variables}) {
         let assignVariables = {

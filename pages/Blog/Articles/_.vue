@@ -4,7 +4,7 @@
 			<crumbs :crumbs="crumbs" />
 		</div>
 		<div class="grid grid--container">
-			<blog-item :article="article"/>
+			<blog-item :article="article" />
 		</div>
 	</main>
 </template>
@@ -31,6 +31,53 @@ export default {
 					route: '/blog/aricles',
 					active: true
 				}
+			]
+		}
+	},
+	head() {
+		let title = (this.article.long_title ? this.article.long_title : this.article.page_title) + ' — CARRO'
+		let description_title = this.article.description ? this.article.description : this.article.short_description
+		let description_text = 'Портал проверенных автомобилей с пробегом CARRO.RU,  весь спектр услуг, Трейд ИН, выкуп, автокредитование. Выгодные цены, еженедельные скидки и подарки, спешите!'
+		let description = description_title ? (description_title + '.' + description_text) : description_text
+		return {
+			title: title,
+			link: [
+				{
+					rel: 'canonical',
+					href: this.$config.domain + this.$route.path
+				}
+			],
+			meta: [
+				{
+					hid: 'desctiption',
+					name: 'description',
+					content: description
+				},
+				{
+					hid: 'og:type',
+					property: 'og:type',
+					content: 'website',
+				},
+				{
+					hid: 'og:url',
+					property: 'og:url',
+					content: this.$config.domain + this.$route.path,
+				},
+				{
+					hid: 'og:title',
+					property: 'og:title',
+					content: title
+				},
+				{
+					hid: 'og:description',
+					property: 'og:description',
+					content: description
+				},
+				{
+					hid: 'og:image',
+					property: 'og:image',
+					content: this.article.image_preview ? this.article.image_preview.thumb : this.$config.domain + '/carro.png'
+				},
 			]
 		}
 	}

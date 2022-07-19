@@ -76,6 +76,10 @@ export default {
 							name: 'О портале',
 							link: '/about'
 						},
+						{
+							name: 'Помощь',
+							link: '/knowledge'
+						},
 					]
 				},
 				{

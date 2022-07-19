@@ -8,32 +8,15 @@
 				    role="tablist">
 					<li role="presentation"
 					    class="tabs__item"
-					    :class="{'tabs__item--active': activeTab === 'Характеристики'}">
-						<button @click="tabClick('Характеристики')"
+					    v-for="(tab, index) in tabs"
+					    :key="index+1"
+					    v-if="tab.showButton"
+					    :class="{'tabs__item--active': activeTab === index+1}">
+						<button @click="tabClick(index+1)"
 						        class="tabs__link"
 						        role="tab"
 						        data-toggle="tab">
-							Характеристики
-						</button>
-					</li>
-					<li role="presentation"
-					    class="tabs__item"
-					    :class="{'tabs__item--active': activeTab === 'Комплектация'}">
-						<button v-if="equipment_group_list.length" @click="tabClick('Комплектация')"
-						        class="tabs__link"
-						        role="tab"
-						        data-toggle="tab">
-							Комплектация
-						</button>
-					</li>
-					<li role="presentation"
-					    class="tabs__item"
-					    :class="{'tabs__item--active': activeTab === 'О дилере'}">
-						<button @click="tabClick('О дилере')"
-						        class="tabs__link"
-						        role="tab"
-						        data-toggle="tab">
-							О дилере
+							{{ tab.title }}
 						</button>
 					</li>
 				</ul>
@@ -229,12 +212,13 @@ import dealer from '@/apollo/queries/dealer/dealer.gql'
 export default {
 	data() {
 		return {
-			activeTab: 'Характеристики',
+			carInfoSwiper: null,
+			activeTab: 1,
 			gearbox: {
 				'mechanical': 'МКПП',
 				'cvt': 'Вариатор',
-				'robot':'Робот',
-				'automatic':'АКПП',
+				'robot': 'Робот',
+				'automatic': 'АКПП',
 			}
 		}
 	},
@@ -243,6 +227,23 @@ export default {
 		...mapGetters({
 			offer: 'catalog/catalog-cars/offer'
 		}),
+		tabs() {
+			let tabs = [
+				{
+					title: 'Характеристики',
+					showButton: true
+				},
+				{
+					title: 'Комплектация',
+					showButton: !!this.equipment_group_list.length
+				},
+				{
+					title: 'О дилере',
+					showButton: true
+				}
+			]
+			return tabs.filter(item => item.showButton)
+		},
 		currentGerabox() {
 			return this.gearbox[this.offer.gearbox.name] || this.offer.gearbox.title
 		},
@@ -255,8 +256,9 @@ export default {
 			openModal: 'modal/modal-main/openModal',
 			request: 'request'
 		}),
-		tabClick(tab){
-			console.log(tab)
+		tabClick(tab) {
+			this.activeTab = tab
+			this.carInfoSwiper.slideTo(tab)
 		},
 		async moreInfoDiller(dealerSlug) {
 			try {
@@ -285,12 +287,17 @@ export default {
 	},
 	mounted() {
 		if (this.$device.isMobile) {
-			new swiper.default('.swiper--car-info.swiper', {
+			this.carInfoSwiper = new swiper.default('.swiper--car-info.swiper', {
 				modules: [swiper.Navigation, swiper.Pagination, swiper.Autoplay],
 				loop: true,
 				autoplayDisableOnInteraction: false,
 				autoplay: false,
 				autoHeight: true,
+				on: {
+					slideChange: (event) => {
+						this.activeTab = event.activeIndex
+					}
+				},
 				spaceBetween: 24,
 				pagination: {
 					el: '.car__info .swiper-pagination',

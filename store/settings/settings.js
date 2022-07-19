@@ -7,7 +7,7 @@ export const getters = {
     },
 }
 export const mutations = {
-    SET_STINGS(state, data) {
+    SET_SETTINGS(state, data) {
         state.settings = data
     }
 }

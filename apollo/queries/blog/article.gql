@@ -3,10 +3,16 @@ query article($site_id: Int! $url: String) {
         id
         slug
         page_title
+        long_title
+        short_description
+        description
         url
         views
         body
         createdAt(format:"d.m.Y")
+        image_preview{
+            thumb
+        }
         image{
             medium
             large
