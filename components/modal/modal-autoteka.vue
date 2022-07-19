@@ -157,27 +157,30 @@ export default {
 	},
 	methods: {
 		download() {
-			this.preloader = true
-			this.$axios({
-				responseType: 'blob',
-				method: "POST",
-				url: this.$config.api_domain + '/pdf/autoteka',
-				params: {
-					offer_external_id: this.modalData.external_id
-				}
-			}).then(response => {
-				let fileURL = window.URL.createObjectURL(new Blob([response.data]));
-				let fURL = document.createElement('a');
-				
-				fURL.href = fileURL;
-				fURL.setAttribute('download', `Отчет автотеки ${this.modalData.mark.title} ${this.modalData.folder.title} ${this.modalData.modification.name}, ${this.modalData.year}.pdf`);
-				document.body.appendChild(fURL);
-				
-				fURL.click();
-				this.preloader = false
-			}).catch(error => {
-				console.log(error)
-			})
+			if (!this.preloader) {
+				this.preloader = true
+				this.$axios({
+					responseType: 'blob',
+					method: "POST",
+					url: this.$config.api_domain + '/pdf/autoteka',
+					params: {
+						offer_external_id: this.modalData.external_id
+					}
+				}).then(response => {
+					let fileURL = window.URL.createObjectURL(new Blob([response.data]));
+					let fURL = document.createElement('a');
+					
+					fURL.href = fileURL;
+					fURL.setAttribute('download', `Отчет автотеки ${this.modalData.mark.title} ${this.modalData.folder.title} ${this.modalData.modification.name}, ${this.modalData.year}.pdf`);
+					document.body.appendChild(fURL);
+					
+					fURL.click();
+					this.preloader = false
+				}).catch(error => {
+					console.log(error)
+				})
+			}
+			
 		}
 	}
 }
