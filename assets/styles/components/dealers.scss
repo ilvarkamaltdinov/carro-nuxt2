@@ -4,8 +4,12 @@
 
 .dealers__item-img {
   border-radius: $borderRadius;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
+}
+
+.dealers__features .heading-group__wrap {
+  margin-right: 16px;
 }
 
 @media (max-width: $mobile-width-only) {
@@ -69,8 +73,12 @@
   }
 
   .dealers__features {
-    flex-grow: 1;
+    width: 40%;
     margin-right: 64px;
     flex-shrink: 0;
+  }
+
+  .dealers__item-img-wrap {
+    width: 60%;
   }
 }
