@@ -74,16 +74,17 @@
 				</ul>
 			</div>
 			<nav class="page-header__nav grid__col-12">
-				<div  v-if="showHeaderCrumbs">
-					<nuxt-link :to="`/used/${currentMark.slug}/${currentFolder.slug}`" class="page-header__back">
-						<span>
-							Все {{ currentMark.title }} {{currentFolder.title}}
-						</span>
-						<svg-icon class="page-header__back-arrow" name="icon-arrow"/>
-					</nuxt-link>
-					
-				</div>
-				<div v-else class="page-header__nav-wrap makes">
+				<nuxt-link v-if="showHeaderCrumbs && currentFolder"
+				           :to="`/used/${currentMark.slug}/${ currentFolder.slug }`"
+				           class="page-header__back">
+					<span>
+						Все {{ currentMark.title }} {{ currentFolder.title }}
+					</span>
+					<svg-icon class="page-header__back-arrow"
+					          name="icon-arrow" />
+				</nuxt-link>
+				<div v-else
+				     class="page-header__nav-wrap makes">
 					<ul class="makes__list makes__list--header">
 						<li class="makes__item"
 						    v-for="index in 8"
@@ -133,7 +134,7 @@ export default {
 			settings: 'settings/settings/settings',
 			componentCatalog: 'filters/filters/componentCatalog',
 			marks: 'marks/marks/allMarks',
-			folders:'folders/folders/folders'
+			folders: 'folders/folders/folders'
 		}),
 		currentMark() {
 			return this.marks.filter(item => this.$route.params.mark === item.slug)[0]
@@ -143,7 +144,11 @@ export default {
 		},
 		showHeaderCrumbs() {
 			if (this.$device.isMobile) {
-				return this.componentCatalog === 'car';
+				if (this.$route.params.car) {
+					return this.componentCatalog === 'car';
+				} else {
+					return false
+				}
 			} else {
 				return false
 			}

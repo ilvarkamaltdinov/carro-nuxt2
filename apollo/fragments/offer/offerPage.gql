@@ -28,6 +28,10 @@ fragment OfferPage on Offer {
     createdAt(format: $dateFormat)
     engine_power
     engine_volume
+    modification{
+        id
+        name
+    }
     color {
         ... ColorType
     }

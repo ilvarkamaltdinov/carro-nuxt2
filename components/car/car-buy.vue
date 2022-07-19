@@ -4,19 +4,22 @@
 			<div class="car__price">
 				{{ offer.price | toCurrency }}
 			</div>
-			<tippy-question text="Цена актуальна при покупке в кредит"/>
+			<tippy-question text="Цена актуальна при покупке в кредит" />
 			<div class="car__price-payment">
 				В кредит от {{ offer.price | access_acredit }} / мес.
 			</div>
 		</div>
 		<div class="car__buy-block">
-			<button @click.prevent="installmentClick(offer)" class="button button--credit-pay button--link">
+			<button @click.prevent="installmentClick(offer)"
+			        class="button button--credit-pay button--link">
 				Рассрочка
 			</button>
-			<button @click.prevent="tradeInClick(offer)" class="button button--trade-in button--link">
+			<button @click.prevent="tradeInClick(offer)"
+			        class="button button--trade-in button--link">
 				Trade-In
 			</button>
-			<button @click.prevent="creditClick(offer)" class="button button--credit">
+			<button @click.prevent="creditClick(offer)"
+			        class="button button--credit">
 				Купить в кредит
 			</button>
 		</div>
@@ -27,20 +30,21 @@
 				</div>
 				<template v-slot:trigger>
 					<rating-car @click="ratingClick"
-					            :rating="offer.rating"/>
+					            :rating="offer.rating" />
 				</template>
 			</tippy>
 			<div class="car__actions-buttons">
-				<button-autoteka @click="autoteka(offer)"/>
+				<button-autoteka @click="autoteka(offer)" />
 				<button-favorite :active="likesArray.some(id => id === String(offer.external_id))"
 				                 @click="like()" />
 				<!--<button-compare />-->
-				<button-call @click="callback(offer)"/>
+				<button-call @click="callback(offer)" />
 			</div>
 		</div>
 		<div class="car__stock">
 			В наличии в автоцентре
-			<a href="#" @click.prevent="moreInfoDiller(offer.dealer.slug)"
+			<a href="#"
+			   @click.prevent="moreInfoDiller(offer.dealer.slug)"
 			   class="car__stock-dealer">
 				«{{ offer.dealer.title }}»
 			</a>
@@ -51,9 +55,10 @@
 import filters from "~/mixins/filters";
 import {mapActions, mapGetters} from "vuex";
 import dealer from "@/apollo/queries/dealer/dealer";
+
 export default {
 	mixins: [filters],
-	computed:{
+	computed: {
 		...mapGetters({
 			offer: 'catalog/catalog-cars/offer',
 			likesArray: 'favorite/favorite/likesArray',
@@ -101,7 +106,7 @@ export default {
 			}
 			this.openModal(payload)
 		},
-		ratingClick(){
+		ratingClick() {
 			let payload = {
 				modal_data: this.offer.rating,
 				modal_component: 'modal-rating',
@@ -132,7 +137,7 @@ export default {
 			let payload = {
 				modal_data: carInfo,
 				modal_component: 'modal-autoteka',
-				modal_title: 'Отчет «Автотеки» от 21.02',
+				modal_title: 'Отчет «Автотеки» от ' + carInfo.createdAt,
 				modal_sub_title: carInfo.name
 			}
 			await this.openModal(payload)

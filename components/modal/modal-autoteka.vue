@@ -6,11 +6,13 @@
 			     loading="lazy"
 			     alt="" />
 			<div class="modal__buttons">
-				<button-download />
+				<button-download @click="download"
+				                 :preloader="preloader" />
 				<button-share />
 			</div>
 		</div>
-		<div class="modal__wrap" v-if="modalData">
+		<div class="modal__wrap"
+		     v-if="modalData">
 			<div class="features">
 				<div class="features__group">
 					<h3 class="heading heading--h3 features__indicator features__indicator--clean">Технические характеристики:
@@ -70,15 +72,13 @@
 </template>
 <script>
 import filters from "@/mixins/filters";
+
 import {mapGetters} from "vuex";
 
 export default {
-	mounted() {
-		console.log(this.modalData)
-	},
 	data() {
 		return {
-		
+			preloader: false
 		}
 	},
 	mixins: [filters],
@@ -104,7 +104,7 @@ export default {
 					isOpen: false,
 				},
 				{
-					title: `${this.modalData.owner.title} по ПТС` ,
+					title: `${this.modalData.owner.title} по ПТС`,
 					text: '',
 					isOpen: false
 				},
@@ -153,6 +153,31 @@ export default {
 					isOpen: false,
 				},
 			]
+		}
+	},
+	methods: {
+		download() {
+			this.preloader = true
+			this.$axios({
+				responseType: 'blob',
+				method: "POST",
+				url: this.$config.api_domain + '/pdf/autoteka',
+				params: {
+					offer_external_id: this.modalData.external_id
+				}
+			}).then(response => {
+				let fileURL = window.URL.createObjectURL(new Blob([response.data]));
+				let fURL = document.createElement('a');
+				
+				fURL.href = fileURL;
+				fURL.setAttribute('download', `Отчет автотеки ${this.modalData.mark.title} ${this.modalData.folder.title} ${this.modalData.modification.name}, ${this.modalData.year}.pdf`);
+				document.body.appendChild(fURL);
+				
+				fURL.click();
+				this.preloader = false
+			}).catch(error => {
+				console.log(error)
+			})
 		}
 	}
 }

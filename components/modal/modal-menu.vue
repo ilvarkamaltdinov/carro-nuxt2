@@ -91,7 +91,7 @@ export default {
 						},
 						{
 							name: 'Предложения',
-							link: '/offers'
+							link: '/best-moscow-autosalon'
 						}
 					]
 				},
