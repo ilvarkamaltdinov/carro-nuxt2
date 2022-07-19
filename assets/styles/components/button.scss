@@ -7,6 +7,7 @@
   text-align: center;
   background-color: $colorBg;
   transition: $transitionHover;
+  position: relative;
 }
 
 .button--favorite-active {
@@ -30,6 +31,7 @@
 
   &:hover {
     opacity: 0.8;
+    background-color: $colorBgButton;
   }
 }
 
@@ -161,6 +163,19 @@
 
 .button__text {
   display: none;
+}
+
+.button.button--loading {
+  & > * {
+    &:not(.loader) {
+      opacity: 0;
+    }
+  }
+
+  &:hover {
+    opacity: 1;
+    cursor: default;
+  }
 }
 
 @media (min-width: $tablet-width) {
