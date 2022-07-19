@@ -22,7 +22,7 @@ export default {
 					active: false
 				},
 				{
-					name: 'С пробегом',
+					name: 'Автомобили с пробегом',
 					route: '/used',
 					active: true
 				}

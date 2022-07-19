@@ -1,6 +1,10 @@
 <template>
 	<!--TODO не делаю @click.prevent так как блокирует событие @submit на формах-->
-	<button class="button"
+	<nuxt-link :class="buttonClass" class="button" v-if="link !== ''"
+	           :to="link">{{ text }}
+	</nuxt-link>
+	<button v-else
+	        class="button"
 	        :class="buttonClass"
 	        @click="$emit('click')">
 		{{ text }}
@@ -12,6 +16,10 @@
 <script>
 export default {
 	props: {
+		link: {
+			type: String,
+			default: ''
+		},
 		buttonClass: String,
 		text: String,
 		icon: {

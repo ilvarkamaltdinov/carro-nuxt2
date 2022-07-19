@@ -26,7 +26,7 @@
 		</div>
 		<catalog-index-swiper v-else :offers="offers_list"/>
 		
-		<button-typical @click="toCatalog"
+		<button-typical :link="`/used/${set}`"
 		                text="Все автомобили"
 		                class="button--link button--more" />
 	</section>
@@ -100,9 +100,6 @@ export default {
 			setOffers: 'catalog/catalog-cars/SET_OFFERS',
 			setLoading: 'catalog/catalog-cars/SET_LOADING'
 		}),
-		toCatalog() {
-			this.$router.push('/used')
-		},
 		async getOffers() {
 			await this.setLoading(true)
 			let response = await this.request({query: offers, variables: {page: 0, limit: 10, set: this.set}})
