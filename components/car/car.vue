@@ -21,7 +21,7 @@
 					<button-typical text="Обратный звонок"
 					                class="button--icon button--link"
 					                icon="icon-callback" />
-					<button-call-modal :phone="offer.dealer.phone"/>
+					<button-call-modal :phone="offer.dealer.phone" />
 				</div>
 			</div>
 			<div class="car__slider-wrap">
@@ -37,7 +37,8 @@
 				<car-info />
 			</div>
 			<div class="grid grid--container">
-				<benefits class="car__benefits" :benefits="benefitsCar" />
+				<benefits class="car__benefits"
+				          :benefits="benefitsCar" />
 				<car-credit :offer="offer" />
 			</div>
 		</section>
@@ -70,6 +71,7 @@ export default {
 			site_id: this.$config.site_id,
 			mark_slug: this.$route.params.mark,
 			folder_slug: this.$route.params.model,
+			dateFormat: 'j F Y года.',
 			external_id: Number(this.$route.params.car)
 		}
 		let response = await this.request({query: offer, variables: variables})
@@ -86,6 +88,7 @@ export default {
 			setOffer: 'catalog/catalog-cars/SET_OFFER',
 			setFilterClick: 'filters/filters/SET_IS_FILTER_CLICK',
 			setIsOfferClick: 'filters/filters/SET_IS_OFFER_CLICK',
+			setComponentCatalog: 'filters/filters/SET_COMPONENT_CATALOG'
 		}),
 		...mapActions({
 			request: 'filters/filters/request',

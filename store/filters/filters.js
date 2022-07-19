@@ -147,10 +147,18 @@ export const actions = {
         if (drive_type_id_array?.length >= 1) {
             query['drive_type_id_array'] = drive_type_id_array
         }
-        this.app.router.push({
-            path: '/' + this.app.context.params.category + (url !== '' ? '/' + url : ''),
-            query
-        })
+        if(this.app.context.params.category){
+            this.app.router.push({
+                path: '/' + this.app.context.params.category + (url !== '' ? '/' + url : ''),
+                query
+            })
+        }else{
+            this.app.router.push({
+                path: '/used' + (url !== '' ? '/' + url : ''),
+                query
+            })
+        }
+
     },
     async request({}, {query, variables}) {
         let assignVariables = {

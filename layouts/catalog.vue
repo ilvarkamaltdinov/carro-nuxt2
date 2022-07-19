@@ -91,9 +91,8 @@ export default {
 					this.$nuxt.error({statusCode: 404})
 				}
 			} else {
-				// console.log(this.$route.path)
 				await this.filterRequest(this._.pickBy({ // TODO очищаю от пустых значений
-					url: this.$route.path === '/offers' ? '/used' : this.$route.path,
+					url: this.$route.path === '/best-moscow-autosalon' ? '/used' : this.$route.path,
 					page: Number(this.$route.query.page) || 1,
 					mark_slug_array: this.$stringToArray(this.$route.query.mark_slug_array),
 					folder_slug_array: this.$stringToArray(this.$route.query.folder_slug_array),

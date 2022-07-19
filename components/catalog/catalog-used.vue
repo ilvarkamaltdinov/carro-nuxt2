@@ -7,6 +7,7 @@
 					<!--<span class="heading-group__label">121212 автомобиля в наличии</span>-->
 				</div>
 			</div>
+			<catalog-offers v-if="offers"/>
 			<div class="grid__col-12"
 			     v-if="showFolderTabs">
 				<div class="tabs">
@@ -31,7 +32,7 @@
 				<filter-desktop />
 			</div>
 			<div class="grid__col-8">
-				<filter-sort/>
+				<filter-sort />
 				<component :is="$device.isMobile ? 'catalog-list-used-mobile' : 'catalog-list-used-desktop'" />
 			</div>
 		</section>
@@ -44,7 +45,11 @@ import capitalizeFirstLetter from "~/mixins/capitalizeFirstLetter";
 export default {
 	mixins: [capitalizeFirstLetter],
 	props: {
-		pageTitle: String
+		pageTitle: String,
+		offers: {
+			type: Boolean,
+			default: false
+		}
 	},
 	computed: {
 		...mapGetters({
@@ -55,10 +60,10 @@ export default {
 			return this.chosen?.mark?.length === 1 && !this.$route.query.folder_slug_array
 		}
 	},
-	methods:{
-		moreOffers(){
+	methods: {
+		moreOffers() {
 			console.log('show more')
 		}
-	}
+	},
 }
 </script>
