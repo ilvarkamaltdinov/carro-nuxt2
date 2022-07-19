@@ -1,5 +1,5 @@
 <template>
-	<div class="stories stories--modal">
+	<div class="stories stories--modal stories--benefit">
 		<div class="stories__modal-wrap">
 			<button class="stories__close"
 			        @click="closeBenefit">

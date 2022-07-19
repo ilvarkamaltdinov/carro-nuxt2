@@ -20,10 +20,10 @@
 					<social />
 					<div class="page-footer__contacts-list">
 						<a class="page-footer__contacts-item"
-						   href="tel:+74995191324">+7 (499) 519-13-24
+						   :href="`tel:${settings.phone}`">{{ settings.phone }}
 						</a>
 						<a class="page-footer__contacts-item"
-						   href="mailto:support@carro.ru">support@carro.ru
+						   :href="`mailto:${settings.email}`">{{ settings.email }}
 						</a>
 					</div>
 					<div class="page-footer__city-wrap">
@@ -86,7 +86,7 @@
 			<div class="page-footer__cars grid__col-12">
 				<div class="page-footer__cars-stock">
 					Автомобилей в наличии:
-					<span class="page-footer__cars-stock-number">{{ allMarksCount | toCurrencyValue }}</span>
+					<nuxt-link to="/used" class="page-footer__cars-stock-number">{{ allMarksCount | toCurrencyValue }}</nuxt-link>
 				</div>
 				<footer-marks />
 			</div>
@@ -152,6 +152,7 @@ export default {
 	computed: {
 		...mapGetters({
 			allMarksCount: 'marks/marks/allMarksCount',
+			settings: 'settings/settings/settings',
 		})
 	}
 }

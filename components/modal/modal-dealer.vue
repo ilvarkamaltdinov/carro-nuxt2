@@ -7,7 +7,7 @@
 			     alt="" />
 			<div class="modal__buttons">
 				<button-callback />
-				<button-call-modal :phone="modalData.phone"/>
+				<button-call-modal :phone="modalData.phone" />
 			</div>
 		</div>
 		<div class="modal__wrap">
@@ -49,12 +49,12 @@
 			</div>
 			<div class="modal__dealer-photos">
 				<h3 class="heading heading--h3">Фотографии автоцентра:</h3>
-				<!--<dealer-slider></dealer-slider>-->
+				<dealers-slider :images="modalData.images"/>
 			</div>
 			<div class="modal__dealer-map">
 				<h3 class="heading heading--h3">Автоцентр на карте:</h3>
 				<div class="map map--dealer">
-					<map-dealer :settings="{coordinates:modalData.coordinates}"/>
+					<map-dealer :settings="{coordinates:modalData.coordinates}" />
 				</div>
 			</div>
 		</div>

@@ -2,9 +2,9 @@
 	<div>
 		<Header />
 		<modal-wrap />
+		<modal-benefits/>
 		<Nuxt />
 		<Footer />
-		<modal-benefits/>
 	</div>
 </template>
 <script>

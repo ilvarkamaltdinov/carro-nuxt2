@@ -66,7 +66,7 @@
 					</li>
 					<li class="page-header__buttons-item">
 						<a class="page-header__buttons-link"
-						   href="">
+						   :href="`tel:${settings.phone}`">
 							<svg-icon class="icon"
 							          name="icon-call" />
 						</a>
@@ -120,7 +120,8 @@ export default {
 			modalMenu: 'modal/modal-menu/modalMenu',
 			modalMarks: 'modal/modal-marks/modalMarks',
 			allMarks: 'marks/marks/allMarks',
-			likesArray: 'favorite/favorite/likesArray'
+			likesArray: 'favorite/favorite/likesArray',
+			settings: 'settings/settings/settings',
 		})
 	},
 	mounted() {

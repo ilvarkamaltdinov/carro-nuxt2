@@ -4,9 +4,9 @@
 		<Header />
 		<modal-wrap />
 		<modal-stories />
+		<modal-benefits/>
 		<Nuxt />
 		<Footer />
-		<modal-benefits/>
 	</div>
 </template>
 <script>
