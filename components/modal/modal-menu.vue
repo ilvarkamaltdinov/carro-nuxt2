@@ -53,7 +53,7 @@ export default {
 						},
 						{
 							name: 'Такси+',
-							link: '/inProcess'
+							link: '/taxi'
 						},
 						{
 							name: 'Детейлинг',

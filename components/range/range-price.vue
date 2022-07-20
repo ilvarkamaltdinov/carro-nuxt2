@@ -15,6 +15,7 @@
 				       placeholder="Цена до"
 				       type="tel"
 				       name="date"
+				       @change="changePriceTo"
 				       inputmode="numeric"
 				       :value="to | toCurrency" />
 			</label>
@@ -82,6 +83,10 @@ export default {
 		}),
 		changePriceFrom(e) {
 			this.from = Number(e.target.value.replace(/[^+\d]/g, ''))
+			this.sendPrice()
+		},
+		changePriceTo(e) {
+			this.to = Number(e.target.value.replace(/[^+\d]/g, ''))
 			this.sendPrice()
 		},
 		async sendPrice() {

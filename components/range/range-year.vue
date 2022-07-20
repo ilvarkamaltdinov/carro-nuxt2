@@ -6,6 +6,7 @@
 				       placeholder="Год от"
 				       type="tel"
 				       name="date"
+				       @change="changeYearFrom"
 				       inputmode="numeric"
 				       v-model="from" />
 			</label>
@@ -13,6 +14,7 @@
 				<input class="form__field"
 				       placeholder="Год до"
 				       type="tel"
+				       @change="changeYearTo"
 				       name="date"
 				       inputmode="numeric"
 				       v-model="to" />
@@ -75,6 +77,14 @@ export default {
 		async sendYear() {
 			this.setIsFilterClick(true)
 			await this.$router.push({path: this.$route.fullPath, query: {year_from: this.from, year_to: this.to}});
+		},
+		changeYearFrom(e) {
+			this.from = Number(e.target.value.replace(/[^+\d]/g, ''))
+			this.sendYear()
+		},
+		changeYearTo(e) {
+			this.to = Number(e.target.value.replace(/[^+\d]/g, ''))
+			this.sendYear()
 		},
 		changeYear(event) {
 			this.from = event.from

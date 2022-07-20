@@ -1,5 +1,5 @@
 <template>
-	<div @keyup.esc="closeModals"
+	<div class="default__wrapper" @keyup.esc="closeModals"
 	     tabindex="0">
 		<Header />
 		<modal-wrap />

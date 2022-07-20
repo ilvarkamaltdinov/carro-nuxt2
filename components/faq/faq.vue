@@ -36,7 +36,7 @@
 							    v-for="question in item.list"
 							    @click="question.active = !question.active"
 							    :key="question.question">
-								<dt class="faq__question">{{ question.question }}{{question.active}}</dt>
+								<dt class="faq__question">{{ question.question }}</dt>
 								<VueSlideToggle :open="question.active"
 								                :duration="500">
 									<dd class="faq__answer">{{ question.answer }}</dd>

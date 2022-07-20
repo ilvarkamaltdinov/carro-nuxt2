@@ -84,7 +84,15 @@ export default {
         '@nuxtjs/device',
         '@nuxtjs/axios',
         '@nuxtjs/sitemap',
-        '@nuxtjs/svg-sprite'
+        '@nuxtjs/svg-sprite',
+        'nuxt-redirect'
+    ],
+    redirect: [
+        {
+            from: '/taxi',
+            to: 'https://taxi.carro.ru',
+            statusCode: 301
+        }
     ],
     svgSprite: {
         input: '~/assets/icons/',

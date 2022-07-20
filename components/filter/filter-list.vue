@@ -51,7 +51,7 @@
 			</li>
 			<li v-if="allFilters"
 			    class="filter__menu-item"
-			    :class="{'filter__menu-item--loading':loading}"
+			    :class="{'filter__menu-item--loading':false}"
 			    @click="openFilterModal('gearbox')">
 				<div class="filter__menu-text">
 					{{ gearbox_select_title }}
@@ -61,7 +61,7 @@
 			</li>
 			<li v-if="allFilters"
 			    class="filter__menu-item"
-			    :class="{'filter__menu-item--loading':loading}"
+			    :class="{'filter__menu-item--loading':false}"
 			    @click="openFilterModal('drive-type')">
 				<div class="filter__menu-text">
 					{{ drive_type_select_title }}
