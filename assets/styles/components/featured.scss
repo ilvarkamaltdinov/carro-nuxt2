@@ -311,6 +311,12 @@
   }
 }
 
+.featured__item--review-active {
+  &::before {
+    display: none;
+  }
+}
+
 .featured__item--review .featured__text {
   color: white;
   z-index: 50;
