@@ -31,7 +31,6 @@
 			</li>
 			<li class="filter__menu-item"
 			    :class="{'filter__menu-item--loading':false}"
-			    v-if="allFilters || !showGeneration"
 			    @click="openFilterModal('engine-type')">
 				<div class="filter__menu-text">
 					{{ engine_type_select_title }}
@@ -39,36 +38,36 @@
 				<svg-icon class="filter__arrow"
 				          name="icon-arrow" />
 			</li>
-			<li v-if="allFilters"
-			    class="filter__menu-item"
-			    :class="{'filter__menu-item--loading':false}"
-			    @click="openFilterModal('body-type')">
-				<div class="filter__menu-text">
-					{{ body_type_select_title }}
-				</div>
-				<svg-icon class="filter__arrow"
-				          name="icon-arrow" />
-			</li>
-			<li v-if="allFilters"
-			    class="filter__menu-item"
-			    :class="{'filter__menu-item--loading':false}"
-			    @click="openFilterModal('gearbox')">
-				<div class="filter__menu-text">
-					{{ gearbox_select_title }}
-				</div>
-				<svg-icon class="filter__arrow"
-				          name="icon-arrow" />
-			</li>
-			<li v-if="allFilters"
-			    class="filter__menu-item"
-			    :class="{'filter__menu-item--loading':false}"
-			    @click="openFilterModal('drive-type')">
-				<div class="filter__menu-text">
-					{{ drive_type_select_title }}
-				</div>
-				<svg-icon class="filter__arrow"
-				          name="icon-arrow" />
-			</li>
+			<VueSlideToggle :open="allFilters">
+				<li class="filter__menu-item"
+				    :class="{'filter__menu-item--loading':false}"
+				    @click="openFilterModal('body-type')">
+					<div class="filter__menu-text">
+						{{ body_type_select_title }}
+					</div>
+					<svg-icon class="filter__arrow"
+					          name="icon-arrow" />
+				</li>
+				<li class="filter__menu-item"
+				    :class="{'filter__menu-item--loading':false}"
+				    @click="openFilterModal('gearbox')">
+					<div class="filter__menu-text">
+						{{ gearbox_select_title }}
+					</div>
+					<svg-icon class="filter__arrow"
+					          name="icon-arrow" />
+				</li>
+				<li class="filter__menu-item"
+				    :class="{'filter__menu-item--loading':false}"
+				    @click="openFilterModal('drive-type')">
+					<div class="filter__menu-text">
+						{{ drive_type_select_title }}
+					</div>
+					<svg-icon class="filter__arrow"
+					          name="icon-arrow" />
+				</li>
+			</VueSlideToggle>
+		
 		</ul>
 		<div class="filter__more">
 			<button-typical :text="allFilters ? 'Меньше фильтров' : 'Больше фильтров'"
@@ -78,14 +77,14 @@
 		</div>
 		<ul class="filter__menu-list filter__menu-list--more">
 			<skeleton-filter-range title="Цена"
-			                               v-if="loadingRange" />
+			                       v-if="loadingRange" />
 			<li class="filter__menu-group"
 			    v-else>
 				<h2 class="heading heading--h3">Цена</h2>
 				<range-price />
 			</li>
 			<skeleton-filter-range title="Год"
-			                               v-if="loadingRange" />
+			                       v-if="loadingRange" />
 			<li class="filter__menu-group"
 			    v-else>
 				<h2 class="heading heading--h3">Год</h2>

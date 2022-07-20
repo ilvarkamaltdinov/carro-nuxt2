@@ -28,11 +28,11 @@
 					<p class="text__p">Пишите в Whatsapp или звоните по телефону.</p>
 					<div class="text__links">
 						<a class="button button--icon button--link"
-						   href="tel:+74952452342">+7 495 245-23-42
+						   :href="`tel:${settings.phone_station}`">{{settings.phone_station}}
 							<svg-icon name="icon-call"></svg-icon>
 						</a>
 						<a class="button button--icon button--link"
-						   href="https://wa.me/74952452342?text=Здравствуйте,%20я%20заинтересован%20в%детейлингге%своего%20авто.">
+						   :href="`https://wa.me/${settings.phone_station_link}?text=Здравствуйте,%20я%20заинтересован%20в%детейлингге%своего%20авто.`">
 							Написать в WhatsApp
 							<svg-icon name="icon-whatsapp"></svg-icon>
 						</a>
@@ -42,3 +42,14 @@
 		</div>
 	</section>
 </template>
+<script>
+import {mapGetters} from "vuex";
+
+export default {
+	computed: {
+		...mapGetters({
+			settings: 'settings/settings/settings'
+		})
+	}
+}
+</script>

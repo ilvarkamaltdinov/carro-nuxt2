@@ -26,8 +26,8 @@
 					                   погашения стоимости автомобиля за срок до 5 лет. Если же выплата всей суммы за 5 лет
 					                   обременительна для семейного бюджета, оптимальным решением станет
 						<nuxt-link to="/credit">автокредит</nuxt-link>
-					                   4.9% со
-					                   скидкой до 150 000 ₽.
+					                   {{ settings.credit_percent }} со
+					                   скидкой до {{ settings.sale_credit }} ₽.
 					</p>
 					<p class="text__p">Окончательное решение о предоставлении рассрочки принимается банками-партнерами CARRO.
 					</p>
@@ -42,3 +42,14 @@
 		</div>
 	</section>
 </template>
+<script>
+import {mapGetters} from "vuex";
+
+export default {
+	computed: {
+		...mapGetters({
+			settings: 'settings/settings/settings'
+		})
+	}
+}
+</script>

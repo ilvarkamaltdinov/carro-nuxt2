@@ -1,6 +1,8 @@
 export const state = () => ({
     settings: {}
 })
+const jopa =  123
+
 export const getters = {
     settings: (state) => {
         return state.settings

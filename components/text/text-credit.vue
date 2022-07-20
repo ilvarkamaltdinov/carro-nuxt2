@@ -31,7 +31,7 @@
 					</p>
 					<p class="text__p">Преимущества автокредита carro.ru:</p>
 					<ul class="text__list">
-						<li class="text__list-item">Низкая ставка 4.9%</li>
+						<li class="text__list-item">Низкая ставка {{ settings.credit_percent }}</li>
 						<li class="text__list-item">Первоначальный взнос от 0%</li>
 						<li class="text__list-item">Trade-In как первый взнос</li>
 						<li class="text__list-item">Зимняя резина в подарок</li>
@@ -41,3 +41,14 @@
 		</div>
 	</section>
 </template>
+<script>
+import {mapGetters} from "vuex";
+
+export default {
+	computed: {
+		...mapGetters({
+			settings: 'settings/settings/settings'
+		})
+	}
+}
+</script>

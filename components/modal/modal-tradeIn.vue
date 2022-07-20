@@ -9,7 +9,7 @@
 			</div>
 			<application-banks class="grid__col-4"/>
 		</div>
-		<benefits modal :benefits="benefitsTradeIn"/>
+		<benefits :has-modal="false" modal :benefits="benefitsTradeIn"/>
 	</div>
 </template>
 <script>

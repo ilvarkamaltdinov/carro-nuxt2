@@ -1,5 +1,4 @@
 <template>
-	
 	<section class="page-main__featured featured featured--reviews grid">
 		<div class="heading-group heading-group--h1">
 			<div class="heading-group__wrap">
@@ -9,26 +8,40 @@
 		</div>
 		<div class="grid__col-12">
 			<tabs-dealers />
-			<ul class="featured__list grid grid--featured featured__banks">
-				<li class="featured__item featured__item--review"
-				    v-for="item in reviewsList"
-				    :key="item.id">
-					<div class="featured__link">
-						<div class="featured__about">
-							<h3 class="featured__title">{{ item.title }}</h3>
-							<div class="featured__text">{{ item.date }}</div>
+			<ul class="featured__list grid grid--featured featured__reviews">
+				<li class="featured__item featured__item--review "
+				    :class="{'featured__item--review-active':videoShow === video.id}"
+				    @click="clickVideo(video.id)"
+				    v-for="video in reviews"
+				    :key="video.id">
+					<iframe v-if="videoShow === video.id"
+					        class="featured__review-player"
+					        width="610"
+					        :src="`https://www.youtube.com/embed/${video.contentDetails.videoId}?autoplay=1`"
+					        frameborder="0"
+					        allow="encrypted-media"
+					        allowfullscreen />
+					<div v-else>
+						<div class="featured__link">
+							<div class="featured__about">
+								
+								<!--<h3 class="featured__title">{{ video.snippet.title }}</h3>-->
+								<h3 class="featured__title">{{ video.id }}</h3>
+								<!--<div class="featured__text">{{ video.date }}</div>-->
+							</div>
+							<div class="featured__review-picture">
+								<img class="featured__review-img"
+								     :src="video.snippet.thumbnails.high.url"
+								     :alt="video.snippet.title" />
+							</div>
 						</div>
-						<div class="featured__review-picture">
-							<img class="featured__review-img"
-							     :src="require('~/assets/img/reviews/reviews-'+ item.img +'.jpg')"
-							     alt="" />
-						</div>
+						<svg-icon class="featured__play-icon"
+						          name="icon-play" />
 					</div>
-					<svg-icon class="featured__play-icon"
-					          name="icon-play"></svg-icon>
 				</li>
 			</ul>
-			<button-typical @click="total += 9"
+			<button-typical v-if="showMore"
+			                @click="getMore"
 			                text="Показать больше"
 			                class="button--link button--more" />
 		</div>
@@ -41,93 +54,37 @@ export default {
 	},
 	data() {
 		return {
-			total: 9,
-			reviews: [
-				// {
-				// 	id: 0,
-				// 	title: 'Отзыв об автоцентре АвтоГрадъ',
-				// 	date: '4 марта, 2022',
-				// 	img: '1'
-				// },
-				// {
-				// 	id: 1,
-				// 	title: 'Отзыв об автоцентре АвтоГрадъ',
-				// 	date: '4 марта, 2022',
-				// 	img: '1'
-				// },
-				// {
-				// 	id: 2,
-				// 	title: 'Отзыв об автоцентре АвтоГрадъ',
-				// 	date: '4 марта, 2022',
-				// 	img: '1'
-				// },
-				// {
-				// 	id: 3,
-				// 	title: 'Отзыв об автоцентре АвтоГрадъ',
-				// 	date: '4 марта, 2022',
-				// 	img: '1'
-				// },
-				// {
-				// 	id: 4,
-				// 	title: 'Отзыв об автоцентре АвтоГрадъ',
-				// 	date: '4 марта, 2022',
-				// 	img: '1'
-				// },
-				// {
-				// 	id: 5,
-				// 	title: 'Отзыв об автоцентре АвтоГрадъ',
-				// 	date: '4 марта, 2022',
-				// 	img: '1'
-				// },
-				// {
-				// 	id: 6,
-				// 	title: 'Отзыв об автоцентре АвтоГрадъ',
-				// 	date: '4 марта, 2022',
-				// 	img: '1'
-				// },
-				// {
-				// 	id: 7,
-				// 	title: 'Отзыв об автоцентре АвтоГрадъ',
-				// 	date: '4 марта, 2022',
-				// 	img: '1'
-				// },
-				// {
-				// 	id: 8,
-				// 	title: 'Отзыв об автоцентре АвтоГрадъ',
-				// 	date: '4 марта, 2022',
-				// 	img: '1'
-				// },
-				// {
-				// 	id: 9,
-				// 	title: 'Отзыв об автоцентре АвтоГрадъ',
-				// 	date: '4 марта, 2022',
-				// 	img: '1'
-				// },
-				{
-					id: 10,
-					title: 'Отзыв об автоцентре АвтоГрадъ',
-					date: '4 марта, 2022',
-					img: '1'
-				},
-				{
-					id: 11,
-					title: 'Отзыв об автоцентре АвтоГрадъ',
-					date: '4 марта, 2022',
-					img: '1'
-				},
-				{
-					id: 12,
-					title: 'Отзыв об автоцентре АвтоГрадъ',
-					date: '4 марта, 2022',
-					img: '1'
-				}
-			]
+			reviews: [],
+			videoShow: null,
+			nextPageToken: null,
+			showMore: true
 		}
 	},
-	computed: {
-		reviewsList() {
-			return this.reviews.slice(0, this.total);
-		}
+	async created() {
+		await this.getPlaylist(this.nextPageToken);
+	},
+	methods: {
+		clickVideo(id) {
+			this.videoShow = id
+		},
+		getMore() {
+			this.getPlaylist(this.nextPageToken)
+		},
+		async getPlaylist(pageToken) {
+			let response = await this.$axios.get('https://www.googleapis.com/youtube/v3/playlistItems', {
+				params: {
+					"playlistId": "PLHpvdAouOo_YkCytWO1ltQ_1cbfnv-YGF",
+					"orderby": "reversedPosition",
+					"maxResults": 9,
+					"key": "AIzaSyBw7M2CPzyAtwX1ct9XQk5akiouCUQ9CJU",
+					"part": "snippet,status,contentDetails",
+					"pageToken": pageToken
+				}
+			})
+			this.nextPageToken = response.data.nextPageToken ? response.data.nextPageToken : this.showMore = false
+			this.reviews.push(...response.data.items);
+			console.log(this.reviews)
+		},
 	}
 }
 </script>

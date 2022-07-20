@@ -89,7 +89,6 @@ export default {
 			if (response.data.articlesPaginate.data.length) {
 				this.page += 1
 				this.list.push(...response.data.articlesPaginate.data)
-				console.log(this.list)
 				$state.loaded()
 			} else {
 				$state.complete()

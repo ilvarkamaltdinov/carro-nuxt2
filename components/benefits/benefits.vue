@@ -5,7 +5,7 @@
 			<li class="benefits__item"
 			    v-for="(benefit, index) in benefits"
 			    :key="index">
-				<a @click.prevent="openBenefit(benefit)"
+				<a @click.prevent="hasModal ? openBenefit(benefit) : false"
 				   class="benefits__link popup--link"
 				   href="">
 					<svg-icon class="benefits__icon"
@@ -28,6 +28,10 @@ import {mapActions} from "vuex";
 export default {
 	props: {
 		benefits: Array,
+		hasModal: {
+			type: Boolean,
+			default: true
+		},
 		modal: {
 			type: Boolean,
 			default: false

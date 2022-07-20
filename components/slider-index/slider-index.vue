@@ -9,7 +9,7 @@
 				<slider-index-slide v-for="slide in slides"
 				                    :slide="slide"
 				                    :key="slide.id" />
-
+			
 			</div>
 			<!-- If we need pagination-->
 			<div class="swiper-pagination"></div>
@@ -24,54 +24,9 @@
 <script>
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import {mapGetters} from "vuex";
 
 export default {
-	data() {
-		return {
-			slides: [
-				{
-					id: 1,
-					heading:'Рассрочка 0% от Совкомбанка',
-					content:'Успей купить авто на выгодных условиях'
-				},
-				{
-					id: 2,
-					heading:'Автокредит ВТБ',
-					content:'Лучшие условия для клиентов carro.ru'
-				},
-				{
-					id: 3,
-					heading:'Рассрочка от Сбера и Сетелем',
-					content:'Лучшие условия для клиентов CARRO'
-				},
-				{
-					id: 4,
-					heading:'Заморозили цены и ставки',
-					content:'Успей купить автомобиль по старой цене'
-				},
-				{
-					id: 5,
-					heading:'2-й комплект резины в подарок',
-					content:'При покупке автомобиля в кредит'
-				},
-				{
-					id: 6,
-					heading:'Супер-автокредит от 4.9% годовых',
-					content:'Скидка до 150 000 ₽, одобрение по паспорту и В/У, взнос от 0%'
-				},
-				{
-					id: 7,
-					heading:' Читайте наш Telegram-канал',
-					content:'Последние поступления, акции, новости'
-				},
-				{
-					id: 8,
-					heading:'Обменяй авто <br/> по Trade-In',
-					content:'Выгода до 250 000 ₽, рыночная цена, оформление 30 мин.'
-				}
-			]
-		}
-	},
 	mounted() {
 		const sliderIndexSwiper = new swiper.default('.slider-index .swiper', {
 			modules: [swiper.Navigation, swiper.Pagination, swiper.Autoplay],
@@ -136,6 +91,55 @@ export default {
 		AOS.init({
 			once: true
 		})
+	},
+	computed: {
+		...mapGetters({
+			settings: 'settings/settings/settings'
+		}),
+		slides() {
+			return [
+				{
+					id: 1,
+					heading: 'Рассрочка 0% от Совкомбанка',
+					content: 'Успей купить авто на выгодных условиях'
+				},
+				{
+					id: 2,
+					heading: 'Автокредит ВТБ',
+					content: 'Лучшие условия для клиентов carro.ru'
+				},
+				{
+					id: 3,
+					heading: 'Рассрочка от Сбера и Сетелем',
+					content: 'Лучшие условия для клиентов CARRO'
+				},
+				{
+					id: 4,
+					heading: 'Заморозили цены и ставки',
+					content: 'Успей купить автомобиль по старой цене'
+				},
+				{
+					id: 5,
+					heading: '2-й комплект резины в подарок',
+					content: 'При покупке автомобиля в кредит'
+				},
+				{
+					id: 6,
+					heading: `Супер-автокредит от ${this.settings.credit_percent} годовых`,
+					content: 'Скидка до 150 000 ₽, одобрение по паспорту и В/У, взнос от 0%'
+				},
+				{
+					id: 7,
+					heading: ' Читайте наш Telegram-канал',
+					content: 'Последние поступления, акции, новости'
+				},
+				{
+					id: 8,
+					heading: 'Обменяй авто <br/> по Trade-In',
+					content: 'Выгода до 250 000 ₽, рыночная цена, оформление 30 мин.'
+				}
+			]
+		}
 	}
 }
 </script>

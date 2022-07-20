@@ -24,7 +24,7 @@
 					<catalog-item-small-desktop :has-buttons="false" :offer="modalData"/>
 				</div>
 			</div>
-			<benefits modal :benefits="benefitsCredit"/>
+			<benefits :has-modal="false" modal :benefits="benefitsCredit"/>
 		</div>
 	</div>
 </template>

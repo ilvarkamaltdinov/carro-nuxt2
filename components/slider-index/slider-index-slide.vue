@@ -39,8 +39,8 @@
 				     data-aos-easing="ease-in-out"
 				     data-aos-mirror="true"></div>
 				<div class="slider-index__text">
-					<div class="slider-index__heading">Рассрочка 0% от Совкомбанка</div>
-					<div class="slider-index__content">Успей купить авто на выгодных условиях</div>
+					<div class="slider-index__heading">{{ slide.heading }}</div>
+					<div class="slider-index__content">{{ slide.content }}</div>
 				</div>
 			</div>
 		</a>

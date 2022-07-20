@@ -3,7 +3,7 @@
 	<section class="page-main__about about grid">
 		<div class="heading-group heading-group--h1">
 			<div class="heading-group__wrap">
-				<h1 class="heading heading--h1">{{pageTitle}}
+				<h1 class="heading heading--h1">{{ pageTitle }}
 					<span class="heading__promo"></span>
 				</h1>
 				<span class="heading-group__label">Свяжитесь с нами</span>
@@ -29,19 +29,19 @@
 					<div class="text__contacts-group">
 						<div class="text__contacts-label">Приобретения автомобиля:</div>
 						<a class="text__contacts-item"
-						   href="tel:+79993522343">+7 (925) 351-24-22
+						   :href="`tel:${settings.phone}`">{{settings.phone}}
 						</a>
 					</div>
 					<div class="text__contacts-group">
-						<div class="text__contacts-label">Кредитный отдел:</div>
+						<div class="text__contacts-label">Детейлинг:</div>
 						<a class="text__contacts-item"
-						   href="tel:+79993522343">+7 (925) 351-24-22
+						   :href="`tel:${settings.phone_station}`">{{settings.phone_station}}
 						</a>
 					</div>
 					<div class="text__contacts-group">
 						<div class="text__contacts-label">Вопросы сотрудничества:</div>
 						<a class="text__contacts-item"
-						   href="mailto:+79993522343">support@carro.ru
+						   :href="`mailto:${settings.email}`">{{ settings.email }}
 						</a>
 					</div>
 				</div>
@@ -66,9 +66,16 @@
 
 </template>
 <script>
+import {mapGetters} from "vuex";
+
 export default {
 	props: {
 		pageTitle: String
+	},
+	computed: {
+		...mapGetters({
+			settings: 'settings/settings/settings'
+		})
 	}
 }
 </script>

@@ -12,7 +12,7 @@
 			</div>
 			<application-banks class="grid__col-4" />
 		</div>
-		<benefits modal :benefits="benefitsCredit"/>
+		<benefits :has-modal="false" modal :benefits="benefitsCredit"/>
 	</div>
 </template>
 <script>

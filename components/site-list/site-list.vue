@@ -4,7 +4,8 @@
 			<div class="site-list__link site-list__link--group">{{ item.title }}</div>
 			<ul class="site-list__group-list">
 				<li class="site-list__item site-list__item--sub" v-for="sub in item.links" :key="sub.name">
-					<nuxt-link @click.native="setModalMenu(false)" class="site-list__link"
+					<a v-if="sub.blank" target="_blank" :href="sub.link">{{sub.name}}</a>
+					<nuxt-link v-else @click.native="setModalMenu(false)" class="site-list__link"
 					   :to="sub.link">
 						{{sub.name}}
 					</nuxt-link>

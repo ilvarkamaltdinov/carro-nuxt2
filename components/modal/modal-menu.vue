@@ -4,8 +4,9 @@
 		<h2 class="visually-hidden">Меню сайта</h2>
 		<div class="modal__wrap grid grid__container">
 			<nav class="main-nav main-nav--modal grid__col-12">
-				<component :list="siteList" :is="$device.isMobile ? 'site-list-mobile': 'site-list'"/>
-				<social/>
+				<component :list="siteList"
+				           :is="$device.isMobile ? 'site-list-mobile': 'site-list'" />
+				<social />
 			</nav>
 		</div>
 	</section>
@@ -13,8 +14,8 @@
 </template>
 <script>
 export default {
-	data(){
-		return{
+	data() {
+		return {
 			siteList: [
 				{
 					title: 'Автомобили',
@@ -22,7 +23,7 @@ export default {
 						{
 							name: 'Легковые',
 							link: '/used'
-						},{
+						}, {
 							name: 'Коммерческие',
 							link: '/commercial'
 						},
@@ -53,7 +54,8 @@ export default {
 						},
 						{
 							name: 'Такси+',
-							link: '/taxi'
+							blank: true,
+							link: 'https://taxi.carro.ru'
 						},
 						{
 							name: 'Детейлинг',

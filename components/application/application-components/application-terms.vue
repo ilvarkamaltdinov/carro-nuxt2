@@ -1,11 +1,12 @@
 <template>
 	<div class="application__terms">
 		<div class="application__terms-item">
-			<div class="application__terms-number application__terms-number--stake"> от {{ percent }}%</div>
+			<div class="application__terms-number application__terms-number--stake"> от {{ settings.credit_percent }}</div>
 			<div class="application__terms-text">Ставка по кредиту</div>
 		</div>
 		<div class="application__terms-item">
-			<div class="application__terms-number application__terms-number--term" v-if="periodValue">
+			<div class="application__terms-number application__terms-number--term"
+			     v-if="periodValue">
 				<!--{{ periodValue ? periodValue + ' мес.' : '-' }}-->
 				<client-only>
 					<number
@@ -13,17 +14,19 @@
 							:from="0"
 							:to="periodValue"
 							:duration=".1"
-							easing="Power1.easeOut"/>
+							easing="Power1.easeOut" />
 				</client-only>
 				мес
 			</div>
-			<div v-else class="application__terms-number application__terms-number--payment">
+			<div v-else
+			     class="application__terms-number application__terms-number--payment">
 				-
 			</div>
 			<div class="application__terms-text">Срок автокредита</div>
 		</div>
 		<div class="application__terms-item">
-			<div class="application__terms-number application__terms-number--payment" v-if="monthPayment">
+			<div class="application__terms-number application__terms-number--payment"
+			     v-if="monthPayment">
 				<!--{{ monthPayment | toCurrency }}-->
 				<client-only>
 					<number
@@ -32,11 +35,12 @@
 							:to="monthPayment"
 							:format="theFormat"
 							:duration=".2"
-							easing="Power1.easeOut"/>
+							easing="Power1.easeOut" />
 				</client-only>
-				 ₽
+				₽
 			</div>
-			<div v-else class="application__terms-number application__terms-number--payment">
+			<div v-else
+			     class="application__terms-number application__terms-number--payment">
 				-
 			</div>
 			<div class="application__terms-text">Ежемеясячный платеж</div>
@@ -79,13 +83,14 @@ export default {
 		...mapGetters({
 			bank: 'banks/bank',
 			periodValue: 'form/form/periodValue',
-			monthPayment: 'form/form/monthPayment'
+			monthPayment: 'form/form/monthPayment',
+			settings: 'settings/settings/settings'
 		}),
-		percent() {
-			// Динамично меняет процентную ставку в зависимости от банка
-			// return this.bank.rate ? this.bank.rate : this.$config.default_percent
-			return this.$config.default_percent
-		},
+		// percent() {
+		// 	// Динамично меняет процентную ставку в зависимости от банка
+		// 	// return this.bank.rate ? this.bank.rate : this.$config.default_percent
+		// 	return this.$config.default_percent
+		// },
 	}
 }
 </script>

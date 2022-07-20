@@ -85,11 +85,11 @@ export default {
         '@nuxtjs/axios',
         '@nuxtjs/sitemap',
         '@nuxtjs/svg-sprite',
-        'nuxt-redirect'
+        '@nuxtjs/redirect-module'
     ],
     redirect: [
         {
-            from: '/taxi',
+            from: '^/taxi',
             to: 'https://taxi.carro.ru',
             statusCode: 301
         }
