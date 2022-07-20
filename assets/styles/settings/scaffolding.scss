@@ -13,9 +13,8 @@ body {
   @include font-body;
 }
 
-.body-fixed {
+.body--modal {
   overflow: hidden;
-  position: fixed;
 }
 
 a,
