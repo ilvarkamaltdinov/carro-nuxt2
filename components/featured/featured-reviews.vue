@@ -21,23 +21,18 @@
 					        frameborder="0"
 					        allow="encrypted-media"
 					        allowfullscreen />
-					<div v-else>
-						<div class="featured__link">
-							<div class="featured__about">
-								
-								<!--<h3 class="featured__title">{{ video.snippet.title }}</h3>-->
-								<h3 class="featured__title">{{ video.id }}</h3>
-								<!--<div class="featured__text">{{ video.date }}</div>-->
-							</div>
-							<div class="featured__review-picture">
-								<img class="featured__review-img"
-								     :src="video.snippet.thumbnails.high.url"
-								     :alt="video.snippet.title" />
-							</div>
+					<div v-if="videoShow !== video.id" class="featured__link">
+						<div class="featured__about">
+							<h3 class="featured__title">{{ video.snippet.title }}</h3>
 						</div>
-						<svg-icon class="featured__play-icon"
-						          name="icon-play" />
+						<div class="featured__review-picture">
+							<img class="featured__review-img"
+							     :src="video.snippet.thumbnails.high.url"
+							     :alt="video.snippet.title" />
+						</div>
 					</div>
+					<svg-icon  v-if="videoShow !== video.id" class="featured__play-icon"
+					          name="icon-play" />
 				</li>
 			</ul>
 			<button-typical v-if="showMore"
@@ -83,7 +78,6 @@ export default {
 			})
 			this.nextPageToken = response.data.nextPageToken ? response.data.nextPageToken : this.showMore = false
 			this.reviews.push(...response.data.items);
-			console.log(this.reviews)
 		},
 	}
 }
