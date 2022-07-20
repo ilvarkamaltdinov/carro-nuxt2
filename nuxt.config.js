@@ -30,6 +30,10 @@ export default {
             }
         }
     },
+    serverMiddleware: {
+        '/feeds': '~/feeds',
+        '/api': '~/feeds'
+    },
     loading: {
         color: '#ED2939',
         height: '2px',
