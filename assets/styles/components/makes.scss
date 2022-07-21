@@ -228,6 +228,12 @@
 }
 
 @media (min-width: $desktop-width) {
+  .makes__link {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   .makes__list--all {
     -moz-column-count: 7;
     column-count: 7;
