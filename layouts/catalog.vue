@@ -1,8 +1,9 @@
 <template>
-	<div>
+	<div @keyup.esc="closeModals"
+	     tabindex="0">
 		<Header />
 		<modal-wrap />
-		<modal-benefits/>
+		<modal-benefits />
 		<Nuxt />
 		<Footer />
 	</div>
@@ -37,10 +38,20 @@ export default {
 			setIsFilterClick: 'filters/filters/SET_IS_FILTER_CLICK',
 			setIsOfferClick: 'filters/filters/SET_IS_OFFER_CLICK',
 			setLoadingRange: 'filters/filters/SET_LOADING_RANGE',
+			setModalMenu: 'modal/modal-menu/setModalMenu',
+			setModalMarks: 'modal/modal-marks/setModalMarks',
 		}),
 		...mapActions({
 			request: 'filters/filters/request',
+			closeStories: 'stories/stories/closeStories',
+			closeModal: 'modal/modal-main/closeModal'
 		}),
+		closeModals() {
+			this.closeStories()
+			this.closeModal()
+			this.setModalMenu(false)
+			this.setModalMarks(false)
+		},
 		async filterRequest(assignVariables) {
 			try {
 				let response = await this.request({query: offerFilters, variables: assignVariables})

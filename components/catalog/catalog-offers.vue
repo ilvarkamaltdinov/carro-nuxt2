@@ -1,6 +1,8 @@
 <template>
 	<div class="grid__col-12 grid dealers dealers--catalog">
-		<div class="dealers__item dealers__item--catalog grid__col-6" v-for="dealer in currentDealers" :key="dealer.id">
+		<div class="dealers__item dealers__item--catalog grid__col-6"
+		     v-for="dealer in currentDealers"
+		     :key="dealer.id">
 			<div class="dealers__features features">
 				<div class="heading-group">
 					<div class="heading-group__wrap">
@@ -29,7 +31,8 @@
 					     loading="lazy"
 					     alt="" />
 				</picture>
-				<button-typical button-class="button--show" text="Подробнее о дилере" />
+				<button-typical @click="showMore(dealer.slug)" button-class="button--show"
+				                text="Подробнее о дилере" />
 				<a class="button button--show button--show-link"
 				   :href="`${dealer.site}`"
 				   target="_blank">Сайт автоцентра
@@ -39,6 +42,7 @@
 	</div>
 </template>
 <script>
+<<<<<<< HEAD
 	import dealers from "@/apollo/queries/dealer/dealers";
 	import {mapActions} from "vuex";
 	import dealer from "@/apollo/queries/dealer/dealer";
@@ -72,16 +76,60 @@
 					await this.openModal(payload)
 				} catch (e) {
 					console.log(e)
-				}
-			}
-		},
-		async fetch() {
+=======
+import dealers from "@/apollo/queries/dealer/dealers";
+import {mapActions, mapGetters, mapMutations} from "vuex";
+import dealer from "@/apollo/queries/dealer/dealer";
+
+export default {
+	computed: {
+		...mapGetters({
+			dealers: 'dealers/dealers'
+		}),
+		currentDealers() {
+			return this.dealers.filter(item => item.slug === 'prime' || item.slug === 'avtograd')
+		}
+	},
+	methods: {
+		...mapMutations({
+			setDealers: 'dealers/SET_DEALERS'
+		}),
+		...mapActions({
+			request: 'filters/filters/request',
+			openModal: 'modal/modal-main/openModal',
+		}),
+		async showMore(dealerSlug) {
 			try {
-				let response = await this.request({query: dealers})
-				this.dealers = response.data.dealers
+				let dealerData = await this.request({query: dealer, variables: {slug: dealerSlug}})
+				dealerData = dealerData.data.dealer
+				let payload = {
+					modal_data: dealerData,
+					modal_component: 'modal-dealer',
+					modal_title: `Автоцентр «${dealerData.title}»`,
+					modal_sub_title: `${dealerData.short_description}`
+>>>>>>> f0bf2a02c526b466821aaeec083f649aa218b6ea
+				}
+				await this.openModal(payload)
 			} catch (e) {
 				console.log(e)
 			}
+		}
+	},
+	async fetch() {
+		if(!this.dealers.length){
+			try {
+				let response = await this.request({query: dealers})
+				this.setDealers(response.data.dealers)
+			} catch (e) {
+				console.log(e)
+			}
+<<<<<<< HEAD
 		},
 	}
 </script>
+=======
+		}
+	},
+}
+</script>
+>>>>>>> f0bf2a02c526b466821aaeec083f649aa218b6ea

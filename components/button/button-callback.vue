@@ -1,5 +1,5 @@
 <template>
-	<button class="button button--action button--text button--link"
+	<button @click="$emit('click')" class="button button--action button--text button--link"
 	        type="button">
 		<svg-icon class="button__icon"
 		          name="icon-callback" />

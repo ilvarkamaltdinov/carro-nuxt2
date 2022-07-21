@@ -89,7 +89,15 @@ export default {
         '@nuxtjs/axios',
         '@nuxtjs/sitemap',
         '@nuxtjs/svg-sprite',
-        '@nuxtjs/redirect-module'
+        '@nuxtjs/redirect-module',
+        ['@nuxtjs/yandex-metrika', {
+            id: 'XXXXXX',
+            webvisor: true
+            // clickmap: true,
+            // useCDN: false,
+            // trackLinks: true,
+            // accurateTrackBounce: true,
+        }]
     ],
     redirect: [
         {
@@ -137,7 +145,6 @@ export default {
         api_domain: process.env.API_DOMAIN,
         api_endpoint: process.env.API_ENDPOINT,
         domain: process.env.DOMAIN,
-        site_id: process.env.SITE_ID,
-        default_percent: process.env.DEFAULT_PERCENT
+        site_id: process.env.SITE_ID
     }
 }

@@ -6,7 +6,7 @@
 			     loading="lazy"
 			     alt="" />
 			<div class="modal__buttons">
-				<button-callback />
+				<button-callback @click="callback" />
 				<button-call-modal :phone="modalData.phone" />
 			</div>
 		</div>
@@ -49,7 +49,7 @@
 			</div>
 			<div class="modal__dealer-photos">
 				<h3 class="heading heading--h3">Фотографии автоцентра:</h3>
-				<dealers-slider :images="modalData.images"/>
+				<dealers-slider :images="modalData.images" />
 			</div>
 			<div class="modal__dealer-map">
 				<h3 class="heading heading--h3">Автоцентр на карте:</h3>
@@ -61,7 +61,7 @@
 	</div>
 </template>
 <script>
-import {mapGetters} from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
 
 export default {
 	computed: {
@@ -69,5 +69,21 @@ export default {
 			modalData: 'modal/modal-main/modalData'
 		})
 	},
+	methods: {
+		...mapActions({
+			openModal: 'modal/modal-main/openModal'
+		}),
+		async callback() {
+			let modalData = this.modalData
+			modalData.dealerModal = true
+			let payload = {
+				modal_data: modalData,
+				modal_component: 'modal-callback',
+				modal_title: 'Заявка на обратный звонок',
+				modal_sub_title: 'Автосалон ' + this.modalData.title
+			}
+			await this.openModal(payload)
+		}
+	}
 }
 </script>

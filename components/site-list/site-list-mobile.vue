@@ -1,14 +1,14 @@
 <template>
 	<ul class="main-nav__list site-list">
-		<li @click="activeNav = index"
+		<li @click="item.active = !item.active"
 		    class="site-list__item site-list__item--group"
 		    v-for="(item, index) in list"
 		    :key="item.title">
 			<div class="site-list__link site-list__link--group"
-			:class="{'site-list__link--group-active': activeNav === index}">
+			:class="{'site-list__link--group-active': item.active}">
 				{{ item.title }}
 			</div>
-			<VueSlideToggle :open="activeNav === index"
+			<VueSlideToggle :open="item.active"
 			                :duration="500">
 				<ul class="site-list__group-list">
 					<li class="site-list__item site-list__item--sub"
@@ -30,11 +30,6 @@
 import {mapMutations} from 'vuex'
 
 export default {
-	data() {
-		return {
-			activeNav: null
-		}
-	},
 	props: {
 		list: {
 			type: Array,

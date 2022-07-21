@@ -29,12 +29,15 @@ let routes = [
     {
         from: 'https://api.carro.ru/feeds/yandex/xml/carro/main',
         to: '/autoru/cars.xml'
+    },
+    {
+        from: 'https://api.carro.ru/feeds/google/xml/carro/main',
+        to: '/mytarget/offers.xml'
     }
 ]
 
 routes.forEach(route => {
     router.use(route.to, async (req, res) => {
-        console.log(req)
         let response = await getXml(route.from)
         res.set('Content-Type', response.headers['content-type']);
         res.status(200).send(response.data);

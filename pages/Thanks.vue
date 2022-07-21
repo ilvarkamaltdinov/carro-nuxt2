@@ -4,7 +4,7 @@
 			<crumbs :crumbs="crumbs" />
 		</div>
 		<div class="grid grid--container">
-			<thanks :page-title="pageTitle" v-if="userCar"/>
+			<thanks :page-title="pageTitle"/>
 		</div>
 	</main>
 </template>
@@ -29,11 +29,6 @@ export default {
 				}
 			]
 		}
-	},
-	computed: {
-		...mapGetters({
-			userCar: 'form/form/userCar',
-		})
 	}
 }
 </script>

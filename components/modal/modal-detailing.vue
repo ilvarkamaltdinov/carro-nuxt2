@@ -39,9 +39,6 @@ export default {
 		...mapGetters({
 			modalData: 'modal/modal-main/modalData',
 		}),
-	},
-	mounted() {
-		console.log(this.modalData)
 	}
 }
 </script>

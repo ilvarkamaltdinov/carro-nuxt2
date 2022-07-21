@@ -204,7 +204,7 @@ export default {
 				let formData = {
 					chosen_car: this.currentCar || this.offer, //нужно для страницы thanks
 					external_id: this.hasChose ? this.currentCar.external_id : this.offer.external_id,
-					type: 'installment',
+					type: 'hire-purchase',
 					client_name: this.form.name.value,
 					client_phone: this.form.phone.value,
 					client_age: this.form.date.value,

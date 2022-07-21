@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="modal__options">
+		<div class="modal__options" v-if="modalData.mark">
 			<img class="modal__logo"
 			     :src="require(`~/assets/img/dealers/logos/logo-${modalData.dealer.slug}.svg`)"
 			     loading="lazy"
@@ -21,7 +21,21 @@
 					<form-callback :offer="modalData"/>
 				</div>
 				<div class="application__catalog application__catalog--modal catalog grid__col-4">
-					<catalog-item-small-desktop :has-buttons="false" :offer="modalData"/>
+					<catalog-item-small-desktop v-if="modalData.mark" :has-buttons="false" :offer="modalData"/>
+					<div v-if="modalData.dealerModal">
+						<div class="dealers__item-img-wrap">
+							<picture>
+								<source type="image/webp"
+								        media="(min-width: 768px)"
+								        :data-srcset="`${modalData.images[0].small_webp} 1x, ${modalData.images[0].medium_webp} 2x`" />
+								<img class="dealers__item-img lazyload"
+								     :data-src="modalData.images[0].small"
+								     :data-srcset="`${modalData.images[0].medium} 2x`"
+								     loading="lazy"
+								     alt="" />
+							</picture>
+						</div>
+					</div>
 				</div>
 			</div>
 			<benefits :has-modal="false" modal :benefits="benefitsCredit"/>

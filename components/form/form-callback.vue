@@ -30,17 +30,17 @@
 				              type="tel" />
 			</label>
 			<checkbox-form @change="changeCheckbox($event,'agreeRf')"
-			          label="Подтверждаю наличие гражданства РФ" />
+			               label="Подтверждаю наличие гражданства РФ" />
 			<checkbox-form @change="changeCheckbox($event,'agree')"
-			          label="Согласен на"
-								link="обработку личных данных"/>
+			               label="Согласен на"
+			               link="обработку личных данных" />
 		</fieldset>
 		<button-typical text="Перезвоните мне"
 		                button-class="button--credit button--form" />
 	</form>
 </template>
 <script>
-import {mapActions} from "vuex";
+import {mapActions, mapMutations} from "vuex";
 import formValidation from "@/mixins/formValidation";
 
 export default {
@@ -49,6 +49,9 @@ export default {
 		offer: Object
 	},
 	methods: {
+		...mapMutations({
+			setModalCount: 'modal/modal-main/SET_OPEN_MODAL_COUNT'
+		}),
 		...mapActions({
 			sendForm: 'form/form/sendForm',
 			closeModal: 'modal/modal-main/closeModal'
@@ -80,12 +83,17 @@ export default {
 			if (this.checkForm()) {
 				let formData = {
 					chosen_car: this.offer,
-					external_id: this.offer.external_id,
 					type: 'callback',
 					client_name: this.form.name.value,
 					client_phone: this.form.phone.value,
-					client_age: this.form.date.value
+					client_age: this.form.date.value,
 				}
+				if(this.offer.dealerModal){
+					formData.comment = this.offer.title
+				} else{
+					formData.external_id = this.offer.external_id
+				}
+				await this.setModalCount(1)
 				await this.closeModal()
 				await this.sendForm(formData)
 			}

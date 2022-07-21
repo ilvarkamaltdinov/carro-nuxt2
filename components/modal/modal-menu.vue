@@ -27,7 +27,8 @@ export default {
 							name: 'Коммерческие',
 							link: '/commercial'
 						},
-					]
+					],
+					active:false
 				},
 				{
 					title: 'Услуги',
@@ -61,11 +62,16 @@ export default {
 							name: 'Детейлинг',
 							link: '/uslugi-servisa'
 						},
-					]
+					],
+					active:false
 				},
 				{
 					title: 'Информация',
 					links: [
+						{
+							name: 'Контакты',
+							link: '/contacts'
+						},
 						{
 							name: 'Блог',
 							link: '/blog'
@@ -82,20 +88,22 @@ export default {
 							name: 'Помощь',
 							link: '/knowledge'
 						},
-					]
+					],
+					active:false
 				},
 				{
 					title: 'Автосалоны',
 					links: [
 						{
-							name: 'Контакты',
-							link: '/contacts'
+							name: 'Автосалоны-партнеры',
+							link: '/contact'
 						},
 						{
 							name: 'Предложения',
 							link: '/best-moscow-autosalon'
 						}
-					]
+					],
+					active:false
 				},
 				{
 					title: 'Банки',
@@ -104,7 +112,8 @@ export default {
 							name: 'Банки-партнеры',
 							link: '/banks-partners'
 						}
-					]
+					],
+					active:false
 				},
 			]
 		}

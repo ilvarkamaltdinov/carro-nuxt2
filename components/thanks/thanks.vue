@@ -8,33 +8,33 @@
 				<span class="heading-group__label">{{ currentTitle }}</span>
 			</div>
 		</div>
-		<!--<div class="thanks__block grid__col-12 grid text">-->
-		<!--	<div class="grid__col-8 text__wrap text__wrap&#45;&#45;figure">-->
-		<!--		<div class="text__figure figure">-->
-		<!--			<picture>-->
-		<!--				<source type="image/webp"-->
-		<!--				        media="(min-width: 768px)"-->
-		<!--				        :data-srcset="`${require(`~/assets/img/figures/figure-1@1x.webp`)} 1x, ${require(`~/assets/img/figures/figure-1@2x.webp`)} 2x`" />-->
-		<!--				<source media="(min-width: 768px)"-->
-		<!--				        :data-srcset="`${require(`~/assets/img/figures/figure-1@1x.png`)} 1x, ${require(`~/assets/img/figures/figure-1@2x.png`)} 2x`" />-->
-		<!--				<img class="text__figure-img lazyload"-->
-		<!--				     data-src="img/figures/figure-1@1x.png"-->
-		<!--				     :data-srcset="`${require(`~/assets/img/figures/figure-1@2x.png`)} 2x`"-->
-		<!--				     alt="" />-->
-		<!--			</picture>-->
-		<!--		</div>-->
-		<!--		<div class="text__content"-->
-		<!--		     v-html="currentText"></div>-->
-		<!--	</div>-->
-		<!--	<div v-if="userCar"-->
-		<!--	     class="thanks__catalog catalog catalog&#45;&#45;single grid__col-4">-->
-		<!--		<catalog-item-small-desktop :has-buttons="false"-->
-		<!--		                            :offer="userCar" />-->
-		<!--	</div>-->
-		<!--</div>-->
-		<!--<div class="thanks__benefits grid__col-12">-->
-		<!--	<benefits :benefits="benefitsCar" />-->
-		<!--</div>-->
+		<div class="thanks__block grid__col-12 grid text">
+			<div class="grid__col-8 text__wrap text__wrap--figure">
+				<div class="text__figure figure">
+					<picture>
+						<source type="image/webp"
+						        media="(min-width: 768px)"
+						        :data-srcset="`${require(`~/assets/img/figures/figure-1@1x.webp`)} 1x, ${require(`~/assets/img/figures/figure-1@2x.webp`)} 2x`" />
+						<source media="(min-width: 768px)"
+						        :data-srcset="`${require(`~/assets/img/figures/figure-1@1x.png`)} 1x, ${require(`~/assets/img/figures/figure-1@2x.png`)} 2x`" />
+						<img class="text__figure-img lazyload"
+						     data-src="img/figures/figure-1@1x.png"
+						     :data-srcset="`${require(`~/assets/img/figures/figure-1@2x.png`)} 2x`"
+						     alt="" />
+					</picture>
+				</div>
+				<div class="text__content"
+				     v-html="currentText"></div>
+			</div>
+			<div v-if="userCar"
+			     class="thanks__catalog catalog catalog--single grid__col-4">
+				<catalog-item-small-desktop :has-buttons="false"
+				                            :offer="userCar" />
+			</div>
+		</div>
+		<div class="thanks__benefits grid__col-12">
+			<benefits :benefits="benefitsCar" />
+		</div>
 	</section>
 </template>
 <script>
@@ -48,12 +48,12 @@ export default {
 		return {
 			titles: {
 				credit: 'Автокредит предварительно одобрен',
-				buyout: 'Выкуп автомобиля',
+				buyout: 'Заявка на выкуп автомобиля',
 				callback: 'Обратный звонок',
-				select: 'Автоподбор',
-				tradeIn: 'TradeIn',
-				installment: 'Рассрочка',
-				station: 'Услуга',
+				select: 'Заявка на автоподбор',
+				'trade-in': 'TradeIn предварительно одобрен',
+				'hire-purchase': 'Рассрочка предварительно одобрена',
+				station: 'Заявка на услугу',
 			},
 		}
 	},
@@ -81,27 +81,56 @@ export default {
 		},
 		texts() {
 			return {
-				credit: `
-						<p class="text__p"> ${this.userName}, автомобиль ${this.userCar.mark.title}
-						${this.userCar.folder.title}
-						${this.userCar.generation.name}
-						${this.userCar.engine_volume}
-						${this.userCar.gearbox.title}
-						(${this.userCar.engine_power} л.с.)
-						${this.userCar.year} закреплен за вашей заявкой <b>#${this.userOrderId}</b>.</p>
+				'credit': `
+						<p class="text__p"> ${this.userName}, автомобиль ${this.userCar?.mark.title}
+						${this.userCar?.folder.title}
+						${this.userCar?.generation.name}
+						${this.userCar?.engine_volume}
+						${this.userCar?.gearbox.title}
+						(${this.userCar?.engine_power} л.с.)
+						${this.userCar?.year} закреплен за вашей заявкой <b>#${this.userOrderId}</b>.</p>
 						<p class="text__p"> Менеджер свяжется с вами в ближайшее время. Спасибо, что выбрали нас!</p>
 						<p class="text__p"> После подтверждения заявки вас пригласят в автоцентр для прохождения бесплатного
             тест-драйва и оформления сделки. Обратите внимание, что оплата возможна как за наличные,
             так и посредством безналичного расчета!</p>
 						<p class="text__p">И еще. Передайте менеджеру, что пришли по объявлению на CARRO, чтобы получить подарок и бесплатный комплект шин.</p>`,
-				buyout: `текст выкупа`,
-				callback: `текст обратного звонка`,
-				select: `текст автоподбора`,
-				tradeIn: 'текст trade-in',
-				installment: 'текст рассрочки',
-				station: 'текст услуги',
+				'trade-in': `
+						<p class="text__p"> ${this.userName}, автомобиль ${this.userCar?.mark.title}
+						${this.userCar?.folder.title}
+						${this.userCar?.generation.name}
+						${this.userCar?.engine_volume}
+						${this.userCar?.gearbox.title}
+						(${this.userCar?.engine_power} л.с.)
+						${this.userCar?.year} закреплен за вашей заявкой <b>#${this.userOrderId}</b>.</p>
+						<p class="text__p"> Менеджер свяжется с вами в ближайшее время. Спасибо, что выбрали нас!</p>
+						<p class="text__p"> После подтверждения заявки вас пригласят в автоцентр для прохождения бесплатного
+            тест-драйва и оформления сделки. Обратите внимание, что оплата возможна как за наличные,
+            так и посредством безналичного расчета!</p>
+						<p class="text__p">И еще. Передайте менеджеру, что пришли по объявлению на CARRO, чтобы получить подарок и бесплатный комплект шин.</p>`,
+				'hire-purchase': `
+						<p class="text__p"> ${this.userName}, автомобиль ${this.userCar?.mark.title}
+						${this.userCar?.folder.title}
+						${this.userCar?.generation.name}
+						${this.userCar?.engine_volume}
+						${this.userCar?.gearbox.title}
+						(${this.userCar?.engine_power} л.с.)
+						${this.userCar?.year} закреплен за вашей заявкой <b>#${this.userOrderId}</b>.</p>
+						<p class="text__p"> Менеджер свяжется с вами в ближайшее время. Спасибо, что выбрали нас!</p>
+						<p class="text__p"> После подтверждения заявки вас пригласят в автоцентр для прохождения бесплатного
+            тест-драйва и оформления сделки. Обратите внимание, что оплата возможна как за наличные,
+            так и посредством безналичного расчета!</p>
+						<p class="text__p">И еще. Передайте менеджеру, что пришли по объявлению на CARRO, чтобы получить подарок и бесплатный комплект шин.</p>`,
+				'callback': `
+						<p class="text__p"> ${this.userName}, благодарим за обращение. Ваша заявка - <b>#${this.userOrderId}</b>.</p>
+						<p class="text__p"> Менеджер свяжется с вами в ближайшее время. Спасибо, что выбрали нас!</p>`,
+				'buyout': `
+						<p class="text__p"> ${this.userName}, благодарим за обращение. Ваша заявка - <b>#${this.userOrderId}</b>.</p>
+						<p class="text__p"> Менеджер свяжется с вами в ближайшее время. Спасибо, что выбрали нас!</p>`,
+				'station': `
+						<p class="text__p"> ${this.userName}, благодарим за обращение. Ваша заявка - <b>#${this.userOrderId}</b>.</p>
+						<p class="text__p"> Менеджер свяжется с вами в ближайшее время. Спасибо, что выбрали нас!</p>`,
 			}
 		}
-	}
+	},
 }
 </script>

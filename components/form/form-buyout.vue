@@ -60,12 +60,12 @@
 				              type="tel" />
 			</label>
 			<checkbox-form :error="error === 'agreeRf'"
-			          @change="changeCheckbox($event,'agreeRf')"
-			          label="Подтверждаю наличие гражданства РФ" />
+			               @change="changeCheckbox($event,'agreeRf')"
+			               label="Подтверждаю наличие гражданства РФ" />
 			<checkbox-form :error="error === 'agree'"
-			          @change="changeCheckbox($event,'agree')"
-			          label="Согласен на"
-			          link="обработку личных данных" />
+			               @change="changeCheckbox($event,'agree')"
+			               label="Согласен на"
+			               link="обработку личных данных" />
 		</fieldset>
 		<button-typical text="Оставить заявку"
 		                button-class="button--credit button--form" />
@@ -134,7 +134,7 @@ export default {
 					client_vehicle_mark: this.form.mark.value,
 					client_vehicle_model: this.form.model.value,
 					client_vehicle_run: this.form.run.value,
-					client_vehicle_year: this.form.year.value,
+					client_vehicle_year: '' + this.form.year.value,
 				}
 				await this.sendForm(formData)
 			}

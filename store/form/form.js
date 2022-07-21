@@ -2,7 +2,7 @@ import feedback from "@/apollo/mutations/feedback";
 
 export const state = () => ({
     periodValue: null,
-    monthPayment:null,
+    monthPayment: null,
 
     userName: null,
     userCar: null,
@@ -34,30 +34,33 @@ export const getters = {
     }
 }
 export const actions = {
-    async sendForm({commit}, variables) {
-        console.log(variables)
+    async sendForm({state, commit}, variables) {
         await commit('SET_FORM_TYPE', variables.type)
-        commit('SET_BUTTON_DISABLED', true)
-        commit('SET_USER_CAR', variables.chosen_car)
-        delete variables.chosen_car // Удаляю тачку чтобы не ушла на сервак
-        commit('SET_USER_NAME', variables.client_name)
+        await commit('SET_BUTTON_DISABLED', true)
+        //проверяю тачка ли это так как в колбэке дилера тачки нет
+        if (variables.type !== 'buyout' && variables.type !== 'station') {
+            if (variables.chosen_car.mark) {
+                await commit('SET_USER_CAR', variables.chosen_car)
+                delete variables.chosen_car // Удаляю тачку чтобы не ушла на сервак
+            }
+        }
+        await commit('SET_USER_NAME', variables.client_name)
         await this.app.router.push('/thanks');
-        // let assignVariables = {
-        //     site_id: this.$config.site_id
-        // }
-        // let client = this.app.apolloProvider.defaultClient
-        // let params = {...assignVariables, ...variables}
-        // await client.mutate({
-        //     mutation: feedback,
-        //     variables: this.$removeEmptyObjects(params)
-        // }).then(({data}) => {
-        //     commit('SET_BUTTON_DISABLED', false)
-        //     commit('SET_ORDER_ID', data.feedback.id)
-        // }).catch(error => {
-        //     console.log(error)
-        // })
+        let assignVariables = {
+            site_id: this.$config.site_id
+        }
+        let client = this.app.apolloProvider.defaultClient
+        let params = {...assignVariables, ...variables}
+        await client.mutate({
+            mutation: feedback,
+            variables: this.$removeEmptyObjects(params)
+        }).then(({data}) => {
+            commit('SET_BUTTON_DISABLED', false)
+            commit('SET_ORDER_ID', data.feedback.id)
+        }).catch(error => {
+            console.log(error)
+        })
     }
-
 }
 export const mutations = {
     CLEAR_DATA(state) {
