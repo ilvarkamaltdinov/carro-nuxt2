@@ -34,12 +34,20 @@
 								</li>
 							</ul>
 						</transition>
+						<select class="filter__buttons-sort-select" @change="sortChosen('mobile', $event.target.value)">
+							<option value="price|asc">Сначала дешевле</option>
+							<option value="price|desc">Сначала дороже</option>
+							<option value="run|asc">Минимальный пробег</option>
+							<option value="year|desc">Сначала новее</option>
+						</select>
 					</div>
 				</div>
 			</div>
 			<div class="filter__buttons-wrap">
-				<button-view-s :modal="modal" @click="changeView('s')" />
-				<button-view-l :modal="modal" @click="changeView('l')" />
+				<button-view-s :modal="modal"
+				               @click="changeView('s')" />
+				<button-view-l :modal="modal"
+				               @click="changeView('l')" />
 			</div>
 		</div>
 	</div>
@@ -69,8 +77,8 @@ export default {
 		...mapGetters({
 			sortModal: 'modal/modal-choose/sort', // СОРТИРОВКА ДЛЯ КАТАЛОГА
 			sort: 'filters/filters/sort', // СОРТИРОВКА ДЛЯ ФИЛЬТРОВ
-			viewModal:'modal/modal-choose/view', // ОТОБРАЖЕНИЕ ДЛЯ КАТАЛОГА
-			viewFilter:'filters/filters/view', // ОТОБРАЖЕНИЕ ДЛЯ ФИЛЬТРОВ
+			viewModal: 'modal/modal-choose/view', // ОТОБРАЖЕНИЕ ДЛЯ КАТАЛОГА
+			viewFilter: 'filters/filters/view', // ОТОБРАЖЕНИЕ ДЛЯ ФИЛЬТРОВ
 			
 		}),
 		currentIcon() {
@@ -129,14 +137,25 @@ export default {
 			}
 			this.openModal(payload)
 		},
-		async sortChosen(sort) {
-			if (this.modal) {
-				this.setModalSort(sort)
-				await this.getOffers()
-			} else {
-				this.setSort(sort)
-				await this.$router.push({path: this.$route.fullPath, query: {sort: sort}});
+		async sortChosen(sort, value) {
+			if(sort === 'mobile'){
+				if (this.modal) {
+					this.setModalSort(value)
+					await this.getOffers()
+				} else {
+					this.setSort(value)
+					await this.$router.push({path: this.$route.fullPath, query: {sort: value}});
+				}
+			}else{
+				if (this.modal) {
+					this.setModalSort(sort)
+					await this.getOffers()
+				} else {
+					this.setSort(sort)
+					await this.$router.push({path: this.$route.fullPath, query: {sort: sort}});
+				}
 			}
+			
 		}
 	}
 }

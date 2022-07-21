@@ -31,7 +31,8 @@
 					     loading="lazy"
 					     alt="" />
 				</picture>
-				<button-typical @click="showMore(dealer.slug)" button-class="button--show"
+				<button-typical @click="showMore(dealer.slug)"
+				                button-class="button--show"
 				                text="Подробнее о дилере" />
 				<a class="button button--show button--show-link"
 				   :href="`${dealer.site}`"
@@ -42,41 +43,6 @@
 	</div>
 </template>
 <script>
-<<<<<<< HEAD
-	import dealers from "@/apollo/queries/dealer/dealers";
-	import {mapActions} from "vuex";
-	import dealer from "@/apollo/queries/dealer/dealer";
-
-	export default {
-		data() {
-			return {
-				dealers: []
-			}
-		},
-		computed:{
-			currentDealers(){
-				return this.dealers.filter(item => item.slug === 'prime' || item.slug === 'avtograd')
-			}
-		},
-		methods: {
-			...mapActions({
-				request: 'filters/filters/request',
-				openModal: 'modal/modal-main/openModal',
-			}),
-			async showMore(dealerSlug) {
-				try {
-					let dealerData = await this.request({query: dealer, variables: {slug: dealerSlug}})
-					dealerData = dealerData.data.dealer
-					let payload = {
-						modal_data: dealerData,
-						modal_component: 'modal-dealer',
-						modal_title: `Автоцентр «${dealerData.title}»`,
-						modal_sub_title: `${dealerData.short_description}`
-					}
-					await this.openModal(payload)
-				} catch (e) {
-					console.log(e)
-=======
 import dealers from "@/apollo/queries/dealer/dealers";
 import {mapActions, mapGetters, mapMutations} from "vuex";
 import dealer from "@/apollo/queries/dealer/dealer";
@@ -107,7 +73,6 @@ export default {
 					modal_component: 'modal-dealer',
 					modal_title: `Автоцентр «${dealerData.title}»`,
 					modal_sub_title: `${dealerData.short_description}`
->>>>>>> f0bf2a02c526b466821aaeec083f649aa218b6ea
 				}
 				await this.openModal(payload)
 			} catch (e) {
@@ -116,20 +81,14 @@ export default {
 		}
 	},
 	async fetch() {
-		if(!this.dealers.length){
+		if (!this.dealers.length) {
 			try {
 				let response = await this.request({query: dealers})
 				this.setDealers(response.data.dealers)
 			} catch (e) {
 				console.log(e)
 			}
-<<<<<<< HEAD
-		},
-	}
-</script>
-=======
 		}
-	},
+	}
 }
 </script>
->>>>>>> f0bf2a02c526b466821aaeec083f649aa218b6ea
