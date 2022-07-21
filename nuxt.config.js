@@ -57,7 +57,8 @@ export default {
         {src: '~/plugins/slideToggle.js'},
         {src: '~/plugins/lodash.js'},
         {src: '~/plugins/tippy.js'},
-        {src: '~/plugins/helpers.js'}
+        {src: '~/plugins/helpers.js'},
+        {src: '~/plugins/jsonld'}
 
     ],
     //TODO sitemap
@@ -89,15 +90,7 @@ export default {
         '@nuxtjs/axios',
         '@nuxtjs/sitemap',
         '@nuxtjs/svg-sprite',
-        '@nuxtjs/redirect-module',
-        ['@nuxtjs/yandex-metrika', {
-            id: 'XXXXXX',
-            webvisor: true
-            // clickmap: true,
-            // useCDN: false,
-            // trackLinks: true,
-            // accurateTrackBounce: true,
-        }]
+        '@nuxtjs/redirect-module'
     ],
     redirect: [
         {
@@ -138,9 +131,9 @@ export default {
             }
         }
     },
-    server: {
-        host: "0.0.0.0"
-    },
+    // server: {
+    //     host: "0.0.0.0"
+    // },
     publicRuntimeConfig: {
         api_domain: process.env.API_DOMAIN,
         api_endpoint: process.env.API_ENDPOINT,

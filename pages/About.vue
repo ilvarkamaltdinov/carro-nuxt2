@@ -1,30 +1,31 @@
 <template>
 	<main class="page-main">
 		<div class="grid">
-			<crumbs :crumbs="crumbs"/>
+			<crumbs :crumbs="crumbs" />
 		</div>
 		<div class="grid grid--container">
-			<about :page-title="pageTitle"/>
-			<video-about/>
+			<about :page-title="pageTitle" />
+			<video-about />
 		</div>
 	</main>
 </template>
 <script>
 import seoTags from "@/mixins/seoTags";
+import jsonld from "@/mixins/jsonld";
 
 export default {
-	mixins:[seoTags],
-	data(){
-		return{
-			crumbs:[
+	mixins: [seoTags, jsonld],
+	data() {
+		return {
+			crumbs: [
 				{
-					name:'Главная',
-					route:'/',
+					name: 'Главная',
+					route: '/',
 					active: false
 				},
 				{
-					name:'О портале',
-					route:'/about',
+					name: 'О портале',
+					route: '/about',
 					active: true
 				}
 			]

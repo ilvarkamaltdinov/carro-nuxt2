@@ -245,7 +245,8 @@ export default {
 			return tabs.filter(item => item.showButton)
 		},
 		currentGerabox() {
-			return this.gearbox[this.offer.gearbox.name] || this.offer.gearbox.title
+			// return this.gearbox[this.offer.gearbox.name] || this.offer.gearbox.title
+			return this.offer.gearbox.title_short_rus
 		},
 		equipment_group_list() {
 			return this.offer.equipment_groups

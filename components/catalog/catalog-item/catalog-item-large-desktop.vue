@@ -1,10 +1,10 @@
 <template>
 	<article class="catalog__item catalog__item--desktop-l grid__col-8">
-		<catalog-item-swiper :slider-id="offer.external_id"
+		<catalog-item-swiper :disabled-click="disabledClick" :slider-id="offer.external_id"
 		                     :offer="offer" />
 		<div class="catalog__info-wrap" :class="{'catalog__info-wrap--no-buttons':!hasButtons}">
 			<div class="catalog__info">
-				<catalog-item-title @linkClick="linkClick" :offer="offer" />
+				<catalog-item-title @linkClick="this.disabledClick ? false : linkClick()" :offer="offer" />
 				<catalog-item-price :offer="offer" />
 			</div>
 			<div class="catalog__tech">
@@ -34,6 +34,10 @@ import {mapActions, mapMutations} from "vuex";
 export default {
 	mixins: [filters],
 	props: {
+		disabledClick:{
+			type: Boolean,
+			default: false
+		},
 		choose: {
 			type: Boolean,
 			default: false

@@ -10,9 +10,10 @@
 
 import seoTags from "@/mixins/seoTags";
 import {mapGetters, mapMutations} from "vuex";
+import jsonld from "@/mixins/jsonld";
 
 export default {
-	mixins: [seoTags],
+	mixins: [seoTags, jsonld],
 	layout: 'catalog',
 	computed: {
 		...mapGetters({

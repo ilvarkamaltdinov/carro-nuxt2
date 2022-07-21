@@ -9,10 +9,11 @@
 <script>
 
 import seoTags from "@/mixins/seoTags";
+import jsonld from "@/mixins/jsonld";
 
 export default {
 	layout: 'catalog',
-	mixins:[seoTags],
+	mixins: [seoTags, jsonld],
 	data() {
 		return {
 			crumbs: [

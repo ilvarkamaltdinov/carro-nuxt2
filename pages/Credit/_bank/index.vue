@@ -14,9 +14,10 @@
 import {mapActions, mapGetters, mapMutations} from "vuex";
 import bank from "@/apollo/queries/bank/bank";
 import seoTags from "@/mixins/seoTags";
+import jsonld from "@/mixins/jsonld";
 
 export default {
-	mixins:[seoTags],
+	mixins: [seoTags, jsonld],
 	data() {
 		return {
 			crumbs: [

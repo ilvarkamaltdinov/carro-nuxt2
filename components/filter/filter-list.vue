@@ -132,7 +132,7 @@ export default {
 			return this.chosen.bodyType?.map(val => val.title).sort().join(', ') || 'Кузов'
 		},
 		gearbox_select_title() {
-			return this.chosen.gearbox?.map(val => val.title).sort().join(', ') || 'КПП'
+			return this.chosen.gearbox?.map(val => val.title_short_rus).sort().join(', ') || 'КПП'
 		},
 		showGeneration() {
 			return this.chosen.mark?.length === 1 && this.chosen.folder?.length === 1;

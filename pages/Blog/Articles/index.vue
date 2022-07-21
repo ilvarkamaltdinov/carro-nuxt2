@@ -4,13 +4,16 @@
 			<crumbs :crumbs="crumbs" />
 		</div>
 		<div class="grid grid--container">
-			<blog-category-page   title="Статьи"/>
+			<blog-category-page  title="Статьи"/>
 		</div>
 	</main>
 </template>
 
 <script>
+import jsonld from "@/mixins/jsonld";
+
 export default {
+	mixins: [jsonld],
 	data() {
 		return {
 			crumbs: [

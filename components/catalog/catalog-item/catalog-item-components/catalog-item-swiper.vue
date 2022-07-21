@@ -39,6 +39,10 @@
 <script>
 export default {
 	props: {
+		disabledClick:{
+			type: Boolean,
+			default: false
+		},
 		sliderId: {
 			type: Number,
 			default: null

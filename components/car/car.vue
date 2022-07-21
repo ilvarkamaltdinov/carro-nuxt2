@@ -49,13 +49,18 @@
 <script>
 import {mapActions, mapGetters, mapMutations} from 'vuex'
 import offer from "@/apollo/queries/offer/offer"
+import seoTags from "@/mixins/seoTags";
+import jsonld from "@/mixins/jsonld";
 
 export default {
+	mixins: [jsonld],
 	props: {
-		pageTitle: String
+		pageTitle: String,
+		description: String
 	},
 	data() {
 		return {
+			jsonType: 'car',
 			showFixed: false,
 		}
 	},
@@ -63,8 +68,40 @@ export default {
 		...mapGetters({
 			offer: 'catalog/catalog-cars/offer',
 			carPageLoaded: 'catalog/catalog-cars/carPageLoaded',
-			benefitsCar: 'benefits/benefitsCar'
-		})
+			benefitsCar: 'benefits/benefitsCar',
+			marks: 'marks/marks/allMarks',
+			folders: 'folders/folders/folders'
+		}),
+		currentMark() {
+			return this.marks.filter(item => this.$route.params.mark === item.slug)[0]
+		},
+		currentFolder() {
+			return this.folders.filter(item => this.$route.params.model === item.slug)[0]
+		},
+		crumbs() {
+			return [
+				{
+					name: 'Главная',
+					route: '/',
+					active: false
+				},
+				{
+					name: 'Автомобили с пробегом',
+					route: '/used',
+					active: false
+				},
+				{
+					name: this.currentMark.title,
+					route: '/used/' + this.currentMark.slug,
+					active: false
+				},
+				{
+					name: this.currentFolder ? this.currentFolder.title : '',
+					route: this.currentFolder ? ('/used/' + this.currentMark.slug + '/' + this.currentFolder.slug) : '',
+					active: true
+				}
+			]
+		}
 	},
 	async fetch() {
 		let variables = {
