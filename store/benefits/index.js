@@ -37,7 +37,7 @@ export const state = () => ({
         {
             text: 'Первый взнос',
             text_strong: 'от 0%',
-            icon: 'value-free',
+            icon: 'engine',
             description: 'Вы можете приобрести автомобиль в кредит без первоначального взноса, однако, чем больше взнос, тем лучше условия по кредиту.',
             slug: 'first-pay',
         },
