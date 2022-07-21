@@ -92,7 +92,6 @@ export default {
 				$state.loaded()
 			} else {
 				$state.complete()
-				console.log("complete")
 			}
 			
 			

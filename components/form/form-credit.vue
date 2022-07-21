@@ -5,7 +5,7 @@
 				<h2 class="heading heading--h2">
 					Автокредит
 					<span class="heading__promo">
-						{{ percent }} %
+						{{ settings.credit_percent }}
 					</span>
 				</h2>
 				<span class="heading-group__label">Получите одобрение за 5 минут</span>
@@ -131,7 +131,8 @@ export default {
 	computed: {
 		...mapGetters({
 			currentCar: 'modal/modal-choose/currentCar',
-			bank: 'banks/bank'
+			bank: 'banks/bank',
+			settings: 'settings/settings/settings'
 		}),
 		percent() {
 			// Динамично меняет процентную ставку в зависимости от банка

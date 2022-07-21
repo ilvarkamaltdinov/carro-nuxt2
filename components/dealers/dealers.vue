@@ -46,12 +46,11 @@
 					<h3 class="heading heading--h3">Режим работы:</h3>
 					<ul class="features__list">
 						<li class="features__item">{{ dealer.schedule }}</li>
-						<li class="features__item">без выходных</li>
 					</ul>
 				</div>
-				<button-typical @click="showMore(dealer.slug)"
+				<button-typical :link="`/contact/${dealer.slug}`"
 				                text="Подробнее о дилере"
-				                class="button--credit" />
+				                class="button--show" />
 				<a class="button button--show button--show-link"
 				   :href="`${dealer.site}`"
 				   target="_blank">Сайт автоцентра
@@ -73,20 +72,23 @@
 	</section>
 </template>
 <script>
-import {mapActions} from "vuex";
+import {mapActions, mapGetters, mapMutations} from "vuex";
 import dealers from "@/apollo/queries/dealer/dealers";
 import dealer from "@/apollo/queries/dealer/dealer";
 
 export default {
-	data() {
-		return {
-			dealers: []
-		}
-	},
 	props: {
 		pageTitle: String
 	},
+	computed: {
+		...mapGetters({
+			dealers: 'dealers/dealers'
+		})
+	},
 	methods: {
+		...mapMutations({
+			setDealers: 'dealers/SET_DEALERS'
+		}),
 		...mapActions({
 			request: 'filters/filters/request',
 			openModal: 'modal/modal-main/openModal',
@@ -108,11 +110,16 @@ export default {
 		}
 	},
 	async fetch() {
-		try {
-			let response = await this.request({query: dealers})
-			this.dealers = response.data.dealers
-		} catch (e) {
-			console.log(e)
+		if(!this.dealers.length){
+			try {
+				let response = await this.request({query: dealers})
+				this.setDealers(response.data.dealers)
+			} catch (e) {
+				console.log(e)
+			}
+		}
+		if (this.$route.params.dealer) {
+			await this.showMore(this.$route.params.dealer)
 		}
 	},
 }

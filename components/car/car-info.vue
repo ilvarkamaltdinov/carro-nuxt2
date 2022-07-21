@@ -10,7 +10,7 @@
 					    class="tabs__item"
 					    v-for="(tab, index) in tabs"
 					    :key="index+1"
-					    v-if="tab.showButton"
+					    v-show="tab.showButton"
 					    :class="{'tabs__item--active': activeTab === index+1}">
 						<button @click="tabClick(index+1)"
 						        class="tabs__link"
