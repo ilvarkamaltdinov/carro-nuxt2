@@ -4,7 +4,7 @@ export const state = () => ({
     benefitsCredit: ['sale', 'guaranty', 'first-pay', 'first-pay-trade', 'docs', 'insurance'],
     benefitsTradeIn: ['sale-trade', 'guaranty', 'value-market', 'first-pay-trade', 'docs', 'fast-time'],
     benefitsBuyout: ['fast-pay', 'value-market', 'value-man', 'value-free', 'docs', 'fast-time'],
-    benefitsCar: ['guaranty', 'credit', 'sale-trade', 'docs', 'tires', 'insurance'],
+    benefitsCar: ['guaranty', 'credit', 'trade-in', 'docs', 'tires', 'insurance'],
     benefits: [
         {
             text: 'Гарантия',
@@ -79,9 +79,9 @@ export const state = () => ({
         {
             text: 'Оформление',
             text_strong: 'за 30 мин.',
-            icon: 'time',
+            icon: 'engine',
             description: 'Благодаря упрощенному процессу получения кредита весь процесс займет не более получаса.',
-            slug: 'value-free',
+            slug: 'fast-time',
         },
         {
             text: 'Мгновенная',

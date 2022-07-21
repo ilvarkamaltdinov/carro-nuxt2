@@ -10,7 +10,7 @@
 		     :class="{'catalog__tech--no-buttons':!hasButtons}">
 			<tippy arrow>
 				<div class="tippy__text">
-					рейтинг автомобиля
+					Рейтинг автомобиля
 				</div>
 				<template v-slot:trigger>
 					<rating-car @click="ratingClick"

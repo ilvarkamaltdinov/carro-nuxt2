@@ -120,6 +120,11 @@
 
 .car__stock-dealer {
   color: $colorPrimary;
+  transition: $transitionHover;
+
+  &:hover {
+    color: $colorPrimaryDark;
+  }
 }
 
 .car__tech-item {

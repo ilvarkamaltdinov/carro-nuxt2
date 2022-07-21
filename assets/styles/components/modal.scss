@@ -138,6 +138,19 @@
   }
 }
 
+@media (min-width: $tablet-width) and (max-width: $tablet-width-max) {
+  .modal--menu .modal__wrap,
+  .modal--makes .modal__wrap {
+    margin: auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .modal--menu .main-nav__list {
+    padding: 0 8px;
+  }
+}
+
 
 @media (min-width: $tablet-width) {
   .modal {
@@ -153,12 +166,16 @@
   .modal.modal--search {
     top: 81px;
   }
+
+  .modal.modal--makes,
+  .modal.modal--menu {
+    top: 130px;
+  }
 }
 
 @media (min-width: $desktop-width) {
   .modal.modal--makes,
   .modal.modal--menu {
-    top: 130px;
     height: auto;
     padding-bottom: 40px;
     left: 0;

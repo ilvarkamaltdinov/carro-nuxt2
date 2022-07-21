@@ -163,14 +163,14 @@
 						</div>
 						<tippy arrow>
 							<div class="tippy__text">
-								рейтинг дилера
+								Рейтинг дилера
 							</div>
 							<template v-slot:trigger>
 								<rating :rating="offer.dealer.rating"
 								        :max="5" />
 							</template>
 						</tippy>
-					
+
 					</div>
 					<div class="car__info-options features">
 						<div class="features__group">

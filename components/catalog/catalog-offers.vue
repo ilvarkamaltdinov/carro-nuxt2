@@ -9,7 +9,7 @@
 					</div>
 					<tippy arrow>
 						<div class="tippy__text">
-							рейтинг дилера
+							Рейтинг дилера
 						</div>
 						<template v-slot:trigger>
 							<rating :rating="dealer.rating"
@@ -42,7 +42,7 @@
 	import dealers from "@/apollo/queries/dealer/dealers";
 	import {mapActions} from "vuex";
 	import dealer from "@/apollo/queries/dealer/dealer";
-	
+
 	export default {
 		data() {
 			return {

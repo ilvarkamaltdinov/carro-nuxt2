@@ -13,4 +13,6 @@
 
 .tippy__text {
   color: white;
+  padding: 8px;
+  @include font-small;
 }

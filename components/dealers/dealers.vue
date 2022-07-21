@@ -19,7 +19,7 @@
 					</div>
 					<tippy arrow>
 						<div class="tippy__text">
-							рейтинг дилера
+							Рейтинг дилера
 						</div>
 						<template v-slot:trigger>
 							<rating :rating="dealer.rating"
