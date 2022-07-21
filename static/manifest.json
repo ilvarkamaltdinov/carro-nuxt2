@@ -1,0 +1,11 @@
+{
+  "name": "carro.ru",
+  "short_name": "carro",
+  "icons": [{
+      "src": "google-touch-icon.png",
+      "sizes": "512x512"
+  }],
+  "background_color": "#ffffff",
+  "theme_color": "#ED2939",
+  "display": "fullscreen"
+}

@@ -10,16 +10,16 @@
   justify-content: center;
   align-items: center;
 
-  &:hover {
+  &:focus {
     box-shadow: $shadowHoverCard;
     transform: scale(1.02);
   }
 
-  &:hover * {
+  &:focus * {
     color: $colorPrimary;
   }
 
-  &:hover .benefits__icon {
+  &:focus .benefits__icon {
     fill: $colorPrimary;
   }
 }
@@ -88,5 +88,27 @@
   .benefits__list--car {
     display: flex;
     justify-content: space-between;
+  }
+
+  .benefits__link {
+    transition: $transitionHover;
+    @include white-back;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      box-shadow: $shadowHoverCard;
+      transform: scale(1.02);
+    }
+
+    &:hover * {
+      color: $colorPrimary;
+    }
+
+    &:hover .benefits__icon {
+      fill: $colorPrimary;
+    }
   }
 }

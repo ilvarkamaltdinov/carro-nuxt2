@@ -17,9 +17,9 @@ export default {
         link: [
             {rel: 'icon', href: '/favicon.ico', sizes: 'any'},
             {rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml'},
-            {rel: 'apple-touch-icon', href: '/apple-touch-icon.png'}
-            // {rel: 'icon', type: 'image/x-icon', href: '/mask-icon.svg', color: '#ED2939'},
-            // {rel: 'manifest', href: '/manifest.json'}
+            {rel: 'apple-touch-icon', type: 'image/png', href: 'https://www.dev.carro.ru/apple-touch-icon.png'},
+            {rel: 'mask-icon', href: '/mask-icon.svg', color: '#ED2939'},
+            {rel: 'manifest', href: '/manifest.json'}
         ]
     },
     resourceHints: false,
@@ -138,9 +138,9 @@ export default {
             }
         }
     },
-    // server: {
-    //     host: "0.0.0.0"
-    // },
+    server: {
+        host: "0.0.0.0"
+    },
     publicRuntimeConfig: {
         api_domain: process.env.API_DOMAIN,
         api_endpoint: process.env.API_ENDPOINT,

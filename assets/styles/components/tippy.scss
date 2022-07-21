@@ -1,3 +1,7 @@
+.tippy-popper {
+  z-index: 250!important;
+}
+
 .tippy--question {
   flex-shrink: 0;
   fill: $colorLink;
