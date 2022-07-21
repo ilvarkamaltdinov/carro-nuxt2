@@ -4,7 +4,7 @@
 		                 :key="item.id"
 		                 :is-check="isChecked(item)"
 		                 @click="checkItem(item)">
-			{{ item.title }}
+			{{ item.title_short_rus }}
 		</checkbox-filter>
 	</div>
 </template>

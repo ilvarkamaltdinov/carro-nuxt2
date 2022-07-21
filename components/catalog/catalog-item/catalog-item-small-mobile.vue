@@ -1,8 +1,7 @@
 <template>
 	<article class="catalog__item catalog__item--small">
 		<div class="catalog__img">
-			<a class="catalog__img-link"
-			   href="">
+			<nuxt-link :to="`/${this.currentCategory}/${this.currentMark}/${this.currentFolder}/${this.currentId}`" class="catalog__img-link">
 				<picture>
 					<source type="image/webp"
 					        media="(min-width: 768px)"
@@ -14,7 +13,7 @@
 					     :srcset="offer.images[0].thumb"
 					     alt="">
 				</picture>
-			</a>
+			</nuxt-link>
 		</div>
 		<div class="catalog__info">
 			<catalog-item-title @linkClick="linkClick" :offer="offer" />
