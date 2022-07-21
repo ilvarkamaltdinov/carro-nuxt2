@@ -91,8 +91,9 @@ export default {
         '@nuxtjs/svg-sprite',
         '@nuxtjs/redirect-module',
         ['@nuxtjs/yandex-metrika', {
-            id: 'XXXXXX',
-            webvisor: true
+            id: 89637581,
+            webvisor: true,
+
             // clickmap: true,
             // useCDN: false,
             // trackLinks: true,
