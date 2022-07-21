@@ -4,7 +4,7 @@
 			<crumbs :crumbs="crumbs" />
 		</div>
 		<component :is="currentComponent"
-		           :page-title="pageTitle" />
+		           :page-title="pageTitle" :description="description" />
 	</main>
 </template>
 <script>

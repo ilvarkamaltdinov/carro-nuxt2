@@ -10,9 +10,10 @@
 </template>
 <script>
 import article from "@/mixins/article";
+import jsonld from "@/mixins/jsonld";
 
 export default {
-	mixins: [article],
+	mixins: [article, jsonld],
 	data() {
 		return {
 			crumbs: [

@@ -32,10 +32,10 @@
 						     :id="`faq-${item.slug}`">
 							<h2 class="faq__heading heading heading--h2">{{ item.title }}</h2>
 							<div class="faq__item"
-							    :class="{'faq__item--active':question.active}"
-							    v-for="question in item.list"
-							    @click="question.active = !question.active"
-							    :key="question.question">
+							     :class="{'faq__item--active':question.active}"
+							     v-for="question in item.list"
+							     @click="question.active = !question.active"
+							     :key="question.question">
 								<dt class="faq__question">{{ question.question }}</dt>
 								<VueSlideToggle :open="question.active"
 								                :duration="500">
@@ -54,9 +54,25 @@
 </template>
 
 <script>
+import jsonld from "@/mixins/jsonld";
+
 export default {
+	mixins: [jsonld],
 	data() {
 		return {
+			crumbs: [
+				{
+					name: 'Главная',
+					route: '/',
+					active: false
+				},
+				{
+					name: 'Часто задаваемые вопросы',
+					route: '/knowledge',
+					active: true
+				}
+			],
+			jsonType: 'faq',
 			nav: [
 				{
 					title: 'Общие вопросы',

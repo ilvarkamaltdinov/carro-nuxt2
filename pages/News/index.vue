@@ -10,7 +10,10 @@
 </template>
 
 <script>
+import jsonld from "@/mixins/jsonld";
+
 export default {
+	mixins: [jsonld],
 	data() {
 		return {
 			crumbs: [
