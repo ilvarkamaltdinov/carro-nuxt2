@@ -80,8 +80,16 @@ export const actions = {
                 url = mark_slug_array[0] + '/' + folder_slug_array[0]
                 if (engine_type_slug_array?.length === 1) {
                     url = mark_slug_array[0] + '/' + folder_slug_array[0] + '/' + engine_type_slug_array[0]
+                } else {
+                    query['engine_type_id_array'] = engine_type_id_array
                 }
-            } else if (folder_slug_array?.length > 1) {
+                if (body_type_slug_array?.length === 1) {
+                    url = mark_slug_array[0] + '/' + folder_slug_array[0] + '/' + body_type_slug_array[0]
+                } else {
+                    query['body_type_id_array'] = body_type_id_array
+                }
+            }
+            else if (folder_slug_array?.length > 1) {
                 query['folder_slug_array'] = folder_slug_array
                 if (engine_type_slug_array) {
                     query['engine_type_id_array'] = engine_type_id_array
@@ -107,12 +115,16 @@ export const actions = {
                 if (generation_slug_array?.length === 1) {
                     query['engine_type_id_array'] = engine_type_id_array
                 }
-            } else if (!folder_slug_array && engine_type_slug_array?.length === 1) {
+            }
+            else if (!folder_slug_array && engine_type_slug_array?.length === 1) {
                 if (body_type_slug_array?.length === 1) {
                     query['engine_type_id_array'] = engine_type_id_array
                 } else {
                     url = mark_slug_array?.[0] + '/' + engine_type_slug_array[0]
                 }
+            }
+            else{
+                query['engine_type_id_array'] = engine_type_id_array
             }
         } else {
             query['engine_type_id_array'] = engine_type_id_array
@@ -125,12 +137,6 @@ export const actions = {
                     query['body_type_id_array'] = body_type_id_array
                 } else if (engine_type_slug_array?.length === 1) {
                     query['body_type_id_array'] = body_type_id_array
-                } else {
-                    if (body_type_slug_array?.length === 1) {
-                        url = mark_slug_array?.[0] + '/' + folder_slug_array?.[0] + '/' + body_type_slug_array[0]
-                    } else {
-                        query['body_type_id_array'] = body_type_id_array
-                    }
                 }
             } else if (!folder_slug_array) {
                 if (body_type_slug_array?.length === 1) {
