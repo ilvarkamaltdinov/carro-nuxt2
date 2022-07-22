@@ -1,23 +1,23 @@
 <template>
 	<article class="catalog__item catalog__item--small">
 		<div class="catalog__img">
-			<nuxt-link :to="`/${this.currentCategory}/${this.currentMark}/${this.currentFolder}/${this.currentId}`" class="catalog__img-link">
+			<a :href="currentUrl" @click.prevent="linkClick" class="catalog__img-link">
 				<picture>
 					<source type="image/webp"
 					        media="(min-width: 768px)"
-					        :srcset="offer.images[0].thumb">
+					        :data-srcset="offer.images[0].thumb">
 					<source media="(min-width: 768px)"
-					        :srcset="offer.images[0].thumb">
-					<img class=" ls-is-cached lazyloaded"
-					     :src="offer.images[0].thumb"
-					     :srcset="offer.images[0].thumb"
+					        :data-srcset="offer.images[0].thumb">
+					<img class="ls-is-cached lazyload"
+					     :data-src="offer.images[0].thumb"
+					     :data-srcset="offer.images[0].thumb"
 					     alt="">
 				</picture>
-			</nuxt-link>
+			</a>
 		</div>
 		<div class="catalog__info">
-			<catalog-item-title @linkClick="linkClick" :offer="offer" />
-			<catalog-item-price :offer="offer" />
+			<catalog-item-title :url="currentUrl" @click="linkClick" :offer="offer" />
+			<catalog-item-price :price="offer.price" />
 			<div class="catalog__tech"
 			     :class="{'catalog__tech--no-buttons':!hasButtons}">
 				<catalog-item-tech-list small
@@ -31,10 +31,10 @@
 </template>
 <script>
 import filters from "~/mixins/filters";
-import {mapActions, mapMutations} from "vuex";
+import cardClick from "~/mixins/cardClick";
 
 export default {
-	mixins: [filters],
+	mixins: [filters, cardClick],
 	props: {
 		offer: {
 			type: Object,
@@ -49,34 +49,6 @@ export default {
 			type: Boolean,
 			default: true
 		}
-	},
-	computed: {
-		currentCategory() {
-			return this.offer.category_enum
-		},
-		currentMark() {
-			return this.offer.mark.slug
-		},
-		currentFolder() {
-			return this.offer.folder.slug
-		},
-		currentId() {
-			return this.offer.external_id
-		},
-	},
-	methods: {
-		...mapActions({
-			openModal: 'modal/modal-main/openModal',
-			closeModal: 'modal/modal-main/closeModal'
-		}),
-		...mapMutations({
-			setIsOfferClick: 'filters/filters/SET_IS_OFFER_CLICK'
-		}),
-		async linkClick() {
-			await this.closeModal()
-			await this.setIsOfferClick(true)
-			await this.$router.push(`/${this.currentCategory}/${this.currentMark}/${this.currentFolder}/${this.currentId}`)
-		},
 	}
 }
 </script>

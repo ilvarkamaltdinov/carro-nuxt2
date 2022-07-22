@@ -1,9 +1,11 @@
 <template>
 	<div class="default__wrapper" @keyup.esc="closeModals" tabindex="0">
 		<Header />
-		<modal-wrap />
-		<modal-stories />
-		<modal-benefits/>
+		<client-only>
+			<modal-wrap />
+			<modal-stories />
+			<modal-benefits/>
+		</client-only>
 		<Nuxt />
 		<Footer />
 	</div>

@@ -2,17 +2,16 @@
 	<div class="catalog__title-wrap">
 		<div class="catalog__title">
 			<h3 class="catalog__heading">
-				<nuxt-link event=""
-				           @click.native="$emit('linkClick')"
-				           :to="`/${currentCategory}/${currentMark}/${currentFolder}/${currentId}`"
-				           class="catalog__title-link">
+				<a :href="url"
+				   @click.prevent="$emit('click')"
+				   class="catalog__title-link">
 					<span class="catalog__title">
 						{{ offer.mark.title }} {{ offer.folder.title }}
 					</span>
 					<span class="catalog__year">
 						{{ offer.year }}
 					</span>
-				</nuxt-link>
+				</a>
 			</h3>
 		</div>
 	</div>
@@ -38,6 +37,7 @@ export default {
 		},
 	},
 	props: {
+		url: String,
 		offer: {
 			type: Object,
 			default: () => {

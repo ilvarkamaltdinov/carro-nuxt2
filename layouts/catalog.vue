@@ -2,8 +2,10 @@
 	<div @keyup.esc="closeModals"
 	     tabindex="0">
 		<Header />
-		<modal-wrap />
-		<modal-benefits />
+		<client-only>
+			<modal-wrap />
+			<modal-benefits />
+		</client-only>
 		<Nuxt />
 		<Footer />
 	</div>

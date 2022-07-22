@@ -1,7 +1,6 @@
 <template>
 	<div class="swiper-slide">
-		<a class="slider-index__item"
-		   href="">
+		<a @click.prevent class="slider-index__item" href="">
 			<div class="slider-index__media-wrap">
 				<div class="slider-index__media">
 					<picture>
@@ -14,8 +13,7 @@
 						     alt=""
 						     data-aos="fade-up"
 						     data-aos-duration="750"
-						     data-aos-easing="ease-in-out"
-						     data-aos-mirror="true" />
+						     data-aos-easing="ease-in-out" />
 					</picture>
 					<picture>
 						<source type="image/webp"

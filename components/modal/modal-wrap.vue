@@ -6,8 +6,7 @@
 			     class="overlay"></div>
 		</transition>
 		<transition name="modal">
-			<component v-if="modal"
-			           is="modal"></component>
+			<modal v-if="modal"></modal>
 			<!--<div v-if="modalMain">-->
 			<!--	<component is="modal"></component>-->
 			<!--</div>-->

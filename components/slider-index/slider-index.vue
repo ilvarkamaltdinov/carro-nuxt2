@@ -9,7 +9,6 @@
 				<slider-index-slide v-for="slide in slides"
 				                    :slide="slide"
 				                    :key="slide.id" />
-			
 			</div>
 			<!-- If we need pagination-->
 			<div class="swiper-pagination"></div>
@@ -32,47 +31,14 @@ export default {
 			modules: [swiper.Navigation, swiper.Pagination, swiper.Autoplay],
 			loop: true,
 			autoplayDisableOnInteraction: false,
-			autoplay: true,
+			autoplay: false,
 			slidesPerView: 1,
 			autoHeight: true,
 			watchSlidesProgress: true,
 			scrollbar: false,
 			on: {
-				sliderMove: function () {
-					document.querySelectorAll('.swiper-slide-next .slider-index__media').forEach((val) => {
-						val.style.display = 'none'
-						val.classList.remove("aos-init", "aos-animate");
-						val.style.display = 'block'
-					})
-					document.querySelectorAll('.swiper-slide-next .slider-index__circle').forEach((val) => {
-						val.style.display = 'none'
-						val.classList.remove("aos-init", "aos-animate");
-						val.style.display = 'block'
-					})
-					AOS.init({
-						once: true
-					})
-				},
-				slideChangeTransitionStart: function () {
-					let slides = document.querySelectorAll('.swiper-slide-active .slider-index__media')
-					slides.forEach((val) => {
-						// val.style.display = 'none'
-						val.classList.remove("aos-init");
-						//console.log(1111, val)
-						// val.style.display = 'block'
-						// console.log(2222, val.classList)
-					})
-					document.querySelectorAll('.swiper-slide-next .slider-index__circle').forEach((val) => {
-						//console.log(33333, val.classList)
-						// val.style.display = 'none'
-						// val.classList.remove("aos-init");
-						// val.style.display = 'block'
-						// console.log(44444, val.classList)
-					})
-					AOS.init({
-						once: true
-					})
-				},
+				sliderMove: this.sliderMove,
+				slideChangeTransitionStart: this.slideChangeTransitionStart
 			},
 			pagination: {
 				el: '.swiper-pagination',
@@ -91,6 +57,38 @@ export default {
 		AOS.init({
 			once: true
 		})
+	},
+	methods: {
+		sliderMove() {
+			document.querySelectorAll('.swiper-slide-next .slider-index__media').forEach((val) => {
+				// val.style.display = 'none'
+				// val.classList.remove("aos-init", "aos-animate");
+				// AOS.init({
+				// 	once: true
+				// })
+				// val.style.display = 'block'
+			})
+			document.querySelectorAll('.swiper-slide-next .slider-index__circle').forEach((val) => {
+				val.style.display = 'none'
+				val.classList.remove("aos-init", "aos-animate");
+				val.style.display = 'block'
+				val.classList.add("aos-init", "aos-animate");
+			})
+			AOS.init()
+		},
+		slideChangeTransitionStart() {
+			// document.querySelectorAll('.swiper-slide-active .slider-index__media').forEach((val) => {
+			// 	val.style.display = 'none'
+			// 	val.classList.remove("aos-init");
+			// 	val.style.display = 'block'
+			// })
+			// document.querySelectorAll('.swiper-slide-next .slider-index__circle').forEach((val) => {
+			// 	val.style.display = 'none'
+			// 	val.classList.remove("aos-init");
+			// 	val.style.display = 'block'
+			// })
+			// AOS.refreshHard()
+		}
 	},
 	computed: {
 		...mapGetters({

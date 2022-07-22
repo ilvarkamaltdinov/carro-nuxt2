@@ -4,9 +4,11 @@
 		<div class="swiper">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide"
-				     v-for="image in offer.images"
+				     v-for="image in images"
 				     :key="image.thumb">
-					<nuxt-link to="/" class="catalog__img-link">
+					<a :href="url"
+					   @click.prevent="$emit('click')"
+					   class="catalog__img-link">
 						<picture>
 							<source type="image/webp"
 							        media="(min-width: 768px)"
@@ -18,9 +20,11 @@
 							     :data-srcset="image.thumb"
 							     alt="" />
 						</picture>
-					</nuxt-link>
+					</a>
 				</div>
-				<catalog-item-call-card class="swiper-slide" :offer="offer"/>
+				<catalog-item-call-card :image="images[0].thumb"
+				                        class="swiper-slide"
+				                        :dealer="dealer" />
 			</div>
 		</div>
 		<div class="swiper__buttons-wrapper">
@@ -39,17 +43,19 @@
 <script>
 export default {
 	props: {
-		disabledClick:{
-			type: Boolean,
-			default: false
-		},
+		url: String,
 		sliderId: {
 			type: Number,
 			default: null
 		},
-		offer: {
+		images: {
+			type: Array,
+			default: () => []
+		},
+		dealer: {
 			type: Object,
-			default: () => {}
+			default: () => {
+			}
 		}
 	},
 	async mounted() {
@@ -62,12 +68,16 @@ export default {
 			centeredSlides: false,
 			watchSlidesProgress: true,
 			spaceBetween: 16,
+			on: {
+				init: () => {
+					//TODO убирать прелодер когда слайдер подрубился
+				},
+			},
 			navigation: {
 				nextEl: `.catalog__img-${this.sliderId} .swiper-button-next`,
 				prevEl: `.catalog__img-${this.sliderId} .swiper-button-prev`,
 			},
 		})
-		
 	}
 }
 </script>

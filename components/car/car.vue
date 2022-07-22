@@ -18,7 +18,8 @@
 					</div>
 				</div>
 				<div class="car__top-buttons grid__col-6">
-					<button-typical text="Обратный звонок"
+					<button-typical @click="callback"
+					                text="Обратный звонок"
 					                class="button--icon button--link"
 					                icon="icon-callback" />
 					<button-call-modal :phone="offer.dealer.phone" />
@@ -108,6 +109,9 @@ export default {
 		window.removeEventListener('scroll', this.handleScroll);
 		this.setBackButton({})
 	},
+	destroyed() {
+		this.setComponentCatalog('')
+	},
 	methods: {
 		...mapMutations({
 			setOffer: 'catalog/catalog-cars/SET_OFFER',
@@ -118,7 +122,17 @@ export default {
 		}),
 		...mapActions({
 			request: 'filters/filters/request',
+			openModal: 'modal/modal-main/openModal'
 		}),
+		callback() {
+			let payload = {
+				modal_data: this.offer,
+				modal_component: 'modal-callback',
+				modal_title: 'Заявка на автокредит',
+				modal_sub_title: this.offer.name
+			}
+			this.openModal(payload)
+		},
 		handleScroll() {
 			this.showFixed = process.client && this.$device.isMobile && window.scrollY > 499;
 		}

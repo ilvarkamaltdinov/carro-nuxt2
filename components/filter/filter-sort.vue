@@ -12,7 +12,7 @@
 						<svg-icon class="button__icon"
 						          :name="currentIcon" />
 						<span class="button__text">{{ currentSort }}</span>
-						<transition name="modal">
+						<transition name="select">
 							<ul v-if="!$device.isMobile"
 							    v-show="isActive"
 							    class="select__list">
@@ -34,7 +34,9 @@
 								</li>
 							</ul>
 						</transition>
-						<select v-if="$device.isMobile" class="filter__buttons-sort-select" @change="sortChosen('mobile', $event.target.value)">
+						<select v-if="$device.isMobile"
+						        class="filter__buttons-sort-select"
+						        @change="sortChosen('mobile', $event.target.value)">
 							<option value="price|asc">Сначала дешевле</option>
 							<option value="price|desc">Сначала дороже</option>
 							<option value="run|asc">Минимальный пробег</option>
@@ -138,7 +140,7 @@ export default {
 			this.openModal(payload)
 		},
 		async sortChosen(sort, value) {
-			if(sort === 'mobile'){
+			if (sort === 'mobile') {
 				if (this.modal) {
 					this.setModalSort(value)
 					await this.getOffers()
@@ -146,7 +148,7 @@ export default {
 					this.setSort(value)
 					await this.$router.push({path: this.$route.fullPath, query: {sort: value}});
 				}
-			}else{
+			} else {
 				if (this.modal) {
 					this.setModalSort(sort)
 					await this.getOffers()

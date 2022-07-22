@@ -1,12 +1,10 @@
 <template>
-	<nuxt-link :to="`/${currentCategory}/${currentMark}/${currentFolder}/${currentId}`"
-	           @click.native="$emit('linkClick')"
-	           class="catalog__img brazzers-daddy">
+	<a :href="url" @click.prevent="$emit('click')" class="catalog__img brazzers-daddy">
 		<img :data-src="coverSrc"
 		     @load="onImgLoad"
 		     class="lazyload"
 		     :class="class_name"
-		     alt="" />
+		     alt=""/>
 		<div class="tmb-wrap">
 			<div class="tmb-wrap-table"
 			     @mouseleave="mouseLeave">
@@ -18,7 +16,7 @@
 				</div>
 			</div>
 		</div>
-	</nuxt-link>
+	</a>
 </template>
 <script>
 export default {
@@ -34,6 +32,7 @@ export default {
 		}
 	},
 	props: {
+		url: String,
 		offer: Object,
 	},
 	computed: {
@@ -44,18 +43,6 @@ export default {
 							? this.photos[0].thumb
 							: this.placeholderUrl;
 		},
-		currentCategory() {
-			return this.offer.category_enum
-		},
-		currentMark() {
-			return this.offer.mark.slug
-		},
-		currentFolder() {
-			return this.offer.folder.slug
-		},
-		currentId() {
-			return this.offer.external_id
-		}
 	},
 	methods: {
 		onImgLoad() {

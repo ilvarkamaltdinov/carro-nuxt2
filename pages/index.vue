@@ -3,13 +3,13 @@
 		<div class="grid grid--container">
 			<h1 class="visually-hidden">{{pageTitle}}</h1>
 			<div class="page-main__promo grid__col-8">
-				<slider-index />
-				<stories/>
+				<lazy-slider-index />
+				<lazy-stories/>
 			</div>
-			<form-index />
-			<catalog-list-index/>
-			<featured />
-			<video-about />
+			<lazy-form-index />
+			<lazy-catalog-list-index/>
+			<lazy-featured />
+			<lazy-video-about />
 		</div>
 	</main>
 </template>
