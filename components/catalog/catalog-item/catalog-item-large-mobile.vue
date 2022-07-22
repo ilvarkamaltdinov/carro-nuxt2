@@ -5,9 +5,9 @@
 			<catalog-item-price :offer="offer" />
 		</div>
 		<div class="catalog__img">
-			<catalog-item-img v-for="img in offer.images"
-			                  :key="img.thumb"
-			                  :offer="offer" />
+			<catalog-item-img @click="linkClick"
+			                  :img="img.thumb" v-for="img in offer.images"
+			                  :key="img.thumb" />
 			<catalog-item-call-card :offer="offer"/>
 		</div>
 		<div class="catalog__tech"

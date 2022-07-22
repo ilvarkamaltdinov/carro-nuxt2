@@ -28,7 +28,7 @@
 					        media="(min-width: 768px)"
 					        :data-srcset="`${require(`~/assets/img/video/iphone@1x.webp`)} 1x, ${require(`~/assets/img/video/iphone@2x.webp`)} 2x`" />
 					<source media="(min-width: 768px)"
-					        :srcset="`${require(`~/assets/img/video/iphone@1x.png`)} 1x, ${require(`~/assets/img/video/iphone@2x.png`)} 2x`" />
+					        :data-srcset="`${require(`~/assets/img/video/iphone@1x.png`)} 1x, ${require(`~/assets/img/video/iphone@2x.png`)} 2x`" />
 					<img class="video__img lazyload"
 					     data-src="~/assets/img/video/iphone@1x.png"
 					     :data-srcset="`${require(`~/assets/img/video/iphone@2x.png`)} 2x`"

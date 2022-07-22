@@ -11,12 +11,12 @@
 			<picture>
 				<source type="image/webp"
 				        media="(min-width: 768px)"
-				        :srcset="offer.images[0].thumb" />
+				        :data-srcset="offer.images[0].thumb" />
 				<source media="(min-width: 768px)"
-				        :srcset="offer.images[0].thumb" />
+				        :data-srcset="offer.images[0].thumb" />
 				<img class="lazyload"
-				     :src="offer.images[0].thumb"
-				     :srcset="offer.images[0].thumb"
+				     :data-src="offer.images[0].thumb"
+				     :data-srcset="offer.images[0].thumb"
 				     alt="" />
 			</picture>
 		</div>

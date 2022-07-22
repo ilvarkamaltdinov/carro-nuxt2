@@ -2,8 +2,9 @@
 	<nuxt-link :to="`/${currentCategory}/${currentMark}/${currentFolder}/${currentId}`"
 	           @click.native="$emit('linkClick')"
 	           class="catalog__img brazzers-daddy">
-		<img :src="coverSrc"
+		<img :data-src="coverSrc"
 		     @load="onImgLoad"
+		     class="lazyload"
 		     :class="class_name"
 		     alt="" />
 		<div class="tmb-wrap">
