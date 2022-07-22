@@ -7,14 +7,12 @@
 			<picture>
 				<source type="image/webp"
 				        media="(min-width: 768px)"
-				       
-				        :srcset="src" />
+				        :data-srcset="src" />
 				<source media="(min-width: 768px)"
-				        :srcset="src" />
-				<img class="slider__car-img"
-				     :src="src"
-				     :srcset="src"
-				     loading=""
+				        :data-srcset="src" />
+				<img class="slider__car-img lazyload"
+				     :data-src="src"
+				     :data-srcset="src"
 				     alt="" />
 			</picture>
 		</div>
