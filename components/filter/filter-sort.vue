@@ -34,7 +34,7 @@
 								</li>
 							</ul>
 						</transition>
-						<select class="filter__buttons-sort-select" @change="sortChosen('mobile', $event.target.value)">
+						<select v-if="$device.isMobile" class="filter__buttons-sort-select" @change="sortChosen('mobile', $event.target.value)">
 							<option value="price|asc">Сначала дешевле</option>
 							<option value="price|desc">Сначала дороже</option>
 							<option value="run|asc">Минимальный пробег</option>

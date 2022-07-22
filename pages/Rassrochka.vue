@@ -17,22 +17,6 @@ import jsonld from "@/mixins/jsonld";
 
 export default {
 	mixins: [seoTags, jsonld],
-	data() {
-		return {
-			crumbs: [
-				{
-					name: 'Главная',
-					route: '/',
-					active: false
-				},
-				{
-					name: 'Рассрочка',
-					route: '/rassrochka',
-					active: true
-				}
-			],
-		}
-	},
 	computed: {
 		...mapGetters({
 			benefitsCredit: 'benefits/benefitsCredit'

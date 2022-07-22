@@ -4,7 +4,7 @@
 			<filter-list/>
 		</div>
 		<div class="page-main__button-fixed">
-			<button-typical v-if="$device.isMobile" @click="filter" text="Показать автомобили" button-class="button--credit  button--fixed" />
+			<button-typical v-if="$device.isMobileOrTablet" @click="filter" text="Показать автомобили" button-class="button--credit  button--fixed" />
 		</div>
 	</div>
 </template>

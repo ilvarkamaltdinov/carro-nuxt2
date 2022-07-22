@@ -18,18 +18,18 @@ export default {
 		return {
 			crumbs: [
 				{
-					name: 'Главная',
-					route: '/',
+					title: 'Главная',
+					link: '/',
 					active: false
 				},
 				{
-					name: 'Блог',
-					route: '/blog',
+					title: 'Блог',
+					link: '/blog',
 					active: false
 				},
 				{
-					name: 'Статьи',
-					route: '/blog/aricles',
+					title: 'Статьи',
+					link: '/blog/aricles',
 					active: true
 				}
 			]

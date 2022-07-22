@@ -5,7 +5,7 @@
 			           @check="check" />
 		</div>
 		<div class="page-main__button-fixed">
-			<button-typical v-if="$device.isMobile" @click="back" text="Применить" button-class="button--credit  button--fixed" />
+			<button-typical v-if="$device.isMobileOrTablet" @click="back" text="Применить" button-class="button--credit  button--fixed" />
 			<button-typical v-else @click="filter" text="Показать автомобили" button-class="button--credit  button--fixed" />
 		
 		</div>

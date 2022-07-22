@@ -15,22 +15,6 @@ import seoTags from "@/mixins/seoTags";
 import jsonld from "@/mixins/jsonld";
 
 export default {
-	mixins: [seoTags, jsonld],
-	data(){
-		return{
-			crumbs:[
-				{
-					name:'Главная',
-					route:'/',
-					active: false
-				},
-				{
-					name:'Детейлинг',
-					route:'/uslugi-servisa',
-					active: true
-				}
-			]
-		}
-	}
+	mixins: [seoTags, jsonld]
 }
 </script>

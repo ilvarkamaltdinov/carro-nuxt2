@@ -19,9 +19,9 @@
 		</div>
 		
 		<div v-if="loading" class="catalog__list grid">
-			<component :is="$device.isMobile ? 'skeleton-card-large' : 'skeleton-card-small'" v-for="i in 3" :key="i"/>
+			<component :is="$device.isMobileOrTablet ? 'skeleton-card-large' : 'skeleton-card-small'" v-for="i in 3" :key="i"/>
 		</div>
-		<div v-else-if="$device.isMobile" class="catalog__list grid">
+		<div v-else-if="$device.isMobileOrTablet" class="catalog__list grid">
 			<catalog-item-large-mobile v-for="offer in offers_list" :offer="offer" :key="offer.id" />
 		</div>
 		<catalog-index-swiper v-else :offers="offers_list"/>

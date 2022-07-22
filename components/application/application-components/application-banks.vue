@@ -1,7 +1,8 @@
 <template>
 	<div class="application__banks">
 		<div class="application__banks-form">
-			<img class="application__banks-img application__banks-img--alfa"
+			<img class="application__banks-img"
+			     :class="`application__banks-img--${bankSlug}`"
 			     :src="bankLogo"
 			     alt="bank" />
 			<nuxt-link to="/banks-partners"
@@ -24,6 +25,9 @@ export default {
 		...mapGetters({
 			bank: 'banks/bank'
 		}),
+		bankSlug() {
+			return this.bank.slug ? this.bank.slug : ''
+		},
 		bankLogo() {
 			return this.bank.image ? this.bank.image : require('~/assets/img/banks/logo-alfa.svg')
 		},

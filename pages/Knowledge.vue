@@ -12,22 +12,6 @@
 import seoTags from "@/mixins/seoTags";
 
 export default {
-	mixins: [seoTags],
-	data() {
-		return {
-			crumbs: [
-				{
-					name: 'Главная',
-					route: '/',
-					active: false
-				},
-				{
-					name: 'Часто задаваемые вопросы',
-					route: '/knowledge',
-					active: true
-				}
-			]
-		}
-	}
+	mixins: [seoTags]
 }
 </script>

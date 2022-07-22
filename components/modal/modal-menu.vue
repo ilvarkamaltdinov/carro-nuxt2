@@ -5,7 +5,7 @@
 		<div class="modal__wrap grid grid__container">
 			<nav class="main-nav main-nav--modal grid__col-12">
 				<component :list="siteList"
-				           :is="$device.isMobile ? 'site-list-mobile': 'site-list'" />
+				           :is="$device.isMobileOrTablet ? 'site-list-mobile': 'site-list'" />
 				<social />
 			</nav>
 		</div>

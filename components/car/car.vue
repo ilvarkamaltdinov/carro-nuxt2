@@ -56,7 +56,8 @@ export default {
 	mixins: [jsonld],
 	props: {
 		pageTitle: String,
-		description: String
+		description: String,
+		crumbs: Array
 	},
 	data() {
 		return {
@@ -64,44 +65,8 @@ export default {
 			showFixed: false,
 		}
 	},
-	computed: {
-		...mapGetters({
-			offer: 'catalog/catalog-cars/offer',
-			carPageLoaded: 'catalog/catalog-cars/carPageLoaded',
-			benefitsCar: 'benefits/benefitsCar',
-			marks: 'marks/marks/allMarks',
-			folders: 'folders/folders/folders'
-		}),
-		currentMark() {
-			return this.marks.filter(item => this.$route.params.mark === item.slug)[0]
-		},
-		currentFolder() {
-			return this.folders.filter(item => this.$route.params.model === item.slug)[0]
-		},
-		crumbs() {
-			return [
-				{
-					name: 'Главная',
-					route: '/',
-					active: false
-				},
-				{
-					name: 'Автомобили с пробегом',
-					route: '/used',
-					active: false
-				},
-				{
-					name: this.currentMark.title,
-					route: '/used/' + this.currentMark.slug,
-					active: false
-				},
-				{
-					name: this.currentFolder ? this.currentFolder.title : '',
-					route: this.currentFolder ? ('/used/' + this.currentMark.slug + '/' + this.currentFolder.slug) : '',
-					active: true
-				}
-			]
-		}
+	mounted() {
+		this.setBackButton(this.currentBackButton)
 	},
 	async fetch() {
 		let variables = {
@@ -114,19 +79,42 @@ export default {
 		let response = await this.request({query: offer, variables: variables})
 		this.setOffer(response.data.offer)
 	},
+	computed: {
+		...mapGetters({
+			offer: 'catalog/catalog-cars/offer',
+			carPageLoaded: 'catalog/catalog-cars/carPageLoaded',
+			benefitsCar: 'benefits/benefitsCar',
+			marks: 'marks/marks/allMarks',
+			folders: 'folders/folders/folders'
+		}),
+		currentBackButton() {
+			return {
+				title: 'Все ' + this.crumbs[2].title + ' ' + this.crumbs[3].title,
+				link: this.crumbs[3].link
+			}
+		},
+		currentMark() {
+			return this.marks.filter(item => this.$route.params.mark === item.slug)[0]
+		},
+		currentFolder() {
+			return this.folders.filter(item => this.$route.params.model === item.slug)[0]
+		},
+	},
 	beforeMount() {
 		window.addEventListener('scroll', this.handleScroll);
 		window.scrollTo(0, 0)
 	},
 	beforeDestroy() {
 		window.removeEventListener('scroll', this.handleScroll);
+		this.setBackButton({})
 	},
 	methods: {
 		...mapMutations({
 			setOffer: 'catalog/catalog-cars/SET_OFFER',
 			setFilterClick: 'filters/filters/SET_IS_FILTER_CLICK',
 			setIsOfferClick: 'filters/filters/SET_IS_OFFER_CLICK',
-			setComponentCatalog: 'filters/filters/SET_COMPONENT_CATALOG'
+			setComponentCatalog: 'filters/filters/SET_COMPONENT_CATALOG',
+			setBackButton: 'header/header/SET_BACK_BUTTON'
 		}),
 		...mapActions({
 			request: 'filters/filters/request',

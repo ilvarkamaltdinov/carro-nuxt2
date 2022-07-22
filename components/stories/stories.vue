@@ -1,9 +1,9 @@
 <template>
 	<section class="page-main__stories stories"
-	         :class="{'stories--desktop grid__col-8':!$device.isMobile}">
+	         :class="{'stories--desktop grid__col-8':!$device.isMobileOrTablet}">
 		<h2 class="visually-hidden">Акции и спецпредложения</h2>
 		<ul class="stories__list"
-		    v-if="$device.isMobile">
+		    v-if="$device.isMobileOrTablet">
 			<stories-item :story="item"
 			              @click="openStories(item)"
 			              v-for="item in stories"
@@ -17,13 +17,13 @@
 				              :key="item.id" />
 			</ul>
 		</div>
-		<button v-if="!$device.isMobile"
+		<button v-if="!$device.isMobileOrTablet"
 		        ref="prev"
 		        class="swiper-button swiper-button-prev">
 			<svg-icon class="swiper-button__icon"
 			          name="icon-arrow" />
 		</button>
-		<button v-if="!$device.isMobile"
+		<button v-if="!$device.isMobileOrTablet"
 		        ref="next"
 		        class="swiper-button swiper-button-next">
 			<svg-icon class="swiper-button__icon"

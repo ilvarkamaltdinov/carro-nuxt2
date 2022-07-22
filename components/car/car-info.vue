@@ -99,16 +99,15 @@
 								{{ offer.driveType.title }}
 							</div>
 						</li>
-						<!--TODO Цвет в карточке авто-->
-						<!--<li class="car__tech-item">-->
-						<!--	<div class="car__tech-icon-wrap">-->
-						<!--		<svg-icon class="car__tech-icon"-->
-						<!--		          name="icon-color" />-->
-						<!--	</div>-->
-						<!--	<div class="car__tech-content">-->
-						<!--		Белый-->
-						<!--	</div>-->
-						<!--</li>-->
+						<li class="car__tech-item car__tech-item--mobile">
+							<div class="car__tech-icon-wrap">
+								<svg-icon class="car__tech-icon"
+								          name="icon-color" />
+							</div>
+							<div class="car__tech-content">
+								Белый
+							</div>
+						</li>
 						<li class="car__tech-item">
 							<div class="car__tech-icon-wrap">
 								<svg-icon class="car__tech-icon"

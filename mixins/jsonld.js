@@ -14,12 +14,12 @@ export default {
     jsonld() {
         let result = []
 
-        let breadcrumbs_items = this.crumbs.map((item, index) => ({
+        let breadcrumbs_items = this.crumbs?.map((item, index) => ({
             '@type': 'ListItem',
             position: index + 1,
             item: {
-                '@id': this.makeUrl(item.route),
-                name: item.name,
+                '@id': this.makeUrl(item.link),
+                name: item.title,
             },
         }));
 

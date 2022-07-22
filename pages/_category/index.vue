@@ -14,22 +14,6 @@ import jsonld from "@/mixins/jsonld";
 export default {
 	layout: 'catalog',
 	mixins: [seoTags, jsonld],
-	data() {
-		return {
-			crumbs: [
-				{
-					name: 'Главная',
-					route: '/',
-					active: false
-				},
-				{
-					name: 'Автомобили с пробегом',
-					route: '/used',
-					active: true
-				}
-			]
-		}
-	},
 	validate(ctx) {
 		return ctx.params.category === 'used' || ctx.params.category === 'commercial';
 	}

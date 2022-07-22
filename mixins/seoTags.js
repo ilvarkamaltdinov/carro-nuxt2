@@ -20,6 +20,7 @@ export default {
             description: seo.data.seoTag.description,
             pageTitle: seo.data.seoTag.page_title,
             title: seo.data.seoTag.title,
+            crumbs: seo.data.seoTag.crumbs
         }
     },
     head() {

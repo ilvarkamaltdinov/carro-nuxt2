@@ -74,11 +74,11 @@
 				</ul>
 			</div>
 			<nav class="page-header__nav grid__col-12">
-				<nuxt-link v-if="showHeaderCrumbs && currentFolder"
-				           :to="`/used/${currentMark.slug}/${ currentFolder.slug }`"
+				<nuxt-link v-if="backButton.title && $device.isMobile"
+				           :to="backButton.link"
 				           class="page-header__back">
 					<span>
-						Все {{ currentMark.title }} {{ currentFolder.title }}
+						{{backButton.title}}
 					</span>
 					<svg-icon class="page-header__back-arrow"
 					          name="icon-arrow" />
@@ -118,8 +118,10 @@
 </template>
 <script>
 import {mapGetters, mapMutations, mapActions} from 'vuex'
+import bodyClasses from "@/mixins/bodyClasses";
 
 export default {
+	mixins: [bodyClasses],
 	watch: {
 		'$route'() {
 			this.setModalMenu(false)
@@ -134,7 +136,8 @@ export default {
 			settings: 'settings/settings/settings',
 			componentCatalog: 'filters/filters/componentCatalog',
 			marks: 'marks/marks/allMarks',
-			folders: 'folders/folders/folders'
+			folders: 'folders/folders/folders',
+			backButton: 'header/header/backButton'
 		}),
 		currentMark() {
 			return this.marks.filter(item => this.$route.params.mark === item.slug)[0]

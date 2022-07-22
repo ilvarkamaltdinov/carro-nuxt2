@@ -1,5 +1,10 @@
+#import "./seoTagCrumbs.gql"
 fragment SeoTag on SeoTag {
-  page_title
-  title
-  description
+    page_title
+    title
+    description
+    crumbs{
+        ... SeoTagCrumbs
+    }
+
 }
