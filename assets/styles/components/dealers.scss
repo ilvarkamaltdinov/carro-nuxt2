@@ -17,14 +17,14 @@
     margin-bottom: 16px;
   }
 
+  .dealers__item {
+    margin-bottom: 24px;
+  }
+
   .dealers--catalog {
     @include horizontal-scroll;
     margin: 0 -16px;
     margin-bottom: 24px;
-  }
-
-  .dealers__item--catalog {
-    margin-right: 16px;
   }
 
   .dealers__item--catalog {
