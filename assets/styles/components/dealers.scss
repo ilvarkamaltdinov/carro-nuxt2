@@ -23,7 +23,7 @@
     margin-bottom: 24px;
   }
 
-  .dealers__item {
+  .dealers__item--catalog {
     margin-right: 16px;
   }
 
@@ -51,7 +51,6 @@
     aspect-ratio: 16 / 9;
   }
 }
-
 
 @media (min-width: $tablet-width) {
   .dealers__item {
@@ -84,6 +83,15 @@
   }
 
   .dealers__item-img {
+    width: 100%;
+  }
+
+  .dealers__item--catalog .dealers__item-img-wrap {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .dealers__item--catalog .dealers__features {
     width: 100%;
   }
 }
