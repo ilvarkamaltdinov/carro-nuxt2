@@ -123,9 +123,14 @@ export const actions = {
             if (folder_slug_array?.length === 1) {
                 if (generation_slug_array?.length === 1) {
                     query['body_type_id_array'] = body_type_id_array
-                }
-                if (engine_type_slug_array?.length === 1) {
+                } else if (engine_type_slug_array?.length === 1) {
                     query['body_type_id_array'] = body_type_id_array
+                } else {
+                    if (body_type_slug_array?.length === 1) {
+                        url = mark_slug_array?.[0] + '/' + folder_slug_array?.[0] + '/' + body_type_slug_array[0]
+                    } else {
+                        query['body_type_id_array'] = body_type_id_array
+                    }
                 }
             } else if (!folder_slug_array) {
                 if (body_type_slug_array?.length === 1) {
@@ -147,12 +152,12 @@ export const actions = {
         if (drive_type_id_array?.length >= 1) {
             query['drive_type_id_array'] = drive_type_id_array
         }
-        if(this.app.context.params.category){
+        if (this.app.context.params.category) {
             this.app.router.push({
                 path: '/' + this.app.context.params.category + (url !== '' ? '/' + url : ''),
                 query
             })
-        }else{
+        } else {
             this.app.router.push({
                 path: '/used' + (url !== '' ? '/' + url : ''),
                 query
