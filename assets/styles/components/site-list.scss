@@ -69,6 +69,13 @@
 }
 
 @media (min-width: $desktop-width) {
+  .site-list__link {
+    &:focus,
+    &:active {
+      color: $colorPrimary;
+    }
+  }
+
   .site-list__link.active {
     &:hover {
       cursor: default;

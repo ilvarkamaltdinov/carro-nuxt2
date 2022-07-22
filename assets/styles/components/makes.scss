@@ -228,6 +228,12 @@
 }
 
 @media (min-width: $desktop-width) {
+  .makes__list--header .makes__link {
+    &:focus > * {
+      color: $colorPrimary;
+    }
+  }
+
   .makes__link {
     &:hover {
       cursor: pointer;

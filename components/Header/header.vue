@@ -5,7 +5,8 @@
 				<div class="page-header__logo-block">
 					<label class="page-header__toggle hamburger"
 					       @change="burgerClick()"
-					       for="hamburger">
+					       for="hamburger"
+                 tabindex="0">
 						<input id="hamburger"
 						       :checked="modalMenu"
 						       type="checkbox" />

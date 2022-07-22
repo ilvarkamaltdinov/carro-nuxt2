@@ -20,11 +20,6 @@
   transition: $transitionHover;
   white-space: nowrap;
 
-  &:hover {
-    transition: $transitionHover;
-    background-color: $colorDivider;
-  }
-
   @include font-features;
 }
 
@@ -63,5 +58,15 @@
     display: inline-flex;
     flex-wrap: wrap;
     gap: 16px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .tabs__link {
+    &:hover,
+    &:focus {
+      transition: $transitionHover;
+      background-color: $colorDivider;
+    }
   }
 }

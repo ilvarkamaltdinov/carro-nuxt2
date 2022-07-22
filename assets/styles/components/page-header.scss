@@ -92,11 +92,13 @@
   transition: $transitionHover;
   @include font-features-strong;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: $colorPrimaryDark;
   }
 
-  &:hover .page-header__makes-more-arrow {
+  &:hover .page-header__makes-more-arrow,
+  &:focus .page-header__makes-more-arrow {
     fill: $colorPrimaryDark;
   }
 }
@@ -220,7 +222,8 @@
   .page-header__logo {
     margin-right: 32px;
 
-    &:hover .page-header__logo-circle {
+    &:hover .page-header__logo-circle,
+    &:focus .page-header__logo-circle {
       // animation: tickelWheel 1.2s ease-in-out infinite;
       // animation-direction: alternate;
       transform: rotate(22deg);
@@ -278,5 +281,12 @@
     display: flex;
     visibility: visible;
     opacity: 1;
+  }
+
+  .page-header__buttons-link {
+    &:focus .icon,
+    &:active .icon {
+      fill: $colorPrimary;
+    }
   }
 }

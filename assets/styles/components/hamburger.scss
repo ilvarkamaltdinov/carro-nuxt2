@@ -58,7 +58,8 @@
     padding-right: 0;
     padding-left: 0;
 
-    &:hover input:not(:checked) ~ .hamburger__element {
+    &:hover input:not(:checked) ~ .hamburger__element,
+    &:focus input:not(:checked) ~ .hamburger__element {
       &:first-of-type {
         width: 20px;
       }

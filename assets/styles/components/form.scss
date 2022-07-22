@@ -208,8 +208,10 @@
   padding-right: 8px;
 }
 
-.form__field--search-focus + .form__icon-search {
-  fill: $colorText;
+.form__field--search .form__field {
+  &:focus + .form__icon-search {
+    fill: $colorText;
+  }
 }
 
 @media (max-width: $mobile-width-only) {
@@ -249,8 +251,10 @@
     border-color: $colorBg;
   }
 
-  .form__field-wrap--search .form__field--search-focus {
-    background: white;
-    border-color: $colorBgActive;
+  .form__field-wrap--search .form__field {
+    &:focus {
+      background: white;
+      border-color: $colorBgActive;
+    }
   }
 }
