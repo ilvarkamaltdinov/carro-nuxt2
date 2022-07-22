@@ -1,12 +1,13 @@
 <template>
 	<div>
-		<div class="modal__options" v-if="modalData.mark">
+		<div class="modal__options"
+		     v-if="modalData.mark">
 			<img class="modal__logo"
 			     :src="require(`~/assets/img/dealers/logos/logo-${modalData.dealer.slug}.svg`)"
 			     loading="lazy"
 			     alt="" />
 			<div class="modal__buttons">
-				<button-call-modal :phone="modalData.dealer.phone"/>
+				<button-call-modal :phone="modalData.dealer.phone" />
 			</div>
 		</div>
 		<div class="modal__wrap">
@@ -18,10 +19,13 @@
 							<span class="heading-group__label">Перезвоним в течение 5 минут</span>
 						</div>
 					</div>
-					<form-callback :offer="modalData"/>
+					<form-callback :offer="modalData" />
 				</div>
 				<div class="application__catalog application__catalog--modal catalog grid__col-4">
-					<catalog-item-small-desktop v-if="modalData.mark" :has-buttons="false" :offer="modalData"/>
+					<component :is="$device.isMobile ? 'catalog-item-large-mobile':'catalog-item-small-desktop'"
+					           v-if="modalData.mark"
+					           :has-buttons="false"
+					           :offer="modalData" />
 					<div v-if="modalData.dealerModal">
 						<div class="dealers__item-img-wrap">
 							<picture>
@@ -38,12 +42,15 @@
 					</div>
 				</div>
 			</div>
-			<benefits :has-modal="false" modal :benefits="benefitsCredit"/>
+			<benefits :has-modal="false"
+			          modal
+			          :benefits="benefitsCredit" />
 		</div>
 	</div>
 </template>
 <script>
 import {mapGetters} from 'vuex'
+
 export default {
 	computed: {
 		...mapGetters({
