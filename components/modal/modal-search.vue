@@ -4,7 +4,7 @@
 		<div class="modal__wrap grid grid__container">
 			<div class="search grid__col-12">
 				<ul class="search__list"
-				    v-if="searchResult.length">
+				    v-if="searchResult.length && modalSearch">
 					<li class="search__item"
 					    v-for="item in searchResult"
 					    :key="item.id">
@@ -31,7 +31,8 @@ import {mapGetters, mapMutations} from "vuex";
 export default {
 	computed: {
 		...mapGetters({
-			searchResult: 'modal/modal-search/searchResult'
+			searchResult: 'modal/modal-search/searchResult',
+			modalSearch: 'modal/modal-search/modalSearch'
 		})
 	},
 	methods: {
