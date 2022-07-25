@@ -4,11 +4,12 @@
 			<crumbs :crumbs="crumbs" />
 		</div>
 		<div class="grid grid--container">
-			<dealers page-title="Автосалоны-партнеры" />
+			<thanks :page-title="pageTitle"/>
 		</div>
 	</main>
 </template>
 <script>
+import {mapGetters} from "vuex";
 import seoTags from "@/mixins/seoTags";
 import jsonld from "@/mixins/jsonld";
 

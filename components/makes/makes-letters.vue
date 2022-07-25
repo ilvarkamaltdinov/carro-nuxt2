@@ -5,8 +5,7 @@
 			                    :key="index"
 			                    v-scroll-to="{
 														el: '#' + item,
-										        container: '.modal__wrap',
-										        offset: -24,
+										        container: '.modal--credit',
 													}">
 				{{ item }}
 			</makes-letters-item>

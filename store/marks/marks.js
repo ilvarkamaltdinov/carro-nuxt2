@@ -20,14 +20,13 @@ export const mutations = {
         //Подсчет общего кол-ва автомобилей
         data.forEach(val => {
             state.allMarksCount += val.offers_count
-
             //разбивка по алфавиту
             state.alphabetMarks.push(val.title[0])
             //
 
         })
 
-        state.alphabetMarks = [...new Set(state.alphabetMarks)]
+        state.alphabetMarks = [...new Set(state.alphabetMarks)].sort()
 
         state.allMarks = data
 

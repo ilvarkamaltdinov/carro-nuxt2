@@ -44,22 +44,23 @@ export const actions = {
                 delete variables.chosen_car // Удаляю тачку чтобы не ушла на сервак
             }
         }
+        console.log(variables)
         await commit('SET_USER_NAME', variables.client_name)
         await this.app.router.push('/thanks');
         let assignVariables = {
             site_id: this.$config.site_id
         }
-        let client = this.app.apolloProvider.defaultClient
-        let params = {...assignVariables, ...variables}
-        await client.mutate({
-            mutation: feedback,
-            variables: this.$removeEmptyObjects(params)
-        }).then(({data}) => {
-            commit('SET_BUTTON_DISABLED', false)
-            commit('SET_ORDER_ID', data.feedback.id)
-        }).catch(error => {
-            console.log(error)
-        })
+        // let client = this.app.apolloProvider.defaultClient
+        // let params = {...assignVariables, ...variables}
+        // await client.mutate({
+        //     mutation: feedback,
+        //     variables: this.$removeEmptyObjects(params)
+        // }).then(({data}) => {
+        //     commit('SET_BUTTON_DISABLED', false)
+        //     commit('SET_ORDER_ID', data.feedback.id)
+        // }).catch(error => {
+        //     console.log(error)
+        // })
     }
 }
 export const mutations = {

@@ -2,7 +2,6 @@ query marks($site_id: Int! $category: String) {
   marks(site_id: $site_id, category: $category) {
     id,
     title,
-    title_rus,
     slug,
     offers_count,
   }
