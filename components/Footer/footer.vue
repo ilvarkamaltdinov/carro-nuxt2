@@ -75,12 +75,12 @@
 							Пользовательское соглашение
 						</nuxt-link>
 					</li>
-					<li class="page-footer__links-item">
-						<nuxt-link to="/sitemap"
-						           class="page-footer__link">
-							Карта сайта
-						</nuxt-link>
-					</li>
+					<!--<li class="page-footer__links-item">-->
+					<!--	<nuxt-link to="/sitemap"-->
+					<!--	           class="page-footer__link">-->
+					<!--		Карта сайта-->
+					<!--	</nuxt-link>-->
+					<!--</li>-->
 				</ul>
 			</div>
 			<div class="page-footer__cars grid__col-12">
