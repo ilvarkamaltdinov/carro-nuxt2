@@ -1,6 +1,6 @@
 <template>
 	<li>
-		<a class="makes__letters-link">
+		<a href="#" class="makes__letters-link">
 			<slot></slot>
 		</a>
 	</li>

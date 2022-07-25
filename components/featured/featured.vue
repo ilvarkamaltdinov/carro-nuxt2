@@ -44,9 +44,9 @@
 			<li class="featured__item featured__item--business">
 				<nuxt-link to="/used/business-class" class="featured__link">
 					<div class="featured__about">
-						<img class="featured__label"
-						     src="~/assets/img/featured/featured-label.svg"
-						     alt="" />
+						<img class="featured__label lazyload"
+						     :data-src="require('~/assets/img/featured/featured-label.svg')"
+						     alt="carro-select" />
 						<h3 class="featured__title">Бизнес-класс</h3>
 						<div class="featured__text">Премиальные автомобили для самых взыскательных</div>
 					</div>

@@ -38,7 +38,7 @@ export default {
 	computed: {
 		...mapGetters({
 			allMarks: 'marks/marks/allMarks',
-			currentMark:'modal/modal-choose/currentMark'
+			currentMark: 'modal/modal-choose/currentMark'
 		})
 	},
 	methods: {

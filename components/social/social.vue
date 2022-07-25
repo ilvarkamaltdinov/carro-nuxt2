@@ -3,6 +3,7 @@
 		<li class="social__item">
 			<a class="social__link"
 			   target="_blank"
+			   rel="nofollow"
 			   href="https://t.me/carro_ru">
 				<svg-icon class="social__icon"
 				          name="icon-telegram"/>
@@ -11,6 +12,7 @@
 		<li class="social__item">
 			<a class="social__link"
 			   target="_blank"
+			   rel="nofollow"
 			   href="https://zen.yandex.ru/id/622872e065082b0d5158d13c">
 				<svg-icon class="social__icon"
 				          name="icon-zen"/>
@@ -19,6 +21,7 @@
 		<li class="social__item">
 			<a class="social__link"
 			   target="_blank"
+			   rel="nofollow"
 			   href="https://www.instagram.com/carro.ru/">
 				<svg-icon class="social__icon"
 				          name="icon-instagram"/>
@@ -27,6 +30,7 @@
 		<li class="social__item">
 			<a class="social__link"
 			   target="_blank"
+			   rel="nofollow"
 			   href="https://vk.com/carro_ru">
 				<svg-icon class="social__icon"
 				          name="icon-vk"/>
@@ -35,6 +39,7 @@
 		<li class="social__item">
 			<a class="social__link"
 			   target="_blank"
+			   rel="nofollow"
 			   href="https://ok.ru/group/53415781728323">
 				<svg-icon class="social__icon"
 				          name="icon-ok"/>
@@ -43,6 +48,7 @@
 		<li class="social__item">
 			<a class="social__link"
 			   target="_blank"
+			   rel="nofollow"
 			   href="https://www.tiktok.com/@carro.ru?">
 				<svg-icon class="social__icon"
 				          name="icon-tiktok"/>

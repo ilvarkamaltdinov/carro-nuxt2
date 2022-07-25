@@ -36,6 +36,7 @@
 				                text="Подробнее о дилере" />
 				<a class="button button--show button--show-link"
 				   :href="`${dealer.site}`"
+				   rel="nofollow"
 				   target="_blank">Сайт автоцентра
 				</a>
 			</div>

@@ -11,6 +11,7 @@
 		          class="checkbox__icon" />
 		<span class="form__checkbox-text">{{ label }}
 			<a href="/privacy"
+			   rel="nofollow"
 			   target="_blank">{{ link }}
 			</a>
 		</span>
