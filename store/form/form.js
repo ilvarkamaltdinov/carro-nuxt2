@@ -34,7 +34,7 @@ export const getters = {
     }
 }
 export const actions = {
-    async sendForm({state, commit}, variables) {
+    async sendForm({state, commit, rootState}, variables) {
         await commit('SET_FORM_TYPE', variables.type)
         await commit('SET_BUTTON_DISABLED', true)
         //проверяю тачка ли это так как в колбэке дилера тачки нет
@@ -80,7 +80,7 @@ export const actions = {
 
 
         let assignVariables = {
-            site_id: this.$config.site_id
+            site_id: rootState.site_id
         }
         let client = this.app.apolloProvider.defaultClient
         let params = {...assignVariables, ...variables}

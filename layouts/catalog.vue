@@ -17,10 +17,11 @@ import offerFilters from "@/apollo/queries/offer/offerFilters";
 import offerUrl from "@/apollo/queries/offer/offerUrl";
 import _ from "lodash";
 import utm from "@/mixins/utm";
+import metrika from "@/mixins/metrika";
 
 export default {
 	name: "catalog",
-	mixins:[utm],
+	mixins: [utm, metrika],
 	watch: {
 		'$route'() {
 			this.checkUrl()

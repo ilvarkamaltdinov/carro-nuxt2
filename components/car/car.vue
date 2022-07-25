@@ -71,17 +71,20 @@ export default {
 	},
 	async fetch() {
 		let variables = {
-			site_id: this.$config.site_id,
+			site_id: this.site_id,
 			mark_slug: this.$route.params.mark,
 			folder_slug: this.$route.params.model,
 			dateFormat: 'j F Y года.',
 			external_id: Number(this.$route.params.car)
 		}
 		let response = await this.request({query: offer, variables: variables})
-		this.setOffer(response.data.offer)
+		await this.setOffer(response.data.offer)
+		await this.sendYandexCommercial()
+		await this.sendMyTarget()
 	},
 	computed: {
 		...mapGetters({
+			site_id: 'site_id',
 			offer: 'catalog/catalog-cars/offer',
 			carPageLoaded: 'catalog/catalog-cars/carPageLoaded',
 			benefitsCar: 'benefits/benefitsCar',
@@ -124,6 +127,38 @@ export default {
 			request: 'filters/filters/request',
 			openModal: 'modal/modal-main/openModal'
 		}),
+		sendMyTarget() {
+			if(process.client){
+				let _tmr = _tmr || []
+				_tmr.push({
+					type: 'itemView',
+					productid: this.offer.external_id,
+					pagetype: 'product',
+					list: '1',
+					totalvalue: this.offer.price,
+				})
+			}
+		},
+		sendYandexCommercial() {
+			if (process.client) {
+				dataLayer.push({
+					"ecommerce": {
+						"detail": {
+							"products": [
+								{
+									"id": this.offer.external_id,
+									"name": `${this.offer.name} ${this.offer.price} руб. - ${this.offer.external_id}`,
+									"price": this.offer.price,
+									"brand": this.offer.mark.title,
+									"category": `'С пробегом/${this.offer.mark.title}/${this.offer.folder.title}/${this.offer.name}`,
+									"quantity": 1
+								}
+							]
+						}
+					}
+				})
+			}
+		},
 		callback() {
 			let payload = {
 				modal_data: this.offer,

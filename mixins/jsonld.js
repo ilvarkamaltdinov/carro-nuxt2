@@ -3,12 +3,13 @@ import {mapGetters} from "vuex";
 export default {
     methods: {
         makeUrl(slug) {
-            return this.$config.domain + slug
+            return this.domain + slug
         }
     },
     computed: {
         ...mapGetters({
-            settings: 'settings/settings/settings'
+            settings: 'settings/settings/settings',
+            domain: 'domain'
         })
     },
     jsonld() {
@@ -42,8 +43,8 @@ export default {
             "@context": "https://schema.org",
             "@type": "Organization",
             "name": "carro.ru",
-            "url": this.$config.domain,
-            "logo": this.$config.domain + '/' + '/carro.png',
+            "url": this.domain,
+            "logo": this.domain + '/' + '/carro.png',
             "contactPoint": {
                 "@type": "ContactPoint",
                 "telephone": this.settings.phone,
@@ -66,7 +67,7 @@ export default {
                 "sku": 2918,
                 "offers": {
                     "@type": "Offer",
-                    "url": this.$config.domain + this.$route.fullPath,
+                    "url": this.domain + this.$route.fullPath,
                     "priceCurrency": "RUB",
                     "price": this.offer?.price,
                     "priceValidUntil": "2029-12-31",

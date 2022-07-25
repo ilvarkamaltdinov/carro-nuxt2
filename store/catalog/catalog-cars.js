@@ -29,9 +29,9 @@ export const getters = {
     },
 }
 export const actions = {
-    async getOffer({commit}, payload) {
+    async getOffer({commit, rootState}, payload) {
         let variables = {
-            site_id: $nuxt.context.$config.site_id,
+            site_id: rootState.site_id,
             mark_slug: payload.mark.slug,
             folder_slug: payload.folder.slug,
             external_id: payload.external_id,
@@ -44,9 +44,9 @@ export const actions = {
             })
         commit('SET_OFFER', response.data.offer)
     },
-    async getOffers({commit}, payload) {
+    async getOffers({commit, rootState}, payload) {
         await commit('SET_LOADING', true)
-        let variables = {site_id: $nuxt.context.$config.site_id}
+        let variables = {site_id: rootState.site_id}
         let client = this.app.apolloProvider.defaultClient
         let response = await client.query(
             {
@@ -54,7 +54,6 @@ export const actions = {
                 variables: Object.assign(variables, payload)
             })
         await commit('SET_OFFERS', response.data.offers.data)
-        console.log(123)
         await commit('SET_LOADING', false)
     },
 }

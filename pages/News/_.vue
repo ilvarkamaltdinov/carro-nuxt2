@@ -11,6 +11,7 @@
 <script>
 import article from "@/mixins/article";
 import jsonld from "@/mixins/jsonld";
+import {mapGetters} from "vuex";
 
 export default {
 	mixins: [article, jsonld],
@@ -30,6 +31,11 @@ export default {
 			]
 		}
 	},
+	computed: {
+		...mapGetters({
+			domain: 'domain'
+		})
+	},
 	head() {
 		let title = (this.article.long_title ? this.article.long_title : this.article.page_title) + ' — CARRO'
 		let description_title = this.article.description ? this.article.description : this.article.short_description
@@ -40,7 +46,7 @@ export default {
 			link: [
 				{
 					rel: 'canonical',
-					href: this.$config.domain + this.$route.path
+					href: this.domain + this.$route.path
 				}
 			],
 			meta: [
@@ -57,7 +63,7 @@ export default {
 				{
 					hid: 'og:url',
 					property: 'og:url',
-					content: this.$config.domain + this.$route.path,
+					content: this.domain + this.$route.path,
 				},
 				{
 					hid: 'og:title',
@@ -72,7 +78,7 @@ export default {
 				{
 					hid: 'og:image',
 					property: 'og:image',
-					content: this.article.image_preview ? this.article.image_preview.thumb : this.$config.domain + '/carro.png'
+					content: this.article.image_preview ? this.article.image_preview.thumb : this.domain + '/carro.png'
 				},
 			]
 		}

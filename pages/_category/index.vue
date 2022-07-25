@@ -12,7 +12,6 @@ import seoTags from "@/mixins/seoTags";
 import jsonld from "@/mixins/jsonld";
 
 export default {
-	layout: 'catalog',
 	mixins: [seoTags, jsonld],
 	validate(ctx) {
 		return ctx.params.category === 'used' || ctx.params.category === 'commercial';

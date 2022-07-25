@@ -53,9 +53,9 @@ export const getters = {
     }
 }
 export const actions = {
-    async getModels({commit, state}, payload) {
+    async getModels({commit, state, rootState}, payload) {
         let variables = {
-            site_id: $nuxt.context.$config.site_id,
+            site_id: rootState.site_id,
             mark_slug: state.currentMark.slug
         }
         let client = this.app.apolloProvider.defaultClient
@@ -66,9 +66,9 @@ export const actions = {
             })
         commit('SET_MODELS', response.data.folders)
     },
-    async getGenerations({commit, state}, payload) {
+    async getGenerations({commit, state, rootState}, payload) {
         let variables = {
-            site_id: $nuxt.context.$config.site_id,
+            site_id: rootState.site_id,
             mark_slug: state.currentMark.slug,
             folder_slug: payload.slug
         }
@@ -80,10 +80,10 @@ export const actions = {
             })
         commit('SET_GENERATIONS', response.data.generations)
     },
-    async getOffers({commit, state}) {
+    async getOffers({commit, state, rootState}) {
         commit('SET_LOADING', true)
         let variables = {
-            site_id: $nuxt.context.$config.site_id,
+            site_id: rootState.site_id,
             page: 1,
             limit: 10,
             sort: state.sort,

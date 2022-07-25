@@ -171,9 +171,9 @@ export const actions = {
         }
 
     },
-    async request({}, {query, variables}) {
+    async request({rootState}, {query, variables}) {
         let assignVariables = {
-            site_id: this.$config.site_id
+            site_id: rootState.site_id
         }
         let client = this.app.apolloProvider.defaultClient
         let params = {...assignVariables, ...variables}

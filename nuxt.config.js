@@ -7,7 +7,6 @@ export default {
         meta: [
             {charset: 'UTF-8'},
 
-            {name: 'robots', content: 'noindex, nofollow'},
             {name: 'theme-color', content: 'ED2939'},
             {name: 'http-equiv="X-UA-Compatible', content: 'ie=edge'},
             {name: 'viewport', content: 'width=device-width, initial-scale=1'},
@@ -31,8 +30,9 @@ export default {
         }
     },
     serverMiddleware: {
-        '/feeds': '~/feeds',
-        '/api': '~/feeds'
+        '/feeds': '~/server-middleware/index.js',
+        '/api': '~/server-middleware/index.js',
+        '/robots.txt': '~/server-middleware/robots.js'
     },
     loading: {
         color: '#ED2939',
@@ -91,7 +91,26 @@ export default {
         '@nuxtjs/sitemap',
         '@nuxtjs/svg-sprite',
         '@nuxtjs/redirect-module'
+        // '@nuxtjs/robots'
     ],
+    // robots: () => {
+    //     return {
+    //         UserAgent: '*',
+    //         Disallow: (req) => req.headers.host !== 'carro.ru' ? [
+    //             '/*thanks*', '/*?*'
+    //         ] : '/',
+    //         Allow: (req) => {
+    //             if(req.headers.host === 'carro.ru'){
+    //                return ['*.js', '*.css', '.png', '*.svg', '*.jpg', '*.jpeg', '*.woff', '*.ttf']
+    //             }
+    //         }
+    //         // Disallow: (req) => req.headers.host !== 'carro.ru' ? '/' : '/*thanks*',
+    //         // Disallow: (req) => req.headers.host !== 'carro.ru' ? '/' : '/*thanks*',
+    //         // Allow: (req) => req.headers.host !== 'carro.ru' ? '/' : '*.js*',
+    //         // Be aware that this will NOT work on target: 'static' mode
+    //         // Sitemap: (req) => `https://${req.headers.host}/sitemap.xml`
+    //     }
+    // },
     redirect: [
         {
             from: '^/taxi',
@@ -138,6 +157,9 @@ export default {
         api_domain: process.env.API_DOMAIN,
         api_endpoint: process.env.API_ENDPOINT,
         domain: process.env.DOMAIN,
-        site_id: process.env.SITE_ID
+        domain_carro_rf: process.env.DOMAIN_CARRO_RF,
+        site_id: process.env.SITE_ID,
+        site_id_carro_rf: process.env.SITE_ID_CARRO_RF
+
     }
 }

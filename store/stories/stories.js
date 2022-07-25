@@ -13,9 +13,9 @@ export const getters = {
     }
 }
 export const actions = {
-    async openStories({commit, dispatch}, payload) {
+    async openStories({commit, dispatch, rootState}, payload) {
         let variables = {
-            site_id: $nuxt.context.$config.site_id,
+            site_id: rootState.site_id,
             story_id: payload.id
         }
         let client = this.app.apolloProvider.defaultClient

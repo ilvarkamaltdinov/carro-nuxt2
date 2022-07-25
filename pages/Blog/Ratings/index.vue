@@ -4,7 +4,7 @@
 			<crumbs :crumbs="crumbs" />
 		</div>
 		<div class="grid grid--container">
-			<blog-category-page   title="Рейтинги"/>
+			<blog-category-page title="Рейтинги"/>
 		</div>
 	</main>
 </template>
@@ -18,18 +18,18 @@ export default {
 		return {
 			crumbs: [
 				{
-					name: 'Главная',
-					route: '/',
+					title: 'Главная',
+					link: '/',
 					active: false
 				},
 				{
-					name: 'Блог',
-					route: '/blog',
+					title: 'Блог',
+					link: '/blog',
 					active: false
 				},
 				{
-					name: 'Рейтинги',
-					route: '/blog/ratings',
+					title: 'Рейтинги',
+					link: '/blog/ratings',
 					active: true
 				}
 			]

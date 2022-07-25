@@ -14,7 +14,6 @@ import {mapGetters} from "vuex";
 import seoTags from "@/mixins/seoTags";
 
 export default {
-	layout: 'catalog',
 	mixins: [seoTags],
 	// validate(ctx) {
 	// 	console.log(ctx)

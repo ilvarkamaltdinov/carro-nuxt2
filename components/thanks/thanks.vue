@@ -61,39 +61,48 @@ export default {
 		...mapMutations({
 			clear: 'form/form/CLEAR_DATA'
 		}),
-		sendYandexMetrikaEvent(data) {
-			ym(this.$config.ym, 'reachGoal', data)
+		sendMyTarget() {
+			if (process.client) {
+				let _tmr = _tmr || []
+				_tmr.push({
+					type: 'itemView',
+					productid: this.userCar.external_id,
+					pagetype: 'purchase',
+					list: '1',
+					totalvalue: this.userCar.price,
+				})
+			}
 		},
-		sendMyTarget(){
-			_tmr.push({
-				type: 'itemView',
-				productid: this.params.ecommerceProductsId,
-				pagetype: 'purchase',
-				list: '1',
-				totalvalue: this.params.ecommerceProductsPrice
-			})
-		},
-		sendYandexCommercial(){
-			dataLayer.push( {
-				"ecommerce": {
-					"purchase": {
-						"actionField": {
-							"id" : this.params.ecommerceId,
-							"goal_id" : this.$config.goal_id,
-						},
-						"products": [
-							{
-								"id": this.params.ecommerceProductsId,
-								"name" :   this.params.ecommerceProductsName,
-								"price": this.params.ecommerceProductsPrice,
-								"brand":  this.params.ecommerceProductsBrand,
-								"category" : this.params.ecommerceProductsCategory,
-								"quantity" : this.params.ecommerceProductsQuantity
-							}
-						]
+		sendYandexCommercial() {
+			if (process.client) {
+				window.dataLayer = window.dataLayer || [];
+				dataLayer.push({
+					"ecommerce": {
+						"purchase": {
+							"actionField": {
+								"id": this.userOrderId,
+								"goal_id": this.settings.goal_id,
+							},
+							"products": [
+								{
+									"id": this.userCar.external_id,
+									"name": `${this.userCar.name} ${this.userCar.price} руб. - ${this.userCar.external_id}`,
+									"price": this.userCar.price,
+									"brand": this.userCar.mark.title,
+									"category": `'С пробегом/${this.userCar.mark.title}/${this.userCar.folder.title}/${this.userCar.name}`,
+									"quantity": 1
+								}
+							]
+						}
 					}
-				}
-			})
+				})
+			}
+		}
+	},
+	mounted() {
+		if (this.userCar) {
+			this.sendYandexCommercial()
+			this.sendMyTarget()
 		}
 	},
 	destroyed() {
@@ -101,6 +110,7 @@ export default {
 	},
 	computed: {
 		...mapGetters({
+			settings: 'settings/settings/settings',
 			formType: 'form/form/formType',
 			userName: 'form/form/userName',
 			userCar: 'form/form/userCar',

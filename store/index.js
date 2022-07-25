@@ -2,9 +2,34 @@ export const strict = false
 import marks from '~/apollo/queries/marks'
 import settings from '~/apollo/queries/settings'
 
+export const state = () => ({
+    site_id: null,
+    domain: '',
+})
+export const getters = {
+    site_id: (state) => {
+        return state.site_id
+    },
+    domain: (state) => {
+        return state.domain
+    }
+}
 export const actions = {
 
-    async nuxtServerInit({dispatch, commit}, {app, $config}) {
+    async nuxtServerInit({dispatch, commit, state}, {req, app, $config}) {
+        if (req.headers.host === 'xn--80atnha.xn--p1ai') {
+            commit('SET_SITE_ID', $config.site_id_carro_rf);
+            commit('SET_DOMAIN', $config.domain_carro_rf);
+        } else if(req.headers.host === 'carro.ru'){
+            commit('SET_SITE_ID', $config.site_id);
+            commit('SET_DOMAIN', $config.domain);
+        }
+        //TODO если localhost или dev.carro.ru
+        else {
+            commit('SET_SITE_ID', $config.site_id);
+            commit('SET_DOMAIN', $config.domain);
+        }
+
         let client = app.apolloProvider.defaultClient
         // TODO получаю дефолтный процент тут так как в state нет экземпляра контекста
         commit('banks/SET_PERCENT', $config.default_percent)
@@ -15,7 +40,7 @@ export const actions = {
         let response = await client.query(
             {
                 query: marks,
-                variables: {site_id: $config.site_id, category: 'used'}
+                variables: {site_id: state.site_id, category: 'used'}
             })
         commit('marks/marks/SET_ALL_MARKS', response.data.marks)
 
@@ -24,16 +49,16 @@ export const actions = {
         let settingsResponse = await client.query(
             {
                 query: settings,
-                variables: {site_id: $config.site_id}
+                variables: {site_id: state.site_id}
             })
         settingsResponse.data.settings.settings.map(value => {
             currentSettings[value.key] = value.value
         })
         commit('settings/settings/SET_SETTINGS', currentSettings)
     },
-    async request({}, {query, variables}) {
+    async request({state}, {query, variables}) {
         let assignVariables = {
-            site_id: this.$config.site_id
+            site_id: state.site_id
         }
         let client = this.app.apolloProvider.defaultClient
         let params = {...assignVariables, ...variables}
@@ -44,4 +69,12 @@ export const actions = {
                 fetchPolicy: 'no-cache'
             })
     }
+}
+export const mutations = {
+    SET_SITE_ID(state, data) {
+        state.site_id = data
+    },
+    SET_DOMAIN(state, data) {
+        state.domain = data
+    },
 }
