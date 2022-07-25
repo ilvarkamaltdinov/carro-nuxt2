@@ -74,10 +74,10 @@ export default {
 							name: 'Блог',
 							link: '/blog'
 						},
-						{
-							name: 'Отзывы',
-							link: '/reviews-dealers'
-						},
+						// {
+						// 	name: 'Отзывы',
+						// 	link: '/reviews-dealers'
+						// },
 						{
 							name: 'О портале',
 							link: '/about'
