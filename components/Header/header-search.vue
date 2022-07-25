@@ -31,7 +31,6 @@ export default {
 	},
 	watch: {
 		clearSearchValue() {
-			console.log(1)
 			this.search = ''
 		}
 	},
