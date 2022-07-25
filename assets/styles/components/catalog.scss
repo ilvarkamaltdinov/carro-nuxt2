@@ -149,17 +149,12 @@
 .catalog__tech-item {
   @include font-features;
   color: $colorTextSecondary;
-  margin-right: 8px;
-  margin-bottom: 8px;
-
-  &:nth-child(3n) {
-    margin-right: 0;
-  }
 }
 
 .catalog__tech-list {
   display: flex;
   height: fit-content;
+  gap: 4px 12px;
 }
 
 .catalog__item {
@@ -202,6 +197,12 @@
 
   .catalog__item--small .catalog__tech-item {
     @include font-small;
+    flex-grow: 1;
+
+    &:last-child {
+      flex-grow: 0;
+      flex-shrink: 1;
+    }
   }
 
   .catalog__item {
@@ -267,13 +268,14 @@
 
   .catalog__item--small .catalog__tech-list {
     flex-wrap: nowrap;
-  }
+    gap: 6px;
+    min-width: 0;
 
-  .catalog__item--small .catalog__tech-item {
-    margin-right: 8px;
-
-    &:last-child {
-      margin-right: 0px;
+    &, & > * {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      flex-shrink: 1;
     }
   }
 
