@@ -12,8 +12,19 @@
 			           :offer="offer"
 			           :key="offer.id" />
 		</div>
-		<div v-if="liked_offers.length === 0 && !loading">
-			Нет выбранных автомобилей
+		<div class="not-found__block" v-if="liked_offers.length === 0 && !loading">
+			<p>Нет избранных автомобилей</p>
+			<picture>
+				<source type="image/webp"
+				        media="(min-width: 768px)"
+				        :data-srcset="`${require('~/assets/img/favorites@1x.webp')} 1x, ${require('~/assets/img/favorites@2x.webp')} 2x`" />
+				<source media="(min-width: 768px)"
+				        :data-srcset="`${require('~/assets/img/favorites@1x.png')} 1x, ${require('~/assets/img/favorites@2x.png')} 2x`" />
+				<img class="not-found__img lazyload"
+				     src="~/assets/img/favorites@1x.png"
+				     :data-srcset="`${require('~/assets/img/favorites@2x.png')} 2x`"
+				     alt="404" />
+			</picture>
 		</div>
 		<!--<button-more />-->
 	</section>

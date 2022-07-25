@@ -16,7 +16,7 @@
 			</a>
 		</div>
 		<div class="catalog__info">
-			<catalog-item-title :url="currentUrl" @click="linkClick" :offer="offer" />
+			<catalog-item-title :small="true" :url="currentUrl" @click="linkClick" :offer="offer" />
 			<catalog-item-price :price="offer.price" />
 			<div class="catalog__tech"
 			     :class="{'catalog__tech--no-buttons':!hasButtons}">

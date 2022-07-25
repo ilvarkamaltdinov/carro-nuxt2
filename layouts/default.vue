@@ -12,9 +12,11 @@
 </template>
 <script>
 import {mapActions, mapMutations} from "vuex";
+import utm from "@/mixins/utm";
 
 export default {
 	name: "default",
+	mixins:[utm],
 	methods: {
 		...mapActions({
 			closeStories: 'stories/stories/closeStories',

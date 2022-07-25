@@ -2,17 +2,19 @@
 	<form class="form application__form grid__col-4"
 	      @submit.prevent="submitForm()">
 		<fieldset class="form__fieldset">
-			<label
-					:class="{'form__field-wrap--car-active' : currentCar, 'form__field-wrap--error':error === 'invalid_car'}"
-					class="form__field-wrap form__field-wrap--car ">
-				<button class="form__field"
-				        @click.prevent="choseCar()">
-					
-					{{ currentCar ? currentCar.name : 'Выбрать автомобиль' }}
-				
-				</button>
-				<svg-icon name="icon-form"
-				          class="icon form__car-icon" />
+			<label class="form__field-wrap"
+			       :class="markClass">
+				<inputs-input placeholder="Марка"
+				              @input="handlerInput('mark')"
+				              v-model="form.mark.value"
+				              type="text" />
+			</label>
+			<label class="form__field-wrap"
+			       :class="modelClass">
+				<inputs-input placeholder="Модель"
+				              @input="handlerInput('model')"
+				              v-model="form.model.value"
+				              type="text" />
 			</label>
 			<label class="form__field-wrap form__field-wrap--select"
 			       :class="yearClass">
@@ -64,12 +66,12 @@
 				              type="tel" />
 			</label>
 			<checkbox-form :error="error === 'agreeRf'"
-			          @change="changeCheckbox($event,'agreeRf')"
-			          label="Подтверждаю наличие гражданства РФ" />
+			               @change="changeCheckbox($event,'agreeRf')"
+			               label="Подтверждаю наличие гражданства РФ" />
 			<checkbox-form :error="error === 'agree'"
-			          @change="changeCheckbox($event,'agree')"
-			          label="Согласен на"
-			          link="обработку личных данных" />
+			               @change="changeCheckbox($event,'agree')"
+			               label="Согласен на"
+			               link="обработку личных данных" />
 		</fieldset>
 		<button-typical text="Оставить заявку"
 		                button-class="button--credit button--form" />
@@ -81,12 +83,12 @@ import formValidation from "@/mixins/formValidation";
 
 export default {
 	mixins: [formValidation],
-	data(){
-		return{
-			error:''
+	data() {
+		return {
+			error: ''
 		}
 	},
-	computed:{
+	computed: {
 		...mapGetters({
 			currentCar: 'modal/modal-choose/currentCar',
 		})
@@ -118,24 +120,36 @@ export default {
 				this.form.model.valid = false
 				return false
 			}
-			if (this.form.year.value === 'Год') {
+			if (this.form.year.value === 'Год от') {
 				this.form.year.valid = false
 				return false
 			}
-			if (this.form.run.value.length < 1) {
-				this.form.run.valid = false
-				return false
-			}
+			// if (this.form.gearbox.value === 'КПП') {
+			// 	this.form.gearbox.valid = false
+			// 	return false
+			// }
+			// if (this.form.engineType.value === 'Двигатель') {
+			// 	this.form.engineType.valid = false
+			// 	return false
+			// }
+			// if (this.form.price.value.length < 2) {
+			// 	this.form.price.valid = false
+			// 	return false
+			// }
 			if (this.form.name.value.length < 2) {
 				this.form.name.valid = false
 				return false
 			}
-			if (this.form.date.value === '' || this.form.date.value.split('_').length > 1) {
-				this.form.date.valid = false
-				return false
-			}
 			if (!this.form.phone.valid) {
 				this.form.phone.valid = false
+				return false
+			}
+			if (!this.form.agree) {
+				this.error = 'agree'
+				return false
+			}
+			if (!this.form.agreeRf) {
+				this.error = 'agreeRf'
 				return false
 			}
 			return true;
@@ -143,11 +157,21 @@ export default {
 		async submitForm() {
 			if (this.checkForm()) {
 				let formData = {
-					chosen_car: this.currentCar || this.offer, //нужно для страницы thanks
-					external_id: this.hasChose ? this.currentCar.external_id : this.offer.external_id,
-					type: 'select',
+					type: 'paid-selection',
+					client_vehicle_mark: this.form.mark.value,
+					client_vehicle_model: this.form.model.value,
+					client_vehicle_year: this.form.year.value.toString(),
+					client_vehicle_engine: this.form.engineType.value,
+					client_vehicle_gearbox: this.form.gearbox.value,
+					client_vehicle_price: this.form.price.value,
 					client_name: this.form.name.value,
 					client_phone: this.form.phone.value,
+					// utm
+					utm_source: localStorage.utm_source || '',
+					utm_medium: localStorage.utm_medium || '',
+					utm_campaign: localStorage.utm_campaign || '',
+					utm_term: localStorage.utm_term || '',
+					utm_content: localStorage.utm_content || ''
 				}
 				await this.sendForm(formData)
 			}
