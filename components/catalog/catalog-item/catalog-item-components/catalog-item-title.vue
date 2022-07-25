@@ -6,9 +6,7 @@
 				   @click.prevent="$emit('click')"
 				   class="catalog__title-link">
 					<span class="catalog__title">
-						{{ offer.mark.title }} {{ offer.folder.title }}
-						<span v-if="!small">
-							, {{ offer.engine_volume | engineVolume }}
+						{{ offer.mark.title }} {{ offer.folder.title }}<span v-if="!small">, {{ offer.engine_volume | engineVolume }}
 						</span>
 					</span>
 					<span class="catalog__year">

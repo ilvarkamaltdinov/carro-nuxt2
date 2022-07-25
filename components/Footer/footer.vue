@@ -42,31 +42,27 @@
 				<ul class="page-footer__links-list">
 					<li class="page-footer__links-item">
 						<nuxt-link to="/about"
-						           class="page-footer__link"
-						           href="">О портале
+						           class="page-footer__link">О портале
 						</nuxt-link>
 					</li>
 					<li class="page-footer__links-item">
 						<nuxt-link to="/blog"
-						           class="page-footer__link"
-						           href="">Блог
+						           class="page-footer__link">Блог
 						</nuxt-link>
 					</li>
 					<li class="page-footer__links-item">
 						<nuxt-link to="/contacts"
-						           class="page-footer__link"
-						           href="">Контакты
+						           class="page-footer__link">Контакты
 						</nuxt-link>
 					</li>
 					<li class="page-footer__links-item">
 						<nuxt-link to="/contact"
-						           class="page-footer__link"
-						           href="">Автосалоны-партнеры
+						           class="page-footer__link">Автосалоны-партнеры
 						</nuxt-link>
 					</li>
 					<!--<li class="page-footer__links-item">-->
-					<!--	<a class="page-footer__link"-->
-					<!--	   href="">Вакансии-->
+					<!--	<a class="page-footer__link">-->
+					<!-- Вакансии-->
 					<!--	</a>-->
 					<!--</li>-->
 					<li class="page-footer__links-item">
