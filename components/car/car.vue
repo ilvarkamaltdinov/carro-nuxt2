@@ -128,8 +128,7 @@ export default {
 			openModal: 'modal/modal-main/openModal'
 		}),
 		sendMyTarget() {
-			if(process.client){
-				let _tmr = _tmr || []
+			if (process.client){
 				_tmr.push({
 					type: 'itemView',
 					productid: this.offer.external_id,

@@ -63,7 +63,6 @@ export default {
 		}),
 		sendMyTarget() {
 			if (process.client) {
-				let _tmr = _tmr || []
 				_tmr.push({
 					type: 'itemView',
 					productid: this.userCar.external_id,
@@ -75,7 +74,6 @@ export default {
 		},
 		sendYandexCommercial() {
 			if (process.client) {
-				window.dataLayer = window.dataLayer || [];
 				dataLayer.push({
 					"ecommerce": {
 						"purchase": {
@@ -86,7 +84,7 @@ export default {
 							"products": [
 								{
 									"id": this.userCar.external_id,
-									"name": `${this.userCar.name} ${this.userCar.price} руб. - ${this.userCar.external_id}`,
+									"name": `${this.userCar.mark.title} ${this.userCar.folder.title}, ${this.userCar.year} года, ${this.userCar.gearbox.title} ${this.userCar.price} руб. - ${this.userCar.external_id}`,
 									"price": this.userCar.price,
 									"brand": this.userCar.mark.title,
 									"category": `'С пробегом/${this.userCar.mark.title}/${this.userCar.folder.title}/${this.userCar.name}`,

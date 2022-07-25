@@ -13,14 +13,8 @@ export default {
         },
     },
     mounted() {
-        let noscript = document.createElement("noscript");
-        noscript.innerHTML = `<div>
-    <img src="https://top-fwz1.mail.ru/counter?id=${this.settings.mytarget};js=na" style="border:0;position:absolute;left:-9999px;" alt="Top.Mail.Ru" />
-  </div>`
         let ym_script = document.createElement("script");
         ym_script.innerHTML = `
-               
-      var _tmr = window._tmr || (window._tmr = []);
       _tmr.push({id: "${this.settings.mytarget}", type: "pageView", start: (new Date()).getTime(), pid: "USER_ID"});
       (function (d, w, id) {
         if (d.getElementById(id)) return;
@@ -30,7 +24,6 @@ export default {
         if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
       })(document, window, "topmailru-code");
         
-        window.dataLayer = window.dataLayer || [];
         (function(m, e, t, r, i, k, a) {
                 m[i] = m[i] || function() {
                     (m[i].a = m[i].a || []).push(arguments)
@@ -49,7 +42,6 @@ export default {
             });
         `;
         document.head.appendChild(ym_script);
-        document.head.appendChild(noscript);
 
     }
 }
