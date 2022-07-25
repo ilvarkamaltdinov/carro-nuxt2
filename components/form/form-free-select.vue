@@ -64,12 +64,12 @@
 				              type="tel" />
 			</label>
 			<checkbox-form :error="error === 'agreeRf'"
-			          @change="changeCheckbox($event,'agreeRf')"
-			          label="Подтверждаю наличие гражданства РФ" />
+			               @change="changeCheckbox($event,'agreeRf')"
+			               label="Подтверждаю наличие гражданства РФ" />
 			<checkbox-form :error="error === 'agree'"
-			          @change="changeCheckbox($event,'agree')"
-			          label="Согласен на"
-			          link="обработку личных данных" />
+			               @change="changeCheckbox($event,'agree')"
+			               label="Согласен на"
+			               link="обработку личных данных" />
 		</fieldset>
 		<button-typical text="Оставить заявку"
 		                button-class="button--credit button--form" />
@@ -81,12 +81,12 @@ import formValidation from "@/mixins/formValidation";
 
 export default {
 	mixins: [formValidation],
-	data(){
-		return{
-			error:''
+	data() {
+		return {
+			error: ''
 		}
 	},
-	computed:{
+	computed: {
 		...mapGetters({
 			currentCar: 'modal/modal-choose/currentCar',
 		})
@@ -110,32 +110,41 @@ export default {
 			this.openModal(payload)
 		},
 		checkForm() {
-			if (this.form.mark.value.length < 2) {
-				this.form.mark.valid = false
+			if (!this.currentCar) {
+				this.error = 'invalid_car'
+				window.scrollTo(0, 0)
 				return false
 			}
-			if (this.form.model.value.length < 1) {
-				this.form.model.valid = false
-				return false
-			}
-			if (this.form.year.value === 'Год') {
+			if (this.form.year.value === 'Год от') {
 				this.form.year.valid = false
 				return false
 			}
-			if (this.form.run.value.length < 1) {
-				this.form.run.valid = false
-				return false
-			}
+			// if (this.form.gearbox.value === 'КПП') {
+			// 	this.form.gearbox.valid = false
+			// 	return false
+			// }
+			// if (this.form.engineType.value === 'Двигатель') {
+			// 	this.form.engineType.valid = false
+			// 	return false
+			// }
+			// if (this.form.price.value.length < 2) {
+			// 	this.form.price.valid = false
+			// 	return false
+			// }
 			if (this.form.name.value.length < 2) {
 				this.form.name.valid = false
 				return false
 			}
-			if (this.form.date.value === '' || this.form.date.value.split('_').length > 1) {
-				this.form.date.valid = false
-				return false
-			}
 			if (!this.form.phone.valid) {
 				this.form.phone.valid = false
+				return false
+			}
+			if (!this.form.agree) {
+				this.error = 'agree'
+				return false
+			}
+			if (!this.form.agreeRf) {
+				this.error = 'agreeRf'
 				return false
 			}
 			return true;
@@ -144,10 +153,11 @@ export default {
 			if (this.checkForm()) {
 				let formData = {
 					chosen_car: this.currentCar || this.offer, //нужно для страницы thanks
-					external_id: this.hasChose ? this.currentCar.external_id : this.offer.external_id,
+					external_id: this.currentCar.external_id,
 					type: 'select',
 					client_name: this.form.name.value,
 					client_phone: this.form.phone.value,
+					client_vehicle_year: this.form.year.value
 				}
 				await this.sendForm(formData)
 			}

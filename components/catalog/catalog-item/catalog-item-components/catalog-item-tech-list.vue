@@ -1,16 +1,13 @@
 <template>
 	<ul class="catalog__tech-list">
 		<li class="catalog__tech-item"
-		    v-if="small">{{ offer.year }}
-		</li>
-		<li class="catalog__tech-item"
 		    v-if="small">{{ offer.engine_volume | engineVolume }} л.
 		</li>
 		<li class="catalog__tech-item"
 		    v-if="!small">{{ offer.run | run }} км
 		</li>
-		<li class="catalog__tech-item"
-		    v-if="!small">{{ offer.engine_volume | engineVolume }} / {{ offer.engine_power }} л.с.
+		<li class="catalog__tech-item">
+			{{ offer.engine_power }} л.с.
 		</li>
 		<li class="catalog__tech-item">{{ currentGerabox }}</li>
 		<li class="catalog__tech-item"
@@ -36,8 +33,8 @@ export default {
 			gearbox: {
 				'mechanical': 'МКПП',
 				'cvt': 'Вариатор',
-				'robot':'Робот',
-				'automatic':'АКПП',
+				'robot': 'Робот',
+				'automatic': 'АКПП',
 			}
 			
 		}

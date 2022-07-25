@@ -47,13 +47,13 @@ export default {
 	data() {
 		return {
 			titles: {
-				credit: 'Автокредит предварительно одобрен',
-				buyout: 'Заявка на выкуп автомобиля',
-				callback: 'Обратный звонок',
-				select: 'Заявка на автоподбор',
+				'credit': 'Автокредит предварительно одобрен',
+				'buyout': 'Заявка на выкуп автомобиля',
+				'callback': 'Обратный звонок',
+				'select': 'Заявка на автоподбор',
 				'trade-in': 'TradeIn предварительно одобрен',
 				'hire-purchase': 'Рассрочка предварительно одобрена',
-				station: 'Заявка на услугу',
+				'station': 'Заявка на услугу',
 			},
 		}
 	},
@@ -84,7 +84,7 @@ export default {
 				'credit': `
 						<p class="text__p"> ${this.userName}, автомобиль ${this.userCar?.mark.title}
 						${this.userCar?.folder.title}
-						${this.userCar?.generation.name}
+						${this.userCar?.generation?.name}
 						${this.userCar?.engine_volume}
 						${this.userCar?.gearbox.title}
 						(${this.userCar?.engine_power} л.с.)
@@ -97,7 +97,7 @@ export default {
 				'trade-in': `
 						<p class="text__p"> ${this.userName}, автомобиль ${this.userCar?.mark.title}
 						${this.userCar?.folder.title}
-						${this.userCar?.generation.name}
+						${this.userCar?.generation?.name}
 						${this.userCar?.engine_volume}
 						${this.userCar?.gearbox.title}
 						(${this.userCar?.engine_power} л.с.)
@@ -110,7 +110,7 @@ export default {
 				'hire-purchase': `
 						<p class="text__p"> ${this.userName}, автомобиль ${this.userCar?.mark.title}
 						${this.userCar?.folder.title}
-						${this.userCar?.generation.name}
+						${this.userCar?.generation?.name}
 						${this.userCar?.engine_volume}
 						${this.userCar?.gearbox.title}
 						(${this.userCar?.engine_power} л.с.)
@@ -127,6 +127,9 @@ export default {
 						<p class="text__p"> ${this.userName}, благодарим за обращение. Ваша заявка - <b>#${this.userOrderId}</b>.</p>
 						<p class="text__p"> Менеджер свяжется с вами в ближайшее время. Спасибо, что выбрали нас!</p>`,
 				'station': `
+						<p class="text__p"> ${this.userName}, благодарим за обращение. Ваша заявка - <b>#${this.userOrderId}</b>.</p>
+						<p class="text__p"> Менеджер свяжется с вами в ближайшее время. Спасибо, что выбрали нас!</p>`,
+				'select': `
 						<p class="text__p"> ${this.userName}, благодарим за обращение. Ваша заявка - <b>#${this.userOrderId}</b>.</p>
 						<p class="text__p"> Менеджер свяжется с вами в ближайшее время. Спасибо, что выбрали нас!</p>`,
 			}

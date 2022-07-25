@@ -5,7 +5,7 @@
 			<picture>
 				<source media="(min-width: 768px)"
 				        type="image/webp"
-				        data-srcset="~/assets/img/logo-footer@2x.webp" />
+				        :data-srcset="require('~/assets/img/logo-footer@2x.webp')" />
 				<source media="(min-width: 768px)"
 				        :data-srcset="`${require('~/assets/img/logo-footer@1x.png')} 1x, ${require('~/assets/img/logo-footer@2x.png')} 2x`" />
 				<img class="page-footer__logo-img lazyload"
