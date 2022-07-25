@@ -35,7 +35,7 @@
 							<div class="features__item-type">Телефон автоцентра:</div>
 							<div class="features__item-content">
 								<a class="features__link"
-								   href="tel:+78007002211">{{ modalData.phone }}
+								   :href="`tel:${modalData.phone}`">{{ modalData.phone }}
 								</a>
 							</div>
 						</li>
@@ -43,8 +43,7 @@
 				</div>
 				<div class="features__group">
 					<h3 class="heading heading--h3">Об автоцентре:</h3>
-					<p class="features__item">{{ modalData.description }}
-					</p>
+					<p class="about-dealer__text" v-html="modalData.description "></p>
 				</div>
 			</div>
 			<div class="modal__dealer-photos">
