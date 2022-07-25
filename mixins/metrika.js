@@ -34,6 +34,7 @@ export default {
             (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
             ym(${this.settings.ym}, "init", {
+                defer: true,
                 clickmap: true,
                 trackLinks: true,
                 accurateTrackBounce: true,
