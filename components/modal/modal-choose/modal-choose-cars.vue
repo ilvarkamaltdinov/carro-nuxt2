@@ -47,18 +47,27 @@ export default {
 		}),
 		skeleton(){
 			if(this.view === 's'){
-				return 'skeleton-card-small'
+				if(this.$device.isMobile){
+					return 'skeleton-card-large'
+				} else{
+					return 'skeleton-card-small'
+				}
 			} else {
-				return 'skeleton-card-large'
+				if(this.$device.isMobile){
+					return 'skeleton-card-small'
+				}else{
+					return 'skeleton-card-large'
+				}
+			
 			}
 		
 		},
 		component() {
 			if(this.view === 's'){
-				return this.$device.isMobile ? 'catalog-item-small-mobile' : 'catalog-item-small-desktop'
+				return this.$device.isMobile ? 'catalog-item-large-mobile' : 'catalog-item-small-desktop'
 			}
 			else{
-				return this.$device.isMobile ? 'catalog-item-large-mobile' : 'catalog-item-large-desktop'
+				return this.$device.isMobile ? 'catalog-item-small-mobile' : 'catalog-item-large-desktop'
 			}
 		}
 	}

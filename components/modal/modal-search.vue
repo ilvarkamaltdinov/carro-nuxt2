@@ -11,6 +11,7 @@
 						<nuxt-link class="search__link"
 						           @click.native="searchClick"
 						           :to="`/used/${item.slug}`">
+							<svg-icon class="search__icon":name="`icon-${item.slug}`"/>
 							<div class="search__text">
 								<div class="search__heading">{{ item.title }}</div>
 								<div class="search__content">С пробегом</div>

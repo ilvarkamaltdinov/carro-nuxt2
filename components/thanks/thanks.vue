@@ -60,7 +60,41 @@ export default {
 	methods: {
 		...mapMutations({
 			clear: 'form/form/CLEAR_DATA'
-		})
+		}),
+		sendYandexMetrikaEvent(data) {
+			ym(this.$config.ym, 'reachGoal', data)
+		},
+		sendMyTarget(){
+			_tmr.push({
+				type: 'itemView',
+				productid: this.params.ecommerceProductsId,
+				pagetype: 'purchase',
+				list: '1',
+				totalvalue: this.params.ecommerceProductsPrice
+			})
+		},
+		sendYandexCommercial(){
+			dataLayer.push( {
+				"ecommerce": {
+					"purchase": {
+						"actionField": {
+							"id" : this.params.ecommerceId,
+							"goal_id" : this.$config.goal_id,
+						},
+						"products": [
+							{
+								"id": this.params.ecommerceProductsId,
+								"name" :   this.params.ecommerceProductsName,
+								"price": this.params.ecommerceProductsPrice,
+								"brand":  this.params.ecommerceProductsBrand,
+								"category" : this.params.ecommerceProductsCategory,
+								"quantity" : this.params.ecommerceProductsQuantity
+							}
+						]
+					}
+				}
+			})
+		}
 	},
 	destroyed() {
 		this.clear()

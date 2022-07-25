@@ -30,23 +30,28 @@
 				              type="tel" />
 			</label>
 			<checkbox-form @change="changeCheckbox($event,'agreeRf')"
-			          label="Подтверждаю наличие гражданства РФ" />
+			               label="Подтверждаю наличие гражданства РФ" />
 			<checkbox-form @change="changeCheckbox($event,'agree')"
-			          label="Согласен на"
-								link="обработку личных данных"/>
+			               label="Согласен на"
+			               link="обработку личных данных" />
 		</fieldset>
 		<button-typical text="Перезвоните мне"
 		                button-class="button--credit button--form" />
 	</form>
 </template>
 <script>
-import {mapActions} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 import formValidation from "@/mixins/formValidation";
 
 export default {
 	mixins: [formValidation],
 	props: {
 		offer: Object
+	},
+	computed: {
+		...mapGetters({
+			modalData: 'modal/modal-main/modalData'
+		})
 	},
 	methods: {
 		...mapActions({
@@ -83,6 +88,7 @@ export default {
 					client_name: this.form.name.value,
 					client_phone: this.form.phone.value,
 					client_age: this.form.date.value,
+					comment: 'Заявка на услугу '+ this.modalData.title,
 					// utm
 					utm_source: localStorage.utm_source || '',
 					utm_medium: localStorage.utm_medium || '',
