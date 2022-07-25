@@ -6,7 +6,7 @@ export default {
         },
         meta: [
             {charset: 'UTF-8'},
-
+            {name: 'yandex-verification', content: 'f70bc9bad3cb4352'},
             {name: 'theme-color', content: 'ED2939'},
             {name: 'http-equiv="X-UA-Compatible', content: 'ie=edge'},
             {name: 'viewport', content: 'width=device-width, initial-scale=1'},
