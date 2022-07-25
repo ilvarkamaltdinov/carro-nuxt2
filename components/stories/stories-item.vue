@@ -10,7 +10,7 @@
 				<source media="(min-width: 768px)"
 				        :data-srcset="`${story.image.tiny} 1x, ${story.image.thumb} 2x`" />
 				<img class="stories__img lazyload"
-				     data-src="~/assets/img/logo-footer@1x.png"
+				     :data-src="`${story.image.tiny}`"
 				     :data-srcset="`${story.image.thumb_webp} 2x`"
 				     alt="stories-image" />
 			</picture>
