@@ -147,7 +147,7 @@ export default {
 							"products": [
 								{
 									"id": this.offer.external_id,
-									"name": `${this.offer.name} ${this.offer.price} руб. - ${this.offer.external_id}`,
+									"name": `${this.offer.mark.title} ${this.offer.folder.title}, ${this.offer.year} года, ${this.offer.gearbox.title} ${this.offer.price} руб. - ${this.offer.external_id}`,
 									"price": this.offer.price,
 									"brand": this.offer.mark.title,
 									"category": `'С пробегом/${this.offer.mark.title}/${this.offer.folder.title}/${this.offer.name}`,
