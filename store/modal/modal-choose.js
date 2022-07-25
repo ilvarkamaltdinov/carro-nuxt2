@@ -87,8 +87,8 @@ export const actions = {
             page: 1,
             limit: 10,
             sort: state.sort,
-            mark_slug: state.currentMark.slug,
-            folder_slug: state.currentModel.slug,
+            mark_slug_array: [state.currentMark.slug],
+            folder_slug_array: [state.currentModel.slug],
             generation_slug: state.currentGeneration.slug
         }
         let client = this.app.apolloProvider.defaultClient
