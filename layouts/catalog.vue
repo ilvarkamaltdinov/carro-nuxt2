@@ -16,9 +16,11 @@ import {mapActions, mapGetters, mapMutations} from "vuex"
 import offerFilters from "@/apollo/queries/offer/offerFilters";
 import offerUrl from "@/apollo/queries/offer/offerUrl";
 import _ from "lodash";
+import utm from "@/mixins/utm";
 
 export default {
 	name: "catalog",
+	mixins:[utm],
 	watch: {
 		'$route'() {
 			this.checkUrl()

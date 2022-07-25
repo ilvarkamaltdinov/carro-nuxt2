@@ -2,17 +2,19 @@
 	<form class="form application__form grid__col-4"
 	      @submit.prevent="submitForm()">
 		<fieldset class="form__fieldset">
-			<label
-					:class="{'form__field-wrap--car-active' : currentCar, 'form__field-wrap--error':error === 'invalid_car'}"
-					class="form__field-wrap form__field-wrap--car ">
-				<button class="form__field"
-				        @click.prevent="choseCar()">
-					
-					{{ currentCar ? currentCar.name : 'Выбрать автомобиль' }}
-				
-				</button>
-				<svg-icon name="icon-form"
-				          class="icon form__car-icon" />
+			<label class="form__field-wrap"
+			       :class="markClass">
+				<inputs-input placeholder="Марка"
+				              @input="handlerInput('mark')"
+				              v-model="form.mark.value"
+				              type="text" />
+			</label>
+			<label class="form__field-wrap"
+			       :class="modelClass">
+				<inputs-input placeholder="Модель"
+				              @input="handlerInput('model')"
+				              v-model="form.model.value"
+				              type="text" />
 			</label>
 			<label class="form__field-wrap form__field-wrap--select"
 			       :class="yearClass">
@@ -110,9 +112,12 @@ export default {
 			this.openModal(payload)
 		},
 		checkForm() {
-			if (!this.currentCar) {
-				this.error = 'invalid_car'
-				window.scrollTo(0, 0)
+			if (this.form.mark.value.length < 2) {
+				this.form.mark.valid = false
+				return false
+			}
+			if (this.form.model.value.length < 1) {
+				this.form.model.valid = false
 				return false
 			}
 			if (this.form.year.value === 'Год от') {
@@ -152,12 +157,21 @@ export default {
 		async submitForm() {
 			if (this.checkForm()) {
 				let formData = {
-					chosen_car: this.currentCar || this.offer, //нужно для страницы thanks
-					external_id: this.currentCar.external_id,
-					type: 'select',
+					type: 'paid-selection',
+					client_vehicle_mark: this.form.mark.value,
+					client_vehicle_model: this.form.model.value,
+					client_vehicle_year: this.form.year.value.toString(),
+					client_vehicle_engine: this.form.engineType.value,
+					client_vehicle_gearbox: this.form.gearbox.value,
+					client_vehicle_price: this.form.price.value,
 					client_name: this.form.name.value,
 					client_phone: this.form.phone.value,
-					client_vehicle_year: this.form.year.value
+					// utm
+					utm_source: localStorage.utm_source || '',
+					utm_medium: localStorage.utm_medium || '',
+					utm_campaign: localStorage.utm_campaign || '',
+					utm_term: localStorage.utm_term || '',
+					utm_content: localStorage.utm_content || ''
 				}
 				await this.sendForm(formData)
 			}

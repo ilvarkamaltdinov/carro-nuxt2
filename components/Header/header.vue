@@ -6,7 +6,7 @@
 					<label class="page-header__toggle hamburger"
 					       @change="burgerClick()"
 					       for="hamburger"
-                 tabindex="0">
+					       tabindex="0">
 						<input id="hamburger"
 						       :checked="modalMenu"
 						       type="checkbox" />
@@ -30,18 +30,7 @@
 							     class="page-header__logo-letters">
 						</div>
 					</nuxt-link>
-					<div class="page-header__search page-header__search--form form">
-						<label class="form__field-wrap form__field-wrap--search"
-						       for="filter-search">
-							<input class="form__field"
-							       id="filter-search"
-							       type="search"
-							       placeholder="Поиск по маркам"
-							       value="" />
-							<svg-icon class="form__icon-search icon"
-							          name="icon-search" />
-						</label>
-					</div>
+					<header-search />
 				</div>
 				<nav class="main-nav page-header__nav page-header__nav--desktop">
 					<site-list-desktop />
@@ -49,11 +38,11 @@
 				<ul class="page-header__buttons">
 					<li class="page-header__buttons-item"
 					    v-if="$device.isMobile">
-						<a class="page-header__buttons-link"
-						   href="">
+						<div @click="setMobileSearch(!mobileSearch)"
+						     class="page-header__buttons-link">
 							<svg-icon class="icon"
 							          name="icon-search" />
-						</a>
+						</div>
 					</li>
 					<li class="page-header__buttons-item">
 						<nuxt-link to="/favorites"
@@ -79,7 +68,7 @@
 				           :to="backButton.link"
 				           class="page-header__back">
 					<span>
-						{{backButton.title}}
+						{{ backButton.title }}
 					</span>
 					<svg-icon class="page-header__back-arrow"
 					          name="icon-arrow" />
@@ -115,6 +104,9 @@
 		<transition name="menu">
 			<modal-menu v-show="modalMenu" />
 		</transition>
+		<transition name="menu">
+			<modal-search v-show="modalSearch" />
+		</transition>
 	</header>
 </template>
 <script>
@@ -132,13 +124,15 @@ export default {
 		...mapGetters({
 			modalMenu: 'modal/modal-menu/modalMenu',
 			modalMarks: 'modal/modal-marks/modalMarks',
+			modalSearch: 'modal/modal-search/modalSearch',
 			allMarks: 'marks/marks/allMarks',
 			likesArray: 'favorite/favorite/likesArray',
 			settings: 'settings/settings/settings',
 			componentCatalog: 'filters/filters/componentCatalog',
 			marks: 'marks/marks/allMarks',
 			folders: 'folders/folders/folders',
-			backButton: 'header/header/backButton'
+			backButton: 'header/header/backButton',
+			mobileSearch: 'modal/modal-search/mobileSearch'
 		}),
 		currentMark() {
 			return this.marks.filter(item => this.$route.params.mark === item.slug)[0]
@@ -165,6 +159,7 @@ export default {
 		...mapMutations({
 			setModalMenu: 'modal/modal-menu/setModalMenu',
 			setModalMarks: 'modal/modal-marks/setModalMarks',
+			setMobileSearch: 'modal/modal-search/setMobileSearch'
 		}),
 		burgerClick() {
 			this.setModalMenu(!this.modalMenu)

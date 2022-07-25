@@ -82,7 +82,13 @@ export default {
 					type: 'station',
 					client_name: this.form.name.value,
 					client_phone: this.form.phone.value,
-					client_age: this.form.date.value
+					client_age: this.form.date.value,
+					// utm
+					utm_source: localStorage.utm_source || '',
+					utm_medium: localStorage.utm_medium || '',
+					utm_campaign: localStorage.utm_campaign || '',
+					utm_term: localStorage.utm_term || '',
+					utm_content: localStorage.utm_content || ''
 				}
 				await this.closeModal()
 				await this.sendForm(formData)

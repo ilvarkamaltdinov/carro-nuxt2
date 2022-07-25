@@ -38,7 +38,7 @@ export const actions = {
         await commit('SET_FORM_TYPE', variables.type)
         await commit('SET_BUTTON_DISABLED', true)
         //проверяю тачка ли это так как в колбэке дилера тачки нет
-        if (variables.type !== 'buyout' && variables.type !== 'station') {
+        if (variables.type !== 'buyout' && variables.type !== 'station' && variables.type !== 'paid-selection') {
             if (variables.chosen_car.mark) {
                 await commit('SET_USER_CAR', variables.chosen_car)
                 delete variables.chosen_car // Удаляю тачку чтобы не ушла на сервак
@@ -67,7 +67,7 @@ export const actions = {
         if (variables.type === 'buyout') {
             await this.app.router.push('/buyout-thanks');
         }
-        if (variables.type === 'select') {
+        if (variables.type === 'paid-selection') {
             await this.app.router.push('/selection-thanks');
         }
         if (variables.type === 'hire-purchase') {
@@ -82,17 +82,17 @@ export const actions = {
         let assignVariables = {
             site_id: this.$config.site_id
         }
-        // let client = this.app.apolloProvider.defaultClient
-        // let params = {...assignVariables, ...variables}
-        // await client.mutate({
-        //     mutation: feedback,
-        //     variables: this.$removeEmptyObjects(params)
-        // }).then(({data}) => {
-        //     commit('SET_BUTTON_DISABLED', false)
-        //     commit('SET_ORDER_ID', data.feedback.id)
-        // }).catch(error => {
-        //     console.log(error)
-        // })
+        let client = this.app.apolloProvider.defaultClient
+        let params = {...assignVariables, ...variables}
+        await client.mutate({
+            mutation: feedback,
+            variables: this.$removeEmptyObjects(params)
+        }).then(({data}) => {
+            commit('SET_BUTTON_DISABLED', false)
+            commit('SET_ORDER_ID', data.feedback.id)
+        }).catch(error => {
+            console.log(error)
+        })
     }
 }
 export const mutations = {
