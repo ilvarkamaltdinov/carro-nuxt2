@@ -8,6 +8,7 @@
 				    role="tablist">
 					<li role="presentation"
 					    class="tabs__item"
+					    :ref="'tab' + index"
 					    v-for="(tab, index) in tabs"
 					    :key="index+1"
 					    v-show="tab.showButton"
@@ -169,7 +170,7 @@
 								        :max="5" />
 							</template>
 						</tippy>
-
+					
 					</div>
 					<div class="car__info-options features">
 						<div class="features__group">
@@ -256,6 +257,16 @@ export default {
 			openModal: 'modal/modal-main/openModal',
 			request: 'request'
 		}),
+		scrollTo(el) {
+			const elLeft = el.offsetLeft + el.offsetWidth;
+			const elParentLeft = el.parentNode.offsetLeft + el.parentNode.offsetWidth;
+			// check if element not in view
+			if (elLeft >= elParentLeft + el.parentNode.scrollLeft) {
+				el.parentNode.scrollLeft = elLeft - elParentLeft;
+			} else{
+				el.parentNode.scrollLeft = 0;
+			}
+		},
 		tabClick(tab) {
 			this.activeTab = tab
 			this.carInfoSwiper.slideTo(tab)
@@ -295,7 +306,15 @@ export default {
 				autoHeight: true,
 				on: {
 					slideChange: (event) => {
-						this.activeTab = event.activeIndex
+						if (event.activeIndex === 4) {
+							this.activeTab = 1
+						} else if (event.activeIndex === 0) {
+							this.activeTab = 3
+						} else {
+							this.activeTab = event.activeIndex
+						}
+						this.scrollTo(this.$refs['tab' + (this.activeTab - 1)][0])
+						// console.log(this.$refs['tab' + (this.activeTab - 1)][0].parentNode.offsetLeft)
 					}
 				},
 				spaceBetween: 24,

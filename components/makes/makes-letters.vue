@@ -5,7 +5,7 @@
 			                    :key="index"
 			                    v-scroll-to="{
 														el: '#' + item,
-										        container: '.modal_wrap',
+										        container: '.modal__wrap',
 										        offset: -24,
 													}">
 				{{ item }}

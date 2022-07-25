@@ -15,6 +15,9 @@ import jsonld from "@/mixins/jsonld";
 export default {
 	mixins: [seoTags, jsonld],
 	layout: 'catalog',
+	mounted() {
+		localStorage.removeItem('foldersTabsLeft');
+	},
 	methods: {
 		...mapMutations({
 			setFolders: 'folders/folders/SET_FOLDERS'

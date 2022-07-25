@@ -83,7 +83,7 @@ export default {
         linkExactActiveClass: 'active'
     },
     modules: [
-        ['vue-scrollto/nuxt', {duration: 300}],
+        'vue-scrollto/nuxt',
         '@nuxtjs/style-resources',
         '@nuxtjs/apollo',
         '@nuxtjs/device',

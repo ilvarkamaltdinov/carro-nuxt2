@@ -7,13 +7,14 @@
 					<!--<span class="heading-group__label">121212 автомобиля в наличии</span>-->
 				</div>
 			</div>
-			<catalog-offers v-if="offers"/>
+			<catalog-offers v-if="offers" />
 			<div class="grid__col-12"
 			     v-if="showFolderTabs">
 				<div class="tabs">
-					<ul class="tabs__list">
+					<ul class="tabs__list" ref="tabs" @scroll="scrollFolders">
 						<li role="presentation"
-						    v-for="tab in folders"
+						    v-for="(tab, index) in folders"
+						    :ref="'tab' + index"
 						    :class="{'tabs__item--active':tab.slug === $route.params.model}"
 						    class="tabs__item">
 							<nuxt-link class="tabs__link"
@@ -44,6 +45,13 @@ import capitalizeFirstLetter from "~/mixins/capitalizeFirstLetter";
 
 export default {
 	mixins: [capitalizeFirstLetter],
+	mounted() {
+		this.$nextTick(() => {
+			if (localStorage.foldersTabsLeft && this.$device.isMobile && this.$refs.tabs) {
+				this.$refs.tabs.scrollLeft = Number(localStorage.foldersTabsLeft)
+			}
+		})
+	},
 	props: {
 		pageTitle: String,
 		offers: {
@@ -61,9 +69,9 @@ export default {
 		}
 	},
 	methods: {
-		moreOffers() {
-			console.log('show more')
-		}
+		scrollFolders(){
+			localStorage.foldersTabsLeft = event.target.scrollLeft
+		},
 	},
 }
 </script>

@@ -3,9 +3,7 @@
 		<div class="grid">
 			<crumbs :crumbs="crumbs" />
 		</div>
-		<div class="grid grid--container">
-			<catalog-used offers :page-title="pageTitle" />
-		</div>
+		<catalog-used offers :page-title="pageTitle" />
 	</main>
 </template>
 <script>

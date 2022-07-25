@@ -1,3 +1,4 @@
+#import "../siteText/siteText.gql"
 fragment BankType on Bank {
     id
     name
@@ -10,5 +11,8 @@ fragment BankType on Bank {
         small
         thumb_webp
         small_webp
+    }
+    site_text{
+        ... SiteText
     }
 }

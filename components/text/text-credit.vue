@@ -16,7 +16,8 @@
 						     alt="Кредит" />
 					</picture>
 				</div>
-				<div class="text__content">
+				<div v-if="text" class="text__content" v-html="text"></div>
+				<div v-else class="text__content">
 					<p class="text__p">Благодаря нашим кредитным программам Вы сможете наслаждаться автомобилем уже сегодня без
 					                   больших единовременных затрат. CARRO выступает в роли кредитного брокера, подбирая для Вас
 					                   автоцентры и банки с лучшими условиями автокредитования.
@@ -37,6 +38,7 @@
 						<li class="text__list-item">Зимняя резина в подарок</li>
 					</ul>
 				</div>
+			
 			</div>
 		</div>
 	</section>
@@ -45,6 +47,9 @@
 import {mapGetters} from "vuex";
 
 export default {
+	props: {
+		text: String
+	},
 	computed: {
 		...mapGetters({
 			settings: 'settings/settings/settings'

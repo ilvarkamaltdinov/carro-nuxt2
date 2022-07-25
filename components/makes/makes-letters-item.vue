@@ -1,7 +1,7 @@
 <template>
 	<li>
-		<span class="makes__letters-link">
+		<a class="makes__letters-link">
 			<slot></slot>
-		</span>
+		</a>
 	</li>
 </template>

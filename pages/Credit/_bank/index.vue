@@ -6,7 +6,7 @@
 		<div class="grid grid--container">
 			<application-credit :page-title="pageTitle"/>
 			<benefits :benefits="benefitsCredit"/>
-			<text-credit/>
+			<text-credit :text="bank.site_text ? bank.site_text.body : ''"/>
 		</div>
 	</main>
 </template>
@@ -20,6 +20,7 @@ export default {
 	mixins: [seoTags, jsonld],
 	computed: {
 		...mapGetters({
+			bank:'banks/bank',
 			benefitsCredit: 'benefits/benefitsCredit'
 		})
 	},
