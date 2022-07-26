@@ -26,6 +26,10 @@
 <script>
 export default {
 	props: {
+		isForm: {
+			type: Boolean,
+			default: false
+		},
 		dealer: Object,
 		image: String
 	}

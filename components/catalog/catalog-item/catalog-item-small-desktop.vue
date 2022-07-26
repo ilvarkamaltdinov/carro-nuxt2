@@ -2,12 +2,12 @@
 	<article class="catalog__item catalog__item--vertical"
 	         :class="{'grid__col-4':!slide, 'swiper-slide':slide}">
 		<catalog-item-hover-slider @click="linkClick"
-		                           :has-links="hasLinks"
+		                           :is-form="isForm"
 		                           :url="currentUrl"
 		                           :offer="offer" />
 		<div class="catalog__info">
 			<catalog-item-title @click="linkClick"
-			                    :has-links="hasLinks"
+			                    :is-form="isForm"
 			                    :url="currentUrl"
 			                    :offer="offer" />
 			<catalog-item-price :price="offer.price" />
@@ -25,9 +25,11 @@
 			</tippy>
 			<catalog-item-tech-list :offer="offer" />
 		</div>
-		<catalog-item-buttons :choose="choose"
-		                      v-if="hasButtons"
-		                      :offer="offer" />
+		<catalog-item-buttons
+				:is-form="isForm"
+				:choose="choose"
+				v-if="hasButtons"
+				:offer="offer" />
 	</article>
 </template>
 <script>
@@ -37,9 +39,9 @@ import cardClick from "~/mixins/cardClick";
 export default {
 	mixins: [filters, cardClick],
 	props: {
-		hasLinks: {
+		isForm: {
 			type: Boolean,
-			default: true
+			default: false
 		},
 		choose: {
 			type: Boolean,

@@ -6,7 +6,7 @@
 				<div class="swiper-slide"
 				     v-for="image in images"
 				     :key="image.thumb">
-					<a :href="hasLinks ? url : ''"
+					<a :href="isForm ? '' : url"
 					   @click.prevent="$emit('click')"
 					   class="catalog__img-link">
 						<picture>
@@ -48,9 +48,9 @@ export default {
 			type: Number,
 			default: null
 		},
-		hasLinks: {
+		isForm: {
 			type: Boolean,
-			default: true
+			default: false
 		},
 		images: {
 			type: Array,

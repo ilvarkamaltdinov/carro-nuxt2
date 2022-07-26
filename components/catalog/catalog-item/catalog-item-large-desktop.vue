@@ -2,7 +2,7 @@
 	<article class="catalog__item catalog__item--desktop-l grid__col-8">
 		<catalog-item-swiper :dealer="offer.dealer"
 		                     :images="offer.images"
-		                     :has-links="hasLinks"
+		                     :is-form="isForm"
 		                     :url="currentUrl"
 		                     @click="linkClick"
 		                     :slider-id="offer.external_id" />
@@ -12,7 +12,7 @@
 				<div class="catalog__title-wrap">
 					<div class="catalog__info">
 						<catalog-item-title @click="linkClick"
-						                    :has-links="hasLinks"
+						                    :is-form="isForm"
 						                    :url="currentUrl"
 						                    :offer="offer" />
 						<catalog-item-price :price="offer.price" />
@@ -33,6 +33,7 @@
 			</div>
 		</div>
 		<catalog-item-buttons :choose="choose"
+		                      :is-form="isForm"
 		                      :long="true"
 		                      v-if="hasButtons"
 		                      :offer="offer" />
@@ -45,13 +46,13 @@ import cardClick from "~/mixins/cardClick";
 export default {
 	mixins: [filters, cardClick],
 	props: {
-		choose: {
+		isForm: {
 			type: Boolean,
 			default: false
 		},
-		hasLinks: {
+		choose: {
 			type: Boolean,
-			default: true
+			default: false
 		},
 		offer: {
 			type: Object,

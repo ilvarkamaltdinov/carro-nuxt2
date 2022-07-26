@@ -6,6 +6,10 @@
 <script>
 export default {
 	props: {
+		isForm: {
+			type: Boolean,
+			default: false
+		},
 		url: String,
 		img: String,
 	}

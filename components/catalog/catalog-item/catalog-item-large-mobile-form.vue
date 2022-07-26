@@ -38,6 +38,10 @@ export default {
 			default: () => {
 			}
 		},
+		isForm: {
+			type: Boolean,
+			default: false
+		},
 		choose: {
 			type: Boolean,
 			default: false

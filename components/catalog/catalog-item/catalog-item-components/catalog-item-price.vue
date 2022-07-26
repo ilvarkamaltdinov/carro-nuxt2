@@ -11,6 +11,10 @@ import filters from "~/mixins/filters";
 export default {
 	mixins: [filters],
 	props: {
+		isForm: {
+			type: Boolean,
+			default: false
+		},
 		price: Number
 	}
 }

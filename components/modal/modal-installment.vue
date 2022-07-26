@@ -7,6 +7,7 @@
 			</div>
 			<div class="application__catalog application__catalog--modal catalog grid__col-4">
 				<component :is="component"
+				           :is-form="true"
 				           :has-buttons="false"
 				           :offer="modalData" />
 			</div>

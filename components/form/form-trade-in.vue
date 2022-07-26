@@ -17,7 +17,7 @@
 				          class="icon form__car-icon" />
 			</label>
 			<div class="catalog form__catalog" v-if="$device.isMobile && currentCar">
-				<catalog-item-large-mobile-form :choose="true"
+				<catalog-item-large-mobile-form :is-form="true"
 				                                :offer="currentCar" />
 			</div>
 		</fieldset>

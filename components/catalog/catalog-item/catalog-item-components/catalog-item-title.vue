@@ -2,7 +2,7 @@
 	<div class="catalog__title-wrap">
 		<div class="catalog__title">
 			<h3 class="catalog__heading">
-				<a :href="hasLinks ? url : ''"
+				<a :href="isForm ? '' : url"
 				   @click.prevent="$emit('click')"
 				   class="catalog__title-link">
 					<span class="catalog__title">
@@ -38,9 +38,9 @@ export default {
 		},
 	},
 	props: {
-		hasLinks: {
+		isForm: {
 			type: Boolean,
-			default: true
+			default: false
 		},
 		url: String,
 		small: {

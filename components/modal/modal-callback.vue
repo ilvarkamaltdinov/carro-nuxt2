@@ -24,7 +24,7 @@
 				<div class="application__catalog application__catalog--modal catalog grid__col-4">
 					<component :is="$device.isMobile ? 'catalog-item-large-mobile':'catalog-item-small-desktop'"
 					           v-if="modalData.mark"
-					           :has-links="false"
+					           :is-form="true"
 					           :has-buttons="false"
 					           :offer="modalData" />
 					<div v-if="modalData.dealerModal">

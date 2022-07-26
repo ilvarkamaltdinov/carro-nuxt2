@@ -36,11 +36,14 @@ export default {
 				'robot': 'Робот',
 				'automatic': 'АКПП',
 			}
-			
 		}
 	},
 	mixins: [filters],
 	props: {
+		isForm: {
+			type: Boolean,
+			default: false
+		},
 		offer: {
 			type: Object,
 			default: () => {

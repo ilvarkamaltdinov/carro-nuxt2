@@ -46,6 +46,10 @@ export default {
 		})
 	},
 	props: {
+		isForm: {
+			type: Boolean,
+			default: false
+		},
 		long:{
 			type: Boolean,
 			default: false

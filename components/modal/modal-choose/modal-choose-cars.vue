@@ -11,6 +11,7 @@
 					           :offer="offer"
 					           @choseClick="choseClick(offer)"
 					           :choose="true"
+					           :is-form="true"
 					           :key="offer.id" />
 				</div>
 				

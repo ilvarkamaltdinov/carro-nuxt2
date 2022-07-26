@@ -6,7 +6,7 @@
 		</div>
 		<div class="application__catalog catalog grid__col-8" v-if="!$device.isMobile" >
 			<catalog-item-large-desktop :has-buttons="false"
-			                            :has-links="false"
+			                            :is-form="true"
 			                            :disabled-click="true"
 			                            :offer="offer" />
 		</div>

@@ -12,7 +12,8 @@
 			</div>
 			<div v-if="currentCar && !$device.isMobile"
 			     class="application__catalog catalog grid__col-8">
-				<component :choose="true"  :is="component"
+				<component :choose="true" :is="component"
+				           :is-form="true"
 				           :has-buttons="false"
 				           :offer="currentCar" />
 			</div>

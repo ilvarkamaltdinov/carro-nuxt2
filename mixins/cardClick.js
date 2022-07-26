@@ -30,18 +30,16 @@ export default {
             setIsOfferClick: 'filters/filters/SET_IS_OFFER_CLICK'
         }),
         async linkClick() {
-            if (this.hasLinks) {
+            if (this.isForm) {
                 if (this.choose) {
                     this.$emit('choseClick')
-                } else {
-                    if (this.componentCatalog !== 'car') {
-                        await this.closeModal()
-                        await this.setIsOfferClick(true)
-                        await this.$router.push(this.currentUrl)
-                    }
                 }
             } else {
-               return false
+                if (this.componentCatalog !== 'car') {
+                    await this.closeModal()
+                    await this.setIsOfferClick(true)
+                    await this.$router.push(this.currentUrl)
+                }
             }
         },
         async ratingClick() {
