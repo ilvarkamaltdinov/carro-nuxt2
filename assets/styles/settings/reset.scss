@@ -88,6 +88,12 @@ input[type="search"]::-webkit-search-results-decoration {
   display: none;
 }
 
+input:not([type=checkbox]):not([type=radio]) {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 select {
   -o-appearance: none;
   -ms-appearance: none;

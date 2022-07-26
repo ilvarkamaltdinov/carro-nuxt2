@@ -16,9 +16,9 @@ export default {
         link: [
             {rel: 'icon', href: '/favicon.ico', sizes: 'any'},
             {rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml'},
-            {rel: 'apple-touch-icon', href: '/apple-touch-icon.png', type: 'image/png'},
             {rel: 'mask-icon', href: '/mask-icon.svg', color: '#ED2939'},
-            {rel: 'manifest', href: '/manifest.json'}
+            {rel: 'manifest', href: '/manifest.json'},
+            {rel: 'apple-touch-icon', href: 'https://carro.ru/apple-touch-icon.png', type: 'image/png'}
         ]
     },
     resourceHints: false,

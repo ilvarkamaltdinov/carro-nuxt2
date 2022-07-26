@@ -6,6 +6,12 @@
 .slider-index .swiper-slide {
   background: white;
   aspect-ratio: 16 / 9;
+
+  // fallback
+  @include aspect-ratio(16,9);
+  @supports not (aspect-ratio: 16 / 9) {
+    height: 100%;
+  }
 }
 
 .slider-index .swiper-slide {
@@ -96,6 +102,9 @@
   left: -24px;
   background: $colorPrimary;
   box-shadow: $shadowPrimary;
+
+  // fallback
+  @include aspect-ratio(1,1);
 }
 
 .slider-index__text-wrap {
