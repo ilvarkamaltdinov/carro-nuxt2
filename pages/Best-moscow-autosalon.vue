@@ -11,7 +11,6 @@ import seoTags from "@/mixins/seoTags";
 import jsonld from "@/mixins/jsonld";
 
 export default {
-	mixins: [seoTags, jsonld],
-	layout: 'catalog'
+	mixins: [seoTags, jsonld]
 }
 </script>

@@ -25,13 +25,13 @@ export default {
 	mixins: [utm, metrika],
 	watch: {
 		'$route'() {
-			if (this.$route.params.category) {
+			if (this.urlValidation) {
 				this.checkUrl()
 			}
 		}
 	},
 	async fetch() {
-		if (this.$route.params.category === 'used' || this.$route.params.category === 'commercial') {
+		if (this.urlValidation) {
 			await this.checkUrl()
 		}
 	},
@@ -40,7 +40,12 @@ export default {
 			isFilterClick: 'filters/filters/isFilterClick',
 			isOfferClick: 'filters/filters/isOfferClick',
 			sort: 'filters/filters/sort'
-		})
+		}),
+		urlValidation() {
+			return this.$route.params.category === 'used'
+					|| this.$route.params.category === 'commercial'
+					|| this.$route.name === 'Best-moscow-autosalon'
+		}
 	},
 	methods: {
 		...mapMutations({
