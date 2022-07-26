@@ -15,6 +15,9 @@ import seoTags from "@/mixins/seoTags";
 import jsonld from "@/mixins/jsonld";
 
 export default {
-	mixins: [seoTags, jsonld]
+	mixins: [seoTags, jsonld],
+	validate(ctx) {
+		return false
+	}
 }
 </script>

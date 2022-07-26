@@ -13,6 +13,7 @@
 					<component :is="component"
 					           v-for="offer in offers"
 					           :offer="offer"
+					           @click.native="chooseClick(offer)"
 					           :choose="true"
 					           :key="offer.id" />
 				</div>

@@ -1,29 +1,47 @@
 <template>
 	<div>
-		<div v-if="loading" class="catalog__list" :class="{'grid grid--catalog': !$device.isMobile}">
-			<component :is="skeleton" v-for="i in 4" :key="i"/>
+		<div v-if="loading"
+		     class="catalog__list"
+		     :class="{'grid grid--catalog': !$device.isMobile}">
+			<component :is="skeleton"
+			           v-for="i in 4"
+			           :key="i" />
 		</div>
-		<div v-else class="catalog__list">
+		<div v-else
+		     class="catalog__list">
 			<component :is="catalog"
 			           :offer="offer"
 			           :key="offer.id"
-			           v-for="offer in offers_list" />
+			           v-for="offer in moreOffersData.data" />
 		</div>
-		<button-typical @click="moreOffers" text="Показать больше" class="button--link button--more"/>
+		
+		<button-typical @click="moreOffers"
+		                v-if="offers && offers.last_page > 1 && offers.current_page < offers.last_page"
+		                text="Показать больше"
+		                class="button--link button--more" />
 	</div>
 </template>
 <script>
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
+import Offers from "@/apollo/queries/offer/offers";
 
 export default {
+	data() {
+		return {
+		
+		}
+	},
 	computed: {
 		...mapGetters({
 			view: 'filters/filters/view',
 			offers: 'filters/filters/offers',
 			loading: 'filters/filters/loading',
 		}),
+		moreOffersData(){
+			return this.offers
+		},
 		skeleton() {
-			return this.view === 's' ?'skeleton-card-large' : 'skeleton-card-small'
+			return this.view === 's' ? 'skeleton-card-large' : 'skeleton-card-small'
 		},
 		catalog() {
 			return this.view === 's' ? 'catalog-item-large-mobile' : 'catalog-item-small-mobile'
@@ -32,31 +50,39 @@ export default {
 			return this.offers ? this.offers.data : []
 		}
 	},
-	methods:{
-		moreOffers(){
-			this.$apollo.queries.offers.fetchMore({
-				variables: {
-					page: this.currentPagination + 1
-				},
-				updateQuery: (previousResult, {fetchMoreResult}) => {
-					if (!fetchMoreResult) {
-						return previousResult
-					}
-					const newOffers = fetchMoreResult.offers.data;
-					const current_page = fetchMoreResult.offers.current_page;
-					//this.currentPagination += 1;
-					const last_page = fetchMoreResult.offers.last_page;
-					return {
-						offers: {
-							__typename: previousResult.offers.__typename,
-							data: [...previousResult.offers.data, ...newOffers],
-							current_page,
-							last_page
-						}
-					}
-				}
+	methods: {
+		...mapActions({
+			request: 'filters/filters/request',
+		}),
+		moreOffers() {
+			this.filterRequest({
+				url: this.$route.path === '/best-moscow-autosalon' ? '/used' : this.$route.path,
+				page: Number(this.offers.current_page + 1),
+				mark_slug_array: this.$stringToArray(this.$route.query.mark_slug_array),
+				folder_slug_array: this.$stringToArray(this.$route.query.folder_slug_array),
+				generation_slug_array: this.$stringToArray(this.$route.query.generation_slug_array),
+				engine_type_id_array: this.$numberToArray(this.$route.query.engine_type_id_array),
+				gearbox_id_array: this.$numberToArray(this.$route.query.gearbox_id_array),
+				drive_type_id_array: this.$numberToArray(this.$route.query.drive_type_id_array),
+				body_type_id_array: this.$numberToArray(this.$route.query.body_type_id_array),
+				price_from: Number(this.$route.query.price_from),
+				price_to: Number(this.$route.query.price_to),
+				year_from: Number(this.$route.query.year_from),
+				year_to: Number(this.$route.query.year_to),
+				sort: this.$route.query.sort || this.sort,
+				limit: 8
 			})
-		}
+		},
+		async filterRequest(assignVariables) {
+			try {
+				let response = await this.request({query: Offers, variables: assignVariables})
+				this.offers.data = [...this.offers.data, ...response.data.offers.data]
+				this.offers.current_page = response.data.offers.current_page
+				await this.$store.commit('filters/filters/SET_OFFERS', this.offers)
+			} catch (error) {
+				return this.$nuxt.error({statusCode: 404, message: '404'})
+			}
+		},
 	}
 }
 </script>

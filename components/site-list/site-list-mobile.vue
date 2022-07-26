@@ -14,7 +14,8 @@
 					<li class="site-list__item site-list__item--sub"
 					    v-for="sub in item.links"
 					    :key="sub.name">
-						<nuxt-link @click.native="setModalMenu(false)"
+						<a class="site-list__link" v-if="sub.blank" target="_blank" :href="sub.link">{{sub.name}}</a>
+						<nuxt-link v-else @click.native="setModalMenu(false)"
 						           class="site-list__link"
 						           :to="sub.link">
 							{{ sub.name }}

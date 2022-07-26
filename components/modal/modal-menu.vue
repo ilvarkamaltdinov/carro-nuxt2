@@ -55,11 +55,7 @@ export default {
 							name: 'Такси+',
 							blank: true,
 							link: 'https://taxi.carro.ru'
-						},
-						{
-							name: 'Детейлинг',
-							link: '/uslugi-servisa'
-						},
+						}
 					],
 					active:false
 				},

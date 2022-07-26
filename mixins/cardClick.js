@@ -17,7 +17,7 @@ export default {
         currentId() {
             return this.offer.external_id
         },
-        currentUrl(){
+        currentUrl() {
             return `/${this.currentCategory}/${this.currentMark}/${this.currentFolder}/${this.currentId}`
         }
     },
@@ -30,11 +30,16 @@ export default {
             setIsOfferClick: 'filters/filters/SET_IS_OFFER_CLICK'
         }),
         async linkClick() {
-            if (this.componentCatalog !== 'car') {
-                await this.closeModal()
-                await this.setIsOfferClick(true)
-                await this.$router.push(this.currentUrl)
+            if (this.choose) {
+                return false
+            } else {
+                if (this.componentCatalog !== 'car') {
+                    await this.closeModal()
+                    await this.setIsOfferClick(true)
+                    await this.$router.push(this.currentUrl)
+                }
             }
+
         },
         async ratingClick() {
             let payload = {

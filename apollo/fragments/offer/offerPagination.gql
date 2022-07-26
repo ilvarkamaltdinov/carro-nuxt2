@@ -63,5 +63,6 @@ fragment OfferPagination on OfferTypePagination {
     }
   }
   last_page
+  current_page
   total
 }
