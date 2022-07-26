@@ -78,7 +78,6 @@ export const actions = {
         }
         //
 
-
         let assignVariables = {
             site_id: rootState.site_id
         }

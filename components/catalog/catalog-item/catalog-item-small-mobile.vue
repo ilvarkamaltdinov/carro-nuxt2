@@ -1,7 +1,7 @@
 <template>
 	<article class="catalog__item catalog__item--small">
 		<div class="catalog__img">
-			<a :href="currentUrl" @click.prevent="linkClick" class="catalog__img-link">
+			<a :href="hasLinks ? currentUrl: ''" @click.prevent="linkClick" class="catalog__img-link">
 				<picture>
 					<source type="image/webp"
 					        media="(min-width: 768px)"
@@ -16,7 +16,7 @@
 			</a>
 		</div>
 		<div class="catalog__info">
-			<catalog-item-title :small="true" :url="currentUrl" @click="linkClick" :offer="offer" />
+			<catalog-item-title :has-links="hasLinks" :small="true" :url="currentUrl" @click="linkClick" :offer="offer" />
 			<catalog-item-price :price="offer.price" />
 			<div class="catalog__tech"
 			     :class="{'catalog__tech--no-buttons':!hasButtons}">
@@ -40,6 +40,10 @@ export default {
 			type: Object,
 			default: () => {
 			}
+		},
+		hasLinks: {
+			type: Boolean,
+			default: true
 		},
 		choose: {
 			type: Boolean,

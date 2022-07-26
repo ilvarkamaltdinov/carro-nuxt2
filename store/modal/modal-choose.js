@@ -89,7 +89,7 @@ export const actions = {
             sort: state.sort,
             mark_slug_array: [state.currentMark.slug],
             folder_slug_array: [state.currentModel.slug],
-            generation_slug: state.currentGeneration.slug
+            generation_slug_array: [state.currentGeneration.slug]
         }
         let client = this.app.apolloProvider.defaultClient
         let cars = await client.query(

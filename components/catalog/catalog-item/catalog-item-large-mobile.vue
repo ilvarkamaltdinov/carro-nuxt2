@@ -1,7 +1,7 @@
 <template>
 	<article class="catalog__item catalog__item--vertical grid__col-4">
 		<div class="catalog__offer">
-			<catalog-item-title @click="linkClick" :url="currentUrl" :offer="offer" />
+			<catalog-item-title :has-links="hasLinks" @click="linkClick" :url="currentUrl" :offer="offer" />
 			<catalog-item-price :price="offer.price" />
 		</div>
 		<div class="catalog__img">
@@ -41,6 +41,10 @@ export default {
 			type: Object,
 			default: () => {
 			}
+		},
+		hasLinks: {
+			type: Boolean,
+			default: true
 		},
 		choose: {
 			type: Boolean,

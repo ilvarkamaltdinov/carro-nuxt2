@@ -2,10 +2,12 @@
 	<article class="catalog__item catalog__item--vertical"
 	         :class="{'grid__col-4':!slide, 'swiper-slide':slide}">
 		<catalog-item-hover-slider @click="linkClick"
+		                           :has-links="hasLinks"
 		                           :url="currentUrl"
 		                           :offer="offer" />
 		<div class="catalog__info">
 			<catalog-item-title @click="linkClick"
+			                    :has-links="hasLinks"
 			                    :url="currentUrl"
 			                    :offer="offer" />
 			<catalog-item-price :price="offer.price" />
@@ -35,6 +37,10 @@ import cardClick from "~/mixins/cardClick";
 export default {
 	mixins: [filters, cardClick],
 	props: {
+		hasLinks: {
+			type: Boolean,
+			default: true
+		},
 		choose: {
 			type: Boolean,
 			default: false

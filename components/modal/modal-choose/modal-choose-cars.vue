@@ -5,19 +5,29 @@
 			<h2 class="visually-hidden">Автомобили в наличии</h2>
 			<div class="grid__col-8">
 				<filter-sort modal />
-				<div class="catalog__list grid grid--catalog" v-if="loading">
-					<component :is="skeleton" v-for="i in 4" :key="i"/>
-				</div>
-				<div v-else
-				     class="catalog__list grid grid--catalog">
+				<div class="catalog__list grid grid--catalog">
 					<component :is="component"
-					           v-for="offer in offers"
+					           v-for="offer in offersList"
 					           :offer="offer"
-					           @click.native="chooseClick(offer)"
+					           @choseClick="choseClick(offer)"
 					           :choose="true"
 					           :key="offer.id" />
 				</div>
-				<!--<button-typical text="Показать больше" class="button&#45;&#45;link button&#45;&#45;more"/>-->
+				
+				<client-only>
+					<infinite-loading @infinite="getOffers"
+					                  :throttle-limit="2500">
+						<div slot="spinner">
+							<div class="catalog__list grid grid--catalog">
+								<component :is="skeleton"
+								           v-for="i in 4"
+								           :key="i" />
+							</div>
+						</div>
+						<div slot="no-more"></div>
+						<div slot="no-results"></div>
+					</infinite-loading>
+				</client-only>
 			</div>
 		</section>
 	</div>
@@ -25,49 +35,91 @@
 </template>
 <script>
 import {mapActions, mapGetters, mapMutations} from 'vuex'
+import offers from "@/apollo/queries/offer/offers";
 
 export default {
+	data() {
+		return {
+			offersList: [],
+			page: 1,
+			limit: 8
+		}
+	},
+	watch:{
+		sort(){
+			this.offersList = []
+			this.page = 1
+			this.getOffers()
+		}
+	},
 	methods: {
 		...mapMutations({
 			setCallbackCar: 'modal/modal-callback/SET_CALLBACK_CAR',
 			setCurrentCar: 'modal/modal-choose/SET_CURRENT_CAR'
 		}),
 		...mapActions({
-			closeModal: 'modal/modal-main/closeModal'
+			closeModal: 'modal/modal-main/closeModal',
+			request: 'request'
 		}),
-		chooseClick(carInfo) {
+		choseClick(carInfo) {
 			this.setCurrentCar(carInfo)
 			this.closeModal()
+		},
+		async getOffers($state) {
+			// await this.$store.commit('modal/modal-choose/SET_LOADING', true)
+			let response = await this.request(
+					{
+						query: offers,
+						variables: {
+							page: this.page,
+							limit: this.limit,
+							sort: this.sort,
+							mark_slug_array: [this.currentMark.slug],
+							folder_slug_array: [this.currentModel.slug],
+							generation_slug_array: [this.currentGeneration.slug]
+						}
+					})
+			if (response.data.offers.data.length) {
+				this.page += 1
+				this.offersList.push(...response.data.offers.data)
+				$state.loaded()
+			} else {
+				$state.complete()
+			}
+			// // commit('SET_OFFERS', cars.data.offers.data)
+			// await this.$store.commit('modal/modal-choose/SET_LOADING', false)
 		},
 	},
 	computed: {
 		...mapGetters({
-			offers: 'modal/modal-choose/offers',
 			loading: 'modal/modal-choose/loading',
-			view: 'modal/modal-choose/view'
+			view: 'modal/modal-choose/view',
+			sort: 'modal/modal-choose/sort',
+			currentMark: 'modal/modal-choose/currentMark',
+			currentModel: 'modal/modal-choose/currentModel',
+			currentGeneration: 'modal/modal-choose/currentGeneration',
 		}),
-		skeleton(){
-			if(this.view === 's'){
-				if(this.$device.isMobile){
+		skeleton() {
+			if (this.view === 's') {
+				if (this.$device.isMobile) {
 					return 'skeleton-card-large'
-				} else{
+				} else {
 					return 'skeleton-card-small'
 				}
 			} else {
-				if(this.$device.isMobile){
+				if (this.$device.isMobile) {
 					return 'skeleton-card-small'
-				}else{
+				} else {
 					return 'skeleton-card-large'
 				}
-			
+				
 			}
-		
+			
 		},
 		component() {
-			if(this.view === 's'){
+			if (this.view === 's') {
 				return this.$device.isMobile ? 'catalog-item-large-mobile' : 'catalog-item-small-desktop'
-			}
-			else{
+			} else {
 				return this.$device.isMobile ? 'catalog-item-small-mobile' : 'catalog-item-large-desktop'
 			}
 		}

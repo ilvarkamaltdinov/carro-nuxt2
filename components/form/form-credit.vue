@@ -230,8 +230,8 @@ export default {
 					utm_term: localStorage.utm_term || '',
 					utm_content: localStorage.utm_content || ''
 				}
-				await this.closeModal()
 				await this.sendForm(formData)
+				await this.closeModal()
 			}
 		}
 	}

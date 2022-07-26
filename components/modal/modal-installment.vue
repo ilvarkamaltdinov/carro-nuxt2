@@ -10,7 +10,7 @@
 				           :has-buttons="false"
 				           :offer="modalData" />
 			</div>
-			<application-banks class="grid__col-4" />
+			<application-banks default-bank="sovcom" class="grid__col-4" />
 		</div>
 		<benefits :has-modal="false" modal :benefits="benefitsCredit"/>
 	</div>

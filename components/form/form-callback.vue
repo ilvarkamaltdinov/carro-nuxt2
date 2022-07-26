@@ -100,8 +100,9 @@ export default {
 					formData.external_id = this.offer.external_id
 				}
 				await this.setModalCount(1)
-				await this.closeModal()
 				await this.sendForm(formData)
+				await this.closeModal()
+			
 			}
 		},
 	}

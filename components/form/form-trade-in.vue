@@ -134,6 +134,7 @@ export default {
 	methods: {
 		...mapActions({
 			openModal: 'modal/modal-main/openModal',
+			closeModal: 'modal/modal-main/closeModal',
 			sendForm: 'form/form/sendForm'
 		}),
 		...mapMutations({
@@ -205,6 +206,7 @@ export default {
 					formData.credit_period = this.form.periodValue.toString()
 				}
 				await this.sendForm(formData)
+				await this.closeModal()
 			}
 		}
 	}

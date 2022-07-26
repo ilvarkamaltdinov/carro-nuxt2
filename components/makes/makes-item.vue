@@ -1,10 +1,14 @@
 <template>
-	<li class="makes__item" v-if="forChoseModal ">
+	<li class="makes__item"
+	    v-if="forChoseModal ">
 		<span @click="$emit('choose')"
 		      class="makes__link"
 		      :class="{'makes__link-active':active}">
 			<span class="makes__title">
 				{{ item.title || item.name }}
+				<span v-if="item.year_begin">
+					[ {{ item.year_begin }} - {{ item.year_end ? item.year_end : 'н.в.' }}]
+				</span>
 			</span>
 			<span class="makes__qty">
 				{{ item.offers_count }}
@@ -12,7 +16,8 @@
 		</span>
 	</li>
 	
-	<li class="makes__item" v-else>
+	<li class="makes__item"
+	    v-else>
 		<nuxt-link :to="'/used/'+slug"
 		           @click.native="$emit('click')"
 		           class="makes__link">
@@ -24,7 +29,7 @@
 			</div>
 		</nuxt-link>
 	</li>
-	
+
 </template>
 <script>
 export default {

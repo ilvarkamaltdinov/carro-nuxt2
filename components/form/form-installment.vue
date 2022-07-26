@@ -157,6 +157,7 @@ export default {
 	},
 	methods: {
 		...mapActions({
+			closeModal: 'modal/modal-main/closeModal',
 			openModal: 'modal/modal-main/openModal',
 			sendForm: 'form/form/sendForm'
 		}),
@@ -222,6 +223,7 @@ export default {
 					utm_content: localStorage.utm_content || ''
 				}
 				await this.sendForm(formData)
+				await this.closeModal()
 			}
 		}
 	}

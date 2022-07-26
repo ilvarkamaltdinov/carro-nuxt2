@@ -1,5 +1,5 @@
 <template>
-	<a :href="url" @click.prevent="$emit('click')" class="catalog__img brazzers-daddy">
+	<a :href="hasLinks ? url : ''" @click.prevent="$emit('click')" class="catalog__img brazzers-daddy">
 		<img :data-src="coverSrc"
 		     @load="onImgLoad"
 		     class="lazyload"
@@ -34,6 +34,10 @@ export default {
 	props: {
 		url: String,
 		offer: Object,
+		hasLinks: {
+			type: Boolean,
+			default: true
+		},
 	},
 	computed: {
 		coverSrc() {
