@@ -1,5 +1,4 @@
 fragment ComplectationType on Complectation {
   id
-  slug
   name
 }

@@ -10,6 +10,7 @@
 #import "./types/imageAllType.gql"
 #import "./types/equipmentType.gql"
 #import "./types/dealerType.gql"
+#import "./types/complectationType.gql"
 
 fragment OfferPage on Offer {
     id
@@ -31,6 +32,9 @@ fragment OfferPage on Offer {
     modification{
         id
         name
+    }
+    complectation{
+        ... ComplectationType
     }
     color {
         ... ColorType

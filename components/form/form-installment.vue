@@ -10,9 +10,9 @@
 				</h2>
 				<span class="heading-group__label">Получите одобрение за 5 минут</span>
 			</div>
-			<rating :max="100"
-			        percent
-			        :rating="formProgress" />
+			<!--<rating :max="100"-->
+			<!--        percent-->
+			<!--        :rating="formProgress" />-->
 		</div>
 		<form class="form"
 		      @submit.prevent="submitForm()">

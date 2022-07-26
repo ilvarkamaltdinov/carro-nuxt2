@@ -11,6 +11,7 @@
 					    :ref="'tab' + index"
 					    v-for="(tab, index) in tabs"
 					    :key="index+1"
+					    :id="tab.id"
 					    v-show="tab.showButton"
 					    :class="{'tabs__item--active': activeTab === index+1}">
 						<button @click="tabClick(index+1)"
@@ -127,8 +128,9 @@
 							<h2 class="heading heading--h2">
 								Комплектация
 							</h2>
-							<span class="heading-group__label">
-								Active Plus
+							<span class="heading-group__label"
+							      v-if="offer.complectation">
+								{{ offer.complectation.name }}
 							</span>
 						</div>
 					</div>
@@ -231,14 +233,17 @@ export default {
 			let tabs = [
 				{
 					title: 'Характеристики',
+					id: 'tab-1',
 					showButton: true
 				},
 				{
 					title: 'Комплектация',
+					id: 'tab-2',
 					showButton: !!this.equipment_group_list.length
 				},
 				{
 					title: 'О дилере',
+					id: 'tab-3',
 					showButton: true
 				}
 			]
@@ -263,13 +268,16 @@ export default {
 			// check if element not in view
 			if (elLeft >= elParentLeft + el.parentNode.scrollLeft) {
 				el.parentNode.scrollLeft = elLeft - elParentLeft;
-			} else{
+			} else {
 				el.parentNode.scrollLeft = 0;
 			}
 		},
-		tabClick(tab) {
+		changeTab(tab) {
+			this.activeTab = tab + 1
+		},
+		async tabClick(tab) {
 			this.activeTab = tab
-			this.carInfoSwiper.slideTo(tab)
+			await this.carInfoSwiper.slideTo(tab - 1)
 		},
 		async moreInfoDiller(dealerSlug) {
 			try {
@@ -300,21 +308,18 @@ export default {
 		if (this.$device.isMobile) {
 			this.carInfoSwiper = new swiper.default('.swiper--car-info.swiper', {
 				modules: [swiper.Navigation, swiper.Pagination, swiper.Autoplay],
-				loop: true,
 				autoplayDisableOnInteraction: false,
 				autoplay: false,
 				autoHeight: true,
 				on: {
 					slideChange: (event) => {
-						if (event.activeIndex === 4) {
-							this.activeTab = 1
-						} else if (event.activeIndex === 0) {
-							this.activeTab = 3
-						} else {
-							this.activeTab = event.activeIndex
-						}
-						this.scrollTo(this.$refs['tab' + (this.activeTab - 1)][0])
-						// console.log(this.$refs['tab' + (this.activeTab - 1)][0].parentNode.offsetLeft)
+						this.changeTab(event.activeIndex)
+						this.$scrollTo(`#tab-${this.activeTab}`, 500, {
+							container: ".tabs__list",
+							x: true,
+							offset: -16,
+							y: false
+						})
 					}
 				},
 				spaceBetween: 24,

@@ -44,7 +44,7 @@ export default {
             "@type": "Organization",
             "name": "carro.ru",
             "url": this.domain,
-            "logo": this.domain + '/' + '/carro.png',
+            "logo": this.domain + '/' + 'carro.png',
             "contactPoint": {
                 "@type": "ContactPoint",
                 "telephone": this.settings.phone,

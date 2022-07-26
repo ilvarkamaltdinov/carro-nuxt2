@@ -101,7 +101,7 @@ export default {
 			let payload = {
 				modal_data: carInfo,
 				modal_component: 'modal-callback',
-				modal_title: 'Заявка на автокредит',
+				modal_title: 'Закажите звонок по автомобилю',
 				modal_sub_title: carInfo.name
 			}
 			this.openModal(payload)

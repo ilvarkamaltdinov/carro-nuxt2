@@ -1,10 +1,10 @@
 <template>
-	<h2 class="heading heading--h1"
+	<h1 class="heading heading--h1"
 	    :class="{'heading--h1-index':isHeadingIndex}">
 		<slot>
 		
 		</slot>
-	</h2>
+	</h1>
 </template>
 <script>
 export default {

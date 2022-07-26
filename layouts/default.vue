@@ -126,7 +126,8 @@ export default {
 					price_to: Number(this.$route.query.price_to),
 					year_from: Number(this.$route.query.year_from),
 					year_to: Number(this.$route.query.year_to),
-					sort: this.$route.query.sort || this.sort
+					sort: this.$route.query.sort || this.sort,
+					limit: 8
 				}))
 			}
 			if (!this.isFilterClick) {

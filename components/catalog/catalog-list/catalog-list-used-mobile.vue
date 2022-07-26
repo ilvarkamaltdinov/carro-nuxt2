@@ -9,6 +9,7 @@
 			           :key="offer.id"
 			           v-for="offer in offers_list" />
 		</div>
+		<button-typical @click="moreOffers" text="Показать больше" class="button--link button--more"/>
 	</div>
 </template>
 <script>
@@ -29,6 +30,32 @@ export default {
 		},
 		offers_list() {
 			return this.offers ? this.offers.data : []
+		}
+	},
+	methods:{
+		moreOffers(){
+			this.$apollo.queries.offers.fetchMore({
+				variables: {
+					page: this.currentPagination + 1
+				},
+				updateQuery: (previousResult, {fetchMoreResult}) => {
+					if (!fetchMoreResult) {
+						return previousResult
+					}
+					const newOffers = fetchMoreResult.offers.data;
+					const current_page = fetchMoreResult.offers.current_page;
+					//this.currentPagination += 1;
+					const last_page = fetchMoreResult.offers.last_page;
+					return {
+						offers: {
+							__typename: previousResult.offers.__typename,
+							data: [...previousResult.offers.data, ...newOffers],
+							current_page,
+							last_page
+						}
+					}
+				}
+			})
 		}
 	}
 }

@@ -26,10 +26,12 @@
 				    :class="{'featured__item--review-active':videoShow === video.id}"
 				    @click="clickVideo(video.id)"
 				    v-for="video in reviews"
+				    v-if="video.status.privacyStatus !== 'private'"
 				    :key="video.id">
-					<iframe v-if="videoShow === video.id"
+					<iframe v-if="videoShow === video.id "
 					        class="featured__review-player"
-					        width="610"
+					        width="100%"
+					        height="100%"
 					        :src="`https://www.youtube.com/embed/${video.contentDetails.videoId}?autoplay=1`"
 					        frameborder="0"
 					        allow="encrypted-media"
@@ -85,7 +87,7 @@ export default {
 		async getPlaylist(pageToken) {
 			let response = await this.$axios.get('https://www.googleapis.com/youtube/v3/playlistItems', {
 				params: {
-					"playlistId": "PLHpvdAouOo_YkCytWO1ltQ_1cbfnv-YGF",
+					"playlistId": "PLPuUuVwDOqDJoYehUOJDWNqpH4nFf6tkd",
 					"orderby": "reversedPosition",
 					"maxResults": 9,
 					"key": "AIzaSyBw7M2CPzyAtwX1ct9XQk5akiouCUQ9CJU",
@@ -95,6 +97,7 @@ export default {
 			})
 			this.nextPageToken = response.data.nextPageToken ? response.data.nextPageToken : this.showMore = false
 			this.reviews.push(...response.data.items);
+			
 		},
 	}
 }

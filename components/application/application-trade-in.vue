@@ -5,7 +5,7 @@
 				<h1 class="heading heading--h1">{{ pageTitle }}</h1>
 				<span class="heading-group__label">Автоцентр перезвонит вам в течение 15 минут</span>
 			</div>
-			<rating :max="100" :rating="100" />
+			<!--<rating :max="100" :rating="100" />-->
 		</div>
 		<div class="grid__col-12 grid grid--application">
 			<form-trade-in/>
