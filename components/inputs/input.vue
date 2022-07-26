@@ -70,20 +70,22 @@ export default {
   },
   methods: {
     changeInput(event){
-      if (this.mask === 'phone') {
-        if(Inputmask.isValid(event.target.value, this.masks.phone)){
-          this.$emit('phoneMaskComplete')
-        }else{
-          this.$emit('onincomplete')
-        }
-      }
-      if (this.mask === 'date') {
-        if(Inputmask.isValid(event.target.value, this.masks.date)){
-          this.$emit('dateMaskComplete')
-        }else{
-          this.$emit('onincomplete')
-        }
-      }
+      // if (this.mask === 'phone') {
+      //   if(Inputmask.isValid(event.target.value, this.masks.phone)){
+      //     this.$emit('phoneMaskComplete')
+      //     this.$emit('input', event.target.value)
+      //   }else{
+      //     this.$emit('onincomplete')
+      //   }
+      // }
+      // if (this.mask === 'date') {
+      //   if(Inputmask.isValid(event.target.value, this.masks.date)){
+      //     this.$emit('dateMaskComplete')
+      //     this.$emit('input', event.target.value)
+      //   }else{
+      //     this.$emit('onincomplete')
+      //   }
+      // }
     }
   },
 	mounted() {
