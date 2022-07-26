@@ -1,5 +1,5 @@
 <template>
-	<a :href="isForm ? '' : 'url'" @click.prevent="$emit('click')" class="catalog__img brazzers-daddy">
+	<a :href="isForm ? '' : url" @click.prevent="$emit('click')" class="catalog__img brazzers-daddy">
 		<img :data-src="coverSrc"
 		     @load="onImgLoad"
 		     class="lazyload"
@@ -57,7 +57,7 @@ export default {
 			if (this.forceCoverPhoto !== null) {
 				this.class_name = 'load';
 			}
-			
+
 			this.forceCoverPhoto = photo;
 		},
 		mouseLeave() {
