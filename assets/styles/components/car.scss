@@ -165,6 +165,14 @@
   margin-bottom: 24px;
 }
 
+@media (max-width: $iphone-se-only) {
+  .car__actions-buttons .button {
+    &:not(:last-child) {
+      margin-right: 11px;
+    }
+  }
+}
+
 @media (max-width: $mobile-width-only) {
   .car__top-buttons {
     display: none;
