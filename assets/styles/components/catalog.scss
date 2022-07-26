@@ -179,6 +179,10 @@
   margin-bottom: 24px;
 }
 
+.catalog__makes .button--show {
+  margin-left: auto;
+}
+
 @media (max-width: $iphone-se-only) {
   .catalog__item--small .catalog__title,
   .catalog__item--small .catalog__credit-price {
