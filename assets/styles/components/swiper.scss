@@ -92,21 +92,20 @@
 .swiper-button {
   width: 40px;
   aspect-ratio: 1 / 1;
-  background-color: $colorBgButton;
+  background-color: white;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  box-shadow: 0px 4px 32px 0px rgba(92, 92, 92, 46%);
+  box-shadow: 0px 4px 32px 0px rgba(92, 92, 92, 26%);
   transition: $transitionHover;
 
   &:hover {
     transform: scale(1.05);
   }
 
-  &:active,
-  &:focus {
+  &:active {
     transform: scale(0.98);
   }
 }

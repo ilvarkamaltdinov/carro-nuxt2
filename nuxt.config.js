@@ -11,14 +11,20 @@ export default {
             {name: 'http-equiv="X-UA-Compatible', content: 'ie=edge'},
             {name: 'viewport', content: 'width=device-width, initial-scale=1'},
             {hid: 'description', name: 'description', content: ''},
-            {name: 'format-detection', content: 'telephone=no'}
+            {name: 'format-detection', content: 'telephone=no'},
+            {name: 'apple-mobile-web-app-capable', content: 'yes'},
+            {name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent'}
         ],
         link: [
             {rel: 'icon', href: '/favicon.ico', sizes: 'any'},
             {rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml'},
             {rel: 'mask-icon', href: '/mask-icon.svg', color: '#ED2939'},
             {rel: 'manifest', href: '/manifest.json'},
-            {rel: 'apple-touch-icon', href: 'https://carro.ru/apple-touch-icon.png', type: 'image/png'}
+            {rel: 'apple-touch-icon', href: 'https://www.carro.ru/apple-touch-icon.png', type: 'image/png', sizes: '180x180'},
+            {rel: 'apple-touch-icon', href: '/apple-touch-icon-512x512.png', type: 'image/png', sizes: '512x512'},
+            {rel: 'apple-touch-icon', href: '/apple-touch-icon-120x120-precomposed.png', type: 'image/png', sizes: '120x120'},
+            {rel: 'apple-touch-icon', href: '/apple-touch-icon-120x120.png', type: 'image/png',
+            sizes: '120x120'}
         ]
     },
     resourceHints: false,
@@ -216,9 +222,9 @@ export default {
             }
         }
     },
-    // server: {
-    //     host: "0.0.0.0"
-    // },
+    server: {
+        host: "0.0.0.0"
+    },
     publicRuntimeConfig: {
         api_domain: process.env.API_DOMAIN,
         api_endpoint: process.env.API_ENDPOINT,
