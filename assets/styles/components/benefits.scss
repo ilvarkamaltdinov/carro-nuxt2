@@ -85,6 +85,14 @@
 
 
 @media (min-width: $desktop-width) {
+  .benefits {
+    margin-bottom: 16px;
+  }
+
+  .benefits--modal {
+    margin-top: -24px;
+  }
+
   .benefits__list--car {
     display: flex;
     justify-content: space-between;
