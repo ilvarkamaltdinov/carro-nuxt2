@@ -84,6 +84,7 @@
   @include font-body;
   transition: $transitionHover;
   text-align: left;
+  background-color: white;
 
   white-space: nowrap;
   overflow: hidden;
