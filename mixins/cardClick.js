@@ -31,10 +31,7 @@ export default {
         }),
         async linkClick() {
             if (this.hasLinks) {
-                return false
-            } else {
                 if (this.choose) {
-
                     this.$emit('choseClick')
                 } else {
                     if (this.componentCatalog !== 'car') {
@@ -43,6 +40,8 @@ export default {
                         await this.$router.push(this.currentUrl)
                     }
                 }
+            } else {
+               return false
             }
         },
         async ratingClick() {
