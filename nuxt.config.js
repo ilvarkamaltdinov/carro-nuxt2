@@ -18,7 +18,11 @@ export default {
             {rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml'},
             {rel: 'mask-icon', href: '/mask-icon.svg', color: '#ED2939'},
             {rel: 'manifest', href: '/manifest.json'},
-            {rel: 'apple-touch-icon', href: 'https://carro.ru/apple-touch-icon.png', type: 'image/png'}
+            {rel: 'apple-touch-icon', href: '/apple-touch-icon.png', type: 'image/png', sizes: '180x180'},
+            {rel: 'apple-touch-icon', href: '/apple-touch-icon-512x512.png', type: 'image/png', sizes: '512x512'},
+            {rel: 'apple-touch-icon', href: '/apple-touch-icon-120x120-precomposed.png', type: 'image/png', sizes: '120x120'},
+            {rel: 'apple-touch-icon', href: '/apple-touch-icon-120x120.png', type: 'image/png',
+            sizes: '120x120'}
         ]
     },
     resourceHints: false,
