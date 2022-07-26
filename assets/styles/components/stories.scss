@@ -90,6 +90,12 @@
     border-radius: $borderRadius;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0),);
   }
+
+  // fallback
+  @supports not (aspect-ratio: 16 / 9) {
+    width: 120px;
+    height: 160px;
+  }
 }
 
 .stories__img {

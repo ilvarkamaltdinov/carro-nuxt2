@@ -8,6 +8,9 @@
   display: flex;
   position: relative;
   align-items: center;
+
+  // fallback
+  @include aspect-ratio(16,9);
 }
 
 .video__block iframe {
@@ -24,6 +27,12 @@
   width: 50%;
   height: 100%;
   flex-shrink: 0;
+
+  @supports not (aspect-ratio: 16 / 9) {
+    width: 195px;
+    height: 220px;
+    bottom: -6px;
+  }
 }
 
 .video__img {
@@ -36,6 +45,10 @@
 .video__text {
   color: white;
   @include font-mobile-h3;
+
+  @supports not (aspect-ratio: 16 / 9) {
+    padding-right: 16px;
+  }
 }
 
 .video__play {
@@ -50,6 +63,10 @@
   align-items: center;
   justify-content: center;
   box-shadow: $shadow;
+
+  @supports not (aspect-ratio: 16 / 9) {
+    height: 56px;
+  }
 }
 
 .video__play-icon {

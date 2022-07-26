@@ -33,6 +33,13 @@
     background-color: white;
     border-radius: 100%;
   }
+
+  // fallback
+  @supports not (aspect-ratio: 16 / 9) {
+    &::before {
+      height: 1400px;
+    }
+  }
 }
 
 .page-footer__insurance-logo {

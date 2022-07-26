@@ -350,3 +350,20 @@ div {
     z-index: 25;
   }
 }
+
+
+@mixin aspect-ratio($width, $height) {
+  // Fallback (current, using padding hack)
+  @supports not (aspect-ratio: 1 / 1) {
+     &::before {
+      float: left;
+      padding-top: calc(100% * #{$height} / #{$width});
+      content: "";
+    }
+    &::after {
+      display: block;
+      content: "";
+      clear: both;
+    }
+  }
+}
