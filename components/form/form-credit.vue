@@ -10,16 +10,6 @@
 				</h2>
 				<span class="heading-group__label">Получите одобрение за 5 минут</span>
 			</div>
-			<!--<tippy arrow>-->
-			<!--	<div class="tippy__text">-->
-			<!--		Вероятность одобрения заявки-->
-			<!--	</div>-->
-			<!--	<template v-slot:trigger>-->
-			<!--		<rating :max="100"-->
-			<!--		        percent-->
-			<!--		        :rating="formProgress" />-->
-			<!--	</template>-->
-			<!--</tippy>-->
 		</div>
 		<form class="form"
 		      @submit.prevent="submitForm()">

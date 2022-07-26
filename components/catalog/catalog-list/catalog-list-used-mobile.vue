@@ -23,7 +23,7 @@
 </template>
 <script>
 import {mapActions, mapGetters} from "vuex";
-import Offers from "@/apollo/queries/offer/offers";
+import offerFilters from "@/apollo/queries/offer/offerFilters";
 
 export default {
 	data() {
@@ -75,7 +75,7 @@ export default {
 		},
 		async filterRequest(assignVariables) {
 			try {
-				let response = await this.request({query: Offers, variables: assignVariables})
+				let response = await this.request({query: offerFilters, variables: assignVariables})
 				this.offers.data = [...this.offers.data, ...response.data.offers.data]
 				this.offers.current_page = response.data.offers.current_page
 				await this.$store.commit('filters/filters/SET_OFFERS', this.offers)

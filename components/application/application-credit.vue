@@ -10,7 +10,7 @@
 			<div class="application__form grid__col-4">
 				<form-credit :bank-rate="bank.rate"/>
 			</div>
-			<div v-if="currentCar"
+			<div v-if="currentCar && !$device.isMobile"
 			     class="application__catalog catalog grid__col-8">
 				<component :is="component"
 				           :has-buttons="false"
