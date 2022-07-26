@@ -3,6 +3,11 @@
   padding: 24px;
 }
 
+.text__content .heading--h2 {
+  margin-bottom: 16px;
+  margin-top: 24px;
+}
+
 .text__p {
   margin-bottom: 16px;
 }
@@ -13,6 +18,10 @@
   flex-wrap: wrap;
   gap: 16px;
   margin-top: 24px;
+}
+
+.text__list {
+  margin-bottom: 16px;
 }
 
 .text__o-list {
@@ -68,6 +77,7 @@
     margin-right: 12px;
     background-color: $colorLink;
     border-radius: 50%;
+    flex-shrink: 0;
   }
 }
 
