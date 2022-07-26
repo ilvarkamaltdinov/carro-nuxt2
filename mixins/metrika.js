@@ -43,6 +43,6 @@ export default {
             });
         `;
         document.head.appendChild(ym_script);
-
+        ym(this.settings.ym, 'hit', `${this.domain}${this.$route.fullPath}`);
     }
 }

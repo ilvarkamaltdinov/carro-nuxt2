@@ -10,6 +10,7 @@ export default{
                         || param === 'utm_content'
                         || param === 'utm_campaign'){
                         localStorage.setItem(param, this.$route.query[param])
+
                     }
                 }
             }

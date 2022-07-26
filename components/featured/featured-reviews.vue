@@ -6,40 +6,53 @@
 				<span class="heading-group__label">Покупатели о наши партнерах</span>
 			</div>
 		</div>
-		<!--<div class="grid__col-12">-->
-		<!--	<tabs-dealers />-->
-		<!--	<ul class="featured__list grid grid&#45;&#45;featured featured__reviews">-->
-		<!--		<li class="featured__item featured__item&#45;&#45;review "-->
-		<!--		    :class="{'featured__item&#45;&#45;review-active':videoShow === video.id}"-->
-		<!--		    @click="clickVideo(video.id)"-->
-		<!--		    v-for="video in reviews"-->
-		<!--		    :key="video.id">-->
-		<!--			<iframe v-if="videoShow === video.id"-->
-		<!--			        class="featured__review-player"-->
-		<!--			        width="610"-->
-		<!--			        :src="`https://www.youtube.com/embed/${video.contentDetails.videoId}?autoplay=1`"-->
-		<!--			        frameborder="0"-->
-		<!--			        allow="encrypted-media"-->
-		<!--			        allowfullscreen />-->
-		<!--			<div v-if="videoShow !== video.id" class="featured__link">-->
-		<!--				<div class="featured__about">-->
-		<!--					<h3 class="featured__title">{{ video.snippet.title }}</h3>-->
-		<!--				</div>-->
-		<!--				<div class="featured__review-picture">-->
-		<!--					<img class="featured__review-img"-->
-		<!--					     :src="video.snippet.thumbnails.high.url"-->
-		<!--					     :alt="video.snippet.title" />-->
-		<!--				</div>-->
-		<!--			</div>-->
-		<!--			<svg-icon  v-if="videoShow !== video.id" class="featured__play-icon"-->
-		<!--			          name="icon-play" />-->
-		<!--		</li>-->
-		<!--	</ul>-->
-		<!--	<button-typical v-if="showMore"-->
-		<!--	                @click="getMore"-->
-		<!--	                text="Показать больше"-->
-		<!--	                class="button&#45;&#45;link button&#45;&#45;more" />-->
-		<!--</div>-->
+		<div class="grid__col-12">
+			<div class="tabs">
+				<ul class="tabs__list">
+					<li role="presentation"
+					    :class="{'tabs__item--active':activeTab === 'prime'}"
+					    class="tabs__item">
+						<button @click="getReviews('prime')"
+						        class="tabs__link"
+						        role="tab"
+						        data-toggle="tab">
+							PRIME
+						</button>
+					</li>
+				</ul>
+			</div>
+			<ul class="featured__list grid grid--featured featured__reviews">
+				<li class="featured__item featured__item--review "
+				    :class="{'featured__item--review-active':videoShow === video.id}"
+				    @click="clickVideo(video.id)"
+				    v-for="video in reviews"
+				    :key="video.id">
+					<iframe v-if="videoShow === video.id"
+					        class="featured__review-player"
+					        width="610"
+					        :src="`https://www.youtube.com/embed/${video.contentDetails.videoId}?autoplay=1`"
+					        frameborder="0"
+					        allow="encrypted-media"
+					        allowfullscreen />
+					<div v-if="videoShow !== video.id" class="featured__link">
+						<div class="featured__about">
+							<h3 class="featured__title">{{ video.snippet.title }}</h3>
+						</div>
+						<div class="featured__review-picture">
+							<img class="featured__review-img"
+							     :src="video.snippet.thumbnails.high.url"
+							     :alt="video.snippet.title" />
+						</div>
+					</div>
+					<svg-icon  v-if="videoShow !== video.id" class="featured__play-icon"
+					          name="icon-play" />
+				</li>
+			</ul>
+			<button-typical v-if="showMore"
+			                @click="getMore"
+			                text="Показать больше"
+			                class="button--link button--more" />
+		</div>
 	</section>
 </template>
 <script>
@@ -49,6 +62,7 @@ export default {
 	},
 	data() {
 		return {
+			activeTab:'prime',
 			reviews: [],
 			videoShow: null,
 			nextPageToken: null,
@@ -59,6 +73,9 @@ export default {
 		await this.getPlaylist(this.nextPageToken);
 	},
 	methods: {
+		getReviews(type){
+			console.log(type)
+		},
 		clickVideo(id) {
 			this.videoShow = id
 		},

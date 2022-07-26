@@ -22,7 +22,7 @@
 				          name="icon-form" />
 				<span class="application__choose-car-text">Выберите автомобиль</span>
 			</button>
-			<application-banks class="grid__col-5"/>
+			<application-banks default-bank="sovcom" class="grid__col-5"/>
 			<application-terms class="grid__col-3"/>
 		</div>
 	</section>

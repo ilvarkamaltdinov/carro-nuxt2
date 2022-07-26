@@ -1,5 +1,6 @@
 <template>
-	<div class="default__wrapper" @keyup.esc="closeModals"
+	<div class="default__wrapper"
+	     @keyup.esc="closeModals"
 	     tabindex="0">
 		<Header />
 		<client-only>
@@ -24,13 +25,13 @@ export default {
 	mixins: [utm, metrika],
 	watch: {
 		'$route'() {
-			if(this.$route.params.category){
+			if (this.$route.params.category) {
 				this.checkUrl()
 			}
 		}
 	},
 	async fetch() {
-		if(this.$route.params.category){
+		if (this.$route.params.category === 'used' || this.$route.params.category === 'commercial') {
 			await this.checkUrl()
 		}
 	},
