@@ -1,5 +1,6 @@
 <template>
-	<div class="application__banks">
+	<div class="application__banks"
+	     v-else>
 		<div class="application__banks-form">
 			<img class="application__banks-img"
 			     :class="`application__banks-img--${bankSlug}`"
@@ -21,6 +22,12 @@
 import {mapActions, mapGetters} from "vuex";
 
 export default {
+	props: {
+		defaultBank: {
+			type: String,
+			default: ''
+		}
+	},
 	computed: {
 		...mapGetters({
 			bank: 'banks/bank'
@@ -29,10 +36,20 @@ export default {
 			return this.bank.slug ? this.bank.slug : ''
 		},
 		bankLogo() {
-			return this.bank.image ? this.bank.image : require('~/assets/img/banks/logo-alfa.svg')
+			if (this.defaultBank !== '') {
+				return require(`~/assets/img/banks/logo-${this.defaultBank}.svg`)
+			} else {
+				return this.bank.image ? this.bank.image : require('~/assets/img/banks/logo-alfa.svg')
+			}
+			
+			
 		},
 		bankImage() {
-			return this.bank.image_car ? this.bank.image_car.small_webp : require('~/assets/img/banks/image-alfa.png')
+			if (this.defaultBank !== '') {
+				return require(`~/assets/img/banks/image-${this.defaultBank}.webp`)
+			} else {
+				return this.bank.image_car ? this.bank.image_car.small_webp : require('~/assets/img/banks/image-alfa.png')
+			}
 		}
 	},
 	methods: {

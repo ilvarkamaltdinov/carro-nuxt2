@@ -4,6 +4,7 @@
 	       :placeholder="placeholder"
 	       :value="value"
 	       :inputmode="type==='tel' ? 'numeric' : ''"
+	       @change="$emit('input', $event.target.value)"
 	       @input="$emit('input', $event.target.value)"
 	       :type="type" />
 </template>

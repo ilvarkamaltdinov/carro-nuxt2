@@ -91,32 +91,98 @@ export default {
         '@nuxtjs/sitemap',
         '@nuxtjs/svg-sprite',
         '@nuxtjs/redirect-module'
-        // '@nuxtjs/robots'
     ],
-    // robots: () => {
-    //     return {
-    //         UserAgent: '*',
-    //         Disallow: (req) => req.headers.host !== 'carro.ru' ? [
-    //             '/*thanks*', '/*?*'
-    //         ] : '/',
-    //         Allow: (req) => {
-    //             if(req.headers.host === 'carro.ru'){
-    //                return ['*.js', '*.css', '.png', '*.svg', '*.jpg', '*.jpeg', '*.woff', '*.ttf']
-    //             }
-    //         }
-    //         // Disallow: (req) => req.headers.host !== 'carro.ru' ? '/' : '/*thanks*',
-    //         // Disallow: (req) => req.headers.host !== 'carro.ru' ? '/' : '/*thanks*',
-    //         // Allow: (req) => req.headers.host !== 'carro.ru' ? '/' : '*.js*',
-    //         // Be aware that this will NOT work on target: 'static' mode
-    //         // Sitemap: (req) => `https://${req.headers.host}/sitemap.xml`
-    //     }
-    // },
     redirect: [
         {
             from: '^/taxi',
             to: 'https://taxi.carro.ru',
             statusCode: 301
-        }
+        },
+        {
+            from: '^/used/dlya-molodezhi',
+            to: '/used/for-youth',
+            statusCode: 301
+        },
+        {
+            from: '^/used/dlya-nee',
+            to: '/used/for-woman',
+            statusCode: 301
+        },
+        {
+            from:'^/used/dlya-semi',
+            to:'/used/for-family',
+            statusCode:301
+        },
+        {
+            from:'^/used/dlya-dachi',
+            to:'/used/for-giving',
+            statusCode:301
+        },
+        {
+            from:'^/used/biznes-klass',
+            to:' /used/business-class',
+            statusCode:301
+        },
+        {
+            from:'^/used/rabochaya-loshadka',
+            to:'/used/workhorse',
+            statusCode:301
+        },
+        {
+            from:'^/used/pervyj-avtomobil',
+            to:'/used/first-car',
+            statusCode:301
+        },
+        {
+            from:'^/used/dlya-taksi',
+            to:'/used/for-taxi',
+            statusCode:301
+        },
+        {
+            from:'^/used/amerikanskie',
+            to:'/used/american',
+            statusCode:301
+        },
+        {
+            from:'^/used/kitajskie',
+            to:'/used/chinese',
+            statusCode:301
+        },
+        {
+            from:'^/used/nemetskie',
+            to:'/used/german',
+            statusCode:301
+        },
+        {
+            from:'used/yaponskie',
+            to:'/used/japanese',
+            statusCode:301
+        },
+        {
+            from:'^/used/otechestvennye',
+            to:' /used/russian',
+            statusCode:301
+        },
+        {
+            from:'^/used/frantsuzskie',
+            to:'/used/french',
+            statusCode:301
+        },
+        {
+            from:'^/used/korejskie',
+            to:'/used/korean',
+            statusCode:301
+        },
+        {
+            from:'^/banks-rating',
+            to:'/banks-partners',
+            statusCode:301
+        },
+        {
+            from:'^/(used|commercial)/(.*)/coupe',
+            to:'/$1/$2/kupe',
+            statusCode:301
+        },
     ],
     svgSprite: {
         input: '~/assets/icons/',

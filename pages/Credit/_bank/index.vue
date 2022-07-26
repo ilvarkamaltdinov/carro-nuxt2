@@ -1,11 +1,11 @@
 <template>
 	<main class="page-main">
 		<div class="grid">
-			<crumbs :crumbs="crumbs"/>
+			<crumbs :crumbs="crumbs" />
 		</div>
 		<div class="grid grid--container">
-			<application-credit :page-title="pageTitle"/>
-			<benefits :benefits="benefitsCredit"/>
+			<application-credit :page-title="pageTitle" />
+			<benefits :benefits="benefitsCredit" />
 			<text-credit :text="bank.site_text ? bank.site_text.body : ''"/>
 		</div>
 	</main>
@@ -20,27 +20,26 @@ export default {
 	mixins: [seoTags, jsonld],
 	computed: {
 		...mapGetters({
-			bank:'banks/bank',
+			bank: 'banks/bank',
 			benefitsCredit: 'benefits/benefitsCredit'
 		})
 	},
-	methods:{
+	methods: {
 		...mapActions({
 			request: 'filters/filters/request',
 		}),
 		...mapMutations({
-			setBank:'banks/SET_BANK'
+			setBank: 'banks/SET_BANK'
 		})
 	},
 	async fetch() {
-		let response = await this.request({query: bank, variables: {slug:this.$route.params.bank}})
-		try{
+		let response = await this.request({query: bank, variables: {slug: this.$route.params.bank}})
+		try {
 			await this.setBank(response.data.bank)
-		}
-		catch (error){
+		} catch (error) {
 			console.log(error)
 		}
 	},
-
+	
 }
 </script>
