@@ -6,10 +6,16 @@
 }
 
 .map--dealer {
+  width: 100%;
+  min-height: 320px;
   aspect-ratio: 1 / 1;
   border-radius: $borderRadius;
   background-color: $colorBg;
   margin: 0 -16px;
+
+  & > * {
+    height: 100%;
+  }
 }
 
 @media (min-width: $desktop-width) {

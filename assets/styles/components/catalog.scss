@@ -175,6 +175,10 @@
   display: none;
 }
 
+.catalog__makes {
+  margin-bottom: 24px;
+}
+
 @media (max-width: $iphone-se-only) {
   .catalog__item--small .catalog__title,
   .catalog__item--small .catalog__credit-price {
