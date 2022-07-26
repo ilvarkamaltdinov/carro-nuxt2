@@ -3,9 +3,9 @@
 	       class="form__field"
 	       :placeholder="placeholder"
 	       :value="value"
-	       autocomplete="off"
 	       :inputmode="type==='tel' ? 'numeric' : ''"
 	       @input="$emit('input', $event.target.value)"
+         @change="changeInput($event)"
 	       :type="type" />
 </template>
 
@@ -32,47 +32,75 @@ export default {
 			default: 'placeholder'
 		}
 	},
+  data() {
+    return{
+      masks : {
+        money: {
+          alias: "decimal",
+          digits: 2,
+          placeholder: "",
+          autoGroup: true,
+          allowMinus: false,
+          rightAlign: false,
+          groupSeparator: " ", // <-- this is &puncsp;
+          radixPoint: " ",
+        },
+        number: {
+          regex: "[0-9]*",
+          placeholder: this.placeholder,
+          showMaskOnHover: false
+        },
+        phone : {
+          mask: "+7 (#99) 999-99-99",
+          oncomplete: () => this.$emit('phoneMaskComplete'),
+          onincomplete: () => this.$emit('onincomplete'),
+          definitions: {
+            "#": {
+              validator: "[1234569]",
+            },
+          },
+        },
+        date: {
+          mask: "99/99/9999",
+          oncomplete: () => this.$emit('dateMaskComplete'),
+          onincomplete: () => this.$emit('onincomplete'),
+        }
+      }
+    }
+  },
+  methods: {
+    changeInput(event){
+      if (this.mask === 'phone') {
+        if(Inputmask.isValid(event.target.value, this.masks.phone)){
+          this.$emit('phoneMaskComplete')
+        }else{
+          this.$emit('onincomplete')
+        }
+      }
+      if (this.mask === 'date') {
+        if(Inputmask.isValid(event.target.value, this.masks.date)){
+          this.$emit('dateMaskComplete')
+        }else{
+          this.$emit('onincomplete')
+        }
+      }
+    }
+  },
 	mounted() {
 		if (this.mask === 'money') {
-			let im = new Inputmask({
-				alias: "decimal",
-				digits: 2,
-				placeholder: "",
-				autoGroup: true,
-				allowMinus: false,
-				rightAlign: false,
-				groupSeparator: " ", // <-- this is &puncsp;
-				radixPoint: " ",
-			});
+			let im = new Inputmask(this.masks.money);
 			im.mask(this.$refs.input);
 		}
 		if (this.mask === 'number') {
-			let im = new Inputmask({
-				regex: "[0-9]*",
-				placeholder: this.placeholder,
-				showMaskOnHover: false
-			});
+			let im = new Inputmask(this.masks.number);
 			im.mask(this.$refs.input);
 		}
 		if (this.mask === 'phone') {
-			let im = new Inputmask({
-				mask: "+7 (#99) 999-99-99",
-				oncomplete: () => this.$emit('phoneMaskComplete'),
-				onincomplete: () => this.$emit('onincomplete'),
-				definitions: {
-					"#": {
-						validator: "[1234569]",
-					},
-				},
-			});
+			let im = new Inputmask(this.masks.phone);
 			im.mask(this.$refs.input);
 		}
 		if (this.mask === 'date') {
-			let im = new Inputmask({
-				mask: "99/99/9999",
-				oncomplete: () => this.$emit('dateMaskComplete'),
-				onincomplete: () => this.$emit('onincomplete'),
-			});
+			let im = new Inputmask(this.masks.date);
 			im.mask(this.$refs.input);
 		}
 	}
