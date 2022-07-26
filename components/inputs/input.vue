@@ -5,7 +5,6 @@
 	       :value="value"
 	       :inputmode="type==='tel' ? 'numeric' : ''"
 	       @input="$emit('input', $event.target.value)"
-         @change="changeInput($event)"
 	       :type="type" />
 </template>
 
