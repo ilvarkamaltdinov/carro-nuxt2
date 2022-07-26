@@ -17,6 +17,7 @@ query offers(
   $year_to: Int,
   $price_from: Int,
   $price_to: Int,
+  $set: String,
   $url: String
 ) {
   offers(
@@ -37,6 +38,7 @@ query offers(
     price_from: $price_from,
     price_to: $price_to,
     category: $category,
+    set: $set,
     url:$url
   ) {
     ... OfferPagination
