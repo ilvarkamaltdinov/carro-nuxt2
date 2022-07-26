@@ -170,7 +170,7 @@
 								        :max="5" />
 							</template>
 						</tippy>
-					
+
 					</div>
 					<div class="car__info-options features">
 						<div class="features__group">

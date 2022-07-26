@@ -5,7 +5,7 @@
 				<h2 class="heading heading--h2">
 					Рассрочка
 					<span class="heading__promo">
-						0 %
+						0%
 					</span>
 				</h2>
 				<span class="heading-group__label">Получите одобрение за 5 минут</span>
@@ -23,9 +23,9 @@
 						class="form__field-wrap form__field-wrap--car ">
 					<button class="form__field"
 					        @click.prevent="choseCar()">
-						
+
 						{{ currentCar ? currentCar.name : 'Выбрать автомобиль' }}
-					
+
 					</button>
 					<svg-icon name="icon-form"
 					          class="icon form__car-icon" />
