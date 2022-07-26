@@ -56,7 +56,7 @@
 					</li>
 					<li class="page-header__buttons-item">
 						<a class="page-header__buttons-link"
-						   :href="`tel:${settings.phone}`">
+						   :href="`tel:${settings.phone.replace(/[^+\d]/g, '')}`">
 							<svg-icon class="icon"
 							          name="icon-call" />
 						</a>

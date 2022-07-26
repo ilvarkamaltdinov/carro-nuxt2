@@ -1,6 +1,6 @@
 <template>
 	<a class="button button--action button--text button--link"
-	   href="tel:+74952452342">
+	   :href="`tel:${phone.replace(/[^+\d]/g, '')}`">
 		<svg-icon class="button__icon"
 		          name="icon-call" />
 		<span class="button__text">{{ phone }}</span>

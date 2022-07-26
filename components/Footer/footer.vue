@@ -20,7 +20,7 @@
 					<social />
 					<div class="page-footer__contacts-list">
 						<a class="page-footer__contacts-item"
-						   :href="`tel:${settings.phone}`">{{ settings.phone }}
+						   :href="`tel:${settings.phone.replace(/[^+\d]/g, '')}`">{{ settings.phone }}
 						</a>
 						<a class="page-footer__contacts-item"
 						   :href="`mailto:${settings.email}`">{{ settings.email }}

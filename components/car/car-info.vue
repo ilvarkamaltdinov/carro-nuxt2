@@ -186,7 +186,7 @@
 							<h3 class="heading heading--h3">Телефон:</h3>
 							<ul class="features__list">
 								<li class="features__item">
-									<a href="tel:+78007002211">{{ offer.dealer.phone }}</a>
+									<a :href="`tel:${offer.dealer.phone.replace(/[^+\d]/g, '')}`">{{ offer.dealer.phone }}</a>
 								</li>
 							</ul>
 						</div>

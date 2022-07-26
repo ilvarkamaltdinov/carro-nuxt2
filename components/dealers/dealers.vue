@@ -38,7 +38,7 @@
 					<h3 class="heading heading--h3">Телефон:</h3>
 					<ul class="features__list">
 						<li class="features__item">
-							<a :href="`tel:${ dealer.phone}`"> {{ dealer.phone }}</a>
+							<a :href="`tel:${ dealer.phone.replace(/[^+\d]/g, '')}`"> {{ dealer.phone }}</a>
 						</li>
 					</ul>
 				</div>

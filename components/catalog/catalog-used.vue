@@ -107,7 +107,7 @@ export default {
 			}
 		},
 		showMarks() {
-			return this.$route.params.category && !this.$route.params.mark
+			return this.$route.params.category === 'used' && !this.$route.params.mark
 		},
 		showFolderTabs() {
 			return this.chosen?.mark?.length === 1 && !this.$route.query.folder_slug_array

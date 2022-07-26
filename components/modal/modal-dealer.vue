@@ -35,7 +35,7 @@
 							<div class="features__item-type">Телефон автоцентра:</div>
 							<div class="features__item-content">
 								<a class="features__link"
-								   :href="`tel:${modalData.phone}`">{{ modalData.phone }}
+								   :href="`tel:${modalData.phone.replace(/[^+\d]/g, '')}`">{{ modalData.phone }}
 								</a>
 							</div>
 						</li>

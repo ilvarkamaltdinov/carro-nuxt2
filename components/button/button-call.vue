@@ -1,8 +1,36 @@
 <template>
-	<button class="button button--action button--call"
+	<a :href="`tel:${currentPhone.replace(/[^+\d]/g, '')}`"
+	   v-if="$device.isMobile"
+	   class="button button--action button--call"
+	   type="button">
+		<svg-icon class="button__icon"
+		          name="icon-call" />
+	</a>
+	<button v-else
+	        class="button button--action button--call"
 	        @click.prevent="$emit('click')"
 	        type="button">
 		<svg-icon class="button__icon"
 		          name="icon-call" />
 	</button>
 </template>
+<script>
+import {mapGetters} from "vuex";
+
+export default {
+	props: {
+		phone: {
+			type: String,
+			default: ''
+		}
+	},
+	computed: {
+		...mapGetters({
+			settings: 'settings/settings/settings'
+		}),
+		currentPhone(){
+			return this.phone === '' ? this.settings.phone : this.phone
+		}
+	}
+}
+</script>
