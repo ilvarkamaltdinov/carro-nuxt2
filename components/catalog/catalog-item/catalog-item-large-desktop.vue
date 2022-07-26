@@ -2,6 +2,7 @@
 	<article class="catalog__item catalog__item--desktop-l grid__col-8">
 		<catalog-item-swiper :dealer="offer.dealer"
 		                     :images="offer.images"
+		                     :has-links="hasLinks"
 		                     :url="currentUrl"
 		                     @click="linkClick"
 		                     :slider-id="offer.external_id" />
@@ -11,6 +12,7 @@
 				<div class="catalog__title-wrap">
 					<div class="catalog__info">
 						<catalog-item-title @click="linkClick"
+						                    :has-links="hasLinks"
 						                    :url="currentUrl"
 						                    :offer="offer" />
 						<catalog-item-price :price="offer.price" />
@@ -46,6 +48,10 @@ export default {
 		choose: {
 			type: Boolean,
 			default: false
+		},
+		hasLinks: {
+			type: Boolean,
+			default: true
 		},
 		offer: {
 			type: Object,

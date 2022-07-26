@@ -27,6 +27,10 @@
 					<svg-icon name="icon-form"
 					          class="icon form__car-icon" />
 				</label>
+				<div class="catalog form__catalog" v-if="$device.isMobile && currentCar">
+					<catalog-item-large-mobile-form :choose="true"
+					                                :offer="currentCar" />
+				</div>
 			</fieldset>
 			<form-credit-calculator
 					@changePeriod="changePeriod"

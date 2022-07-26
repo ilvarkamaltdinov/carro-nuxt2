@@ -10,9 +10,9 @@
 		<div class="grid__col-12 grid grid--application">
 			<form-trade-in/>
 			
-			<div v-if="currentCar"
+			<div v-if="currentCar && !$device.isMobile"
 			     class="application__catalog catalog grid__col-8">
-				<catalog-item-large-desktop :has-buttons="false"
+				<catalog-item-large-desktop :choose="true" :has-buttons="false"
 				                            :offer="currentCar" />
 			</div>
 			<button v-else

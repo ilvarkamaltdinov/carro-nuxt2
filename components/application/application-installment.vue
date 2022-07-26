@@ -10,9 +10,9 @@
 			<div class="application__form grid__col-4">
 				<form-installment :bank-rate="bank.rate"/>
 			</div>
-			<div v-if="currentCar"
+			<div v-if="currentCar && !$device.isMobile"
 			     class="application__catalog catalog grid__col-8">
-				<catalog-item-large-desktop :has-buttons="false"
+				<catalog-item-large-desktop :choose="true" :has-buttons="false"
 				                            :offer="currentCar" />
 			</div>
 			<button v-else
