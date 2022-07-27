@@ -371,7 +371,7 @@ div {
 @mixin lazyload {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s;
+  transition: $transitionHover;
   will-change: opacity;
   -webkit-backface-visibility: hidden;
 }
@@ -379,6 +379,6 @@ div {
 @mixin lazyloaded {
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.2s;
+  transition: $transitionHover;
   -webkit-backface-visibility: visible;
 }

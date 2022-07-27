@@ -149,6 +149,10 @@
 
 .car__tech-content {
   @include font-features;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
 }
 
 .car__info-group {
