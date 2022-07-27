@@ -17,15 +17,13 @@
 						<h2 class="heading heading--h2">{{ dealer.title }}</h2>
 						<span class="heading-group__label">{{ dealer.short_description }}</span>
 					</div>
-					<tippy arrow>
-						<div class="tippy__text">
-							Рейтинг дилера
-						</div>
-						<template v-slot:trigger>
-							<rating :rating="dealer.rating"
-							        :max="5" />
-						</template>
-					</tippy>
+					<rating v-tippy="{
+							content:`<div class='tippy__text'>Рейтинг дилера</div>`,
+							animation:'scale',
+							arrow: true,
+					}"
+					        :rating="dealer.rating"
+					        :max="5" />
 				</div>
 				<div class="features__group">
 					<h3 class="heading heading--h3">Адрес:</h3>
@@ -110,7 +108,7 @@ export default {
 		}
 	},
 	async fetch() {
-		if(!this.dealers.length){
+		if (!this.dealers.length) {
 			try {
 				let response = await this.request({query: dealers})
 				this.setDealers(response.data.dealers)

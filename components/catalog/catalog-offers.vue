@@ -9,15 +9,12 @@
 						<h2 class="heading heading--h2">{{ dealer.title }}</h2>
 						<span class="heading-group__label">{{ dealer.short_description }}</span>
 					</div>
-					<tippy arrow>
-						<div class="tippy__text">
-							Рейтинг дилера
-						</div>
-						<template v-slot:trigger>
-							<rating :rating="dealer.rating"
-							        :max="5" />
-						</template>
-					</tippy>
+					<rating v-tippy="{
+							content:`<div class='tippy__text'>Рейтинг дилера</div>`,
+							animation:'scale',
+							arrow: true,
+					}" :rating="dealer.rating"
+					        :max="5" />
 				</div>
 			</div>
 			<div class="dealers__item-img-wrap">

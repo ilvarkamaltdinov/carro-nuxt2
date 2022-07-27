@@ -24,21 +24,22 @@
 			</button>
 		</div>
 		<div class="car__actions-block">
-			<tippy arrow>
-				<div class="tippy__text">
-					Рейтинг автомобиля
-				</div>
-				<template v-slot:trigger>
-					<rating-car @click="ratingClick"
-					            :rating="offer.rating" />
-				</template>
-			</tippy>
+			<rating-car
+					v-tippy="{
+							content:`<div class='tippy__text'>Рейтинг автомобиля</div>`,
+							animation:'scale',
+							arrow: true,
+					}"
+					@click="ratingClick"
+					:rating="offer.rating"
+			/>
 			<div class="car__actions-buttons">
 				<button-autoteka @click="autoteka(offer)" />
 				<button-favorite :active="likesArray.some(id => id === String(offer.external_id))"
 				                 @click="like()" />
 				<!--<button-compare />-->
-				<button-call :phone="offer.dealer.phone" @click="callback(offer)" />
+				<button-call :phone="offer.dealer.phone"
+				             @click="callback(offer)" />
 			</div>
 		</div>
 		<div class="car__stock">

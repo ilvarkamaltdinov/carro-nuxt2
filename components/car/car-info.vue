@@ -163,15 +163,12 @@
 								Автоцентр «{{ offer.dealer.title }}»
 							</span>
 						</div>
-						<tippy arrow>
-							<div class="tippy__text">
-								Рейтинг дилера
-							</div>
-							<template v-slot:trigger>
-								<rating :rating="offer.dealer.rating"
-								        :max="5" />
-							</template>
-						</tippy>
+						<rating :rating="offer.dealer.rating"
+						              :max="5" v-tippy="{
+							content:`<div class='tippy__text'>Рейтинг дилера</div>`,
+							animation:'scale',
+							arrow: true,
+					}"/>
 
 					</div>
 					<div class="car__info-options features">

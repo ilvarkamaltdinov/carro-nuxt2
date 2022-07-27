@@ -109,14 +109,11 @@
 						<img class="banks__img"
 						     :src="bank.image"
 						     alt="" />
-						<tippy arrow>
-							<div class="tippy__text">
-								Рейтинг банка
-							</div>
-							<template v-slot:trigger>
-								<rating bank :max="100" :rating="bank.rating" />
-							</template>
-						</tippy>
+						<rating v-tippy="{
+							content:`<div class='tippy__text'>Рейтинг банка</div>`,
+							animation:'scale',
+							arrow: true,
+					}" bank :max="100" :rating="bank.rating" />
 
 					</div>
 					<ul class="banks__info">

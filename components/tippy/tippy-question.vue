@@ -1,15 +1,13 @@
 <template>
-	<tippy arrow>
-		<div class="tippy__text">
-			{{ text }}
-		</div>
-		<template v-slot:trigger>
-			<div class="tippy tippy--question">
-				<svg-icon name="icon-question"
-				          class="tippy__icon" />
-			</div>
-		</template>
-	</tippy>
+	<div class="tippy tippy--question"
+	     v-tippy="{
+							content:`<div class='tippy__text'>${text}</div>`,
+							animation:'scale',
+							arrow: true,
+					}">
+		<svg-icon name="icon-question"
+		          class="tippy__icon" />
+	</div>
 </template>
 <script>
 export default {

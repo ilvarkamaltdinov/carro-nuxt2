@@ -19,15 +19,13 @@
 		</div>
 		<div class="catalog__tech"
 		     :class="{'catalog__tech--no-buttons':!hasButtons}">
-			<tippy arrow>
-				<div class="tippy__text">
-					Рейтинг автомобиля
-				</div>
-				<template v-slot:trigger>
-					<rating-car @click="ratingClick"
-					            :rating="offer.rating" />
-				</template>
-			</tippy>
+			<rating-car v-tippy="{
+							content:`<div class='tippy__text'>Рейтинг автомобиля</div>`,
+							animation:'scale',
+							arrow: true,
+					}"
+			            @click="ratingClick"
+			            :rating="offer.rating" />
 			<catalog-item-tech-list :offer="offer" />
 		</div>
 		<catalog-item-buttons
