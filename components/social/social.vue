@@ -49,7 +49,7 @@
 			<a class="social__link"
 			   target="_blank"
 			   rel="nofollow"
-			   href="https://www.tiktok.com/@carro.ru?">
+			   href="https://vt.tiktok.com/ZSRecGf4T/">
 				<svg-icon class="social__icon"
 				          name="icon-tiktok"/>
 			</a>
