@@ -6,6 +6,12 @@
   @include hover;
 }
 
+.site-list__link--group {
+  &:hover {
+    color: inherit;
+  }
+}
+
 @media (max-width: $tablet-width-max) {
   .site-list {
     margin-bottom: 24px;

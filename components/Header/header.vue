@@ -67,7 +67,7 @@
 				<nuxt-link v-if="backButton.title && $device.isMobile"
 				           :to="backButton.link"
 				           class="page-header__back">
-					<span>
+					<span class="page-header__back-model">
 						{{ backButton.title }}
 					</span>
 					<svg-icon class="page-header__back-arrow"

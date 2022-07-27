@@ -132,6 +132,13 @@
   @include font-features-strong;
 }
 
+.page-header__back-model {
+  white-space: nowrap;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .page-header__back-arrow {
   transform: rotate(90deg);
   width: 16px;
