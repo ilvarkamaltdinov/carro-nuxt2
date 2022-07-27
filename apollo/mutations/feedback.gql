@@ -23,6 +23,7 @@ mutation feedback(
   $utm_campaign:String,
   $utm_term:String,
   $offer_title:String,
+  $offer_price:String,
   $comment:String
 
 ){
@@ -51,6 +52,7 @@ mutation feedback(
     utm_campaign: $utm_campaign,
     utm_term: $utm_term,
     offer_title: $offer_title,
+    offer_price: $offer_price,
     comment: $comment){
     id
   }

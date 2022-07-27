@@ -50,7 +50,7 @@ export default {
 				'credit': 'Автокредит предварительно одобрен',
 				'buyout': 'Заявка на выкуп автомобиля',
 				'callback': 'Обратный звонок',
-				'paid-selection': 'Заявка на автоподбор',
+				'free-selection': 'Заявка на автоподбор',
 				'trade-in': 'TradeIn предварительно одобрен',
 				'hire-purchase': 'Рассрочка предварительно одобрена',
 				'station': 'Заявка на услугу',
@@ -174,7 +174,7 @@ export default {
 				'station': `
 						<p class="text__p"> ${this.userName}, благодарим за обращение. Ваша заявка - <b>#${this.userOrderId}</b>.</p>
 						<p class="text__p"> Менеджер свяжется с вами в ближайшее время. Спасибо, что выбрали нас!</p>`,
-				'paid-selection': `
+				'free-selection': `
 						<p class="text__p"> ${this.userName}, благодарим за обращение. Ваша заявка - <b>#${this.userOrderId}</b>.</p>
 						<p class="text__p"> Менеджер свяжется с вами в ближайшее время. Спасибо, что выбрали нас!</p>`,
 			}

@@ -158,30 +158,28 @@ export default {
 		async submitForm() {
 			if (this.checkForm()) {
 				let formData = {
-					type: 'paid-selection',
-					client_vehicle_mark: this.form.mark.value,
-					client_vehicle_model: this.form.model.value,
-					client_vehicle_year: this.form.year.value.toString(),
-					client_vehicle_engine: this.form.engineType.value,
-					client_vehicle_gearbox: this.form.gearbox.value,
-					client_vehicle_price: this.form.price.value,
+					type: 'free-selection',
+					
+					offer_title: ` ${this.form.mark.value} ${this.form.model.value} ${this.form.year.value} ${this.form.engineType.value} ${this.form.gearbox.value}`,
+					
+					offer_price: this.form.price.value,
 					client_name: this.form.name.value,
 					client_phone: this.form.phone.value,
 				}
 				// utm
-				if(localStorage.utm_source){
+				if (localStorage.utm_source) {
 					formData.utm_source = localStorage.utm_source
 				}
-				if(localStorage.utm_medium){
+				if (localStorage.utm_medium) {
 					formData.utm_medium = localStorage.utm_medium
 				}
-				if(localStorage.utm_campaign){
+				if (localStorage.utm_campaign) {
 					formData.utm_campaign = localStorage.utm_campaign
 				}
-				if(localStorage.utm_term){
+				if (localStorage.utm_term) {
 					formData.utm_term = localStorage.utm_term
 				}
-				if(localStorage.utm_content){
+				if (localStorage.utm_content) {
 					formData.utm_content = localStorage.utm_content
 				}
 				await this.sendForm(formData)
