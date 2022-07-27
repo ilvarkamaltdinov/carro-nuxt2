@@ -180,6 +180,8 @@
 }
 
 .button.button--loading {
+  font-size: 0;
+
   & > * {
     &:not(.loader) {
       opacity: 0;
@@ -190,6 +192,10 @@
     opacity: 1;
     cursor: default;
   }
+}
+
+.button--credit.button--loading .loader {
+  border-left-color: white;
 }
 
 .button--action .button__icon {
