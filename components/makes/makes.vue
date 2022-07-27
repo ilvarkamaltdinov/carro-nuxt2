@@ -15,7 +15,7 @@
 				            :slug="item.slug"
 				            :active="item === currentMark"
 				            :for-chose-modal="forChoseModal"
-				            @click="setModalMarks(false)"
+				            @click="clickMarks"
 				            @choose="chooseMark(item)"
 				            :key="index"
 				            :item="item">
@@ -46,9 +46,15 @@ export default {
 			chooseMark: 'modal/modal-choose/chooseMark'
 		}),
 		...mapMutations({
+			setModalSearch: 'modal/modal-search/setModalSearch',
 			setModalMenu: 'modal/modal-menu/setModalMenu',
 			setModalMarks: 'modal/modal-marks/setModalMarks'
 		}),
+		clickMarks(){
+			this.setModalMarks(false)
+			this.setModalSearch(false)
+			
+		},
 		markClick(item) {
 			this.setModalMarks(false)
 			this.$router.push('/used/' + item.slug)

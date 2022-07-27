@@ -159,19 +159,24 @@ export default {
 		...mapMutations({
 			setModalMenu: 'modal/modal-menu/setModalMenu',
 			setModalMarks: 'modal/modal-marks/setModalMarks',
+			setModalSearch: 'modal/modal-search/setModalSearch',
 			setMobileSearch: 'modal/modal-search/setMobileSearch'
 		}),
 		burgerClick() {
 			this.setModalMenu(!this.modalMenu)
 			this.setModalMarks(false)
+			this.setModalSearch(false)
+			this.setModalSearch(false)
 		},
 		navMarkClick() {
 			this.setModalMenu(false)
 			this.setModalMarks(false)
+			this.setModalSearch(false)
 		},
 		allMarksClick() {
 			this.setModalMarks(!this.modalMarks)
 			this.setModalMenu(false)
+			this.setModalSearch(false)
 		},
 		...mapActions({
 			getLikes: 'favorite/favorite/getLikes',

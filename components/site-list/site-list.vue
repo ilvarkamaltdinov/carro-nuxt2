@@ -5,7 +5,7 @@
 			<ul class="site-list__group-list">
 				<li class="site-list__item site-list__item--sub" v-for="sub in item.links" :key="sub.name">
 					<a v-if="sub.blank" target="_blank" :href="sub.link">{{sub.name}}</a>
-					<nuxt-link v-else @click.native="setModalMenu(false)" class="site-list__link"
+					<nuxt-link v-else @click.native="closeModals" class="site-list__link"
 					   :to="sub.link">
 						{{sub.name}}
 					</nuxt-link>
@@ -31,8 +31,15 @@ export default {
 	},
 	methods: {
 		...mapMutations({
-			setModalMenu: 'modal/modal-menu/setModalMenu'
-		})
+			setModalMenu: 'modal/modal-menu/setModalMenu',
+			setModalMarks: 'modal/modal-marks/setModalMarks',
+			setModalSearch: 'modal/modal-search/setModalSearch',
+		}),
+		closeModals(){
+			this.setModalMenu(false)
+			this.setModalMarks(false)
+			this.setModalSearch(false)
+		}
 	}
 }
 </script>

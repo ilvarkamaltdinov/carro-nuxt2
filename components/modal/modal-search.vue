@@ -39,11 +39,13 @@ export default {
 	methods: {
 		...mapMutations({
 			setModalSearch: 'modal/modal-search/setModalSearch',
-			setMobileSearch: 'modal/modal-search/setMobileSearch'
+			setMobileSearch: 'modal/modal-search/setMobileSearch',
+			setModalMarks: 'modal/modal-marks/setModalMarks',
 		}),
 		searchClick() {
 			this.setModalSearch('clear')
 			this.setMobileSearch(false)
+			this.setModalMarks(false)
 		}
 	}
 }
