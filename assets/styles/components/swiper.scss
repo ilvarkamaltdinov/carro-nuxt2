@@ -130,6 +130,17 @@
 }
 
 @media (max-width: $mobile-width-only) {
+  .swiper--index {
+    padding-bottom: 16px;
+  }
+
+  .slider-index .swiper-pagination {
+    width: 100%;
+    padding: 0 8px;
+    margin: auto;
+    bottom: 0px;
+  }
+
   .swiper--stories-modal .swiper-button {
     display: none;
   }

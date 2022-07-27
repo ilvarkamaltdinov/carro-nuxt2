@@ -367,3 +367,18 @@ div {
     }
   }
 }
+
+@mixin lazyload {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s;
+  will-change: opacity;
+  -webkit-backface-visibility: hidden;
+}
+
+@mixin lazyloaded {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.2s;
+  -webkit-backface-visibility: visible;
+}

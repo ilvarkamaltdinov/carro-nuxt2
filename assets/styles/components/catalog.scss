@@ -494,4 +494,10 @@
   .catalog__img-link.catalog__img-link--active {
     display: block;
   }
+
+  .catalog__img .lazyload {
+    opacity: 1;
+    visibility: visible;
+    -webkit-backface-visibility: visible;
+  }
 }
