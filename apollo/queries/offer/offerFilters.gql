@@ -19,6 +19,7 @@ query offerFilters(
   $year_to: Int,
   $price_from: Int,
   $price_to: Int,
+  $dateFormat: String
   $url: String
 ) {
   offerFilters(

@@ -75,6 +75,7 @@ export default {
 							page: this.page,
 							limit: this.limit,
 							sort: this.sort,
+							dateFormat: 'j F Y года.',
 							mark_slug_array: [this.currentMark.slug],
 							folder_slug_array: [this.currentModel.slug],
 							generation_slug_array: [this.currentGeneration.slug]

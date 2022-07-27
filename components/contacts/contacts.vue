@@ -33,12 +33,6 @@
 						</a>
 					</div>
 					<div class="text__contacts-group">
-						<div class="text__contacts-label">Детейлинг:</div>
-						<a class="text__contacts-item"
-						   :href="`tel:${settings.phone_station}`">{{settings.phone_station}}
-						</a>
-					</div>
-					<div class="text__contacts-group">
 						<div class="text__contacts-label">Вопросы сотрудничества:</div>
 						<a class="text__contacts-item"
 						   :href="`mailto:${settings.email}`">{{ settings.email }}

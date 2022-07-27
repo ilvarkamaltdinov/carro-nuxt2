@@ -86,6 +86,7 @@ export const actions = {
             site_id: rootState.site_id,
             page: 1,
             limit: 10,
+            dateFormat: 'j F Y года.',
             sort: state.sort,
             mark_slug_array: [state.currentMark.slug],
             folder_slug_array: [state.currentModel.slug],

@@ -102,7 +102,7 @@ export default {
 			let payload = {
 				modal_data: carInfo,
 				modal_component: 'modal-autoteka',
-				modal_title: 'Отчет «Автотеки» от 21.02',
+				modal_title: 'Отчет «Автотеки» от ' + carInfo.createdAt,
 				modal_sub_title: carInfo.name
 			}
 			this.openModal(payload)

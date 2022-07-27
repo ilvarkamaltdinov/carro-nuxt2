@@ -1,5 +1,6 @@
 <template>
-	<section class="page-main__catalog catalog grid__col-12" :class="{'catalog--slider':!$device.isMobile}">
+	<section class="page-main__catalog catalog grid__col-12"
+	         :class="{'catalog--slider':!$device.isMobile}">
 		<heading-h2>Автомобили в наличии</heading-h2>
 		<div class="tabs">
 			<ul class="tabs__list">
@@ -18,13 +19,20 @@
 			</ul>
 		</div>
 		
-		<div v-if="loading" class="catalog__list grid">
-			<component :is="$device.isMobileOrTablet ? 'skeleton-card-large' : 'skeleton-card-small'" v-for="i in 3" :key="i"/>
+		<div v-if="loading"
+		     class="catalog__list grid">
+			<component :is="$device.isMobileOrTablet ? 'skeleton-card-large' : 'skeleton-card-small'"
+			           v-for="i in 3"
+			           :key="i" />
 		</div>
-		<div v-else-if="$device.isMobileOrTablet" class="catalog__list grid">
-			<catalog-item-large-mobile v-for="offer in offers_list" :offer="offer" :key="offer.id" />
+		<div v-else-if="$device.isMobileOrTablet"
+		     class="catalog__list grid">
+			<catalog-item-large-mobile v-for="offer in offers_list"
+			                           :offer="offer"
+			                           :key="offer.id" />
 		</div>
-		<catalog-index-swiper v-else :offers="offers_list"/>
+		<catalog-index-swiper v-else
+		                      :offers="offers_list" />
 		
 		<button-typical :link="`/used/${set}`"
 		                text="Все автомобили"
@@ -102,7 +110,10 @@ export default {
 		}),
 		async getOffers() {
 			await this.setLoading(true)
-			let response = await this.request({query: offers, variables: {page: 0, limit: 10, set: this.set}})
+			let response = await this.request({
+				query: offers,
+				variables: {page: 0, limit: 10, set: this.set, dateFormat: 'j F Y года.',}
+			})
 			this.setOffers(response.data.offers)
 			await this.setLoading(false)
 		},

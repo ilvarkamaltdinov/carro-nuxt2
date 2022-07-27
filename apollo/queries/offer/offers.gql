@@ -19,7 +19,8 @@ query offers(
   $price_from: Int,
   $price_to: Int,
   $set: String,
-  $url: String
+  $url: String,
+  $dateFormat: String
 ) {
   offers(
     page: $page,

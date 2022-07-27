@@ -58,6 +58,7 @@ export default {
 			this.filterRequest({
 				url: this.$route.path === '/best-moscow-autosalon' ? '/used' : this.$route.path,
 				page: Number(this.offers.current_page + 1),
+				dateFormat: 'j F Y года.',
 				mark_slug_array: this.$stringToArray(this.$route.query.mark_slug_array),
 				folder_slug_array: this.$stringToArray(this.$route.query.folder_slug_array),
 				generation_slug_array: this.$stringToArray(this.$route.query.generation_slug_array),
