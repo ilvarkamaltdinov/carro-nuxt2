@@ -132,6 +132,14 @@
 							      v-if="offer.complectation">
 								{{ offer.complectation.name }}
 							</span>
+							<span class="heading-group__label" v-else>
+								{{ offer.mark.title }}
+								{{ offer.folder.title }},
+								{{ offer.engine_volume | engineVolume }},
+								{{ offer.gearbox.title_short_rus }},
+								{{ offer.year }}
+								{{ offer.generation ? ', ' + offer.generation.name : '' }}
+							</span>
 						</div>
 					</div>
 					<div class="car__info-options features">
@@ -164,12 +172,13 @@
 							</span>
 						</div>
 						<rating :rating="offer.dealer.rating"
-						              :max="5" v-tippy="{
+						        :max="5"
+						        v-tippy="{
 							content:`<div class='tippy__text'>Рейтинг дилера</div>`,
 							animation:'scale',
 							arrow: true,
-					}"/>
-
+					}" />
+					
 					</div>
 					<div class="car__info-options features">
 						<div class="features__group">
