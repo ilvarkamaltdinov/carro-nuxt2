@@ -84,6 +84,7 @@
   align-items: center;
   height: 48px;
   width: 48px;
+  justify-content: center;
 
   &:hover {
     background-color: $colorBgHover;
@@ -204,7 +205,6 @@
 
 @media (max-width: $mobile-width-only) {
   .button--action {
-    justify-content: center;
     padding: 12px;
   }
 }

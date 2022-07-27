@@ -12,15 +12,23 @@
   border-radius: $borderRadius;
   background-color: $colorBg;
   margin: 0 -16px;
+}
 
-  & > * {
-    height: 100%;
-  }
+.map--dealer .ymap-container {
+  aspect-ratio: 1 / 1;
+  height: auto!important;
 }
 
 @media (min-width: $desktop-width) {
   .map--dealer {
     aspect-ratio: 4 / 3;
-    margin: 0 -32px;
+    margin: auto;
+    border-radius: $borderRadius;
+    overflow: hidden;
+  }
+
+  .map--dealer .ymap-container {
+    aspect-ratio: 4 / 3;
+    height: auto!important;
   }
 }
