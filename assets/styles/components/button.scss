@@ -192,13 +192,14 @@
   }
 }
 
+.button--action .button__icon {
+  width: 19px;
+}
+
 @media (max-width: $mobile-width-only) {
   .button--action {
     justify-content: center;
-  }
-
-  .button--action .button__icon {
-    width: 19px;
+    padding: 12px;
   }
 }
 

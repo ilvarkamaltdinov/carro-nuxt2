@@ -1,15 +1,13 @@
 <template>
 	<a :href="`tel:${currentPhone.replace(/[^+\d]/g, '')}`"
 	   v-if="$device.isMobile"
-	   class="button button--action button--call"
-	   type="button">
+	   class="button button--action button--call">
 		<svg-icon class="button__icon"
 		          name="icon-call" />
 	</a>
 	<button v-else
 	        class="button button--action button--call"
-	        @click.prevent="$emit('click')"
-	        type="button">
+	        @click.prevent="$emit('click')">
 		<svg-icon class="button__icon"
 		          name="icon-call" />
 	</button>

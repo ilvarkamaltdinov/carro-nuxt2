@@ -111,13 +111,13 @@
 						     alt="" />
 						<tippy arrow>
 							<div class="tippy__text">
-								рейтинг банка
+								Рейтинг банка
 							</div>
 							<template v-slot:trigger>
 								<rating bank :max="100" :rating="bank.rating" />
 							</template>
 						</tippy>
-					
+
 					</div>
 					<ul class="banks__info">
 						<li class="banks__info-item">Заявок в месяц

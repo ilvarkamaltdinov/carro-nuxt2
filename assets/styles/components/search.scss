@@ -9,7 +9,7 @@
     fill: $colorPrimary;
   }
 
-  &:hover .search__content {
+  &:hover .search__heading {
     color: $colorPrimary;
   }
 
@@ -22,8 +22,11 @@
   transition: $transitionHover;
 }
 
-.search__content {
+.search__heading {
   transition: $transitionHover;
+}
+
+.search__content {
   color: $colorTextSecondary;
 }
 

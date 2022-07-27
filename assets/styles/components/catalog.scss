@@ -95,7 +95,7 @@
   color: $colorTextSecondary;
 }
 
-.catalog__heading {
+.catalog__heading * {
   @include font-mobile-h3-card;
 }
 
@@ -339,7 +339,7 @@
     margin-bottom: 0;
   }
 
-  .catalog__heading {
+  .catalog__heading * {
     @include font-desktop-h3-card;
   }
 
