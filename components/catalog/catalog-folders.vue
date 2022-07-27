@@ -5,7 +5,7 @@
 			    ref="tabs"
 			    @scroll="scrollFolders">
 				<li role="presentation"
-				    v-for="(tab, index) in folders"
+				    v-for="(tab, index) in sortFolders"
 				    :ref="'tab' + index"
 				    :class="{'tabs__item--active':tab.slug === $route.params.model}"
 				    class="tabs__item">
@@ -41,7 +41,12 @@ export default {
 	computed: {
 		...mapGetters({
 			folders: 'folders/folders/folders',
-		})
+		}),
+		sortFolders() {
+			let result = []
+			result = this.$_.sortBy(this.folders, [function(folder) { return folder.offers_count; }]).reverse();
+			return result
+		}
 	},
 	methods: {
 		scrollFolders() {
