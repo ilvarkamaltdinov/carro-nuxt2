@@ -170,11 +170,13 @@ export default {
 		}
 	},
 	methods: {
-		handleScroll() {
-			this.setFocusShowFixes(true)
-		},
 		onFocus() {
 			this.setFocusShowFixes(false)
+		},
+		onFocusOut() {
+			setTimeout(() => {
+				this.setFocusShowFixes(true)
+			}, 1000)
 		},
 		...mapActions({
 			openModal: 'modal/modal-main/openModal',
@@ -260,16 +262,6 @@ export default {
 				await this.closeModal()
 			}
 		}
-	},
-	beforeMount() {
-		if (this.$device.isMobile) {
-			window.addEventListener('scroll', this.handleScroll);
-		}
-	},
-	beforeDestroy() {
-		if (this.$device.isMobile) {
-			window.removeEventListener('scroll', this.handleScroll);
-		}
-	},
+	}
 }
 </script>
