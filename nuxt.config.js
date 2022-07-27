@@ -1,3 +1,5 @@
+import {redirects} from './configModules'
+
 export default {
     head: {
         title: 'carro',
@@ -20,11 +22,23 @@ export default {
             {rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml'},
             {rel: 'mask-icon', href: '/mask-icon.svg', color: '#ED2939'},
             {rel: 'manifest', href: '/manifest.json'},
-            {rel: 'apple-touch-icon', href: 'https://www.carro.ru/apple-touch-icon.png', type: 'image/png', sizes: '180x180'},
+            {
+                rel: 'apple-touch-icon',
+                href: 'https://www.carro.ru/apple-touch-icon.png',
+                type: 'image/png',
+                sizes: '180x180'
+            },
             {rel: 'apple-touch-icon', href: '/apple-touch-icon-512x512.png', type: 'image/png', sizes: '512x512'},
-            {rel: 'apple-touch-icon', href: '/apple-touch-icon-120x120-precomposed.png', type: 'image/png', sizes: '120x120'},
-            {rel: 'apple-touch-icon', href: '/apple-touch-icon-120x120.png', type: 'image/png',
-            sizes: '120x120'}
+            {
+                rel: 'apple-touch-icon',
+                href: '/apple-touch-icon-120x120-precomposed.png',
+                type: 'image/png',
+                sizes: '120x120'
+            },
+            {
+                rel: 'apple-touch-icon', href: '/apple-touch-icon-120x120.png', type: 'image/png',
+                sizes: '120x120'
+            }
         ]
     },
     resourceHints: false,
@@ -67,21 +81,6 @@ export default {
         {src: '~/plugins/jsonld'}
 
     ],
-    //TODO sitemap
-    // sitemap: {
-    //     defaults: {
-    //         changefreq: 'daily',
-    //         priority: 1,
-    //         lastmod: new Date()
-    //     },
-    //     exclude: [
-    //         '/thanks'
-    //     ],
-    //     routes: async() => {
-    //         const { data } = await axios.get('https://apinew.carro.ru/api/sitemap/volkswagen')
-    //         return data.map((item) => `/cars/${item}`)
-    //     }
-    // },
     components: true,
     router: {
         prefetchLinks: false,
@@ -98,98 +97,7 @@ export default {
         '@nuxtjs/svg-sprite',
         '@nuxtjs/redirect-module'
     ],
-    redirect: [
-        {
-            from: '^/taxi',
-            to: 'https://taxi.carro.ru',
-            statusCode: 301
-        },
-        {
-            from: '^/used/dlya-molodezhi',
-            to: '/used/for-youth',
-            statusCode: 301
-        },
-        {
-            from: '^/used/dlya-nee',
-            to: '/used/for-woman',
-            statusCode: 301
-        },
-        {
-            from:'^/used/dlya-semi',
-            to:'/used/for-family',
-            statusCode:301
-        },
-        {
-            from:'^/used/dlya-dachi',
-            to:'/used/for-giving',
-            statusCode:301
-        },
-        {
-            from:'^/used/biznes-klass',
-            to:' /used/business-class',
-            statusCode:301
-        },
-        {
-            from:'^/used/rabochaya-loshadka',
-            to:'/used/workhorse',
-            statusCode:301
-        },
-        {
-            from:'^/used/pervyj-avtomobil',
-            to:'/used/first-car',
-            statusCode:301
-        },
-        {
-            from:'^/used/dlya-taksi',
-            to:'/used/for-taxi',
-            statusCode:301
-        },
-        {
-            from:'^/used/amerikanskie',
-            to:'/used/american',
-            statusCode:301
-        },
-        {
-            from:'^/used/kitajskie',
-            to:'/used/chinese',
-            statusCode:301
-        },
-        {
-            from:'^/used/nemetskie',
-            to:'/used/german',
-            statusCode:301
-        },
-        {
-            from:'used/yaponskie',
-            to:'/used/japanese',
-            statusCode:301
-        },
-        {
-            from:'^/used/otechestvennye',
-            to:' /used/russian',
-            statusCode:301
-        },
-        {
-            from:'^/used/frantsuzskie',
-            to:'/used/french',
-            statusCode:301
-        },
-        {
-            from:'^/used/korejskie',
-            to:'/used/korean',
-            statusCode:301
-        },
-        {
-            from:'^/banks-rating',
-            to:'/banks-partners',
-            statusCode:301
-        },
-        {
-            from:'^/(used|commercial)/(.*)/coupe',
-            to:'/$1/$2/kupe',
-            statusCode:301
-        },
-    ],
+    redirect: redirects,
     svgSprite: {
         input: '~/assets/icons/',
         svgoConfig: {
@@ -222,9 +130,9 @@ export default {
             }
         }
     },
-    server: {
-        host: "0.0.0.0"
-    },
+    // server: {
+    //     host: "0.0.0.0"
+    // },
     publicRuntimeConfig: {
         api_domain: process.env.API_DOMAIN,
         api_endpoint: process.env.API_ENDPOINT,

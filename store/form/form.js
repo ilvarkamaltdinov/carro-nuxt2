@@ -39,7 +39,7 @@ export const actions = {
         await commit('SET_FORM_TYPE', variables.type)
         await commit('SET_BUTTON_DISABLED', true)
         //проверяю тачка ли это так как в колбэке дилера тачки нет
-        if (variables.type !== 'buyout' && variables.type !== 'station' && variables.type !== 'paid-selection') {
+        if (variables.type !== 'buyout' && variables.type !== 'station' && variables.type !== 'free-selection') {
             if (variables.chosen_car.mark) {
                 await commit('SET_USER_CAR', variables.chosen_car)
                 delete variables.chosen_car // Удаляю тачку чтобы не ушла на сервак
@@ -68,7 +68,7 @@ export const actions = {
         if (variables.type === 'buyout') {
             thanks_route = '/buyout-thanks'
         }
-        if (variables.type === 'paid-selection') {
+        if (variables.type === 'free-selection') {
             thanks_route = '/selection-thanks'
         }
         if (variables.type === 'hire-purchase') {
