@@ -98,6 +98,9 @@ export default {
 		}
 	},
 	mounted() {
+		if(!this.userOrderId){
+			this.$router.push('/')
+		}
 		if (this.userCar) {
 			this.sendYandexCommercial()
 			this.sendMyTarget()

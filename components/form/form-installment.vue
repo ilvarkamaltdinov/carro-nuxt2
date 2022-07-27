@@ -215,12 +215,22 @@ export default {
 					client_age: this.form.date.value,
 					credit_initial_fee: this.form.paymentValue.toString(),
 					credit_period: this.form.periodValue.toString(),
-					// utm
-					utm_source: localStorage.utm_source || '',
-					utm_medium: localStorage.utm_medium || '',
-					utm_campaign: localStorage.utm_campaign || '',
-					utm_term: localStorage.utm_term || '',
-					utm_content: localStorage.utm_content || ''
+				}
+				// utm
+				if(localStorage.utm_source){
+					formData.utm_source = localStorage.utm_source
+				}
+				if(localStorage.utm_medium){
+					formData.utm_medium = localStorage.utm_medium
+				}
+				if(localStorage.utm_campaign){
+					formData.utm_campaign = localStorage.utm_campaign
+				}
+				if(localStorage.utm_term){
+					formData.utm_term = localStorage.utm_term
+				}
+				if(localStorage.utm_content){
+					formData.utm_content = localStorage.utm_content
 				}
 				await this.sendForm(formData)
 				await this.closeModal()

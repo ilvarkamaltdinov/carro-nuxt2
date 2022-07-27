@@ -22,6 +22,9 @@
 
 <script>
 export default {
-	props: ['error']
+	props: ['error'],
+	head: {
+		title: 'Ошибка 404 - CARRO'
+	}
 }
 </script>
