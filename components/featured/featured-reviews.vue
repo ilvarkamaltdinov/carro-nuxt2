@@ -12,11 +12,21 @@
 					<li role="presentation"
 					    :class="{'tabs__item--active':activeTab === 'prime'}"
 					    class="tabs__item">
-						<button @click="getReviews('prime')"
+						<button @click="getReviews('prime', primeToken)"
 						        class="tabs__link"
 						        role="tab"
 						        data-toggle="tab">
 							PRIME
+						</button>
+					</li>
+					<li role="presentation"
+					    :class="{'tabs__item--active':activeTab === 'avtograd'}"
+					    class="tabs__item">
+						<button @click="getReviews('avtograd', autoGradToken)"
+						        class="tabs__link"
+						        role="tab"
+						        data-toggle="tab">
+							АвтоГрадъ
 						</button>
 					</li>
 				</ul>
@@ -36,7 +46,8 @@
 					        frameborder="0"
 					        allow="encrypted-media"
 					        allowfullscreen />
-					<div v-if="videoShow !== video.id" class="featured__link">
+					<div v-if="videoShow !== video.id"
+					     class="featured__link">
 						<div class="featured__about">
 							<h3 class="featured__title">{{ video.snippet.title }}</h3>
 						</div>
@@ -46,7 +57,8 @@
 							     :alt="video.snippet.title" />
 						</div>
 					</div>
-					<svg-icon  v-if="videoShow !== video.id" class="featured__play-icon"
+					<svg-icon v-if="videoShow !== video.id"
+					          class="featured__play-icon"
 					          name="icon-play" />
 				</li>
 			</ul>
@@ -64,41 +76,57 @@ export default {
 	},
 	data() {
 		return {
-			activeTab:'prime',
+			activeTab: 'prime',
+			primeToken: 'PLPuUuVwDOqDJoYehUOJDWNqpH4nFf6tkd',
+			autoGradToken: 'PLy2Plla743asvTznCmRWQJRXo5P7bXY15',
 			reviews: [],
 			videoShow: null,
 			nextPageToken: null,
 			showMore: true
 		}
 	},
+	computed:{
+		activeToken(){
+			return this.activeTab === 'prime' ? this.primeToken : this.autoGradToken
+		}
+	},
 	async created() {
-		await this.getPlaylist(this.nextPageToken);
+		await this.getPlaylist(this.nextPageToken, this.primeToken);
 	},
 	methods: {
-		getReviews(type){
-			console.log(type)
+		getReviews(type, playlistId) {
+			this.reviews = []
+			this.showMore = true
+			this.activeTab = type
+			this.getPlaylist(this.pageToken, playlistId)
+		},
+		async getPlaylist(pageToken, playlistId) {
+			let params = {
+				"playlistId": playlistId,
+				"orderby": "reversedPosition",
+				"maxResults": 9,
+				"key": "AIzaSyBw7M2CPzyAtwX1ct9XQk5akiouCUQ9CJU",
+				"part": "snippet,status,contentDetails",
+				"pageToken": pageToken
+			}
+			try {
+				let response = await this.$axios.get('https://www.googleapis.com/youtube/v3/playlistItems', {
+					params: params
+				})
+				this.nextPageToken = response.data.nextPageToken ? response.data.nextPageToken : this.showMore = false
+				this.reviews.push(...response.data.items);
+			} catch (error) {
+				console.log(error)
+			}
+		},
+		getMore() {
+			this.getPlaylist(this.nextPageToken, this.activeToken)
 		},
 		clickVideo(id) {
 			this.videoShow = id
 		},
-		getMore() {
-			this.getPlaylist(this.nextPageToken)
-		},
-		async getPlaylist(pageToken) {
-			let response = await this.$axios.get('https://www.googleapis.com/youtube/v3/playlistItems', {
-				params: {
-					"playlistId": "PLPuUuVwDOqDJoYehUOJDWNqpH4nFf6tkd",
-					"orderby": "reversedPosition",
-					"maxResults": 9,
-					"key": "AIzaSyBw7M2CPzyAtwX1ct9XQk5akiouCUQ9CJU",
-					"part": "snippet,status,contentDetails",
-					"pageToken": pageToken
-				}
-			})
-			this.nextPageToken = response.data.nextPageToken ? response.data.nextPageToken : this.showMore = false
-			this.reviews.push(...response.data.items);
-			
-		},
+		
+		
 	}
 }
 </script>
