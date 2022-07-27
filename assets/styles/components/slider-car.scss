@@ -13,3 +13,14 @@
     outline: none;
   }
 }
+
+@media (min-width: $desktop-width) {
+  .slider__car-img {
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.8!important;
+      cursor: pointer;
+    }
+  }
+}

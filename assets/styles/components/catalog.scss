@@ -42,6 +42,10 @@
   overflow: hidden;
   flex-shrink: 0;
   margin-right: 16px;
+
+  & > img {
+    border-radius: $borderRadius;
+  }
 }
 
 .catalog__call-card {
@@ -386,6 +390,10 @@
     display: flex;
     align-items: center;
     margin-bottom: 16px;
+  }
+
+  .catalog__info-wrap.catalog__info-wrap--no-buttons {
+    margin-bottom: 0;
   }
 
   .catalog__item--desktop-l .catalog__info {

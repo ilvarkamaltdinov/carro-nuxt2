@@ -59,7 +59,7 @@
 
 @media (min-width: $desktop-width) {
   .range .irs-grid-text {
-    font-size: 11px;
+    @include font-small;
   }
 
   .range .irs--flat .irs-handle {
