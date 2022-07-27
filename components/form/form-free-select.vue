@@ -46,7 +46,7 @@
 				              @input="handlerInput('price')"
 				              v-model="form.price.value"
 				              mask="number"
-				              type="text" />
+				              type="tel" />
 			</label>
 			<label class="form__field-wrap"
 			       :class="nameClass">

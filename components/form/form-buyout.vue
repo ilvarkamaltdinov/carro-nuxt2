@@ -30,7 +30,7 @@
 				              @input="form.run.valid = null"
 				              v-model="form.run.value"
 				              mask="number"
-				              type="text" />
+				              type="tel" />
 			</label>
 			<label class="form__field-wrap"
 			       :class="nameClass">
