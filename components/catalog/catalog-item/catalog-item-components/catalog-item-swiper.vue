@@ -22,7 +22,8 @@
 						</picture>
 					</a>
 				</div>
-				<catalog-item-call-card :image="images[0].thumb"
+				<catalog-item-call-card v-if="!isForm"
+				                        :image="images[0].thumb"
 				                        class="swiper-slide"
 				                        :dealer="dealer" />
 			</div>
