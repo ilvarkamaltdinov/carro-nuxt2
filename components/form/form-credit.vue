@@ -27,7 +27,8 @@
 					<svg-icon name="icon-form"
 					          class="icon form__car-icon" />
 				</label>
-				<div class="catalog form__catalog" v-if="$device.isMobile && currentCar">
+				<div class="catalog form__catalog"
+				     v-if="$device.isMobile && currentCar">
 					<catalog-item-large-mobile-form :is-form="true"
 					                                :offer="currentCar" />
 				</div>
@@ -43,6 +44,8 @@
 					<inputs-input placeholder="ФИО"
 					              @input="handlerInput('name')"
 					              v-model="form.name.value"
+					              @focus="onFocus"
+					              @focusout="onFocusOut"
 					              type="text" />
 				</label>
 				<label class="form__field-wrap"
@@ -52,6 +55,8 @@
 					              @dateMaskComplete="form.date.valid = true"
 					              @onincomplete="form.date.valid = null"
 					              v-model="form.date.value"
+					              @focus="onFocus"
+					              @focusout="onFocusOut"
 					              mask="date"
 					              type="tel" />
 				</label>
@@ -62,6 +67,8 @@
 					              @phoneMaskComplete="form.phone.valid = true"
 					              @onincomplete="form.phone.valid = null"
 					              v-model="form.phone.value"
+					              @focus="onFocus"
+					              @focusout="onFocusOut"
 					              mask="phone"
 					              type="tel" />
 				</label>
@@ -73,7 +80,7 @@
 				               label="Согласен на"
 				               link="обработку личных данных" />
 			</fieldset>
-			<button-typical v-if="!buttonDisabled"
+			<button-typical :loading="buttonDisabled"
 			                text="Оставить заявку"
 			                button-class="button--credit button--form" />
 		</form>
@@ -163,6 +170,12 @@ export default {
 		}
 	},
 	methods: {
+		onFocus() {
+			this.setFocusShowFixes(false)
+		},
+		onFocusOut() {
+			this.setFocusShowFixes(true)
+		},
 		...mapActions({
 			openModal: 'modal/modal-main/openModal',
 			closeModal: 'modal/modal-main/closeModal',
@@ -170,7 +183,9 @@ export default {
 		}),
 		...mapMutations({
 			setPercent: 'banks/SET_PERCENT',
-			setCurrentCar: 'form/form-credit/SET_CURRENT_CAR'
+			setCurrentCar: 'form/form-credit/SET_CURRENT_CAR',
+			setFocusShowFixes: 'car/car/SET_FOCUS_SHOW_FIXED'
+			
 		}),
 		choseCar() {
 			this.error = ''
@@ -225,21 +240,22 @@ export default {
 					credit_period: this.form.periodValue.toString(),
 				}
 				// utm
-				if(localStorage.utm_source){
+				if (localStorage.utm_source) {
 					formData.utm_source = localStorage.utm_source
 				}
-				if(localStorage.utm_medium){
+				if (localStorage.utm_medium) {
 					formData.utm_medium = localStorage.utm_medium
 				}
-				if(localStorage.utm_campaign){
+				if (localStorage.utm_campaign) {
 					formData.utm_campaign = localStorage.utm_campaign
 				}
-				if(localStorage.utm_term){
+				if (localStorage.utm_term) {
 					formData.utm_term = localStorage.utm_term
 				}
-				if(localStorage.utm_content){
+				if (localStorage.utm_content) {
 					formData.utm_content = localStorage.utm_content
 				}
+				
 				await this.sendForm(formData)
 				await this.closeModal()
 			}

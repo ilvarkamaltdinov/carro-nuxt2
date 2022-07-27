@@ -25,6 +25,7 @@ export default {
 	mixins: [utm, metrika],
 	watch: {
 		'$route'() {
+			this.closeModals()
 			if (this.urlValidate) {
 				this.checkUrl()
 			}

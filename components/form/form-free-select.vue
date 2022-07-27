@@ -73,7 +73,8 @@
 			               label="Согласен на"
 			               link="обработку личных данных" />
 		</fieldset>
-		<button-typical text="Оставить заявку"
+		<button-typical :loading="buttonDisabled"
+		                text="Оставить заявку"
 		                button-class="button--credit button--form" />
 	</form>
 </template>

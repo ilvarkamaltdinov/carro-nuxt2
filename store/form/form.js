@@ -35,6 +35,7 @@ export const getters = {
 }
 export const actions = {
     async sendForm({state, commit, rootState}, variables) {
+        let thanks_route = '/thanks'
         await commit('SET_FORM_TYPE', variables.type)
         await commit('SET_BUTTON_DISABLED', true)
         //проверяю тачка ли это так как в колбэке дилера тачки нет
@@ -50,31 +51,31 @@ export const actions = {
         //Проверяю type для редиректа на нужную страницу
         if (variables.dealer) {
             if (variables.dealer === 'avtograd') {
-                await this.app.router.push('/thanks-avtograd');
+                thanks_route = '/thanks-avtograd'
             } else if (variables.dealer === 'prime') {
-                await this.app.router.push('/thanks-prime');
+                thanks_route = '/thanks-prime'
             } else if (variables.dealer === 'komm-auto') {
-                await this.app.router.push('/thanks-comm');
+                thanks_route = '/thanks-comm'
             }
             delete variables.dealer // Удаляю дилера чтобы не ушел на сервак
         }
         if (variables.type === 'trade-in') {
-            await this.app.router.push('/tradein-thanks');
+            thanks_route = '/tradein-thanks'
         }
         if (variables.type === 'callback') {
-            await this.app.router.push('/call-thanks');
+            thanks_route = '/call-thanks'
         }
         if (variables.type === 'buyout') {
-            await this.app.router.push('/buyout-thanks');
+            thanks_route = '/buyout-thanks'
         }
         if (variables.type === 'paid-selection') {
-            await this.app.router.push('/selection-thanks');
+            thanks_route = '/selection-thanks'
         }
         if (variables.type === 'hire-purchase') {
-            await this.app.router.push('/rassrochka-thanks');
+            thanks_route = '/rassrochka-thanks'
         }
         if (variables.type === 'station') {
-            await this.app.router.push('/servise-tnx');
+            thanks_route = '/servise-tnx'
         }
         //
 
@@ -83,15 +84,17 @@ export const actions = {
         }
         let client = this.app.apolloProvider.defaultClient
         let params = {...assignVariables, ...variables}
-        await client.mutate({
-            mutation: feedback,
-            variables: this.$removeEmptyObjects(params)
-        }).then(({data}) => {
-            commit('SET_BUTTON_DISABLED', false)
-            commit('SET_ORDER_ID', data.feedback.id)
-        }).catch(error => {
+        try {
+            let result = await client.mutate({
+                mutation: feedback,
+                variables: this.$removeEmptyObjects(params)
+            })
+            await commit('SET_BUTTON_DISABLED', false)
+            await commit('SET_ORDER_ID', result.data.feedback.id)
+            await this.app.router.push(thanks_route);
+        } catch (error) {
             console.log(error)
-        })
+        }
     }
 }
 export const mutations = {

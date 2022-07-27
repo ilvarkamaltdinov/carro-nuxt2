@@ -33,7 +33,7 @@
 			<div class="grid grid--car grid--container grid__col-12">
 				<car-buy />
 				<transition name="slide-fade">
-					<car-fixed v-if="showFixed" />
+					<car-fixed v-if="showFixed && focusShowFixed" />
 				</transition>
 				<car-info />
 			</div>
@@ -89,7 +89,8 @@ export default {
 			carPageLoaded: 'catalog/catalog-cars/carPageLoaded',
 			benefitsCar: 'benefits/benefitsCar',
 			marks: 'marks/marks/allMarks',
-			folders: 'folders/folders/folders'
+			folders: 'folders/folders/folders',
+			focusShowFixed: 'car/car/focusShowFixed'
 		}),
 		currentBackButton() {
 			return {
@@ -128,7 +129,7 @@ export default {
 			openModal: 'modal/modal-main/openModal'
 		}),
 		sendMyTarget() {
-			if (process.client){
+			if (process.client) {
 				_tmr.push({
 					type: 'itemView',
 					productid: this.offer.external_id,

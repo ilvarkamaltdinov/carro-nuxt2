@@ -35,7 +35,8 @@
 			               label="Согласен на"
 			               link="обработку личных данных" />
 		</fieldset>
-		<button-typical text="Перезвоните мне"
+		<button-typical :loading="buttonDisabled"
+		                text="Перезвоните мне"
 		                button-class="button--credit button--form" />
 	</form>
 </template>
