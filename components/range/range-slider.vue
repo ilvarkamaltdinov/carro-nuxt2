@@ -1,5 +1,5 @@
 <template>
-	<input :class="rangeClass" @touchstart="test" @change.prevent="$emit('input', $event.target.value)"/>
+	<input :class="rangeClass" @change.prevent="$emit('input', $event.target.value)"/>
 </template>
 <script>
 export default {
