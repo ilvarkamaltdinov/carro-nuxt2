@@ -583,7 +583,7 @@ const IonRangeSlider = function (element, initOptions= {}) {
             return;
         }
 
-        const x = e.pageX || e.originalEvent.touches && e.originalEvent.touches[0].pageX; // TODO
+        const x = e.pageX || e.touches && e.touches[0].pageX; // TODO
         coords.x_pointer = x - coords.x_gap;
         calc();
     };
@@ -627,8 +627,8 @@ const IonRangeSlider = function (element, initOptions= {}) {
      * @param e {Object} event object
      */
     const pointerDown = function (destination, e) {
-        e.preventDefault();
-        const x = e.pageX || e.originalEvent.touches && e.originalEvent.touches[0].pageX; // TODO
+        // e.preventDefault();
+        const x = e.pageX || e.touches && e.touches[0].pageX; // TODO
         if (e.button === 2) {
             return;
         }
