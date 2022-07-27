@@ -28,7 +28,7 @@
 			</div>
 			<div v-if="userCar"
 			     class="thanks__catalog catalog catalog--single grid__col-4">
-				<catalog-item-small-desktop :has-buttons="false"
+				<component :is="$device.isMobile ? 'catalog-item-large-mobile' :'catalog-item-small-desktop'" :has-buttons="false"
 				                            :offer="userCar" />
 			</div>
 		</div>
