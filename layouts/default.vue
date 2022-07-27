@@ -25,13 +25,13 @@ export default {
 	mixins: [utm, metrika],
 	watch: {
 		'$route'() {
-			if (this.urlValidation) {
+			if (this.urlValidate) {
 				this.checkUrl()
 			}
 		}
 	},
 	async fetch() {
-		if (this.urlValidation) {
+		if (this.urlValidate) {
 			await this.checkUrl()
 		}
 	},
@@ -41,7 +41,7 @@ export default {
 			isOfferClick: 'filters/filters/isOfferClick',
 			sort: 'filters/filters/sort'
 		}),
-		urlValidation() {
+		urlValidate() {
 			return this.$route.params.category === 'used'
 					|| this.$route.params.category === 'commercial'
 					|| this.$route.name === 'Best-moscow-autosalon'

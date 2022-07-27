@@ -1,8 +1,13 @@
 <template>
-	<input :class="rangeClass" />
+	<input :class="rangeClass" @touchstart="test" @change.prevent="$emit('input', $event.target.value)"/>
 </template>
 <script>
 export default {
+	data() {
+		return {
+			slider: null
+		}
+	},
 	props: {
 		options: {
 			type: Object,
@@ -15,15 +20,16 @@ export default {
 		}
 	},
 	mounted() {
-		ionRangeSlider.ionRangeSlider('.' + this.rangeClass, this.options);
-		let selector = document.querySelector('.' + this.rangeClass);
-		selector.addEventListener('input', (event) => {
-			this.$emit('input', event.target.value)
-		})
+		this.slider = ionRangeSlider.ionRangeSlider('.' + this.rangeClass, this.options);
+		// ionRangeSlider.ionRangeSlider('.' + this.rangeClass, this.options);
 	},
-	// destroyed() {
-	// 	console.log(111111111111)
-	// 	this.$rangeSlider.destroy()
-	// }
+	// watch: {
+	// 	options: function (value) {
+	// 		this.slider.update(value)
+	// 	}
+	// },
+	destroyed() {
+		this.slider.destroy()
+	}
 }
 </script>
