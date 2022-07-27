@@ -89,9 +89,9 @@ export const actions = {
                 mutation: feedback,
                 variables: this.$removeEmptyObjects(params)
             })
-            await commit('SET_BUTTON_DISABLED', false)
             await commit('SET_ORDER_ID', result.data.feedback.id)
             await this.app.router.push(thanks_route);
+            await commit('SET_BUTTON_DISABLED', false)
         } catch (error) {
             console.log(error)
         }
