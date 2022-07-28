@@ -77,6 +77,7 @@ export default {
         {src: '~/plugins/ymaps.js', mode: 'client'},
         {src: '~/plugins/swiper.js'},
         {src: '~/plugins/inputmask.js'},
+        {src: '~/plugins/clickOutside.js'},
         {src: '~/plugins/slideToggle.js'},
         {src: '~/plugins/lodash.js'},
         {src: '~/plugins/tippy.js'},

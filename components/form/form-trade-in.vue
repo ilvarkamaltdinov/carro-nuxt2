@@ -225,9 +225,6 @@ export default {
 				await this.closeModal()
 			}
 		}
-	},
-	mounted() {
-		console.log(this.isCredit)
 	}
 }
 </script>

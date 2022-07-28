@@ -26,11 +26,6 @@ import {mapActions, mapGetters} from "vuex";
 import offers from "@/apollo/queries/offer/offers";
 
 export default {
-	data() {
-		return {
-		
-		}
-	},
 	computed: {
 		...mapGetters({
 			view: 'filters/filters/view',
@@ -45,9 +40,6 @@ export default {
 		},
 		catalog() {
 			return this.view === 's' ? 'catalog-item-large-mobile' : 'catalog-item-small-mobile'
-		},
-		offers_list() {
-			return this.offers ? this.offers.data : []
 		}
 	},
 	methods: {

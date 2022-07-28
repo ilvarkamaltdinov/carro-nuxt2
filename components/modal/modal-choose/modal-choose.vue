@@ -13,21 +13,21 @@
 					
 					</tabs-item>
 					<tabs-item :is-active="tabComponent === 'model'"
-					           :class="{'disabled':!currentMark}">
+					           :class="{'tabs__item--disabled':!currentMark}">
 						<button class="tabs__link"
 						        @click="tabClick('model')">
 							{{ currentModel ? '2. ' + currentModel.title : '2. Модель' }}
 						</button>
 					</tabs-item>
 					<tabs-item :is-active="tabComponent === 'generation'"
-					           :class="{'disabled':!currentModel}">
+					           :class="{'tabs__item--disabled':!currentModel}">
 						<button class="tabs__link"
 						        @click="tabClick('generation')">
 							{{ currentGeneration ? '3. ' + currentGeneration.name : '3. Поколение' }}
 						</button>
 					</tabs-item>
 					<tabs-item :is-active="tabComponent === 'car'"
-					           :class="{'disabled':!currentGeneration}">
+					           :class="{'tabs__item--disabled':!currentGeneration}">
 						<button class="tabs__link"
 						        @click="tabClick('car')">
 							4. Автомобиль
@@ -77,12 +77,3 @@ export default {
 	},
 }
 </script>
-
-<style scoped
-       lang="scss">
-//TODO добавить стили
-.disabled {
-	cursor: auto;
-	pointer-events: none;
-}
-</style>

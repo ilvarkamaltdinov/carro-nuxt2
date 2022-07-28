@@ -1,23 +1,9 @@
 <template>
-	<section class="page-main__catalog catalog grid__col-12">
+	<section class="page-main__not-found not-found" v-if="liked_offers.length === 0 && !loading">
 		<h1 class="heading heading--h1">
 			{{ pageTitle }}
 		</h1>
-		<div v-if="loading"
-		     class="catalog__list grid grid__col-12">
-			<skeleton-card-small v-for="i in 3"
-			                     :key="i" />
-		</div>
-		<div v-else
-		     class="catalog__list grid grid__col-12">
-			<component :is="component"
-			           v-for="offer in liked_offers"
-			           :offer="offer"
-			           :key="offer.id" />
-		</div>
-		<div class="not-found__block"
-		     v-if="liked_offers.length === 0 && !loading">
-			<p>Нет избранных автомобилей</p>
+		<div class="not-found__block">
 			<picture>
 				<source type="image/webp"
 				        media="(min-width: 768px)"
@@ -30,7 +16,21 @@
 				     alt="404" />
 			</picture>
 		</div>
-		<!--<button-more />-->
+	</section>
+	<section v-else class="page-main__catalog catalog grid__col-12">
+		<h1 class="heading heading--h1">
+			{{ pageTitle }}
+		</h1>
+		<div v-if="loading" class="catalog__list grid grid__col-12">
+			<skeleton-card-small v-for="i in 3" :key="i" />
+		</div>
+		<div v-else
+		     class="catalog__list grid grid__col-12">
+			<component :is="component"
+			           v-for="offer in liked_offers"
+			           :offer="offer"
+			           :key="offer.id" />
+		</div>
 	</section>
 </template>
 <script>

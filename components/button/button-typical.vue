@@ -8,10 +8,9 @@
 	<button v-else
 	        class="button"
 	        :disabled="loading"
-	        :class="[buttonClass, loading ? 'button--loading':'']"
+	        :class="buttonClass"
 	        @click="$emit('click')">
 		{{ text }}
-		<span v-if="loading" class="loader loader--button"></span>
 		<svg-icon v-if="icon !== ''"
 		          class="icon"
 		          :name="icon" />

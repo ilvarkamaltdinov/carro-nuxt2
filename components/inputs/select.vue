@@ -3,7 +3,7 @@
 	        class="form__field form__field--select"
 	        @change="changeSelect()"
 	        :value="value">
-		<option :value="value">{{value}}</option>
+		<option :value="value">{{ value }}</option>
 		<option :value="option"
 		        :key="option"
 		        v-for="option in options">

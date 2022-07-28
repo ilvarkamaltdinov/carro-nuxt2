@@ -148,22 +148,3 @@ export default {
 	}
 }
 </script>
-<style>
-.page-enter-active,
-.page-leave-active {
-	transition: opacity 0.32s;
-}
-
-.page-enter,
-.page-leave-active {
-	opacity: 0;
-}
-.stories__modal_wrapper-wrap {
-	z-index: 300;
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-}
-</style>

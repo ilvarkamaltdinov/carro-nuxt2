@@ -30,12 +30,13 @@
 <script>
 export default {
 	props: {
-		offers: Object
+		offers: Object,
+		activeButton: Number
 	},
 	computed: {
 		currentPagination: {
 			get() {
-				return Number(this.$route.query.page || 1)
+				return Number(this.$route.query.page || this.activeButton || 1)
 			},
 			set(pageNum) {
 				this.$router.push({query: {page: pageNum}});
