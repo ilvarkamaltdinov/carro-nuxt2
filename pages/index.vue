@@ -17,5 +17,8 @@
 import seoTags from "@/mixins/seoTags";
 export default {
 	mixins:[seoTags],
+	mounted() {
+		window.scrollTo(0, 0)
+	},
 }
 </script>

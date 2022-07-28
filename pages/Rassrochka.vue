@@ -21,6 +21,9 @@ export default {
 		...mapGetters({
 			benefitsCredit: 'benefits/benefitsCredit'
 		})
-	}
+	},
+	mounted() {
+		window.scrollTo(0, 0)
+	},
 }
 </script>
