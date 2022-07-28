@@ -11,6 +11,8 @@
 		</option>
 	</select>
 	<div v-else
+	     @focusout="isOpen = false"
+	     tabindex="1"
 	     class="form__field form__field--select select"
 	     @click="isOpen = !isOpen">
 		<span>{{ value }}</span>

@@ -6,7 +6,7 @@
 				     v-if="!modal">
 					<button-filter @click="openFilter()" />
 				</div>
-				<div class="filter__buttons-sort select">
+				<div tabindex="1" class="filter__buttons-sort select" @focusout="isActive = false">
 					<div class="button button--action button--text filter__button"
 					     @click="isActive = !isActive">
 						<svg-icon class="button__icon"
