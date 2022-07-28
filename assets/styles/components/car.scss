@@ -214,6 +214,10 @@
   .car__benefits {
     margin-bottom: 16px;
   }
+
+  .car__buy-block .button--trade-in {
+    flex-grow: 1;
+  }
 }
 
 @media (min-width: $tablet-width) and (max-width: $tablet-width-max) {

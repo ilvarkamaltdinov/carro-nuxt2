@@ -265,6 +265,10 @@
   .catalog__item--small .catalog__img-link {
     width: 120px;
     border-radius: $borderRadiusSmall;
+
+    & img {
+      border-radius: $borderRadiusSmall;
+    }
   }
 
   .catalog__item--small .catalog__img {
@@ -507,5 +511,9 @@
     opacity: 1;
     visibility: visible;
     -webkit-backface-visibility: visible;
+  }
+
+  .catalog--slider {
+    margin-top: -32px;
   }
 }
