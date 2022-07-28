@@ -30,11 +30,12 @@ export default {
     },
     computed: {
         ...mapGetters({
-            domain: 'domain'
-        })
+            domain: 'domain',
+            offer: 'catalog/catalog-cars/offer',
+        }),
     },
     head() {
-        let currentMeta =  [
+        let currentMeta = [
             {
                 hid: 'desctiption',
                 name: 'description',
@@ -60,11 +61,7 @@ export default {
                 property: 'og:description',
                 content: `${this.description}`
             },
-            {
-                hid: 'og:image',
-                property: 'og:image',
-                content: this.domain + '/carro.png'
-            },
+
         ]
         if (this.domain !== 'https://carro.ru') {
             currentMeta.push({
@@ -72,12 +69,28 @@ export default {
                 content: 'noindex, nofollow'
             })
         }
+        if (this.offer) {
+            currentMeta.push({
+                hid: 'og:image',
+                property: 'og:image',
+                content: this.offer.images[0].thumb
+            })
+        } else {
+            currentMeta.push({
+                hid: 'og:image',
+                property: 'og:image',
+                content: this.domain + '/carro.png'
+            })
+        }
+        const canonical = `https://carro.ru${this.$route.path
+            .toLowerCase()
+            .replace(/\/$/, '')}`
         return {
             title: `${this.title}`,
             link: [
                 {
                     rel: 'canonical',
-                    href: 'https://carro.ru' + this.$route.path
+                    href: canonical
                     // TODO поправить позже(спросить у Игоря зачем мы поставили тут статичный путь?)
                 }
             ],

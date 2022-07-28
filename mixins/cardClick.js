@@ -44,7 +44,7 @@ export default {
         },
         async ratingClick() {
             let payload = {
-                modal_data: this.offer.rating,
+                modal_data: this.offer,
                 modal_component: 'modal-rating',
                 modal_title: ' Состояние автомобиля',
                 modal_sub_title: this.offer.name

@@ -15,5 +15,8 @@ import jsonld from "@/mixins/jsonld";
 
 export default {
 	mixins: [seoTags, jsonld],
+	mounted() {
+		window.scrollTo(0, 0)
+	}
 }
 </script>

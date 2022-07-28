@@ -9,7 +9,8 @@
 			                  :img="img.thumb"
 			                  v-for="img in offer.images"
 			                  :key="img.thumb" />
-			<catalog-item-call-card :dealer="offer.dealer"
+			<catalog-item-call-card v-if="!isForm"
+			                        :dealer="offer.dealer"
 			                        :image="offer.images[0].thumb" />
 		</div>
 		<div class="catalog__tech"

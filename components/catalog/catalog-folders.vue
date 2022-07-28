@@ -43,9 +43,7 @@ export default {
 			folders: 'folders/folders/folders',
 		}),
 		sortFolders() {
-			let result = []
-			result = this.$_.sortBy(this.folders, [function(folder) { return folder.offers_count; }]).reverse();
-			return result
+			return this.$_.sortBy(this.folders, [function(folder) { return folder.offers_count; }]).reverse();
 		}
 	},
 	methods: {

@@ -25,7 +25,10 @@
 					        @click.prevent="choseCar()">
 
 						{{ currentCar ? currentCar.name : 'Выбрать автомобиль' }}
-
+						<span v-if="currentCar">
+							{{currentCar.price | toCurrency}}
+						</span>
+						
 					</button>
 					<svg-icon name="icon-form"
 					          class="icon form__car-icon" />
@@ -86,9 +89,10 @@
 <script>
 import {mapGetters, mapMutations, mapActions} from 'vuex'
 import formValidation from "@/mixins/formValidation";
+import filters from "@/mixins/filters";
 
 export default {
-	mixins: [formValidation],
+	mixins: [formValidation,filters],
 	props: {
 		hasChose: {
 			type: Boolean,

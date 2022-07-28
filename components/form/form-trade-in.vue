@@ -11,12 +11,16 @@
 				        @click.prevent="choseCar()">
 					
 					{{ currentCar ? currentCar.name : 'Выбрать автомобиль' }}
+					<span v-if="currentCar">
+						{{currentCar.price | toCurrency}}
+					</span>
 				
 				</button>
 				<svg-icon name="icon-form"
 				          class="icon form__car-icon" />
 			</label>
-			<div class="catalog form__catalog" v-if="$device.isMobile && currentCar">
+			<div class="catalog form__catalog"
+			     v-if="$device.isMobile && currentCar">
 				<catalog-item-large-mobile-form :is-form="true"
 				                                :offer="currentCar" />
 			</div>
@@ -82,9 +86,10 @@
 <script>
 import {mapGetters, mapMutations, mapActions} from 'vuex'
 import formValidation from "@/mixins/formValidation";
+import filters from "@/mixins/filters";
 
 export default {
-	mixins: [formValidation],
+	mixins: [formValidation, filters],
 	props: {
 		hasChose: {
 			type: Boolean,
@@ -196,19 +201,19 @@ export default {
 					client_vehicle_mark: this.form.car.value,
 				}
 				// utm
-				if(localStorage.utm_source){
+				if (localStorage.utm_source) {
 					formData.utm_source = localStorage.utm_source
 				}
-				if(localStorage.utm_medium){
+				if (localStorage.utm_medium) {
 					formData.utm_medium = localStorage.utm_medium
 				}
-				if(localStorage.utm_campaign){
+				if (localStorage.utm_campaign) {
 					formData.utm_campaign = localStorage.utm_campaign
 				}
-				if(localStorage.utm_term){
+				if (localStorage.utm_term) {
 					formData.utm_term = localStorage.utm_term
 				}
-				if(localStorage.utm_content){
+				if (localStorage.utm_content) {
 					formData.utm_content = localStorage.utm_content
 				}
 				if (this.isCredit) {
@@ -220,6 +225,9 @@ export default {
 				await this.closeModal()
 			}
 		}
+	},
+	mounted() {
+		console.log(this.isCredit)
 	}
 }
 </script>

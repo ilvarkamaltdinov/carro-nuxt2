@@ -1,6 +1,10 @@
 import {redirects} from './configModules'
+const isDev = process.env.NODE_ENV !== 'production'
 
 export default {
+    ...(!isDev && {
+        modern: 'client'
+    }),
     head: {
         title: 'carro',
         htmlAttrs: {
@@ -12,7 +16,6 @@ export default {
             {name: 'theme-color', content: 'ED2939'},
             {name: 'http-equiv="X-UA-Compatible', content: 'ie=edge'},
             {name: 'viewport', content: 'width=device-width, initial-scale=1'},
-            {hid: 'description', name: 'description', content: ''},
             {name: 'format-detection', content: 'telephone=no'},
             {name: 'apple-mobile-web-app-capable', content: 'yes'},
             {name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent'}
@@ -123,7 +126,42 @@ export default {
         }
     },
     build: {
-        extractCSS: true,
+        filenames: {
+            app: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',
+            chunk: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',
+            css: ({ isDev }) => isDev ? '[name].css' : 'css/[contenthash].css',
+            img: ({ isDev }) => isDev ? '[path][name].[ext]' : 'img/[contenthash:7].[ext]',
+            font: ({ isDev }) => isDev ? '[path][name].[ext]' : 'fonts/[contenthash:7].[ext]',
+            video: ({ isDev }) => isDev ? '[path][name].[ext]' : 'videos/[contenthash:7].[ext]'
+        },
+        ...(!isDev && {
+            html: {
+                minify: {
+                    collapseBooleanAttributes: true,
+                    decodeEntities: true,
+                    minifyCSS: true,
+                    minifyJS: true,
+                    processConditionalComments: true,
+                    removeEmptyAttributes: true,
+                    removeRedundantAttributes: true,
+                    trimCustomFragments: true,
+                    useShortDoctype: true
+                }
+            }
+        }),
+        splitChunks: {
+            layouts: true,
+            pages: true,
+            commons: true
+        },
+        optimization: {
+            minimize: !isDev
+        },
+        ...(!isDev && {
+            extractCSS: {
+                ignoreOrder: true
+            }
+        }),
         loaders: {
             scss: {
                 implementation: require('sass')

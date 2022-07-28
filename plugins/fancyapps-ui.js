@@ -1,3 +1,4 @@
+import { Fancybox } from "@fancyapps/ui";
 if (process.client) {
-  window.fancybox = require('@fancyapps/ui')
+  window.fancybox = Fancybox
 }

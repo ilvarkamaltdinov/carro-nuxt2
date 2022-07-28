@@ -14,7 +14,11 @@ import jsonld from "@/mixins/jsonld";
 
 export default {
 	mixins: [seoTags, jsonld],
+	validate(ctx) {
+		return ctx.params.category === 'used' || ctx.params.category === 'commercial';
+	},
 	mounted() {
+		window.scrollTo(0, 0)
 		localStorage.removeItem('foldersTabsLeft');
 	},
 	methods: {

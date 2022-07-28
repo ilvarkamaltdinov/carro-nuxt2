@@ -84,6 +84,7 @@ export default {
 	},
 	computed: {
 		...mapGetters({
+			domain: 'domain',
 			site_id: 'site_id',
 			offer: 'catalog/catalog-cars/offer',
 			carPageLoaded: 'catalog/catalog-cars/carPageLoaded',
