@@ -63,10 +63,10 @@ export const state = () => ({
             slug: 'tires',
         },
         {
-            text: 'КАСКО',
+            text: 'ОСАГО',
             text_strong: 'за наш счет',
             icon: 'insurance',
-            description: 'При покупке автомобиля в кредит через CARRO каждый клиент получает КАСКО в подарок.',
+            description: 'При покупке автомобиля в кредит через CARRO каждый клиент получает ОСАГО в подарок.',
             slug: 'insurance',
         },
         {
