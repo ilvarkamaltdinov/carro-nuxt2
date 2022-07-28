@@ -6,7 +6,7 @@
 				             :offer="modalData" />
 			</div>
 			<div class="application__catalog application__catalog--modal catalog grid__col-4">
-				<component :is="component"
+				<component :is="$device.isMobile ? 'catalog-item-large-mobile':'catalog-item-small-desktop'"
 				           :is-form="true"
 				           :has-buttons="false"
 				           :offer="modalData" />
@@ -24,10 +24,7 @@ export default {
 		...mapGetters({
 			modalData: 'modal/modal-main/modalData',
 			benefitsCredit: 'benefits/benefitsCredit'
-		}),
-		component() {
-			return this.$device.isMobile ? 'catalog-item-large-mobile' : 'catalog-item-small-desktop'
-		}
+		})
 	},
 }
 </script>
