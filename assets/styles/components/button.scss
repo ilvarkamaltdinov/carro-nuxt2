@@ -235,3 +235,11 @@
     margin-top: 32px;
   }
 }
+
+@media (min-width: $desktop-width) {
+  .button--disabled {
+    &:hover {
+      cursor: auto;
+    }
+  }
+}

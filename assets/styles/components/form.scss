@@ -10,8 +10,13 @@
   height: 16px;
 }
 
-.form__checkbox-text a {
+.form__checkbox-text-link {
   color: $colorLink;
+  transition: $transitionHover;
+
+  &:hover {
+    opacity: 0.6;
+  }
 }
 
 .form__catalog {

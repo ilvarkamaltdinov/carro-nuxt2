@@ -6,8 +6,39 @@
   color: white!important;
 }
 
-.fancybox__thumbs .carousel__slide .fancybox__thumbs {
+.fancybox__thumbs .carousel__slide .fancybox__thumb {
   &::after {
-    // border: 2px solid $colorPrimary;
+    background-color: $colorText;
+    opacity: 0.8;
+    transition: $transitionHover;
+  }
+}
+
+.fancybox__thumbs .carousel__slide.is-nav-selected .fancybox__thumb {
+  &::after {
+    opacity: 0;
+  }
+}
+
+@media (max-width: $mobile-width-only) {
+  .fancybox__nav .carousel__button.is-prev, .carousel__button.is-next {
+    display: none;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .fancybox__nav .carousel__button.is-prev, .carousel__button.is-next {
+    top: calc(50% - 24px);
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & svg {
+      width: 16px;
+      height: 16px;
+      box-shadow: none;
+      color: $colorBg;
+    }
   }
 }

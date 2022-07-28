@@ -130,6 +130,7 @@
   padding: 14px 16px;
   align-items: center;
   @include font-features-strong;
+  @include hover;
 }
 
 .page-header__back-model {

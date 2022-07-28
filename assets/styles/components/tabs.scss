@@ -37,6 +37,14 @@
   }
 }
 
+.tabs__item--disabled {
+  pointer-events: none;
+
+  &:hover {
+    cursor: auto;
+  }
+}
+
 @media (max-width: $mobile-width-only) {
   .tabs__item {
     margin-right: 16px;
@@ -62,6 +70,12 @@
 }
 
 @media (min-width: $desktop-width) {
+  .tabs__item--disabled {
+    &:hover {
+      cursor: auto;
+    }
+  }
+
   .tabs__link {
     &:hover,
     &:focus {

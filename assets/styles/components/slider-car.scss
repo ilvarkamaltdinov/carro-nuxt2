@@ -14,6 +14,10 @@
   }
 }
 
+.slider__car-img {
+  border-radius: $borderRadius;
+}
+
 @media (min-width: $desktop-width) {
   .slider__car-img {
     transition: opacity 0.3s;
