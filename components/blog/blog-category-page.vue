@@ -48,7 +48,7 @@
 			<client-only>
 				<infinite-loading @infinite="getArticles"
 				                  :throttle-limit="2500">
-					<!--<div slot="spinner">ЗАГРУЗКА ЖОПЫ</div>-->
+					<!--<div slot="spinner"></div>-->
 					<div slot="no-more"></div>
 					<div slot="no-results"></div>
 				</infinite-loading>
