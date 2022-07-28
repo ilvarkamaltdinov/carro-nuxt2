@@ -44,13 +44,13 @@ export default {
             }
         ]
     },
+    resourceHints: false,
     render: {
         bundleRenderer: {
             shouldPreload: (file, type) => {
                 return ['style', 'font'].includes(type)
             }
-        },
-        resourceHints: false
+        }
     },
     serverMiddleware: {
         '/feeds': '~/server-middleware/index.js',
@@ -126,11 +126,6 @@ export default {
         }
     },
     build: {
-        loaders: {
-            scss: {
-                implementation: require('sass')
-            }
-        },
         filenames: {
             app: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',
             chunk: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',
@@ -167,29 +162,10 @@ export default {
                 ignoreOrder: true
             }
         }),
-        transpile: ['vue-lazy-hydration', 'intersection-observer'],
-        postcss: {
-            plugins: {
-                ...(!isDev && {
-                    cssnano: {
-                        preset: ['advanced', {
-                            autoprefixer: false,
-                            cssDeclarationSorter: false,
-                            zindex: false,
-                            discardComments: {
-                                removeAll: true
-                            }
-                        }]
-                    }
-                })
-            },
-            ...(!isDev && {
-                preset: {
-                    browsers: 'cover 99.5%',
-                    autoprefixer: true
-                }
-            }),
-            order: 'cssnanoLast'
+        loaders: {
+            scss: {
+                implementation: require('sass')
+            }
         }
     },
     // server: {
