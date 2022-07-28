@@ -30,11 +30,12 @@ export default {
     },
     computed: {
         ...mapGetters({
-            domain: 'domain'
-        })
+            domain: 'domain',
+            offer: 'catalog/catalog-cars/offer',
+        }),
     },
     head() {
-        let currentMeta =  [
+        let currentMeta = [
             {
                 hid: 'desctiption',
                 name: 'description',
@@ -60,16 +61,25 @@ export default {
                 property: 'og:description',
                 content: `${this.description}`
             },
-            {
-                hid: 'og:image',
-                property: 'og:image',
-                content: this.domain + '/carro.png'
-            },
+
         ]
         if (this.domain !== 'https://carro.ru') {
             currentMeta.push({
                 name: 'robots',
                 content: 'noindex, nofollow'
+            })
+        }
+        if (this.offer) {
+            currentMeta.push({
+                hid: 'og:image',
+                property: 'og:image',
+                content: this.offer.images[0].thumb
+            })
+        } else {
+            currentMeta.push({
+                hid: 'og:image',
+                property: 'og:image',
+                content: this.domain + '/carro.png'
             })
         }
         return {
