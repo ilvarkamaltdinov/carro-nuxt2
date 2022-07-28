@@ -82,12 +82,15 @@ export default {
                 content: this.domain + '/carro.png'
             })
         }
+        const canonical = `https://carro.ru${this.$route.path
+            .toLowerCase()
+            .replace(/\/$/, '')}`
         return {
             title: `${this.title}`,
             link: [
                 {
                     rel: 'canonical',
-                    href: 'https://carro.ru' + this.$route.path
+                    href: canonical
                     // TODO поправить позже(спросить у Игоря зачем мы поставили тут статичный путь?)
                 }
             ],
