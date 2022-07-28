@@ -51,7 +51,7 @@
 				</div>
 				<div class="features__group">
 					<div class="features__rating">
-						<rating :rating="modalData.rating_technical"
+						<rating :rating="modalData.rating.rating_technical"
 						        :max="5" />
 						<div class="features__item">
 							<h3 class="heading heading--h3">Технические характеристики</h3>
