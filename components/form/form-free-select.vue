@@ -81,9 +81,10 @@
 <script>
 import {mapActions, mapGetters} from 'vuex'
 import formValidation from "@/mixins/formValidation";
+import filters from "@/mixins/filters";
 
 export default {
-	mixins: [formValidation],
+	mixins: [formValidation,filters],
 	data() {
 		return {
 			error: ''

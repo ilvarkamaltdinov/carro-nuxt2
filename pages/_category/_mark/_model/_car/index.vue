@@ -15,9 +15,9 @@ import seoTags from "@/mixins/seoTags";
 
 export default {
 	mixins: [seoTags],
-	// validate(ctx) {
-	// 	console.log(ctx)
-	// },
+	validate(ctx) {
+		return ctx.params.category === 'used' || ctx.params.category === 'commercial';
+	},
 	computed: {
 		...mapGetters({
 			componentCatalog: 'filters/filters/componentCatalog',
