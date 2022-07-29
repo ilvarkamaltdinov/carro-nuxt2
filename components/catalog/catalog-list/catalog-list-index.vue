@@ -112,7 +112,13 @@ export default {
 			await this.setLoading(true)
 			let response = await this.request({
 				query: offers,
-				variables: {page: 0, limit: 10, set: this.set, dateFormat: 'j F Y года.',}
+				variables: {
+					page: 0,
+					limit: 10,
+					set: this.set,
+					dateFormat: 'j F Y года.',
+					sort: this.set === 'best' ? 'created_at|desc' : 'price|asc'
+				}
 			})
 			this.setOffers(response.data.offers)
 			await this.setLoading(false)
