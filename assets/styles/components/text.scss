@@ -11,6 +11,15 @@
   margin-bottom: 16px;
 }
 
+.text__link {
+  color: $colorLink;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
 .text__links {
   display: flex;
   align-items: center;
