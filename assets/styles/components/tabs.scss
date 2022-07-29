@@ -59,6 +59,15 @@
   .tabs__list {
     @include horizontal-scroll;
   }
+
+  .tabs__list--all {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .tabs__list--all .tabs__item {
+    margin: 0;
+  }
 }
 
 @media (min-width: $tablet-width) {
