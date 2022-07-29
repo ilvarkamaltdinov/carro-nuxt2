@@ -71,7 +71,7 @@ export default {
                     "priceCurrency": "RUB",
                     "price": this.offer?.price,
                     "priceValidUntil": "2029-12-31",
-                    "availability": "https://schema.org/InStock",
+                    "availability": `${this.offer?.is_active ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock'}`,
                     "itemCondition": "https://schema.org/UsedCondition"
                 },
                 "aggregateRating": {

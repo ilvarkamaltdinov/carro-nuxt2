@@ -17,7 +17,7 @@
 						</span>
 					</div>
 				</div>
-				<div class="car__top-buttons grid__col-6">
+				<div class="car__top-buttons grid__col-6" v-if="offer.is_active">
 					<button-typical @click="callback"
 					                text="Обратный звонок"
 					                class="button--icon button--link"
@@ -40,7 +40,7 @@
 			<div class="grid grid--container">
 				<benefits class="car__benefits"
 				          :benefits="benefitsCar" />
-				<car-credit :offer="offer" />
+				<car-credit v-if="offer.is_active" :offer="offer" />
 			</div>
 		</section>
 		<skeleton-car v-show="!carPageLoaded" />

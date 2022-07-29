@@ -35,10 +35,10 @@
 			/>
 			<div class="car__actions-buttons">
 				<button-autoteka @click="autoteka(offer)" />
-				<button-favorite :active="likesArray.some(id => id === String(offer.external_id))"
+				<button-favorite v-if="offer.is_active" :active="likesArray.some(id => id === String(offer.external_id))"
 				                 @click="like()" />
 				<!--<button-compare />-->
-				<button-call :phone="offer.dealer.phone"
+				<button-call v-if="offer.is_active" :phone="offer.dealer.phone"
 				             @click="callback(offer)" />
 			</div>
 		</div>

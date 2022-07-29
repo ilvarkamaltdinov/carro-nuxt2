@@ -161,7 +161,7 @@
 					                text="Показать больше"
 					                class="button--show" />
 				</div>
-				<div class="swiper-slide car__info-group car__info-group--options">
+				<div v-if="offer.is_active" class="swiper-slide car__info-group car__info-group--options">
 					<div class="heading-group">
 						<div class="heading-group__wrap">
 							<h2 class="heading heading--h2">
