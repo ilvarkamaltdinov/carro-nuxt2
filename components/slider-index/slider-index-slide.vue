@@ -1,6 +1,9 @@
 <template>
 	<div class="swiper-slide">
-		<a v-if="slide.target" :href="slide.link" :target="slide.target" class="slider-index__item">
+		<a v-if="slide.telegram"
+		   :href="settings['soc_telegram']"
+		   :target="slide.target"
+		   class="slider-index__item">
 			<div class="slider-index__media-wrap">
 				<div class="slider-index__media">
 					<picture>
@@ -42,7 +45,9 @@
 				</div>
 			</div>
 		</a>
-		<nuxt-link v-else :to="slide.link" class="slider-index__item">
+		<nuxt-link v-else
+		           :to="slide.link"
+		           class="slider-index__item">
 			<div class="slider-index__media-wrap">
 				<div class="slider-index__media">
 					<picture>
@@ -87,9 +92,16 @@
 	</div>
 </template>
 <script>
+import {mapGetters} from "vuex";
+
 export default {
 	props: {
 		slide: Object
+	},
+	computed: {
+		...mapGetters({
+			settings: 'settings/settings/settings'
+		})
 	}
 }
 </script>

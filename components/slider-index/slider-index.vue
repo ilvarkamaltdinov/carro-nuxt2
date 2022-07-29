@@ -136,8 +136,7 @@ export default {
 					id: 7,
 					heading: ' Читайте наш Telegram-канал',
 					content: 'Последние поступления, акции, новости',
-					target: 'blank',
-					link: 'https://t.me/carro_ru'
+					telegram: true
 				},
 				{
 					id: 8,
