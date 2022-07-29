@@ -79,7 +79,7 @@
 						<li class="makes__item"
 						    v-for="index in 8"
 						    :key="index">
-							<nuxt-link :to="'/used/' + allMarks[index].slug"
+							<nuxt-link :title="allMarks[index].title" :to="'/used/' + allMarks[index].slug"
 							           @click.native="navMarkClick()"
 							           class="makes__link">
 								<div class="makes__title">{{ allMarks[index].title }}</div>
