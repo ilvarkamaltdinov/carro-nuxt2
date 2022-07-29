@@ -50,7 +50,7 @@
 				«{{ offer.dealer.title }}»
 			</a>
 		</div>
-		<div class="car__stock car__stock--no">
+		<div v-else class="car__stock car__stock--no">
 			Нет в наличии
 		</div>
 	</div>
