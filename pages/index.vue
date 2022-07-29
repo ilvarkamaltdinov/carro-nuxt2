@@ -7,7 +7,9 @@
 				<stories/>
 			</div>
 			<form-index />
-			<catalog-list-index/>
+			<client-only>
+				<catalog-list-index/>
+			</client-only>
 			<featured />
 			<video-about />
 		</div>

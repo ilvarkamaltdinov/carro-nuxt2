@@ -7,7 +7,7 @@
 			<span class="makes__title">
 				{{ item.title || item.name }}
 				<span v-if="item.year_begin">
-					[ {{ item.year_begin }} - {{ item.year_end ? item.year_end : 'н.в.' }}]
+					[{{ item.year_begin }} - {{ item.year_end ? item.year_end : 'н.в.' }}]
 				</span>
 			</span>
 			<span class="makes__qty">
