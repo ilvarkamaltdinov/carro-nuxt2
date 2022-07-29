@@ -66,7 +66,7 @@ export default {
     },
     css: [
         '~/assets/styles/index.scss',
-        '@fancyapps/ui/dist/fancybox.css'
+        '@fancyapps/ui/src/Fancybox/Fancybox.scss'
     ],
     plugins: [
         {src: '~/plugins/rangeSlider.js', mode: 'client'},
