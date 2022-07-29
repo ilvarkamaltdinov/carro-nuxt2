@@ -86,7 +86,7 @@ export default {
 		},
 		calculate() {
 			if (this.offer) {
-				let creditProc = this.installment ? 1 : this.percent;
+				let creditProc = this.installment ? 0.001 : this.percent;
 				let car_price = this.offer.price;
 				let creditTime = this.periodValue;
 				let firstPay = this.paymentValue;
