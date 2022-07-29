@@ -9,7 +9,7 @@
 				В кредит от {{ offer.price | access_acredit }} / мес.
 			</div>
 		</div>
-		<div class="car__buy-block">
+		<div v-if="offer.is_active" class="car__buy-block">
 			<button @click.prevent="installmentClick(offer)"
 			        class="button button--credit-pay button--link">
 				Рассрочка
@@ -42,13 +42,16 @@
 				             @click="callback(offer)" />
 			</div>
 		</div>
-		<div class="car__stock">
+		<div class="car__stock" v-if="offer.is_active">
 			В наличии в автоцентре
 			<a href="#"
 			   @click.prevent="moreInfoDiller(offer.dealer.slug)"
 			   class="car__stock-dealer">
 				«{{ offer.dealer.title }}»
 			</a>
+		</div>
+		<div class="car__stock car__stock--no">
+			Нет в наличии
 		</div>
 	</div>
 </template>

@@ -1,7 +1,7 @@
 <template>
 	<div class="catalog__price-wrap">
 		<div class="catalog__price">{{ price | toCurrency }}</div>
-		<div class="catalog__oldprice">1 585 000 ₽</div>
+		<!--<div class="catalog__oldprice">1 585 000 ₽</div>-->
 		<div class="catalog__credit-price">от {{ price | access_acredit }} / мес.</div>
 	</div>
 </template>

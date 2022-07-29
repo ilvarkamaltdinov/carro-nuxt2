@@ -62,7 +62,7 @@
 								          name="icon-volume" />
 							</div>
 							<div class="car__tech-content">
-								{{ offer.engine_volume }} л
+								{{ offer.engine_volume | engineVolume }} л
 							</div>
 						</li>
 						<li class="car__tech-item">
