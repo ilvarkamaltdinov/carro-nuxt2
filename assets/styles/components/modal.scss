@@ -6,7 +6,7 @@
   left: 0;
   -webkit-overflow-scrolling: touch;
   width: 100%;
-  height: calc(100vh - 60px);
+  height: 100%;
   overflow-y: scroll;
   z-index: 500;
   pointer-events: auto;
@@ -101,6 +101,10 @@
     width: 100%;
   }
 
+  .modal__wrap {
+    padding-top: 113px;
+  }
+
   .modal__wrap .filter__catalog-wrap {
     padding-top: 0;
   }
@@ -108,6 +112,43 @@
   .modal--makes .modal__wrap {
     padding: 0;
     margin: 0;
+  }
+
+  .modal .heading-group--modal {
+    background: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 250;
+  }
+
+  .modal .modal__options {
+    background: white;
+    position: fixed;
+    width: 100%;
+    z-index: 250;
+    top: 97px;
+    padding-top: 16px;
+  }
+
+  .modal .heading-group__wrap {
+    overflow: hidden;
+    max-width: calc(100% - 56px);
+
+    & .heading {
+      max-width: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+
+  .modal__wrap {
+    padding-top: 113px;
+  }
+
+  .modal__options ~ .modal__wrap {
+    padding-top: 194px;
   }
 }
 

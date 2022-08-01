@@ -41,6 +41,10 @@
   margin-right: 6px;
 }
 
+@media (max-width: $mobile-width-only) {
+
+}
+
 @media (min-width: $tablet-width) {
   .heading-group--h1 {
     margin-bottom: 0;
