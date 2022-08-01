@@ -12,10 +12,6 @@
 					<span class="catalog__year">
 						{{ offer.year }}
 					</span>
-          <span class="catalog__vin">
-            <svg-icon name="icon-check"/>
-            VIN
-          </span>
 				</a>
 			</h3>
 		</div>

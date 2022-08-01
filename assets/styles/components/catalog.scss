@@ -222,6 +222,10 @@
 }
 
 @media (max-width: $mobile-width-only) {
+  .catalog__item--small .catalog__vin {
+    display: none;
+  }
+
   .catalog--single {
     margin: 24px -16px;
   }
@@ -375,7 +379,9 @@
   }
 
   .catalog__heading * {
-    @include font-desktop-h3-card;
+    &:not(.catalog__vin) {
+      @include font-desktop-h3-card;
+    }
   }
 
   .catalog__item--vertical .catalog__img-link,
