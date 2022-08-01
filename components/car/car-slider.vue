@@ -8,6 +8,7 @@
 				                 v-for="img in offer.images"
 				                 :key="img.medium" />
 			</div>
+      <div class="swiper-pagination"></div>
 		</div>
 		<button class="swiper-button swiper-button-prev">
 			<svg-icon class="swiper-button__icon"
@@ -65,6 +66,14 @@ export default {
 			centeredSlides: this.centeredSlides,
 			watchSlidesProgress: true,
 			spaceBetween: this.slidesSpaceBetween,
+      pagination: {
+				el: '.swiper-pagination',
+				clickable: 'true',
+				type: 'bullets',
+				renderBullet: function (index, className) {
+					return '<span class="' + className + '">' + '<span class="swiper-pagination-bar"></span>' + '<span class="swiper-pagination-progress"></span>' + '</span>';
+				},
+			},
 			navigation: {
 				nextEl: '.car__slider .swiper-button-next',
 				prevEl: '.car__slider .swiper-button-prev',
@@ -79,6 +88,6 @@ export default {
 			once: true
 		})
 	}
-	
+
 }
 </script>

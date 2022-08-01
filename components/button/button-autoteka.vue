@@ -6,6 +6,6 @@
             height="16"
             width="16"
             class="button__icon icon">
-			<span class="button__text">Автотека</span>
+			<span class="button__text">VIN проверен</span>
 	</button>
 </template>

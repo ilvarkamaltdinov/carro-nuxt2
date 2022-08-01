@@ -63,6 +63,10 @@
   .tabs__list--all {
     flex-wrap: wrap;
     gap: 16px;
+    margin: auto;
+    padding: 16px;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   .tabs__list--all .tabs__item {

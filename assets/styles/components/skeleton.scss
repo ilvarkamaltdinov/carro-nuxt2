@@ -91,7 +91,7 @@
 .skeleton--stories {
   padding: 40px 16px;
   margin-top: -40px;
-  margin-bottom: -40px;
+  margin-bottom: -96px;
 }
 
 .skeleton__stories {
@@ -107,6 +107,7 @@
   aspect-ratio: 3/4;
   border-radius: $borderRadius;
   background-color: $colorBgHover;
+  opacity: 0.5;
 }
 
 @media (max-width: $mobile-width-only) {

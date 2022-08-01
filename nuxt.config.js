@@ -168,9 +168,9 @@ export default {
             }
         }
     },
-    // server: {
-    //     host: "0.0.0.0"
-    // },
+    server: {
+        host: "0.0.0.0"
+    },
     publicRuntimeConfig: {
         api_domain: process.env.API_DOMAIN,
         api_endpoint: process.env.API_ENDPOINT,

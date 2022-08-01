@@ -99,6 +99,16 @@
   }
 }
 
+@media (max-width: $tablet-width-max) {
+  .filter__button.button--filter {
+    width: auto;
+  }
+
+  .filter__button.button--filter .button__text {
+    display: block;
+  }
+}
+
 @media (min-width: $desktop-width) {
   .filter__buttons-sort .filter__button {
     margin-right: 0;

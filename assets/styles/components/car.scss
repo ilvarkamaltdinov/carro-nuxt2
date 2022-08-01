@@ -64,7 +64,7 @@
 
 .car__actions-buttons .button {
   &:not(:last-child) {
-    margin-right: 16px;
+    margin-right: 12px;
   }
 }
 
@@ -175,9 +175,19 @@
       margin-right: 11px;
     }
   }
+
+  .catalog__vin {
+    display: none;
+  }
 }
 
 @media (max-width: $mobile-width-only) {
+  .car__slider .swiper-pagination .swiper-pagination-bullet {
+    &:nth-child(1n+13)  {
+      display: none;
+    }
+  }
+
   .car__top-buttons {
     display: none;
   }
@@ -188,6 +198,10 @@
 
   .car__slider .swiper-button {
     display: none;
+  }
+
+  .car__slider {
+    margin-bottom: 0;
   }
 
   .car__fixed-wrap {
@@ -213,6 +227,25 @@
 
   .car__buy-block .button--trade-in {
     flex-grow: 1;
+  }
+
+  .car__info-tabs .tabs__list {
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .car__info-tabs .tabs__item {
+    margin-right: 0;
+    flex-grow: 1;
+  }
+
+  .car__info-tabs .tabs__link {
+    width: 100%;
   }
 }
 
@@ -260,6 +293,10 @@
 }
 
 @media (min-width: $tablet-width) {
+  .car__slider .swiper-pagination {
+    display: none;
+  }
+
   .car__tech-list {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);

@@ -11,6 +11,26 @@
   }
 }
 
+.catalog__vin {
+  border-radius: 12px;
+  background-color: $colorSuccess;
+  color: white;
+  margin-left: 8px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  @include font-small;
+  font-weight: $fontRegular;
+  font-size: 13px;
+}
+
+.catalog__vin .icon {
+  fill: white;
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+}
+
 .catalog--modal .catalog__filter {
   padding-top: 0;
 }
@@ -100,7 +120,9 @@
 }
 
 .catalog__heading * {
-  @include font-mobile-h3-card;
+  &:not(.catalog__vin) {
+    @include font-mobile-h3-card;
+  }
 }
 
 .catalog__title-wrap {
@@ -302,6 +324,11 @@
     padding: 0;
     box-shadow: none;
     grid-template-rows: 1fr;
+  }
+
+  .catalog .button--show {
+    margin-bottom: 16px;
+    margin-left: auto;
   }
 }
 
