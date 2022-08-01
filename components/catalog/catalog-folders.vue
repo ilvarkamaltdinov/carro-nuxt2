@@ -1,7 +1,8 @@
 <template>
 	<div class="grid__col-12">
 		<div class="tabs">
-			<ul class="tabs__list"
+			<ul :class="{'tabs__list--all':allFolders}"
+			    class="tabs__list"
 			    ref="tabs"
 			    @scroll="scrollFolders">
 				<li role="presentation"
@@ -19,12 +20,23 @@
 				</li>
 			</ul>
 		</div>
+		<button-typical
+				v-if="$device.isMobile && sortFolders.length > 3"
+				@click="clickAllFolders"
+				:text="allFolders ? 'Меньше моделей' :'Больше моделей'"
+				:class="{'button--show-active': allFolders }"
+				class="button--show" />
 	</div>
 </template>
 <script>
 import {mapGetters} from "vuex"
 
 export default {
+	data() {
+		return {
+			allFolders: false,
+		}
+	},
 	mounted() {
 		this.$nextTick(() => {
 			if (localStorage.foldersTabsLeft && this.$device.isMobile && this.$refs.tabs) {
@@ -43,10 +55,16 @@ export default {
 			folders: 'folders/folders/folders',
 		}),
 		sortFolders() {
-			return this.$_.sortBy(this.folders, [function(folder) { return folder.offers_count; }]).reverse();
+			return this.$_.sortBy(this.folders, [function (folder) {
+				return folder.offers_count;
+			}]).reverse();
 		}
 	},
 	methods: {
+		clickAllFolders() {
+			window.scrollTo(0, 0)
+			this.allFolders = !this.allFolders
+		},
 		scrollFolders() {
 			localStorage.foldersTabsLeft = event.target.scrollLeft
 		},

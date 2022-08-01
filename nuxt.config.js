@@ -130,7 +130,7 @@ export default {
             app: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',
             chunk: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',
             css: ({ isDev }) => isDev ? '[name].css' : 'css/[contenthash].css',
-            img: ({ isDev }) => isDev ? '[path][name].[ext]' : 'img/[contenthash:7].[ext]',
+            img: ({ isDev }) => isDev ? '[path][name].[ext]' : 'img/[name].[ext]',
             font: ({ isDev }) => isDev ? '[path][name].[ext]' : 'fonts/[contenthash:7].[ext]',
             video: ({ isDev }) => isDev ? '[path][name].[ext]' : 'videos/[contenthash:7].[ext]'
         },
@@ -168,9 +168,9 @@ export default {
             }
         }
     },
-    server: {
-        host: "0.0.0.0"
-    },
+    // server: {
+    //     host: "0.0.0.0"
+    // },
     publicRuntimeConfig: {
         api_domain: process.env.API_DOMAIN,
         api_endpoint: process.env.API_ENDPOINT,

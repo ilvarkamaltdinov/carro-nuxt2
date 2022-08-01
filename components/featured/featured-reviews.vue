@@ -103,7 +103,8 @@ export default {
 		async getPlaylist(pageToken, playlistId) {
 			let params = {
 				"playlistId": playlistId,
-				"orderby": "reversedPosition",
+				"orderby": "date",
+				"mine" : true,
 				"maxResults": 9,
 				"key": "AIzaSyBw7M2CPzyAtwX1ct9XQk5akiouCUQ9CJU",
 				"part": "snippet,status,contentDetails",

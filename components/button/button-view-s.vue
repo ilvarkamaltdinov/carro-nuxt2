@@ -1,6 +1,6 @@
 <template>
 	<button @click.prevent="$emit('click')"
-	        :class="{'filter__button--active':currentView === 's'}"
+	        :class="{'filter__button--active button--action-disabled':currentView === 's'}"
 	        class="button button--action button--view-s filter__button"
 	        type="button">
 		<svg-icon class="button__icon icon"

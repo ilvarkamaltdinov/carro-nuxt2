@@ -2,15 +2,15 @@
 	<section class="page-main__stories stories"
 	         :class="{'stories--desktop grid__col-8':!$device.isMobileOrTablet}">
 		<h2 class="visually-hidden">Акции и спецпредложения</h2>
-    <!-- <div class="skeleton skeleton--stories">
-      <ul class="skeleton__stories">
-        <li class="skeleton__item"></li>
-        <li class="skeleton__item"></li>
-        <li class="skeleton__item"></li>
-        <li class="skeleton__item"></li>
-        <li class="skeleton__item"></li>
-      </ul>
-    </div> -->
+		<div class="skeleton skeleton--stories" v-if="loading">
+			<ul class="skeleton__stories">
+				<li class="skeleton__item"></li>
+				<li class="skeleton__item"></li>
+				<li class="skeleton__item"></li>
+				<li class="skeleton__item"></li>
+				<li class="skeleton__item"></li>
+			</ul>
+		</div>
 		<ul class="stories__list"
 		    v-if="$device.isMobileOrTablet">
 			<stories-item :story="item"
@@ -18,7 +18,8 @@
 			              v-for="item in stories"
 			              :key="item.id" />
 		</ul>
-		<div v-else class="swiper swiper--stories">
+		<div v-else
+		     class="swiper swiper--stories">
 			<ul class="stories__list swiper-wrapper">
 				<stories-item :story="item"
 				              @click="openStories(item)"
@@ -47,6 +48,7 @@ import stories from "@/apollo/queries/stories/stories";
 export default {
 	data() {
 		return {
+			loading: true,
 			stories: []
 		}
 	},
@@ -56,8 +58,10 @@ export default {
 		})
 	},
 	async mounted() {
+		this.loading = true
 		let response = await this.request({query: stories, variables: {}})
 		this.stories = response.data.stories
+		this.loading = false
 		const sliderStories = new swiper.default('.stories--desktop .swiper', {
 			modules: [swiper.Navigation, swiper.Autoplay],
 			autoplayDisableOnInteraction: false,
