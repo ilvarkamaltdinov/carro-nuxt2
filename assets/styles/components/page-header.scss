@@ -230,11 +230,12 @@
   .page-header__logo {
     margin-right: 32px;
 
-    &:hover .page-header__logo-circle,
-    &:focus .page-header__logo-circle {
-      // animation: tickelWheel 1.2s ease-in-out infinite;
-      // animation-direction: alternate;
+    &:hover .page-header__logo-circle {
       transform: rotate(22deg);
+    }
+
+    &:active {
+      opacity: 0.8;
     }
   }
 

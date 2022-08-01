@@ -74,7 +74,6 @@
 
 .text__list-item {
   display: flex;
-  align-items: center;
   margin-bottom: 8px;
 
   &::before {
@@ -86,6 +85,8 @@
     background-color: $colorLink;
     border-radius: 50%;
     flex-shrink: 0;
+    position: relative;
+    top: 9px;
   }
 }
 
@@ -106,6 +107,14 @@
 
   .text__img-wrap {
     margin: 0 -24px;
+    margin-bottom: 16px;
+  }
+
+  .text__contacts-label {
+    margin-bottom: 8px;
+  }
+
+  .text__contacts-group {
     margin-bottom: 16px;
   }
 }
