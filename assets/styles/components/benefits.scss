@@ -24,6 +24,10 @@
   }
 }
 
+.benefits--catalog {
+  margin-bottom: 16px;
+}
+
 .benefits__icon {
   width: 24px;
   height: 24px;
@@ -69,6 +73,10 @@
 }
 
 @media (min-width: $tablet-width) {
+  .benefits--catalog {
+    display: none;
+  }
+
   .benefits__list--car {
     display: flex;
     flex-wrap: wrap;
@@ -87,10 +95,6 @@
 @media (min-width: $desktop-width) {
   .benefits {
     margin-bottom: 16px;
-  }
-
-  .benefits--modal {
-    margin-top: -24px;
   }
 
   .benefits__list--car {
