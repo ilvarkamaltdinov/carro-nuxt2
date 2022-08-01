@@ -1,8 +1,9 @@
 <template>
 	<div class="application__terms">
 		<div class="application__terms-item">
-			<div class="application__terms-number application__terms-number--stake"> от {{ settings.credit_percent }}</div>
-			<div class="application__terms-text">Ставка по кредиту</div>
+			<div v-if="installment" class="application__terms-number application__terms-number--stake"> 0% </div>
+			<div v-else class="application__terms-number application__terms-number--stake">от {{ settings.credit_percent }}</div>
+			<div class="application__terms-text">Ставка по {{installment ? 'рассрочке' : 'кредиту'}}</div>
 		</div>
 		<div class="application__terms-item">
 			<div class="application__terms-number application__terms-number--term"
@@ -22,7 +23,7 @@
 			     class="application__terms-number application__terms-number--payment">
 				-
 			</div>
-			<div class="application__terms-text">Срок автокредита</div>
+			<div class="application__terms-text">Срок {{installment ? 'рассрочки' : 'автокредита'}}</div>
 		</div>
 		<div class="application__terms-item">
 			<div class="application__terms-number application__terms-number--payment"
@@ -54,6 +55,12 @@ import filters from "@/mixins/filters";
 
 export default {
 	mixins: [filters],
+	props: {
+		installment: {
+			type: Boolean,
+			default: false
+		}
+	},
 	methods: {
 		theFormat(number) {
 			return this.number_format(number)

@@ -26,7 +26,7 @@
 			</button>
 			<application-banks default-bank="sovcom"
 			                   class="grid__col-5" />
-			<application-terms class="grid__col-3" />
+			<application-terms installment class="grid__col-3" />
 		</div>
 	</section>
 </template>

@@ -175,8 +175,12 @@ export default {
         api_domain: process.env.API_DOMAIN,
         api_endpoint: process.env.API_ENDPOINT,
         domain: process.env.DOMAIN,
+        domain_spb: process.env.DOMAIN_SPB,
+        domain_kaluga: process.env.DOMAIN_KALUGA,
         domain_carro_rf: process.env.DOMAIN_CARRO_RF,
         site_id: process.env.SITE_ID,
+        site_id_spb: process.env.SITE_ID_SPB,
+        site_id_kaluga: process.env.SITE_ID_KALUGA,
         site_id_carro_rf: process.env.SITE_ID_CARRO_RF
 
     }
