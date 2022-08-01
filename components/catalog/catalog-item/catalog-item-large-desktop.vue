@@ -8,6 +8,10 @@
 		                     :slider-id="offer.external_id" />
 		<div class="catalog__info-wrap"
 		     :class="{'catalog__info-wrap--no-buttons':!hasButtons}">
+      <div class="catalog__vin vin">
+        <svg-icon name="icon-check"/>
+        VIN
+      </div>
 			<div class="catalog__info">
 				<div class="catalog__title-wrap">
 					<div class="catalog__info">

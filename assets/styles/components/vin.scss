@@ -1,14 +1,15 @@
 .vin {
-  border-radius: 12px;
+  border-radius: $borderRadius;
   background-color: $colorSuccess;
+  @include font-small;
+  font-weight: $fontRegular;
+  font-size: 13px;
   color: white;
   margin-left: 8px;
   padding: 0 8px;
   display: flex;
   align-items: center;
-  @include font-small;
-  font-weight: $fontRegular;
-  font-size: 13px;
+  z-index: 25;
 }
 
 .vin .icon {
