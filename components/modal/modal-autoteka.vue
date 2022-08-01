@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div v-if="modalLoad">
 		<div class="modal__options">
 			<img class="modal__logo"
 			     src="~/assets/img/logo-autoteka.svg"
@@ -69,6 +69,9 @@
 			</div>
 		</div>
 	</div>
+	<div v-else class="modal__wrap">
+		<div class="loader"></div>
+	</div>
 </template>
 <script>
 import filters from "@/mixins/filters";
@@ -78,6 +81,7 @@ import {mapGetters} from "vuex";
 export default {
 	data() {
 		return {
+			modalLoad: false,
 			preloader: false
 		}
 	},
@@ -182,6 +186,11 @@ export default {
 			}
 			
 		}
+	},
+	mounted() {
+		setTimeout(()=>{
+			this.modalLoad = true
+		},2000)
 	}
 }
 </script>
