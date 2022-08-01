@@ -35,7 +35,7 @@ export const actions = {
         //TODO если localhost или dev.carro.ru
         else {
             commit('SET_SITE_ID', $config.site_id);
-            commit('SET_DOMAIN', $config.domain);
+            commit('SET_DOMAIN', $config.domain_dev);
         }
 
         let client = app.apolloProvider.defaultClient
