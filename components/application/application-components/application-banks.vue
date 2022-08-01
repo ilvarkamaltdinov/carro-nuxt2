@@ -39,7 +39,7 @@ export default {
 			if (this.defaultBank !== '') {
 				return require(`~/assets/img/banks/logo-${this.defaultBank}.svg`)
 			} else {
-				return this.bank.image ? this.bank.image : require('~/assets/img/banks/logo-alfa.svg')
+				return this.bank.image ? this.bank.image : require('~/assets/img/banks/logo-tinkoff.svg')
 			}
 			
 			
@@ -48,7 +48,7 @@ export default {
 			if (this.defaultBank !== '') {
 				return require(`~/assets/img/banks/image-${this.defaultBank}.webp`)
 			} else {
-				return this.bank.image_car ? this.bank.image_car.small_webp : require('~/assets/img/banks/image-alfa.png')
+				return this.bank.image_car ? this.bank.image_car.small_webp : require('~/assets/img/banks/tinkoff.webp')
 			}
 		}
 	},
