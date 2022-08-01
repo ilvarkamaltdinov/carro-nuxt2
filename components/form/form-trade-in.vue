@@ -19,12 +19,11 @@
 				<svg-icon name="icon-form"
 				          class="icon form__car-icon" />
 			</label>
-			<div class="catalog form__catalog"
-			     v-if="$device.isMobile && currentCar">
-				<catalog-item-large-mobile-form :is-form="true"
-				                                :offer="currentCar" />
-			</div>
 		</fieldset>
+		<div class="catalog form__catalog" v-if="$device.isMobile && (offer || currentCar)">
+			<catalog-item-large-mobile-form :is-form="true"
+			                                :offer="offer||currentCar" />
+		</div>
 		<checkbox-form label="Купить авто в кредит"
 		               @change="isCredit = !isCredit" />
 		<VueSlideToggle :open="isCredit"

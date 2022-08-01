@@ -23,19 +23,18 @@
 						
 						{{ currentCar ? currentCar.name : 'Выбрать автомобиль' }}
 						<span v-if="currentCar">
-							{{currentCar.price | toCurrency}}
+							{{ currentCar.price | toCurrency }}
 						</span>
-						
+					
 					</button>
 					<svg-icon name="icon-form"
 					          class="icon form__car-icon" />
 				</label>
-				<div class="catalog form__catalog"
-				     v-if="$device.isMobile && currentCar">
-					<catalog-item-large-mobile-form :is-form="true"
-					                                :offer="currentCar" />
-				</div>
 			</fieldset>
+			<div class="catalog form__catalog" v-if="$device.isMobile && (offer || currentCar)">
+				<catalog-item-large-mobile-form :is-form="true"
+				                                :offer="offer||currentCar" />
+			</div>
 			<form-credit-calculator
 					@changePeriod="changePeriod"
 					@changePayment="changePayment"
@@ -95,7 +94,7 @@ import formValidation from "@/mixins/formValidation";
 import filters from "@/mixins/filters";
 
 export default {
-	mixins: [formValidation,filters],
+	mixins: [formValidation, filters],
 	props: {
 		hasChose: {
 			type: Boolean,
