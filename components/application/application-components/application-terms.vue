@@ -1,8 +1,8 @@
 <template>
 	<div class="application__terms">
 		<div class="application__terms-item">
-			<div class="application__terms-number application__terms-number--stake">
-				от {{ settings.credit_percent }}</div>
+			<div v-if="installment" class="application__terms-number application__terms-number--stake"> 0% </div>
+			<div v-else class="application__terms-number application__terms-number--stake">от {{ settings.credit_percent }}</div>
 			<div class="application__terms-text">Ставка по {{installment ? 'рассрочке' : 'кредиту'}}</div>
 		</div>
 		<div class="application__terms-item">
@@ -23,7 +23,7 @@
 			     class="application__terms-number application__terms-number--payment">
 				-
 			</div>
-			<div class="application__terms-text">Срок автокредита</div>
+			<div class="application__terms-text">Срок {{installment ? 'рассрочки' : 'автокредита'}}</div>
 		</div>
 		<div class="application__terms-item">
 			<div class="application__terms-number application__terms-number--payment"
