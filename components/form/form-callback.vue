@@ -35,7 +35,8 @@
 			</label>
 			<!--<checkbox-form @change="changeCheckbox($event,'agreeRf')"-->
 			<!--               label="Подтверждаю наличие гражданства РФ" />-->
-			<checkbox-form @change="changeCheckbox($event,'agree')"
+			<checkbox-form :error="error === 'agree'"
+			               @change="changeCheckbox($event,'agree')"
 			               label="Согласен на"
 			               link="обработку личных данных" />
 		</fieldset>
@@ -91,7 +92,6 @@ export default {
 					type: 'callback',
 					client_name: this.form.name.value,
 					client_phone: this.form.phone.value,
-					client_age: this.form.date.value,
 				}
 				// utm
 				if(localStorage.utm_source){

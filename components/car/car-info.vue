@@ -26,10 +26,15 @@
 		</div>
 		<div class="swiper swiper--car-info">
 			<div class="car__info-groups swiper-wrapper">
-				<car-tech :offer="offer" class="swiper-slide car__info-group--tech"/>
-				<car-complectation :offer="offer" v-if="equipment_group_list.length"
-				     class="swiper-slide car__info-group--options"/>
-				<car-dealer v-if="!$device.isMobile" :offer="offer" class="swiper-slide car__info-group--options"/>
+				<car-tech v-if="showTech"
+				          :offer="offer"
+				          class="swiper-slide car__info-group--tech" />
+				<car-complectation v-if="showComplectation && equipment_group_list.length"
+				                   :offer="offer"
+				                   class="swiper-slide car__info-group--options" />
+				<car-dealer v-if="!$device.isMobile"
+				            :offer="offer"
+				            class="swiper-slide car__info-group--options" />
 			</div>
 			<div class="swiper-pagination"></div>
 		</div>
@@ -79,6 +84,22 @@ export default {
 		},
 		equipment_group_list() {
 			return this.offer.equipment_groups
+		},
+		
+		
+		showTech() {
+			if (this.$device.isMobile) {
+				return this.activeTab === 1
+			} else {
+				return true
+			}
+		},
+		showComplectation() {
+			if (this.$device.isMobile) {
+				return this.activeTab === 2
+			} else {
+				return true
+			}
 		}
 	},
 	methods: {
@@ -86,22 +107,22 @@ export default {
 			openModal: 'modal/modal-main/openModal',
 			request: 'request'
 		}),
-		scrollTo(el) {
-			const elLeft = el.offsetLeft + el.offsetWidth;
-			const elParentLeft = el.parentNode.offsetLeft + el.parentNode.offsetWidth;
-			// check if element not in view
-			if (elLeft >= elParentLeft + el.parentNode.scrollLeft) {
-				el.parentNode.scrollLeft = elLeft - elParentLeft;
-			} else {
-				el.parentNode.scrollLeft = 0;
-			}
-		},
+		// scrollTo(el) {
+		// 	const elLeft = el.offsetLeft + el.offsetWidth;
+		// 	const elParentLeft = el.parentNode.offsetLeft + el.parentNode.offsetWidth;
+		// 	// check if element not in view
+		// 	if (elLeft >= elParentLeft + el.parentNode.scrollLeft) {
+		// 		el.parentNode.scrollLeft = elLeft - elParentLeft;
+		// 	} else {
+		// 		el.parentNode.scrollLeft = 0;
+		// 	}
+		// },
 		changeTab(tab) {
 			this.activeTab = tab + 1
 		},
 		async tabClick(tab) {
 			this.activeTab = tab
-			await this.carInfoSwiper.slideTo(tab - 1)
+			// await this.carInfoSwiper.slideTo(tab - 1)
 		},
 		async moreInfoDiller(dealerSlug) {
 			try {
@@ -118,41 +139,41 @@ export default {
 				console.log(e)
 			}
 		},
-		moreInfoComplectation(carInfo) {
+		async moreInfoComplectation(carInfo) {
 			let payload = {
 				modal_data: carInfo,
 				modal_component: 'modal-complect',
 				modal_title: 'Комплектация',
 				modal_sub_title: carInfo.name
 			}
-			this.openModal(payload)
+			await this.openModal(payload)
 		},
 	},
-	mounted() {
-		if (this.$device.isMobile) {
-			this.carInfoSwiper = new swiper.default('.swiper--car-info.swiper', {
-				modules: [swiper.Navigation, swiper.Pagination, swiper.Autoplay],
-				autoplayDisableOnInteraction: false,
-				autoplay: false,
-				autoHeight: true,
-				on: {
-					slideChange: (event) => {
-						this.changeTab(event.activeIndex)
-						this.$scrollTo(`#tab-${this.activeTab}`, 500, {
-							container: ".tabs__list",
-							x: true,
-							offset: -16,
-							y: false
-						})
-					}
-				},
-				spaceBetween: 24,
-				pagination: {
-					el: '.car__info .swiper-pagination',
-					type: 'bullets',
-				},
-			})
-		}
-	}
+	// mounted() {
+	// 	if (this.$device.isMobile) {
+	// 		this.carInfoSwiper = new swiper.default('.swiper--car-info.swiper', {
+	// 			modules: [swiper.Navigation, swiper.Pagination, swiper.Autoplay],
+	// 			autoplayDisableOnInteraction: false,
+	// 			autoplay: false,
+	// 			autoHeight: true,
+	// 			on: {
+	// 				slideChange: (event) => {
+	// 					this.changeTab(event.activeIndex)
+	// 					this.$scrollTo(`#tab-${this.activeTab}`, 500, {
+	// 						container: ".tabs__list",
+	// 						x: true,
+	// 						offset: -16,
+	// 						y: false
+	// 					})
+	// 				}
+	// 			},
+	// 			spaceBetween: 24,
+	// 			pagination: {
+	// 				el: '.car__info .swiper-pagination',
+	// 				type: 'bullets',
+	// 			},
+	// 		})
+	// 	}
+	// }
 }
 </script>
