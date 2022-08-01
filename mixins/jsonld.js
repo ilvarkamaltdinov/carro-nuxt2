@@ -42,7 +42,7 @@ export default {
         const organization = {
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "carro.ru",
+            "name": "carro",
             "url": this.domain,
             "logo": this.domain + '/' + 'carro.png',
             "contactPoint": {

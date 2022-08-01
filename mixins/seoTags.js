@@ -63,7 +63,10 @@ export default {
             },
 
         ]
-        if (this.domain !== 'https://carro.ru') {
+        let canonicalDomain = 'https://carro.ru'
+        if (this.domain !== 'https://carro.ru' ||
+            this.domain !== 'https://spb.carro.ru' ||
+            this.domain !== 'https://kaluga.carro.ru') {
             currentMeta.push({
                 name: 'robots',
                 content: 'noindex, nofollow'
@@ -82,7 +85,14 @@ export default {
                 content: this.domain + '/carro.png'
             })
         }
-        const canonical = `https://carro.ru${this.$route.path
+
+        if (this.domain === 'https://carro.ru'
+            || this.domain === 'https://spb.carro.ru'
+            || this.domain === 'https://kaluga.carro.ru') {
+            canonicalDomain = this.domain
+        }
+
+        const canonical = `${canonicalDomain}${this.$route.path
             .toLowerCase()
             .replace(/\/$/, '')}`
         return {
@@ -91,7 +101,6 @@ export default {
                 {
                     rel: 'canonical',
                     href: canonical
-                    // TODO поправить позже(спросить у Игоря зачем мы поставили тут статичный путь?)
                 }
             ],
             meta: currentMeta
