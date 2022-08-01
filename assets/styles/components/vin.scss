@@ -1,13 +1,19 @@
 .vin {
+  border-radius: 12px;
+  background-color: $colorSuccess;
+  color: white;
+  margin-left: 8px;
+  padding: 0 8px;
   display: flex;
   align-items: center;
   @include font-small;
-  color: $colorSuccess;
+  font-weight: $fontRegular;
+  font-size: 13px;
 }
 
-.vin__icon {
-  fill: $colorSuccess;
-  width: 16px;
-  height: 16px;
+.vin .icon {
+  fill: white;
+  width: 12px;
+  height: 12px;
   margin-right: 6px;
 }

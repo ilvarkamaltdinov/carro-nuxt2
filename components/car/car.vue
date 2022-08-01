@@ -10,10 +10,14 @@
 						</heading-h1>
 						<span class="heading-group__label heading-group__label--car"
 						      v-if="offer.generation">
-							{{ offer.generation.name }}
 							<span class="heading-group__year">
 								{{ offer.year }}
 							</span>
+							{{ offer.generation.name }}
+              <span class="car__vin vin">
+                <svg-icon name="icon-check"/>
+                VIN
+              </span>
 						</span>
 					</div>
 				</div>

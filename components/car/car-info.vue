@@ -36,7 +36,7 @@
 				            :offer="offer"
 				            class="swiper-slide car__info-group--options" />
 			</div>
-			<div class="swiper-pagination"></div>
+			<!-- <div class="swiper-pagination"></div> -->
 		</div>
 	</div>
 </template>
@@ -85,8 +85,8 @@ export default {
 		equipment_group_list() {
 			return this.offer.equipment_groups
 		},
-		
-		
+
+
 		showTech() {
 			if (this.$device.isMobile) {
 				return this.activeTab === 1
