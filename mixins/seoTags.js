@@ -64,14 +64,16 @@ export default {
 
         ]
         let canonicalDomain = 'https://carro.ru'
-        if (this.domain !== 'https://carro.ru' ||
-            this.domain !== 'https://spb.carro.ru' ||
+
+        if (this.domain !== 'https://carro.ru' &&
+            this.domain !== 'https://spb.carro.ru' &&
             this.domain !== 'https://kaluga.carro.ru') {
             currentMeta.push({
                 name: 'robots',
                 content: 'noindex, nofollow'
             })
         }
+
         if (this.offer) {
             currentMeta.push({
                 hid: 'og:image',
