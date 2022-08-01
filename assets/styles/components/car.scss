@@ -182,6 +182,10 @@
 }
 
 @media (max-width: $mobile-width-only) {
+  .car__stock-promo {
+    display: block;
+  }
+
   .car__slider .swiper-pagination .swiper-pagination-bullet {
     &:nth-child(1n+13)  {
       display: none;
@@ -436,6 +440,7 @@
   .car__buy {
     grid-column: 7 / 13;
     padding: 24px;
+    margin-bottom: -8px;
   }
 
   .car__tech-list {

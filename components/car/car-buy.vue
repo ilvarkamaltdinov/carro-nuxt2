@@ -43,6 +43,7 @@
 			</div>
 		</div>
 		<div class="car__stock" v-if="offer.is_active">
+      <span class="car__stock-promo">Успейте до повышения цен! </span>
 			В наличии в автоцентре
 			<a href="#"
 			   @click.prevent="moreInfoDiller(offer.dealer.slug)"
