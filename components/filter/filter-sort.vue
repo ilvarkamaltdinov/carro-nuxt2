@@ -6,7 +6,9 @@
 				     v-if="!modal">
 					<button-filter @click="openFilter()" />
 				</div>
-				<div tabindex="1" class="filter__buttons-sort select" @focusout="isActive = false">
+				<div tabindex="1"
+				     class="filter__buttons-sort select"
+				     @focusout="isActive = false">
 					<div class="button button--action button--text filter__button"
 					     @click="isActive = !isActive">
 						<svg-icon class="button__icon"
@@ -56,8 +58,10 @@
 </template>
 <script>
 import {mapActions, mapGetters, mapMutations} from "vuex";
+import declension from "@/mixins/declension";
 
 export default {
+	mixins: [declension],
 	data() {
 		return {
 			isActive: false,
@@ -77,12 +81,20 @@ export default {
 	},
 	computed: {
 		...mapGetters({
+			filteredTotal: 'filters/filters/filteredTotal',
 			sortModal: 'modal/modal-choose/sort', // СОРТИРОВКА ДЛЯ КАТАЛОГА
 			sort: 'filters/filters/sort', // СОРТИРОВКА ДЛЯ ФИЛЬТРОВ
 			viewModal: 'modal/modal-choose/view', // ОТОБРАЖЕНИЕ ДЛЯ КАТАЛОГА
 			viewFilter: 'filters/filters/view', // ОТОБРАЖЕНИЕ ДЛЯ ФИЛЬТРОВ
-			
 		}),
+		currentCarsCount() {
+			return this.filteredTotal + ' ' + this.declension({
+				count: this.filteredTotal,
+				one: 'автомобиль',
+				few: 'автомобиля',
+				many: 'автомобилей'
+			}) + ' в наличии'
+ 		},
 		currentIcon() {
 			if (this.sort.split('|')[1] === 'asc') {
 				return 'icon-sort'
@@ -136,6 +148,7 @@ export default {
 				modal_component: 'modal-filter-mobile',
 				modal_data: 'filter-mobile',
 				modal_title: 'Фильтр',
+				modal_sub_title: this.currentCarsCount
 			}
 			this.openModal(payload)
 		},
