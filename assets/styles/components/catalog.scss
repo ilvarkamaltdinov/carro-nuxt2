@@ -11,26 +11,6 @@
   }
 }
 
-.catalog__vin {
-  border-radius: 12px;
-  background-color: $colorSuccess;
-  color: white;
-  margin-left: 8px;
-  padding: 0 8px;
-  display: flex;
-  align-items: center;
-  @include font-small;
-  font-weight: $fontRegular;
-  font-size: 13px;
-}
-
-.catalog__vin .icon {
-  fill: white;
-  width: 12px;
-  height: 12px;
-  margin-right: 8px;
-}
-
 .catalog--modal .catalog__filter {
   padding-top: 0;
 }
@@ -218,6 +198,10 @@
 
   .catalog__item--small .catalog__price {
     margin-right: 6px;
+  }
+
+  .catalog__vin {
+    display: none;
   }
 }
 

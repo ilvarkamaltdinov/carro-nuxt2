@@ -172,12 +172,12 @@
 @media (max-width: $iphone-se-only) {
   .car__actions-buttons .button {
     &:not(:last-child) {
-      margin-right: 11px;
+      margin-right: 8px;
     }
   }
 
-  .catalog__vin {
-    display: none;
+  .car__actions-block .rating {
+    margin-right: 12px;
   }
 }
 
