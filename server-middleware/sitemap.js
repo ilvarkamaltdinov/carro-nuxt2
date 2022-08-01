@@ -1,9 +1,20 @@
 const axios = require('axios')
 export default async function (req, res, next) {
-    let response = await getXml('https://api.carro.ru/sitemap/xml/carro')
-    res.setHeader('Content-Type', response.headers['content-type']);
-    res.end(response.data);
-
+    let link = ''
+    if(req.headers.host === 'carro.ru'){
+        link = 'https://api.carro.ru/sitemap/xml/carro'
+    }
+    else if(req.headers.host === 'spb.carro.ru'){
+        link = 'https://api.carro.ru/sitemap/xml/spb-carro'
+    }
+    else if(req.headers.host === 'kaluga.carro.ru'){
+        link = 'https://api.carro.ru/sitemap/xml/kaluga-carro'
+    }
+    if(link !== ''){
+        let response = await getXml(link)
+        res.setHeader('Content-Type', response.headers['content-type']);
+        res.end(response.data);
+    }
     // res is the Node.js http response object
 
     // next is a function to call to invoke the next middleware
