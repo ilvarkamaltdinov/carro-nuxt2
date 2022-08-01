@@ -1,6 +1,10 @@
 <template>
 	<form class="form"
 	      @submit.prevent="submitForm()">
+		<div class="catalog form__catalog" v-if="$device.isMobile && offer.mark">
+			<catalog-item-large-mobile-form :is-form="true"
+			                                :offer="offer" />
+		</div>
 		<fieldset class="form__fieldset">
 			<label class="form__field-wrap"
 			       :class="nameClass">
@@ -116,6 +120,9 @@ export default {
 			
 			}
 		},
+	},
+	mounted() {
+		console.log(this.offer)
 	}
 }
 </script>

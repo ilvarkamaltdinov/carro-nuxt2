@@ -1,7 +1,6 @@
 <template>
 	<div>
-		<div class="modal__options"
-		     v-if="modalData.mark">
+		<div class="modal__options" v-if="modalData.mark">
 			<img class="modal__logo"
 			     :src="require(`~/assets/img/dealers/logos/logo-${modalData.dealer.slug}.svg`)"
 			     loading="lazy"
@@ -22,8 +21,7 @@
 					<form-callback :offer="modalData" />
 				</div>
 				<div class="application__catalog application__catalog--modal catalog grid__col-4">
-					<component :is="$device.isMobile ? 'catalog-item-large-mobile':'catalog-item-small-desktop'"
-					           v-if="modalData.mark"
+					<component :is="$device.isMobile ? 'catalog-item-large-mobile':'catalog-item-small-desktop'" v-if="!$device.isMobile && modalData.mark"
 					           :is-form="true"
 					           :has-buttons="false"
 					           :offer="modalData" />
