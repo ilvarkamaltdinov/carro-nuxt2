@@ -55,7 +55,8 @@ export default {
     serverMiddleware: {
         '/feeds': '~/server-middleware/index.js',
         '/api': '~/server-middleware/index.js',
-        '/robots.txt': '~/server-middleware/robots.js'
+        '/robots.txt': '~/server-middleware/robots.js',
+        '/sitemap.xml': '~/server-middleware/sitemap.js'
     },
     loading: {
         color: '#ED2939',
@@ -96,7 +97,6 @@ export default {
         '@nuxtjs/apollo',
         '@nuxtjs/device',
         '@nuxtjs/axios',
-        '@nuxtjs/sitemap',
         '@nuxtjs/svg-sprite',
         '@nuxtjs/redirect-module'
     ],

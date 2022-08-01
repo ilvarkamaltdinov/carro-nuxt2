@@ -29,16 +29,16 @@
 				<svg-icon class="filter__arrow"
 				          name="icon-arrow" />
 			</li>
-			<li class="filter__menu-item"
-			    :class="{'filter__menu-item--loading':false}"
-			    @click="openFilterModal('engine-type')">
-				<div class="filter__menu-text">
-					{{ engine_type_select_title }}
-				</div>
-				<svg-icon class="filter__arrow"
-				          name="icon-arrow" />
-			</li>
 			<VueSlideToggle :open="allFilters">
+				<li class="filter__menu-item"
+				    :class="{'filter__menu-item--loading':false}"
+				    @click="openFilterModal('engine-type')">
+					<div class="filter__menu-text">
+						{{ engine_type_select_title }}
+					</div>
+					<svg-icon class="filter__arrow"
+					          name="icon-arrow" />
+				</li>
 				<li class="filter__menu-item"
 				    :class="{'filter__menu-item--loading':false}"
 				    @click="openFilterModal('body-type')">
