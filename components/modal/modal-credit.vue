@@ -6,7 +6,7 @@
 				             :offer="modalData" />
 			</div>
 			<div class="application__catalog application__catalog--modal catalog grid__col-4">
-				<component :is="$device.isMobile ? 'catalog-item-large-mobile':'catalog-item-small-desktop'"
+				<component v-if="!$device.isMobile" :is="$device.isMobile ? 'catalog-item-large-mobile':'catalog-item-small-desktop'"
 				           :is-form="true"
 				           :has-buttons="false"
 				           :offer="modalData" />

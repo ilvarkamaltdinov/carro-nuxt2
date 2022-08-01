@@ -5,7 +5,7 @@
 				<form-trade-in :is-modal="true" :has-chose="false" :offer="modalData"/>
 			</div>
 			<div class="application__catalog application__catalog--modal catalog grid__col-4">
-				<component :is="component" :is-form="true" :offer="modalData"/>
+				<component v-if="!$device.isMobile" :is="component" :is-form="true" :offer="modalData"/>
 			</div>
 			<application-banks class="grid__col-4"/>
 		</div>
