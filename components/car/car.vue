@@ -72,9 +72,6 @@ export default {
 	},
 	mounted() {
 		this.setBackButton(this.currentBackButton)
-		 if(document.documentElement.scrollTop > 0 || document.body.scrollTop > 0){
-			 alert(1)
-		 }
 	},
 	async fetch() {
 		let variables = {
