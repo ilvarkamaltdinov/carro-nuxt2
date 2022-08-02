@@ -5,6 +5,7 @@
 		       for="filter-search">
 			<input class="form__field"
 			       id="filter-search"
+			       ref="search"
 			       type="search"
 			       @input="onSearch"
 			       v-model="search"
@@ -30,6 +31,11 @@ export default {
 		}
 	},
 	watch: {
+		mobileSearch(){
+			if(this.mobileSearch){
+				this.$refs.search.focus()
+			}
+		},
 		clearSearchValue() {
 			this.search = ''
 		}
