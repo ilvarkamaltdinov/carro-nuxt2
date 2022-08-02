@@ -111,7 +111,7 @@ export default {
 				{
 					id: 3,
 					heading: 'Рассрочка от Сбера и Сетелем',
-					content: 'Лучшие условия для клиентов CARRO',
+					content: 'Лучшие условия для клиентов carro.ru',
 					link: '/rassrochka'
 				},
 				{

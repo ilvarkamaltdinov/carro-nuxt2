@@ -183,7 +183,6 @@
 
 .catalog__makes {
   margin-top: 24px;
-  margin-bottom: 16px;
 }
 
 .catalog__makes .button--show {
@@ -314,9 +313,15 @@
     grid-template-rows: 1fr;
   }
 
-  .catalog .button--show {
+  // .catalog .button--show {
+  //   margin-bottom: 16px;
+  //   margin-left: auto;
+  // }
+
+  .catalog__more-buttons {
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 16px;
-    margin-left: auto;
   }
 
   .catalog__makes {

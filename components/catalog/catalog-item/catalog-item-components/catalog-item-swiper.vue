@@ -29,11 +29,11 @@
 			</div>
 		</div>
 		<div class="swiper__buttons-wrapper">
-			<button class="swiper-button swiper-button-next">
+			<button class="swiper-button swiper-button-prev">
 				<svg-icon name="icon-arrow"
 				          class="swiper-button__icon" />
 			</button>
-			<button class="swiper-button swiper-button-prev">
+			<button class="swiper-button swiper-button-next">
 				<svg-icon name="icon-arrow"
 				          class="swiper-button__icon" />
 			</button>

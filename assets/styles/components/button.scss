@@ -151,6 +151,13 @@
   }
 }
 
+.button--show-price {
+  &::before,
+  &::after {
+    display: none;
+  }
+}
+
 .button--show-active {
   &::before {
     display: none;
@@ -203,6 +210,10 @@
 
 .button--action .button__icon {
   width: 19px;
+}
+
+.button--download .button--text {
+  display: block;
 }
 
 @media (max-width: $mobile-width-only) {

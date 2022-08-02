@@ -2,7 +2,7 @@
 	<button @click="$emit('click')"
 	        type="button"
 	        :class="{'button--loading':preloader}"
-	        class="button button--action button--text button--link">
+	        class="button button--action button--text button--link button--download">
 		<svg-icon class="button__icon"
 		          name="icon-autoteka" />
 		<span v-if="preloader" class="loader loader--button"></span>
