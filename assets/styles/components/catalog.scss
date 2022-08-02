@@ -318,6 +318,14 @@
     margin-bottom: 16px;
     margin-left: auto;
   }
+
+  .catalog__makes {
+    margin-bottom: -8px;
+  }
+
+  .catalog__makes .makes__list--all {
+    margin-bottom: 0;
+  }
 }
 
 @media (min-width: $tablet-width) {
@@ -345,9 +353,7 @@
     top: 32px;
     right: 32px;
   }
-}
 
-@media (min-width: $tablet-width) {
   .catalog__dealer-item {
     @include white-back-l;
     grid-column: span 6;
@@ -356,6 +362,10 @@
   .catalog__item--vertical .catalog__img {
     border-radius: $borderRadius;
     overflow: hidden;
+  }
+
+  .catalog__item--vertical .catalog__img img {
+    border-radius: $borderRadius;
   }
 
   .catalog__item--modal-desktop .catalog__tech {

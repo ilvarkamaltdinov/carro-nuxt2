@@ -24,7 +24,7 @@
   }
 }
 
-.benefits--catalog {
+.benefits--mobile {
   margin-bottom: 16px;
 }
 
@@ -73,7 +73,7 @@
 }
 
 @media (min-width: $tablet-width) {
-  .benefits--catalog {
+  .benefits--mobile {
     display: none;
   }
 

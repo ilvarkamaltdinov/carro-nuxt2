@@ -5,7 +5,7 @@ export const state = () => ({
     benefitsTradeIn: ['sale-trade', 'guaranty', 'value-market', 'first-pay-trade', 'docs', 'fast-time'],
     benefitsBuyout: ['fast-pay', 'value-market', 'value-man', 'value-free', 'docs', 'fast-time'],
     benefitsCar: ['guaranty', 'credit', 'first-pay-trade', 'docs', 'tires', 'insurance'],
-    benefitsCatalog: ['sale', 'guaranty', 'first-pay', 'first-pay-trade', 'docs', 'insurance'],
+    benefitsCreditMobile: ['docs', 'insurance'],
     benefits: [
         {
             text: 'Гарантия',
@@ -134,9 +134,9 @@ export const getters = {
             return state.benefitsCar.indexOf(item.slug) !== -1;
         })
     },
-    benefitsCatalog: (state) => {
+    benefitsCreditMobile: (state) => {
       return state.benefits.filter((item) => {
-          return state.benefitsCatalog.indexOf(item.slug) !== -1;
+          return state.benefitsCreditMobile.indexOf(item.slug) !== -1;
       })
     },
     benefitModal: (state) => {

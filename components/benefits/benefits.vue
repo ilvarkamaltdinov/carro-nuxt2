@@ -1,6 +1,6 @@
 <template>
 	<div class="benefits grid__col-12"
-	     :class="{'benefits--modal': modal, 'benefits--catalog': catalog}">
+	     :class="{'benefits--modal': modal, 'benefits--mobile': catalog}">
 		<ul class="benefits__list benefits__list--car">
 			<li class="benefits__item"
 			    v-for="(benefit, index) in benefits"

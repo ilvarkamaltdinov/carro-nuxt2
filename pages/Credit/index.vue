@@ -4,6 +4,7 @@
 			<crumbs :crumbs="crumbs" />
 		</div>
 		<div class="grid grid--container">
+      <benefits class="benefits--mobile" :benefits="benefitsCredit" />
 			<application-credit :page-title="pageTitle" />
 			<benefits :benefits="benefitsCredit" />
 			<text-credit />
@@ -22,7 +23,8 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			benefitsCredit: 'benefits/benefitsCredit'
+			benefitsCredit: 'benefits/benefitsCredit',
+      benefitsCreditMobile: 'benefits/benefitsCreditMobile'
 		})
 	}
 }

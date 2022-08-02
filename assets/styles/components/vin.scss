@@ -18,3 +18,11 @@
   height: 12px;
   margin-right: 6px;
 }
+
+@media (min-width: $desktop-width) {
+  .vin {
+    &:hover {
+      cursor: default;
+    }
+  }
+}
