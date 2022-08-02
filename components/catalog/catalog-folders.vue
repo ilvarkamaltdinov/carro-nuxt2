@@ -21,7 +21,19 @@
 			</ul>
 		</div>
 		<div class="catalog__more-buttons">
-			<button-typical :text="'Цена до'" :class="'button--show button--show-price'"/>
+			<div class="catalog__more-buttons-wrap"
+			     v-if="$device.isMobile">
+				<button-typical :text="'Цена до ' + (this.chosenPrice ? Number(chosenPrice).toLocaleString('ru') + ' ₽' : '')"
+				                :class="'button--show button--show-price'" />
+				<select class="select select--hidden"
+				        @change="sortPrice($event.target.value)">
+					<option v-for="item in priceRange"
+					        :value="item">
+						До {{ item | toCurrency }}
+					</option>
+				</select>
+			</div>
+			
 			<button-typical
 					v-if="$device.isMobile && sortFolders.length > 3"
 					@click="clickAllFolders"
@@ -34,10 +46,13 @@
 </template>
 <script>
 import {mapGetters} from "vuex"
+import filters from "@/mixins/filters";
 
 export default {
+	mixins: [filters],
 	data() {
 		return {
+			chosenPrice: null,
 			allFolders: false,
 		}
 	},
@@ -57,7 +72,11 @@ export default {
 	computed: {
 		...mapGetters({
 			folders: 'folders/folders/folders',
+			filters: 'filters/filters/filters'
 		}),
+		priceRange() {
+			return this._.range(this._.round(this.filters.price[0], -5), this._.round(this.filters.price[1], -5), 200000)
+		},
 		sortFolders() {
 			return this.$_.sortBy(this.folders, [function (folder) {
 				return folder.offers_count;
@@ -65,6 +84,10 @@ export default {
 		}
 	},
 	methods: {
+		async sortPrice(value) {
+			this.chosenPrice = value
+			await this.$router.push({path: this.$route.fullPath, query: {price_to: value}});
+		},
 		async clickAllFolders() {
 			await window.scrollTo(0, 0)
 			this.allFolders = !this.allFolders
