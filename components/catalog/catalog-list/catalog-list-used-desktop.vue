@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div v-if="loading"
-		     class="catalog__list"
+		     class="catalog__list "
 		     :class="{'grid grid--catalog': !$device.isMobile}">
 			<component :is="skeleton"
 			           v-for="i in 4"

@@ -1,6 +1,6 @@
 <template>
 	<div class="grid grid--container">
-		<section class="page-main__catalog catalog grid">
+		<section class="page-main__catalog catalog grid catalog--used">
 			<div class="benefits grid__col-12 benefits--mobile">
 				<ul class="benefits__list">
 					<li class="benefits__item">

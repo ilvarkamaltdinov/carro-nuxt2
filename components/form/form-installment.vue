@@ -122,8 +122,8 @@ export default {
 					'60%',
 					'70%'
 				],
-				period: 24,
-				payment: 10,
+				period: 60,
+				payment: 0,
 			}
 		}
 	},
