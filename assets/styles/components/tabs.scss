@@ -23,6 +23,10 @@
   @include font-features;
 }
 
+.tabs__year {
+  color: $colorPrimary;
+}
+
 .tabs__count {
   margin-left: 6px;
   color: $colorPrimary;

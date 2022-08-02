@@ -205,6 +205,10 @@
 }
 
 @media (max-width: $mobile-width-only) {
+  .catalog .tabs__list {
+    margin: -24px 0;
+  }
+
   .catalog__more-buttons-wrap {
     position: relative;
   }
