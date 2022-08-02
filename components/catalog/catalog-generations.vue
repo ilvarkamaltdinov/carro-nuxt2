@@ -1,21 +1,21 @@
 <template>
 	<div class="grid__col-12">
 		<div class="tabs">
-			<ul :class="{'tabs__list--all':allFolders}"
+			<ul :class="{'tabs__list--all':allGenerations}"
 			    class="tabs__list"
 			    ref="tabs"
-			    @scroll="scrollFolders">
+			    @scroll="scrollGenerations">
 				<li role="presentation"
-				    v-for="(tab, index) in sortFolders"
+				    v-for="(tab, index) in generations"
 				    :ref="'tab' + index"
-				    :class="{'tabs__item--active':tab.slug === $route.params.model}"
+				    :class="{'tabs__item--active':tab.slug === $route.params.car}"
 				    class="tabs__item">
 					<nuxt-link class="tabs__link"
-					           :to="`/${$route.params.category}/${$route.params.mark}/${tab.slug}`">
+					           :to="`/${$route.params.category}/${$route.params.mark}/${$route.params.model}/${tab.slug}`">
 						{{ tab.title }}
-						<span class="tabs__count">
-							{{ tab.offers_count }}
-						</span>
+						<!--<span class="tabs__count">-->
+						<!--	{{ tab.offers_count }}-->
+						<!--</span>-->
 					</nuxt-link>
 				</li>
 			</ul>
@@ -36,14 +36,14 @@
 					</option>
 				</select>
 			</div>
-			
 			<button-typical
-					v-if="$device.isMobile && sortFolders.length > 3"
-					@click="clickAllFolders"
-					:text="allFolders ? 'Меньше моделей' :'Больше моделей'"
-					:class="{'button--show-active': allFolders }"
+					v-if="$device.isMobile && generations.length > 3"
+					@click="clickAllGenerations"
+					:text="allGenerations ? 'Меньше поколений' :'Больше поколений '"
+					:class="{'button--show-active': allGenerations }"
 					class="button--show" />
 		</div>
+	
 	</div>
 </template>
 <script>
@@ -55,13 +55,13 @@ export default {
 	data() {
 		return {
 			chosenPrice: null,
-			allFolders: false,
+			allGenerations: false,
 		}
 	},
 	mounted() {
 		this.$nextTick(() => {
-			if (localStorage.foldersTabsLeft && this.$device.isMobile && this.$refs.tabs) {
-				this.$refs.tabs.scrollLeft = Number(localStorage.foldersTabsLeft)
+			if (localStorage.generationsTabsLeft && this.$device.isMobile && this.$refs.tabs) {
+				this.$refs.tabs.scrollLeft = Number(localStorage.generationsTabsLeft)
 			}
 		})
 	},
@@ -76,13 +76,11 @@ export default {
 			folders: 'folders/folders/folders',
 			filters: 'filters/filters/filters'
 		}),
+		generations(){
+			return this.filters.generation
+		},
 		priceRange() {
 			return this._.range(this._.round(this.filters.price[0], -5), this._.round(this.filters.price[1], -5), 100000)
-		},
-		sortFolders() {
-			return this.$_.sortBy(this.folders, [function (folder) {
-				return folder.offers_count;
-			}]).reverse();
 		}
 	},
 	methods: {
@@ -92,13 +90,13 @@ export default {
 				await this.$router.push({path: this.$route.fullPath, query: {price_to: value}});
 			}
 		},
-		async clickAllFolders() {
+		async clickAllGenerations() {
 			await window.scrollTo(0, 0)
-			this.allFolders = !this.allFolders
+			this.allGenerations = !this.allGenerations
 			this.$refs.tabs.scrollLeft = 0
 		},
-		scrollFolders() {
-			localStorage.foldersTabsLeft = event.target.scrollLeft
+		scrollGenerations() {
+			localStorage.generationsTabsLeft = event.target.scrollLeft
 		},
 	},
 }

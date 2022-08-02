@@ -44,7 +44,7 @@ export default {
 			sort: 'filters/filters/sort'
 		}),
 		hasRouteTransition() {
-			return this.$route.name !== 'category-mark-model'
+			return this.$route.name !== 'category-mark-model-car'
 		},
 		urlValidate() {
 			return this.$route.params.category === 'used'
