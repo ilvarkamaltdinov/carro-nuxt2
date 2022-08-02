@@ -33,7 +33,7 @@ export default {
 	watch: {
 		mobileSearch(){
 			if(this.mobileSearch){
-				this.$refs.search.focus()
+				this.$nextTick(() => this.$refs.search.focus())
 			}
 		},
 		clearSearchValue() {
