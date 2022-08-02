@@ -12,8 +12,7 @@
 				    class="tabs__item">
 					<nuxt-link class="tabs__link"
 					           :to="`/${$route.params.category}/${$route.params.mark}/${$route.params.model}/${tab.slug}`">
-						{{ tab.name }}
-						<span class="tabs__year"> [{{ tab.year_begin }} - {{ tab.year_end ? tab.year_end : 'н.в.' }}]</span>
+						{{ tab.name }} [{{ tab.year_begin }} - {{ tab.year_end ? tab.year_end : 'н.в.' }}]
 						<span class="tabs__count">
 							{{ tab.offers_count }}
 						</span>
