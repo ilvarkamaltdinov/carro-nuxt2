@@ -102,8 +102,9 @@ export default {
 	computed: {
 		...mapGetters({
 			chosen: "filters/filters/chosen",
+			filters: 'filters/filters/filters',
 			folders: "folders/folders/folders",
-			generations: 'generations/generations/generations'
+			componentCatalog: 'filters/filters/componentCatalog'
 		}),
 		showMarkTabs() {
 			return this.$route.params.category === "used" && !this.$route.params.mark;
@@ -112,8 +113,9 @@ export default {
 			return this.folders.length && this.$route.name === 'category-mark'
 		},
 		showGenerationsTabs() {
-			return this.generations.length &&
-					(this.$route.name === 'category-mark-model' || this.$route.name === 'category-mark-model-car')
+			return this.filters.generation && !this.showFoldersTabs
+			// return this.generations.length &&
+			// 		(this.$route.name === 'category-mark-model' || this.$route.name === 'category-mark-model-car')
 		}
 	},
 	methods: {

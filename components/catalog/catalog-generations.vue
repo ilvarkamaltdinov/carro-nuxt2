@@ -6,16 +6,13 @@
 			    ref="tabs"
 			    @scroll="scrollGenerations">
 				<li role="presentation"
-				    v-for="(tab, index) in generations"
+				    v-for="(tab, index) in filters.generation"
 				    :ref="'tab' + index"
 				    :class="{'tabs__item--active':tab.slug === $route.params.car}"
 				    class="tabs__item">
 					<nuxt-link class="tabs__link"
 					           :to="`/${$route.params.category}/${$route.params.mark}/${$route.params.model}/${tab.slug}`">
-						{{ tab.name }} [{{ tab.year_begin }} - {{ tab.year_end ? tab.year_end : 'н.в.' }}]
-						<span class="tabs__count">
-							{{ tab.offers_count }}
-						</span>
+						{{ tab.title }}
 					</nuxt-link>
 				</li>
 			</ul>
@@ -30,7 +27,8 @@
 					<option value="Цена до">
 						Цена до
 					</option>
-					<option :selected="item === chosen.priceTo" v-for="item in priceRange"
+					<option :selected="item === chosen.priceTo"
+					        v-for="item in priceRange"
 					        :value="item">
 						До {{ item | toCurrency }}
 					</option>
@@ -76,7 +74,7 @@ export default {
 			filters: 'filters/filters/filters',
 			chosen: 'filters/filters/chosen'
 		}),
-		chosenPrice(){
+		chosenPrice() {
 			return this.chosen.priceTo ? this.chosen.priceTo : null
 		},
 		priceRange() {
@@ -86,10 +84,7 @@ export default {
 	methods: {
 		async sortPrice(value) {
 			if (value !== 'Цена до') {
-				await this.$router.push({
-					path: this.$route.fullPath,
-					query: {price_from: this.filters.price[0], price_to: value}
-				});
+				await this.$router.push({path: this.$route.fullPath, query: {price_to: value}});
 			}
 		},
 		async clickAllGenerations() {

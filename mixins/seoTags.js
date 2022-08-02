@@ -22,18 +22,18 @@ export default {
                 })
             store.commit('folders/folders/SET_FOLDERS', response.data.folders)
         }
-        if (route.params.model) {
-            let response = await client.query(
-                {
-                    query: generations,
-                    variables: {
-                        site_id: store.getters.site_id,
-                        mark_slug: route.params.mark,
-                        folder_slug: route.params.model
-                    }
-                })
-            store.commit('generations/generations/SET_GENERATIONS', response.data.generations)
-        }
+        // if (route.params.model) {
+        //     let response = await client.query(
+        //         {
+        //             query: generations,
+        //             variables: {
+        //                 site_id: store.getters.site_id,
+        //                 mark_slug: route.params.mark,
+        //                 folder_slug: route.params.model
+        //             }
+        //         })
+        //     store.commit('generations/generations/SET_GENERATIONS', response.data.generations)
+        // }
 
         return {
             description: seo.data.seoTag.description,

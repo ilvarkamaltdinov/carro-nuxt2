@@ -30,7 +30,8 @@
 					<option value="Цена до">
 						Цена до
 					</option>
-					<option :selected="item === chosen.priceTo" v-for="item in priceRange"
+					<option :selected="item === chosen.priceTo"
+					        v-for="item in priceRange"
 					        :value="item">
 						До {{ item | toCurrency }}
 					</option>
