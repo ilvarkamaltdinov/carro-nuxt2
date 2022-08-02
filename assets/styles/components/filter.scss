@@ -89,13 +89,7 @@
 
 @media (max-width: $mobile-width-only) {
   .filter__buttons-sort-select {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    font-size: 0;
+    @include hide-select;
   }
 }
 

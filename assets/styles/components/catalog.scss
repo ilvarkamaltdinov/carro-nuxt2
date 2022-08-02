@@ -205,6 +205,10 @@
 }
 
 @media (max-width: $mobile-width-only) {
+  .catalog__more-buttons-wrap {
+    position: relative;
+  }
+
   .catalog__item--small .catalog__vin {
     display: none;
   }
@@ -393,7 +397,7 @@
   }
 
   .catalog__filter--aside {
-    top: 40px;
+    top: 153px;
     position: sticky;
   }
 

@@ -224,6 +224,10 @@
 }
 
 @media (min-width: $tablet-width) {
+  .button--show-price {
+    display: none;
+  }
+
   .button__text {
     display: block;
   }
