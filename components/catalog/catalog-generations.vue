@@ -35,7 +35,7 @@
 				</select>
 			</div>
 			<button-typical
-					v-if="$device.isMobile && generations.length > 3"
+					v-if="$device.isMobile && filters.generation.length > 2"
 					@click="clickAllGenerations"
 					:text="allGenerations ? 'Меньше поколений' :'Больше поколений '"
 					:class="{'button--show-active': allGenerations }"
@@ -70,7 +70,6 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			generations: 'generations/generations/generations',
 			filters: 'filters/filters/filters',
 			chosen: 'filters/filters/chosen'
 		}),
