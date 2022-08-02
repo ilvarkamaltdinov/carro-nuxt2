@@ -3,6 +3,10 @@
   overflow: visible;
 }
 
+.select--hidden {
+  @include hide-select;
+}
+
 .select__list {
   @include white-back;
   padding: 0 16px;
