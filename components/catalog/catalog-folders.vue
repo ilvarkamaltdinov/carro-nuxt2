@@ -61,12 +61,10 @@ export default {
 		}
 	},
 	methods: {
-		clickAllFolders() {
-			window.scrollTo(0, 0)
+		async clickAllFolders() {
+			await window.scrollTo(0, 0)
 			this.allFolders = !this.allFolders
-			this.$nextTick(() => {
-				this.$refs.tabs.scrollLeft = 0
-			})
+			this.$refs.tabs.scrollLeft = 0
 		},
 		scrollFolders() {
 			localStorage.foldersTabsLeft = event.target.scrollLeft
