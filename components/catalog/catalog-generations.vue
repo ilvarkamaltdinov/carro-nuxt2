@@ -12,10 +12,11 @@
 				    class="tabs__item">
 					<nuxt-link class="tabs__link"
 					           :to="`/${$route.params.category}/${$route.params.mark}/${$route.params.model}/${tab.slug}`">
-						{{ tab.title }}
-						<!--<span class="tabs__count">-->
-						<!--	{{ tab.offers_count }}-->
-						<!--</span>-->
+						{{ tab.name }}
+						<span class="tabs__year"> [{{ tab.year_begin }} - {{ tab.year_end ? tab.year_end : 'н.в.' }}]</span>
+						<span class="tabs__count">
+							{{ tab.offers_count }}
+						</span>
 					</nuxt-link>
 				</li>
 			</ul>
@@ -73,12 +74,9 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			folders: 'folders/folders/folders',
+			generations: 'generations/generations/generations',
 			filters: 'filters/filters/filters'
 		}),
-		generations(){
-			return this.filters.generation
-		},
 		priceRange() {
 			return this._.range(this._.round(this.filters.price[0], -5), this._.round(this.filters.price[1], -5), 100000)
 		}

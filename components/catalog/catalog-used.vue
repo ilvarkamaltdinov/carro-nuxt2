@@ -53,7 +53,7 @@
 			</div>
 			
 			<catalog-offers v-if="offers" />
-			<catalog-folders v-if="showFolderTabs" />
+			<catalog-folders v-if="showFoldersTabs" />
 			<catalog-generations v-if="showGenerationsTabs" />
 			
 			<div class="grid__col-4"
@@ -103,27 +103,17 @@ export default {
 		...mapGetters({
 			chosen: "filters/filters/chosen",
 			folders: "folders/folders/folders",
+			generations: 'generations/generations/generations'
 		}),
 		showMarkTabs() {
 			return this.$route.params.category === "used" && !this.$route.params.mark;
 		},
-		showFolderTabs() {
-			return (
-					this.$route.params.category === "used" &&
-					!this.$route.params.model &&
-					this.chosen?.mark?.length === 1 &&
-					!this.$route.query.folder_slug_array &&
-					!this.showMarkTabs
-			);
+		showFoldersTabs() {
+			return this.folders.length && this.$route.name === 'category-mark'
 		},
 		showGenerationsTabs() {
-			return (
-					this.$route.params.category === "used" &&
-					this.chosen?.mark?.length === 1 &&
-					this.chosen?.folder?.length === 1 &&
-					this.$route.params.model &&
-					!this.showFolderTabs
-			);
+			return this.generations.length &&
+					(this.$route.name === 'category-mark-model' || this.$route.name === 'category-mark-model-car')
 		}
 	},
 	methods: {

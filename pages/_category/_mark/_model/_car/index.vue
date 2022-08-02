@@ -42,7 +42,7 @@ export default {
 		currentBackButton() {
 			if (this.componentCatalog === 'catalog-used') {
 				return {
-					title: 'Все ' + this.crumbs[2].title,
+					title: 'Все модели ' + this.crumbs[2].title,
 					link: this.crumbs[2].link
 				}
 			}
