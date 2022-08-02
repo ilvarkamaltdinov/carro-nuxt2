@@ -10,7 +10,7 @@
 			                    :is-form="isForm"
 			                    :url="currentUrl"
 			                    :offer="offer" />
-			<catalog-item-price :price="offer.price" />
+			<catalog-item-price :vin="offer.vin" :price="offer.price" />
 		</div>
 		<div class="catalog__tech"
 		     :class="{'catalog__tech--no-buttons':!hasButtons}">

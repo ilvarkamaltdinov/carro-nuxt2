@@ -20,12 +20,16 @@
 				</li>
 			</ul>
 		</div>
-		<button-typical
-				v-if="$device.isMobile && sortFolders.length > 3"
-				@click="clickAllFolders"
-				:text="allFolders ? 'Меньше моделей' :'Больше моделей'"
-				:class="{'button--show-active': allFolders }"
-				class="button--show" />
+		<div class="catalog__more-buttons">
+			<button-typical :text="'Цена до'" :class="'button--show button--show-price'"/>
+			<button-typical
+					v-if="$device.isMobile && sortFolders.length > 3"
+					@click="clickAllFolders"
+					:text="allFolders ? 'Меньше моделей' :'Больше моделей'"
+					:class="{'button--show-active': allFolders }"
+					class="button--show" />
+		</div>
+	
 	</div>
 </template>
 <script>

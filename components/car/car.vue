@@ -14,7 +14,7 @@
 								{{ offer.year }}
 							</span>
 							{{ offer.generation.name }}
-              <span class="car__vin vin">
+              <span class="car__vin vin" v-if="offer.vin">
                 <svg-icon name="icon-check"/>
                 VIN
               </span>
