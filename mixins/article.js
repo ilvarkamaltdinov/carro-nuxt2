@@ -13,7 +13,12 @@ export default {
         })
     },
     async fetch() {
-        let response = await this.request({query: article, variables: {url: this.$route.path}})
-        this.article = response.data.article
+        try {
+            let response = await this.request({query: article, variables: {url: this.$route.path}})
+            this.article = response.data.article
+        } catch (error){
+            this.$nuxt.error({statusCode: 404})
+        }
+
     },
 }

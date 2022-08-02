@@ -10,7 +10,7 @@
 	</main>
 </template>
 <script>
-import {mapGetters} from "vuex";
+import {mapGetters, mapMutations} from "vuex";
 import seoTags from "@/mixins/seoTags";
 
 export default {
@@ -20,6 +20,17 @@ export default {
 	},
 	mounted() {
 		window.scrollTo(0, 0)
+		if (this.componentCatalog === 'catalog-used') {
+			this.setBackButton(this.currentBackButton)
+		}
+	},
+	methods: {
+		...mapMutations({
+			setBackButton: 'header/header/SET_BACK_BUTTON'
+		})
+	},
+	beforeDestroy() {
+		this.setBackButton({})
 	},
 	computed: {
 		...mapGetters({
@@ -27,6 +38,14 @@ export default {
 		}),
 		currentComponent() {
 			return this.componentCatalog === 'car' ? 'car' : 'catalog-used'
+		},
+		currentBackButton() {
+			if (this.componentCatalog === 'catalog-used') {
+				return {
+					title: 'Все ' + this.crumbs[2].title,
+					link: this.crumbs[2].link
+				}
+			}
 		},
 	}
 }
