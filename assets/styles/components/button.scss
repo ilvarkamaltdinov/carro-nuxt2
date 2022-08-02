@@ -216,6 +216,10 @@
   display: block;
 }
 
+.button--share {
+  display: none;
+}
+
 @media (max-width: $mobile-width-only) {
   .button--action {
     padding: 12px;

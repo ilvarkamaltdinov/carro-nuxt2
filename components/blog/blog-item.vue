@@ -5,6 +5,7 @@
 				<h1 class="heading heading--h1">{{ article.page_title }}</h1>
 				<span class="heading__promo"></span>
 				<span class="heading-group__label heading-group__label--car">
+          <span class="heading-group__year">{{ article.createdAt }}</span>
 					{{ article.views }}
 					{{
 						declension({
@@ -14,7 +15,6 @@
 							many: 'просмотров'
 						})
 					}}
-					<span class="heading-group__year">{{ article.createdAt }}</span>
 				</span>
 			</div>
 		</div>
