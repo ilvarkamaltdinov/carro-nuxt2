@@ -1,7 +1,7 @@
 <template>
 	<article class="catalog__item catalog__item--form">
 		<div class="catalog__offer">
-			<catalog-item-price :price="offer.price" />
+			<catalog-item-price :vin="offer.vin" :price="offer.price" />
 		</div>
 		<div class="catalog__img">
 			<catalog-item-img @click="linkClick"

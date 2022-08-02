@@ -8,7 +8,7 @@
 		                     :slider-id="offer.external_id" />
 		<div class="catalog__info-wrap"
 		     :class="{'catalog__info-wrap--no-buttons':!hasButtons}">
-      <div class="catalog__vin vin">
+      <div class="catalog__vin vin" v-if="offer.vin">
         <svg-icon name="icon-check"/>
         VIN
       </div>
@@ -19,7 +19,7 @@
 						                    :is-form="isForm"
 						                    :url="currentUrl"
 						                    :offer="offer" />
-						<catalog-item-price :price="offer.price" />
+						<catalog-item-price :vin="offer.vin" :price="offer.price" />
 					</div>
 				</div>
 			</div>
