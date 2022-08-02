@@ -30,7 +30,7 @@
 					<option value="Цена до">
 						Цена до
 					</option>
-					<option v-for="item in priceRange"
+					<option :selected="item === chosen.priceTo" v-for="item in priceRange"
 					        :value="item">
 						До {{ item | toCurrency }}
 					</option>
@@ -54,7 +54,6 @@ export default {
 	mixins: [filters],
 	data() {
 		return {
-			chosenPrice: null,
 			allFolders: false,
 		}
 	},
@@ -74,10 +73,16 @@ export default {
 	computed: {
 		...mapGetters({
 			folders: 'folders/folders/folders',
-			filters: 'filters/filters/filters'
+			filters: 'filters/filters/filters',
+			chosen: 'filters/filters/chosen'
 		}),
+		chosenPrice() {
+			return this.chosen.priceTo ? this.chosen.priceTo : null
+		},
 		priceRange() {
-			return this._.range(this._.round(this.filters.price[0], -5), this._.round(this.filters.price[1], -5), 100000)
+			if (this.filters.price) {
+				return this._.range(this._.round(this.filters.price[0], -5) + 100000, this._.round(this.filters.price[1], -5) + 100000, 100000)
+			}
 		},
 		sortFolders() {
 			return this.$_.sortBy(this.folders, [function (folder) {
@@ -85,11 +90,16 @@ export default {
 			}]).reverse();
 		}
 	},
+	beforeDestroy() {
+		localStorage.generationsTabsLeft = 0
+	},
 	methods: {
 		async sortPrice(value) {
 			if (value !== 'Цена до') {
-				this.chosenPrice = value
-				await this.$router.push({path: this.$route.fullPath, query: {price_to: value}});
+				await this.$router.push({
+					path: this.$route.fullPath,
+					query: {price_from: this.filters.price[0], price_to: value}
+				});
 			}
 		},
 		async clickAllFolders() {

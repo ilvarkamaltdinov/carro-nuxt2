@@ -54,8 +54,8 @@ export default {
 				step: 1,
 				from: Number(this.from),
 				to: Number(this.to),
-				min: Number(this.filterYear?.[0]),
-				max: Number(this.filterYear?.[1]),
+				min: Number(this.filterYear?.[0]) - 1,
+				max: Number(this.filterYear?.[1]) + 1,
 				onFinish: (event) => this.sendYear(event),
 				onChange: (event) => this.changeYear(event)
 			}
@@ -65,14 +65,17 @@ export default {
 		if (this.$route.query.year_from && this.$route.query.year_to) {
 			this.from = Number(this.$route.query.year_from)
 			this.to = Number(this.$route.query.year_to)
+		} else if (this.chosen.yearFrom || this.chosen.yearTo) {
+			this.from = this.chosen.yearFrom || this.filterYear?.[0] - 1
+			this.to = this.chosen.yearTo || this.filterYear?.[1] + 1
 		} else {
-			this.from = this.filterYear?.[0]
-			this.to = this.filterYear?.[1]
+			this.from = this.filterYear?.[0] - 1
+			this.to = this.filterYear?.[1] + 1
 		}
 	},
 	methods: {
 		...mapMutations({
-			setIsFilterClick:'filters/filters/SET_IS_FILTER_CLICK'
+			setIsFilterClick: 'filters/filters/SET_IS_FILTER_CLICK'
 		}),
 		async sendYear() {
 			this.setIsFilterClick(true)

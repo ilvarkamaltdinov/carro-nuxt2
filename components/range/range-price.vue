@@ -58,11 +58,11 @@ export default {
 				type: 'double',
 				grid: false,
 				realTime: true,
-				step: 10000,
-				from: Number(this.from),
-				to: Number(this.to),
-				min: Number(this.filterPrice?.[0]),
-				max: Number(this.filterPrice?.[1]),
+				step: 100000,
+				from: this._.round(Number(this.from), -5),
+				to: this._.round(Number(this.to), -5),
+				min: this._.round(Number(this.filterPrice?.[0]), -5) - 100000,
+				max: this._.round(Number(this.filterPrice?.[1]), -5) + 100000,
 				onFinish: (event) => this.sendPrice(event),
 				onChange: (event) => this.changePrice(event)
 			}
@@ -73,13 +73,13 @@ export default {
 			this.from = Number(this.$route.query.price_from)
 			this.to = Number(this.$route.query.price_to)
 		} else {
-			this.from = this.filterPrice?.[0]
-			this.to = this.filterPrice?.[1]
+			this.from = this._.round(this.filterPrice?.[0], -5) - 100000
+			this.to = this._.round(this.filterPrice?.[1], -5) + 100000
 		}
 	},
 	methods: {
 		...mapMutations({
-			setIsFilterClick:'filters/filters/SET_IS_FILTER_CLICK'
+			setIsFilterClick: 'filters/filters/SET_IS_FILTER_CLICK'
 		}),
 		changePriceFrom(e) {
 			this.from = Number(e.target.value.replace(/[^+\d]/g, ''))
