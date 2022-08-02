@@ -9,7 +9,7 @@
 <script>
 
 import seoTags from "@/mixins/seoTags";
-import {mapGetters} from "vuex";
+import {mapGetters, mapMutations} from "vuex";
 import jsonld from "@/mixins/jsonld";
 
 export default {
@@ -17,5 +17,24 @@ export default {
 	validate(ctx) {
 		return ctx.params.category === 'used' || ctx.params.category === 'commercial';
 	},
+	mounted() {
+		this.setBackButton(this.currentBackButton)
+	},
+	beforeDestroy() {
+		this.setBackButton({})
+	},
+	methods:{
+		...mapMutations({
+			setBackButton: 'header/header/SET_BACK_BUTTON'
+		})
+	},
+	computed:{
+		currentBackButton() {
+			return {
+				title: 'Все ' + this.crumbs[2].title,
+				link: this.crumbs[2].link
+			}
+		},
+	}
 }
 </script>

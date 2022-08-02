@@ -2,36 +2,7 @@
 	<header class="page-header">
 		<div class="page-header__container grid grid--header">
 			<div class="page-header__wrap grid__col-12">
-				<div class="page-header__logo-block">
-					<label class="page-header__toggle hamburger"
-					       @change="burgerClick()"
-					       for="hamburger"
-					       tabindex="0">
-						<input id="hamburger"
-						       :checked="modalMenu"
-						       type="checkbox" />
-						<span class="hamburger__element"></span>
-						<span class="hamburger__element"></span>
-						<span class="hamburger__element"></span>
-						<span class="visually-hidden">Меню сайта</span>
-					</label>
-					<nuxt-link class="page-header__logo"
-					           to="/">
-						<div class="page-header__logo-img-wrap">
-							<img src="~/assets/img/logo-part-1.svg"
-							     alt="Портал проверенных автомобилей с пробегом — carro.ru"
-							     height="24"
-							     width="24"
-							     class="page-header__logo-circle">
-							<img src="~/assets/img/logo-part-2.svg"
-							     alt="Портал проверенных автомобилей с пробегом — carro.ru"
-							     height="13"
-							     width="79"
-							     class="page-header__logo-letters">
-						</div>
-					</nuxt-link>
-					<header-search />
-				</div>
+				<header-logo-block @burger="burgerClick" :modal-menu="modalMenu"/>
 				<nav class="main-nav page-header__nav page-header__nav--desktop">
 					<site-list-desktop />
 				</nav>
@@ -64,15 +35,7 @@
 				</ul>
 			</div>
 			<nav class="page-header__nav grid__col-12">
-				<nuxt-link v-if="backButton.title && $device.isMobile"
-				           :to="backButton.link"
-				           class="page-header__back">
-					<span class="page-header__back-model">
-						{{ backButton.title }}
-					</span>
-					<svg-icon class="page-header__back-arrow"
-					          name="icon-arrow" />
-				</nuxt-link>
+				<header-back-button :back-button="backButton" v-if="backButton.title && $device.isMobile"/>
 				<div v-else
 				     class="page-header__nav-wrap makes">
 					<ul class="makes__list makes__list--header">
@@ -97,6 +60,8 @@
 				</button>
 			</nav>
 		</div>
+		
+		
 		<!--TODO анимация выпадающих списков в хедере-->
 		<transition name="menu">
 			<modal-makes v-show="modalMarks" />
