@@ -18,6 +18,10 @@
   border-radius: $borderRadius;
 }
 
+@media (max-width: $mobile-width-only) {
+
+}
+
 @media (min-width: $desktop-width) {
   .slider__car-img {
     transition: opacity 0.3s;

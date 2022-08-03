@@ -187,9 +187,30 @@
   }
 
   .car__slider .swiper-pagination .swiper-pagination-bullet {
-    &:nth-child(1n+13)  {
+    &:nth-child(1n+9)  {
       display: none;
     }
+  }
+
+  .car__slider .swiper-pagination-bullet {
+    height: 4px;
+    border-radius: $borderRadiusSmall;
+    background-color: $colorText;
+    opacity: 0.1;
+    flex-shrink: 1;
+    width: 30px;
+    transition: $transitionHover;
+    margin: 0;
+  }
+
+  .car__slider .swiper-pagination {
+    padding: 0 16px;
+    justify-content: space-between;
+  }
+
+  .car__slider .swiper-pagination-bullet-active {
+    background-color: $colorText;
+    opacity: 0.2;
   }
 
   .car__top-buttons {

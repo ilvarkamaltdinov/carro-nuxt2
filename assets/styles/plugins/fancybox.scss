@@ -1,33 +1,49 @@
 .fancybox__toolbar__items > * {
-  color: white!important;
+  color: white !important;
 }
 
 .fancybox__counter {
-  color: white!important;
+  color: white !important;
+}
+
+#fancybox-loading {
+  z-index: 500;
 }
 
 .fancybox__thumbs .carousel__slide .fancybox__thumb {
   &::after {
     background-color: $colorText;
-    opacity: 0.8;
+    opacity: 0.8 !important;
     transition: $transitionHover;
   }
 }
 
 .fancybox__thumbs .carousel__slide.is-nav-selected .fancybox__thumb {
   &::after {
-    opacity: 0;
+    opacity: 0 !important;
   }
 }
 
+.fancybox__content,
+.fancybox__image {
+  border-radius: $borderRadius;
+}
+
 @media (max-width: $mobile-width-only) {
-  .fancybox__nav .carousel__button.is-prev, .carousel__button.is-next {
+  .fancybox__nav .carousel__button.is-prev,
+  .carousel__button.is-next {
     display: none;
   }
 }
 
 @media (min-width: $tablet-width) {
-  .fancybox__nav .carousel__button.is-prev, .carousel__button.is-next {
+  .fancybox__content,
+  .fancybox__image {
+    border-radius: $borderRadius;
+  }
+
+  .fancybox__nav .carousel__button.is-prev,
+  .carousel__button.is-next {
     top: calc(50% - 24px);
     box-shadow: none;
     display: flex;
