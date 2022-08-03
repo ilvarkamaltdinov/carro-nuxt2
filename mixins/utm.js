@@ -9,8 +9,9 @@ export default{
                         || param === 'utm_term'
                         || param === 'utm_content'
                         || param === 'utm_campaign'){
-                        localStorage.setItem(param, this.$route.query[param])
-
+                        if(this.$route.query[param]){
+                            localStorage.setItem(param, this.$route.query[param])
+                        }
                     }
                 }
             }

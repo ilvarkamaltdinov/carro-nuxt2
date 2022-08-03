@@ -1,4 +1,5 @@
-ч<template>
+ч
+<template>
 	<div class="default__wrapper"
 	     @keyup.esc="closeModals"
 	     tabindex="0">
@@ -110,10 +111,23 @@ export default {
 					let response = await this.request({query: offerUrl, variables: {url: this.$route.path}})
 					let typeName = response.data.offerUrl.__typename
 					let assignVariables = response.data.offerUrl
+					let queries = {
+						engine_type_id_array: this.$numberToArray(this.$route.query.engine_type_id_array),
+						gearbox_id_array: this.$numberToArray(this.$route.query.gearbox_id_array),
+						drive_type_id_array: this.$numberToArray(this.$route.query.drive_type_id_array),
+						body_type_id_array: this.$numberToArray(this.$route.query.body_type_id_array),
+						price_from: Number(this.$route.query.price_from),
+						price_to: Number(this.$route.query.price_to),
+						year_from: Number(this.$route.query.year_from),
+						year_to: Number(this.$route.query.year_to),
+						sort: this.$route.query.sort || this.sort,
+						limit: 8
+					}
+					
 					delete assignVariables.__typename;
 					if (typeName === 'OfferUrlFilterPaginationType') {
 						// Если это результат для фильтра, отправляем запрос
-						await this.filterRequest(this._.pickBy(assignVariables))
+						await this.filterRequest(this._.pickBy({...assignVariables, ...queries}))
 					} else if (typeName === 'OfferUrlType') {
 						// Если это авто, просто показываем компонент, запрос отправится в компоненте
 						this.setComponentCatalog('car')

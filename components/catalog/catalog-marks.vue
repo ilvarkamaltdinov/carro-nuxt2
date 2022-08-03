@@ -23,12 +23,13 @@
 							class="button--show" />
 				</li>
 			</ul>
-			
+		
 		</div>
 	</div>
 </template>
 <script>
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
+import marks from '~/apollo/queries/marks'
 
 export default {
 	data() {
@@ -41,14 +42,38 @@ export default {
 			marks: 'marks/marks/allMarks'
 		}),
 		marksList() {
-			if (this.$device.isMobile) {
-				return this.allMarks ? this.marks : this.marks.slice(0, 10)
-			} else {
-				return this.allMarks ? this.marks : this.marks.slice(0, 21)
+			let marks
+			if (this.$route.params.category === "used") {
+				marks = this.marks
+			} else if (this.$route.params.category === "commercial") {
+				marks= []
+				console.log(marks)
+			}
+			if (this.$device.isMobile && marks.length) {
+				return this.allMarks ? marks : marks.slice(0, 10)
+			} else if (marks.length) {
+				return this.allMarks ? marks : marks.slice(0, 21)
 			}
 		}
 	},
 	methods: {
+		...mapActions({
+			request: 'request'
+		}),
+		async getComm() {
+			try {
+				let response = await this.request({
+					query: marks,
+					variables: {
+						category: 'commercial'
+					}
+				})
+				return response.data.marks
+				
+			} catch (error) {
+				console.log(error)
+			}
+		},
 		clickAllMarks() {
 			window.scrollTo(0, 0)
 			this.allMarks = !this.allMarks

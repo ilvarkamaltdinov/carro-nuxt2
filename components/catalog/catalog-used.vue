@@ -51,15 +51,15 @@
 					<catalog-marks v-if="showMarkTabs" />
 				</div>
 			</div>
-			
+			<catalog-sub-filters />
+			<!--TODO offers для страницы дилеров-->
 			<catalog-offers v-if="offers" />
-			<catalog-folders v-if="showFoldersTabs" />
-			<catalog-generations v-if="showGenerationsTabs" />
 			
 			<div class="grid__col-4"
 			     v-if="!$device.isMobile">
 				<filter-desktop />
 			</div>
+			
 			<div class="grid__col-8">
 				<filter-sort />
 				<component
@@ -81,17 +81,6 @@ import benefits from '../benefits/benefits.vue';
 export default {
 	components: {benefits},
 	mixins: [capitalizeFirstLetter],
-	mounted() {
-		this.$nextTick(() => {
-			if (
-					localStorage.foldersTabsLeft &&
-					this.$device.isMobile &&
-					this.$refs.tabs
-			) {
-				this.$refs.tabs.scrollLeft = Number(localStorage.foldersTabsLeft);
-			}
-		});
-	},
 	props: {
 		pageTitle: String,
 		offers: {
@@ -100,28 +89,10 @@ export default {
 		},
 	},
 	computed: {
-		...mapGetters({
-			chosen: "filters/filters/chosen",
-			filters: 'filters/filters/filters',
-			folders: "folders/folders/folders",
-			componentCatalog: 'filters/filters/componentCatalog'
-		}),
 		showMarkTabs() {
-			return this.$route.params.category === "used" && !this.$route.params.mark;
-		},
-		showFoldersTabs() {
-			return this.folders.length && this.$route.name === 'category-mark'
-		},
-		showGenerationsTabs() {
-			return this.filters.generation && !this.showFoldersTabs
-			// return this.generations.length &&
-			// 		(this.$route.name === 'category-mark-model' || this.$route.name === 'category-mark-model-car')
+			return (this.$route.params.category === "used" || this.$route.params.category === "commercial")
+					&& !this.$route.params.mark;
 		}
-	},
-	methods: {
-		scrollFolders() {
-			localStorage.foldersTabsLeft = event.target.scrollLeft;
-		},
-	},
+	}
 };
 </script>

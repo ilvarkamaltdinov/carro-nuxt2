@@ -19,30 +19,20 @@
 							    v-show="isActive"
 							    class="select__list">
 								<li class="select__item"
-								    @click="sortChosen('price|asc')">
-									Сначала дешевле
-								</li>
-								<li class="select__item"
-								    @click="sortChosen('price|desc')">
-									Сначала дороже
-								</li>
-								<li class="select__item"
-								    @click="sortChosen('run|asc')">
-									Минимальный пробег
-								</li>
-								<li class="select__item"
-								    @click="sortChosen('year|desc')">
-									Сначала новее
+								    v-for="(key, value) in sortList"
+								    @click="sortChosen(value)">
+									{{ key }}
 								</li>
 							</ul>
 						</transition>
 						<select v-if="$device.isMobile"
 						        class="filter__buttons-sort-select"
 						        @change="sortChosen('mobile', $event.target.value)">
-							<option value="price|asc">Сначала дешевле</option>
-							<option value="price|desc">Сначала дороже</option>
-							<option value="run|asc">Минимальный пробег</option>
-							<option value="year|desc">Сначала новее</option>
+							<option v-for="(key, value) in sortList"
+							        :selected="value === $route.query.sort"
+							        :value="value">
+								{{ key }}
+							</option>
 						</select>
 					</div>
 				</div>
@@ -94,7 +84,7 @@ export default {
 				few: 'автомобиля',
 				many: 'автомобилей'
 			}) + ' в наличии'
- 		},
+		},
 		currentIcon() {
 			if (this.sort.split('|')[1] === 'asc') {
 				return 'icon-sort'
@@ -126,7 +116,8 @@ export default {
 			setViewCatalog: 'modal/modal-choose/SET_VIEW',//ОТОБРАЖЕНИЕ ДЛЯ МОДАЛКИ
 			setViewFilters: 'filters/filters/SET_VIEW',//ОТОБРАЖЕНИЕ ДЛЯ ФИЛЬТРОВ
 			setLoadingFilters: 'filters/filters/SET_LOADING',
-			setLoadingCatalog: 'modal/modal-choose/SET_LOADING'
+			setLoadingCatalog: 'modal/modal-choose/SET_LOADING',
+			setFilterClick: 'filters/filters/SET_IS_FILTER_CLICK'
 		}),
 		async changeView(type) {
 			if (this.modal) {
@@ -153,6 +144,7 @@ export default {
 			this.openModal(payload)
 		},
 		async sortChosen(sort, value) {
+			this.setFilterClick(true)
 			if (sort === 'mobile') {
 				if (this.modal) {
 					this.setModalSort(value)
