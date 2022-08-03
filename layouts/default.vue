@@ -1,4 +1,3 @@
-ч
 <template>
 	<div class="default__wrapper"
 	     @keyup.esc="closeModals"

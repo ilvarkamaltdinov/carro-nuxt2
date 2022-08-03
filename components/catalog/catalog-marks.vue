@@ -15,7 +15,7 @@
 						</div>
 					</nuxt-link>
 				</li>
-				<li>
+				<li v-if="showAllButton">
 					<button-typical
 							@click="clickAllMarks"
 							:text="allMarks ? 'Меньше марок' :'Больше марок'"
@@ -23,7 +23,6 @@
 							class="button--show" />
 				</li>
 			</ul>
-		
 		</div>
 	</div>
 </template>
@@ -35,24 +34,32 @@ export default {
 	data() {
 		return {
 			allMarks: false,
+			marksArray: [],
+		}
+	},
+	async created() {
+		if (this.$route.params.category === 'used') {
+			this.marksArray = this.marks
+		} else {
+			this.marksArray = await this.getComm()
 		}
 	},
 	computed: {
 		...mapGetters({
 			marks: 'marks/marks/allMarks'
 		}),
-		marksList() {
-			let marks
-			if (this.$route.params.category === "used") {
-				marks = this.marks
-			} else if (this.$route.params.category === "commercial") {
-				marks= []
-				console.log(marks)
+		showAllButton(){
+			if(this.$device.isMobile && this.marksArray){
+				return this.marksArray.length > 10
+			} else if(this.marksArray){
+				return this.marksArray.length > 21
 			}
-			if (this.$device.isMobile && marks.length) {
-				return this.allMarks ? marks : marks.slice(0, 10)
-			} else if (marks.length) {
-				return this.allMarks ? marks : marks.slice(0, 21)
+		},
+		marksList() {
+			if (this.$device.isMobile && this.marksArray.length) {
+				return this.allMarks ? this.marksArray : this.marksArray.slice(0, 10)
+			} else if (this.marksArray.length) {
+				return this.allMarks ? this.marksArray : this.marksArray.slice(0, 21)
 			}
 		}
 	},

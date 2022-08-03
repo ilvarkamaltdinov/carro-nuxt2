@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="grid__col-12" v-if="showFoldersTabs || showGenerationsTabs">
 		<catalog-folders v-if="showFoldersTabs"
 		                 :folders="folders"
 		                 :is-all="showAll" />
@@ -31,7 +31,6 @@
 					:class="{'button--show-active': showAll }"
 					class="button--show" />
 		</div>
-	
 	</div>
 </template>
 
@@ -87,14 +86,14 @@ export default {
 		},
 		priceRange() {
 			if (this.filters.price) {
-				return this._.range(this.filters.price[0], this.filters.price[1], 100000)
+				return this._.range(this.filters.price[0] + 100000, this.filters.price[1], 100000)
 			}
 		},
 		showFoldersTabs() {
 			return this.folders.length && this.$route.name === 'category-mark'
 		},
 		showGenerationsTabs() {
-			return this.filters.generation && !this.showFoldersTabs
+			return this.filters.generation && !this.showFoldersTabs &&  this.$route.name !== 'category'
 		}
 	},
 	methods: {
