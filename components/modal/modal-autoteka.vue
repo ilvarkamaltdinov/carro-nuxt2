@@ -8,7 +8,7 @@
 			<div class="modal__buttons">
 				<button-download @click="download"
 				                 :preloader="preloader" />
-				<button-share />
+				<!-- <button-share /> -->
 			</div>
 		</div>
 		<div class="modal__wrap"
@@ -173,18 +173,18 @@ export default {
 				}).then(response => {
 					let fileURL = window.URL.createObjectURL(new Blob([response.data]));
 					let fURL = document.createElement('a');
-					
+
 					fURL.href = fileURL;
 					fURL.setAttribute('download', `Отчет автотеки ${this.modalData.mark.title} ${this.modalData.folder.title} ${this.modalData.modification.name}, ${this.modalData.year}.pdf`);
 					document.body.appendChild(fURL);
-					
+
 					fURL.click();
 					this.preloader = false
 				}).catch(error => {
 					console.log(error)
 				})
 			}
-			
+
 		}
 	},
 	mounted() {
