@@ -3,7 +3,8 @@
 		<div class="grid">
 			<crumbs :crumbs="crumbs" />
 		</div>
-		<catalog-used offers :page-title="pageTitle" />
+		<catalog-used offers
+		              :page-title="pageTitle" />
 	</main>
 </template>
 <script>
@@ -14,7 +15,7 @@ import {mapGetters} from "vuex";
 export default {
 	mixins: [seoTags, jsonld],
 	validate(ctx) {
-		return ctx.store.getters.isMoscow
+		return !ctx.store.getters.isMoscow
 	},
 	mounted() {
 		window.scrollTo(0, 0)

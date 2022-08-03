@@ -1,6 +1,6 @@
 <template>
 	<ul class="main-nav__list site-list site-list--desktop">
-		<li class="site-list__item" v-for="item in nav" :key="item.link">
+		<li class="site-list__item"  v-for="item in nav" :key="item.link">
 			<nuxt-link
 					@click.native="closeModals"
 					:to="item.link"

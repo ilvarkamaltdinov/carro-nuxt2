@@ -13,14 +13,14 @@ export default {
         },
     },
     head() {
-      return{
-          script: [
-              {
-                  src: `https://www.googletagmanager.com/gtag/js?id=${this.settings.gtag}`,
-                  async: true
-              }
-          ]
-      }
+        return {
+            script: [
+                {
+                    src: `https://www.googletagmanager.com/gtag/js?id=${this.settings.gtag}`,
+                    async: true
+                }
+            ]
+        }
     },
     mounted() {
         window.dataLayer = window.dataLayer || [];
@@ -31,23 +31,45 @@ export default {
     },
     methods: {
         googleTag() {
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', `${this.settings.gtag}`);
+            if (this.settings.gtag) {
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+
+                gtag('js', new Date());
+                gtag('config', `${this.settings.gtag}`);
+            }
         },
-        myTarget(){
-            _tmr.push({id: `${this.settings.mytarget}`, type: "pageView", start: (new Date()).getTime(), pid: "USER_ID"});
-            (function (d, w, id) {
-                if (d.getElementById(id)) return;
-                var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
-                ts.src = "https://top-fwz1.mail.ru/js/code.js";
-                var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
-                if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
-            })(document, window, "topmailru-code");
+        myTarget() {
+            if (this.settings.mytarget) {
+                _tmr.push({
+                    id: `${this.settings.mytarget}`,
+                    type: "pageView",
+                    start: (new Date()).getTime(),
+                    pid: "USER_ID"
+                });
+                (function (d, w, id) {
+                    if (d.getElementById(id)) return;
+                    var ts = d.createElement("script");
+                    ts.type = "text/javascript";
+                    ts.async = true;
+                    ts.id = id;
+                    ts.src = "https://top-fwz1.mail.ru/js/code.js";
+                    var f = function () {
+                        var s = d.getElementsByTagName("script")[0];
+                        s.parentNode.insertBefore(ts, s);
+                    };
+                    if (w.opera == "[object Opera]") {
+                        d.addEventListener("DOMContentLoaded", f, false);
+                    } else {
+                        f();
+                    }
+                })(document, window, "topmailru-code");
+            }
         },
-        yandexMetrika(){
-            (function(m, e, t, r, i, k, a) {
-                m[i] = m[i] || function() {
+        yandexMetrika() {
+            (function (m, e, t, r, i, k, a) {
+                m[i] = m[i] || function () {
                     (m[i].a = m[i].a || []).push(arguments)
                 };
                 m[i].l = 1 * new Date();

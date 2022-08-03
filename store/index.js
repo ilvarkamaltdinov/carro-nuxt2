@@ -10,6 +10,18 @@ export const getters = {
     site_id: (state) => {
         return state.site_id
     },
+    isMoscow:(state) =>{
+       return state.site_id === 21 || state.site_id === 28
+    },
+    showReviews:(state) =>{
+        return state.site_id === 21 || state.site_id === 28 || state.site_id === 30
+    },
+    showBlog:(state) =>{
+        return state.site_id === 21 || state.site_id === 28
+    },
+    showComm:(state) =>{
+        return state.site_id === 21 || state.site_id === 28
+    },
     domain: (state) => {
         return state.domain
     }
@@ -34,7 +46,7 @@ export const actions = {
         }
         //TODO если localhost или dev.carro.ru
         else {
-            commit('SET_SITE_ID', $config.site_id);
+            commit('SET_SITE_ID', $config.site_id_dev);
             commit('SET_DOMAIN', $config.domain_dev);
         }
 

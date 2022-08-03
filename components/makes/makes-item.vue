@@ -22,7 +22,7 @@
 		           @click.native="$emit('click')"
 		           class="makes__link">
 			<div class="makes__title">
-				{{ item.title || item.name }}
+				{{ slug === 'mercedes-benz' ? 'Mercedes' : item.title || item.name }}
 			</div>
 			<div class="makes__qty">
 				{{ item.offers_count }}

@@ -3,7 +3,7 @@
 		<div class="grid">
 			<crumbs :crumbs="crumbs" />
 		</div>
-		<catalog-used :page-title="pageTitle"/>
+		<catalog-used :page-title="pageTitle" />
 	</main>
 </template>
 <script>
@@ -14,7 +14,12 @@ import jsonld from "@/mixins/jsonld";
 export default {
 	mixins: [seoTags, jsonld],
 	validate(ctx) {
-		return ctx.params.category === 'used' || ctx.params.category === 'commercial';
+		if (ctx.store.getters.showComm) {
+			return ctx.params.category === 'used' || ctx.params.category === 'commercial';
+		} else {
+			return ctx.params.category === 'used'
+		}
+		
 	},
 	mounted() {
 		window.scrollTo(0, 0)

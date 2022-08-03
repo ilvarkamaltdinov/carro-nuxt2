@@ -11,6 +11,8 @@
 	</section>
 </template>
 <script>
+import {mapGetters} from "vuex";
+
 export default {
 	data() {
 		return {
@@ -20,97 +22,121 @@ export default {
 					links: [
 						{
 							name: 'Легковые',
-							link: '/used'
+							link: '/used',
+							show: true
 						}, {
 							name: 'Коммерческие',
-							link: '/commercial'
+							link: '/commercial',
+							show: this.showComm
 						},
 					],
-					active:false
+					active: false
 				},
 				{
 					title: 'Услуги',
 					links: [
 						{
 							name: 'Автокредит',
-							link: '/credit'
+							link: '/credit',
+							show: true
 						},
 						{
 							name: 'Trade-In',
-							link: '/exchange'
+							link: '/exchange',
+							show: true
 						},
 						{
 							name: 'Рассрочка',
-							link: '/rassrochka'
+							link: '/rassrochka',
+							show: true
 						},
 						{
 							name: 'Бесплатный подбор',
-							link: '/besplatnyij-podbor-avtomobilya'
+							link: '/besplatnyij-podbor-avtomobilya',
+							show: true
 						},
 						{
 							name: 'Выкуп',
-							link: '/buyout'
+							link: '/buyout',
+							show: true
 						},
 						{
 							name: 'Такси+',
 							blank: true,
-							link: 'https://taxi.carro.ru'
+							link: 'https://taxi.carro.ru',
+							show: this.isMoscow
 						}
 					],
-					active:false
+					active: false
 				},
 				{
 					title: 'Информация',
 					links: [
 						{
 							name: 'Контакты',
-							link: '/contacts'
+							link: '/contacts',
+							show: true
 						},
 						{
 							name: 'Блог',
-							link: '/blog'
+							link: '/blog',
+							show: this.showBlog
 						},
 						{
 							name: 'Отзывы',
-							link: '/reviews-dealers'
+							link: '/reviews-dealers',
+							show: this.showReviews
 						},
 						{
 							name: 'О портале',
-							link: '/about'
+							link: '/about',
+							show: true
 						},
 						{
 							name: 'Помощь',
-							link: '/knowledge'
+							link: '/knowledge',
+							show: true
 						},
 					],
-					active:false
+					active: false
 				},
 				{
 					title: 'Автосалоны',
 					links: [
 						{
 							name: 'Автосалоны-партнеры',
-							link: '/contact'
+							link: '/contact',
+							show: true
 						},
 						{
 							name: 'Предложения',
-							link: '/best-moscow-autosalon'
+							link: this.isMoscow ? '/best-moscow-autosalon' : '/best-autosalon',
+							show: true
 						}
 					],
-					active:false
+					active: false
 				},
 				{
 					title: 'Банки',
 					links: [
 						{
 							name: 'Банки-партнеры',
-							link: '/banks-partners'
+							link: '/banks-partners',
+							show: true
 						}
 					],
-					active:false
+					active: false
 				},
 			]
 		}
+	},
+	computed: {
+		...mapGetters({
+			isMoscow: 'isMoscow',
+			showBlog: 'showBlog',
+			showReviews: 'showReviews',
+			showComm: 'showComm',
+		})
 	}
 }
 </script>

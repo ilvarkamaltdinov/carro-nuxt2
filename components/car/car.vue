@@ -14,14 +14,16 @@
 								{{ offer.year }}
 							</span>
 							{{ offer.generation.name }}
-              <span class="car__vin vin" v-if="offer.vin">
-                <svg-icon name="icon-check"/>
-                VIN
-              </span>
+							<span class="car__vin vin"
+							      v-if="offer.vin">
+								<svg-icon name="icon-check" />
+								VIN
+							</span>
 						</span>
 					</div>
 				</div>
-				<div class="car__top-buttons grid__col-6" v-if="offer.is_active">
+				<div class="car__top-buttons grid__col-6"
+				     v-if="offer.is_active">
 					<button-typical @click="callback"
 					                text="Обратный звонок"
 					                class="button--icon button--link"
@@ -44,7 +46,8 @@
 			<div class="grid grid--container">
 				<benefits class="car__benefits"
 				          :benefits="benefitsCar" />
-				<car-credit v-if="offer.is_active" :offer="offer" />
+				<car-credit v-if="offer.is_active"
+				            :offer="offer" />
 			</div>
 		</section>
 		<skeleton-car v-show="!carPageLoaded" />
@@ -98,8 +101,9 @@ export default {
 			focusShowFixed: 'car/car/focusShowFixed'
 		}),
 		currentBackButton() {
+			let long = this.crumbs[2].title === 'Mercedes-Benz' || this.crumbs[2].title === 'Land Rover'
 			return {
-				title: 'Все ' + this.crumbs[2].title + ' ' + this.crumbs[3].title,
+				title: 'Все ' + (!long ? this.crumbs[2].title + ' ' : '') + this.crumbs[3].title,
 				link: this.crumbs[3].link
 			}
 		},
@@ -112,9 +116,9 @@ export default {
 	},
 	beforeMount() {
 		window.addEventListener('scroll', this.handleScroll);
-    setTimeout(function() {
-        window.scrollTo(0, -100);
-    }, 1);
+		setTimeout(function () {
+			window.scrollTo(0, -100);
+		}, 1);
 	},
 	beforeDestroy() {
 		window.removeEventListener('scroll', this.handleScroll);

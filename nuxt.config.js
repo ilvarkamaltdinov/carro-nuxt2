@@ -182,7 +182,8 @@ export default {
         site_id: process.env.SITE_ID,
         site_id_spb: process.env.SITE_ID_SPB,
         site_id_kaluga: process.env.SITE_ID_KALUGA,
-        site_id_carro_rf: process.env.SITE_ID_CARRO_RF
+        site_id_carro_rf: process.env.SITE_ID_CARRO_RF,
+        site_id_dev: process.env.SITE_ID_DEV
 
     }
 }

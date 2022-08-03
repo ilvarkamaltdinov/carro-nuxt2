@@ -12,6 +12,7 @@
 			                :duration="500">
 				<ul class="site-list__group-list">
 					<li class="site-list__item site-list__item--sub"
+					    v-if="sub.show"
 					    v-for="sub in item.links"
 					    :key="sub.name">
 						<a class="site-list__link" v-if="sub.blank" target="_blank" :href="sub.link">{{sub.name}}</a>

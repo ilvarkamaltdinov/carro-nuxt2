@@ -18,9 +18,7 @@
 				            @click="clickMarks"
 				            @choose="chooseMark(item)"
 				            :key="index"
-				            :item="item">
-					{{ item.title }}
-				</makes-item>
+				            :item="item" />
 			</ul>
 		</div>
 	</div>
@@ -50,7 +48,7 @@ export default {
 			setModalMenu: 'modal/modal-menu/setModalMenu',
 			setModalMarks: 'modal/modal-marks/setModalMarks'
 		}),
-		clickMarks(){
+		clickMarks() {
 			this.setModalMarks(false)
 			this.setModalSearch(false)
 			

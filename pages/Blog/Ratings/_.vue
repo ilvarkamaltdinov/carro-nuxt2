@@ -39,6 +39,12 @@ export default {
 	...mapGetters({
 		domain: 'domain'
 	}),
+	mounted() {
+		window.scrollTo(0, 0)
+	},
+	validate(ctx) {
+		return ctx.store.getters.showBlog
+	},
 	head() {
 		let title = (this.article.long_title ? this.article.long_title : this.article.page_title) + ' — CARRO'
 		let description_title = this.article.description ? this.article.description : this.article.short_description

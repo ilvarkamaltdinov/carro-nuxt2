@@ -26,7 +26,7 @@
 						   :href="`mailto:${settings.email}`">{{ settings.email }}
 						</a>
 					</div>
-					<div class="page-footer__city-wrap">
+					<div class="page-footer__city-wrap" v-if="isMoscow">
 						<button class="page-footer__city">
 							<svg-icon class="page-footer__city-icon"
 							          name="icon-map" />
@@ -34,7 +34,7 @@
 						</button>
 					</div>
 					<div class="page-footer__credits">
-						<div class="page-footer__contacts-item">© 2016 - 2022 CARRO.RU</div>
+						<div class="page-footer__contacts-item">© 2016 - {{ new Date().getFullYear() }} CARRO.RU</div>
 					</div>
 				</div>
 			</div>
@@ -45,7 +45,7 @@
 						           class="page-footer__link">О портале
 						</nuxt-link>
 					</li>
-					<li class="page-footer__links-item">
+					<li class="page-footer__links-item" v-if="showBlog">
 						<nuxt-link to="/blog"
 						           class="page-footer__link">Блог
 						</nuxt-link>
@@ -82,7 +82,9 @@
 			<div class="page-footer__cars grid__col-12">
 				<div class="page-footer__cars-stock">
 					Автомобилей в наличии:
-					<nuxt-link to="/used" class="page-footer__cars-stock-number">{{ allMarksCount | toCurrencyValue }}</nuxt-link>
+					<nuxt-link to="/used"
+					           class="page-footer__cars-stock-number">{{ allMarksCount | toCurrencyValue }}
+					</nuxt-link>
 				</div>
 				<footer-marks />
 			</div>
@@ -98,7 +100,8 @@
 			<div class="page-footer__disclaimer grid__col-12">
 				
 				<p class="page-footer__disclaimer-p">
-					Годовая ставка автокредита варьируется от {{ settings.credit_percent }} до {{ settings.credit_max_percent }} и зависит от конкретного банка, суммы займа и
+					Годовая ставка автокредита варьируется от {{ settings.credit_percent }} до {{ settings.credit_max_percent }} и
+					зависит от конкретного банка, суммы займа и
 					кредитной
 					программы. Минимальный срок погашения от 61 дня, максимальный - 84 месяца. При этом любые дополнительные
 					комисси
@@ -151,6 +154,8 @@ export default {
 		...mapGetters({
 			allMarksCount: 'marks/marks/allMarksCount',
 			settings: 'settings/settings/settings',
+			isMoscow: 'isMoscow',
+			showBlog:'showBlog'
 		})
 	}
 }

@@ -13,6 +13,12 @@ import seoTags from "@/mixins/seoTags";
 import jsonld from "@/mixins/jsonld";
 
 export default {
-	mixins: [seoTags, jsonld]
+	mixins: [seoTags, jsonld],
+	mounted() {
+		window.scrollTo(0, 0)
+	},
+	validate(ctx) {
+		return ctx.store.getters.showBlog
+	},
 }
 </script>

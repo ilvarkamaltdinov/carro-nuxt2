@@ -29,7 +29,7 @@
 					<h3 class="heading heading--h3">Адрес:</h3>
 					<ul class="features__list">
 						<li class="features__item">{{ dealer.address }}</li>
-						<li class="features__item">м. {{ dealer.metro }}</li>
+						<li v-if="dealer.metro" class="features__item">м. {{ dealer.metro }}</li>
 					</ul>
 				</div>
 				<div class="features__group">
@@ -49,7 +49,7 @@
 				<button-typical :link="`/contact/${dealer.slug}`"
 				                text="Подробнее о дилере"
 				                class="button--show" />
-				<a class="button button--show button--show-link"
+				<a v-if="dealer.site" class="button button--show button--show-link"
 				   :href="`${dealer.site}`"
 				   target="_blank">Сайт автоцентра
 				</a>

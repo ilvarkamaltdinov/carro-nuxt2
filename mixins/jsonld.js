@@ -37,7 +37,6 @@ export default {
                 "name": "carro.ru",
                 "telephone": this.settings.phone
             }
-
         }
         const organization = {
             "@context": "https://schema.org",

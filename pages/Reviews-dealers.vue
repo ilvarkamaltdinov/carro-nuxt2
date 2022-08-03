@@ -14,6 +14,9 @@ import jsonld from "@/mixins/jsonld";
 
 export default {
 	mixins: [seoTags, jsonld],
+	validate(ctx) {
+		return ctx.store.getters.showReviews
+	},
 	mounted() {
 		window.scrollTo(0, 0)
 	},
