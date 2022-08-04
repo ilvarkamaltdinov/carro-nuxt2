@@ -15,6 +15,11 @@
 							</span>
 							{{ offer.generation.name }}
 							<span class="car__vin vin"
+							      v-tippy="{
+				content:`<div class='tippy__text'>VIN-номер проверен на предмет нахождения в розыске, угоне, залоге, использования в такси, попадания в ДТП, соответствия количества владельцев.</div>`,
+				animation:'scale',
+				arrow: true,
+			}"
 							      v-if="offer.vin">
 								<svg-icon name="icon-check" />
 								VIN
@@ -50,6 +55,7 @@
 				            :offer="offer" />
 			</div>
 		</section>
+		<catalog-list-car v-show="carPageLoaded"/>
 		<skeleton-car v-show="!carPageLoaded" />
 	</div>
 	<skeleton-car v-else />

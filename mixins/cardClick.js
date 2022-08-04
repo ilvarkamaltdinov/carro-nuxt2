@@ -39,6 +39,8 @@ export default {
                     await this.closeModal()
                     await this.setIsOfferClick(true)
                     await this.$router.push(this.currentUrl)
+                } else {
+                    await this.$router.push(this.currentUrl)
                 }
             }
         },

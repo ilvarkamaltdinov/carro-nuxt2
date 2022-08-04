@@ -3,7 +3,13 @@
 		<div class="catalog__price">{{ price | toCurrency }}</div>
 		<!--<div class="catalog__oldprice">1 585 000 ₽</div>-->
 		<div class="catalog__credit-price">от {{ price | access_acredit }} / мес.</div>
-		<div class="catalog__vin vin" v-if="vin">
+		<div class="catalog__vin vin"
+		     v-if="vin"
+		     v-tippy="{
+				content:`<div class='tippy__text'>VIN-номер проверен на предмет нахождения в розыске, угоне, залоге, использования в такси, попадания в ДТП, соответствия количества владельцев.</div>`,
+				animation:'scale',
+				arrow: true,
+			}">
 			<svg-icon name="icon-check" />
 			VIN
 		</div>
