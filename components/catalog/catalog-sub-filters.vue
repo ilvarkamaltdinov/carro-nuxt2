@@ -4,10 +4,11 @@
 		<catalog-folders v-if="showFoldersTabs"
 		                 :folders="folders"
 		                 :is-all="showAll" />
+		
 		<catalog-generations v-if="showGenerationsTabs"
 		                     :generations="filters.generation"
 		                     :is-all="showAll" />
-
+		
 		<div class="catalog__more-buttons"
 		     v-if="$device.isMobile">
 			<div class="catalog__more-buttons-wrap">
@@ -111,7 +112,9 @@ export default {
 			}
 		},
 		async onToggleAll() {
-			await setTimeout(function () {window.scrollTo(0, -100);}, 1);
+			await setTimeout(function () {
+				window.scrollTo(0, -100);
+			}, 1);
 			this.showAll = !this.showAll
 		},
 	}

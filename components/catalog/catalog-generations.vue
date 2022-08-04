@@ -1,6 +1,6 @@
 <template>
 	<div class="grid__col-12">
-		<div class="tabs">
+		<div class="tabs" v-if="generations.length">
 			<ul :class="{'tabs__list--all':isAll}"
 			    class="tabs__list"
 			    ref="tabs"
@@ -15,6 +15,16 @@
 						{{ tab.title }}
 					</nuxt-link>
 				</li>
+			</ul>
+		</div>
+		<div v-else
+		     class="skeleton">
+			<ul class="skeleton__tabs-list">
+				<li class="skeleton__tabs-item"></li>
+				<li class="skeleton__tabs-item"></li>
+				<li class="skeleton__tabs-item"></li>
+				<li class="skeleton__tabs-item"></li>
+				<li class="skeleton__tabs-item"></li>
 			</ul>
 		</div>
 	</div>
