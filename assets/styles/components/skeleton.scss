@@ -110,7 +110,24 @@
   opacity: 0.5;
 }
 
+.skeleton__tabs-list {
+  display: flex;
+}
+
+.skeleton__tabs-item {
+  border: 1px solid $colorDivider;
+  padding: 8px 16px;
+  border-radius: 50px;
+  display: inline-block;
+  width: 160px;
+}
+
 @media (max-width: $mobile-width-only) {
+  .skeleton__tabs-list {
+    @include horizontal-scroll;
+    margin: -24px 0;
+  }
+
   .skeleton--catalog {
     margin: 0 -16px;
   }

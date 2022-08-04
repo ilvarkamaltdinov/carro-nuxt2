@@ -40,7 +40,7 @@ export default {
 		domain: 'domain'
 	}),
 	mounted() {
-		window.scrollTo(0, 0)
+		setTimeout(function () {window.scrollTo(0, -100);}, 1);
 	},
 	validate(ctx) {
 		return ctx.store.getters.showBlog
