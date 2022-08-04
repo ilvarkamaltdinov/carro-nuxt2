@@ -13,6 +13,7 @@ fragment DealerPage on Dealer {
     rating
     short_description
     description
+    image_logo
     images {
     ... DealerImage
     }

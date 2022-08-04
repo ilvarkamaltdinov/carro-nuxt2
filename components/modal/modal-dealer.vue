@@ -2,8 +2,7 @@
 	<div>
 		<div class="modal__options">
 			<img class="modal__logo"
-			     :src="require(`~/assets/img/dealers/logos/logo-${modalData.slug}.svg`)"
-			     loading="lazy"
+			     :src="modalData.image_logo"
 			     alt="" />
 			<div class="modal__buttons">
 				<button-callback @click="callback" />
@@ -23,7 +22,7 @@
 							<div class="features__item-type">Адрес:</div>
 							<div class="features__item-content">{{ modalData.address }}</div>
 						</li>
-						<li class="features__item">
+						<li class="features__item" v-if="modalData.metro" >
 							<div class="features__item-type">Метро:</div>
 							<div class="features__item-content">{{ modalData.metro }}</div>
 						</li>

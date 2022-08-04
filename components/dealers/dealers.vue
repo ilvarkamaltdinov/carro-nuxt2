@@ -5,7 +5,7 @@
 				<h1 class="heading heading--h1">{{ pageTitle }}
 					<span class="heading__promo"></span>
 				</h1>
-				<span class="heading-group__label">Партнеры carro.ru</span>
+				<span class="heading-group__label">Партнеры carro</span>
 			</div>
 		</div>
 		<div class="dealers__item grid__col-12"

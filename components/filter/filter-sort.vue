@@ -29,7 +29,7 @@
 						        class="filter__buttons-sort-select"
 						        @change="sortChosen('mobile', $event.target.value)">
 							<option v-for="(key, value) in sortList"
-							        :selected="value === $route.query.sort"
+							        :selected="value === $route.query.sort ||value === sort"
 							        :value="value">
 								{{ key }}
 							</option>

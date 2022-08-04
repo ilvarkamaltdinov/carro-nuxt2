@@ -1,4 +1,5 @@
 import {redirects} from './configModules'
+
 const isDev = process.env.NODE_ENV !== 'production'
 
 export default {
@@ -126,14 +127,15 @@ export default {
         }
     },
     build: {
-        filenames: {
-            app: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',
-            chunk: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',
-            css: ({ isDev }) => isDev ? '[name].css' : 'css/[contenthash].css',
-            img: ({ isDev }) => isDev ? '[path][name].[ext]' : 'img/[name].[ext]',
-            font: ({ isDev }) => isDev ? '[path][name].[ext]' : 'fonts/[contenthash:7].[ext]',
-            video: ({ isDev }) => isDev ? '[path][name].[ext]' : 'videos/[contenthash:7].[ext]'
-        },
+        filenames:
+            {
+                app: ({ isDev, isModern }) => isDev ? `[name]${isModern ? '.modern' : ''}.js` : `[id].[contenthash:7]${isModern ? '.modern' : ''}.js`,
+                chunk: ({ isDev, isModern }) => isDev ? `[name]${isModern ? '.modern' : ''}.js` : `[id].[contenthash:7]${isModern ? '.modern' : ''}.js`,
+                css: ({ isDev }) => isDev ? '[name].css' : 'css/[contenthash:7].css',
+                img: ({isDev}) => isDev ? '[path][name].[ext]' : 'img/[name].[ext]',
+                font: ({ isDev }) => isDev ? '[path][name].[ext]' : 'fonts/[name].[contenthash:7].[ext]',
+                video: ({ isDev }) => isDev ? '[path][name].[ext]' : 'videos/[name].[contenthash:7].[ext]'
+            },
         ...(!isDev && {
             html: {
                 minify: {

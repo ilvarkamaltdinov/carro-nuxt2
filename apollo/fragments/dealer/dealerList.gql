@@ -5,6 +5,7 @@ fragment DealerList on Dealer {
     title
     metro
     short_description
+    youtube_playlist_review
     slug
     address
     rating
