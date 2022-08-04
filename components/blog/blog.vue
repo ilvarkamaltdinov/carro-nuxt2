@@ -35,7 +35,7 @@ export default {
 		this.categories = response.data.articleCategory
 	},
 	mounted() {
-		window.scrollTo(0, 0)
+		setTimeout(function () {window.scrollTo(0, -100);}, 1);
 	}
 }
 </script>

@@ -18,7 +18,10 @@ export default {
 		return ctx.params.category === 'used' || ctx.params.category === 'commercial';
 	},
 	mounted() {
-		this.setBackButton(this.currentBackButton)
+		this.setBackButton(this.currentBackButton),
+    setTimeout(function () {
+			window.scrollTo(0, -100);
+		}, 1);
 	},
 	beforeDestroy() {
 		this.setBackButton({})

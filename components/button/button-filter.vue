@@ -3,6 +3,6 @@
 	        type="button">
 		<svg-icon class="button__icon"
 		          name="icon-filter"/>
-    <div class="button__text">Фильтр</div>
+    <span class="button__text">Фильтр</span>
 	</button>
 </template>

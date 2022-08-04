@@ -45,7 +45,7 @@ export default {
 	},
 	methods: {
 		paginationCLick(pageNum) {
-			window.scrollTo(0, 0)
+			setTimeout(function () {window.scrollTo(0, -100);}, 1);
 			this.$router.push({path: this.$route.fullPath, query: {page: pageNum}});
 		},
 		arrowClick(type) {
@@ -58,7 +58,7 @@ export default {
 					pageNum--
 				}
 				this.$router.push({path: this.$route.fullPath, query: {page: '' + pageNum}});
-				window.scrollTo(0, 0)
+				setTimeout(function () {window.scrollTo(0, -100);}, 1);
 			} else {
 				this.$router.push({path: this.$route.fullPath, query: {page: '2'}});
 			}

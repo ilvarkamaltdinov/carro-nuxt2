@@ -41,8 +41,8 @@ export default {
 		}
 	},
 	mounted() {
-		window.scrollTo(0, 0)
+		setTimeout(function () {window.scrollTo(0, -100);}, 1);
 	},
-	
+
 }
 </script>
