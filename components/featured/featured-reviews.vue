@@ -9,24 +9,16 @@
 		<div class="grid__col-12">
 			<div class="tabs">
 				<ul class="tabs__list">
-					<li role="presentation"
-					    :class="{'tabs__item--active':activeTab === 'prime'}"
+					<li v-for="(dealer, index) in dealers"
+					    :key="dealer.id"
+					    role="presentation"
+					    :class="{'tabs__item--active':activeTab === index}"
 					    class="tabs__item">
-						<button @click="getReviews('prime', primeToken)"
+						<button @click="getReviews(dealer, index)"
 						        class="tabs__link"
 						        role="tab"
 						        data-toggle="tab">
-							PRIME
-						</button>
-					</li>
-					<li role="presentation"
-					    :class="{'tabs__item--active':activeTab === 'avtograd'}"
-					    class="tabs__item">
-						<button @click="getReviews('avtograd', autoGradToken)"
-						        class="tabs__link"
-						        role="tab"
-						        data-toggle="tab">
-							АвтоГрадъ
+							{{ dealer.title }}
 						</button>
 					</li>
 				</ul>
@@ -70,41 +62,53 @@
 	</section>
 </template>
 <script>
+import {mapActions, mapGetters} from "vuex";
+import dealerReviews from "@/apollo/queries/dealer/dealerReviews";
+
 export default {
-	props: {
-		pageTitle: String
-	},
 	data() {
 		return {
-			activeTab: 'prime',
-			primeToken: 'PLPuUuVwDOqDJoYehUOJDWNqpH4nFf6tkd',
-			autoGradToken: 'PLy2Plla743asvTznCmRWQJRXo5P7bXY15',
+			dealers: [],
+			activeTab: 0,
 			reviews: [],
 			videoShow: null,
 			nextPageToken: null,
 			showMore: true
 		}
 	},
-	computed:{
-		activeToken(){
+	props: {
+		pageTitle: String
+	},
+	async fetch() {
+		try {
+			let response = await this.request({query: dealerReviews})
+			this.dealers = response.data.dealers.filter(item => item.youtube_playlist_review)
+			await this.getPlaylist(this.nextPageToken, this.dealers[0].youtube_playlist_review);
+		} catch (e) {
+			console.log(e)
+		}
+	},
+	
+	computed: {
+		activeToken() {
 			return this.activeTab === 'prime' ? this.primeToken : this.autoGradToken
 		}
 	},
-	async created() {
-		await this.getPlaylist(this.nextPageToken, this.primeToken);
-	},
 	methods: {
-		getReviews(type, playlistId) {
+		...mapActions({
+			request: 'request'
+		}),
+		getReviews(dealer, index) {
 			this.reviews = []
 			this.showMore = true
-			this.activeTab = type
-			this.getPlaylist(this.pageToken, playlistId)
+			this.activeTab = index
+			this.getPlaylist(this.pageToken, dealer.youtube_playlist_review)
 		},
 		async getPlaylist(pageToken, playlistId) {
 			let params = {
 				"playlistId": playlistId,
 				"orderby": "date",
-				"mine" : true,
+				"mine": true,
 				"maxResults": 9,
 				"key": "AIzaSyBw7M2CPzyAtwX1ct9XQk5akiouCUQ9CJU",
 				"part": "snippet,status,contentDetails",
@@ -125,9 +129,7 @@ export default {
 		},
 		clickVideo(id) {
 			this.videoShow = id
-		},
-		
-		
+		}
 	}
 }
 </script>

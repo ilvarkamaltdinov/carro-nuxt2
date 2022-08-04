@@ -37,7 +37,7 @@ let routes = [
 ]
 
 routes.forEach(route => {
-    router.use(route.to, async (req, res) => {
+    router.get(route.to, async (req, res) => {
         let response = await getXml(route.from)
         res.set('Content-Type', response.headers['content-type']);
         res.status(200).send(response.data);
