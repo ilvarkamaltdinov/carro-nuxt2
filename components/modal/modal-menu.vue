@@ -14,9 +14,15 @@
 import {mapGetters} from "vuex";
 
 export default {
-	data() {
-		return {
-			siteList: [
+	computed: {
+		...mapGetters({
+			isMoscow: 'isMoscow',
+			showBlog: 'showBlog',
+			showReviews: 'showReviews',
+			showComm: 'showComm',
+		}),
+		siteList() {
+			return [
 				{
 					title: 'Автомобили',
 					links: [
@@ -30,7 +36,6 @@ export default {
 							show: this.showComm
 						},
 					],
-					active: false
 				},
 				{
 					title: 'Услуги',
@@ -66,8 +71,7 @@ export default {
 							link: 'https://taxi.carro.ru',
 							show: this.isMoscow
 						}
-					],
-					active: false
+					]
 				},
 				{
 					title: 'Информация',
@@ -98,7 +102,6 @@ export default {
 							show: true
 						},
 					],
-					active: false
 				},
 				{
 					title: 'Автосалоны',
@@ -114,7 +117,6 @@ export default {
 							show: true
 						}
 					],
-					active: false
 				},
 				{
 					title: 'Банки',
@@ -125,18 +127,9 @@ export default {
 							show: true
 						}
 					],
-					active: false
 				},
 			]
 		}
-	},
-	computed: {
-		...mapGetters({
-			isMoscow: 'isMoscow',
-			showBlog: 'showBlog',
-			showReviews: 'showReviews',
-			showComm: 'showComm',
-		})
 	}
 }
 </script>
