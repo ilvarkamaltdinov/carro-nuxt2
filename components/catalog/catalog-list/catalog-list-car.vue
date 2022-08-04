@@ -5,8 +5,7 @@
 			<heading-h2 class="grid__col-12">Похожие автомобили</heading-h2>
 		</div>
 		<div class="catalog__list grid grid__col-12">
-			<component v-if="offer.external_id !== Number($route.params.car)"
-			           :is="component"
+			<component :is="component"
 			           v-for="offer in offers.data"
 			           :offer="offer"
 			           :key="offer.id" />
@@ -44,6 +43,7 @@ export default {
 				await this.offersRequest({
 					page: Number(this.offers.current_page + 1),
 					limit: 6,
+					except_external_id: Number(this.$route.params.car),
 					mark_slug_array: [this.$route.params.mark],
 					folder_slug_array: [this.$route.params.model]
 				})
@@ -72,6 +72,7 @@ export default {
 			await this.offersRequest({
 				page: 0,
 				limit: 6,
+				except_external_id: Number(this.$route.params.car),
 				mark_slug_array: [this.$route.params.mark],
 				folder_slug_array: [this.$route.params.model]
 			})
