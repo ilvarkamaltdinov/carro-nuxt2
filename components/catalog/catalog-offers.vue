@@ -51,7 +51,7 @@ export default {
 			dealers: 'dealers/dealers'
 		}),
 		currentDealers() {
-			return this.dealers.filter(item => item.slug === 'prime' || item.slug === 'avtograd')
+			return this.dealers.filter(item => item.slug !== 'komm-auto')
 		}
 	},
 	methods: {
