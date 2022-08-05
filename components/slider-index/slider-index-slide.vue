@@ -8,24 +8,30 @@
 				<div class="slider-index__media">
 					<picture>
 						<source type="image/webp"
+						        srcset="data:,1w"
 						        :data-srcset="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@1x.webp`)} 1x, ${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@2x.webp`)} 2x`" />
 						<source media="(min-width: 768px)"
+						        srcset="data:,1w"
 						        :data-srcset="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@1x.png`)} 1x, ${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@2x.png`)} 2x`" />
 						<img class="slider-index__media slider-index__media--element lazyload"
 						     :data-src="require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@2x.png`)"
 						     alt=""
+						     src="data:,"
 						     data-aos="fade-up"
 						     data-aos-duration="750"
 						     data-aos-easing="ease-in-out" />
 					</picture>
 					<picture>
 						<source type="image/webp"
+						        srcset="data:,1w"
 						        :data-srcset="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@1x.webp`)} 1x, ${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@2x.webp`)} 2x`" />
 						<source media="(min-width: 768px)"
+						        srcset="data:,1w"
 						        :data-srcset="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@1x.png`)} 1x, ${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@2x.png`)} 2x`" />
 						<img class="slider-index__media slider-index__media--car lazyload"
 						     :data-src="require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@2x.png`)"
 						     alt=""
+						     src="data:,"
 						     data-aos="fade-right"
 						     data-aos-duration=" 750"
 						     data-aos-easing="ease-in-out"
@@ -52,24 +58,30 @@
 				<div class="slider-index__media">
 					<picture>
 						<source type="image/webp"
+						        srcset="data:,1w"
 						        :data-srcset="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@1x.webp`)} 1x, ${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@2x.webp`)} 2x`" />
 						<source media="(min-width: 768px)"
+						        srcset="data:,1w"
 						        :data-srcset="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@1x.png`)} 1x, ${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@2x.png`)} 2x`" />
 						<img class="slider-index__media slider-index__media--element lazyload"
 						     :data-src="require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@2x.png`)"
 						     alt=""
+						     src="data:,"
 						     data-aos="fade-up"
 						     data-aos-duration="750"
 						     data-aos-easing="ease-in-out" />
 					</picture>
 					<picture>
 						<source type="image/webp"
+						        srcset="data:,1w"
 						        :data-srcset="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@1x.webp`)} 1x, ${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@2x.webp`)} 2x`" />
 						<source media="(min-width: 768px)"
+						        srcset="data:,1w"
 						        :data-srcset="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@1x.png`)} 1x, ${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@2x.png`)} 2x`" />
 						<img class="slider-index__media slider-index__media--car lazyload"
 						     :data-src="require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@2x.png`)"
 						     alt=""
+						     src="data:,"
 						     data-aos="fade-right"
 						     data-aos-duration=" 750"
 						     data-aos-easing="ease-in-out"
