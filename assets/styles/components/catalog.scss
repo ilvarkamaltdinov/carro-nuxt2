@@ -354,7 +354,7 @@
   }
 
   .catalog__item--vertical .catalog__title {
-    max-width: calc(100% - 48px);
+    max-width: 280px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
