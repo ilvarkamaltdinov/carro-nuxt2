@@ -79,7 +79,7 @@ export default {
 	props: {
 		pageTitle: String
 	},
-	async fetch() {
+	async mounted() {
 		try {
 			let response = await this.request({query: dealerReviews})
 			this.dealers = response.data.dealers.filter(item => item.youtube_playlist_review)
@@ -91,7 +91,7 @@ export default {
 	
 	computed: {
 		activeToken() {
-			return this.activeTab === 'prime' ? this.primeToken : this.autoGradToken
+			return this.dealers[this.activeTab].youtube_playlist_review
 		}
 	},
 	methods: {
