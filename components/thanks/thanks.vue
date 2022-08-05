@@ -38,7 +38,7 @@
 	</section>
 </template>
 <script>
-import {mapGetters, mapMutations} from "vuex";
+import {mapActions, mapGetters, mapMutations} from "vuex";
 
 export default {
 	props: {
@@ -58,6 +58,9 @@ export default {
 		}
 	},
 	methods: {
+		...mapActions({
+			clearChosenOffer:'modal/modal-choose/clearData'
+		}),
 		...mapMutations({
 			clear: 'form/form/CLEAR_DATA'
 		}),
@@ -107,7 +110,8 @@ export default {
 		}
 	},
 	destroyed() {
-		this.clear()
+		this.clear();
+		this.clearChosenOffer()
 	},
 	computed: {
 		...mapGetters({

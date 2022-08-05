@@ -12,7 +12,7 @@ export const state = () => ({
     currentGeneration: null,
     currentCar: null,
     loading: true,
-    view:'s',
+    view: 's',
     sort: 'price|asc'
 })
 export const getters = {
@@ -66,7 +66,7 @@ export const actions = {
             })
         commit('SET_MODELS', response.data.folders)
     },
-    async getGenerations({commit, state, rootState}, payload) {
+    async getGenerations({commit, dispatch, state, rootState}, payload) {
         let variables = {
             site_id: rootState.site_id,
             mark_slug: state.currentMark.slug,
@@ -78,6 +78,12 @@ export const actions = {
                 query: generations,
                 variables: Object.assign(variables)
             })
+        if (response.data.generations.length === 1) {
+            dispatch('chooseGeneration', response.data.generations[0])
+        }
+        else{
+            await commit('SET_TAB_COMPONENT', 'generation');
+        }
         commit('SET_GENERATIONS', response.data.generations)
     },
     async getOffers({commit, state, rootState}) {
@@ -101,22 +107,30 @@ export const actions = {
         commit('SET_OFFERS', cars.data.offers.data)
         commit('SET_LOADING', false)
     },
-
-    chooseMark({commit, dispatch}, payload) {
-
-        commit('SET_CURRENT_MARK', payload);
-        dispatch('getModels', payload);
-        commit('SET_TAB_COMPONENT', 'model');
-
-        commit('SET_CURRENT_MODEL', null);
-        commit('SET_CURRENT_GENERATION', null);
+    async clearData({commit}) {
+        await commit('SET_CURRENT_MARK', null)
+        await commit('SET_CURRENT_MODEL', null)
+        await commit('SET_CURRENT_GENERATION', null)
+        await commit('SET_CURRENT_CAR', null)
+        await commit('SET_TAB_COMPONENT', 'mark')
     },
-    chooseModel({commit, dispatch}, payload) {
-        commit('SET_CURRENT_MODEL', payload);
-        dispatch('getGenerations', payload);
-        commit('SET_TAB_COMPONENT', 'generation');
-        commit('SET_CURRENT_GENERATION', null);
 
+    async chooseMark({commit, dispatch}, payload) {
+        await commit('SET_CURRENT_MODEL', null);
+        await commit('SET_CURRENT_GENERATION', null);
+        await commit('SET_MODELS', null);
+
+        await commit('SET_CURRENT_MARK', payload);
+        await dispatch('getModels', payload);
+        await commit('SET_TAB_COMPONENT', 'model');
+
+    },
+    async chooseModel({commit, dispatch}, payload) {
+        await commit('SET_GENERATIONS', null)
+        await commit('SET_CURRENT_GENERATION', null);
+
+        await commit('SET_CURRENT_MODEL', payload);
+        await dispatch('getGenerations', payload);
     },
     chooseGeneration({commit, dispatch}, payload) {
         commit('SET_CURRENT_GENERATION', payload);
@@ -129,7 +143,6 @@ export const mutations = {
     SET_TAB_COMPONENT(state, data) {
         state.tabComponent = data
     },
-
     SET_CURRENT_MARK(state, data) {
         state.currentMark = data
     },

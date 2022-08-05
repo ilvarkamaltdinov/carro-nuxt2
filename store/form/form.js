@@ -99,6 +99,7 @@ export const actions = {
 }
 export const mutations = {
     CLEAR_DATA(state) {
+        console.log('clear')
         state.userName = null
         state.userCar = null
         state.userOrderId = null
