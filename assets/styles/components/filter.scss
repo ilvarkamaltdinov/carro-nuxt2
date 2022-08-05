@@ -111,6 +111,7 @@
   .filter__catalog-wrap {
     border: none;
     border-radius: $borderRadius;
+    z-index: 50;
   }
 
   .filter__buttons-filter {

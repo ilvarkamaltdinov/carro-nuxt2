@@ -353,8 +353,19 @@
     order: -1;
   }
 
+  .catalog__item--vertical .catalog__title {
+    max-width: 280px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   .catalog__title-wrap {
     margin-top: 16px;
+  }
+
+  .catalog__heading {
+    max-width: 100%;
   }
 
   .catalog__img-link {
