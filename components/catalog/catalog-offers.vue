@@ -32,6 +32,7 @@
 				                button-class="button--show"
 				                text="Подробнее о дилере" />
 				<a class="button button--show button--show-link"
+				   v-if="dealer.site"
 				   :href="`${dealer.site}`"
 				   rel="nofollow"
 				   target="_blank">Сайт автоцентра

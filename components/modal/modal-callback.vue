@@ -2,7 +2,7 @@
 	<div>
 		<div class="modal__options" v-if="modalData.mark">
 			<img class="modal__logo"
-			     :src="require(`~/assets/img/dealers/logos/logo-${modalData.dealer.slug}.svg`)"
+			     :src="modalData.dealer.image_logo"
 			     loading="lazy"
 			     alt="" />
 			<div class="modal__buttons">

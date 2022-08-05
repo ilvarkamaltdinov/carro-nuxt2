@@ -3,4 +3,5 @@ fragment DealerMiniType on Dealer {
     phone
     slug
     title
+    image_logo
 }

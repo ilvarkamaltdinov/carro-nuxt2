@@ -8,4 +8,5 @@ fragment DealerType on Dealer {
     schedule
     phone
     rating
+    image_logo
 }

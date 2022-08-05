@@ -26,11 +26,11 @@
 						   :href="`mailto:${settings.email}`">{{ settings.email }}
 						</a>
 					</div>
-					<div class="page-footer__city-wrap" v-if="isMoscow">
+					<div class="page-footer__city-wrap">
 						<button class="page-footer__city">
 							<svg-icon class="page-footer__city-icon"
 							          name="icon-map" />
-							<span>Москва</span>
+							<span>{{settings.city}}</span>
 						</button>
 					</div>
 					<div class="page-footer__credits">

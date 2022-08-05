@@ -56,7 +56,8 @@ export const actions = {
     async getModels({commit, state, rootState}, payload) {
         let variables = {
             site_id: rootState.site_id,
-            mark_slug: state.currentMark.slug
+            mark_slug: state.currentMark.slug,
+            category: 'used'
         }
         let client = this.app.apolloProvider.defaultClient
         let response = await client.query(
@@ -80,8 +81,7 @@ export const actions = {
             })
         if (response.data.generations.length === 1) {
             dispatch('chooseGeneration', response.data.generations[0])
-        }
-        else{
+        } else {
             await commit('SET_TAB_COMPONENT', 'generation');
         }
         commit('SET_GENERATIONS', response.data.generations)
@@ -92,6 +92,7 @@ export const actions = {
             site_id: rootState.site_id,
             page: 1,
             limit: 10,
+            category: 'used',
             dateFormat: 'j F Y года.',
             sort: state.sort,
             mark_slug_array: [state.currentMark.slug],
