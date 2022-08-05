@@ -123,6 +123,9 @@ export default {
     },
     buildModules: ['nuxt-lazysizes'],
     lazySizes: {
+        plugins:{
+            nativeLoading: true
+        },
         extendAssetUrls: {
             img: ['src', 'srcset', 'data-src', 'data-srcset'],
             source: ['src', 'srcset', 'data-src', 'data-srcset']
