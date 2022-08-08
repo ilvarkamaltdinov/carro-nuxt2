@@ -7,24 +7,19 @@
   width: 100%;
   height: 100%;
   background-color: $colorText;
-  transition: all 0.3s;
+  transition: opacity 0.3s;
   display: block;
   z-index: 200;
   opacity: 0.95;
 }
 
-// .overlay--active {
-//   animation: fade-overlay 500ms;
-//   display: block;
-//   z-index: 100;
+// .overlay--enter-active,
+// .overlay--leave-active {
+//   transition: opacity 0.3s;
 // }
 
-@keyframes fade-overlay {
-  from {
-    opacity: 0;
-
-  }
-  to {
-    opacity: 1;
-  }
+.overlay.overlay--enter,
+.overlay.overlay--leave-to {
+  opacity: 0;
+  // transition: opacity 0.3s;
 }

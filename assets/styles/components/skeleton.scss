@@ -122,7 +122,20 @@
   width: 160px;
 }
 
+.skeleton__item--review {
+  aspect-ratio: 4 / 3;
+  background-color: $colorDivider;
+}
+
 @media (max-width: $mobile-width-only) {
+  .skeleton__review-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    grid-gap: 12px;
+    gap: 12px;
+  }
+
   .skeleton__tabs-list {
     @include horizontal-scroll;
     margin: -24px 0;

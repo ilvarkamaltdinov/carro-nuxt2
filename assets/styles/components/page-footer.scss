@@ -191,6 +191,12 @@
     padding-top: 0;
   }
 
+  .page-footer__city {
+    &:hover {
+      cursor: default;
+    }
+  }
+
   .page-footer {
     padding-bottom: 32px;
     margin-top: 160px;
@@ -222,6 +228,11 @@
   .page-footer__cars-stock-number {
     margin-left: 8px;
     color: $colorLink;
+    transition: $transitionHover;
+
+    &:hover {
+      color: $colorLinkHover;
+    }
   }
 
   .page-footer__disclaimer {

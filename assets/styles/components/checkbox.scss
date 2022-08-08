@@ -9,6 +9,10 @@
   }
 }
 
+.checkbox__text {
+  transition: $transitionHover;
+}
+
 .checkbox--filter {
   flex-direction: row-reverse;
   width: 100%;

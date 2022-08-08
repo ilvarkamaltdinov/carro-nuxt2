@@ -29,10 +29,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &:hover .modal__close-icon {
+    fill: $colorPrimary;
+    transition: $transitionHover;
+  }
 }
 
 .modal__close-icon {
   fill: $colorText;
+  transition: $transitionHover;
 }
 
 .modal__options {

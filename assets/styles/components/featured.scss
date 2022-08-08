@@ -293,6 +293,7 @@
   position: relative;
   @include overlay;
   aspect-ratio: 4 / 3;
+  background-color: $colorBgActive;
 
   &:hover {
     cursor: pointer;
@@ -309,6 +310,10 @@
   &:hover::before {
     opacity: 0.65;
   }
+}
+
+.featured__item--review .featured__link {
+  background-color: $colorText;
 }
 
 .featured__item--review-active {

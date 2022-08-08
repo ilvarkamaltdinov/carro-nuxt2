@@ -13,11 +13,13 @@
 
 .overlay-enter-active,
 .overlay-leave-active {
-  transition: opacity 0.15s;
+  transition: opacity 0.3s;
 }
 
-.overlay-enter, .overlay-leave-to {
+.overlay.overlay-enter,
+.overlay.overlay-leave-to {
   opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .modal-enter-active {
@@ -60,16 +62,6 @@
 }
 
 @media (min-width: $desktop-width) {
-  .overlay-enter-active,
-  .overlay-leave-active {
-    transition: opacity 0.2s;
-  }
-
-  .overlay-enter,
-  .overlay-leave-to {
-    opacity: 0;
-  }
-
   .modal-enter-active {
     transition: all 0.24s ease;
   }
