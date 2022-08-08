@@ -118,7 +118,6 @@ export default {
                 httpEndpoint: 'https://devapi.carro.ru/graphql',
                 persisting: true
             }
-
         }
     },
     buildModules: ['nuxt-lazysizes'],

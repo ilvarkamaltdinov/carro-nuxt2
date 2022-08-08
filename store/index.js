@@ -27,7 +27,6 @@ export const getters = {
     }
 }
 export const actions = {
-
     async nuxtServerInit({dispatch, commit, state}, {req, app, $config}) {
         if (req.headers.host === 'xn--80atnha.xn--p1ai') {
             commit('SET_SITE_ID', $config.site_id_carro_rf);
