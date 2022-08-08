@@ -6,7 +6,9 @@
 		<div class="catalog__img">
 			<catalog-item-img @click="linkClick"
 			                  :url="currentUrl"
+			                  :has-fancy="true"
 			                  :img="img.thumb"
+			                  :original="img.original"
 			                  v-for="img in offer.images"
 			                  :key="img.thumb" />
 			<catalog-item-call-card v-if="!isForm"

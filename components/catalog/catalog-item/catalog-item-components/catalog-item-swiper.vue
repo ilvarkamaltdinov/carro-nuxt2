@@ -2,7 +2,34 @@
 	<div class="catalog__img"
 	     :class="'catalog__img-' + sliderId">
 		<div class="swiper">
-			<div class="swiper-wrapper">
+			<div v-if="hasFancy"
+			     class="swiper-wrapper">
+				<div class="swiper-slide"
+				     v-for="image in images"
+				     :key="image.thumb">
+					<a data-fancybox="gallery"
+					   :data-src="image.original"
+					   class="catalog__img-link">
+						<picture>
+							<source type="image/webp"
+							        media="(min-width: 768px)"
+							        :data-srcset="image.thumb" />
+							<source media="(min-width: 768px)"
+							        :data-srcset="image.thumb" />
+							<img class="lazyload"
+							     :data-src="image.tumb"
+							     :data-srcset="image.thumb"
+							     alt="" />
+						</picture>
+					</a>
+				</div>
+				<catalog-item-call-card v-if="!isForm"
+				                        :image="images[0].thumb"
+				                        class="swiper-slide"
+				                        :dealer="dealer" />
+			</div>
+			<div v-else
+			     class="swiper-wrapper">
 				<div class="swiper-slide"
 				     v-for="image in images"
 				     :key="image.thumb">
@@ -45,6 +72,10 @@
 export default {
 	props: {
 		url: String,
+		hasFancy: {
+			type: Boolean,
+			default: false
+		},
 		sliderId: {
 			type: Number,
 			default: null

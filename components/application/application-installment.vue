@@ -13,6 +13,7 @@
 			<div v-if="currentCar && !$device.isMobile"
 			     class="application__catalog catalog grid__col-8">
 				<catalog-item-large-desktop :is-form="true"
+				                            :has-fancy="true"
 				                            :choose="true"
 				                            :has-buttons="false"
 				                            :offer="currentCar" />

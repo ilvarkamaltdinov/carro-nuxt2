@@ -2,6 +2,7 @@
 	<article class="catalog__item catalog__item--desktop-l grid__col-8">
 		<catalog-item-swiper :dealer="offer.dealer"
 		                     :images="offer.images"
+		                     :has-fancy="hasFancy"
 		                     :is-form="isForm"
 		                     :url="currentUrl"
 		                     @click="linkClick"
@@ -52,6 +53,10 @@ import cardClick from "~/mixins/cardClick";
 export default {
 	mixins: [filters, cardClick],
 	props: {
+		hasFancy:{
+			type: Boolean,
+			default: false
+		},
 		isForm: {
 			type: Boolean,
 			default: false
