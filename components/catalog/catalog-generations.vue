@@ -17,16 +17,6 @@
 				</li>
 			</ul>
 		</div>
-		<div v-else
-		     class="skeleton">
-			<ul class="skeleton__tabs-list">
-				<li class="skeleton__tabs-item"></li>
-				<li class="skeleton__tabs-item"></li>
-				<li class="skeleton__tabs-item"></li>
-				<li class="skeleton__tabs-item"></li>
-				<li class="skeleton__tabs-item"></li>
-			</ul>
-		</div>
 	</div>
 </template>
 <script>
