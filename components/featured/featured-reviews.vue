@@ -29,8 +29,8 @@
 					<li class="skeleton__tabs-item"></li>
 				</ul>
 			</div>
-			
-			<ul v-if="reviews.length"
+
+			<ul v-if="!reviews.length"
 			    class="featured__list grid grid--featured featured__reviews">
 				<li class="featured__item featured__item--review "
 				    :class="{'featured__item--review-active':videoShow === video.id}"
@@ -62,16 +62,16 @@
 					          name="icon-play" />
 				</li>
 			</ul>
-			
+
 			<div v-else
-			     class="grid grid--featured skeleton skeleton—reviews">
-				<ul class="skeleton__review-list">
-					<li v-for="i in 6"
+			     class="skeleton skeleton--reviews">
+				<ul class="grid grid--featured skeleton__review-list">
+					<li v-for="i in 9"
 					    :key="i"
-					    class="skeleton__review-item"></li>
+					    class="skeleton__content skeleton__content--review"></li>
 				</ul>
 			</div>
-			
+
 			<button-typical v-if="showMore"
 			                @click="getMore"
 			                text="Показать больше"
@@ -106,7 +106,7 @@ export default {
 			console.log(e)
 		}
 	},
-	
+
 	computed: {
 		activeToken() {
 			return this.dealers[this.activeTab].youtube_playlist_review
