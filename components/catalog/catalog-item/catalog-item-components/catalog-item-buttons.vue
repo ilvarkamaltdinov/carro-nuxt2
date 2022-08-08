@@ -1,13 +1,16 @@
 <template>
 	<div class="catalog__buttons">
 		<div class="catalog__actions">
-			<button-autoteka @click="autoteka(offer)" v-if="long" />
+			<button-autoteka @click="autoteka(offer)"
+			                 v-if="long" />
 			<button-favorite :active="likesArray.some(id => id === String(offer.external_id))"
 			                 @click="like()" />
 			<!--<button-compare v-if="long" />-->
-			<button-call :phone="offer.dealer.phone" @click="call" />
+			<button-call :phone="offer.dealer.phone"
+			             @click="call" />
 		</div>
-		<div class="catalog__actions-main" v-if="long">
+		<div class="catalog__actions-main"
+		     v-if="long">
 			<button-typical @click="tradeIn(offer)"
 			                text="Trade-In"
 			                button-class="button--trade-in button--link" />
@@ -15,14 +18,16 @@
 			                @click="chooseClick(offer)"
 			                :text="currentCar === offer ? 'Выбрано' : 'Выбрать'"
 			                button-class="button--credit" />
-			<button-typical v-else @click="credit()"
+			<button-typical v-else
+			                @click="credit()"
 			                text="Купить в кредит"
 			                button-class="button--credit" />
 		</div>
 		<div v-else>
 			<button-typical v-if="choose"
 			                @click="chooseClick(offer)"
-			                :text="currentCar === offer ? 'Выбрано' : 'Выбрать'"
+			                :class="{'button--credit-selected':currentCar.id === offer.id }"
+			                :text="currentCar.id === offer.id ? 'Выбрано' : 'Выбрать'"
 			                button-class="button--credit" />
 			<button-typical v-else
 			                @click="credit()"
@@ -50,7 +55,7 @@ export default {
 			type: Boolean,
 			default: false
 		},
-		long:{
+		long: {
 			type: Boolean,
 			default: false
 		},
@@ -89,7 +94,7 @@ export default {
 			}
 			await this.openModal(payload)
 		},
-		async tradeIn(carInfo){
+		async tradeIn(carInfo) {
 			let payload = {
 				modal_data: carInfo,
 				modal_component: 'modal-tradeIn',
