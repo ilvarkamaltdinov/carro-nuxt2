@@ -30,7 +30,7 @@
 				</ul>
 			</div>
 
-			<ul v-if="!reviews.length"
+			<ul v-if="reviews.length"
 			    class="featured__list grid grid--featured featured__reviews">
 				<li class="featured__item featured__item--review "
 				    :class="{'featured__item--review-active':videoShow === video.id}"
