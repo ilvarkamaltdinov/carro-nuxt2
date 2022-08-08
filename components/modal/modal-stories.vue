@@ -1,12 +1,14 @@
 <template>
-	<transition name="fade">
-		<div v-if="storiesModal"
-		     class="stories__modal_wrapper-wrap">
-			<div @click="closeStories()"
+	<div :class="{'stories__modal_wrapper-wrap':storiesModal}">
+		<transition name="overlay">
+			<div v-if="storiesModal"
+			     @click="closeStories()"
 			     class="overlay"></div>
-			<stories-modal />
-		</div>
-	</transition>
+		</transition>
+		<transition name="fade">
+			<stories-modal v-if="storiesModal" />
+		</transition>
+	</div>
 </template>
 
 <script>
