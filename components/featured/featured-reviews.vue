@@ -8,7 +8,8 @@
 		</div>
 		<div class="grid__col-12">
 			<div class="tabs">
-				<ul class="tabs__list">
+				<ul v-if="dealers.length"
+				    class="tabs__list">
 					<li v-for="(dealer, index) in dealers"
 					    :key="dealer.id"
 					    role="presentation"
@@ -22,8 +23,15 @@
 						</button>
 					</li>
 				</ul>
+				<ul v-else
+				    class="skeleton__tabs-list">
+					<li class="skeleton__tabs-item"></li>
+					<li class="skeleton__tabs-item"></li>
+				</ul>
 			</div>
-			<ul class="featured__list grid grid--featured featured__reviews">
+			
+			<ul v-if="reviews.length"
+			    class="featured__list grid grid--featured featured__reviews">
 				<li class="featured__item featured__item--review "
 				    :class="{'featured__item--review-active':videoShow === video.id}"
 				    @click="clickVideo(video.id)"
@@ -54,6 +62,16 @@
 					          name="icon-play" />
 				</li>
 			</ul>
+			
+			<div v-else
+			     class="grid grid--featured skeleton skeleton—reviews">
+				<ul class="skeleton__review-list">
+					<li v-for="i in 6"
+					    :key="i"
+					    class="skeleton__review-item"></li>
+				</ul>
+			</div>
+			
 			<button-typical v-if="showMore"
 			                @click="getMore"
 			                text="Показать больше"
