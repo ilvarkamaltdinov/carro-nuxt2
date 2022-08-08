@@ -9,14 +9,13 @@
 			<button-call :phone="offer.dealer.phone"
 			             @click="call" />
 		</div>
-		<div class="catalog__actions-main"
-		     v-if="long">
+		<div class="catalog__actions-main" v-if="long">
 			<button-typical @click="tradeIn(offer)"
 			                text="Trade-In"
 			                button-class="button--trade-in button--link" />
 			<button-typical v-if="choose"
 			                @click="chooseClick(offer)"
-			                :text="currentCar === offer ? 'Выбрано' : 'Выбрать'"
+			                :text="isEqual ? 'Выбрано' : 'Выбрать'"
 			                button-class="button--credit" />
 			<button-typical v-else
 			                @click="credit()"
@@ -26,8 +25,8 @@
 		<div v-else>
 			<button-typical v-if="choose"
 			                @click="chooseClick(offer)"
-			                :class="{'button--credit-selected':currentCar.id === offer.id }"
-			                :text="currentCar.id === offer.id ? 'Выбрано' : 'Выбрать'"
+			                :class="{'button--credit-selected':isEqual }"
+			                :text="isEqual ? 'Выбрано' : 'Выбрать'"
 			                button-class="button--credit" />
 			<button-typical v-else
 			                @click="credit()"
@@ -48,7 +47,14 @@ export default {
 		...mapGetters({
 			likesArray: 'favorite/favorite/likesArray',
 			currentCar: 'modal/modal-choose/currentCar'
-		})
+		}),
+		isEqual(){
+			if(this.currentCar){
+				return this.currentCar.id === this.offer.id
+			} else{
+				return false
+			}
+		}
 	},
 	props: {
 		isForm: {
