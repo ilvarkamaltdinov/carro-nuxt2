@@ -4,7 +4,7 @@
 			<crumbs :crumbs="crumbs" />
 		</div>
 		<div class="grid grid--container">
-			<blog-category-page   title="Новости"/>
+			<blog-category-page title="Новости"/>
 		</div>
 	</main>
 </template>
@@ -34,7 +34,7 @@ export default {
 		setTimeout(function () {window.scrollTo(0, -100);}, 1);
 	},
 	validate(ctx) {
-		return !ctx.store.getters.showBlog
+		return ctx.store.getters.showBlog
 	},
 }
 </script>
