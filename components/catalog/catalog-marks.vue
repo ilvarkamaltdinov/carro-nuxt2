@@ -4,7 +4,7 @@
 			<ul class="makes__list makes__list--all makes__list--all-catalog">
 				<li class="makes__item"
 				    :key="mark.id"
-				    v-for="mark in marksList">
+				    v-for="mark in sortedMarks">
 					<nuxt-link :to="`${$route.params.category}/${mark.slug}`"
 					           class="makes__link">
 						<div class="makes__title">
@@ -54,6 +54,11 @@ export default {
 			} else if(this.marksArray){
 				return this.marksArray.length > 21
 			}
+		},
+		sortedMarks(){
+			return this.$_.sortBy(this.marksList, [function (mark) {
+				return mark.title;
+			}])
 		},
 		marksList() {
 			if (this.$device.isMobile && this.marksArray.length) {
