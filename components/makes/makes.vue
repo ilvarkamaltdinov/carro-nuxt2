@@ -11,7 +11,7 @@
 				                    :key="index" />
 			</ul>
 			<ul class="makes__list makes__list--all">
-				<makes-item v-for="(item, index) in allMarks"
+				<makes-item v-for="(item, index) in sortedMarks"
 				            :slug="item.slug"
 				            :active="item === currentMark"
 				            :for-chose-modal="forChoseModal"
@@ -37,7 +37,12 @@ export default {
 		...mapGetters({
 			allMarks: 'marks/marks/allMarks',
 			currentMark: 'modal/modal-choose/currentMark'
-		})
+		}),
+		sortedMarks(){
+			return this.$_.sortBy(this.allMarks, [function (mark) {
+				return mark.title;
+			}])
+		}
 	},
 	methods: {
 		...mapActions({
