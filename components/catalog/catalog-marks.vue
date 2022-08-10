@@ -8,7 +8,7 @@
 					<nuxt-link :to="`${$route.params.category}/${mark.slug}`"
 					           class="makes__link">
 						<div class="makes__title">
-							{{ mark.title }}
+							{{ mark.slug === 'mercedes-benz' ? 'Mercedes' : mark.title || mark.name }}
 						</div>
 						<div class="makes__qty">
 							{{ mark.offers_count }}
