@@ -46,7 +46,11 @@
 						<li class="features__item">{{ dealer.schedule }}</li>
 					</ul>
 				</div>
-				<button-typical :link="`/contact/${dealer.slug}`"
+				<button-typical v-if="dealer.slug === $route.params.dealer"
+				                @click="showMore(dealer.slug)"
+				                text="Подробнее о дилере"
+				                class="button--show" />
+				<button-typical v-else :link="`/contact/${dealer.slug}`"
 				                text="Подробнее о дилере"
 				                class="button--show" />
 				<a v-if="dealer.site" class="button button--show button--show-link"
