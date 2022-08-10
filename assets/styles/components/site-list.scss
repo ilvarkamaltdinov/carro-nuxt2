@@ -111,6 +111,8 @@
   }
 
   .site-list--desktop .site-list__item {
+    margin-bottom: 0;
+
     &:not(:last-child) {
       margin-right: 24px;
     }

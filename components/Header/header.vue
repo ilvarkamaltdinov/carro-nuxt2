@@ -26,10 +26,11 @@
 						</nuxt-link>
 					</li>
 					<li class="page-header__buttons-item">
-						<a class="page-header__buttons-link"
+						<a class="page-header__buttons-link page-header__buttons-link--phone"
 						   :href="`tel:${settings.phone.replace(/[^+\d]/g, '')}`">
 							<svg-icon class="icon"
 							          name="icon-call" />
+              <span class="page-header__buttons-phone">{{ settings.phone }}</span>
 						</a>
 					</li>
 				</ul>
@@ -60,8 +61,8 @@
 				</button>
 			</nav>
 		</div>
-		
-		
+
+
 		<!--TODO анимация выпадающих списков в хедере-->
 		<transition name="menu">
 			<modal-makes v-show="modalMarks" />

@@ -293,6 +293,12 @@
   }
 }
 
+@media (max-width: $tablet-width-max) {
+  .page-header__buttons-phone {
+    display: none;
+  }
+}
+
 @media (min-width: $desktop-width) {
   .page-header__nav--desktop.main-nav {
     display: flex;
@@ -305,5 +311,29 @@
     &:active .icon {
       fill: $colorPrimary;
     }
+
+    &:hover .page-header__buttons-phone {
+      color: $colorPrimary;
+    }
+  }
+
+  .page-header__buttons-link--phone {
+    display: flex;
+    align-items: center;
+    width: auto;
+  }
+
+  .page-header__buttons-link--phone .icon {
+    margin-right: 8px;
+    // display: none;
+  }
+
+  .page-header__buttons-phone {
+    @include font-features;
+    transition: $transitionHover;
+  }
+
+  .page-header__search {
+    width: 240px;
   }
 }

@@ -30,10 +30,10 @@ export default {
 					title:'Trade-In',
 					link:'/exchange'
 				},
-				{
-					title:'Выкуп',
-					link:'/buyout'
-				},
+				// {
+				// 	title:'Выкуп',
+				// 	link:'/buyout'
+				// },
 				{
 					title:'О портале',
 					link:'/about'
