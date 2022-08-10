@@ -53,6 +53,8 @@ export default {
 				},
 				phone: {
 					mask: "+7 (#99) 999-99-99",
+					showMaskOnHover: false,
+					showMaskOnFocus: true,
 					oncomplete: () => this.$emit('phoneMaskComplete'),
 					onincomplete: () => this.$emit('onincomplete'),
 					definitions: {
@@ -63,6 +65,8 @@ export default {
 				},
 				date: {
 					mask: "99/99/9999",
+					showMaskOnHover: false,
+					showMaskOnFocus: true,
 					oncomplete: () => this.$emit('dateMaskComplete'),
 					onincomplete: () => this.$emit('onincomplete'),
 				}
