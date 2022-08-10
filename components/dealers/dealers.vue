@@ -107,7 +107,7 @@ export default {
 				}
 				await this.openModal(payload)
 			} catch (e) {
-				console.log(e)
+				return this.$nuxt.error({statusCode: 404, message: '404'})
 			}
 		}
 	},
