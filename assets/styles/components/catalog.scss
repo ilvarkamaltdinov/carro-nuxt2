@@ -510,6 +510,8 @@
 
   .catalog__item--vertical .catalog__img {
     aspect-ratio: 4 / 3;
+    max-height: 246px;
+    z-index: 1;
   }
 
   .catalog__actions-main {
