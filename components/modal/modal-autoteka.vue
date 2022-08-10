@@ -190,7 +190,7 @@ export default {
 	mounted() {
 		setTimeout(()=>{
 			this.modalLoad = true
-		},1000)
+		},2000)
 	}
 }
 </script>
