@@ -180,7 +180,7 @@ export default {
 			let payload = {
 				modal_data: this.offer,
 				modal_component: 'modal-callback',
-				modal_title: 'Заявка на автокредит',
+				modal_title: 'Заявка на обратный звонок',
 				modal_sub_title: this.offer.name
 			}
 			this.openModal(payload)
