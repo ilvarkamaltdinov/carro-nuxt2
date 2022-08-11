@@ -1,6 +1,5 @@
 <template>
 	<section class="page-main__slider-index slider-index grid__col-8">
-		<h2 class="visually-hidden">Слайдер на главной странице</h2>
 		<!-- Slider main container-->
 		<div class="swiper swiper--progress swiper--index">
 			<!-- Additional required wrapper-->
