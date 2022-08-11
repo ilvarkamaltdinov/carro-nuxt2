@@ -289,6 +289,7 @@
 
   .car__buy {
     grid-column: 5 / 9;
+    margin-bottom: -8px;
   }
 
   .car__info {
@@ -328,7 +329,7 @@
   }
 
   .car__credit-wrap.grid {
-    margin-bottom: 0;
+    margin-bottom: 24px;
   }
 
   .car__slider-wrap {
@@ -443,6 +444,10 @@
 @media (min-width: $desktop-width) {
   .car__slider .swiper-button-prev {
     left: -20px;
+  }
+
+  .car__credit-wrap.grid {
+    margin-bottom: 0;
   }
 
   .car__slider .swiper-button-next {
