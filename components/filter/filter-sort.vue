@@ -58,7 +58,7 @@ export default {
 			sortList: {
 				'price|asc': 'Цена: Сначала дешевле',
 				'price|desc': 'Цена: Сначала дороже',
-				'run|asc': 'Пробег: Минимальный пробег',
+				'run|asc': 'Пробег: Минимальный',
 				'year|desc': 'Год: Сначала новее'
 			}
 		}
@@ -162,7 +162,7 @@ export default {
 					await this.$router.push({path: this.$route.fullPath, query: {sort: sort}});
 				}
 			}
-			
+
 		}
 	}
 }
