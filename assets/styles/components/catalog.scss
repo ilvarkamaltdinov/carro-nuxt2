@@ -402,11 +402,6 @@
     }
   }
 
-  .catalog__item--vertical .catalog__img-link,
-  .catalog__item--vertical .catalog__call-card {
-    display: none;
-  }
-
   .catalog__img .swiper__buttons-wrapper {
     right: -20px;
   }
@@ -414,10 +409,6 @@
   .catalog__filter--aside {
     top: 153px;
     position: sticky;
-  }
-
-  .catalog--slider .catalog__call-card {
-    display: none;
   }
 
   .catalog__call-card {
@@ -544,6 +535,16 @@
   .catalog__img .swiper__buttons-wrapper {
     right: 12px;
   }
+
+  .catalog__item--vertical .catalog__img {
+    @include horizontal-scroll;
+    padding: 0;
+    margin: 0 -16px;
+    padding-left: 16px;
+    margin-bottom: 0;
+    gap: 8px;
+    border-radius: 0;
+  }
 }
 
 @media (min-width: $desktop-width) {
@@ -572,5 +573,14 @@
 
   .catalog--slider .tabs {
     margin-bottom: 24px;
+  }
+
+  .catalog__item--vertical .catalog__img-link,
+  .catalog__item--vertical .catalog__call-card {
+    display: none;
+  }
+
+  .catalog--slider .catalog__call-card {
+    display: none;
   }
 }

@@ -143,6 +143,10 @@
     }
   }
 
+  .makes__list--models .makes__item {
+    max-width: 100%;
+  }
+
   .makes__list--header {
     position: relative;
     @include text-overflow;

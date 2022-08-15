@@ -154,6 +154,12 @@
     flex-wrap: wrap;
     gap: 16px;
   }
+
+  .stories__list .stories__item {
+    &:nth-child(1n+6) {
+      display: none;
+    }
+  }
 }
 
 @media (min-width: $tablet-width) {

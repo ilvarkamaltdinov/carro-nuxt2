@@ -73,6 +73,14 @@
 
   .tabs__list--all .tabs__item {
     margin: 0;
+    max-width: 100%;
+  }
+
+  .tabs__list--all .tabs__link {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
   }
 }
 
