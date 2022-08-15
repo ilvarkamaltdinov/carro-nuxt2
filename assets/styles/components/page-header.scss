@@ -175,6 +175,12 @@
   text-align: center;
 }
 
+@media (max-width: $iphone-mini-only) {
+  .page-header__back-model {
+    max-width: 132px;
+  }
+}
+
 @media (max-width: $mobile-width-only) {
   .page-header__search--form {
     width: 100%;

@@ -167,6 +167,12 @@
   margin-right: 8px;
 }
 
+@media (max-width: $iphone-mini-only) {
+  .page-footer__legal-item {
+    font-size: 11px;
+  }
+}
+
 @media (max-width: $tablet-width-max) {
   .page-footer__links,
   .page-footer__cars,

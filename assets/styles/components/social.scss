@@ -1,13 +1,14 @@
 .social {
   display: flex;
   justify-content: center;
+  gap: 16px;
 }
 
-.social__item {
- &:not(:last-child) {
-    margin-right: 16px;
-  }
-}
+// .social__item {
+//  &:not(:last-child) {
+//     margin-right: 16px;
+//   }
+// }
 
 .social__link {
   display: flex;
@@ -24,4 +25,10 @@
 .social__icon {
   width: 16px;
   height: 16px;
+}
+
+@media (max-width: $iphone-mini-only) {
+  .social {
+    gap: 8px;
+  }
 }

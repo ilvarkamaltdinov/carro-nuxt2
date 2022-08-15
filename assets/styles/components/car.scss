@@ -169,6 +169,28 @@
   margin-bottom: 24px;
 }
 
+@media (max-width: $iphone-mini-only) {
+  .car__buy-block .button--trade-in {
+    padding: 12px 8px;
+  }
+
+  .car__buy-block .button--credit {
+    padding: 12px 16px;
+  }
+
+  .car__actions-buttons .button--autoteka .button__text {
+    display: none;
+  }
+
+  .car__tech-list {
+    grid-template-columns: 1fr;
+  }
+
+  .car__buy--fixed .button--favorite {
+    display: none;
+  }
+}
+
 @media (max-width: $iphone-se-only) {
   .car__actions-buttons .button {
     &:not(:last-child) {

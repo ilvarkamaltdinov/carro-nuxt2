@@ -340,6 +340,12 @@
   transition: $transitionHover;
 }
 
+@media (max-width: $iphone-mini-only) {
+  .featured__title {
+    font-size: 14px;
+  }
+}
+
 @media (max-width: $mobile-width-only) {
   .featured__text {
     display: none;

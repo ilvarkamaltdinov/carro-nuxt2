@@ -189,6 +189,30 @@
   margin-left: auto;
 }
 
+@media (max-width: $iphone-mini-only) {
+  .catalog__tech-item {
+    font-size: 14px;
+  }
+
+  .catalog__buttons .button--credit {
+    padding: 12px 16px;
+  }
+
+  .catalog__actions > * {
+    &:not(:last-child) {
+      margin-right: 12px;
+    }
+  }
+
+  .catalog__credit-price {
+    font-size: 14px;
+  }
+
+  .catalog__item--form .catalog__vin {
+    display: none;
+  }
+}
+
 @media (max-width: $iphone-se-only) {
   .catalog__item--small .catalog__title,
   .catalog__item--small .catalog__credit-price {

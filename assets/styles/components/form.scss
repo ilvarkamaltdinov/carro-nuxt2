@@ -224,6 +224,16 @@
   }
 }
 
+@media (max-width: $iphone-mini-only) {
+  .form__range-name {
+    font-size: 14px;
+  }
+
+  .form__catalog .catalog__tech-list .catalog__tech-item {
+    font-size: 12px;
+  }
+}
+
 @media (max-width: $mobile-width-only) {
   .form__catalog {
     margin-bottom: 16px;

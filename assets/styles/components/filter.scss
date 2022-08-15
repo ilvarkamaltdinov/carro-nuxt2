@@ -87,6 +87,12 @@
   }
 }
 
+@media (max-width: $iphone-mini-only) {
+  .filter__buttons-filter .filter__button.button--filter .button__text {
+    display: none;
+  }
+}
+
 @media (max-width: $mobile-width-only) {
   .filter__buttons-sort-select {
     @include hide-select;
