@@ -24,7 +24,7 @@
 
 .features__item--rating {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 
   &::before {
     content: "";
@@ -35,6 +35,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     margin-right: 8px;
+    margin-top: 4px;
     flex-shrink: 0;
   }
 }
@@ -73,6 +74,18 @@
 .features__indicator--clean {
   &::before {
     background-color: $colorSuccess;
+  }
+}
+
+@media (max-width: $mobile-width-only) {
+  .features--dealer .features__item-type {
+    flex-shrink: 0;
+  }
+
+  .features--dealer .features__item-content {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 

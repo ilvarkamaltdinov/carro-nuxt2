@@ -10,7 +10,7 @@
 			</div>
 		</div>
 		<div class="modal__wrap">
-			<div class="features">
+			<div class="features features--dealer">
 				<div class="features__group">
 					<h3 class="heading heading--h3">Контактные данные:</h3>
 					<ul class="features__list">
