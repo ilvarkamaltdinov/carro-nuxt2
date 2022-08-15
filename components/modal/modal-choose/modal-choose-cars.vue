@@ -46,8 +46,8 @@ export default {
 			limit: 8
 		}
 	},
-	watch:{
-		sort(){
+	watch: {
+		sort() {
 			this.offersList = []
 			this.page = 1
 			this.getOffers()
@@ -119,10 +119,18 @@ export default {
 			
 		},
 		component() {
-			if (this.view === 's') {
-				return this.$device.isMobile ? 'catalog-item-large-mobile' : 'catalog-item-small-desktop'
+			if (this.$device.isTablet) {
+				if (this.view === 's') {
+					return 'catalog-item-large-mobile'
+				} else {
+					return'catalog-item-large-desktop'
+				}
 			} else {
-				return this.$device.isMobile ? 'catalog-item-small-mobile' : 'catalog-item-large-desktop'
+				if (this.view === 's') {
+					return this.$device.isMobile ? 'catalog-item-large-mobile' : 'catalog-item-small-desktop'
+				} else {
+					return this.$device.isMobile ? 'catalog-item-small-mobile' : 'catalog-item-large-desktop'
+				}
 			}
 		}
 	}

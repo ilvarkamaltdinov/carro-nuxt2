@@ -63,8 +63,7 @@
 			<div class="grid__col-8">
 				<filter-sort />
 				<component
-						:is="
-            $device.isMobile
+						:is="$device.isMobileOrTablet
               ? 'catalog-list-used-mobile'
               : 'catalog-list-used-desktop'
           "

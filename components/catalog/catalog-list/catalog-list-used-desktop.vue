@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div v-if="loading"
-		     class="catalog__list "
+		     class="catalog__list"
 		     :class="{'grid grid--catalog': !$device.isMobile}">
 			<component :is="skeleton"
 			           v-for="i in 4"
@@ -17,8 +17,9 @@
 			     v-show="moreOffersData.data.length === 0">
 				<div class="catalog__no-cars">
 					<h2 class="heading heading--h2">Автомобили не найдены</h2>
-					<div class="catalog__no-cars-text">Попробуйте изменить параметры поиска или обратите внимание на похожие
-					                                   модели:
+					<div class="catalog__no-cars-text">
+						Попробуйте изменить параметры поиска или обратите внимание на похожие
+						модели:
 					</div>
 				</div>
 			</div>
@@ -28,7 +29,8 @@
 		                text="Показать больше"
 		                class="button--link button--more" />
 		<client-only>
-			<pagination :active-button="Number(offers.current_page)" v-if="offers"
+			<pagination :active-button="Number(offers.current_page)"
+			            v-if="offers"
 			            :offers="offers" />
 		</client-only>
 	</div>
@@ -44,7 +46,7 @@ export default {
 			offers: 'filters/filters/offers',
 			loading: 'filters/filters/loading',
 		}),
-		moreOffersData(){
+		moreOffersData() {
 			return this.offers
 		},
 		skeleton() {
@@ -54,7 +56,7 @@ export default {
 			return this.view === 's' ? 'catalog-item-small-desktop' : 'catalog-item-large-desktop'
 		}
 	},
-	methods:{
+	methods: {
 		...mapActions({
 			request: 'filters/filters/request',
 		}),

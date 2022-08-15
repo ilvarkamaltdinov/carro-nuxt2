@@ -57,7 +57,12 @@ export default {
 			site_id: 'site_id'
 		}),
 		component() {
-			return this.$device.isMobile ? 'catalog-item-large-mobile' : 'catalog-item-small-desktop'
+			if (this.$device.isTablet) {
+				return 'catalog-item-large-mobile'
+			} else{
+				return this.$device.isMobile ? 'catalog-item-large-mobile' : 'catalog-item-small-desktop'
+			}
+			
 		}
 	},
 	async mounted() {

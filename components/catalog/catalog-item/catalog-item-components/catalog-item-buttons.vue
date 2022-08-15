@@ -26,7 +26,7 @@
 			<button-typical v-if="choose"
 			                @click="chooseClick(offer)"
 			                :class="{'button--credit-selected':isEqual }"
-			                :text="isEqual ? 'Выбрано' : 'Выбрать'"
+			                :text="isEqual ? 'Выбран' : 'Выбрать'"
 			                button-class="button--credit" />
 			<button-typical v-else
 			                @click="credit()"

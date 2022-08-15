@@ -21,9 +21,7 @@
 					<button class="form__field"
 					        @click.prevent="choseCar()">
 
-						{{ currentCar ? currentCar.name : 'Выбрать автомобиль' }}
-						<span v-if="currentCar">
-							{{ currentCar.price | toCurrency }}
+						{{ currentCar ? currentCar.name : 'Выбрать автомобиль' }}<span v-if="currentCar">, {{ currentCar.price | toCurrency }}
 						</span>
 
 					</button>

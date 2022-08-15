@@ -1,6 +1,6 @@
 <template>
 	<section class="catalog__list"
-	         v-if="offers">
+	         v-if="offers && offers.data.length">
 		<div class="grid grid--container">
 			<heading-h2 class="grid__col-12">Похожие автомобили</heading-h2>
 		</div>
@@ -31,7 +31,12 @@ export default {
 	},
 	computed: {
 		component() {
-			return this.$device.isMobile ? 'catalog-item-large-mobile' :'catalog-item-small-desktop'
+			if (this.$device.isTablet) {
+				return 'catalog-item-large-mobile'
+			} else{
+				return this.$device.isMobile ? 'catalog-item-large-mobile' :'catalog-item-small-desktop'
+			}
+		
 		},
 	},
 	methods: {

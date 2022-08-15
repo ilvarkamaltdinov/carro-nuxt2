@@ -14,6 +14,7 @@
 			     class="application__catalog catalog grid__col-8">
 				<component :choose="true" :is="component"
 				           :has-fancy="true"
+				           :key="currentCar.id"
 				           :is-form="true"
 				           :has-buttons="false"
 				           :offer="currentCar" />

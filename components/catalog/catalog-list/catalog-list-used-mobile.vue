@@ -8,7 +8,7 @@
 			           :key="i" />
 		</div>
 		<div v-else
-		     class="catalog__list">
+		     class="catalog__list grid grid--catalog">
 			<component :is="catalog"
 			           :offer="offer"
 			           :key="offer.id"
@@ -32,14 +32,22 @@ export default {
 			offers: 'filters/filters/offers',
 			loading: 'filters/filters/loading',
 		}),
-		moreOffersData(){
+		moreOffersData() {
 			return this.offers
 		},
 		skeleton() {
-			return this.view === 's' ? 'skeleton-card-large' : 'skeleton-card-small'
+			if (this.$device.isTablet) {
+				return this.view === 's' ? 'skeleton-card-small' : 'skeleton-card-large'
+			} else {
+				return this.view === 's' ? 'skeleton-card-large' : 'skeleton-card-small'
+			}
 		},
 		catalog() {
-			return this.view === 's' ? 'catalog-item-large-mobile' : 'catalog-item-small-mobile'
+			if (this.$device.isTablet) {
+				return this.view === 's' ? 'catalog-item-large-mobile' : 'catalog-item-large-desktop'
+			} else {
+				return this.view === 's' ? 'catalog-item-large-mobile' : 'catalog-item-small-mobile'
+			}
 		}
 	},
 	methods: {
