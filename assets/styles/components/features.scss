@@ -48,7 +48,7 @@
 
 .features__indicator {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 
   &::before {
     content: "";
@@ -57,6 +57,9 @@
     height: 8px;
     margin-right: 8px;
     border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+    top: 8px;
   }
 }
 
@@ -74,6 +77,12 @@
 .features__indicator--clean {
   &::before {
     background-color: $colorSuccess;
+  }
+}
+
+@media (max-width: $iphone-mini-only) {
+  .features--dealer .features__item-type {
+    display: none;
   }
 }
 

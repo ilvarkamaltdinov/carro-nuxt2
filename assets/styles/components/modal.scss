@@ -95,6 +95,12 @@
   top: 106px;
 }
 
+@media (max-width: $iphone-mini-only) {
+  .modal__logo {
+    max-width: 96px;
+  }
+}
+
 @media (max-width: $mobile-width-only) {
   .modal {
     top: auto;
@@ -147,6 +153,10 @@
       white-space: nowrap;
       overflow: hidden;
     }
+  }
+
+  .modal .heading-group--form .heading-group__wrap {
+    max-width: 100%;
   }
 
   .modal__wrap {

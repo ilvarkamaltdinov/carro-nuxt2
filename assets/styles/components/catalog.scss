@@ -211,6 +211,13 @@
   .catalog__item--form .catalog__vin {
     display: none;
   }
+
+  .catalog__title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(320px - 48px);
+  }
 }
 
 @media (max-width: $iphone-se-only) {

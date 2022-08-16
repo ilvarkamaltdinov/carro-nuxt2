@@ -41,8 +41,15 @@
   margin-right: 6px;
 }
 
-@media (max-width: $mobile-width-only) {
-
+@media (max-width: $iphone-mini-only) {
+  .heading-group--modal > * .heading-group__label {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+    width: 100%;
+    display: block;
+  }
 }
 
 @media (min-width: $tablet-width) {
