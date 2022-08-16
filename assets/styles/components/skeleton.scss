@@ -9,7 +9,7 @@
 }
 
 .skeleton__content {
-  border-radius: 6px;
+  border-radius: $borderRadiusSmallest;;
   height: 24px;
   background-color: $colorBg;
 
@@ -55,7 +55,7 @@
 
 .skeleton__item.skeleton__item--car-buy {
   height: 242px;
-  border-radius: 6px;
+  border-radius: $borderRadiusSmallest;;
 }
 
 .skeleton__divider {
