@@ -32,16 +32,15 @@ export default {
 			setBank: 'banks/SET_BANK'
 		})
 	},
-	async fetch() {
-		let response = await this.request({query: bank, variables: {slug: this.$route.params.bank}})
-		try {
-			await this.setBank(response.data.bank)
-		} catch (error) {
-			console.log(error)
-		}
-	},
-	mounted() {
+	async mounted() {
 		setTimeout(function () {window.scrollTo(0, -100);}, 1);
+		try {
+			let response = await this.request({query: bank, variables: {slug: this.$route.params.bank}})
+			await this.setBank(response.data.bank)
+		} catch(error) {
+			console.log(error)
+			return this.$nuxt.error({statusCode: 404, message: '404'})
+		}
 	},
 
 }

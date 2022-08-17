@@ -5,6 +5,12 @@ export const redirects = [
         statusCode: 301
     },
     {
+        from: '^/credit/gazbrombank$',
+        to: '/credit/gazprombank',
+        statusCode: 301
+    },
+
+    {
         from: '^/used/dlya-molodezhi$',
         to: '/used/for-youth',
         statusCode: 301
