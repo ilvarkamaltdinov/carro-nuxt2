@@ -80,7 +80,7 @@
 					          name="icon-color" />
 				</div>
 				<div class="car__tech-content">
-					Белый
+					{{ offer.color.title }}
 				</div>
 			</li>
 			<li class="car__tech-item">
