@@ -175,6 +175,10 @@
   @include font-features;
 }
 
+.catalog__item--small .catalog__credit-price {
+  @include font-small;
+}
+
 .catalog__dealer-item {
   @include white-back;
 }
@@ -207,7 +211,7 @@
   }
 
   .catalog__credit-price {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .catalog__item--form .catalog__vin {
@@ -220,12 +224,21 @@
     text-overflow: ellipsis;
     max-width: calc(320px - 48px);
   }
+
+  .catalog__item--small .catalog__credit-price {
+    display: none;
+  }
+
+  .catalog__item--small .catalog__tech-item {
+    &:last-child {
+      display: none;
+    }
+  }
 }
 
 @media (max-width: $iphone-se-only) {
-  .catalog__item--small .catalog__title,
   .catalog__item--small .catalog__credit-price {
-    @include font-small;
+    font-size: 12px;
   }
 
   .catalog__item--small .catalog__price {
@@ -329,8 +342,25 @@
     margin-bottom: 0;
   }
 
+  .catalog__item--small .catalog__info {
+    min-height: 0;
+    min-width: 0;
+  }
+
   .catalog__item--small .catalog__price-wrap {
     margin-bottom: 8px;
+  }
+
+  .catalog__item--small .catalog__heading {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .catalog__item--small .catalog__title {
+    max-width: calc(100% - 56px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .catalog__item--small .catalog__tech-list {
@@ -339,10 +369,12 @@
     min-width: 0;
 
     &, & > * {
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-      flex-shrink: 1;
+      &:last-child {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        flex-shrink: 1;
+      }
     }
   }
 
