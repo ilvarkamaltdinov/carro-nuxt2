@@ -1,6 +1,7 @@
 <template>
 	<div class="grid__col-12">
-		<div class="tabs" v-if="generations.length">
+		<div class="tabs"
+		     v-if="generations.length">
 			<ul :class="{'tabs__list--all':isAll}"
 			    class="tabs__list"
 			    ref="tabs"
@@ -22,9 +23,11 @@
 <script>
 
 export default {
-	watch:{
-		isAll(){
-			this.$refs.tabs.scrollLeft = 0
+	watch: {
+		isAll() {
+			this.$nextTick(() => {
+				this.$refs.tabs.scrollLeft = 0
+			})
 		}
 	},
 	props: {

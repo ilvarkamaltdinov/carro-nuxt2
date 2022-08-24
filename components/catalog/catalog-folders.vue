@@ -29,7 +29,9 @@ import filters from "@/mixins/filters";
 export default {
 	watch:{
 		isAll(){
-			this.$refs.tabs.scrollLeft = 0
+			this.$nextTick(() => {
+				this.$refs.tabs.scrollLeft = 0
+			})
 		}
 	},
 	props: {
