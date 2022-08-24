@@ -111,11 +111,11 @@ export default {
 				});
 			}
 		},
-		async onToggleAll() {
-			setTimeout(function () {
-				window.scrollTo(0, -100);
+		onToggleAll() {
+			setTimeout(() => {
+				window.scrollTo(1, -100);
+				this.showAll = !this.showAll
 			}, 1);
-			this.showAll = !this.showAll
 		},
 	}
 }
