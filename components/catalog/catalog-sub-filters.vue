@@ -114,9 +114,10 @@ export default {
 		onToggleAll() {
 			setTimeout(() => {
 				window.scrollTo(1, -100);
+				localStorage.foldersTabsLeft = 0
+				localStorage.generationsTabsLeft = 0
 			}, 1)
-			localStorage.foldersTabsLeft = 0
-			localStorage.generationsTabsLeft = 0
+			
 			this.showAll = !this.showAll
 		},
 	}
