@@ -27,6 +27,11 @@ import {mapGetters} from "vuex"
 import filters from "@/mixins/filters";
 
 export default {
+	watch:{
+		isAll(){
+			this.$refs.tabs.scrollLeft = 0
+		}
+	},
 	props: {
 		folders: Array,
 		isAll: Boolean

@@ -22,6 +22,11 @@
 <script>
 
 export default {
+	watch:{
+		isAll(){
+			this.$refs.tabs.scrollLeft = 0
+		}
+	},
 	props: {
 		generations: Array,
 		isAll: Boolean
