@@ -112,7 +112,7 @@ export default {
 			}
 		},
 		async onToggleAll() {
-			await setTimeout(function () {
+			setTimeout(function () {
 				window.scrollTo(0, -100);
 			}, 1);
 			this.showAll = !this.showAll
