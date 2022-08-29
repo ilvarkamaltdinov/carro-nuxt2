@@ -103,6 +103,10 @@
   background: $colorPrimary;
   box-shadow: $shadowPrimary;
 
+  background: $colorPrimary;
+  background: -webkit-linear-gradient(to right,$colorPrimary, $colorPrimaryDark);
+  background: linear-gradient(to right,$colorPrimary, $colorPrimaryDark);
+
   // fallback
   @include aspect-ratio(1,1);
 }

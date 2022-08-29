@@ -17,6 +17,8 @@
 
 .slider__car-img {
   border-radius: $borderRadius;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
 }
 
 @media (max-width: $mobile-width-only) {

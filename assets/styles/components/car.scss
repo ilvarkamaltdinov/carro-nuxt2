@@ -118,6 +118,10 @@
   @include font-small;
 }
 
+.car__stock-promo {
+  @include font-small;
+}
+
 .car__stock-dealer {
   color: $colorPrimary;
   transition: $transitionHover;

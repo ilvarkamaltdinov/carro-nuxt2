@@ -6,6 +6,8 @@
             height="16"
             width="16"
             class="button__icon icon">
-			<span class="button__text">Проверить</span>
+			<span class="button__text">Проверить
+        <span class="button__text-autoteka">по Автотеке</span>
+      </span>
 	</button>
 </template>

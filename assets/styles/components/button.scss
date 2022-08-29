@@ -226,6 +226,12 @@
   }
 }
 
+@media (max-width: $tablet-width-max) {
+  .button__text-autoteka {
+    display: none;
+  }
+}
+
 @media (min-width: $tablet-width) {
   .button--show-price {
     display: none;
