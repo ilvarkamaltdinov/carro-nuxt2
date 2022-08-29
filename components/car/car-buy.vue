@@ -49,7 +49,7 @@
 			   class="car__stock-dealer">
 				«{{ offer.dealer.title }}»
 			</a>
-      <div class="car__stock-promo">по адресу г. {{ offer.dealer.city }}, {{ offer.dealer.address }}</div>
+      <div class="car__stock-promo">г. {{ offer.dealer.city }}, {{ offer.dealer.address }}</div>
 		</div>
 		<div v-else class="car__stock car__stock--no">
 			Нет в наличии
