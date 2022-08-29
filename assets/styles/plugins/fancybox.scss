@@ -1,3 +1,17 @@
+.fancybox__spinner {
+  opacity: 1;
+  color: white!important;
+
+  & svg {
+    opacity: 1;
+
+    & circle {
+      fill: none;
+      stroke: white!important;
+    }
+  }
+}
+
 .fancybox__toolbar__items > * {
   color: white !important;
 }
