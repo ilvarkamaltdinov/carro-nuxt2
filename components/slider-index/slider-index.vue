@@ -96,6 +96,24 @@ export default {
 		slides() {
 			return [
 				{
+					id: 6,
+					heading: `Супер-автокредит от ${this.settings.credit_percent} годовых`,
+					content: 'Скидка до 150 000 ₽, одобрение по паспорту и В/У, взнос от 0%',
+					link: '/credit'
+				},
+				{
+					id: 7,
+					heading: ' Читайте наш Telegram-канал',
+					content: 'Последние поступления, акции, новости',
+					telegram: true
+				},
+				{
+					id: 8,
+					heading: 'Обменяй авто по Trade-In',
+					content: 'Выгода до 250 000 ₽, рыночная цена, оформление 30 мин.',
+					link: '/exchange'
+				},
+				{
 					id: 1,
 					heading: 'Рассрочка 0% от Совкомбанка',
 					content: 'Успей купить авто на выгодных условиях',
@@ -124,24 +142,6 @@ export default {
 					heading: '2-й комплект резины в подарок',
 					content: 'При покупке автомобиля в кредит',
 					link: '/credit'
-				},
-				{
-					id: 6,
-					heading: `Супер-автокредит от ${this.settings.credit_percent} годовых`,
-					content: 'Скидка до 150 000 ₽, одобрение по паспорту и В/У, взнос от 0%',
-					link: '/credit'
-				},
-				{
-					id: 7,
-					heading: ' Читайте наш Telegram-канал',
-					content: 'Последние поступления, акции, новости',
-					telegram: true
-				},
-				{
-					id: 8,
-					heading: 'Обменяй авто по Trade-In',
-					content: 'Выгода до 250 000 ₽, рыночная цена, оформление 30 мин.',
-					link: '/exchange'
 				}
 			]
 		}
