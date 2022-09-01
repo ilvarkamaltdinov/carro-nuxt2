@@ -221,7 +221,7 @@
 
   .slider-index__item {
     &:hover .slider-index__circle {
-      transform: scale(1.04);
+      transform: scale(1.05)!important;
     }
   }
 }
