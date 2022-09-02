@@ -6,33 +6,19 @@
 		   class="slider-index__item">
 			<div class="slider-index__media-wrap">
 				<div class="slider-index__media">
-					<picture>
-						<source type="image/webp"
-						        :data-srcset="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@1x.webp`)} 1x, ${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@2x.webp`)} 2x`" />
-						<source media="(min-width: 768px)"
-						        :data-srcset="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@1x.png`)} 1x, ${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@2x.png`)} 2x`" />
-						<img class="slider-index__media slider-index__media--element lazyload"
-						     :data-src="require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@2x.png`)"
-						     alt=""
-						     loading="lazy"
-						     data-aos="fade-up"
-						     data-aos-duration="750"
-						     data-aos-easing="ease-in-out" />
-					</picture>
-					<picture>
-						<source type="image/webp"
-						        :data-srcset="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@1x.webp`)} 1x, ${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@2x.webp`)} 2x`" />
-						<source media="(min-width: 768px)"
-						        :data-srcset="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@1x.png`)} 1x, ${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@2x.png`)} 2x`" />
-						<img class="slider-index__media slider-index__media--car lazyload"
-						     :data-src="require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@2x.png`)"
-						     alt=""
-						     loading="lazy"
-						     data-aos="fade-right"
-						     data-aos-duration=" 750"
-						     data-aos-easing="ease-in-out"
-						     data-aos-mirror="true" />
-					</picture>
+					<picture-slide classes="slider-index__media slider-index__media--element lazyload"
+					               aos="fade-up"
+					               :small="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@1x.png`)}`"
+					               :small-webp="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@1x.webp`)}`"
+					               :big="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@2x.png`)}`"
+					               :big-webp="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@2x.webp`)}`" />
+					
+					<picture-slide classes="slider-index__media slider-index__media--car lazyload"
+					               aos="fade-right"
+					               :small="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@1x.png`)}`"
+					               :small-webp="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@1x.webp`)}`"
+					               :big="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@2x.png`)}`"
+					               :big-webp="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@2x.webp`)}`" />
 				</div>
 			</div>
 			<div class="slider-index__text-wrap">
@@ -52,34 +38,19 @@
 		           class="slider-index__item">
 			<div class="slider-index__media-wrap">
 				<div class="slider-index__media">
-					<picture>
-						<source type="image/webp"
-						        :data-srcset="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@1x.webp`)} 1x, ${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@2x.webp`)} 2x`" />
-						<source media="(min-width: 768px)"
-						        :data-srcset="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@1x.png`)} 1x, ${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@2x.png`)} 2x`" />
-						<img class="slider-index__media slider-index__media--element lazyload"
-						     :data-src="require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@2x.png`)"
-						     alt=""
-						     loading="lazy"
-						     data-aos="fade-up"
-						     data-aos-duration="750"
-						     data-aos-easing="ease-in-out" />
-					</picture>
-					<picture>
-						<source type="image/webp"
-						        :data-srcset="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@1x.webp`)} 1x, ${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@2x.webp`)} 2x`" />
-						<source media="(min-width: 768px)"
-						        :data-srcset="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@1x.png`)} 1x, ${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@2x.png`)} 2x`" />
-						<img class="slider-index__media slider-index__media--car lazyload"
-						     :data-src="require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@2x.png`)"
-						     alt=""
-						     src="data:,"
-						     loading="lazy"
-						     data-aos="fade-right"
-						     data-aos-duration=" 750"
-						     data-aos-easing="ease-in-out"
-						     data-aos-mirror="true" />
-					</picture>
+					<picture-slide classes="slider-index__media slider-index__media--element lazyload"
+					               aos="fade-up"
+					               :small="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@1x.png`)}`"
+					               :small-webp="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@1x.webp`)}`"
+					               :big="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@2x.png`)}`"
+					               :big-webp="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@2x.webp`)}`" />
+					
+					<picture-slide classes="slider-index__media slider-index__media--car lazyload"
+					               aos="fade-right"
+					               :small="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@1x.png`)}`"
+					               :small-webp="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@1x.webp`)}`"
+					               :big="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@2x.png`)}`"
+					               :big-webp="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@2x.webp`)}`" />
 				</div>
 			</div>
 			<div class="slider-index__text-wrap">

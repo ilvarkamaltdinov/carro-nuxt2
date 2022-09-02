@@ -8,7 +8,7 @@
 		     :data-src="big"
 		     alt=""
 		     loading="lazy"
-		     data-aos="fade-right"
+		     :data-aos="aos"
 		     data-aos-duration=" 750"
 		     data-aos-easing="ease-in-out"
 		     data-aos-mirror="true" />
@@ -22,7 +22,8 @@ export default {
 		small: String,
 		smallWebp: String,
 		big: String,
-		bigWebp: String
+		bigWebp: String,
+		aos: String
 	}
 }
 </script>
