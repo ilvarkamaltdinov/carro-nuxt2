@@ -129,6 +129,12 @@ export default {
         }
     },
     build: {
+        extend(config, { isClient }) {
+          // Extend only webpack config for client-bundle
+          if (isClient) {
+            config.devtool = 'source-map'
+          }
+        },
         filenames:
             {
                 app: ({ isDev, isModern }) => isDev ? `[name]${isModern ? '.modern' : ''}.js` : `[id].[contenthash:7]${isModern ? '.modern' : ''}.js`,

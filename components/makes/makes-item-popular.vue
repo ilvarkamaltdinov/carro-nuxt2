@@ -6,7 +6,7 @@
 		</span>
 	</li>
 	<li v-else :class="makesListItemClass ? 'makes__popular-item makes__popular-item--active' : 'makes__popular-item'">
-		<nuxt-link :to="'/used/'+slug" @click.native="$emit('click')" href="" class="makes__popular-link ">
+		<nuxt-link :to="'/used/'+slug" @click.native="$emit('click')" class="makes__popular-link ">
 			<svg-icon :name="'icon-' + title.toLowerCase()"
 			          class="makes__popular-logo" />
 		</nuxt-link>

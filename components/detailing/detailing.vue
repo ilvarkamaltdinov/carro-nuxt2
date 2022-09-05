@@ -8,7 +8,7 @@
 		</div>
 		<div class="detailing__group grid__col-12">
 			<div class="tabs">
-				<ul class="tabs__list">
+				<ul class="tabs__list" role="tablist">
 					<li v-for="(tab, index) in categories"
 					    :key="tab.id"
 					    role="presentation"

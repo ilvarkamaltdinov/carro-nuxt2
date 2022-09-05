@@ -3,7 +3,7 @@
 	         :class="{'catalog--slider':!$device.isMobile}">
 		<heading-h2>Автомобили в наличии</heading-h2>
 		<div class="tabs">
-			<ul class="tabs__list">
+			<ul class="tabs__list" role="tablist">
 				<li role="presentation"
 				    v-for="(tab, index) in tabs"
 				    :key="index"
@@ -18,7 +18,7 @@
 				</li>
 			</ul>
 		</div>
-		
+
 		<div v-if="loading"
 		     class="catalog__list grid">
 			<component :is="$device.isMobileOrTablet ? 'skeleton-card-large' : 'skeleton-card-small'"
@@ -33,7 +33,7 @@
 		</div>
 		<catalog-index-swiper v-else
 		                      :offers="offers_list" />
-		
+
 		<button-typical :link="`/used/${set}`"
 		                text="Все автомобили"
 		                class="button--link button--more" />
@@ -130,7 +130,7 @@ export default {
 	},
 	mounted() {
 		this.getOffers()
-		
+
 	}
 }
 </script>

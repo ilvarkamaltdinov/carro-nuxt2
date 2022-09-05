@@ -1,6 +1,6 @@
 <template>
 	<div class="tabs">
-		<ul class="tabs__list">
+		<ul class="tabs__list" role="tablist">
 			<tabs-item :is-active="index === activeTab"
 			           v-for="(tab, index) in tabsItems"
 			           :key="index">
