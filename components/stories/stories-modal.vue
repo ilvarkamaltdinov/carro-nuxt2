@@ -19,17 +19,12 @@
 								<p class="stories__modal-text"> {{ story.body }}</p>
 							</div>
 							<div class="stories__modal-img-wrap">
-								<picture>
-									<source media="(min-width: 768px)"
-									        type="image/webp"
-									        :data-srcset="story.image.medium_webp" />
-									<source media="(min-width: 768px)"
-									        :data-srcset="`${story.image.small} 1x, ${story.image.medium} 2x`" />
-									<img class="stories__modal-img lazyload"
-									     :data-src="`${story.image.small}`"
-									     :data-srcset="`${story.image.medium_webp} 2x`"
-									     alt="stories-image" />
-								</picture>
+								<picture-component
+										classes="stories__modal-img lazyload"
+										:small="story.image.small"
+										:small-webp="story.image.small_webp"
+										:big="story.image.medium"
+										:big-webp="story.image.medium_webp" />
 							</div>
 							<nuxt-link @click.native="buttonClick"
 							           :to="story.button_link"

@@ -13,14 +13,12 @@
 			<div class="application__catalog application__catalog--modal catalog grid__col-4">
 				<div class="detailing__item">
 					<div class="detailing__main">
-						<picture>
-							<source type="image/webp"
-							        :data-srcset="`${modalData.image.medium_webp} 1x, ${modalData.image.large_webp} 2x`" />
-							<img class="detailing__img lazyload"
-							     :data-src="`${modalData.image.medium}`"
-							     :data-srcset="`${modalData.image.large} 2x`"
-							     :alt="modalData.title" />
-						</picture>
+						<picture-component
+								classes="detailing__img lazyload"
+								:small="modalData.images[0].medium"
+								:small-webp="modalData.images[0].medium_webp"
+								:big="modalData.images[0].large"
+								:big-webp="modalData.images[0].large_webp" />
 						<h2 class="heading heading--h2 detailing__title">{{ modalData.title }}</h2>
 						<div class="deatailing__price-wrap">
 							<span class="detailing__price">{{ modalData.price }}</span>

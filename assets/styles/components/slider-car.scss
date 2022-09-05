@@ -27,6 +27,7 @@
 
 @media (min-width: $desktop-width) {
   .slider__car-img {
+    width: 100%;
     transition: opacity 0.3s;
 
     &:hover {

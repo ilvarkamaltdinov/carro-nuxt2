@@ -18,16 +18,12 @@
 				</div>
 			</div>
 			<div class="dealers__item-img-wrap">
-				<picture>
-					<source type="image/webp"
-					        media="(min-width: 768px)"
-					        :data-srcset="`${dealer.images[0].small_webp} 1x, ${dealer.images[0].medium_webp} 2x`" />
-					<img class="dealers__item-img lazyload"
-					     :data-src="dealer.images[0].small"
-					     :data-srcset="`${dealer.images[0].medium} 2x`"
-					     loading="lazy"
-					     alt="" />
-				</picture>
+				<picture-component
+						classes="dealers__item-img lazyload"
+						:small="dealer.images[0].small"
+						:small-webp="dealer.images[0].small_webp"
+						:big="dealer.images[0].medium"
+						:big-webp="dealer.images[0].medium_webp" />
 				<button-typical @click="showMore(dealer.slug)"
 				                button-class="button--show"
 				                text="Подробнее о дилере" />

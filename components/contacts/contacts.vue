@@ -12,18 +12,12 @@
 		<div class="about__block grid__col-12 grid text">
 			<div class="grid__col-7 text__wrap text__wrap--figure">
 				<div class="text__figure figure">
-					<picture>
-						<source type="image/webp"
-						        media="(min-width: 768px)"
-						        :data-srcset="`${require('~/assets/img/figures/figure-5@1x.webp')} 1x, ${require('~/assets/img/figures/figure-5@2x.webp')} 2x`" />
-						<source media="(min-width: 768px)"
-						        :data-srcset="`${require('~/assets/img/figures/figure-5@1x.png')} 1x, ${require('~/assets/img/figures/figure-5@2x.png')} 2x`" />
-						<img class="text__figure-img lazyload"
-						     :data-src="'~/assets/img/figures/figure-5@1x.png'"
-						     :data-srcset="`${require('~/assets/img/figures/figure-5@2x.png')} 2x`"
-						     loading="lazy"
-						     alt="" />
-					</picture>
+					<picture-component
+							classes="text__figure-img lazyload"
+							:small="`${require(`~/assets/img/figures/figure-5@1x.png`)}`"
+							:small-webp="`${require(`~/assets/img/figures/figure-5@1x.webp`)}`"
+							:big="`${require(`~/assets/img/figures/figure-5@2x.png`)}`"
+							:big-webp="`${require(`~/assets/img/figures/figure-5@2x.webp`)}`" />
 				</div>
 				<div class="text__content">
 					<div class="text__contacts-group">

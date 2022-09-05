@@ -4,7 +4,7 @@ fragment Story on Story {
   image {
     tiny,
     tiny_webp,
-    thumb,
-    thumb_webp
+    xs,
+    xs_webp
   }
 }

@@ -116,7 +116,7 @@ export default {
     apollo: {
         clientConfigs: {
             default: {
-                httpEndpoint: 'https://devapi.carro.ru/graphql',
+                httpEndpoint: process.env.API_DOMAIN + '/graphql',
                 persisting: true
             }
         }
@@ -137,12 +137,18 @@ export default {
         },
         filenames:
             {
-                app: ({ isDev, isModern }) => isDev ? `[name]${isModern ? '.modern' : ''}.js` : `[id].[contenthash:7]${isModern ? '.modern' : ''}.js`,
-                chunk: ({ isDev, isModern }) => isDev ? `[name]${isModern ? '.modern' : ''}.js` : `[id].[contenthash:7]${isModern ? '.modern' : ''}.js`,
-                css: ({ isDev }) => isDev ? '[name].css' : 'css/[contenthash:7].css',
+                app: ({
+                          isDev,
+                          isModern
+                      }) => isDev ? `[name]${isModern ? '.modern' : ''}.js` : `[id].[contenthash:7]${isModern ? '.modern' : ''}.js`,
+                chunk: ({
+                            isDev,
+                            isModern
+                        }) => isDev ? `[name]${isModern ? '.modern' : ''}.js` : `[id].[contenthash:7]${isModern ? '.modern' : ''}.js`,
+                css: ({isDev}) => isDev ? '[name].css' : 'css/[contenthash:7].css',
                 img: ({isDev}) => isDev ? '[path][name].[ext]' : 'img/[name].[ext]',
-                font: ({ isDev }) => isDev ? '[path][name].[ext]' : 'fonts/[name].[contenthash:7].[ext]',
-                video: ({ isDev }) => isDev ? '[path][name].[ext]' : 'videos/[name].[contenthash:7].[ext]'
+                font: ({isDev}) => isDev ? '[path][name].[ext]' : 'fonts/[name].[contenthash:7].[ext]',
+                video: ({isDev}) => isDev ? '[path][name].[ext]' : 'videos/[name].[contenthash:7].[ext]'
             },
         ...(!isDev && {
             html: {
@@ -183,7 +189,6 @@ export default {
     // },
     publicRuntimeConfig: {
         api_domain: process.env.API_DOMAIN,
-        api_endpoint: process.env.API_ENDPOINT,
         domain: process.env.DOMAIN,
         domain_dev: process.env.DOMAIN_DEV,
         domain_spb: process.env.DOMAIN_SPB,

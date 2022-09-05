@@ -4,17 +4,12 @@
 		<div class="grid">
 			<div class="text__wrap text__wrap--figure grid__col-12">
 				<div class="text__figure figure">
-					<picture>
-						<source media="(min-width: 768px)"
-						        type="image/webp"
-						        data-srcset="~/assets/img/figures/figure-2@2x.webp" />
-						<source media="(min-width: 768px)"
-						        :data-srcset="`${require('~/assets/img/figures/figure-2@1x.webp')} 1x, ${require('~/assets/img/figures/figure-2@1x.webp')} 2x`" />
-						<img class="text__figure-img lazyload"
-						     data-src="~/assets/img/figures/figure-2@1x.png"
-						     :data-srcset="`${require('~/assets/img/figures/figure-2@2x.png')} 2x`"
-						     alt="Кредит" />
-					</picture>
+					<picture-component
+							classes="text__figure-img lazyload"
+							:small="`${require(`~/assets/img/figures/figure-2@1x.png`)}`"
+							:small-webp="`${require(`~/assets/img/figures/figure-2@1x.webp`)}`"
+							:big="`${require(`~/assets/img/figures/figure-2@2x.png`)}`"
+							:big-webp="`${require(`~/assets/img/figures/figure-2@2x.webp`)}`" />
 				</div>
 				<div class="text__content">
 					<p class="text__p">На CARRO вы можете приобрести автомобиль в рассрочку без любых переплат и процентов.

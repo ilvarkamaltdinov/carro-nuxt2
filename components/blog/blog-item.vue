@@ -28,17 +28,11 @@
 					<div class="text__content"
 					     v-if="article.image">
 						<div class="text__img-wrap">
-							<picture>
-								<source media="(min-width: 768px)"
-								        type="image/webp"
-								        :data-srcset="`${article.image.medium_webp} 1x, ${article.image.large_webp} 2x`" />
-								<source media="(min-width: 768px)"
-								        :data-srcset="`${article.image.medium} 1x, ${article.image.large} 2x`" />
-								<img class="text__img text__img--blog lazyload"
-								     :data-src="article.image.medium"
-								     :data-srcset="`${article.image.large} 2x`"
-								     :alt="article.page_title" />
-							</picture>
+							<picture-component classes="text__img text__img--blog lazyload"
+							                   :small="article.image.medium"
+							                   :small-webp="article.image.medium_webp"
+							                   :big="article.image.large"
+							                   :big-webp="article.image.large_webp" />
 						</div>
 					</div>
 				</div>

@@ -4,17 +4,12 @@
 		<div class="grid">
 			<div class="text__wrap text__wrap--figure grid__col-12">
 				<div class="text__figure figure">
-					<picture>
-						<source media="(min-width: 768px)"
-						        type="image/webp"
-						        data-srcset="~/assets/img/figures/figure-6@2x.webp" />
-						<source media="(min-width: 768px)"
-						        :data-srcset="`${require('~/assets/img/figures/figure-6@1x.webp')} 1x, ${require('~/assets/img/figures/figure-6@1x.webp')} 2x`" />
-						<img class="text__figure-img lazyload"
-						     data-src="~/assets/img/figures/figure-6@1x.png"
-						     :data-srcset="`${require('~/assets/img/figures/figure-6@2x.png')} 2x`"
-						     alt="Детейлинг" />
-					</picture>
+					<picture-component
+							classes="text__figure-img lazyload"
+							:small="`${require(`~/assets/img/figures/figure-6@1x.png`)}`"
+							:small-webp="`${require(`~/assets/img/figures/figure-6@1x.webp`)}`"
+							:big="`${require(`~/assets/img/figures/figure-6@2x.png`)}`"
+							:big-webp="`${require(`~/assets/img/figures/figure-6@2x.webp`)}`" />
 				</div>
 				<div class="text__content">
 					<p class="text__p">Хотите, чтобы Ваш автомобиль всегда выглядел, как с салона? Доверьте свое авто специалистам

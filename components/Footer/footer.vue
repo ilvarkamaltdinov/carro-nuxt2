@@ -2,17 +2,12 @@
 	<footer class="page-footer">
 		<div class="page-footer__top"></div>
 		<div class="page-footer__logo">
-			<picture>
-				<source media="(min-width: 768px)"
-				        type="image/webp"
-				        :data-srcset="require('~/assets/img/logo-footer@2x.webp')" />
-				<source media="(min-width: 768px)"
-				        :data-srcset="`${require('~/assets/img/logo-footer@1x.png')} 1x, ${require('~/assets/img/logo-footer@2x.png')} 2x`" />
-				<img class="page-footer__logo-img lazyload"
-				     data-src="~/assets/img/logo-footer@1x.png"
-				     :data-srcset="`${require('~/assets/img/logo-footer@2x.png')} 2x`"
-				     alt="" />
-			</picture>
+			<picture-component
+					classes="page-footer__logo-img lazyload"
+					:small="`${require(`~/assets/img/logo-footer@1x.png`)}`"
+					:small-webp="`${require(`~/assets/img/logo-footer@1x.webp`)}`"
+					:big="`${require(`~/assets/img/logo-footer@2x.png`)}`"
+					:big-webp="`${require(`~/assets/img/logo-footer@2x.webp`)}`" />
 		</div>
 		<div class="page-footer__wrap grid grid--footer">
 			<div class="page-footer__contacts grid__col-12">

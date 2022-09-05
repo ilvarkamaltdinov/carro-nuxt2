@@ -5,17 +5,12 @@
 			{{ pageTitle }}
 		</h1>
 		<div class="not-found__block">
-			<picture>
-				<source type="image/webp"
-				        media="(min-width: 768px)"
-				        :data-srcset="`${require('~/assets/img/favorites@1x.webp')} 1x, ${require('~/assets/img/favorites@2x.webp')} 2x`" />
-				<source media="(min-width: 768px)"
-				        :data-srcset="`${require('~/assets/img/favorites@1x.png')} 1x, ${require('~/assets/img/favorites@2x.png')} 2x`" />
-				<img class="not-found__img lazyload"
-				     src="~/assets/img/favorites@1x.png"
-				     :data-srcset="`${require('~/assets/img/favorites@2x.png')} 2x`"
-				     alt="404" />
-			</picture>
+			<picture-component
+					classes="not-found__img lazyload"
+					:small="`${require(`~/assets/img/favorites@1x.png`)}`"
+					:small-webp="`${require(`~/assets/img/favorites@1x.webp`)}`"
+					:big="`${require(`~/assets/img/favorites@2x.png`)}`"
+					:big-webp="`${require(`~/assets/img/favorites@2x.webp`)}`" />
 		</div>
 	</section>
 	<section v-else
