@@ -27,16 +27,12 @@
 					           :offer="modalData" />
 					<div v-if="modalData.dealerModal">
 						<div class="dealers__item-img-wrap">
-							<picture>
-								<source type="image/webp"
-								        media="(min-width: 768px)"
-								        :data-srcset="`${modalData.images[0].small_webp} 1x, ${modalData.images[0].medium_webp} 2x`" />
-								<img class="dealers__item-img lazyload"
-								     :data-src="modalData.images[0].small"
-								     :data-srcset="`${modalData.images[0].medium} 2x`"
-								     loading="lazy"
-								     alt="" />
-							</picture>
+							<picture-component
+									classes="dealers__item-img lazyload"
+									:small="modalData.images[0].small"
+									:small-webp="modalData.images[0].small_webp"
+									:big="modalData.images[0].medium"
+									:big-webp="modalData.images[0].medium_webp" />
 						</div>
 					</div>
 				</div>

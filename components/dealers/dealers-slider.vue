@@ -7,16 +7,12 @@
 				     v-for="(item, index) in images"
 				     :key="index">
 					<div class="dealer__link">
-						<picture>
-							<source type="image/webp"
-							        media="(min-width: 768px)"
-							        :data-srcset="`${item.small_webp} 1x, ${item.medium_webp} 2x`" />
-							<img class="dealer__img lazyload"
-							     :data-src="item.small"
-							     :data-srcset="`${item.medium} 2x`"
-							     loading="lazy"
-							     alt="" />
-						</picture>
+						<picture-component
+								classes="dealer__img lazyload"
+								:small="item.small"
+								:small-webp="item.small_webp"
+								:big="item.medium"
+								:big-webp="item.medium_webp" />
 					</div>
 				</div>
 			</div>

@@ -8,17 +8,8 @@
 			<span class="catalog__call-dealer">Автоцентр {{ dealer.title }}</span>
 		</div>
 		<div class="catalog__call-img">
-			<picture>
-				<source type="image/webp"
-				        media="(min-width: 768px)"
-				        :data-srcset="image" />
-				<source media="(min-width: 768px)"
-				        :data-srcset="image" />
-				<img class="lazyload"
-				     :data-src="image"
-				     :data-srcset="image"
-				     alt="" />
-			</picture>
+			<img class="lazyload"
+			     :data-src="image" />
 		</div>
 	</a>
 </template>

@@ -3,17 +3,12 @@
 		<h2 class="heading heading--h2 visually-hidden">Об услуге выкупа</h2>
 		<div class="text__wrap text__wrap--figure">
 			<div class="text__figure figure">
-				<picture>
-					<source media="(min-width: 768px)"
-					        type="image/webp"
-					        data-srcset="~/assets/img/figures/figure-9@2x.webp" />
-					<source media="(min-width: 768px)"
-					        :data-srcset="`${require('~/assets/img/figures/figure-9@1x.webp')} 1x, ${require('~/assets/img/figures/figure-9@1x.webp')} 2x`" />
-					<img class="text__figure-img lazyload"
-					     data-src="~/assets/img/figures/figure-9@1x.png"
-					     :data-srcset="`${require('~/assets/img/figures/figure-9@2x.png')} 2x`"
-					     alt="Выкуп авто" />
-				</picture>
+				<picture-component
+						classes="text__figure-img lazyload"
+						:small="`${require(`~/assets/img/figures/figure-9@1x.png`)}`"
+						:small-webp="`${require(`~/assets/img/figures/figure-9@1x.webp`)}`"
+						:big="`${require(`~/assets/img/figures/figure-9@2x.png`)}`"
+						:big-webp="`${require(`~/assets/img/figures/figure-9@2x.webp`)}`" />
 			</div>
 			<div class="text__content">
 				<p class="text__p">

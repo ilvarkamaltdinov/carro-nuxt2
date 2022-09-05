@@ -15,17 +15,11 @@
 					<div class="blog__item-text">
 						<h3 class="blog__item-title">{{ item.page_title }}</h3>
 					</div>
-					<picture>
-						<source media="(min-width: 768px)"
-						        type="image/webp"
-						        :data-srcset="`${item.image_preview.thumb_webp} 1x, ${item.image_preview.small_webp} 2x`" />
-						<source media="(min-width: 768px)"
-						        :data-srcset="`${item.image_preview.thumb} 1x, ${item.image_preview.small} 2x`" />
-						<img class="blog__img lazyload"
-						     :data-src="item.image_preview.thumb"
-						     :data-srcset="`${item.image_preview.small} 2x`"
-						     :alt="item.page_title" />
-					</picture>
+					<picture-component classes="blog__img lazyload"
+					                   :small="item.image_preview.thumb"
+					                   :small-webp="item.image_preview.thumb_webp"
+					                   :big="item.image_preview.small"
+					                   :big-webp="item.image_preview.small_webp" />
 				</nuxt-link>
 			</li>
 		</ul>

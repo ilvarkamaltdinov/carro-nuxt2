@@ -10,17 +10,7 @@
 					<a data-fancybox="gallery"
 					   :data-src="image.original"
 					   class="catalog__img-link">
-						<picture>
-							<source type="image/webp"
-							        media="(min-width: 768px)"
-							        :data-srcset="image.thumb" />
-							<source media="(min-width: 768px)"
-							        :data-srcset="image.thumb" />
-							<img class="lazyload"
-							     :data-src="image.tumb"
-							     :data-srcset="image.thumb"
-							     alt="" />
-						</picture>
+						<img :data-src="image.thumb" class="lazyload">
 					</a>
 				</div>
 				<catalog-item-call-card v-if="!isForm"
@@ -36,17 +26,7 @@
 					<a :href="isForm ? '' : url"
 					   @click.prevent="$emit('click')"
 					   class="catalog__img-link">
-						<picture>
-							<source type="image/webp"
-							        media="(min-width: 768px)"
-							        :data-srcset="image.thumb" />
-							<source media="(min-width: 768px)"
-							        :data-srcset="image.thumb" />
-							<img class="lazyload"
-							     :data-src="image.tumb"
-							     :data-srcset="image.thumb"
-							     alt="" />
-						</picture>
+						<img :data-src="image.thumb" class="lazyload">
 					</a>
 				</div>
 				<catalog-item-call-card v-if="!isForm"

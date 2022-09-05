@@ -29,14 +29,12 @@
 				    v-for="station in stations"
 				    :key="station.id">
 					<div class="detailing__main">
-						<picture>
-							<source type="image/webp"
-							        :data-srcset="`${station.image.medium_webp} 1x, ${station.image.large_webp} 2x`" />
-							<img class="detailing__img lazyload"
-							     :data-src="`${station.image.medium}`"
-							     :data-srcset="`${station.image.large} 2x`"
-							     :alt="station.title" />
-						</picture>
+						<picture-component
+								classes="detailing__img lazyload"
+								:small="station.image.medium"
+								:small-webp="station.image.medium_webp"
+								:big="station.image.large"
+								:big-webp="station.image.large_webp" />
 						<h2 class="heading heading--h2 detailing__title">{{ station.title }}</h2>
 						<div class="deatailing__price-wrap">
 							<span class="detailing__price">{{ station.price }}</span>

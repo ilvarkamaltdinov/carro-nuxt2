@@ -12,17 +12,12 @@
 		<div class="about__block grid__col-12 grid text">
 			<div class="grid__col-8 text__wrap text__wrap--figure">
 				<div class="text__figure figure">
-					<picture>
-						<source type="image/webp"
-						        media="(min-width: 768px)"
-						        :data-srcset="`${require(`~/assets/img/figures/figure-4@1x.webp`)} 1x, ${require(`~/assets/img/figures/figure-4@2x.webp`)} 2x`" />
-						<source media="(min-width: 768px)"
-						        :data-srcset="`${require(`~/assets/img/figures/figure-4@1x.png`)} 1x, ${require(`~/assets/img/figures/figure-4@2x.png`)} 2x`" />
-						<img class="text__figure-img lazyload"
-						     data-src="img/figures/figure-4@1x.png"
-						     :data-srcset="`${require(`~/assets/img/figures/figure-4@2x.png`)} 2x`"
-						     alt="" />
-					</picture>
+					<picture-component
+							classes="text__figure-img lazyload"
+							:small="`${require(`~/assets/img/figures/figure-4@1x.png`)}`"
+							:small-webp="`${require(`~/assets/img/figures/figure-4@1x.webp`)}`"
+							:big="`${require(`~/assets/img/figures/figure-4@2x.png`)}`"
+							:big-webp="`${require(`~/assets/img/figures/figure-4@2x.webp`)}`" />
 				</div>
 				<div class="text__content">
 					<h2 class="heading heading--h2">Коротко о главном</h2>
@@ -75,6 +70,8 @@
 </template>
 <script>
 export default {
+	components: {},
+	
 	props: {
 		pageTitle: String
 	}
