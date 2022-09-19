@@ -6,7 +6,6 @@
 #import "./types/driveTypeType.gql"
 #import "./types/bodyTypeType.gql"
 #import "./types/ownerType.gql"
-#import "./types/imageThumbType.gql"
 #import "./types/dealerMiniType.gql"
 #import "./types/colorType.gql"
 
@@ -40,7 +39,7 @@ fragment OfferPagination on OfferTypePagination {
       ... FolderType
     }
     images {
-      ... ImageThumbType
+      small
     }
     owner {
       ... OwnerType

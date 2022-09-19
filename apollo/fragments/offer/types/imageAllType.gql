@@ -1,7 +1,5 @@
 fragment ImageAllType on OfferImage {
     original
-    tiny
-    thumb
-    medium
-    src
+    small_webp
+    medium_webp
 }

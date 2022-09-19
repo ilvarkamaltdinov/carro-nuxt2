@@ -2,18 +2,22 @@
 	<div class="slider-car__item swiper-slide">
 		<div class="slider-car__link"
 		     data-fancybox="gallery"
-		     :data-src="original"
+		     :data-src="img.original"
 		     tabindex="0">
-			<img class="slider__car-img lazyload" :data-src="medium"/>
+			<picture-component :small="img.small"
+			                   :small-webp="img.small_webp"
+			                   :big="img.medium"
+			                   :big-webp="img.medium_webp"
+			                   classes="slider__car-img lazyload" />
 		</div>
 	</div>
 </template>
 <script>
 export default {
+	components: {},
+	
 	props: {
-		src: String,
-		original: String,
-		medium: String
+		img: Object
 	}
 }
 </script>

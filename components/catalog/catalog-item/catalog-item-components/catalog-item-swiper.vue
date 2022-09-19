@@ -6,15 +6,15 @@
 			     class="swiper-wrapper">
 				<div class="swiper-slide"
 				     v-for="image in images"
-				     :key="image.thumb">
+				     :key="image.small">
 					<a data-fancybox="gallery"
-					   :data-src="image.original"
+					   :data-src="image.small"
 					   class="catalog__img-link">
-						<img :data-src="image.thumb" class="lazyload">
+						<img :data-src="image.small" class="lazyload">
 					</a>
 				</div>
 				<catalog-item-call-card v-if="!isForm"
-				                        :image="images[0].thumb"
+				                        :image="images[0].small"
 				                        class="swiper-slide"
 				                        :dealer="dealer" />
 			</div>
@@ -22,15 +22,15 @@
 			     class="swiper-wrapper">
 				<div class="swiper-slide"
 				     v-for="image in images"
-				     :key="image.thumb">
+				     :key="image.small">
 					<a :href="isForm ? '' : url"
 					   @click.prevent="$emit('click')"
 					   class="catalog__img-link">
-						<img :data-src="image.thumb" class="lazyload">
+						<img :data-src="image.small" class="lazyload">
 					</a>
 				</div>
 				<catalog-item-call-card v-if="!isForm"
-				                        :image="images[0].thumb"
+				                        :image="images[0].small"
 				                        class="swiper-slide"
 				                        :dealer="dealer" />
 			</div>

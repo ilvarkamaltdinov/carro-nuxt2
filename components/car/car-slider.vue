@@ -2,11 +2,9 @@
 	<div class="car__slider slider-car grid__col-12">
 		<div class="swiper swiper--car">
 			<div class="swiper-wrapper">
-				<car-slider-item :src="img.src"
-				                 :medium="img.medium"
-				                 :original="img.original"
+				<car-slider-item :img="img"
 				                 v-for="img in offer.images"
-				                 :key="img.medium" />
+				                 :key="img.small" />
 			</div>
       <div class="swiper-pagination"></div>
 		</div>
