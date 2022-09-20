@@ -7,13 +7,13 @@
 			<catalog-item-img @click="linkClick"
 			                  :url="currentUrl"
 			                  :has-fancy="true"
-			                  :img="img.thumb"
+			                  :img="img.small_webp"
 			                  :original="img.original"
 			                  v-for="img in offer.images"
-			                  :key="img.thumb" />
+			                  :key="img.small_webp" />
 			<catalog-item-call-card v-if="!isForm"
 			                        :dealer="offer.dealer"
-			                        :image="offer.images[0].thumb" />
+			                        :image="offer.images[0].small_webp" />
 		</div>
 		<div class="catalog__tech"
 		     :class="{'catalog__tech--no-buttons':!hasButtons}">

@@ -4,7 +4,7 @@
 			<a :href="!isForm ? currentUrl: ''"
 			   @click.prevent="linkClick"
 			   class="catalog__img-link">
-				<img :data-src="offer.images[0].thumb" class="ls-is-cached lazyload">
+				<img :data-src="offer.images[0].small_webp" class="ls-is-cached lazyload">
 			</a>
 		</div>
 		<div class="catalog__info">
