@@ -12,7 +12,7 @@
 				     v-for="(photo, index) in photos"
 				     :class="{'active':index === activeTmb}"
 				     :key="index"
-				     @mouseover="mouseOver(index, photo.small)">
+				     @mouseover="mouseOver(index, photo.small_webp)">
 				</div>
 			</div>
 		</div>
@@ -28,7 +28,7 @@ export default {
 			limit: 7,
 			photos: this.offer.images,
 			forceCoverPhoto: null,
-			placeholderUrl: this.offer.images[0].small
+			placeholderUrl: this.offer.images[0].small_webp
 		}
 	},
 	props: {
@@ -44,7 +44,7 @@ export default {
 			return this.forceCoverPhoto
 					? this.forceCoverPhoto
 					: this.photos.length > 0
-							? this.photos[0].small
+							? this.photos[0].small_webp
 							: this.placeholderUrl;
 		},
 	},

@@ -39,7 +39,7 @@ fragment OfferPagination on OfferTypePagination {
       ... FolderType
     }
     images {
-      small
+      small_webp
     }
     owner {
       ... OwnerType
