@@ -2,9 +2,10 @@ import seoTags from "@/apollo/queries/seoTags";
 import folders from "@/apollo/queries/folder/folders";
 import generations from "@/apollo/queries/generations";
 import {mapGetters} from "vuex";
+import bank from "@/apollo/queries/bank/bank";
 
 export default {
-    async asyncData({app, route, store}) {
+    async asyncData({app, route, store, error}) {
         let client = app.apolloProvider.defaultClient
         let seo = await client.query({
             query: seoTags,
@@ -21,6 +22,22 @@ export default {
                     }
                 })
             store.commit('folders/folders/SET_FOLDERS', response.data.folders)
+        }
+        if(route.params.bank){
+            try {
+                let response = await client.query(
+                        {
+                            query: bank,
+                            variables: {
+                                site_id: store.getters.site_id,
+                                slug: route.params.bank,
+                            }
+                        })
+                store.commit('banks/SET_BANK', response.data.bank)
+            }
+            catch (er){
+                error({statusCode: 404, message: '404'})
+            }
         }
         // if (route.params.model) {
         //     let response = await client.query(
