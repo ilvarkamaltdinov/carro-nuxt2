@@ -1,7 +1,7 @@
 <template>
 	<footer class="page-footer">
 		<div class="page-footer__top"></div>
-		<div class="page-footer__logo">
+		<div class="page-footer__logo lazyload">
 			<picture-component
 					classes="page-footer__logo-img lazyload"
 					:small="`${require(`~/assets/img/logo-footer@1x.png`)}`"

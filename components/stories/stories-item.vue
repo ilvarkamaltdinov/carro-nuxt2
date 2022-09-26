@@ -4,6 +4,7 @@
 	    @click="$emit('click')">
 		<div class="stories__figure">
 			<picture-component classes="stories__img lazyload"
+			                   lazy
 			                   :small="story.image.xs"
 			                   :small-webp="story.image.xs_webp"
 			                   :big="story.image.tiny"
