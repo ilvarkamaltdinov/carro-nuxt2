@@ -24,8 +24,7 @@ import utm from "@/mixins/utm";
 import metrika from "@/mixins/metrika";
 
 export default {
-	// mixins: [utm, metrika],
-	mixins: [utm],
+	mixins: [utm, metrika],
 	watch: {
 		'$route'() {
 			if (this.urlValidate) {
