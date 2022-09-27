@@ -14,7 +14,9 @@
 	</div>
 </template>
 <script>
+const rangeSlider = () => import('@/components/range/range-slider')
 export default {
+	components: {rangeSlider},
 	data() {
 		return {
 			options: {

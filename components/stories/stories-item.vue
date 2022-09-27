@@ -11,13 +11,14 @@
 			                   :big-webp="story.image.tiny_webp" />
 		</div>
 		<div class="stories__text">
-			{{story.title}}
+			{{ story.title }}
 		</div>
 	</li>
 </template>
 <script>
-
+const PictureComponent = () => import('@/components/picture/picture-component')
 export default {
+	components: {PictureComponent},
 	props: {
 		story: Object
 	}

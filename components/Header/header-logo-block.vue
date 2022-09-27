@@ -6,7 +6,11 @@
 	</div>
 </template>
 <script>
+const HeaderBurger = () => import('@/components/Header/header-burger')
+const HeaderLogo = () => import('@/components/Header/header-logo')
+const HeaderSearch = () => import('@/components/Header/header-search')
 export default {
+	components:{HeaderBurger, HeaderLogo, HeaderSearch},
 	props: {
 		modalMenu: Boolean
 	}

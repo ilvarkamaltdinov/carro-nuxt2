@@ -13,7 +13,11 @@
 <script>
 import {mapGetters} from "vuex";
 
+const social = () => import('@/components/social/social')
+const siteListMobile = () => import('@/components/site-list/site-list-mobile')
+const siteList = () => import('@/components/site-list/site-list')
 export default {
+	components: {social, siteListMobile, siteList},
 	computed: {
 		...mapGetters({
 			isMoscow: 'isMoscow',

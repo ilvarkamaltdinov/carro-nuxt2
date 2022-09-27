@@ -138,8 +138,10 @@
 <script>
 import {mapActions, mapGetters, mapMutations} from "vuex";
 import banks from "@/apollo/queries/bank/banks";
-
+const buttonTypical = () => import('@/components/button/button-typical')
+const featuredImg = () => import('@/components/featured/featured-img')
 export default {
+	components:{buttonTypical, featuredImg},
 	props: {
 		pageTitle: String
 	},

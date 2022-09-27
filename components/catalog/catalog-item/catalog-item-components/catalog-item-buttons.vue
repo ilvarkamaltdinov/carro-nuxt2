@@ -40,9 +40,12 @@
 import {mapActions, mapGetters, mapMutations} from "vuex";
 import ButtonCompare from "@/components/button/button-compare";
 import ButtonAutoteka from "@/components/button/button-autoteka";
-
+const buttonTypical = () => import('@/components/button/button-typical')
+const buttonCall = () => import('@/components/button/button-call')
+const buttonFavorite = () => import('@/components/button/button-favorite')
+const buttonAutoteka = () => import('@/components/button/button-autoteka')
 export default {
-	components: {ButtonAutoteka, ButtonCompare},
+	components: {buttonTypical, buttonCall, buttonFavorite, buttonAutoteka},
 	computed: {
 		...mapGetters({
 			likesArray: 'favorite/favorite/likesArray',

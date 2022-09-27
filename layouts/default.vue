@@ -15,6 +15,11 @@
 	</div>
 </template>
 <script>
+const Header = () => import('@/components/Header/header')
+const Footer = () => import('@/components/Footer/footer')
+const ModalWrap = () => import('@/components/modal/modal-wrap')
+const ModalStories = () => import('@/components/modal/modal-stories')
+const ModalBenefits = () => import('@/components/modal/modal-benefits')
 import {mapActions, mapGetters, mapMutations} from "vuex"
 // import capitalizeFirstLetter from "~/mixins/capitalizeFirstLetter";
 import offerFilters from "@/apollo/queries/offer/offerFilters";
@@ -25,6 +30,7 @@ import metrika from "@/mixins/metrika";
 
 export default {
 	mixins: [utm],
+	components: {Header, ModalWrap, ModalStories, ModalBenefits},
 	watch: {
 		'$route'() {
 			if (this.urlValidate) {
@@ -137,7 +143,7 @@ export default {
 				}
 			} else {
 				await this.filterRequest(this._.pickBy({ // TODO очищаю от пустых значений
-					url: this.$route.path === '/best-moscow-autosalon'|| this.$route.path === '/best-autosalon'? '/used' : this.$route.path,
+					url: this.$route.path === '/best-moscow-autosalon' || this.$route.path === '/best-autosalon' ? '/used' : this.$route.path,
 					page: Number(this.$route.query.page) || 1,
 					dateFormat: 'j F Y года.',
 					mark_slug_array: this.$stringToArray(this.$route.query.mark_slug_array),
