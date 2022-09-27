@@ -74,7 +74,6 @@ export default {
     plugins: [
         {src: '~/plugins/rangeSlider.js', mode: 'client'},
         {src: "~/plugins/pagination.js", mode: 'client'},
-        {src: "~/plugins/fancyapps-ui.js", mode: 'client'},
         {src: '~/plugins/infiniteLoading.js', mode: 'client'},
         {src: '~/plugins/numberAnim.js', mode: 'client'},
         {src: '~/plugins/ymaps.js', mode: 'client'},
