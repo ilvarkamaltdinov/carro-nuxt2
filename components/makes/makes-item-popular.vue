@@ -1,14 +1,14 @@
 <template>
 	<li v-if="forChoseModal" :class="makesListItemClass ? 'makes__popular-item makes__popular-item--active' : 'makes__popular-item'">
 		<span @click="$emit('chooseMark')" class="makes__popular-link ">
-			<img :src="require(`~/assets/icons/icon-${title.toLowerCase()}.svg`)"
-			          class="makes__popular-logo" />
+			<img :data-src="require(`~/assets/icons/icon-${title.toLowerCase()}.svg`)"
+			          class="makes__popular-logo lazyload" />
 		</span>
 	</li>
 	<li v-else :class="makesListItemClass ? 'makes__popular-item makes__popular-item--active' : 'makes__popular-item'">
 		<nuxt-link :to="'/used/'+slug" @click.native="$emit('click')" class="makes__popular-link ">
-			<img :src="require(`~/assets/icons/icon-${title.toLowerCase()}.svg`)"
-			          class="makes__popular-logo" />
+			<img :data-src="require(`~/assets/icons/icon-${title.toLowerCase()}.svg`)"
+			          class="makes__popular-logo lazyload" />
 		</nuxt-link>
 	</li>
 </template>

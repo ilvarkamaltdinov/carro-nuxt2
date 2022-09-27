@@ -74,7 +74,7 @@ export default {
     plugins: [
         {src: '~/plugins/rangeSlider.js', mode: 'client'},
         {src: "~/plugins/pagination.js", mode: 'client'},
-        {src: "~/plugins/fancyapps-ui.js", mode: 'client'},
+        // {src: "~/plugins/fancyapps-ui.js", mode: 'client'},
         {src: '~/plugins/infiniteLoading.js', mode: 'client'},
         {src: '~/plugins/numberAnim.js', mode: 'client'},
         {src: '~/plugins/ymaps.js', mode: 'client'},
@@ -87,7 +87,7 @@ export default {
         {src: '~/plugins/jsonld'}
 
     ],
-    // components: true,
+    components: false,
     router: {
         prefetchLinks: false,
         linkActiveClass: 'active',
@@ -140,7 +140,7 @@ export default {
                 chunk: ({
                             isDev,
                             isModern
-                        }) => isDev ? `[name]${isModern ? '.modern' : ''}.js` : `[id].[contenthash:7]${isModern ? '.modern' : ''}.js`,
+                        }) => isDev ? `[name].[id].[contenthash].${isModern ? '.modern' : ''}.js` : `[id].[contenthash:7]${isModern ? '.modern' : ''}.js`,
                 css: ({isDev}) => isDev ? '[name].css' : 'css/[contenthash:7].css',
                 img: ({isDev}) => isDev ? '[path][name].[ext]' : 'img/[name].[ext]',
                 font: ({isDev}) => isDev ? '[path][name].[ext]' : 'fonts/[name].[contenthash:7].[ext]',
