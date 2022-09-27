@@ -3,9 +3,9 @@ import {redirects} from './configModules'
 const isDev = process.env.NODE_ENV !== 'production'
 
 export default {
-    ...(!isDev && {
-        modern: 'client'
-    }),
+    // ...(!isDev && {
+    //     modern: 'client'
+    // }),
     head: {
         title: 'carro',
         htmlAttrs: {
