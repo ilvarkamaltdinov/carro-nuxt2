@@ -87,10 +87,3 @@
 		<button-typical link="/used" text="Все автомобили" class="button--link button--more"/>
 	</section>
 </template>
-<script>
-const buttonTypical = () => import('@/components/button/button-typical')
-const featuredImg = () => import('@/components/featured/featured-img')
-export default {
-	components:{buttonTypical, featuredImg}
-}
-</script>

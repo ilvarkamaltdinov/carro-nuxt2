@@ -9,7 +9,6 @@
 		</div>
 		<div class="catalog__call-img">
 			<img class="lazyload"
-			     loading="lazy"
 			     :data-src="image" />
 		</div>
 	</a>

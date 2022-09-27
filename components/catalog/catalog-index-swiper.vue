@@ -21,9 +21,7 @@
 </template>
 
 <script>
-const catalogItemSmallDesktop = () => import('@/components/catalog/catalog-item/catalog-item-small-desktop')
 export default {
-	components: {catalogItemSmallDesktop},
 	props: {
 		offers: Array
 	},

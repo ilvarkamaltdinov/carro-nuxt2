@@ -20,18 +20,16 @@
 						class="form__field-wrap form__field-wrap--car ">
 					<button class="form__field"
 					        @click.prevent="choseCar()">
-						
-						{{ currentCar ? currentCar.name : 'Выбрать автомобиль' }}
-						<span v-if="currentCar">, {{ currentCar.price | toCurrency }}
+
+						{{ currentCar ? currentCar.name : 'Выбрать автомобиль' }}<span v-if="currentCar">, {{ currentCar.price | toCurrency }}
 						</span>
-					
+
 					</button>
 					<svg-icon name="icon-form"
 					          class="icon form__car-icon" />
 				</label>
 			</fieldset>
-			<div class="catalog form__catalog"
-			     v-if="$device.isMobile && (offer || currentCar)">
+			<div class="catalog form__catalog" v-if="$device.isMobile && (offer || currentCar)">
 				<catalog-item-large-mobile-form :is-form="true"
 				                                :offer="offer||currentCar" />
 			</div>
@@ -93,13 +91,7 @@ import {mapGetters, mapMutations, mapActions} from 'vuex'
 import formValidation from "@/mixins/formValidation";
 import filters from "@/mixins/filters";
 
-const buttonTypical = () => import('@/components/button/button-typical')
-const checkboxForm = () => import('@/components/checkbox/checkbox-form')
-const inputsInput = () => import('@/components/inputs/input')
-const formCreditCalculator = () => import('@/components/form/form-components/form-credit-calculator')
-const catalogItemLargeMobileForm = () => import('@/components/catalog/catalog-item/catalog-item-large-mobile-form')
 export default {
-	components: {buttonTypical, inputsInput, checkboxForm, formCreditCalculator, catalogItemLargeMobileForm},
 	mixins: [formValidation, filters],
 	props: {
 		hasChose: {
@@ -196,7 +188,7 @@ export default {
 			setPercent: 'banks/SET_PERCENT',
 			setCurrentCar: 'form/form-credit/SET_CURRENT_CAR',
 			setFocusShowFixes: 'car/car/SET_FOCUS_SHOW_FIXED'
-			
+
 		}),
 		choseCar() {
 			this.error = ''
@@ -211,9 +203,7 @@ export default {
 			if (this.hasChose) {
 				if (!this.currentCar) {
 					this.error = 'invalid_car'
-					setTimeout(function () {
-						window.scrollTo(0, -100);
-					}, 1);
+					setTimeout(function () {window.scrollTo(0, -100);}, 1);
 					return false
 				}
 			}
@@ -268,7 +258,7 @@ export default {
 				if (localStorage.utm_content) {
 					formData.utm_content = localStorage.utm_content
 				}
-				
+
 				await this.sendForm(formData)
 				await this.closeModal()
 			}

@@ -23,21 +23,24 @@
 			</div>
 			<div v-else
 			     class="video__img-wrap">
-				<picture-component
-						classes="video__img lazyload"
-						:small="`${require(`~/assets/img/video/iphone@1x.png`)}`"
-						:small-webp="`${require(`~/assets/img/video/iphone@1x.webp`)}`"
-						:big="`${require(`~/assets/img/video/iphone@2x.png`)}`"
-						:big-webp="`${require(`~/assets/img/video/iphone@2x.webp`)}`" />
+				<picture>
+					<source type="image/webp"
+					        media="(min-width: 768px)"
+					        :data-srcset="`${require(`~/assets/img/video/iphone@1x.webp`)} 1x, ${require(`~/assets/img/video/iphone@2x.webp`)} 2x`" />
+					<source media="(min-width: 768px)"
+					        :data-srcset="`${require(`~/assets/img/video/iphone@1x.png`)} 1x, ${require(`~/assets/img/video/iphone@2x.png`)} 2x`" />
+					<img class="video__img lazyload"
+					     data-src="~/assets/img/video/iphone@1x.png"
+					     :data-srcset="`${require(`~/assets/img/video/iphone@2x.png`)} 2x`"
+					     alt="" />
+				</picture>
 			</div>
 			<p class="video__text">Узнай, почему на carro.ru лучшие цены в России!</p>
 		</div>
 	</section>
 </template>
 <script>
-const pictureComponent = () => import('@/components/picture/picture-component')
 export default {
-	components:{pictureComponent},
 	data() {
 		return {
 			isVideo: false

@@ -5,7 +5,6 @@
 	   class="catalog__img-link">
 		<img class="lazyload"
 		     :data-src="img"
-		     loading="lazy"
 		     alt="image">
 	</a>
 	<a v-else
@@ -14,7 +13,6 @@
 	   class="catalog__img-link">
 		<img class="lazyload"
 		     :data-src="img"
-		     loading="lazy"
 		     alt="image">
 	</a>
 </template>

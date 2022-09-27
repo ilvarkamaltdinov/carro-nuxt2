@@ -25,12 +25,8 @@
 </template>
 <script>
 import {mapActions, mapGetters, mapMutations} from 'vuex'
-const makesItem = () => import('@/components/makes/makes-item')
-const makesItemPopular = () => import('@/components/makes/makes-item-popular')
+
 export default {
-	components:{
-		makesItem, makesItemPopular
-	},
 	props: {
 		forChoseModal: {
 			type: Boolean,

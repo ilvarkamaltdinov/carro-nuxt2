@@ -21,12 +21,7 @@
 <script>
 import {mapGetters, mapMutations} from "vuex";
 
-const rangePeriod = () => import('@/components/range/range-period')
-const rangePayment = () => import('@/components/range/range-payment')
 export default {
-	components: {
-		rangePeriod, rangePayment
-	},
 	data() {
 		return {
 			total: null,
@@ -59,7 +54,7 @@ export default {
 		percent() {
 			// Динамично меняет процентную ставку в зависимости от банка
 			// return this.bank.rate ? this.bank.rate : this.$config.default_percent
-			return Number(this.settings.credit_percent.replace('%', ''))
+			return Number(this.settings.credit_percent.replace('%',''))
 		},
 		currentPeriod() {
 			return String(this.periodValue) + ' мес.'

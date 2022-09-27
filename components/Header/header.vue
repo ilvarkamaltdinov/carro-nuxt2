@@ -78,14 +78,8 @@
 <script>
 import {mapGetters, mapMutations, mapActions} from 'vuex'
 import bodyClasses from "@/mixins/bodyClasses";
-const HeaderLogoBlock = () => import('@/components/Header/header-logo-block')
-const SiteListDesktop = () => import('@/components/site-list/site-list-desktop')
-const HeaderBackButton = () => import('@/components/Header/header-back-button')
-const ModalMakes = () => import('@/components/modal/modal-makes')
-const ModalMenu = () => import('@/components/modal/modal-menu')
-const ModalSearch = () => import('@/components/modal/modal-search')
+
 export default {
-	components:{HeaderLogoBlock, SiteListDesktop, HeaderBackButton, ModalMakes, ModalMenu, ModalSearch},
 	mixins: [bodyClasses],
 	watch: {
 		'$route'() {

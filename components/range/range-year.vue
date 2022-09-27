@@ -30,10 +30,9 @@
 	</div>
 </template>
 <script>
-import {mapGetters, mapMutations} from "vuex";
-const rangeSlider = () => import('@/components/range/range-slider')
+import {mapActions, mapGetters, mapMutations} from "vuex";
+
 export default {
-	components: {rangeSlider},
 	data() {
 		return {
 			from: '',

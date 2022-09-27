@@ -3,12 +3,8 @@
 		<label class="form__range-wrap">
 			<span class="form__range-name">Первоначальный взнос:</span>
 			<!--TODO в будущем переписать toCurrency и исправить этот костыль -->
-			<span class="form__range-value"
-			      v-if="sum"> {{ sum | toCurrency }}
-			</span>
-			<span class="form__range-value"
-			      v-else> 0 ₽
-			</span>
+			<span class="form__range-value" v-if="sum"> {{ sum | toCurrency}}</span>
+			<span class="form__range-value" v-else> 0 ₽</span>
 		</label>
 		<range-slider
 				range-class="range-payment"
@@ -18,11 +14,8 @@
 	</div>
 </template>
 <script>
-
 import filters from "@/mixins/filters";
-const rangeSlider = () => import('@/components/range/range-slider')
 export default {
-	components: {rangeSlider},
 	mixins: [filters],
 	props: {
 		values: Array,

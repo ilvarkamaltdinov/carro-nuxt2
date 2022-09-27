@@ -10,7 +10,7 @@
 					<a data-fancybox="gallery"
 					   :data-src="image.small_webp"
 					   class="catalog__img-link">
-						<img :data-src="image.small_webp" class="lazyload" loading="lazy">
+						<img :data-src="image.small_webp" class="lazyload">
 					</a>
 				</div>
 				<catalog-item-call-card v-if="!isForm"
@@ -49,11 +49,7 @@
 </template>
 
 <script>
-const catalogItemCallCard = () => import('@/components/catalog/catalog-item/catalog-item-components/catalog-item-call-card)
 export default {
-	components:{
-		catalogItemCallCard
-	},
 	props: {
 		url: String,
 		hasFancy: {

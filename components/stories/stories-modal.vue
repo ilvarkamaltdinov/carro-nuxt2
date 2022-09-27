@@ -36,11 +36,11 @@
 				</div>
 				<button class="swiper-button swiper-button-prev">
 					<svg-icon class="swiper-button__icon"
-					          name="icon-arrow" />
+					          name="icon-arrow"></svg-icon>
 				</button>
 				<button class="swiper-button swiper-button-next">
 					<svg-icon class="swiper-button__icon"
-					          name="icon-arrow" />
+					          name="icon-arrow"></svg-icon>
 				</button>
 			</div>
 		</div>
@@ -49,9 +49,7 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
 
-const PictureComponent = () => import('@/components/picture/picture-component')
 export default {
-	components: {PictureComponent},
 	computed: {
 		...mapGetters({
 			stories: 'stories/stories/stories'

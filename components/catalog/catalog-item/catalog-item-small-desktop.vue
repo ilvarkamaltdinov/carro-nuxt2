@@ -10,8 +10,7 @@
 			                    :is-form="isForm"
 			                    :url="currentUrl"
 			                    :offer="offer" />
-			<catalog-item-price :vin="offer.vin"
-			                    :price="offer.price" />
+			<catalog-item-price :vin="offer.vin" :price="offer.price" />
 		</div>
 		<div class="catalog__tech"
 		     :class="{'catalog__tech--no-buttons':!hasButtons}">
@@ -35,17 +34,7 @@
 import filters from "~/mixins/filters";
 import cardClick from "~/mixins/cardClick";
 
-const ratingCar = () => import('@/components/rating/rating-car')
-const catalogItemButtons = () => import('@/components/catalog/catalog-item/catalog-item-components/catalog-item-buttons')
-const catalogItemHoverSlider = () => import('@/components/catalog/catalog-item/catalog-item-components/catalog-item-hover-slider')
-const catalogItemPrice = () => import('@/components/catalog/catalog-item/catalog-item-components/catalog-item-price')
-const catalogItemTitle = () => import('@/components/catalog/catalog-item/catalog-item-components/catalog-item-title')
-const catalogItemTechList = () => import('@/components/catalog/catalog-item/catalog-item-components/catalog-item-tech-list')
 export default {
-	components: {
-		ratingCar, catalogItemButtons, catalogItemHoverSlider, catalogItemPrice,
-		catalogItemTitle, catalogItemTechList
-	},
 	mixins: [filters, cardClick],
 	props: {
 		isForm: {

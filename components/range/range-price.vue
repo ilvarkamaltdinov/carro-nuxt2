@@ -32,9 +32,8 @@
 import {mapGetters, mapMutations} from "vuex";
 import filters from "@/mixins/filters";
 import seoTags from "@/apollo/queries/seoTags";
-const rangeSlider = () => import('@/components/range/range-slider')
+
 export default {
-	components: {rangeSlider},
 	mixins: [filters],
 	data() {
 		return {

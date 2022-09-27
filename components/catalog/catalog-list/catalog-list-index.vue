@@ -3,8 +3,7 @@
 	         :class="{'catalog--slider':!$device.isMobile}">
 		<heading-h2>Автомобили в наличии</heading-h2>
 		<div class="tabs">
-			<ul class="tabs__list"
-			    role="tablist">
+			<ul class="tabs__list" role="tablist">
 				<li role="presentation"
 				    v-for="(tab, index) in tabs"
 				    :key="index"
@@ -19,7 +18,7 @@
 				</li>
 			</ul>
 		</div>
-		
+
 		<div v-if="loading"
 		     class="catalog__list grid">
 			<component :is="$device.isMobileOrTablet ? 'skeleton-card-large' : 'skeleton-card-small'"
@@ -34,6 +33,7 @@
 		</div>
 		<catalog-index-swiper v-else
 		                      :offers="offers_list" />
+
 		<button-typical :link="`/used/${set}`"
 		                text="Все автомобили"
 		                class="button--link button--more" />
@@ -43,19 +43,7 @@
 import {mapActions, mapGetters, mapMutations} from "vuex";
 import offers from "@/apollo/queries/offer/offers";
 
-const HeadingH2 = () => import('@/components/heading/heading-h2')
-const buttonTypical = () => import('@/components/button/button-typical')
-const catalogIndexSwiper = () => import('@/components/catalog/catalog-index-swiper')
-const catalogItemLargeMobile = () => import('@/components/catalog/catalog-item/catalog-item-large-mobile')
-const skeletonCardLarge = () => import('@/components/skeleton/skeleton-card/skeleton-card-large')
-const skeletonCardSmall = () => import('@/components/skeleton/skeleton-card/skeleton-card-small')
 export default {
-	components: {
-		HeadingH2,
-		catalogIndexSwiper,
-		skeletonCardLarge, skeletonCardSmall,
-		buttonTypical, catalogItemLargeMobile
-	},
 	data() {
 		return {
 			tabs: [
@@ -142,7 +130,7 @@ export default {
 	},
 	mounted() {
 		this.getOffers()
-		
+
 	}
 }
 </script>
