@@ -6,6 +6,7 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
+    "test": "nuxt build -a",
     "generate": "nuxt generate"
   },
   "dependencies": {
