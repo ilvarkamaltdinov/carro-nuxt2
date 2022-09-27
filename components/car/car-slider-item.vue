@@ -13,8 +13,9 @@
 	</div>
 </template>
 <script>
+import { Fancybox } from "@fancyapps/ui";
 export default {
-	components: {},
+	components: {Fancybox},
 	
 	props: {
 		img: Object
