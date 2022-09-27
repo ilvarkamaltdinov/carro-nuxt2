@@ -87,7 +87,7 @@ export default {
         {src: '~/plugins/jsonld'}
 
     ],
-    components: true,
+    // components: true,
     router: {
         prefetchLinks: false,
         linkActiveClass: 'active',
