@@ -7,7 +7,9 @@
 			:big-webp="`${require(`~/assets/img/featured/featured-${img}@2x.webp`)}`" />
 </template>
 <script>
+const pictureComponent = () => import('@/components/picture/picture-component')
 export default {
+	components: {pictureComponent},
 	props: {
 		img: {
 			type: String,

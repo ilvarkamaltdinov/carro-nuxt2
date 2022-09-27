@@ -10,3 +10,9 @@
 	</section>
 
 </template>
+<script>
+const makes = () => import('@/components/makes/makes')
+export default {
+	components:{makes}
+}
+</script>

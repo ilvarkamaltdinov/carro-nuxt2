@@ -2,7 +2,8 @@
 	<section class="page-main__stories stories"
 	         :class="{'stories--desktop grid__col-8':!$device.isMobileOrTablet}">
 		<h2 class="visually-hidden">Акции и спецпредложения</h2>
-		<div class="skeleton skeleton--stories" v-if="loading">
+		<div class="skeleton skeleton--stories"
+		     v-if="loading">
 			<ul class="skeleton__stories">
 				<li class="skeleton__item"></li>
 				<li class="skeleton__item"></li>
@@ -45,7 +46,9 @@
 import {mapActions, mapGetters} from "vuex";
 import stories from "@/apollo/queries/stories/stories";
 
+const storiesItem = () => import('@/components/stories/stories-item')
 export default {
+	components: {storiesItem},
 	data() {
 		return {
 			loading: true,

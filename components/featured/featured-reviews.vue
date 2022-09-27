@@ -82,8 +82,9 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
 import dealerReviews from "@/apollo/queries/dealer/dealerReviews";
-
+const buttonTypical = () => import('@/components/button/button-typical')
 export default {
+	components:{buttonTypical},
 	data() {
 		return {
 			dealers: [],

@@ -35,7 +35,9 @@
 	</section>
 </template>
 <script>
+const pictureComponent = () => import('@/components/picture/picture-component')
 export default {
+	components:{pictureComponent},
 	data() {
 		return {
 			isVideo: false
