@@ -15,7 +15,7 @@ export default {
             {charset: 'UTF-8'},
             {name: 'yandex-verification', content: 'f70bc9bad3cb4352'},
             {name: 'google-site-verification', content: 'bWKRxv7GJwHjT2LiBTxTJHGkT_2MjLWJfRbE4_uJbrU'},
-            {name: 'theme-color', content: '#ED2939'},
+            {name: 'theme-color', content: 'ED2939'},
             {name: 'http-equiv="X-UA-Compatible', content: 'ie=edge'},
             {name: 'viewport', content: 'width=device-width, initial-scale=1'},
             {name: 'format-detection', content: 'telephone=no'},
@@ -137,6 +137,14 @@ export default {
         },
         filenames:
             {
+                app: ({
+                          isDev,
+                          isModern
+                      }) => isDev ? `[name]${isModern ? '.modern' : ''}.js` : `[id].[contenthash:7]${isModern ? '.modern' : ''}.js`,
+                chunk: ({
+                            isDev,
+                            isModern
+                        }) => isDev ? `[name]${isModern ? '.modern' : ''}.js` : `[id].[contenthash:7]${isModern ? '.modern' : ''}.js`,
                 css: ({isDev}) => isDev ? '[name].css' : 'css/[contenthash:7].css',
                 img: ({isDev}) => isDev ? '[path][name].[ext]' : 'img/[name].[ext]',
                 font: ({isDev}) => isDev ? '[path][name].[ext]' : 'fonts/[name].[contenthash:7].[ext]',
