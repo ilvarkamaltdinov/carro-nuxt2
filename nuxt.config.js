@@ -137,10 +137,6 @@ export default {
         },
         filenames:
             {
-                app: ({
-                          isDev,
-                          isModern
-                      }) => isDev ? `[name]${isModern ? '.modern' : ''}.js` : `[id].[contenthash:7]${isModern ? '.modern' : ''}.js`,
                 chunk: ({
                             isDev,
                             isModern
@@ -171,10 +167,7 @@ export default {
             commons: true
         },
         optimization: {
-            minimize: !isDev,
-            splitChunks: {
-                maxSize: 30000
-            }
+            minimize: !isDev
         },
         ...(!isDev && {
             extractCSS: {
