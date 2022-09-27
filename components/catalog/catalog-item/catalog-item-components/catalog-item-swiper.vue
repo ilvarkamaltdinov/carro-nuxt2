@@ -52,11 +52,7 @@
 </template>
 
 <script>
-const catalogItemCallCard = () => import('@/components/catalog/catalog-item/catalog-item-components/catalog-item-call-card)
 export default {
-	components:{
-		catalogItemCallCard
-	},
 	props: {
 		url: String,
 		hasFancy: {
