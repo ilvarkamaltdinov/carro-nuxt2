@@ -104,7 +104,7 @@ export default {
     ],
     optimization: {
         splitChunks: {
-            maxSize: 300000
+            maxSize: 30000
         }
     },
     redirect: redirects,
