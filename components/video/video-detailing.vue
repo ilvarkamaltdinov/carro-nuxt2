@@ -3,7 +3,7 @@
 		<h2 class="visually-hidden">Видео о портале carro.ru</h2>
 		<div class="video__block"
 		     id="about-video">
-			<button class="video__play">
+			<button class="video__play" title="Воспроизвести видео">
 				<svg-icon class="video__play-icon"
 				          name="icon-play"></svg-icon>
 			</button>

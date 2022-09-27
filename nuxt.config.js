@@ -15,7 +15,7 @@ export default {
             {charset: 'UTF-8'},
             {name: 'yandex-verification', content: 'f70bc9bad3cb4352'},
             {name: 'google-site-verification', content: 'bWKRxv7GJwHjT2LiBTxTJHGkT_2MjLWJfRbE4_uJbrU'},
-            {name: 'theme-color', content: 'ED2939'},
+            {name: 'theme-color', content: '#ED2939'},
             {name: 'http-equiv="X-UA-Compatible', content: 'ie=edge'},
             {name: 'viewport', content: 'width=device-width, initial-scale=1'},
             {name: 'format-detection', content: 'telephone=no'},

@@ -17,7 +17,7 @@
 					</li>
 					<li class="page-header__buttons-item">
 						<nuxt-link to="/favorites"
-						           class="page-header__buttons-link">
+						           class="page-header__buttons-link" title="Избранное" aria-label="Избранное">
 							<span v-if="likesArray.length"
 							      class="page-header__favorites-count">{{ likesArray.length }}
 							</span>
@@ -27,7 +27,7 @@
 					</li>
 					<li class="page-header__buttons-item">
 						<a class="page-header__buttons-link page-header__buttons-link--phone"
-						   :href="`tel:${settings.phone.replace(/[^+\d]/g, '')}`">
+						   :href="`tel:${settings.phone.replace(/[^+\d]/g, '')}`" title="Бесплатный звонок" aria-label="Бесплатный звонок">
 							<svg-icon class="icon"
 							          name="icon-call" />
               <span class="page-header__buttons-phone">{{ settings.phone }}</span>

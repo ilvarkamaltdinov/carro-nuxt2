@@ -9,8 +9,10 @@
 				     :key="image.small_webp">
 					<a data-fancybox="gallery"
 					   :data-src="image.small_webp"
-					   class="catalog__img-link">
-						<img :data-src="image.small_webp" class="lazyload">
+					   class="catalog__img-link"
+             title="Увеличить фотографию"
+             aria-label="Увеличить фотографию">
+						<img :data-src="image.small_webp" class="lazyload" loading="lazy">
 					</a>
 				</div>
 				<catalog-item-call-card v-if="!isForm"
@@ -25,7 +27,8 @@
 				     :key="image.small_webp">
 					<a :href="isForm ? '' : url"
 					   @click.prevent="$emit('click')"
-					   class="catalog__img-link">
+					   class="catalog__img-link"
+             aria-label="Подробнее об автомобиле">
 						<img :data-src="image.small_webp" class="lazyload">
 					</a>
 				</div>
@@ -49,7 +52,11 @@
 </template>
 
 <script>
+const catalogItemCallCard = () => import('@/components/catalog/catalog-item/catalog-item-components/catalog-item-call-card)
 export default {
+	components:{
+		catalogItemCallCard
+	},
 	props: {
 		url: String,
 		hasFancy: {

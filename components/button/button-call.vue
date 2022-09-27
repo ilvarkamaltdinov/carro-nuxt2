@@ -1,7 +1,9 @@
 <template>
 	<a :href="`tel:${currentPhone.replace(/[^+\d]/g, '')}`"
 	   v-if="$device.isMobile"
-	   class="button button--action button--call">
+	   class="button button--action button--call"
+     title="Бесплатный звонок"
+     aria-label="Бесплатный звонок">
 		<svg-icon class="button__icon"
 		          name="icon-call" />
 	</a>
