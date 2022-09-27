@@ -15,15 +15,15 @@
 </template>
 <script>
 import seoTags from "@/mixins/seoTags";
-import SliderIndex from '@/components/slider-index/slider-index'
-import Stories from '@/components/stories/stories'
-import FormIndex from '@/components/form/form-index'
-import CatalogListIndex from '@/components/catalog/catalog-list/catalog-list-index'
-import VideoAbout from '@/components/video/video-about'
+const SliderIndex = () => import('@/components/slider-index/slider-index')
+const Stories = () => import('@/components/stories/stories')
+const FormIndex = () => import('@/components/form/form-index')
+const CatalogListIndex = () => import('@/components/catalog/catalog-list/catalog-list-index')
+const VideoAbout = () => import('@/components/video/video-about')
 
 export default {
 	mixins: [seoTags],
-	components: {SliderIndex, Stories, FormIndex, CatalogListIndex, },
+	components: {SliderIndex, Stories, FormIndex, CatalogListIndex, VideoAbout},
 	mounted() {
 		setTimeout(function () {
 			window.scrollTo(0, -100);
