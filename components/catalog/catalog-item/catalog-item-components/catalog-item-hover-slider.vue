@@ -3,6 +3,7 @@
 		<img :data-src="coverSrc"
 		     @load="onImgLoad"
 		     class="lazyload"
+		     loading="lazy"
 		     :class="class_name"
 		     alt=""/>
 		<div class="tmb-wrap">

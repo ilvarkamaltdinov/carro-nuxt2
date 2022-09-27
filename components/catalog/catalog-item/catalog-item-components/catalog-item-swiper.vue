@@ -10,7 +10,7 @@
 					<a data-fancybox="gallery"
 					   :data-src="image.small_webp"
 					   class="catalog__img-link">
-						<img :data-src="image.small_webp" class="lazyload">
+						<img :data-src="image.small_webp" class="lazyload" loading="lazy">
 					</a>
 				</div>
 				<catalog-item-call-card v-if="!isForm"
