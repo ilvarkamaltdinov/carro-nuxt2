@@ -52,7 +52,9 @@
 </template>
 
 <script>
+// import { Fancybox } from "@fancyapps/ui";
 export default {
+	// components: {Fancybox},
 	props: {
 		url: String,
 		hasFancy: {

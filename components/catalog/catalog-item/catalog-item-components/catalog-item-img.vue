@@ -19,7 +19,9 @@
 	</a>
 </template>
 <script>
+// import { Fancybox } from "@fancyapps/ui";
 export default {
+	// components: {Fancybox},
 	props: {
 		hasFancy: {
 			type: Boolean,
