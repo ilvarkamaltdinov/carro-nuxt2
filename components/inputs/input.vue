@@ -12,8 +12,9 @@
 
 <script>
 import filters from "~/mixins/filters";
-
+import Inputmask from "inputmask";
 export default {
+	components:{Inputmask},
 	mixins: [filters],
 	props: {
 		value: {
