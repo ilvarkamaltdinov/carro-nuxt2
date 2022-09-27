@@ -3,7 +3,7 @@
 		<div class="grid grid--container">
 			<h1 class="visually-hidden">{{ pageTitle }}</h1>
 			<div class="page-main__promo grid__col-8">
-				<!--<slider-index />-->
+				<slider-index />
 				<stories />
 			</div>
 			<form-index />
