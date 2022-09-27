@@ -102,6 +102,11 @@ export default {
         '@nuxtjs/svg-sprite',
         '@nuxtjs/redirect-module'
     ],
+    optimization: {
+        splitChunks: {
+            maxSize: 300000
+        }
+    },
     redirect: redirects,
     svgSprite: {
         input: '~/assets/icons/',
