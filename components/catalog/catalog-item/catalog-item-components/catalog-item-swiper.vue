@@ -9,7 +9,9 @@
 				     :key="image.small_webp">
 					<a data-fancybox="gallery"
 					   :data-src="image.small_webp"
-					   class="catalog__img-link">
+					   class="catalog__img-link"
+             title="Увеличить фотографию"
+             aria-label="Увеличить фотографию">
 						<img :data-src="image.small_webp" class="lazyload" loading="lazy">
 					</a>
 				</div>
@@ -25,7 +27,8 @@
 				     :key="image.small_webp">
 					<a :href="isForm ? '' : url"
 					   @click.prevent="$emit('click')"
-					   class="catalog__img-link">
+					   class="catalog__img-link"
+             aria-label="Подробнее об автомобиле">
 						<img :data-src="image.small_webp" class="lazyload">
 					</a>
 				</div>

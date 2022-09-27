@@ -7,7 +7,9 @@
 			<a class="social__link"
 			   target="_blank"
 			   rel="nofollow"
-			   :href="settings['soc_'+item]">
+			   :href="settings['soc_'+item]"
+         :title="item"
+         :aria-label="item">
 				<svg-icon class="social__icon"
 				          :name="`icon-${item}`" />
 			</a>
