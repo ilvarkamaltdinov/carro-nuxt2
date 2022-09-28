@@ -1,4 +1,5 @@
 <template>
+	<LazyHydrate when-idle>
 	<main class="page-main">
 		<div class="grid grid--container">
 			<h1 class="visually-hidden">{{ pageTitle }}</h1>
@@ -12,11 +13,15 @@
 			<video-about />
 		</div>
 	</main>
+	</LazyHydrate>
 </template>
 <script>
 import seoTags from "@/mixins/seoTags";
-
+import LazyHydrate from 'vue-lazy-hydration';
 export default {
+	components: {
+		LazyHydrate
+	},
 	mixins: [seoTags],
 	mounted() {
 		setTimeout(function () {
