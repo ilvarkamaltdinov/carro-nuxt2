@@ -1,5 +1,6 @@
 <template>
-	<div class="default__wrapper"
+	<LazyHydrate when-idle>
+		<div class="default__wrapper"
 	     @keyup.esc="closeModals"
 	     tabindex="0">
 		<Header />
@@ -13,6 +14,7 @@
 		</transition>
 		<Footer />
 	</div>
+	</LazyHydrate>
 </template>
 <script>
 import {mapActions, mapGetters, mapMutations} from "vuex"
