@@ -77,7 +77,6 @@ export default {
         {src: '~/plugins/infiniteLoading.js', mode: 'client'},
         {src: '~/plugins/numberAnim.js', mode: 'client'},
         {src: '~/plugins/ymaps.js', mode: 'client'},
-        {src: '~/plugins/lazy.js'},
         {src: '~/plugins/swiper.js'},
         {src: '~/plugins/slideToggle.js'},
         {src: '~/plugins/lodash.js'},

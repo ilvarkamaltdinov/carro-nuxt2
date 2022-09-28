@@ -16,10 +16,10 @@
 			<LazyHydrate when-visible>
 				<catalog-list-index />
 			</LazyHydrate>
-			<LazyHydrate when-visible>
+			<LazyHydrate never>
 				<featured />
 			</LazyHydrate>
-			<LazyHydrate when-visible>
+			<LazyHydrate never>
 				<video-about />
 			</LazyHydrate>
 		</div>
@@ -28,7 +28,6 @@
 <script>
 import seoTags from "@/mixins/seoTags";
 import LazyHydrate from 'vue-lazy-hydration';
-
 export default {
 	components: {LazyHydrate},
 	mixins: [seoTags],
