@@ -12,7 +12,9 @@
 	<a v-else
 	   :href="url"
 	   @click.prevent="$emit('click')"
-	   class="catalog__img-link">
+	   class="catalog__img-link"
+     title="Подробнее об автомобиле"
+     aria-label="Подробнее об автомобиле">
 		<img class="lazyload"
 		     :data-src="img"
 		     alt="image">

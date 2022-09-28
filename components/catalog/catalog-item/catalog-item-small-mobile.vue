@@ -3,7 +3,9 @@
 		<div class="catalog__img">
 			<a :href="!isForm ? currentUrl: ''"
 			   @click.prevent="linkClick"
-			   class="catalog__img-link">
+			   class="catalog__img-link"
+         title="Подробнее об автомобиле"
+         aria-label="Подробнее об автомобиле">
 				<img :data-src="offer.images[0].small_webp" class="ls-is-cached lazyload">
 			</a>
 		</div>

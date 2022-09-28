@@ -4,7 +4,9 @@
 		<div class="video__block"
 		     id="about-video">
 			<button v-if="!isVideo" class="video__play"
-			        @click="isVideo = true">
+			        @click="isVideo = true"
+              title="Воспроизвести видео"
+              aria-label="Воспроизвести видео о портале">
 				<svg-icon class="video__play-icon"
 				          name="icon-play" />
 			</button>
