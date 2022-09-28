@@ -21,7 +21,6 @@
   ],
   "background_color": "#ffffff",
   "theme_color": "#ED2939",
-  "display": "fullscreen",
   "start_url": "https://carro.ru",
   "display": "minimal-ui"
 }
