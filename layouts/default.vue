@@ -1,5 +1,5 @@
 <template>
-	<LazyHydrate when-idle>
+	<LazyHydrate when-visible>
 		<div class="default__wrapper"
 	     @keyup.esc="closeModals"
 	     tabindex="0">
