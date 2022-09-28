@@ -1,6 +1,5 @@
 <template>
-	<LazyHydrate when-visible>
-		<div class="default__wrapper"
+	<div class="default__wrapper"
 	     @keyup.esc="closeModals"
 	     tabindex="0">
 		<Header />
@@ -14,7 +13,6 @@
 		</transition>
 		<Footer />
 	</div>
-	</LazyHydrate>
 </template>
 <script>
 import {mapActions, mapGetters, mapMutations} from "vuex"

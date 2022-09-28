@@ -3,20 +3,34 @@
 		<div class="grid grid--container">
 			<h1 class="visually-hidden">{{ pageTitle }}</h1>
 			<div class="page-main__promo grid__col-8">
-				<slider-index />
-				<stories />
+				<LazyHydrate when-visible>
+					<slider-index />
+				</LazyHydrate>
+				<LazyHydrate when-visible>
+					<stories />
+				</LazyHydrate>
 			</div>
-			<form-index />
-			<catalog-list-index />
-			<featured />
-			<video-about />
+			<LazyHydrate when-visible>
+				<form-index />
+			</LazyHydrate>
+			<LazyHydrate when-visible>
+				<catalog-list-index />
+			</LazyHydrate>
+			<LazyHydrate when-visible>
+				<featured />
+			</LazyHydrate>
+			<LazyHydrate when-visible>
+				<video-about />
+			</LazyHydrate>
 		</div>
 	</main>
 </template>
 <script>
 import seoTags from "@/mixins/seoTags";
+import LazyHydrate from 'vue-lazy-hydration';
 
 export default {
+	components: {LazyHydrate},
 	mixins: [seoTags],
 	mounted() {
 		setTimeout(function () {
