@@ -83,17 +83,19 @@ export default {
 		this.setBackButton(this.currentBackButton)
 	},
 	async fetch() {
-		let variables = {
-			site_id: this.site_id,
-			mark_slug: this.$route.params.mark,
-			folder_slug: this.$route.params.model,
-			dateFormat: 'j F Y года.',
-			external_id: Number(this.$route.params.car)
+		if(Number(this.$route.params.car)){
+			let variables = {
+				site_id: this.site_id,
+				mark_slug: this.$route.params.mark,
+				folder_slug: this.$route.params.model,
+				dateFormat: 'j F Y года.',
+				external_id: Number(this.$route.params.car)
+			}
+			let response = await this.request({query: offer, variables: variables})
+			await this.setOffer(response.data.offer)
+			await this.sendYandexCommercial()
+			await this.sendMyTarget()
 		}
-		let response = await this.request({query: offer, variables: variables})
-		await this.setOffer(response.data.offer)
-		await this.sendYandexCommercial()
-		await this.sendMyTarget()
 	},
 	computed: {
 		...mapGetters({
