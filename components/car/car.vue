@@ -55,7 +55,7 @@
 				            :offer="offer" />
 			</div>
 		</section>
-		<catalog-list-car v-show="carPageLoaded"/>
+		<catalog-list-car v-show="carPageLoaded" />
 		<skeleton-car v-show="!carPageLoaded" />
 	</div>
 	<skeleton-car v-else />
@@ -83,7 +83,7 @@ export default {
 		this.setBackButton(this.currentBackButton)
 	},
 	async fetch() {
-		if(Number(this.$route.params.car)){
+		if (Number(this.$route.params.car)) {
 			let variables = {
 				site_id: this.site_id,
 				mark_slug: this.$route.params.mark,
@@ -93,6 +93,7 @@ export default {
 			}
 			let response = await this.request({query: offer, variables: variables})
 			await this.setOffer(response.data.offer)
+			await this.setDealerPhone(response.data.offer.dealer.phone)
 			await this.sendYandexCommercial()
 			await this.sendMyTarget()
 		}
@@ -129,6 +130,7 @@ export default {
 		}, 1);
 	},
 	beforeDestroy() {
+		this.setDealerPhone(null)
 		window.removeEventListener('scroll', this.handleScroll);
 		this.setBackButton({})
 	},
@@ -141,7 +143,8 @@ export default {
 			setFilterClick: 'filters/filters/SET_IS_FILTER_CLICK',
 			setIsOfferClick: 'filters/filters/SET_IS_OFFER_CLICK',
 			setComponentCatalog: 'filters/filters/SET_COMPONENT_CATALOG',
-			setBackButton: 'header/header/SET_BACK_BUTTON'
+			setBackButton: 'header/header/SET_BACK_BUTTON',
+			setDealerPhone: 'header/header/SET_DEALER_PHONE'
 		}),
 		...mapActions({
 			request: 'filters/filters/request',

@@ -2,7 +2,8 @@
 	<header class="page-header">
 		<div class="page-header__container grid grid--header">
 			<div class="page-header__wrap grid__col-12">
-				<header-logo-block @burger="burgerClick" :modal-menu="modalMenu"/>
+				<header-logo-block @burger="burgerClick"
+				                   :modal-menu="modalMenu" />
 				<nav class="main-nav page-header__nav page-header__nav--desktop">
 					<site-list-desktop />
 				</nav>
@@ -17,7 +18,9 @@
 					</li>
 					<li class="page-header__buttons-item">
 						<nuxt-link to="/favorites"
-						           class="page-header__buttons-link" title="Избранное" aria-label="Избранное">
+						           class="page-header__buttons-link"
+						           title="Избранное"
+						           aria-label="Избранное">
 							<span v-if="likesArray.length"
 							      class="page-header__favorites-count">{{ likesArray.length }}
 							</span>
@@ -27,23 +30,27 @@
 					</li>
 					<li class="page-header__buttons-item">
 						<a class="page-header__buttons-link page-header__buttons-link--phone"
-						   :href="`tel:${settings.phone.replace(/[^+\d]/g, '')}`" title="Бесплатный звонок" aria-label="Бесплатный звонок">
+						   :href="`tel:${currentPhone.replace(/[^+\d]/g, '')}`"
+						   title="Бесплатный звонок"
+						   aria-label="Бесплатный звонок">
 							<svg-icon class="icon"
 							          name="icon-call" />
-              <span class="page-header__buttons-phone">{{ settings.phone }}</span>
+							<span class="page-header__buttons-phone">{{ currentPhone }}</span>
 						</a>
 					</li>
 				</ul>
 			</div>
 			<nav class="page-header__nav grid__col-12">
-				<header-back-button :back-button="backButton" v-if="backButton.title && $device.isMobile"/>
+				<header-back-button :back-button="backButton"
+				                    v-if="backButton.title && $device.isMobile" />
 				<div v-else
 				     class="page-header__nav-wrap makes">
 					<ul class="makes__list makes__list--header">
 						<li class="makes__item"
 						    v-for="index in 8"
 						    :key="index">
-							<nuxt-link :title="allMarks[index].title" :to="'/used/' + allMarks[index].slug"
+							<nuxt-link :title="allMarks[index].title"
+							           :to="'/used/' + allMarks[index].slug"
 							           @click.native="navMarkClick()"
 							           class="makes__link">
 								<div class="makes__title">{{ allMarks[index].title }}</div>
@@ -61,8 +68,8 @@
 				</button>
 			</nav>
 		</div>
-
-
+		
+		
 		<!--TODO анимация выпадающих списков в хедере-->
 		<transition name="menu">
 			<modal-makes v-show="modalMarks" />
@@ -98,8 +105,12 @@ export default {
 			marks: 'marks/marks/allMarks',
 			folders: 'folders/folders/folders',
 			backButton: 'header/header/backButton',
-			mobileSearch: 'modal/modal-search/mobileSearch'
+			mobileSearch: 'modal/modal-search/mobileSearch',
+			dealerPhone: 'header/header/dealerPhone'
 		}),
+		currentPhone() {
+			return this.dealerPhone ? this.dealerPhone : this.settings.phone
+		},
 		currentMark() {
 			return this.marks.filter(item => this.$route.params.mark === item.slug)[0]
 		},
