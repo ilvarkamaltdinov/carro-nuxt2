@@ -43,7 +43,7 @@ export default {
             // return formatter.format(value);
         },
         toCurrencyValue(value) {
-            return Number(value).toLocaleString('ru')
+            return new Intl.NumberFormat("ru-RU").format(value);
             // let formatter = new Intl.NumberFormat('ru-RU').format(value);
             // return formatter
         },
