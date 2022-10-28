@@ -51,7 +51,7 @@
 			<div class="grid grid--container">
 				<benefits class="car__benefits"
 				          :benefits="benefitsCar" />
-				<car-credit v-if="offer.is_active"
+				<car-credit v-if="offer && offer.is_active"
 				            :offer="offer" />
 			</div>
 		</section>
@@ -92,6 +92,9 @@ export default {
 				external_id: Number(this.$route.params.car)
 			}
 			let response = await this.request({query: offer, variables: variables})
+			if (!this.validateCategoryOffer(response.data.offer.category_enum)) {
+				return this.$nuxt.error({statusCode: 404})
+			}
 			await this.setOffer(response.data.offer)
 			await this.setDealerPhone(response.data.offer.dealer.phone)
 			await this.sendYandexCommercial()
@@ -136,6 +139,7 @@ export default {
 	},
 	destroyed() {
 		this.setComponentCatalog('')
+		this.setOffer(null)
 	},
 	methods: {
 		...mapMutations({
@@ -150,6 +154,9 @@ export default {
 			request: 'filters/filters/request',
 			openModal: 'modal/modal-main/openModal'
 		}),
+		validateCategoryOffer(category){
+			return this.$route.params.category === category
+		},
 		sendMyTarget() {
 			if (process.client) {
 				_tmr.push({

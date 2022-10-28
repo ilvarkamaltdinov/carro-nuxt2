@@ -17,6 +17,7 @@ fragment OfferPage on Offer {
     is_active
     external_id
     name
+    category_enum
     price
     run
     vin
