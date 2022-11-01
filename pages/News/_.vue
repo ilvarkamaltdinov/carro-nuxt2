@@ -15,26 +15,36 @@ import {mapGetters} from "vuex";
 
 export default {
 	mixins: [article, jsonld],
-	data() {
-		return {
-			crumbs: [
+	computed: {
+		...mapGetters({
+			domain: 'domain'
+		}),
+		crumbs(){
+			let title = this.article.page_title?.split(' ')
+			title = title ? (title[0] + ' ' + title[1] + ' ' + title[2] + ' ...') : ''
+			return [
 				{
 					title: 'Главная',
 					link: '/',
 					active: false
 				},
 				{
+					title: 'Блог',
+					link: '/blog',
+					active: true
+				},
+				{
 					title: 'Новости',
 					link: '/news',
+					active: true
+				},
+				{
+					title,
+					link: '/news',
 					active: false
-				}
+				},
 			]
 		}
-	},
-	computed: {
-		...mapGetters({
-			domain: 'domain'
-		})
 	},
 	head() {
 		let title = (this.article.long_title ? this.article.long_title : this.article.page_title) + ' — CARRO'

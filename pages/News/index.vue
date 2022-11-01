@@ -23,9 +23,14 @@ export default {
 					active: false
 				},
 				{
+					title: 'Блог',
+					link: '/blog',
+					active: true
+				},
+				{
 					title: 'Новости',
 					link: '/news',
-					active: true
+					active: false
 				}
 			]
 		}
