@@ -124,6 +124,7 @@ export default {
 						drive_type_id_array: this.$numberToArray(this.$route.query.drive_type_id_array),
 						body_type_id_array: this.$numberToArray(this.$route.query.body_type_id_array),
 						price_from: Number(this.$route.query.price_from),
+						dateFormat: 'j F Y года.',
 						price_to: Number(this.$route.query.price_to),
 						year_from: Number(this.$route.query.year_from),
 						year_to: Number(this.$route.query.year_to),
