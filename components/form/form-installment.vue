@@ -8,7 +8,7 @@
 						0%
 					</span>
 				</h2>
-				<span class="heading-group__label">Получите одобрение за 5 минут</span>
+				<!-- <span class="heading-group__label">Получите одобрение за 5 минут</span> -->
 			</div>
 			<!--<rating :max="100"-->
 			<!--        percent-->

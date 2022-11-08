@@ -1,5 +1,6 @@
 <template>
 	<div class="modal__wrap">
+		<benefits :has-modal="false" modal :benefits="benefitsCredit"/>
 		<div class="application application--modal grid__col-12 grid grid--application grid--application-modal">
 			<div class="application__form grid__col-4">
 				<form-credit :has-chose="false"
@@ -13,7 +14,6 @@
 			</div>
 			<application-banks class="grid__col-4" />
 		</div>
-		<benefits :has-modal="false" modal :benefits="benefitsCredit"/>
 	</div>
 </template>
 <script>

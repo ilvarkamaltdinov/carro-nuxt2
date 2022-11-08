@@ -1,10 +1,10 @@
 export const state = () => ({
     benefitModal: false,
     benefit: {},
-    benefitsCredit: ['sale', 'guaranty', 'first-pay', 'first-pay-trade', 'docs', 'insurance'],
-    benefitsTradeIn: ['sale-trade', 'guaranty', 'value-market', 'first-pay-trade', 'docs', 'fast-time'],
+    benefitsCredit: ['sale', 'guaranty', 'docs', 'first-pay', 'first-pay-trade', 'insurance'],
+    benefitsTradeIn: ['sale-trade', 'guaranty', 'docs', 'value-market', 'first-pay-trade', 'fast-time'],
     benefitsBuyout: ['fast-pay', 'value-market', 'value-man', 'value-free', 'docs', 'fast-time'],
-    benefitsCar: ['guaranty', 'credit', 'first-pay-trade', 'docs', 'tires', 'insurance'],
+    benefitsCar: ['guaranty', 'credit', 'docs', 'first-pay-trade', 'tires', 'insurance'],
     benefitsCreditMobile: ['docs', 'insurance'],
     benefits: [
         {
@@ -65,7 +65,7 @@ export const state = () => ({
         },
         {
             text: 'ОСАГО',
-            text_strong: 'за наш счет',
+            text_strong: 'в подарок',
             icon: 'insurance',
             description: 'При покупке автомобиля в кредит через CARRO каждый клиент получает ОСАГО в подарок.',
             slug: 'insurance',
