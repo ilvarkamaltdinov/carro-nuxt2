@@ -20,20 +20,23 @@
 						class="form__field-wrap form__field-wrap--car ">
 					<button class="form__field"
 					        @click.prevent="choseCar()">
-
-						{{ currentCar ? currentCar.name : 'Выбрать автомобиль' }}<span v-if="currentCar">, {{ currentCar.price | toCurrency }}
+						
+						{{ currentCar ? currentCar.name : 'Выбрать автомобиль' }}
+						<span v-if="currentCar">, {{ currentCar.price | toCurrency }}
 						</span>
-
+					
 					</button>
 					<svg-icon name="icon-form"
 					          class="icon form__car-icon" />
 				</label>
 			</fieldset>
-			<div class="catalog form__catalog" v-if="$device.isMobile && (offer || currentCar)">
+			<div class="catalog form__catalog"
+			     v-if="$device.isMobile && (offer || currentCar)">
 				<catalog-item-large-mobile-form :is-form="true"
 				                                :offer="offer||currentCar" />
 			</div>
 			<form-credit-calculator
+					v-if="calculator"
 					@changePeriod="changePeriod"
 					@changePayment="changePayment"
 					:params="creditParams"
@@ -94,6 +97,7 @@ import filters from "@/mixins/filters";
 export default {
 	mixins: [formValidation, filters],
 	props: {
+		calculator: Boolean,
 		hasChose: {
 			type: Boolean,
 			default: true
@@ -188,7 +192,7 @@ export default {
 			setPercent: 'banks/SET_PERCENT',
 			setCurrentCar: 'form/form-credit/SET_CURRENT_CAR',
 			setFocusShowFixes: 'car/car/SET_FOCUS_SHOW_FIXED'
-
+			
 		}),
 		choseCar() {
 			this.error = ''
@@ -203,7 +207,9 @@ export default {
 			if (this.hasChose) {
 				if (!this.currentCar) {
 					this.error = 'invalid_car'
-					setTimeout(function () {window.scrollTo(0, -100);}, 1);
+					setTimeout(function () {
+						window.scrollTo(0, -100);
+					}, 1);
 					return false
 				}
 			}
@@ -239,8 +245,8 @@ export default {
 					client_name: this.form.name.value,
 					client_phone: this.form.phone.value,
 					client_age: this.form.date.value,
-					credit_initial_fee: this.form.paymentValue.toString(),
-					credit_period: this.form.periodValue.toString(),
+					credit_initial_fee: this.form.paymentValue?.toString(),
+					credit_period: this.form.periodValue?.toString(),
 				}
 				// utm
 				if (localStorage.utm_source) {
@@ -258,7 +264,7 @@ export default {
 				if (localStorage.utm_content) {
 					formData.utm_content = localStorage.utm_content
 				}
-
+				
 				await this.sendForm(formData)
 				await this.closeModal()
 			}

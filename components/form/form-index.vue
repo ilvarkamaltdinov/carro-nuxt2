@@ -1,6 +1,6 @@
 <template>
 	<div class="page-main__credit-index grid__col-4">
-		<form-credit :offer="currentCar" />
+		<form-credit calculator :offer="currentCar" />
 	</div>
 </template>
 <script>
