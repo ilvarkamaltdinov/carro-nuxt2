@@ -2,8 +2,7 @@
 	<div class="catalog__filter filter">
 		<div class="filter__catalog-wrap">
 			<div class="filter__buttons-wrap">
-				<div class="filter__buttons-filter"
-				     v-if="!modal">
+				<div class="filter__buttons-filter" v-if="!modal">
 					<button-filter @click="openFilter()" />
 				</div>
 				<div tabindex="1"
@@ -37,7 +36,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="filter__buttons-wrap">
+			<div class="filter__buttons-wrap filter__buttons-wrap--view">
 				<button-view-s :modal="modal"
 				               @click="changeView('s')" />
 				<button-view-l :modal="modal"
@@ -56,10 +55,10 @@ export default {
 		return {
 			isActive: false,
 			sortList: {
-				'price|asc': 'Цена: Сначала дешевле',
-				'price|desc': 'Цена: Сначала дороже',
-				'run|asc': 'Пробег: Минимальный',
-				'year|desc': 'Год: Сначала новее'
+				'price|asc': 'Сначала дешевле',
+				'price|desc': 'Сначала дороже',
+				'year|desc': 'Сначала новее',
+				'run|asc': 'Минимальный пробег'
 			}
 		}
 	},
