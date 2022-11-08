@@ -52,6 +52,12 @@
   }
 }
 
+@media (max-width: $mobile-width-only) {
+  .heading-group--form {
+    margin-bottom: 0;
+  }
+}
+
 @media (min-width: $tablet-width) {
   .heading-group--h1 {
     margin-bottom: 0;

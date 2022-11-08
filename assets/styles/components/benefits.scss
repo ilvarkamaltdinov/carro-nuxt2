@@ -58,6 +58,10 @@
     margin: 0 -16px;
   }
 
+  .benefits--modal .benefits__list--car {
+    margin-bottom: -24px;
+  }
+
   .benefits__list {
     @include horizontal-scroll;
     padding-top: 32px;
