@@ -2,16 +2,16 @@
 	<div class="makes">
 		<div class="makes__wrap">
 			<ul class="makes__list makes__list--popular">
-				<makes-item-popular v-for="(item, index) in 10"
-				                    @chooseMark="chooseMark(allMarks[item])"
+				<makes-item-popular v-for="item in popular"
+				                    @chooseMark="chooseMark(item)"
 				                    :for-chose-modal="forChoseModal"
-				                    :slug="allMarks[item].slug"
+				                    :slug="item.slug"
 				                    @click="setModalMarks(false)"
-				                    :title="allMarks[item].title"
-				                    :key="index" />
+				                    :title="item.title"
+				                    :key="item.id" />
 			</ul>
 			<ul class="makes__list makes__list--all">
-				<makes-item v-for="(item, index) in sortedMarks"
+				<makes-item v-for="(item, index) in allMarks"
 				            :slug="item.slug"
 				            :active="item === currentMark"
 				            :for-chose-modal="forChoseModal"
@@ -36,13 +36,17 @@ export default {
 	computed: {
 		...mapGetters({
 			allMarks: 'marks/marks/allMarks',
+			popularMarks: 'marks/marks/popularMarks',
 			currentMark: 'modal/modal-choose/currentMark'
 		}),
-		sortedMarks(){
-			return this.$_.sortBy(this.allMarks, [function (mark) {
-				return mark.title;
-			}])
+		popular() {
+			return this.popularMarks.slice(0, 10)
 		}
+		// sortedMarks() {
+		// 	return this.$_.sortBy(this.allMarks, [function (mark) {
+		// 		return mark.title;
+		// 	}])
+		// }
 	},
 	methods: {
 		...mapActions({

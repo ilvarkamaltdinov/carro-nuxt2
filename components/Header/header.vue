@@ -49,12 +49,12 @@
 						<li class="makes__item"
 						    v-for="index in 8"
 						    :key="index">
-							<nuxt-link :title="allMarks[index].title"
-							           :to="'/used/' + allMarks[index].slug"
+							<nuxt-link :title="popularMarks[index].title"
+							           :to="'/used/' + popularMarks[index].slug"
 							           @click.native="navMarkClick()"
 							           class="makes__link">
-								<div class="makes__title">{{ allMarks[index].title }}</div>
-								<div class="makes__count">{{ allMarks[index].offers_count }}</div>
+								<div class="makes__title">{{ popularMarks[index].title }}</div>
+								<div class="makes__count">{{ popularMarks[index].offers_count }}</div>
 							</nuxt-link>
 						</li>
 					</ul>
@@ -106,7 +106,8 @@ export default {
 			folders: 'folders/folders/folders',
 			backButton: 'header/header/backButton',
 			mobileSearch: 'modal/modal-search/mobileSearch',
-			dealerPhone: 'header/header/dealerPhone'
+			dealerPhone: 'header/header/dealerPhone',
+			popularMarks: 'marks/marks/popularMarks'
 		}),
 		currentPhone() {
 			return this.dealerPhone ? this.dealerPhone : this.settings.phone
