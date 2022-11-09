@@ -2,12 +2,12 @@
 	<div class="makes">
 		<div class="makes__wrap">
 			<ul class="makes__list makes__list--popular">
-				<makes-item-popular v-for="(item, index) in 10"
-				                    @chooseMark="chooseMark(allMarks[item])"
+				<makes-item-popular v-for="item in popular"
+				                    @chooseMark="chooseMark(item)"
 				                    :for-chose-modal="true"
-				                    :slug="allMarks[item].slug"
-				                    :title="allMarks[item].title"
-				                    :key="index" />
+				                    :slug="item.slug"
+				                    :title="item.title"
+				                    :key="item.id" />
 			</ul>
 			<div class="makes__group"
 			     v-for="letter in alphabetMarks"
@@ -41,8 +41,12 @@ export default {
 		...mapGetters({
 			allMarks: 'marks/marks/allMarks',
 			alphabetMarks: 'marks/marks/alphabetMarks',
-			currentMark:'modal/modal-choose/currentMark'
-		})
+			currentMark:'modal/modal-choose/currentMark',
+			popularMarks: 'marks/marks/popularMarks'
+		}),
+		popular() {
+			return this.popularMarks.slice(0, 10)
+		}
 	},
 	methods: {
 		...mapActions({
