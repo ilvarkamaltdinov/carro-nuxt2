@@ -253,6 +253,17 @@
 @media (max-width: $mobile-width-only) {
   .catalog--used .tabs__list {
     margin: -24px 0;
+    margin-bottom: -32px;
+  }
+
+  .catalog__item {
+    position: relative;
+  }
+
+  .catalog__vin {
+    position: absolute;
+    top: 96px;
+    left: 16px;
   }
 
   .catalog__more-buttons-wrap {
@@ -384,6 +395,10 @@
     padding: 0;
     box-shadow: none;
     grid-template-rows: 1fr;
+  }
+
+  .catalog__item--form .catalog__vin {
+    display: none;
   }
 
   // .catalog .button--show {

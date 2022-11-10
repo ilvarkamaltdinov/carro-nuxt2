@@ -170,6 +170,16 @@
 .form__total-payment {
   @include font-desktop-h3;
   color: $colorSuccess;
+  display: flex;
+  align-items: center;
+}
+
+.form__total-payment .tippy {
+  margin-left: 8px;
+}
+
+.form__total-payment .tippy--question {
+  fill: $colorBgActive;
 }
 
 .form__agree {

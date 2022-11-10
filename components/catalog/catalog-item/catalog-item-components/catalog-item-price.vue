@@ -2,7 +2,7 @@
 	<div class="catalog__price-wrap">
 		<div class="catalog__price">{{ price | toCurrency }}</div>
 		<!--<div class="catalog__oldprice">1 585 000 ₽</div>-->
-		<div class="catalog__credit-price">от {{ price | access_acredit }} / мес.</div>
+		<div class="catalog__credit-price">{{ price | access_acredit }} / мес. без взноса</div>
 		<div class="catalog__vin vin"
 		     v-if="vin"
 		     v-tippy="{

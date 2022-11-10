@@ -6,7 +6,7 @@
 			</div>
 			<tippy-question text="Цена актуальна при покупке в кредит" />
 			<div class="car__price-payment">
-				В кредит от {{ offer.price | access_acredit }} / мес.
+				{{ offer.price | access_acredit }} / мес. без взноса
 			</div>
 		</div>
 		<div v-if="offer.is_active" class="car__buy-block">

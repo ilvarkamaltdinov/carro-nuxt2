@@ -13,6 +13,7 @@
 			<div class="form__total-label">Ваш платеж:</div>
 			<div class="form__total-payment">
 				{{ total || '-' }}
+        <tippy-question text="Платеж является ориентировочным и зависит от конкретного банка и кредитной программы." />
 			</div>
 		</div>
 	</fieldset>
@@ -82,7 +83,7 @@ export default {
 		changePayment(value) {
 			this.paymentValue = parseInt(value)
 			this.calculate()
-			
+
 		},
 		calculate() {
 			if (this.offer) {
