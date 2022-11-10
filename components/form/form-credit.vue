@@ -3,7 +3,7 @@
 		<div class="heading-group heading-group--form">
 			<div class="heading-group__wrap">
 				<h2 class="heading heading--h2">
-					Автокредит
+					Автокредит от
 					<span class="heading__promo">
 						{{ settings.credit_percent }}
 					</span>
