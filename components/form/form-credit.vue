@@ -3,7 +3,7 @@
 		<div class="heading-group heading-group--form">
 			<div class="heading-group__wrap">
 				<h2 class="heading heading--h2">
-					Автокредит
+					Автокредит от
 					<span class="heading__promo">
 						{{ settings.credit_percent }}
 					</span>
@@ -124,9 +124,7 @@ export default {
 					'20%',
 					'30%',
 					'40%',
-					'50%',
-					'60%',
-					'70%'
+					'50%'
 				],
 				period: 84,
 				payment: 0,
