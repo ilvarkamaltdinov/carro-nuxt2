@@ -78,9 +78,10 @@ export default {
 		},
 		showAllButton() {
 			if (this.isFolders) {
-				return this.folders?.length >= 3
-			} else if (this.isGenerations) {
-				return this.filters.generation?.length >= 2
+				return this.folders?.length > 8
+			}
+			else if (this.isGenerations) {
+				return this.filters.generation?.length > 4
 			}
 		},
 		chosenPrice() {
@@ -112,7 +113,8 @@ export default {
 			}
 		},
 		onToggleAll() {
-			setTimeout(() => {2
+			setTimeout(() => {
+				2
 				window.scrollTo(1, -100);
 				localStorage.foldersTabsLeft = 0
 				localStorage.generationsTabsLeft = 0

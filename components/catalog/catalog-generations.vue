@@ -2,12 +2,11 @@
 	<div class="grid__col-12">
 		<div class="tabs"
 		     v-if="generations.length">
-			<ul :class="{'tabs__list--all':isAll}"
-			    class="tabs__list"
+			<ul class="tabs__list tabs__list--all"
 			    ref="tabs"
 			    @scroll="scrollGenerations">
 				<li role="presentation"
-				    v-for="(tab, index) in generations"
+				    v-for="(tab, index) in sortedGenerations"
 				    :ref="'tab' + index"
 				    :class="{'tabs__item--active':tab.slug === $route.params.car}"
 				    class="tabs__item">
@@ -33,6 +32,15 @@ export default {
 	props: {
 		generations: Array,
 		isAll: Boolean
+	},
+	computed:{
+		sortedGenerations() {
+			let generations  =  this.generations
+			if(this.$device.isMobile){
+				generations = generations.slice(0, this.isAll ? generations.length: 4)
+			}
+			return generations
+		}
 	},
 	mounted() {
 		this.$nextTick(() => {
