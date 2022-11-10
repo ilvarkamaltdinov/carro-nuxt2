@@ -66,10 +66,15 @@
 
   .tabs__list--all {
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 4px 8px;
     width: 100%;
     margin: auto;
     padding: 16px;
+  }
+
+  .tabs__list--all-models .tabs__item {
+    width: 46%;
+    width: calc(50% - 16px);
   }
 
   .tabs__list--all .tabs__item {

@@ -94,6 +94,11 @@
   margin: 0 16px;
 }
 
+.slider-index__item--black .slider-index__circle {
+  background: $colorText;
+  box-shadow: none;
+}
+
 .slider-index__circle {
   width: 320px;
   aspect-ratio: 1 / 1;
