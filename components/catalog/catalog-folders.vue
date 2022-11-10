@@ -1,12 +1,13 @@
 <template>
 	<div class="grid__col-12">
-		<div class="tabs" v-if="folders.length">
-			<ul :class="{'tabs__list--all':isAll}"
-			    class="tabs__list"
+		<div class="tabs"
+		     v-if="folders.length">
+			<ul class="tabs__list tabs__list--all"
 			    ref="tabs"
 			    @scroll="scrollFolders">
 				<li role="presentation"
 				    v-for="(tab, index) in sortedFoldersByCount"
+				    :key="tab.slug"
 				    :ref="'tab' + index"
 				    :class="{'tabs__item--active':tab.slug === $route.params.model}"
 				    class="tabs__item">
@@ -27,8 +28,8 @@ import {mapGetters} from "vuex"
 import filters from "@/mixins/filters";
 
 export default {
-	watch:{
-		isAll(){
+	watch: {
+		isAll() {
 			this.$nextTick(() => {
 				this.$refs.tabs.scrollLeft = 0
 			})
@@ -46,12 +47,21 @@ export default {
 		})
 	},
 	computed: {
+		// showLimit(){
+		// 	return this.sortedFoldersByCount.length < 8 ? this.sortedFoldersByCount.length : 8
+		// 	// return this.isAll ? this.folders.length : 8
+		// },
 		sortedFoldersByCount() {
-			return this.$_.sortBy(this.folders, [function (folder) {
+			let sorted = this.$_.sortBy(this.folders, [(folder) => {
 				return folder.offers_count;
-			}]).reverse();
+			}]).reverse()
+			if(this.$device.isMobile){
+				sorted = sorted.slice(0, this.isAll ? sorted.length: 8)
+			}
+			return sorted
 		}
 	},
+	
 	beforeDestroy() {
 		localStorage.generationsTabsLeft = 0
 	},
