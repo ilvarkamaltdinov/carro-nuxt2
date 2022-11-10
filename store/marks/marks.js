@@ -1,10 +1,10 @@
 export const state = () => ({
     allMarks: [],
     popularMarks: [
-        'audi', 'bmw', 'ford', 'hyundai', 'kia', 'mazda', 'mercedes-benz', 'mitsubishi', 'nissan', 'skoda'
+        'audi', 'bmw', 'mercedes-benz', 'ford', 'hyundai', 'kia', 'mazda', 'mitsubishi', 'nissan', 'skoda'
     ],
     allMarksCount: null,
-    alphabetMarks: [],
+    alphabetMarks: []
 })
 export const getters = {
     allMarks: (state) => {
@@ -25,16 +25,14 @@ export const getters = {
 export const mutations = {
     SET_ALL_MARKS(state, data) {
         //Подсчет общего кол-ва автомобилей
-        let popular = data.filter(mark => {
-            return state.popularMarks.find((item)=> item === mark.slug)
-        })
+        const popular = state.popularMarks.map((name) => data.find((mark) => mark.slug === name));
+
         state.popularMarks = popular
         data.forEach(val => {
             state.allMarksCount += val.offers_count
             //разбивка по алфавиту
             state.alphabetMarks.push(val.title[0])
             //
-
         })
 
         state.alphabetMarks = [...new Set(state.alphabetMarks)].sort()

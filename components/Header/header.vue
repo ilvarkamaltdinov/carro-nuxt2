@@ -47,14 +47,14 @@
 				     class="page-header__nav-wrap makes">
 					<ul class="makes__list makes__list--header">
 						<li class="makes__item"
-						    v-for="index in 8"
-						    :key="index">
-							<nuxt-link :title="popularMarks[index].title"
-							           :to="'/used/' + popularMarks[index].slug"
+						    v-for="item in popular"
+						    :key="item.slug">
+							<nuxt-link :title="item.title"
+							           :to="'/used/' + item.slug"
 							           @click.native="navMarkClick()"
 							           class="makes__link">
-								<div class="makes__title">{{ popularMarks[index].title }}</div>
-								<div class="makes__count">{{ popularMarks[index].offers_count }}</div>
+								<div class="makes__title">{{ item.title }}</div>
+								<div class="makes__count">{{ item.offers_count }}</div>
 							</nuxt-link>
 						</li>
 					</ul>
@@ -109,6 +109,9 @@ export default {
 			dealerPhone: 'header/header/dealerPhone',
 			popularMarks: 'marks/marks/popularMarks'
 		}),
+		popular(){
+			return this.popularMarks.slice(0,8)
+		},
 		currentPhone() {
 			return this.dealerPhone ? this.dealerPhone : this.settings.phone
 		},
