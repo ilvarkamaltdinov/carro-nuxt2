@@ -12,7 +12,7 @@
 					               :small-webp="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@1x.webp`)}`"
 					               :big="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@2x.png`)}`"
 					               :big-webp="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@2x.webp`)}`" />
-					
+
 					<picture-slide classes="slider-index__media slider-index__media--car lazyload"
 					               aos="fade-right"
 					               :small="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@1x.png`)}`"
@@ -35,6 +35,7 @@
 		</a>
 		<nuxt-link v-else
 		           :to="slide.link"
+               :class="{'slider-index__item--black': slide.id === 10}"
 		           class="slider-index__item">
 			<div class="slider-index__media-wrap">
 				<div class="slider-index__media">
@@ -44,7 +45,7 @@
 					               :small-webp="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@1x.webp`)}`"
 					               :big="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@2x.png`)}`"
 					               :big-webp="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-element-${slide.id}@2x.webp`)}`" />
-					
+
 					<picture-slide classes="slider-index__media slider-index__media--car lazyload"
 					               aos="fade-right"
 					               :small="`${require(`~/assets/img/slider-index/slider-index-${slide.id}/slider-index-car-${slide.id}@1x.png`)}`"
