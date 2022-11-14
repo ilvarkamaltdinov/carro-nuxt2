@@ -88,9 +88,9 @@
 
   .benefits__list--car {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: flex-start;
-    gap: 14px;
+    gap: 16px;
   }
 
   .benefits--modal .benefits__item {
