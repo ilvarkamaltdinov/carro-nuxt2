@@ -67,6 +67,7 @@ export default {
 		...mapGetters({
 			offer: 'catalog/catalog-cars/offer',
 			likesArray: 'favorite/favorite/likesArray',
+      settings: "settings/settings/settings"
 		})
 	},
 	methods: {
@@ -97,8 +98,8 @@ export default {
 			let payload = {
 				modal_data: carInfo,
 				modal_component: 'modal-credit',
-				modal_title: 'Заявка на автокредит',
-				modal_sub_title: carInfo.name
+        modal_title: `Автокредит от <span class="heading__promo">${this.settings.credit_percent}</span>`,
+				modal_sub_title: ""
 			}
 			this.openModal(payload)
 		},
@@ -107,7 +108,7 @@ export default {
 				modal_data: carInfo,
 				modal_component: 'modal-callback',
 				modal_title: 'Закажите звонок по автомобилю',
-				modal_sub_title: carInfo.name
+				modal_sub_title: ''
 			}
 			this.openModal(payload)
 		},
@@ -125,7 +126,7 @@ export default {
 				modal_data: carInfo,
 				modal_component: 'modal-tradeIn',
 				modal_title: 'Заявка на Trade-In',
-				modal_sub_title: carInfo.name
+				modal_sub_title: ""
 			}
 			this.openModal(payload)
 		},

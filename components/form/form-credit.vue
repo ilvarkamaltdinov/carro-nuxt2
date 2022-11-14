@@ -3,11 +3,10 @@
 		<div class="heading-group heading-group--form">
 			<div class="heading-group__wrap">
 				<h2 class="heading heading--h2">
-          {{ offer ? offer.name : currentCar ? currentCar.name : ''}}
-<!--					Автокредит от-->
-<!--					<span class="heading__promo">-->
-<!--						{{ settings.credit_percent }}-->
-<!--					</span>-->
+					Автокредит от
+					<span class="heading__promo">
+						{{ settings.credit_percent }}
+					</span>
 				</h2>
 				<!-- <span class="heading-group__label">Получите одобрение за 5 минут</span> -->
 			</div>

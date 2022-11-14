@@ -1,5 +1,9 @@
 <template>
 	<article class="catalog__item catalog__item--form">
+    <catalog-item-title :is-form="isForm"
+                        @click="linkClick"
+                        :url="currentUrl"
+                        :offer="offer" />
 		<div class="catalog__offer">
 			<catalog-item-price :vin="offer.vin" :price="offer.price" />
 		</div>
