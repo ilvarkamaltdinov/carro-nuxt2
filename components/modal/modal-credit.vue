@@ -3,7 +3,7 @@
 		<benefits :has-modal="false" modal :benefits="benefitsCredit"/>
 		<div class="application application--modal grid__col-12 grid grid--application grid--application-modal">
 			<div class="application__form grid__col-4">
-				<form-credit :has-chose="false"
+				<form-credit calculator :has-chose="false"
 				             :offer="modalData" />
 			</div>
 			<div class="application__catalog application__catalog--modal catalog grid__col-4">

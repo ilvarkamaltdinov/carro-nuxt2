@@ -46,7 +46,8 @@ export default {
 	computed: {
 		...mapGetters({
 			likesArray: 'favorite/favorite/likesArray',
-			currentCar: 'modal/modal-choose/currentCar'
+			currentCar: 'modal/modal-choose/currentCar',
+      settings: 'settings/settings/settings'
 		}),
 		isEqual(){
 			if(this.currentCar){
@@ -122,8 +123,8 @@ export default {
 			let payload = {
 				modal_data: this.offer,
 				modal_component: 'modal-credit',
-				modal_title: 'Заявка на автокредит',
-				modal_sub_title: this.offer.name
+				modal_title: `Автокредит от <span class="heading__promo">${this.settings.credit_percent}</span>`,
+				modal_sub_title: ""
 			}
 			await this.openModal(payload)
 		}
