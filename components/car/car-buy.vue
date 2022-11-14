@@ -108,7 +108,7 @@ export default {
 				modal_data: carInfo,
 				modal_component: 'modal-callback',
 				modal_title: 'Закажите звонок по автомобилю',
-				modal_sub_title: ''
+				modal_sub_title: carInfo.name
 			}
 			this.openModal(payload)
 		},
@@ -134,8 +134,8 @@ export default {
 			let payload = {
 				modal_data: carInfo,
 				modal_component: 'modal-installment',
-				modal_title: 'Заявка на рассрочку',
-				modal_sub_title: carInfo.name
+				modal_title: `Рассрочка <span class="heading__promo">0 %</span>`,
+				modal_sub_title: ''
 			}
 			this.openModal(payload)
 		},
