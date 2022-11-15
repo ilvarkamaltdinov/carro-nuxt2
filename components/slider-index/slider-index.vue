@@ -108,13 +108,13 @@ export default {
     }),
     slides() {
       return [
-        {
-          id: 10,
-          heading: `Черная пятница 11.11 на carro.ru`,
-          content:
-            "Дополнительная скидка и подарки за заявку на автокредит",
-          link: "/credit",
-        },
+        // {
+        //   id: 10,
+        //   heading: `Черная пятница 11.11 на carro.ru`,
+        //   content:
+        //     "Дополнительная скидка и подарки за заявку на автокредит",
+        //   link: "/credit",
+        // },
         {
           id: 6,
           heading: `Супер-автокредит от ${this.settings.credit_percent} годовых`,
