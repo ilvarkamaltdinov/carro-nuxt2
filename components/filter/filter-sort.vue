@@ -154,7 +154,7 @@ export default {
             query.page = 1
           }
 					this.setSort(value)
-					await this.$router.push({path: this.$route.fullPath, query: {sort: value}});
+					await this.$router.push({path: this.$route.fullPath, query: query});
 				}
 			} else {
 				if (this.modal) {
@@ -166,7 +166,7 @@ export default {
             query.page = 1
           }
 					this.setSort(sort)
-					await this.$router.push({path: this.$route.fullPath, query: {sort: sort}});
+					await this.$router.push({path: this.$route.fullPath, query: query});
 				}
 			}
 
