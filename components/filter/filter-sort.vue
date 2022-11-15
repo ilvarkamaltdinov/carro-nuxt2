@@ -149,6 +149,10 @@ export default {
 					this.setModalSort(value)
 					await this.getOffers()
 				} else {
+          let query = {sort: value}
+          if(Number(this.$route.query.page) > 1){
+            query.page = 1
+          }
 					this.setSort(value)
 					await this.$router.push({path: this.$route.fullPath, query: {sort: value}});
 				}
@@ -157,6 +161,10 @@ export default {
 					this.setModalSort(sort)
 					await this.getOffers()
 				} else {
+          let query = {sort: sort}
+          if(Number(this.$route.query.page) > 1){
+            query.page = 1
+          }
 					this.setSort(sort)
 					await this.$router.push({path: this.$route.fullPath, query: {sort: sort}});
 				}
