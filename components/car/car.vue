@@ -192,7 +192,7 @@ export default {
 			let payload = {
 				modal_data: this.offer,
 				modal_component: 'modal-callback',
-				modal_title: 'Заявка на обратный звонок',
+				modal_title: 'Остались вопросы? Перезвоним Вам!',
 				modal_sub_title: this.offer.name
 			}
 			this.openModal(payload)

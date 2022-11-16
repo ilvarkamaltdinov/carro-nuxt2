@@ -95,6 +95,19 @@
   top: 106px;
 }
 
+.modal--credit .heading-group--form {
+  display: none;
+}
+
+.modal--credit .heading-group__label {
+  display: none;
+}
+
+.modal--credit .heading-group__wrap .heading.heading--h1 {
+  white-space: normal;
+  margin-bottom: 0;
+}
+
 @media (max-width: $iphone-mini-only) {
   .modal__logo {
     max-width: 96px;
@@ -179,6 +192,9 @@
 
   .modal__options ~ .modal__wrap {
     padding-top: 194px;
+  }
+  .modal.modal--credit .modal__options {
+    top: 89px;
   }
 }
 

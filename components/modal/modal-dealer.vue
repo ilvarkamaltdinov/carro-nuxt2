@@ -77,7 +77,7 @@ export default {
 			let payload = {
 				modal_data: modalData,
 				modal_component: 'modal-callback',
-				modal_title: 'Заявка на обратный звонок',
+				modal_title: 'Остались вопросы? Перезвоним Вам!',
 				modal_sub_title: 'Автосалон ' + this.modalData.title
 			}
 			await this.openModal(payload)
