@@ -72,7 +72,7 @@ export default {
     async getOffers($state) {
       let response = await this.filterRequest({
         url: this.$route.path === '/best-moscow-autosalon' ? '/used' : this.$route.path,
-        page: Number(this.offers.current_page + 1),
+        page: this.page,
         dateFormat: 'j F Y года.',
         mark_slug_array: this.$stringToArray(this.$route.query.mark_slug_array),
         folder_slug_array: this.$stringToArray(this.$route.query.folder_slug_array),

@@ -14,9 +14,9 @@
 					           :is-form="true"
 					           :key="offer.id" />
 				</div>
-				
+
 				<client-only>
-					<infinite-loading @infinite="getOffers"
+					<infinite-loading :identifier="infiniteId" @infinite="getOffers"
 					                  :throttle-limit="2500">
 						<div slot="spinner">
 							<div class="catalog__list grid grid--catalog">
@@ -43,16 +43,17 @@ export default {
 		return {
 			offersList: [],
 			page: 1,
-			limit: 8
+			limit: 8,
+      infiniteId: +new Date(),
 		}
 	},
-	watch: {
-		sort() {
-			this.offersList = []
-			this.page = 1
-			this.getOffers()
-		}
-	},
+  watch: {
+    sort() {
+      this.page = 1
+      this.offersList = []
+      this.infiniteId += 1
+    }
+  },
 	methods: {
 		...mapMutations({
 			setCallbackCar: 'modal/modal-callback/SET_CALLBACK_CAR',
@@ -114,9 +115,9 @@ export default {
 				} else {
 					return 'skeleton-card-large'
 				}
-				
+
 			}
-			
+
 		},
 		component() {
 			if (this.$device.isTablet) {
