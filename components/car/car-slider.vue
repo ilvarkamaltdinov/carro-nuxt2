@@ -65,13 +65,17 @@ export default {
 			watchSlidesProgress: true,
 			spaceBetween: this.slidesSpaceBetween,
       pagination: {
-				el: '.swiper-pagination',
-				clickable: 'true',
-				type: 'bullets',
-				renderBullet: function (index, className) {
-					return '<span class="' + className + '">' + '<span class="swiper-pagination-bar"></span>' + '<span class="swiper-pagination-progress"></span>' + '</span>';
-				},
-			},
+        el: ".swiper-pagination",
+        type: "fraction",
+      },
+      // pagination: {
+			// 	el: '.swiper-pagination',
+			// 	clickable: 'true',
+			// 	type: 'bullets',
+			// 	renderBullet: function (index, className) {
+			// 		return '<span class="' + className + '">' + '<span class="swiper-pagination-bar"></span>' + '<span class="swiper-pagination-progress"></span>' + '</span>';
+			// 	},
+			// },
 			navigation: {
 				nextEl: '.car__slider .swiper-button-next',
 				prevEl: '.car__slider .swiper-button-prev',

@@ -212,6 +212,9 @@
 }
 
 @media (max-width: $mobile-width-only) {
+  .car__slider-wrap {
+    margin-bottom: 16px;
+  }
   .car__stock-promo {
     display: block;
   }
@@ -234,8 +237,18 @@
   }
 
   .car__slider .swiper-pagination {
-    padding: 0 16px;
-    justify-content: space-between;
+    padding: 0 8px;
+    margin: 0;
+    position: absolute;
+    bottom: 8px;
+    z-index: 99;
+    background: $colorDivider;
+    border-radius: 16px;
+    width: auto;
+    font-size: 12px;
+    justify-content: center;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .car__slider .swiper-pagination-bullet-active {
