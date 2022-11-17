@@ -1,6 +1,13 @@
 <template>
   <div>
-    <div class="catalog__list grid grid--catalog">
+    <div v-if="loading"
+         class="catalog__list"
+         :class="{'grid grid--catalog': !$device.isMobile}">
+      <component :is="skeleton"
+                 v-for="i in 4"
+                 :key="i" />
+    </div>
+    <div class="catalog__list grid grid--catalog" v-else>
       <component :is="catalog"
                  :offer="offer"
                  :key="offer.id"
