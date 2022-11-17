@@ -4,7 +4,7 @@
       <component :is="catalog"
                  :offer="offer"
                  :key="offer.id"
-                 v-for="offer in offersList"/>
+                 v-for="offer in moreOffersData.data"/>
     </div>
     <client-only>
       <infinite-loading :identifier="infiniteId" @infinite="getOffers"
@@ -39,7 +39,6 @@ export default {
   watch: {
     sort() {
       this.page = 1
-      this.offersList = []
       this.infiniteId += 1
     }
   },
@@ -50,6 +49,9 @@ export default {
       loading: 'filters/filters/loading',
       sort: 'filters/filters/sort'
     }),
+    moreOffersData() {
+      return this.offers
+    },
     skeleton() {
       if (this.$device.isTablet) {
         return this.view === 's' ? 'skeleton-card-small' : 'skeleton-card-large'
@@ -89,9 +91,9 @@ export default {
         limit: this.limit
       })
       if (response.data.offers.data.length) {
-        this.page += 1
-        this.offersList.push(...response.data.offers.data)
-        await this.$store.commit('filters/filters/SET_OFFERS', this.offersList)
+        this.page += response.data.offers.current_page
+        this.offers.data = [...this.offers.data, ...response.data.offers.data]
+        await this.$store.commit('filters/filters/SET_OFFERS', this.offers)
         $state.loaded()
       } else {
         $state.complete()
