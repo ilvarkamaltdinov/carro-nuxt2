@@ -37,15 +37,12 @@ import offers from "@/apollo/queries/offer/offers";
 export default {
   data() {
     return {
-      offersList: [],
-      page: 1,
       limit: 8,
       infiniteId: +new Date(),
     }
   },
   watch: {
     sort() {
-      this.page = 1
       this.infiniteId += 1
     }
   },
@@ -81,7 +78,7 @@ export default {
     async getOffers($state) {
       let response = await this.filterRequest({
         url: this.$route.path === '/best-moscow-autosalon' ? '/used' : this.$route.path,
-        page: this.page,
+        page: Number(this.offers.current_page + 1),
         dateFormat: 'j F Y года.',
         mark_slug_array: this.$stringToArray(this.$route.query.mark_slug_array),
         folder_slug_array: this.$stringToArray(this.$route.query.folder_slug_array),
@@ -98,7 +95,7 @@ export default {
         limit: this.limit
       })
       if (response.data.offers.data.length) {
-        this.page += response.data.offers.current_page
+        this.offers.current_page = response.data.offers.current_page
         this.offers.data = [...this.offers.data, ...response.data.offers.data]
         await this.$store.commit('filters/filters/SET_OFFERS', this.offers)
         $state.loaded()
