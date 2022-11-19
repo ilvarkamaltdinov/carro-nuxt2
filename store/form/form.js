@@ -48,36 +48,50 @@ export const actions = {
         //проверяю дилера
         await commit('SET_USER_NAME', variables.client_name)
 
-        //Проверяю type для редиректа на нужную страницу
         if (variables.dealer) {
-            if (variables.dealer === 'avtograd') {
-                thanks_route = '/thanks-avtograd'
-            } else if (variables.dealer === 'prime') {
-                thanks_route = '/thanks-prime'
-            } else if (variables.dealer === 'komm-auto') {
-                thanks_route = '/thanks-comm'
+            switch (variables.type) {
+                case 'credit':
+                    thanks_route = '/thanks-'
+                    break;
+                case 'trade-in':
+                    thanks_route = '/tradein-thanks-'
+                    break;
+                case 'callback':
+                    thanks_route = '/call-thanks-'
+                    break;
+                case 'hire-purchase':
+                    thanks_route = '/rassrochka-thanks-'
+                    break;
+                default:
+                    thanks_route = "/thanks-";
             }
-            delete variables.dealer // Удаляю дилера чтобы не ушел на сервак
+
+            if(variables.dealer === 'komm-auto'){
+                thanks_route += 'comm'
+            } else{
+                thanks_route += variables.dealer
+            }
+
+
         }
-        if (variables.type === 'trade-in') {
-            thanks_route = '/tradein-thanks'
+        else {
+            switch (variables.type) {
+                case 'buyout':
+                    thanks_route = '/buyout-thanks'
+                    break;
+                case 'free-selection':
+                    thanks_route = '/selection-thanks'
+                    break;
+                case 'station':
+                    thanks_route = '/servise-tnx'
+                    break;
+                case 'callback':
+                    thanks_route = '/call-thanks'
+                    break;
+                default:
+                    thanks_route = "/thanks";
+            }
         }
-        if (variables.type === 'callback') {
-            thanks_route = '/call-thanks'
-        }
-        if (variables.type === 'buyout') {
-            thanks_route = '/buyout-thanks'
-        }
-        if (variables.type === 'free-selection') {
-            thanks_route = '/selection-thanks'
-        }
-        if (variables.type === 'hire-purchase') {
-            thanks_route = '/rassrochka-thanks'
-        }
-        if (variables.type === 'station') {
-            thanks_route = '/servise-tnx'
-        }
-        //
 
         let assignVariables = {
             site_id: rootState.site_id
@@ -90,6 +104,8 @@ export const actions = {
                 variables: this.$removeEmptyObjects(params)
             })
             await commit('SET_ORDER_ID', result.data.feedback.id)
+
+
             await this.app.router.push(thanks_route);
             await commit('SET_BUTTON_DISABLED', false)
         } catch (error) {
@@ -99,7 +115,6 @@ export const actions = {
 }
 export const mutations = {
     CLEAR_DATA(state) {
-        console.log('clear')
         state.userName = null
         state.userCar = null
         state.userOrderId = null

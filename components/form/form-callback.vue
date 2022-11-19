@@ -1,7 +1,8 @@
 <template>
 	<form class="form"
 	      @submit.prevent="submitForm()">
-		<div class="catalog form__catalog" v-if="$device.isMobile && offer.mark">
+		<div class="catalog form__catalog"
+		     v-if="$device.isMobile && offer.mark">
 			<catalog-item-large-mobile-form :is-form="true"
 			                                :offer="offer" />
 		</div>
@@ -92,32 +93,33 @@ export default {
 					type: 'callback',
 					client_name: this.form.name.value,
 					client_phone: this.form.phone.value,
+					dealer: this.offer.dealer.slug
 				}
 				// utm
-				if(localStorage.utm_source){
+				if (localStorage.utm_source) {
 					formData.utm_source = localStorage.utm_source
 				}
-				if(localStorage.utm_medium){
+				if (localStorage.utm_medium) {
 					formData.utm_medium = localStorage.utm_medium
 				}
-				if(localStorage.utm_campaign){
+				if (localStorage.utm_campaign) {
 					formData.utm_campaign = localStorage.utm_campaign
 				}
-				if(localStorage.utm_term){
+				if (localStorage.utm_term) {
 					formData.utm_term = localStorage.utm_term
 				}
-				if(localStorage.utm_content){
+				if (localStorage.utm_content) {
 					formData.utm_content = localStorage.utm_content
 				}
-				if(this.offer.dealerModal){
+				if (this.offer.dealerModal) {
 					formData.comment = this.offer.title
-				} else{
+				} else {
 					formData.external_id = this.offer.external_id
 				}
 				await this.setModalCount(1)
 				await this.sendForm(formData)
 				await this.closeModal()
-			
+				
 			}
 		},
 	}
