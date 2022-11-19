@@ -143,7 +143,7 @@ export default {
 			} else if (this.currentCar) {
 				return this.currentCar.dealer
 			}
-		}
+		},
 		formProgress() {
 			let progress = 30
 			if (this.currentCar || this.offer) {
