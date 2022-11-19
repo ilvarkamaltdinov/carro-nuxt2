@@ -137,6 +137,13 @@ export default {
 			// return this.bank.rate ? this.bank.rate : this.$config.default_percent
 			return this.$config.default_percent
 		},
+		currentDealer() {
+			if (this.offer) {
+				return this.offer.dealer
+			} else if (this.currentCar) {
+				return this.currentCar.dealer
+			}
+		}
 		formProgress() {
 			let progress = 30
 			if (this.currentCar || this.offer) {
@@ -215,6 +222,7 @@ export default {
 					chosen_car: this.currentCar || this.offer, //нужно для страницы thanks
 					external_id: this.hasChose ? this.currentCar.external_id : this.offer.external_id,
 					type: 'hire-purchase',
+					dealer: this.currentDealer.slug,
 					client_name: this.form.name.value,
 					client_phone: this.form.phone.value,
 					client_age: this.form.date.value,
