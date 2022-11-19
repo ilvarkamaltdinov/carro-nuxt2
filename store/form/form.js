@@ -72,6 +72,8 @@ export const actions = {
                 thanks_route += variables.dealer
             }
 
+            delete variables.dealer
+
 
         }
         else {
