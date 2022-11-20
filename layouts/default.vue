@@ -11,7 +11,7 @@
 			<modal-benefits />
 		</client-only>
 		<transition :name="hasRouteTransition ? 'page' : ''">
-			<Nuxt />
+			<Nuxt keep-alive :keep-alive-props="{include: ['pages/_mark/index.vue']}"/>
 		</transition>
 		<LazyHydrate never>
 			<Footer />
@@ -132,7 +132,7 @@ export default {
 						limit: 8,
 						page: Number(this.$route.query.page) || 1,
 					}
-					
+
 					delete assignVariables.__typename;
 					if (typeName === 'OfferUrlFilterPaginationType') {
 						// Если это результат для фильтра, отправляем запрос

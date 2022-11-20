@@ -1,5 +1,5 @@
 <template>
-	<a v-if="hasFancy"
+	<div v-if="hasFancy"
 	   data-fancybox="gallery"
 	   :data-src="original"
 	   class="catalog__img-link"
@@ -8,9 +8,9 @@
 		<img class="lazyload"
 		     :data-src="img"
 		     alt="image">
-	</a>
-	<a v-else
-	   :href="url"
+	</div>
+	<NuxtLink v-else
+	   :to="url"
 	   @click.prevent="$emit('click')"
 	   class="catalog__img-link"
      title="Подробнее об автомобиле"
@@ -18,7 +18,7 @@
 		<img class="lazyload"
 		     :data-src="img"
 		     alt="image">
-	</a>
+	</NuxtLink>
 </template>
 <script>
 // import { Fancybox } from "@fancyapps/ui";
