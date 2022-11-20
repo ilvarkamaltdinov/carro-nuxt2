@@ -7,7 +7,7 @@
                  v-for="i in 4"
                  :key="i" />
     </div>
-    <div class="catalog__list grid grid--catalog" v-else  infinite-wrapper>
+    <div class="catalog__list grid grid--catalog" v-else>
       <component :is="catalog"
                  :offer="offer"
                  :key="offer.id"
@@ -15,7 +15,7 @@
     </div>
     <client-only>
       <infinite-loading :identifier="infiniteId" @infinite="getOffers"
-                        :throttle-limit="2500" force-use-infinite-wrapper>
+                        :throttle-limit="2500">
         <div slot="spinner">
           <div class="catalog__list"
                :class="{'grid grid--catalog': !$device.isMobile}">

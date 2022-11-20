@@ -14,12 +14,11 @@ import jsonld from "@/mixins/jsonld";
 
 export default {
 	mixins: [seoTags, jsonld],
-  scrollToTop: false,
 	validate(ctx) {
 		return ctx.params.category === 'used' || ctx.params.category === 'commercial';
 	},
 	mounted() {
-		// setTimeout(function () {window.scrollTo(0, -100);}, 1);
+		setTimeout(function () {window.scrollTo(0, -100);}, 1);
 		localStorage.removeItem('foldersTabsLeft');
 	},
 	methods: {

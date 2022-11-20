@@ -11,7 +11,7 @@
 			<modal-benefits />
 		</client-only>
 		<transition :name="hasRouteTransition ? 'page' : ''">
-			<Nuxt keep-alive :keep-alive-props="{include: ['pages/_mark/index.vue']}"/>
+			<Nuxt />
 		</transition>
 		<LazyHydrate never>
 			<Footer />

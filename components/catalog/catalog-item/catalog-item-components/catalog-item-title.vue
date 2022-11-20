@@ -1,8 +1,8 @@
 <template>
   <div class="catalog__title-wrap">
     <h3 class="catalog__heading">
-      <NuxtLink
-        :to="isForm ? '' : url"
+      <a
+        :href="isForm ? '' : url"
         @click.prevent="$emit('click')"
         class="catalog__title-link"
       >
@@ -15,7 +15,7 @@
         <span class="catalog__year">
           {{ offer.year }}
         </span>
-      </NuxtLink>
+      </a>
     </h3>
   </div>
 </template>

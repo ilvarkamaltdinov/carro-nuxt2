@@ -1,13 +1,13 @@
 <template>
 	<article class="catalog__item catalog__item--small">
 		<div class="catalog__img">
-			<NuxtLink :to="!isForm ? currentUrl: ''"
+			<a :href="!isForm ? currentUrl: ''"
 			   @click.prevent="linkClick"
 			   class="catalog__img-link"
          title="Подробнее об автомобиле"
          aria-label="Подробнее об автомобиле">
 				<img :data-src="offer.images[0].small_webp" class="ls-is-cached lazyload">
-			</NuxtLink>
+			</a>
 		</div>
 		<div class="catalog__info">
 			<catalog-item-title :is-form="isForm"
