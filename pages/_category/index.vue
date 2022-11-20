@@ -12,7 +12,8 @@ import seoTags from "@/mixins/seoTags";
 import jsonld from "@/mixins/jsonld";
 
 export default {
-	mixins: [seoTags, jsonld],
+  scrollToTop: false,
+  mixins: [seoTags, jsonld],
 	validate(ctx) {
 		if (ctx.store.getters.showComm) {
 			return ctx.params.category === 'used' || ctx.params.category === 'commercial';
