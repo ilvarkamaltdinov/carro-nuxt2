@@ -69,9 +69,9 @@
 				              mask="phone"
 				              type="tel" />
 			</label>
-			<checkbox-form :error="error === 'agreeRf'"
-			               @change="changeCheckbox($event,'agreeRf')"
-			               label="Подтверждаю наличие гражданства РФ" />
+			<!--<checkbox-form :error="error === 'agreeRf'"-->
+			<!--               @change="changeCheckbox($event,'agreeRf')"-->
+			<!--               label="Подтверждаю наличие гражданства РФ" />-->
 			<checkbox-form :error="error === 'agree'"
 			               @change="changeCheckbox($event,'agree')"
 			               label="Согласен на"
