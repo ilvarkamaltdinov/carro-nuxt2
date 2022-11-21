@@ -129,7 +129,7 @@ export default {
 						year_from: Number(this.$route.query.year_from),
 						year_to: Number(this.$route.query.year_to),
 						sort: this.$route.query.sort || this.sort,
-						limit: 8,
+						limit: 16,
 						page: Number(this.$route.query.page) || 1,
 					}
 
@@ -161,7 +161,7 @@ export default {
 					year_from: Number(this.$route.query.year_from),
 					year_to: Number(this.$route.query.year_to),
 					sort: this.$route.query.sort || this.sort,
-					limit: 8
+					limit: 16
 				}))
 			}
 			if (!this.isFilterClick) {

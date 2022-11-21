@@ -33,11 +33,11 @@ export default {
 		generations: Array,
 		isAll: Boolean
 	},
-	computed:{
+	computed: {
 		sortedGenerations() {
-			let generations  =  this.generations
-			if(this.$device.isMobile){
-				generations = generations.slice(0, this.isAll ? generations.length: 4)
+			let generations = this.generations
+			if (this.$device.isMobile) {
+				generations = generations.slice(0, this.isAll ? generations.length : 4)
 			}
 			return generations
 		}
@@ -47,12 +47,20 @@ export default {
 			if (localStorage.generationsTabsLeft && this.$device.isMobile && this.$refs.tabs) {
 				this.$refs.tabs.scrollLeft = Number(localStorage.generationsTabsLeft)
 			}
+			// if (this.$route.name === 'category-mark-model-car') {
+			// 	let tabs = this.$refs.tabs
+			// 	tabs.scrollIntoView(true);
+			// 	const yourHeight = 105 + 81; // header + filter
+			//
+			// 	const scrolledY = window.scrollY;
+			// 	window.scroll(0, scrolledY - yourHeight);
+			// }
 		})
 	},
 	methods: {
 		scrollGenerations() {
 			localStorage.generationsTabsLeft = event.target.scrollLeft
-		},
-	},
+		}
+	}
 }
 </script>

@@ -78,7 +78,7 @@
 				<div class="page-footer__cars-stock">
 					Автомобилей в наличии:
 					<nuxt-link to="/used"
-					           class="page-footer__cars-stock-number">{{ allMarksCount | toCurrencyValue }}
+					           class="page-footer__cars-stock-number">{{ allMarksCount | numberFormat }}
 					</nuxt-link>
 				</div>
 				<footer-marks />

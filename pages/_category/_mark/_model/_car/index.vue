@@ -19,7 +19,6 @@ export default {
 		return ctx.params.category === 'used' || ctx.params.category === 'commercial';
 	},
 	mounted() {
-		setTimeout(function () {window.scrollTo(0, -100);}, 1);
 		if (this.componentCatalog === 'catalog-used') {
 			this.setBackButton(this.currentBackButton)
 		}

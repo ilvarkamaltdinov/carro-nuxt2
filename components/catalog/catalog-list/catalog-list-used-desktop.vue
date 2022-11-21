@@ -1,10 +1,10 @@
 <template>
-	<div>
+	<div ref="catalog">
 		<div v-if="loading"
 		     class="catalog__list"
 		     :class="{'grid grid--catalog': !$device.isMobile}">
 			<component :is="skeleton"
-			           v-for="i in 4"
+			           v-for="i in 16"
 			           :key="i" />
 		</div>
 		<div v-else
@@ -24,12 +24,12 @@
 				</div>
 			</div>
 		</div>
-		<button-typical @click="moreOffers"
-		                v-if="offers && offers.last_page > 1 && offers.current_page < offers.last_page"
-		                text="Показать больше"
+		<button-typical @click="paginationClick('button')"
+		                v-if="offers.has_more_pages"
+		                text="Далее"
 		                class="button--link button--more" />
 		<client-only>
-			<pagination :active-button="Number(offers.current_page)"
+			<pagination @click="paginationClick('pagination')" :active-button="Number(offers.current_page)"
 			            v-if="offers"
 			            :offers="offers" />
 		</client-only>
@@ -60,6 +60,21 @@ export default {
 		...mapActions({
 			request: 'filters/filters/request',
 		}),
+		async paginationClick(type) {
+			let page = this.offers.current_page + 1
+			if (type === 'button') {
+				await this.$router.push({path: this.$route.fullPath, query: {page}});
+			}
+			this.$nextTick(() => {
+				let catalog = this.$refs.catalog;
+				
+				catalog.scrollIntoView(true);
+				const yourHeight = 130 + 88; // header + filter
+				
+				const scrolledY = window.scrollY;
+				window.scroll(0, scrolledY - yourHeight);
+			})
+		},
 		async filterRequest(assignVariables) {
 			try {
 				let response = await this.request({query: offers, variables: assignVariables})

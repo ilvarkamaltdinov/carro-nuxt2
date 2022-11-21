@@ -18,20 +18,17 @@ export default {
 		return ctx.params.category === 'used' || ctx.params.category === 'commercial';
 	},
 	mounted() {
-		this.setBackButton(this.currentBackButton),
-    setTimeout(function () {
-			window.scrollTo(0, -100);
-		}, 1);
+		this.setBackButton(this.currentBackButton)
 	},
 	beforeDestroy() {
 		this.setBackButton({})
 	},
-	methods:{
+	methods: {
 		...mapMutations({
 			setBackButton: 'header/header/SET_BACK_BUTTON'
 		})
 	},
-	computed:{
+	computed: {
 		currentBackButton() {
 			return {
 				title: 'Все модели ' + this.crumbs[2].title,

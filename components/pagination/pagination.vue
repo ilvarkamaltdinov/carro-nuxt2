@@ -10,7 +10,7 @@
 				v-model="currentPagination"
 				v-if="offers.last_page > 1"
 				:page-count="offers.last_page"
-				:page-range="7"
+				:page-range="$device.isMobile ? 3 : 7"
 				:click-handler="paginationCLick"
 				:active-class="'pagination__item--active'"
 				:page-link-class="'pagination__link'"
@@ -45,11 +45,10 @@ export default {
 	},
 	methods: {
 		paginationCLick(pageNum) {
-			setTimeout(function () {window.scrollTo(0, -100);}, 1);
 			this.$router.push({path: this.$route.fullPath, query: {page: pageNum}});
+			this.$emit('click')
 		},
 		arrowClick(type) {
-			console.log(this.offers.last_page)
 			if (this.$route.query.page) {
 				let pageNum = Number(this.$route.query.page)
 				if (type === 'next') {

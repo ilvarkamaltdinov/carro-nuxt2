@@ -42,6 +42,11 @@ export default {
             // });
             // return formatter.format(value);
         },
+        numberFormat(value) {
+            if (!value) return ''
+            if(typeof value === 'string') return value
+            return new Intl.NumberFormat("ru-RU").format(value);
+        },
         toCurrencyValue(value) {
             return Number(value).toLocaleString('ru')
             // let formatter = new Intl.NumberFormat('ru-RU').format(value);

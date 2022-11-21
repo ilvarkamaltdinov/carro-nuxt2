@@ -51,7 +51,7 @@
 					<catalog-marks v-if="showMarkTabs" />
 				</div>
 			</div>
-			<catalog-sub-filters />
+			<catalog-sub-filters/>
 			<!--TODO offers для страницы дилеров-->
 			<catalog-offers v-if="offers" />
 			
@@ -60,7 +60,7 @@
 				<filter-desktop />
 			</div>
 			
-			<div class="grid__col-8">
+			<div class="grid__col-8" ref="catalog">
 				<filter-sort />
 				<component
 						:is="$device.isMobileOrTablet
