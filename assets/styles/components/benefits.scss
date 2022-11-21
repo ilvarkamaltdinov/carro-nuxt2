@@ -60,9 +60,11 @@
 
   .benefits--modal .benefits__list--car {
     margin-bottom: -24px;
-    padding-top: 8px;
+    margin-top: -64px;
+    padding-top: 40px;
     padding-bottom: 40px;
   }
+
   .benefits--modal .benefits__link {
     padding: 8px;
   }
@@ -99,7 +101,6 @@
     }
   }
 }
-
 
 @media (min-width: $desktop-width) {
   .benefits {
