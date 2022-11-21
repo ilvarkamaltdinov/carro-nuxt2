@@ -215,6 +215,7 @@
   .car__slider-wrap {
     margin-bottom: 16px;
   }
+
   .car__stock-promo {
     display: block;
   }
@@ -240,14 +241,14 @@
     padding: 0 8px;
     margin: 0;
     position: absolute;
-    bottom: 8px;
+    bottom: 12px;
     z-index: 99;
-    background: $colorDivider;
+    background: rgb(193, 193, 193, 0.8);
     border-radius: 16px;
     width: auto;
     font-size: 12px;
     justify-content: center;
-    left: 50%;
+    right: 12px;
     transform: translateX(-50%);
   }
 

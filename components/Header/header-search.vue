@@ -9,7 +9,7 @@
 			       type="search"
 			       @input="onSearch"
 			       v-model="search"
-			       placeholder="Поиск по маркам" />
+			       placeholder="Поиск" />
 			<svg-icon v-if="search === ''"
 			          class="form__icon-search icon"
 			          name="icon-search" />
