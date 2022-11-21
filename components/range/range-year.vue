@@ -24,7 +24,8 @@
 			<range-slider
 					v-if="filterYear"
 					range-class="range-year"
-					:options="getYearOptions">
+					:options="getYearOptions"
+          ref="range-year">
 			</range-slider>
 		</client-only>
 	</div>
@@ -83,10 +84,16 @@ export default {
 		},
 		changeYearFrom(e) {
 			this.from = Number(e.target.value.replace(/[^+\d]/g, ''))
+      this.$refs["range-year"].slider.update({
+          from: this.from
+      })
 			this.sendYear()
 		},
 		changeYearTo(e) {
 			this.to = Number(e.target.value.replace(/[^+\d]/g, ''))
+      this.$refs["range-year"].slider.update({
+        to: this.to
+      })
 			this.sendYear()
 		},
 		changeYear(event) {

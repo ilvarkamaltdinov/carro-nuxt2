@@ -23,7 +23,8 @@
 		<client-only>
 			<range-slider
 					range-class="range-period"
-					:options="getPriceOptions">
+					:options="getPriceOptions"
+          ref="range-price">
 			</range-slider>
 		</client-only>
 	</div>
@@ -83,10 +84,16 @@ export default {
 		}),
 		changePriceFrom(e) {
 			this.from = Number(e.target.value.replace(/[^+\d]/g, ''))
+      this.$refs["range-price"].slider.update({
+        from: this.from
+      })
 			this.sendPrice()
 		},
 		changePriceTo(e) {
 			this.to = Number(e.target.value.replace(/[^+\d]/g, ''))
+      this.$refs["range-price"].slider.update({
+        to: this.to
+      })
 			this.sendPrice()
 		},
 		async sendPrice() {
