@@ -13,10 +13,12 @@
 			           :offer="offer"
 			           :key="offer.id"
 			           v-for="offer in moreOffersData.data" />
-			<button v-if="$device.isMobile && offers.has_more_pages"
-			        @click="paginationClick('button')"
-			        class="button button--link button--more">Далее
-			</button>
+			<div class="grid--container">
+				<button v-if="$device.isMobile && offers.has_more_pages"
+				        @click="paginationClick('button')"
+				        class="button button--link button--more">Далее
+				</button>
+			</div>
 			<client-only>
 				<pagination @click="paginationClick('pagination')"
 				            :active-button="Number(offers.current_page)"
@@ -27,7 +29,7 @@
 	</div>
 </template>
 <script>
-import {mapActions, mapGetters} from "vuex";
+import {mapActions, mapGetters, mapMutations} from "vuex";
 import offers from "@/apollo/queries/offer/offers";
 
 export default {
@@ -47,7 +49,8 @@ export default {
 			view: 'filters/filters/view',
 			offers: 'filters/filters/offers',
 			loading: 'filters/filters/loading',
-			sort: 'filters/filters/sort'
+			sort: 'filters/filters/sort',
+			generationClick: 'click/generationClick'
 		}),
 		moreOffersData() {
 			return this.offers
@@ -67,21 +70,31 @@ export default {
 			}
 		}
 	},
+	async mounted() {
+		if (this.generationClick) {
+			await this.scrollToCatalog()
+			await this.setGenerationClick(false)
+		}
+	},
 	methods: {
+		...mapMutations({
+			setGenerationClick: 'click/SET_GENERATION_CLICK'
+		}),
+		scrollToCatalog() {
+			setTimeout(() => {
+				let catalog = this.$refs.catalog;
+				catalog.scrollIntoView(true);
+				const yourHeight = 105 + 81; // header + filter
+				const scrolledY = window.scrollY;
+				window.scroll(0, scrolledY - yourHeight);
+			},100)
+		},
 		async paginationClick(type) {
 			let page = this.offers.current_page + 1
 			if (type === 'button') {
 				await this.$router.push({path: this.$route.fullPath, query: {page}});
 			}
-			this.$nextTick(() => {
-				let catalog = this.$refs.catalog;
-				
-				catalog.scrollIntoView(true);
-				const yourHeight = 105 + 81; // header + filter
-			
-				const scrolledY = window.scrollY;
-				window.scroll(0, scrolledY - yourHeight);
-			})
+			this.scrollToCatalog()
 		}
 	}
 }

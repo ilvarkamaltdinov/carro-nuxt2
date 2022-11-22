@@ -23,11 +23,13 @@
 					</div>
 				</div>
 			</div>
+			<div class="grid__col-8">
+				<button-typical @click="paginationClick('button')"
+				                v-if="offers.has_more_pages"
+				                text="Далее"
+				                class="button--link button--more" />
+			</div>
 		</div>
-		<button-typical @click="paginationClick('button')"
-		                v-if="offers.has_more_pages"
-		                text="Далее"
-		                class="button--link button--more" />
 		<client-only>
 			<pagination @click="paginationClick('pagination')" :active-button="Number(offers.current_page)"
 			            v-if="offers"

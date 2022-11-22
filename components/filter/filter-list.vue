@@ -140,8 +140,7 @@ export default {
 	},
 	methods: {
 		...mapMutations({
-			setAllChosen: 'filters/filters/SET_ALL_CHOSEN',
-			setLoadingRange: 'filters/filters/SET_LOADING_RANGE'
+			setAllChosen: 'filters/filters/SET_ALL_CHOSEN'
 		}),
 		...mapActions({
 			openModal: 'modal/modal-main/openModal',
