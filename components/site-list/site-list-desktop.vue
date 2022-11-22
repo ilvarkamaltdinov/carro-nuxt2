@@ -1,18 +1,20 @@
 <template>
 	<ul class="main-nav__list site-list site-list--desktop">
-		<li class="site-list__item" v-for="item in nav" :key="item.link">
+		<li class="site-list__item"
+		    v-for="item in nav"
+		    :key="item.link">
 			<nuxt-link
 					@click.native="closeModals"
 					:to="item.link"
 					:title="item.title"
 					class="site-list__link">
-				{{item.title }}
+				{{ item.title }}
 			</nuxt-link>
 		</li>
 	</ul>
 </template>
 <script>
-import {mapMutations} from "vuex";
+import {mapGetters, mapMutations} from "vuex";
 
 export default {
 	data() {
@@ -23,23 +25,33 @@ export default {
 					link: '/used'
 				},
 				{
-					title:'Автокредит',
-					link:'/credit'
+					title: 'Автокредит',
+					link: '/credit'
 				},
 				{
-					title:'Trade-In',
-					link:'/exchange'
+					title: 'Trade-In',
+					link: '/exchange'
 				},
 				{
-					title:'Отзывы',
-					link:'/reviews-dealers'
-				},
-				{
-					title:'О портале',
-					link:'/about'
+					title: 'О портале',
+					link: '/about'
 				}
 			]
 		}
+	},
+	computed: {
+		...mapGetters({
+			showReviews: 'showReviews',
+		})
+	},
+	mounted() {
+		this.showReviews ? this.nav.splice(3,0,{
+			title: 'Отзывы',
+			link: '/reviews-dealers'
+		}) : this.nav.splice(3,0,{
+			title: 'Контакты',
+			link: '/contacts'
+		})
 	},
 	methods: {
 		...mapMutations({
