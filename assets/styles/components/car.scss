@@ -238,18 +238,21 @@
   }
 
   .car__slider .swiper-pagination {
+    @include font-small;
+    font-size: 10px;
     padding: 0 8px;
     margin: 0;
     position: absolute;
     bottom: 12px;
     z-index: 99;
-    background: rgb(193, 193, 193, 0.8);
+    background: rgba(48, 48, 48, 0.8);
     border-radius: 16px;
     width: auto;
-    font-size: 12px;
     justify-content: center;
-    right: 12px;
-    transform: translateX(-50%);
+    right: 50%;
+    transform: translateX(50%);
+    color: white;
+    white-space: break-spaces;
   }
 
   .car__slider .swiper-pagination-bullet-active {

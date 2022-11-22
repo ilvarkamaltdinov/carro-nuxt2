@@ -135,6 +135,9 @@
     & li {
       &:last-child {
         margin-left: auto;
+        width: calc(50% - 8px);
+        align-items: center;
+        display: flex;
       }
 
       & button {

@@ -24,7 +24,7 @@
 							<svg-icon class="benefits__icon icon"
 							          name="icon-credit-card" />
 							<div class="benefits__text">
-								Скидка до 150 000 ₽
+								Скидка до 300 000 ₽
 								<div class="benefits__text-strong">
 									при покупке авто в кредит
 								</div>
@@ -48,18 +48,18 @@
 			<div class="heading-group heading-group--h1 grid__col-12">
 				<div class="heading-group__wrap">
 					<h1 class="heading heading--h1">{{ pageTitle }}</h1>
-					<catalog-marks v-if="showMarkTabs" />
 				</div>
 			</div>
+      <catalog-marks v-if="showMarkTabs" />
 			<catalog-sub-filters/>
 			<!--TODO offers для страницы дилеров-->
 			<catalog-offers v-if="offers" />
-			
+
 			<div class="grid__col-4"
 			     v-if="!$device.isMobile">
 				<filter-desktop />
 			</div>
-			
+
 			<div class="grid__col-8" ref="catalog">
 				<filter-sort />
 				<component
