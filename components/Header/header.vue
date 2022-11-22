@@ -10,7 +10,7 @@
 				<ul class="page-header__buttons">
 					<li class="page-header__buttons-item"
 					    v-if="$device.isMobile">
-						<div @click="setMobileSearch(!mobileSearch)"
+						<div @click="searchClick"
 						     class="page-header__buttons-link">
 							<svg-icon class="icon"
 							          name="icon-search" />
@@ -137,12 +137,26 @@ export default {
 		this.getLikes()
 	},
 	methods: {
+		...mapActions({
+			openModal: 'modal/modal-main/openModal'
+		}),
 		...mapMutations({
 			setModalMenu: 'modal/modal-menu/setModalMenu',
 			setModalMarks: 'modal/modal-marks/setModalMarks',
 			setModalSearch: 'modal/modal-search/setModalSearch',
 			setMobileSearch: 'modal/modal-search/setMobileSearch'
 		}),
+		async searchClick(){
+			if(!this.$route.params.category){
+				await this.$router.push('/used')
+			}
+			let payload = {
+				modal_component: 'modal-filter-mobile',
+				modal_data: 'filter-mobile',
+				modal_title: 'Фильтр',
+			}
+			await this.openModal(payload)
+		},
 		burgerClick() {
 			this.setModalMenu(!this.modalMenu)
 			this.setModalMarks(false)

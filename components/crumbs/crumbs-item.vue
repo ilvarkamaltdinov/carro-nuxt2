@@ -1,12 +1,10 @@
 <template>
 	<li class="crumbs__item">
-		<span v-if="disabled">
-			{{ crumb.title }}
+		<span v-if="disabled" v-html="crumb.title">
 		</span>
 		<nuxt-link :to="crumb.link"
 		           v-else
-		           class="crumbs__link">
-			{{ crumb.title }}
+		           class="crumbs__link" v-html="crumb.title">
 		</nuxt-link>
 	</li>
 </template>
