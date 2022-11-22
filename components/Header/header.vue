@@ -28,7 +28,7 @@
 							          name="icon-favorites" />
 						</nuxt-link>
 					</li>
-					<li class="page-header__buttons-item">
+					<li class="page-header__buttons-item page-header__buttons-item--call">
 						<a class="page-header__buttons-link page-header__buttons-link--phone"
 						   :href="`tel:${currentPhone.replace(/[^+\d]/g, '')}`"
 						   title="Бесплатный звонок"
@@ -68,8 +68,8 @@
 				</button>
 			</nav>
 		</div>
-		
-		
+
+
 		<!--TODO анимация выпадающих списков в хедере-->
 		<transition name="menu">
 			<modal-makes v-show="modalMarks" />
