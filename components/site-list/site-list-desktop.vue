@@ -32,7 +32,7 @@ export default {
 				},
 				{
 					title:'Отзывы',
-					link:'/reviews'
+					link:'/reviews-dealers'
 				},
 				{
 					title:'О портале',
