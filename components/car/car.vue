@@ -80,6 +80,9 @@ export default {
 		}
 	},
 	mounted() {
+		setTimeout(function () {
+			window.scrollTo(0, -100);
+		}, 1);
 		this.setBackButton(this.currentBackButton)
 	},
 	async fetch() {
@@ -128,9 +131,7 @@ export default {
 	},
 	beforeMount() {
 		window.addEventListener('scroll', this.handleScroll);
-		setTimeout(function () {
-			window.scrollTo(0, -100);
-		}, 1);
+		
 	},
 	beforeDestroy() {
 		this.setDealerPhone(null)

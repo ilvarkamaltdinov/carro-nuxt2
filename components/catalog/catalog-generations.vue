@@ -11,6 +11,7 @@
 				    :class="{'tabs__item--active':tab.slug === $route.params.car}"
 				    class="tabs__item">
 					<nuxt-link class="tabs__link"
+					           @click.native="generationClick"
 					           :to="`/${$route.params.category}/${$route.params.mark}/${$route.params.model}/${tab.slug}`">
 						{{ tab.title }}
 					</nuxt-link>
@@ -20,6 +21,8 @@
 	</div>
 </template>
 <script>
+
+import {mapMutations} from "vuex";
 
 export default {
 	watch: {
@@ -47,17 +50,16 @@ export default {
 			if (localStorage.generationsTabsLeft && this.$device.isMobile && this.$refs.tabs) {
 				this.$refs.tabs.scrollLeft = Number(localStorage.generationsTabsLeft)
 			}
-			// if (this.$route.name === 'category-mark-model-car') {
-			// 	let tabs = this.$refs.tabs
-			// 	tabs.scrollIntoView(true);
-			// 	const yourHeight = 105 + 81; // header + filter
-			//
-			// 	const scrolledY = window.scrollY;
-			// 	window.scroll(0, scrolledY - yourHeight);
-			// }
 		})
 	},
 	methods: {
+		...mapMutations({
+			setGenerationClick: 'click/SET_GENERATION_CLICK'
+		}),
+		async generationClick() {
+			// нужно для якоря
+			await this.setGenerationClick(true)
+		},
 		scrollGenerations() {
 			localStorage.generationsTabsLeft = event.target.scrollLeft
 		}
