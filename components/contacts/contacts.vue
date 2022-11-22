@@ -1,5 +1,5 @@
 <template>
-	
+
 	<section class="page-main__about about grid">
 		<div class="heading-group heading-group--h1">
 			<div class="heading-group__wrap">
@@ -21,7 +21,7 @@
 				</div>
 				<div class="text__content">
 					<div class="text__contacts-group">
-						<div class="text__contacts-label">Приобретения автомобиля:</div>
+						<div class="text__contacts-label">Вопросы о портале:</div>
 						<a class="text__contacts-item"
 						   :href="`tel:${settings.phone}`">{{settings.phone}}
 						</a>
