@@ -1,5 +1,5 @@
 <template>
-	<div class="grid__col-8">
+	<div class="grid__col-12">
 		<div class="catalog__makes makes">
 			<ul class="makes__list makes__list--all makes__list--all-catalog">
 				<li class="makes__item"
