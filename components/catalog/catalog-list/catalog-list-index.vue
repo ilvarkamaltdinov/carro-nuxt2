@@ -3,7 +3,8 @@
 	         :class="{'catalog--slider':!$device.isMobile}">
 		<heading-h2>Автомобили в наличии</heading-h2>
 		<div class="tabs">
-			<ul class="tabs__list" role="tablist">
+			<ul class="tabs__list"
+			    role="tablist">
 				<li role="presentation"
 				    v-for="(tab, index) in tabs"
 				    :key="index"
@@ -18,7 +19,7 @@
 				</li>
 			</ul>
 		</div>
-
+		
 		<div v-if="loading"
 		     class="catalog__list grid">
 			<component :is="$device.isMobileOrTablet ? 'skeleton-card-large' : 'skeleton-card-small'"
@@ -33,7 +34,7 @@
 		</div>
 		<catalog-index-swiper v-else
 		                      :offers="offers_list" />
-
+		
 		<button-typical :link="`/used/${set}`"
 		                text="Все автомобили"
 		                class="button--link button--more" />
@@ -47,10 +48,6 @@ export default {
 	data() {
 		return {
 			tabs: [
-				{
-					title: "Топ-предложения",
-					slug: 'best'
-				},
 				{
 					title: "Свежие",
 					slug: 'fresh'
@@ -94,7 +91,8 @@ export default {
 	computed: {
 		...mapGetters({
 			offers: 'catalog/catalog-cars/offers',
-			loading: 'catalog/catalog-cars/loading'
+			loading: 'catalog/catalog-cars/loading',
+			siteId: 'site_id'
 		}),
 		offers_list() {
 			return this.offers.data
@@ -129,8 +127,17 @@ export default {
 		},
 	},
 	mounted() {
+		if (this.siteId !== 31) {
+			this.tabs.shift({
+				title: "Топ-предложения",
+				slug: 'best'
+			},)
+		}
+		else {
+			this.set = 'fresh'
+		}
 		this.getOffers()
-
+		
 	}
 }
 </script>
