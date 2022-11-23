@@ -5,9 +5,7 @@
 			<div class="grid grid--container">
 				<div class="heading-group heading-group--h1 grid__col-6">
 					<div class="heading-group__wrap">
-						<heading-h1>
-							{{ pageTitle }}
-						</heading-h1>
+						<h1 class="heading heading--h1" v-html="pageTitle"></h1>
 						<span class="heading-group__label heading-group__label--car"
 						      v-if="offer.generation">
 							<span class="heading-group__year">
