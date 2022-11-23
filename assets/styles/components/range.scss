@@ -8,7 +8,7 @@
   width: 24px;
   height: 24px;
   top: 18px;
-  transition: none;
+  transition: all 0.3s;
   box-shadow: $shadowHover;
 }
 
@@ -26,6 +26,7 @@
 .range .irs--flat .irs-bar {
   background: linear-gradient(90deg, rgba(237, 41, 57, 0) 0%, #ED2939 100%);
   transition: none;
+  transition: all 0.3s;
 }
 
 .range .irs-grid-pol.small {
