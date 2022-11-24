@@ -8,14 +8,6 @@
 					<site-list-desktop />
 				</nav>
 				<ul class="page-header__buttons">
-					<li class="page-header__buttons-item"
-					    v-if="$device.isMobile">
-						<div @click="searchClick"
-						     class="page-header__buttons-link">
-							<svg-icon class="icon"
-							          name="icon-search" />
-						</div>
-					</li>
 					<li class="page-header__buttons-item">
 						<nuxt-link to="/favorites"
 						           class="page-header__buttons-link"
@@ -27,6 +19,14 @@
 							<svg-icon class="icon"
 							          name="icon-favorites" />
 						</nuxt-link>
+					</li>
+					<li class="page-header__buttons-item"
+					    v-if="$device.isMobile">
+						<div @click="searchClick"
+						     class="page-header__buttons-link">
+							<svg-icon class="icon"
+							          name="icon-search" />
+						</div>
 					</li>
 					<li class="page-header__buttons-item page-header__buttons-item--call">
 						<a class="page-header__buttons-link page-header__buttons-link--phone"
@@ -68,8 +68,8 @@
 				</button>
 			</nav>
 		</div>
-		
-		
+
+
 		<!--TODO анимация выпадающих списков в хедере-->
 		<transition name="menu">
 			<modal-makes v-show="modalMarks" />

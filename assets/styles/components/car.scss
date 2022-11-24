@@ -216,6 +216,14 @@
     margin-bottom: 16px;
   }
 
+  .car__benefits--desktop {
+    display: none;
+  }
+
+  .car__info {
+    margin-bottom: 40px;
+  }
+
   .car__stock-promo {
     display: block;
   }
@@ -294,7 +302,7 @@
   }
 
   .car__benefits {
-    margin-bottom: 16px;
+    margin-bottom: -8px;
   }
 
   .car__buy-block .button--trade-in {
