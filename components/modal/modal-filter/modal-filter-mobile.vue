@@ -12,11 +12,15 @@
 import {mapActions, mapMutations} from "vuex";
 
 export default {
-		methods:{
+	destroyed() {
+		this.setHeaderFilterClick(false )
+	},
+	methods:{
 			...mapMutations({
 				setChosen: 'filters/filters/SET_CHOSEN',
 				unsetChosen: 'filters/filters/UNSET_CHOSEN',
 				setIsFilterClick: 'filters/filters/SET_IS_FILTER_CLICK',
+				setHeaderFilterClick:'click/SET_HEADER_FILTER_CLICK'
 			}),
 			...mapActions({
 				closeModal: 'modal/modal-main/closeModal',

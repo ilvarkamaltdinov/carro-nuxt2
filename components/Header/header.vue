@@ -68,8 +68,8 @@
 				</button>
 			</nav>
 		</div>
-
-
+		
+		
 		<!--TODO анимация выпадающих списков в хедере-->
 		<transition name="menu">
 			<modal-makes v-show="modalMarks" />
@@ -109,8 +109,8 @@ export default {
 			dealerPhone: 'header/header/dealerPhone',
 			popularMarks: 'marks/marks/popularMarks'
 		}),
-		popular(){
-			return this.popularMarks.slice(0,8)
+		popular() {
+			return this.popularMarks.slice(0, 8)
 		},
 		currentPhone() {
 			return this.dealerPhone ? this.dealerPhone : this.settings.phone
@@ -144,10 +144,12 @@ export default {
 			setModalMenu: 'modal/modal-menu/setModalMenu',
 			setModalMarks: 'modal/modal-marks/setModalMarks',
 			setModalSearch: 'modal/modal-search/setModalSearch',
-			setMobileSearch: 'modal/modal-search/setMobileSearch'
+			setMobileSearch: 'modal/modal-search/setMobileSearch',
+			setHeaderFilterClick: 'click/SET_HEADER_FILTER_CLICK'
 		}),
-		async searchClick(){
-			if(!this.$route.params.category){
+		async searchClick() {
+			await this.setHeaderFilterClick(true)
+			if (!this.$route.params.category) {
 				await this.$router.push('/used')
 			}
 			let payload = {

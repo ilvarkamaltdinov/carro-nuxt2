@@ -75,7 +75,7 @@
 			                :class="{'button--show-active': allFilters }"
 			                @click="allFilters = !allFilters" />
 		</div>
-		<ul class="filter__menu-list filter__menu-list--more">
+		<ul v-if="!headerFilterClick" class="filter__menu-list filter__menu-list--more">
 			<skeleton-filter-range title="Цена"
 			                       v-if="loadingRange" />
 			<li class="filter__menu-group"
@@ -111,7 +111,8 @@ export default {
 			filters: 'filters/filters/filters',
 			loading: 'filters/filters/loading',
 			offers: 'filters/filters/offers',
-			loadingRange: 'filters/filters/loadingRange'
+			loadingRange: 'filters/filters/loadingRange',
+			headerFilterClick: 'click/headerFilterClick'
 		}),
 		mark_select_title() {
 			return this.chosen.mark?.map(val => val.title).sort().join(', ') || 'Марка'
