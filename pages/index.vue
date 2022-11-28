@@ -20,6 +20,9 @@
 				<featured />
 			</LazyHydrate>
 			<LazyHydrate never>
+				<blog index/>
+			</LazyHydrate>
+			<LazyHydrate never>
 				<video-about />
 			</LazyHydrate>
 		</div>

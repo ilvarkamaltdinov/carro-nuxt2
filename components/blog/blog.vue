@@ -1,7 +1,12 @@
 <template>
 	<section class="page-main__blog blog grid">
 		<div class="heading-group heading-group--h1">
-			<div class="heading-group__wrap">
+			<div v-if="index"
+			     class="heading-group__wrap">
+				<h2 class="heading heading--h2">Свежее в блоге</h2>
+			</div>
+			<div v-else
+			     class="heading-group__wrap">
 				<h1 class="heading heading--h1">Блог
 					<span class="heading__promo"></span>
 				</h1>
@@ -9,6 +14,7 @@
 			</div>
 		</div>
 		<blog-category :list="category.articles"
+		               :index="index"
 		               :title="category.page_title"
 		               :url="category.url"
 		               v-for="category in categories"
@@ -25,6 +31,10 @@ export default {
 			request: 'request'
 		})
 	},
+	props: {
+		index: Boolean
+		
+	},
 	data() {
 		return {
 			categories: []
@@ -32,10 +42,12 @@ export default {
 	},
 	async fetch() {
 		let response = await this.request({query: articleCategory, variables: {limit: 7}})
-		this.categories = response.data.articleCategory
+		this.index ? this.categories = [response.data.articleCategory[1]] : this.categories = response.data.articleCategory
 	},
 	mounted() {
-		setTimeout(function () {window.scrollTo(0, -100);}, 1);
+		setTimeout(function () {
+			window.scrollTo(0, -100);
+		}, 1);
 	}
 }
 </script>

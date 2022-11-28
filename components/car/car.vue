@@ -28,6 +28,9 @@
                 <svg-icon name="icon-check" />
                 VIN
               </span>
+	            <span v-if="offer.vin">
+		            {{ offer.vin }}
+	            </span>
             </span>
           </div>
         </div>

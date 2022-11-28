@@ -1,6 +1,6 @@
 <template>
 	<div class="blog__wrap grid__col-12">
-		<h2 class="heading heading--h2">{{ title }}</h2>
+		<h2 class="heading heading--h2" v-if="!index">{{ title }}</h2>
 		<ul class="blog__list">
 			<li class="blog__item"
 			    :class="currentClass(index)"
@@ -10,7 +10,15 @@
 				           class="blog__link">
 					<div class="blog__item-info">
 						<div class="blog__date">{{ item.createdAt }}</div>
-						<div class="blog__views">{{item.views}} {{declension({count: Number(item.views), one: 'просмотр', few: 'просмотра', many: 'просмотров'})}}</div>
+						<div class="blog__views">{{ item.views }} {{
+								declension({
+									count: Number(item.views),
+									one: 'просмотр',
+									few: 'просмотра',
+									many: 'просмотров'
+								})
+						                         }}
+						</div>
 					</div>
 					<div class="blog__item-text">
 						<h3 class="blog__item-title">{{ item.page_title }}</h3>
@@ -23,13 +31,15 @@
 				</nuxt-link>
 			</li>
 		</ul>
-		<button-typical @click="$router.push(url)" text="Показать больше"
+		<button-typical @click="$router.push(url)"
+		                text="Показать больше"
 		                class="button--link button--more" />
 	</div>
 </template>
 
 <script>
 import declension from "@/mixins/declension";
+
 export default {
 	mixins: [declension],
 	data() {
@@ -43,7 +53,8 @@ export default {
 	props: {
 		title: String,
 		url: String,
-		list: Array
+		list: Array,
+		index: Boolean
 	},
 	methods: {
 		currentClass(index) {
