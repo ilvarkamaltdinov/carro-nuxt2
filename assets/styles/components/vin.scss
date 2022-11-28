@@ -1,3 +1,11 @@
+.vin__wrapper-car{
+  display: flex;
+  align-items: center;
+  .vin{
+    margin-left: 0;
+  }
+}
+
 .vin {
   border-radius: $borderRadius;
   background-color: $colorSuccess;
