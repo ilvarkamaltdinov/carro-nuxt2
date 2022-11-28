@@ -2,6 +2,7 @@ export const state = () => ({
     benefitModal: false,
     benefit: {},
     benefitsCredit: ['sale', 'guaranty', 'docs', 'first-pay', 'first-pay-trade', 'insurance'],
+    benefitsInstallment: ['sale', 'guaranty', 'docs', 'first-pay-alt', 'first-pay-trade', 'insurance'],
     benefitsTradeIn: ['sale-trade', 'guaranty', 'docs', 'value-market', 'first-pay-trade', 'fast-time'],
     benefitsBuyout: ['fast-pay', 'value-market', 'value-man', 'value-free', 'docs', 'fast-time'],
     benefitsCar: ['guaranty', 'credit', 'docs', 'first-pay-trade', 'tires', 'insurance'],
@@ -41,6 +42,13 @@ export const state = () => ({
             icon: 'engine',
             description: 'Вы можете приобрести автомобиль в кредит без первоначального взноса, однако, чем больше взнос, тем лучше условия по кредиту.',
             slug: 'first-pay',
+        },
+        {
+          text: 'Первый взнос',
+          text_strong: 'от 10%',
+          icon: 'engine',
+          description: 'Вы можете приобрести автомобиль в рассрочку даже с минимальным взносом от 10%.',
+          slug: 'first-pay-alt',
         },
         {
             text: 'Trade-In как',
@@ -118,6 +126,11 @@ export const getters = {
         return state.benefits.filter((item) => {
             return state.benefitsCredit.indexOf(item.slug) !== -1;
         })
+    },
+    benefitsInstallment: (state) => {
+      return state.benefits.filter((item) => {
+          return state.benefitsInstallment.indexOf(item.slug) !== -1;
+      })
     },
     benefitsTradeIn: (state) => {
         return state.benefits.filter((item) => {

@@ -5,7 +5,7 @@
 		</div>
 		<div class="grid grid--container">
 			<application-installment :page-title="pageTitle" />
-			<benefits :benefits="benefitsCredit" />
+			<benefits :benefits="benefitsInstallment" />
 			<text-installment />
 		</div>
 	</main>
@@ -19,7 +19,7 @@ export default {
 	mixins: [seoTags, jsonld],
 	computed: {
 		...mapGetters({
-			benefitsCredit: 'benefits/benefitsCredit'
+			benefitsInstallment: 'benefits/benefitsInstallment'
 		})
 	},
 	mounted() {
