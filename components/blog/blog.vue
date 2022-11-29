@@ -3,7 +3,7 @@
 		<div class="heading-group heading-group--h1">
 			<div v-if="index"
 			     class="heading-group__wrap">
-				<h2 class="heading heading--h2">Свежее в блоге</h2>
+				<h2 class="heading heading--h2-blog heading--h2" >Свежее в блоге</h2>
 			</div>
 			<div v-else
 			     class="heading-group__wrap">

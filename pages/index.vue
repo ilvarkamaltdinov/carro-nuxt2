@@ -19,8 +19,8 @@
 			<LazyHydrate never>
 				<featured />
 			</LazyHydrate>
-			<LazyHydrate never>
-				<blog index/>
+			<LazyHydrate never v-if="showBlog">
+				<blog index />
 			</LazyHydrate>
 			<LazyHydrate never>
 				<video-about />
@@ -31,9 +31,16 @@
 <script>
 import seoTags from "@/mixins/seoTags";
 import LazyHydrate from 'vue-lazy-hydration';
+import {mapGetters} from "vuex";
+
 export default {
 	components: {LazyHydrate},
 	mixins: [seoTags],
+	computed: {
+		...mapGetters({
+			showBlog: 'showBlog'
+		})
+	},
 	mounted() {
 		setTimeout(function () {
 			window.scrollTo(0, -100);

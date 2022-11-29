@@ -4,6 +4,9 @@
 
 .heading-group .heading {
   margin-bottom: 12px;
+  &.heading--h2-blog{
+    margin-bottom: 0;
+  }
 }
 
 .heading-group__label {
