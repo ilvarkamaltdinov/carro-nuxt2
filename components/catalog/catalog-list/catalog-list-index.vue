@@ -49,6 +49,10 @@ export default {
 		return {
 			tabs: [
 				{
+					title: "Топ-предложения",
+					slug: 'best'
+				},
+				{
 					title: "Свежие",
 					slug: 'fresh'
 				},
@@ -128,13 +132,11 @@ export default {
 	},
 	mounted() {
 		if (this.siteId !== 21) {
-			this.tabs.shift({
-				title: "Топ-предложения",
-				slug: 'best'
-			},)
+			this.tabs.shift()
+			this.set = 'fresh'
 		}
 		else {
-			this.set = 'fresh'
+			this.set = 'best'
 		}
 		this.getOffers()
 		
