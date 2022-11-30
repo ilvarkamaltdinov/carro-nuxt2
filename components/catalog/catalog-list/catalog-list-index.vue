@@ -127,7 +127,7 @@ export default {
 		},
 	},
 	mounted() {
-		if (this.siteId !== 31) {
+		if (this.siteId !== 21) {
 			this.tabs.shift({
 				title: "Топ-предложения",
 				slug: 'best'
