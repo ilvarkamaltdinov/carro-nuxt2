@@ -9,6 +9,9 @@
 
 .heading--h2 {
   @include font-mobile-h2;
+  &.heading--h2--mt{
+    margin-top: 16px;
+  }
 }
 .heading--h3 {
   margin-bottom: 8px;

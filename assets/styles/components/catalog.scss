@@ -1,8 +1,12 @@
+.catalog--used {
+  margin-bottom: 24px;
+}
+
 .catalog__item {
   background-color: white;
   padding: 16px;
   box-shadow: $shadow;
-  transition-property: opacity,box-shadow,background!important;
+  transition-property: opacity, box-shadow, background !important;
 }
 
 .catalog__item .rating {

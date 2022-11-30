@@ -19,11 +19,15 @@
 			<LazyHydrate never>
 				<featured />
 			</LazyHydrate>
-			<LazyHydrate never v-if="showBlog">
+			<LazyHydrate never
+			             v-if="showBlog">
 				<blog index />
 			</LazyHydrate>
 			<LazyHydrate never>
 				<video-about />
+			</LazyHydrate>
+			<LazyHydrate never>
+				<text-main />
 			</LazyHydrate>
 		</div>
 	</main>

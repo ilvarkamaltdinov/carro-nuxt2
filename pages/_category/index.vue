@@ -1,9 +1,12 @@
 <template>
 	<main class="page-main">
-		<div class="grid">
+		<div class="grid ">
 			<crumbs :crumbs="crumbs" />
 		</div>
 		<catalog-used :page-title="pageTitle" />
+		<div class="grid grid--container">
+			<text-used />
+		</div>
 	</main>
 </template>
 <script>
