@@ -6,8 +6,10 @@
   margin-bottom: 16px;
 }
 
-.car__top .heading--h1 {
-  margin-bottom: 6px;
+.car .heading--h1 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
 .car__top-info {
