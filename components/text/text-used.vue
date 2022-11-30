@@ -16,14 +16,10 @@
 				<p class="text__p" v-for="text in currentText" :key="text">
 					{{ text }}
 				</p>
-			</div>
-		</div>
-		<div v-if="isMoscow">
-			<h2 class="heading heading--h2 heading--h2--mt">
-				Выгоды сотрудничества с Carro.ru
-			</h2>
-			<div class="text__wrap text__wrap--figure">
-				<div class="text__content">
+				<div v-if="isMoscow">
+					<h2 class="heading heading--h2 heading--h2--mt">
+						Выгоды сотрудничества с Carro.ru
+					</h2>
 					<p class="text__p">
 						Мы работаем только с надежными автодилерами, репутация которых проверена временем и сотнями удачных сделок.
 						Ассортимент нашей площадки сформирован таким образом, что буквально каждый потребитель найдет интересный для
@@ -43,6 +39,7 @@
 				</div>
 			</div>
 		</div>
+		
 	</section>
 </template>
 <script>
