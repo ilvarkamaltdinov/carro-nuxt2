@@ -12,6 +12,21 @@
   gap: 5px;
 }
 
+.car__info-group.car__info-group--terms {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.car__terms-item {
+  display: flex;
+  padding: 16px 0;
+  justify-content: space-between;
+
+  &:not(:last-child) {
+    @include border-bottom;
+  }
+}
+
 .car__top-info {
   display: flex;
   justify-content: space-between;
@@ -218,6 +233,10 @@
     margin-bottom: 16px;
   }
 
+  .car__info-group--complectation {
+    margin-bottom: 16px;
+  }
+
   .car__benefits--desktop {
     display: none;
   }
@@ -344,7 +363,7 @@
     }
   }
 
-  .car__buy {
+  .car__buy-wrap {
     grid-column: 5 / 9;
     margin-bottom: -8px;
   }
@@ -489,12 +508,15 @@
     padding: 24px;
   }
 
-  .car__buy {
+  .car__buy-wrap {
     position: sticky;
     top: 153px;
     margin-bottom: 24px;
-    padding-bottom: 16px;
     height: fit-content;
+  }
+
+  .car__buy {
+    padding-bottom: 16px;
   }
 }
 
@@ -520,10 +542,13 @@
     flex-shrink: 0;
   }
 
-  .car__buy {
+  .car__buy-wrap {
     grid-column: 7 / 13;
-    padding: 24px;
     margin-bottom: -8px;
+  }
+
+  .car__buy {
+    padding: 24px;
   }
 
   .car__tech-list {
