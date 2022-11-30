@@ -19,7 +19,9 @@
 							<span class="heading-group__year">
 								{{ offer.year }}
 							</span>
-							{{ offer.generation.name }}
+              <span class="heading-group__generation">
+                {{ offer.generation.name }}
+							</span>
 							<span v-if="offer.vin" class="vin__wrapper-car">
 								<span class="car__vin vin"
 								      v-tippy="{
@@ -57,6 +59,10 @@
 					<car-fixed v-if="showFixed && focusShowFixed" />
 				</transition>
 				<car-info />
+
+        <car-complectation v-if="$device.isMobile"
+				                   :offer="offer"
+				                   class="swiper-slide car__info-group--complectation" />
 			</div>
 			<div class="grid grid--container">
 				<benefits class="car__benefits car__benefits--desktop"

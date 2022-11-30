@@ -36,14 +36,13 @@
 .heading-group__label--car {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 8px;
   // flex-direction: row-reverse;
   // justify-content: flex-end;
 }
 
 .heading-group__year {
   color: $colorText;
-  margin-right: 6px;
 }
 
 @media (max-width: $iphone-mini-only) {
