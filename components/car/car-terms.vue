@@ -1,54 +1,70 @@
 <template>
-  <div class="car__info-group car__info-group--terms">
-    <h2 class="visually-hidden" v-if="$device.isMobile">Преимущества</h2>
-    <h2 class="heading heading--h2" v-if="!$device.isMobile">Преимущества</h2>
-    <ul class="car__terms-list">
-      <li class="car__terms-item">
-        <div class="car__terms-element">Ставка</div>
-        <div class="car__terms-element">{{ settings.credit_percent }}</div>
-      </li>
-      <li class="car__terms-item">
-        <div class="car__terms-element">Первый взнос</div>
-        <div class="car__terms-element">от 0%</div>
-      </li>
-      <li class="car__terms-item">
-        <div class="car__terms-element">Кредит</div>
-        <div class="car__terms-element">{{ settings.credit_sum }}</div>
-      </li>
-      <li class="car__terms-item">
-        <div class="car__terms-element">Срок кредита</div>
-        <div class="car__terms-element">от 6 месяцев до 7 лет</div>
-      </li>
-      <li class="car__terms-item">
-        <div class="car__terms-element">Скидка за кредит</div>
-        <div class="car__terms-element">{{ settings.sale_credit }}</div>
-      </li>
-      <li class="car__terms-item">
-        <div class="car__terms-element">Оформление</div>
-        <div class="car__terms-element">30 минут</div>
-      </li>
-      <li class="car__terms-item">
-        <div class="car__terms-element">Одобрение</div>
-        <div class="car__terms-element">По паспорту и правам</div>
-      </li>
-      <li class="car__terms-item">
-        <div class="car__terms-element">Досрочное погашение</div>
-        <div class="car__terms-element">Без штрафов</div>
-      </li>
-    </ul>
-  </div>
+	<div class="car__info-group car__info-group--terms">
+		<h2 class="visually-hidden"
+		    v-if="$device.isMobile">Преимущества
+		</h2>
+		<h2 class="heading heading--h2"
+		    v-if="!$device.isMobile">Преимущества
+		</h2>
+		<ul class="car__terms-list">
+			<li class="car__terms-item"
+			    v-for="item in terms">
+				<div class="car__terms-element">{{ item.title }}</div>
+				<div class="car__terms-element"
+				     v-if="settings[item.slug]">
+					{{ settings[item.slug] }}
+				</div>
+			</li>
+		</ul>
+	</div>
 </template>
 
 <script>
 import filters from "@/mixins/filters";
-import { mapGetters } from "vuex";
+import {mapGetters} from "vuex";
 
 export default {
-  mixins: [filters],
-  computed: {
-    ...mapGetters({
-      settings: "settings/settings/settings",
-    }),
-  },
+	mixins: [filters],
+	computed: {
+		...mapGetters({
+			settings: "settings/settings/settings",
+		}),
+		terms() {
+			return [
+				{
+					title: 'Ставка',
+					slug: 'credit_percent'
+				},
+				{
+					title: 'Первый взнос',
+					slug: 'first_installment'
+				},
+				{
+					title: 'Кредит',
+					slug: 'credit_sum'
+				},
+				{
+					title: 'Срок кредита',
+					slug: 'credit_period'
+				},
+				{
+					title: 'Скидка за кредит',
+					slug: 'sale_credit'
+				},
+				{
+					title: 'Оформление',
+					slug: 'credit_registration'
+				},
+				{
+					title: 'Одобрение',
+					slug: 'credit_approve'
+				},
+				{
+					title: 'Досрочное погашение',
+					slug: 'credit_repayment'
+				}
+			]
+		}
+	},
 };
 </script>
