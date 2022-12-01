@@ -8,6 +8,10 @@
 }
 
 @media (max-width: $mobile-width-only) {
+  .page-main__video {
+    margin-bottom: 48px;
+  }
+
   .page-main {
     padding-top: 121px;
   }

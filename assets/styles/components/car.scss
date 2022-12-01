@@ -12,11 +12,6 @@
   gap: 5px;
 }
 
-.car__info-group.car__info-group--terms {
-  padding-top: 8px;
-  padding-bottom: 8px;
-}
-
 .car__terms-item {
   display: flex;
   padding: 16px 0;
@@ -229,6 +224,11 @@
 }
 
 @media (max-width: $mobile-width-only) {
+  .car__info-group.car__info-group--terms {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
   .car__slider-wrap {
     margin-bottom: 16px;
   }
@@ -395,6 +395,14 @@
 }
 
 @media (min-width: $tablet-width) {
+  .car__info-group.car__info-group--terms {
+    padding-bottom: 0;
+  }
+
+  .car__info-group--terms .heading--h2 {
+    margin-bottom: 8px;
+  }
+
   .car__slider .swiper-pagination {
     display: none;
   }
