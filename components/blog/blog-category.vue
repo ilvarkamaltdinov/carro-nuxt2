@@ -23,7 +23,7 @@
 					<div class="blog__item-text">
 						<h3 class="blog__item-title">{{ item.page_title }}</h3>
 					</div>
-					<picture-component classes="blog__img lazyload"
+					<picture-component v-if="item.image_preview" classes="blog__img lazyload"
 					                   :small="item.image_preview.thumb"
 					                   :small-webp="item.image_preview.thumb_webp"
 					                   :big="item.image_preview.small"
