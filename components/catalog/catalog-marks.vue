@@ -61,7 +61,7 @@ export default {
 			}])
 		},
 		marksList() {
-			let marks = [...this.marks]
+			let marks = [...this.marksArray]
 			let marksShowNumber = 21
 			if (this.$device.isMobile) {
 				marksShowNumber = 10
