@@ -48,23 +48,40 @@ export default {
 		...mapGetters({
 			marks: 'marks/marks/allMarks'
 		}),
-		showAllButton(){
-			if(this.$device.isMobile && this.marksArray){
+		showAllButton() {
+			if (this.$device.isMobile && this.marksArray) {
 				return this.marksArray.length > 10
-			} else if(this.marksArray){
+			} else if (this.marksArray) {
 				return this.marksArray.length > 21
 			}
 		},
-		sortedMarks(){
+		sortedMarks() {
 			return this.$_.sortBy(this.marksList, [function (mark) {
 				return mark.title;
 			}])
 		},
 		marksList() {
-			if (this.$device.isMobile && this.marksArray.length) {
-				return this.allMarks ? this.marksArray : this.marksArray.slice(0, 10)
-			} else if (this.marksArray.length) {
-				return this.allMarks ? this.marksArray : this.marksArray.slice(0, 21)
+			let marks = [...this.marks]
+			let marksShowNumber = 21
+			if (this.$device.isMobile) {
+				marksShowNumber = 10
+				if (this.allMarks) {
+					return marks
+				} else {
+					marks = marks.sort((a, b) => parseFloat(b.offers_count) - parseFloat(a.offers_count))
+					marks = marks.slice(0, marksShowNumber)
+					marks = marks.sort((a, b) => a.slug.toLowerCase().localeCompare(b.slug.toLowerCase()))
+					return marks
+				}
+			} else {
+				if (this.allMarks) {
+					return marks
+				} else {
+					marks = marks.sort((a, b) => parseFloat(b.offers_count) - parseFloat(a.offers_count))
+					marks = marks.slice(0, marksShowNumber)
+					marks = marks.sort((a, b) => a.slug.toLowerCase().localeCompare(b.slug.toLowerCase()))
+					return marks
+				}
 			}
 		}
 	},
@@ -81,13 +98,15 @@ export default {
 					}
 				})
 				return response.data.marks
-
+				
 			} catch (error) {
 				console.log(error)
 			}
 		},
 		clickAllMarks() {
-			setTimeout(function () {window.scrollTo(0, -100);}, 1);
+			setTimeout(function () {
+				window.scrollTo(0, -100);
+			}, 1);
 			this.allMarks = !this.allMarks
 		},
 	},

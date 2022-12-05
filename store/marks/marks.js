@@ -4,11 +4,15 @@ export const state = () => ({
         'audi', 'bmw', 'mercedes-benz', 'ford', 'hyundai', 'kia', 'mazda', 'mitsubishi', 'nissan', 'skoda'
     ],
     allMarksCount: null,
-    alphabetMarks: []
+
+    alphabetMarks: [],
 })
 export const getters = {
     allMarks: (state) => {
         return state.allMarks
+    },
+    sortedByAlphabet() {
+        return state.allMarksCount
     },
     allMarksCount: (state) => {
         return state.allMarksCount

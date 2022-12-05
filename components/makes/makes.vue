@@ -31,21 +31,30 @@ export default {
 		forChoseModal: {
 			type: Boolean,
 			default: false
-		}
+		},
+		sort: String
 	},
 	computed: {
 		...mapGetters({
 			allMarks: 'marks/marks/allMarks',
+			alphabetMarks: 'marks/marks/alphabetMarks',
 			popularMarks: 'marks/marks/popularMarks',
 			currentMark: 'modal/modal-choose/currentMark'
 		}),
 		popular() {
 			return this.popularMarks.slice(0, 10)
-		}
+		},
 		// sortedMarks() {
-		// 	return this.$_.sortBy(this.allMarks, [function (mark) {
-		// 		return mark.title;
-		// 	}])
+		// 	if (this.sort === 'alphabet') {
+		// 		console.log('alphabet')
+		// 		return this.alphabetMarks
+		// 	} else {
+		// 		console.log('allmarks')
+		// 		return this.allMarks
+		// 	}
+		// 	// return this.$_.sortBy(this.allMarks, [function (mark) {
+		// 	// 	return mark.offers_count;
+		// 	// }])
 		// }
 	},
 	methods: {
