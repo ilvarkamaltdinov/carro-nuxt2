@@ -269,3 +269,12 @@
     }
   }
 }
+
+.button--back {
+  text-decoration: underline;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  margin: 16px 0 0;
+  color: $colorLinkActive;
+}

@@ -9,6 +9,7 @@
 							:small-webp="`${require(`~/assets/img/404@1x.webp`)}`"
 							:big="`${require(`~/assets/img/404@2x.png`)}`"
 							:big-webp="`${require(`~/assets/img/404@2x.webp`)}`" />
+						<nuxt-link class="button--back" to="/">На главную</nuxt-link>
 				</div>
 			</section>
 		</div>
