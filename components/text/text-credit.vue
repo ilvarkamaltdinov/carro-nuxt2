@@ -16,7 +16,7 @@
 				<!--     v-html="domParse(text)"></div>-->
 				<div class="text__content">
 					<h2 class="heading heading--h2 visually-hidden">
-						Оформите выгодный автокредит {{currentCity}}
+						Оформите выгодный автокредит {{ currentCity }}
 					</h2>
 					<p class="text__p"
 					   v-for="text in currentText"
@@ -24,7 +24,7 @@
 						{{ text }}
 					</p>
 					<!--старый текст-->
-					<!--<p class="text__p">
+					<p class="text__p">
 						После звонка кредитного эксперта приезжайте в автоцентр, пробуйте понравившийся автомобиль
 						в рамках бесплатного тест-драйва и оформляйте автокредит прямо в салоне без необходимости
 						обращения в отделение банка-партнера.
@@ -34,8 +34,8 @@
 						<li class="text__list-item">Низкая ставка {{ settings.credit_percent }}</li>
 						<li class="text__list-item">Первоначальный взнос от 0%</li>
 						<li class="text__list-item">Trade-In как первый взнос</li>
-						<li class="text__list-item">Зимняя резина в подарок</li>
-					</ul>-->
+						<li class="text__list-item">Комплект резины в подарок</li>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -47,7 +47,8 @@ import {mapGetters} from "vuex";
 export default {
 	computed: {
 		...mapGetters({
-			site_id: 'site_id'
+			site_id: 'site_id',
+			settings: 'settings/settings/settings'
 		}),
 		currentCity() {
 			return this.site_id === 30 ? 'в Санкт-Петербурге' : this.site_id === 31 ? 'в Калуге' : 'в Москве'
