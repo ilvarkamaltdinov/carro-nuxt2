@@ -19,7 +19,7 @@
 				           :has-buttons="false"
 				           :offer="currentCar" />
 			</div>
-			
+
 			<button v-else
 			        class="application__choose-car grid__col-8"
 			        @click="chooseCar">
@@ -27,6 +27,7 @@
 				          name="icon-form" />
 				<span class="application__choose-car-text">Выберите автомобиль</span>
 			</button>
+      <car-terms v-if="$device.isMobile"/>
 			<application-banks class="grid__col-5"/>
 			<application-terms class="grid__col-3"/>
 		</div>

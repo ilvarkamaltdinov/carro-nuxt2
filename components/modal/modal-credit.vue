@@ -12,6 +12,7 @@
 				           :has-buttons="false"
 				           :offer="modalData" />
 			</div>
+      <car-terms v-if="$device.isMobile"/>
 			<application-banks class="grid__col-4" />
 		</div>
 	</div>
