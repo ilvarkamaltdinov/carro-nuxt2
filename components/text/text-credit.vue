@@ -39,8 +39,8 @@
               {{ settings.max_sum_credit }} ₽
             </li>
             <li class="text__list-item">
-              Срок кредита от {{ settings.min_period_credit }} ₽ до
-              {{ settings.max_period_credit }} ₽
+              Срок кредита от {{ settings.min_period_credit }} до
+              {{ settings.max_period_credit }}
             </li>
             <li class="text__list-item">
               Досрочное погашение без штрафов и комиссий
