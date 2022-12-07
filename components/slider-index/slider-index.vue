@@ -116,6 +116,12 @@ export default {
         //   link: "/credit",
         // },
         {
+          id: 11,
+          heading: "Новогодняя акция от carro.ru",
+          content: "Дарим подарок за заявку на автокредит до 31 декабря",
+          link: "/rassrochka",
+        },
+        {
           id: 6,
           heading: `Супер-автокредит от ${this.settings.credit_percent} годовых`,
           content:
