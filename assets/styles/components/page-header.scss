@@ -13,6 +13,16 @@
   width: auto;
   display: flex;
   align-items: center;
+  position: relative;
+}
+
+.page-header__logo-hat {
+  position: absolute;
+  top: -11px;
+  left: -10px;
+  width: 25px;
+  rotate: -23deg;
+  transition: 0.3s;
 }
 
 .page-header__logo-block {
@@ -252,8 +262,13 @@
   .page-header__logo {
     margin-right: 32px;
 
-    &:hover .page-header__logo-circle {
-      transform: rotate(22deg);
+    // &:hover .page-header__logo-circle {
+    //   transform: rotate(22deg);
+    // }
+
+    &:hover .page-header__logo-hat {
+      top: -14px;
+      left: -11px;
     }
 
     &:active {
@@ -333,6 +348,10 @@
     display: flex;
     visibility: visible;
     opacity: 1;
+  }
+
+  .page-header__logo-hat {
+    width: 27px;
   }
 
   .page-header__buttons-link {
