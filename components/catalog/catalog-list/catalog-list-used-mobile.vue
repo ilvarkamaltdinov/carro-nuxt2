@@ -1,6 +1,8 @@
 <template>
 	<div ref="catalog">
-		<catalog-filters-mobile-live/>
+		<div ref="mobileFilter">
+			<catalog-filters-mobile-live />
+		</div>
 		<div v-if="loading"
 		     class="catalog__list"
 		     :class="{'grid grid--catalog': !$device.isMobile}">
@@ -51,7 +53,8 @@ export default {
 			offers: 'filters/filters/offers',
 			loading: 'filters/filters/loading',
 			sort: 'filters/filters/sort',
-			generationClick: 'click/generationClick'
+			generationClick: 'click/generationClick',
+			mobileFilterClick: 'click/mobileFilterClick'
 		}),
 		moreOffersData() {
 			return this.offers
@@ -72,6 +75,10 @@ export default {
 		}
 	},
 	async mounted() {
+		if (this.mobileFilterClick) {
+			await this.scrollToMobileFilters()
+			await this.setMobileFilterClick(false)
+		}
 		if (this.generationClick) {
 			await this.scrollToCatalog()
 			await this.setGenerationClick(false)
@@ -79,8 +86,18 @@ export default {
 	},
 	methods: {
 		...mapMutations({
-			setGenerationClick: 'click/SET_GENERATION_CLICK'
+			setGenerationClick: 'click/SET_GENERATION_CLICK',
+			setMobileFilterClick: 'click/SET_MOBILE_FILTER_CLICK',
 		}),
+		scrollToMobileFilters() {
+			setTimeout(() => {
+				let mobileFilters = this.$refs.mobileFilter;
+				mobileFilters.scrollIntoView(true);
+				const yourHeight = 105; // header + filter
+				const scrolledY = window.scrollY;
+				window.scroll(0, scrolledY - yourHeight);
+			}, 100)
+		},
 		scrollToCatalog() {
 			setTimeout(() => {
 				let catalog = this.$refs.catalog;
@@ -88,7 +105,7 @@ export default {
 				const yourHeight = 105 + 81; // header + filter
 				const scrolledY = window.scrollY;
 				window.scroll(0, scrolledY - yourHeight);
-			},100)
+			}, 100)
 		},
 		async paginationClick(type) {
 			let page = this.offers.current_page + 1

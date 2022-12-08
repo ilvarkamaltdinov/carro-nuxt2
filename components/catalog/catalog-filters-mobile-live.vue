@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from "vuex";
+import {mapActions, mapGetters, mapMutations} from "vuex";
 import onlyFilters from '@/apollo/queries/offer/onlyFilters'
 
 export default {
@@ -44,7 +44,11 @@ export default {
 		...mapActions({
 			request: 'request'
 		}),
+		...mapMutations({
+			setMobileFilterClick: 'click/SET_MOBILE_FILTER_CLICK'
+		}),
 		async select(slug, type) {
+			this.setMobileFilterClick(true)
 			let route = `/${this.$route.params.category}/`
 			switch (type) {
 				case 'mark':
