@@ -12,8 +12,12 @@ export const state = () => ({
     isFilterClick: false,
     isOfferClick: false,
     filteredTotal: null,
+    showFilters: true
 })
 export const getters = {
+    showFilters: (state) => {
+        return state.showFilters
+    },
     filters: (state) => {
         return state.filters
     },
@@ -88,8 +92,7 @@ export const actions = {
                 } else {
                     query['body_type_id_array'] = body_type_id_array
                 }
-            }
-            else if (folder_slug_array?.length > 1) {
+            } else if (folder_slug_array?.length > 1) {
                 query['folder_slug_array'] = folder_slug_array
                 if (engine_type_slug_array) {
                     query['engine_type_id_array'] = engine_type_id_array
@@ -115,15 +118,13 @@ export const actions = {
                 if (generation_slug_array?.length === 1) {
                     query['engine_type_id_array'] = engine_type_id_array
                 }
-            }
-            else if (!folder_slug_array && engine_type_slug_array?.length === 1) {
+            } else if (!folder_slug_array && engine_type_slug_array?.length === 1) {
                 if (body_type_slug_array?.length === 1) {
                     query['engine_type_id_array'] = engine_type_id_array
                 } else {
                     url = mark_slug_array?.[0] + '/' + engine_type_slug_array[0]
                 }
-            }
-            else{
+            } else {
                 query['engine_type_id_array'] = engine_type_id_array
             }
         } else {
@@ -224,5 +225,8 @@ export const mutations = {
     },
     SET_VIEW(state, data) {
         state.view = data
+    },
+    SET_SHOW_FILTERS(state, data) {
+        state.showFilters = data
     },
 }

@@ -2,7 +2,8 @@
 	<div class="catalog__filter filter">
 		<div class="filter__catalog-wrap">
 			<div class="filter__buttons-wrap">
-				<div class="filter__buttons-filter" v-if="!modal">
+				<div class="filter__buttons-filter"
+				     v-if="!modal">
 					<button-filter @click="openFilter()" />
 				</div>
 				<div tabindex="1"
@@ -75,6 +76,7 @@ export default {
 			sort: 'filters/filters/sort', // СОРТИРОВКА ДЛЯ ФИЛЬТРОВ
 			viewModal: 'modal/modal-choose/view', // ОТОБРАЖЕНИЕ ДЛЯ КАТАЛОГА
 			viewFilter: 'filters/filters/view', // ОТОБРАЖЕНИЕ ДЛЯ ФИЛЬТРОВ
+			showFilters: 'filters/filters/showFilters'
 		}),
 		currentCarsCount() {
 			return this.filteredTotal + ' ' + this.declension({
@@ -116,7 +118,8 @@ export default {
 			setViewFilters: 'filters/filters/SET_VIEW',//ОТОБРАЖЕНИЕ ДЛЯ ФИЛЬТРОВ
 			setLoadingFilters: 'filters/filters/SET_LOADING',
 			setLoadingCatalog: 'modal/modal-choose/SET_LOADING',
-			setFilterClick: 'filters/filters/SET_IS_FILTER_CLICK'
+			setFilterClick: 'filters/filters/SET_IS_FILTER_CLICK',
+			setShowFilters: 'filters/filters/SET_SHOW_FILTERS'
 		}),
 		async changeView(type) {
 			if (this.modal) {
@@ -134,13 +137,14 @@ export default {
 			}
 		},
 		openFilter() {
-			let payload = {
-				modal_component: 'modal-filter-mobile',
-				modal_data: 'filter-mobile',
-				modal_title: 'Фильтр',
-				modal_sub_title: this.currentCarsCount
-			}
-			this.openModal(payload)
+			this.setShowFilters(!this.showFilters)
+			// let payload = {
+			// 	modal_component: 'modal-filter-mobile',
+			// 	modal_data: 'filter-mobile',
+			// 	modal_title: 'Фильтр',
+			// 	modal_sub_title: this.currentCarsCount
+			// }
+			// this.openModal(payload)
 		},
 		async sortChosen(sort, value) {
 			this.setFilterClick(true)
@@ -149,10 +153,10 @@ export default {
 					this.setModalSort(value)
 					await this.getOffers()
 				} else {
-          let query = {sort: value}
-          if(Number(this.$route.query.page) > 1){
-            query.page = 1
-          }
+					let query = {sort: value}
+					if (Number(this.$route.query.page) > 1) {
+						query.page = 1
+					}
 					this.setSort(value)
 					await this.$router.push({path: this.$route.fullPath, query: query});
 				}
@@ -161,15 +165,15 @@ export default {
 					this.setModalSort(sort)
 					await this.getOffers()
 				} else {
-          let query = {sort: sort}
-          if(Number(this.$route.query.page) > 1){
-            query.page = 1
-          }
+					let query = {sort: sort}
+					if (Number(this.$route.query.page) > 1) {
+						query.page = 1
+					}
 					this.setSort(sort)
 					await this.$router.push({path: this.$route.fullPath, query: query});
 				}
 			}
-
+			
 		}
 	}
 }

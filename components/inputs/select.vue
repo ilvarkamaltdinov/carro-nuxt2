@@ -2,12 +2,15 @@
 	<select v-if="$device.isMobile"
 	        class="form__field form__field--select"
 	        @change="changeSelect()"
-	        :value="value">
-		<option :value="value">{{ value }}</option>
-		<option :value="option"
-		        :key="option"
+	        v-model="currentValue"
+	        :value="currentValue">
+		<option :value="currentValue">
+			{{ value.title || value }}
+		</option>
+		<option :value="option.slug || option"
+		        :key="option.name || option.title || option"
 		        v-for="option in options">
-			{{ option }}
+			{{ option.name || option.title || option }}
 		</option>
 	</select>
 	<div v-else
@@ -15,14 +18,14 @@
 	     tabindex="1"
 	     class="form__field form__field--select select"
 	     @click="isOpen = !isOpen">
-		<span>{{ value }}</span>
+		<span>{{ value.title || value }}</span>
 		<ul class="select__list"
 		    v-if="isOpen">
 			<li class="select__item"
 			    @click="$emit('input', option)"
 			    v-for="option in options"
-			    :key="option">
-				{{ option }}
+			    :key="option.title || option">
+				{{ option.title || option }}
 			</li>
 		</ul>
 	</div>
@@ -36,8 +39,18 @@ export default {
 		}
 	},
 	props: {
-		value: [String, Number],
+		value: [String, Number, Object],
 		options: Array
+	},
+	computed: {
+		currentValue: {
+			get() {
+				return this.value.title || this.value
+			},
+			set() {
+				return this.value.title || this.value
+			}
+		}
 	},
 	methods: {
 		changeSelect() {

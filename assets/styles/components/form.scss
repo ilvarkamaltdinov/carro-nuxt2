@@ -66,6 +66,10 @@
 .form__range-value {
   @include font-body-strong;
 }
+.catalog__filters-mobile{
+  padding-top: 16px;
+  padding-bottom: 12px;
+}
 
 .form__field-wrap {
   position: relative;

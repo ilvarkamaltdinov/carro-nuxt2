@@ -1,5 +1,6 @@
 <template>
 	<div ref="catalog">
+		<catalog-filters-mobile-live/>
 		<div v-if="loading"
 		     class="catalog__list"
 		     :class="{'grid grid--catalog': !$device.isMobile}">

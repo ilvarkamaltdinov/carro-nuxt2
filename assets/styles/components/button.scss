@@ -91,6 +91,12 @@
   }
 }
 
+.button--filter {
+  background-color: $colorBgButton;
+  width: 100%;
+  color: $colorLink;
+}
+
 .button--action.button--more {
   background-color: $colorBgButton;
 }

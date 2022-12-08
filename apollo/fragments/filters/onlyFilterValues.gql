@@ -1,0 +1,19 @@
+#import "./types/markFieldType.gql"
+#import "./types/folderFieldType.gql"
+#import "./types/generationFieldType.gql"
+#import "./types/chosenFieldType.gql"
+
+fragment OnlyFilterValues on OfferFilterValues {
+  mark{
+    ... MarkFieldType
+  }
+  folder{
+    ... FolderFieldType
+  }
+  generation{
+    ... GenerationFieldType
+  }
+  chosen{
+    ... ChosenFieldType
+  }
+}
