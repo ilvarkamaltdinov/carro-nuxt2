@@ -23,7 +23,7 @@
 				<h3 class="heading heading--h3">Адрес:</h3>
 				<ul class="features__list">
 					<li class="features__item">{{ offer.dealer.address }}</li>
-					<li class="features__item">м. {{ offer.dealer.metro }}</li>
+					<li class="features__item" v-if="offer.dealer.metro">м. {{ offer.dealer.metro }}</li>
 				</ul>
 			</div>
 			<div class="features__group">
