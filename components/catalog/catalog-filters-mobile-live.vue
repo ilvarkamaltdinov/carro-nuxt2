@@ -1,5 +1,5 @@
 <template>
-	<vue-slide-toggle :open="showFilters">
+	<vue-slide-toggle :open="showFilters" :duration="0">
 		<div class="catalog__filters-mobile">
 			<label class="form__field-wrap form__field-wrap--select">
 				<inputs-select :value="chosenMark"

@@ -93,7 +93,7 @@ export default {
 			setTimeout(() => {
 				let mobileFilters = this.$refs.mobileFilter;
 				mobileFilters.scrollIntoView(true);
-				const yourHeight = 105; // header + filter
+				const yourHeight = 105; // header
 				const scrolledY = window.scrollY;
 				window.scroll(0, scrolledY - yourHeight);
 			}, 100)
