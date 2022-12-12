@@ -89,7 +89,7 @@ export default {
 	},
 	computed: {
 		showMarkTabs() {
-			return (this.$route.params.category === "used" || this.$route.params.category === "commercial")
+			return (this.$route.params.category === "used" || this.$route.params.category === "commercial" || this.$route.params.category === "europe" )
 					&& !this.$route.params.mark;
 		}
 	}

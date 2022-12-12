@@ -11,12 +11,10 @@
 import seoTags from "@/mixins/seoTags";
 import {mapGetters, mapMutations} from "vuex";
 import jsonld from "@/mixins/jsonld";
+import categoryValidate from "@/mixins/categoryValidate";
 
 export default {
-	mixins: [seoTags, jsonld],
-	validate(ctx) {
-		return ctx.params.category === 'used' || ctx.params.category === 'commercial';
-	},
+	mixins: [seoTags, jsonld, categoryValidate],
 	mounted() {
 		setTimeout(function () {window.scrollTo(0, -100);}, 1);
 		localStorage.removeItem('foldersTabsLeft');

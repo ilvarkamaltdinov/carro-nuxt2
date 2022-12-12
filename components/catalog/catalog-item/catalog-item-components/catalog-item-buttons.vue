@@ -2,20 +2,25 @@
 	<div class="catalog__buttons">
 		<div class="catalog__actions">
 			<button-autoteka @click="autoteka(offer)"
-			                 v-if="long" />
+			                 v-if="long && $route.params.category !=='europe'" />
 			<button-favorite :active="likesArray.some(id => id === String(offer.external_id))"
 			                 @click="like()" />
 			<!--<button-compare v-if="long" />-->
 			<button-call :phone="offer.dealer.phone"
 			             @click="call" />
 		</div>
-		<div class="catalog__actions-main" v-if="long">
+		<div class="catalog__actions-main"
+		     v-if="long">
 			<button-typical @click="tradeIn(offer)"
 			                text="Trade-In"
 			                button-class="button--trade-in button--link" />
 			<button-typical v-if="choose"
 			                @click="chooseClick(offer)"
 			                :text="isEqual ? 'Выбрано' : 'Выбрать'"
+			                button-class="button--credit" />
+			<button-typical v-else-if="$route.params.category==='europe'"
+			                @click="credit()"
+			                text="Рассчитать кредит"
 			                button-class="button--credit" />
 			<button-typical v-else
 			                @click="credit()"
@@ -28,6 +33,10 @@
 			                :class="{'button--credit-selected':isEqual }"
 			                :text="isEqual ? 'Выбран' : 'Выбрать'"
 			                button-class="button--credit" />
+			<button-typical v-else-if="$route.params.category==='europe'"
+			                @click="credit()"
+			                text="Рассчитать кредит"
+			                button-class="button--credit button--credit-europe" />
 			<button-typical v-else
 			                @click="credit()"
 			                text="Купить в кредит"
@@ -47,12 +56,12 @@ export default {
 		...mapGetters({
 			likesArray: 'favorite/favorite/likesArray',
 			currentCar: 'modal/modal-choose/currentCar',
-      settings: 'settings/settings/settings'
+			settings: 'settings/settings/settings'
 		}),
-		isEqual(){
-			if(this.currentCar){
+		isEqual() {
+			if (this.currentCar) {
 				return this.currentCar.id === this.offer.id
-			} else{
+			} else {
 				return false
 			}
 		}

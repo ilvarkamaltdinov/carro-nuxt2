@@ -12,12 +12,10 @@
 <script>
 import {mapGetters, mapMutations} from "vuex";
 import seoTags from "@/mixins/seoTags";
+import categoryValidate from "@/mixins/categoryValidate";
 
 export default {
-	mixins: [seoTags],
-	validate(ctx) {
-		return ctx.params.category === 'used' || ctx.params.category === 'commercial';
-	},
+	mixins: [seoTags, categoryValidate],
 	mounted() {
 		if (this.componentCatalog === 'catalog-used') {
 			this.setBackButton(this.currentBackButton)

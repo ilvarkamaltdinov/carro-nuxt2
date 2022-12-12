@@ -45,7 +45,7 @@
 							class="button--icon button--link"
 							icon="icon-callback"
 					/>
-					<button-call-modal :phone="offer.dealer.phone" />
+					<button-call-modal v-if="offer.dealer.phone" :phone="offer.dealer.phone" />
 				</div>
 			</div>
 			<div class="car__slider-wrap">

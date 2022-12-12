@@ -40,8 +40,11 @@ export default {
 	async created() {
 		if (this.$route.params.category === 'used') {
 			this.marksArray = this.marks
-		} else {
+		} else if (this.$route.params.category === 'commercial') {
 			this.marksArray = await this.getComm()
+		}
+		else if (this.$route.params.category === 'europe') {
+			this.marksArray = await this.getEurope()
 		}
 	},
 	computed: {
@@ -95,6 +98,20 @@ export default {
 					query: marks,
 					variables: {
 						category: 'commercial'
+					}
+				})
+				return response.data.marks
+				
+			} catch (error) {
+				console.log(error)
+			}
+		},
+		async getEurope() {
+			try {
+				let response = await this.request({
+					query: marks,
+					variables: {
+						category: 'europe'
 					}
 				})
 				return response.data.marks

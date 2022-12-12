@@ -19,6 +19,10 @@
   box-shadow: $shadowPrimary;
   flex-shrink: 0;
 
+  &.button--credit-europe {
+    padding: 12px 24px;
+  }
+
   &:hover {
     background-color: $colorPrimaryDark;
   }

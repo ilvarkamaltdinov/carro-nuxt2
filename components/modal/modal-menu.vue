@@ -30,10 +30,16 @@ export default {
 							name: 'Легковые',
 							link: '/used',
 							show: true
-						}, {
+						},
+						{
 							name: 'Коммерческие',
 							link: '/commercial',
 							show: this.showComm
+						},
+						{
+							name: 'Из Европы',
+							link: '/europe',
+							show: this.isMoscow
 						},
 					],
 				},
