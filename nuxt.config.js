@@ -98,8 +98,40 @@ export default {
         '@nuxtjs/device',
         '@nuxtjs/axios',
         '@nuxtjs/svg-sprite',
-        '@nuxtjs/redirect-module'
+        '@nuxtjs/redirect-module',
+        'nuxt-ssr-cache',
     ],
+  ...(!isDev && {
+    cache: {
+      // if you're serving multiple host names (with differing
+      // results) from the same server, set this option to true.
+      // (cache keys will be prefixed by your host name)
+      // if your server is behind a reverse-proxy, please use
+      // express or whatever else that uses 'X-Forwarded-Host'
+      // header field to provide req.hostname (actual host name)
+      useHostPrefix: false,
+      pages: [
+        '/',
+      ],
+
+      key(route, context) {
+        if (route === '/') {
+          return 'page:home:string';
+        }
+        let page = route.substr(1).split('/');
+        page = page.join('.');
+        return `page:${page}:string`;
+      },
+
+      store: {
+        type: 'memory',
+        max: 100,
+
+        // number of seconds to store this page in cache
+        ttl: 60,
+      },
+    }
+    }),
     redirect: redirects,
     svgSprite: {
         input: '~/assets/icons/',
