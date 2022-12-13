@@ -28,7 +28,7 @@ fragment OfferPage on Offer {
         rating_interior
         rating_technical
     }
-    createdAt(format: $dateFormat)
+    createdAt(format: $dateFormat, sub_day: true)
     engine_power
     engine_volume
     modification{

@@ -29,7 +29,7 @@ fragment OfferPagination on OfferTypePagination {
       rating_technical
     }
     year
-    createdAt(format: $dateFormat)
+    createdAt(format: $dateFormat, sub_day: true)
     engine_power
     engine_volume
     mark {
