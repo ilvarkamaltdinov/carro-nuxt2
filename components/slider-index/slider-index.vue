@@ -108,18 +108,17 @@ export default {
     }),
     slides() {
       return [
-        // {
-        //   id: 10,
-        //   heading: `Черная пятница 11.11 на carro.ru`,
-        //   content:
-        //     "Дополнительная скидка и подарки за заявку на автокредит",
-        //   link: "/credit",
-        // },
+        {
+          id: 12,
+          heading: "Автомобили из Европы на carro.ru",
+          content: "Бесплатная доставка, особые условия по автокредиту",
+          link: "/europe",
+        },
         {
           id: 11,
           heading: "Новогодняя акция от carro.ru",
           content: "Дарим подарок за заявку на автокредит до 31 декабря",
-          link: "/rassrochka",
+          link: "/credit",
         },
         {
           id: 6,

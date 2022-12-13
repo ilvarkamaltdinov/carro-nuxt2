@@ -6,6 +6,11 @@
   margin-bottom: 16px;
 }
 
+.car__price-europe {
+  flex-shrink: 0;
+  @include font-body-strong;
+}
+
 .car__terms-item {
   display: flex;
   padding: 16px 0;
