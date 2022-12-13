@@ -124,11 +124,13 @@ export default {
       },
 
       store: {
-        type: 'memory',
-        max: 100,
-
-        // number of seconds to store this page in cache
-        ttl: 60,
+        type: 'redis',
+        host: 'localhost',
+        ttl: 10 * 60,
+        configure: [
+          ['maxmemory', '200mb'],
+          ['maxmemory-policy', 'allkeys-lru'],
+        ],
       },
     }
     }),
