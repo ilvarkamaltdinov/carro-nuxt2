@@ -5,7 +5,7 @@
 		</div>
 		<catalog-used :page-title="pageTitle" />
 		<div class="grid grid--container">
-			<text-used />
+			<text-used v-if="$route.params.category === 'used'"/>
 		</div>
 	</main>
 </template>
