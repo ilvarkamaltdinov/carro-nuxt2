@@ -17,7 +17,7 @@
     "@nuxtjs/svg-sprite": "^0.5.2",
     "aos": "^3.0.0-beta.6",
     "core-js": "^3.23.3",
-    "inputmask": "^5.0.7",
+    "inputmask": "5.0.8-beta.1",
     "intersection-observer": "^0.12.2",
     "lodash": "^4.17.21",
     "nuxt": "^2.15.8",
