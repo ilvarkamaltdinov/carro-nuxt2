@@ -3,35 +3,35 @@ const axios = require('axios')
 const router = Router()
 let routes = [
     {
-        from: 'https://api.carro.ru/feeds/yandex/xml/carro-rf/main',
+        from: 'https://api.genzes.ru/feeds/yandex/xml/carro-rf/main',
         to: '/autoru/cars_rf.xml'
     },
     {
-        from: 'https://api.carro.ru/feeds/yandex/xml/carro-rf/avtograd',
+        from: 'https://api.genzes.ru/feeds/yandex/xml/carro-rf/avtograd',
         to: '/yandex/autograd/offers.xml'
     },
     {
-        from: 'https://api.carro.ru/feeds/yandex/xml/carro-rf/prime',
+        from: 'https://api.genzes.ru/feeds/yandex/xml/carro-rf/prime',
         to: '/yandex/prime/offers.xml'
     },
     {
-        from: 'https://api.carro.ru/feeds/yandex/xml/carro-rf/komm-auto',
+        from: 'https://api.genzes.ru/feeds/yandex/xml/carro-rf/komm-auto',
         to: '/yandex/comm/offers.xml'
     },
     {
-        from: 'https://api.carro.ru/feeds/yandex/xml/carro-rf/before-400',
+        from: 'https://api.genzes.ru/feeds/yandex/xml/carro-rf/before-400',
         to: '/yandex/before-400/offers.xml'
     },
     {
-        from: 'https://api.carro.ru/feeds/yandex/xml/carro-rf/after-400',
+        from: 'https://api.genzes.ru/feeds/yandex/xml/carro-rf/after-400',
         to: '/yandex/after-400/offers.xml'
     },
     {
-        from: 'https://api.carro.ru/feeds/yandex/xml/carro/main',
+        from: 'https://api.genzes.ru/feeds/yandex/xml/carro/main',
         to: '/autoru/cars.xml'
     },
     {
-        from: 'https://api.carro.ru/feeds/google/xml/carro/main',
+        from: 'https://api.genzes.ru/feeds/google/xml/carro/main',
         to: '/mytarget/offers.xml'
     }
 ]
