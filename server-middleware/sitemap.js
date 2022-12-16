@@ -5,10 +5,10 @@ export default async function (req, res, next) {
         link = 'https://api.carro.ru/sitemap/xml/carro'
     }
     else if(req.headers.host === 'spb.carro.ru'){
-        link = 'https://api.carro.ru/sitemap/xml/spb-carro'
+        link = 'https://api.genzes.ru/sitemap/xml/spb-carro'
     }
     else if(req.headers.host === 'kaluga.carro.ru'){
-        link = 'https://api.carro.ru/sitemap/xml/kaluga-carro'
+        link = 'https://api.genzes.ru/sitemap/xml/kaluga-carro'
     }
     if(link !== ''){
         let response = await getXml(link)

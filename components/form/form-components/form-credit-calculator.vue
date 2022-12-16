@@ -91,6 +91,7 @@ export default {
 				let car_price = this.offer.price;
 				let creditTime = this.periodValue;
 				let firstPay = this.paymentValue;
+
 				let A = 0;
 				let i = creditProc / 12 / 100;
 				let n = creditTime;
