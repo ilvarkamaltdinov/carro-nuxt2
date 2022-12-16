@@ -35,7 +35,7 @@
           />
         </div>
         <button
-          v-if="!$route.params.category === 'europe'"
+          v-if="$route.params.category !== 'europe'"
           @click.prevent="installmentClick(offer)"
           class="button button--credit-pay button--link"
         >
