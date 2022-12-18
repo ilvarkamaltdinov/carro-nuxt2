@@ -24,10 +24,6 @@ export default {
           link: "/used",
         },
         {
-          title: "Из Европы",
-          link: "/europe",
-        },
-        {
           title: "Автокредит",
           link: "/credit",
         },
@@ -45,6 +41,7 @@ export default {
   computed: {
     ...mapGetters({
       showReviews: "showReviews",
+      isMoscow: "isMoscow"
     }),
   },
   mounted() {
@@ -57,6 +54,12 @@ export default {
           title: "Контакты",
           link: "/contacts",
         });
+    this.isMoscow
+      ? this.nav.splice(1, 0, {
+        title: "Из Европы",
+        link: "/europe",
+      })
+      : '';
   },
   methods: {
     ...mapMutations({
