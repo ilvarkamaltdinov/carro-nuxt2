@@ -73,6 +73,7 @@ export default {
 					{
 						query: offers,
 						variables: {
+              category: "cars",
 							page: this.page,
 							limit: this.limit,
 							sort: this.sort,
