@@ -10,7 +10,7 @@ export const state = () => ({
     benefits: [
         {
             text: 'Гарантия',
-            text_strong: '1 год',
+            text_strong: '2 год',
             icon: 'shield',
             description: 'Автосалоны-партнеры CARRO предоставляют гарантию на техническое состояние автомобиля в течение одного года с момента покупки.',
             slug: 'guaranty',
