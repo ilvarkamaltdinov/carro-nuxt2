@@ -69,16 +69,14 @@ export default {
       }
     },
     vkPixel() {
-      if (this.settings.vkpixel && this.settings.vkpixel_alt) {
+      if (this.settings.vkpixel) {
         const vkPixel = this.settings.vkpixel;
-        const vkPixelAlt = this.settings.vkpixel_alt;
+        // const vkPixelAlt = this.settings.vkpixel_alt;
         (
           function () {
             var t = document.createElement("script");
             t.type = "text/javascript", t.async = !0, t.src = 'https://vk.com/js/api/openapi.js?169', t.onload = function () {
               VK.Retargeting.Init(vkPixel),
-              VK.Retargeting.Hit()
-              VK.Retargeting.Init(vkPixelAlt),
               VK.Retargeting.Hit()
             }, document.head.appendChild(t)
           }()
