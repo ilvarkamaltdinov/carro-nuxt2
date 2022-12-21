@@ -67,41 +67,18 @@ export default {
           }
         })(document, window, "topmailru-code");
       }
-      if (this.settings.mytarget_alt) {
-        _tmr.push({
-          id: `${this.settings.mytarget_alt}`,
-          type: "pageView",
-          start: (new Date()).getTime(),
-          pid: "USER_ID"
-        });
-        (function (d, w, id) {
-          if (d.getElementById(id)) return;
-          var ts = d.createElement("script");
-          ts.type = "text/javascript";
-          ts.async = true;
-          ts.id = id;
-          ts.src = "https://top-fwz1.mail.ru/js/code.js";
-          var f = function () {
-            var s = d.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(ts, s);
-          };
-          if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f, false);
-          } else {
-            f();
-          }
-        })(document, window, "topmailru-code");
-      }
     },
     vkPixel() {
-      if (this.settings.vkpixel) {
+      if (this.settings.vkpixel && this.settings.vkpixel_alt) {
         const vkPixel = this.settings.vkpixel;
-        // const vkPixelAlt = this.settings.vkpixel_alt;
+        const vkPixelAlt = this.settings.vkpixel_alt;
         (
           function () {
             var t = document.createElement("script");
             t.type = "text/javascript", t.async = !0, t.src = 'https://vk.com/js/api/openapi.js?169', t.onload = function () {
               VK.Retargeting.Init(vkPixel),
+              VK.Retargeting.Hit()
+              VK.Retargeting.Init(vkPixelAlt),
               VK.Retargeting.Hit()
             }, document.head.appendChild(t)
           }()
