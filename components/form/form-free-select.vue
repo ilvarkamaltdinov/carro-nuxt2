@@ -19,6 +19,7 @@
 			<label class="form__field-wrap form__field-wrap--select"
 			       :class="yearClass">
 				<inputs-select :value="form.year.value"
+				               title="Год от"
 				               :options="years_range"
 				               @input="changeSelect( $event, 'year')" />
 				<svg-icon class="form__field-arrow"
@@ -28,6 +29,7 @@
 			       :class="gearboxClass">
 				<inputs-select :value="form.gearbox.value"
 				               :options="gearboxes"
+				               title="КПП"
 				               @input="changeSelect( $event, 'gearbox')" />
 				<svg-icon class="form__field-arrow"
 				          name="icon-arrow" />
@@ -36,6 +38,7 @@
 			       :class="engineTypeClass">
 				<inputs-select :value="form.engineType.value"
 				               :options="engineTypes"
+				               title="Двигатель"
 				               @input="changeSelect( $event, 'engineType')" />
 				<svg-icon class="form__field-arrow"
 				          name="icon-arrow" />

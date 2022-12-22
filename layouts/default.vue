@@ -22,8 +22,9 @@
 import {mapActions, mapGetters, mapMutations} from "vuex"
 // import capitalizeFirstLetter from "~/mixins/capitalizeFirstLetter";
 import offerFilters from "@/apollo/queries/offer/offerFilters";
+import offers from "@/apollo/queries/offer/offers";
 import offerUrl from "@/apollo/queries/offer/offerUrl";
-import _ from "lodash";
+import isEmpty from "lodash/isEmpty";
 import utm from "@/mixins/utm";
 import metrika from "@/mixins/metrika";
 
@@ -81,12 +82,19 @@ export default {
 			this.setModalMenu(false)
 			this.setModalMarks(false)
 		},
+		async offersRequest(assignVariables){
+			try {
+				let response = await this.request({query: offers, variables: assignVariables})
+				await this.changingOffers(response.data.offers)
+			
+			} catch (error) {
+				return this.$nuxt.error({statusCode: 404, message: '404'})
+			}
+		},
 		async filterRequest(assignVariables) {
 			try {
 				let response = await this.request({query: offerFilters, variables: assignVariables})
 				await this.changingFilters(response.data.offerFilters)
-				await this.changingOffers(response.data.offers)
-				this.setIsFilterClick(false)
 			} catch (error) {
 				return this.$nuxt.error({statusCode: 404, message: '404'})
 			}
@@ -130,14 +138,19 @@ export default {
 						year_from: Number(this.$route.query.year_from),
 						year_to: Number(this.$route.query.year_to),
 						sort: this.$route.query.sort || this.sort,
-						limit: 16,
+						limit: 8,
 						page: Number(this.$route.query.page) || 1,
 					}
 
 					delete assignVariables.__typename;
 					if (typeName === 'OfferUrlFilterPaginationType') {
 						// Если это результат для фильтра, отправляем запрос
-						await this.filterRequest(this._.pickBy({...assignVariables, ...queries}))
+						let variables = {...assignVariables, ...queries}
+						let removeEmptyParams = Object.fromEntries(Object.entries(variables).filter(([_, v]) =>
+								typeof v === 'number' ? !!(v) : !isEmpty(v)
+						));
+						await this.offersRequest(removeEmptyParams)
+						await this.filterRequest(removeEmptyParams)
 					} else if (typeName === 'OfferUrlType') {
 						// Если это авто, просто показываем компонент, запрос отправится в компоненте
 						this.setComponentCatalog('car')
@@ -146,7 +159,7 @@ export default {
 					this.$nuxt.error({statusCode: 404})
 				}
 			} else {
-				await this.filterRequest(this._.pickBy({ // TODO очищаю от пустых значений
+				let variables = { // TODO очищаю от пустых значений
 					url: this.$route.path === '/best-moscow-autosalon' || this.$route.path === '/best-autosalon' ? '/used' : this.$route.path,
 					page: Number(this.$route.query.page) || 1,
 					dateFormat: 'j F Y года.',
@@ -162,8 +175,14 @@ export default {
 					year_from: Number(this.$route.query.year_from),
 					year_to: Number(this.$route.query.year_to),
 					sort: this.$route.query.sort || this.sort,
-					limit: 16
-				}))
+					limit: 8
+				}
+				let removeEmptyParams = Object.fromEntries(Object.entries(variables).filter(([_, v]) =>
+						typeof v === 'number' ? !!(v) : !isEmpty(v)
+				));
+				await this.offersRequest(removeEmptyParams)
+				await this.filterRequest(removeEmptyParams)
+				this.setIsFilterClick(false)
 			}
 			if (!this.isFilterClick) {
 				await this.setLoadingRange(false)

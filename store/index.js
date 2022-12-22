@@ -84,7 +84,7 @@ export const actions = {
         return await client.query(
             {
                 query: query,
-                variables: this.$removeEmptyObjects(params),
+                variables: params,
                 fetchPolicy: 'no-cache'
             })
     }

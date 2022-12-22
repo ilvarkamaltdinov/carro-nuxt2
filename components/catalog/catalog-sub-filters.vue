@@ -41,6 +41,7 @@ import {mapGetters, mapMutations} from "vuex";
 import filters from "@/mixins/filters";
 import seoTags from "@/apollo/queries/seoTags";
 import folders from "@/apollo/queries/folder/folders";
+import range from 'lodash/range'
 
 export default {
 	mixins: [filters],
@@ -89,7 +90,7 @@ export default {
 		},
 		priceRange() {
 			if (this.filters.price) {
-				return this._.range(this.filters.price[0] + 100000, this.filters.price[1] + 100000, 100000)
+				return range(this.filters.price[0] + 100000, this.filters.price[1] + 100000, 100000)
 			}
 		},
 		showFoldersTabs() {

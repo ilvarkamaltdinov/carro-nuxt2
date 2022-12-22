@@ -3,16 +3,19 @@
 		<div class="catalog__filters-mobile">
 			<label class="form__field-wrap form__field-wrap--select">
 				<inputs-select :value="chosenMark"
+				               title="Марка"
 				               :options="filters.mark"
 				               @input="select( $event, 'mark')" />
 			</label>
 			<label class="form__field-wrap form__field-wrap--select">
 				<inputs-select :value="chosenFolder"
+				               title="Модель"
 				               :options="filters.folder"
 				               @input="select( $event, 'folder')" />
 			</label>
 			<label class="form__field-wrap form__field-wrap--select">
 				<inputs-select :value="chosenGeneration"
+				               title="Поколение"
 				               :options="filters.generation"
 				               @input="select( $event, 'generation')" />
 			</label>
@@ -31,13 +34,13 @@ export default {
 			filters: 'filters/filters/filters'
 		}),
 		chosenMark() {
-			return this.filters?.chosen?.mark?.[0] || 'Марка'
+			return this.filters?.chosen?.mark?.[0]?.slug || ''
 		},
 		chosenFolder() {
-			return this.filters?.chosen?.folder?.[0] || 'Модель'
+			return this.filters?.chosen?.folder?.[0]?.slug || ''
 		},
 		chosenGeneration() {
-			return this.filters?.chosen?.generation?.[0] || 'Поколение'
+			return this.filters?.chosen?.generation?.[0]?.slug || ''
 		},
 	},
 	methods: {
