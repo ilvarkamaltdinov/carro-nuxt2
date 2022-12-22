@@ -5,7 +5,6 @@
 #import "./types/engineTypeFieldType.gql"
 #import "./types/driveTypeFieldType.gql"
 #import "./types/bodyTypeFieldType.gql"
-#import "./types/ownerFieldType.gql"
 #import "./types/chosenFieldType.gql"
 
 fragment OfferFilterValues on OfferFilterValues {
@@ -29,9 +28,6 @@ fragment OfferFilterValues on OfferFilterValues {
   }
   bodyType{
     ... BodyTypeFieldType
-  }
-  owner{
-    ... OwnerFieldType
   }
   year
   price

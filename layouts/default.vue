@@ -86,7 +86,7 @@ export default {
 			try {
 				let response = await this.request({query: offers, variables: assignVariables})
 				await this.changingOffers(response.data.offers)
-			
+
 			} catch (error) {
 				return this.$nuxt.error({statusCode: 404, message: '404'})
 			}
@@ -121,7 +121,7 @@ export default {
 			await this.$store.commit('filters/filters/SET_LOADING', true)
 			// всегда компонент каталога
 			await this.setComponentCatalog('catalog-used')
-			//Запрос на определение что это, когда 4 элемента в урл и нет клика по фильтру
+			//Запрос на определение, что это, когда 4 элемента в урл и нет клика по фильтру
 			if (this.$route.params.car && !this.isFilterClick) {
 				try {
 					let response = await this.request({query: offerUrl, variables: {url: this.$route.path}})
@@ -146,11 +146,8 @@ export default {
 					if (typeName === 'OfferUrlFilterPaginationType') {
 						// Если это результат для фильтра, отправляем запрос
 						let variables = {...assignVariables, ...queries}
-						let removeEmptyParams = Object.fromEntries(Object.entries(variables).filter(([_, v]) =>
-								typeof v === 'number' ? !!(v) : !isEmpty(v)
-						));
-						await this.offersRequest(removeEmptyParams)
-						await this.filterRequest(removeEmptyParams)
+						await this.offersRequest(variables)
+						await this.filterRequest(variables)
 					} else if (typeName === 'OfferUrlType') {
 						// Если это авто, просто показываем компонент, запрос отправится в компоненте
 						this.setComponentCatalog('car')
@@ -177,11 +174,8 @@ export default {
 					sort: this.$route.query.sort || this.sort,
 					limit: 8
 				}
-				let removeEmptyParams = Object.fromEntries(Object.entries(variables).filter(([_, v]) =>
-						typeof v === 'number' ? !!(v) : !isEmpty(v)
-				));
-				await this.offersRequest(removeEmptyParams)
-				await this.filterRequest(removeEmptyParams)
+				await this.offersRequest(variables)
+				await this.filterRequest(variables)
 				this.setIsFilterClick(false)
 			}
 			if (!this.isFilterClick) {
