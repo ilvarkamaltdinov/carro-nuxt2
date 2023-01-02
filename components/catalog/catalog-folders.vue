@@ -34,7 +34,7 @@
 <script>
 import { mapGetters } from "vuex";
 import filters from "@/mixins/filters";
-
+import sortBy from 'lodash/sortBy'
 export default {
   watch: {
     isAll() {
@@ -64,7 +64,7 @@ export default {
     // 	// return this.isAll ? this.folders.length : 8
     // },
     sortedFoldersByCount() {
-      let sorted = this.$_.sortBy(this.folders, [
+      let sorted = sortBy(this.folders, [
         (folder) => {
           return folder.offers_count;
         },

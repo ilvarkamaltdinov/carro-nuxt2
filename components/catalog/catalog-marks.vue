@@ -29,6 +29,7 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
 import marks from '~/apollo/queries/marks'
+import sortBy from "lodash/sortBy";
 
 export default {
 	data() {
@@ -59,7 +60,7 @@ export default {
 			}
 		},
 		sortedMarks() {
-			return this.$_.sortBy(this.marksList, [function (mark) {
+			return sortBy(this.marksList, [function (mark) {
 				return mark.title;
 			}])
 		},

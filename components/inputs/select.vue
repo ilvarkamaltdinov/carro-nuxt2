@@ -4,11 +4,11 @@
 	        @change="changeSelect()"
 	        v-model="currentValue"
 	        :value="currentValue">
-		<option :value="currentValue">
-			{{ value.title || value }}
+		<option value="">
+			{{ title }}
 		</option>
-		<option :value="option.slug || option"
-		        :key="option.name || option.title || option"
+		<option :value="option?.slug || option"
+		        :key="option?.name || option?.title || option"
 		        v-for="option in options">
 			{{ option.name || option.title || option }}
 		</option>
@@ -40,15 +40,16 @@ export default {
 	},
 	props: {
 		value: [String, Number, Object],
-		options: Array
+		options: Array,
+		title: String
 	},
 	computed: {
 		currentValue: {
 			get() {
-				return this.value.title || this.value
+				return this.value?.title || this.value
 			},
 			set() {
-				return this.value.title || this.value
+				return this.value?.title || this.value
 			}
 		}
 	},

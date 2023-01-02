@@ -1,4 +1,5 @@
-import _ from 'lodash'
+import cloneDeep from 'lodash/cloneDeep'
+import isEmpty from "lodash/isEmpty";
 
 export const state = () => ({
     loading: true,
@@ -178,17 +179,20 @@ export const actions = {
         }
         let client = this.app.apolloProvider.defaultClient
         let params = {...assignVariables, ...variables}
+        let removeEmptyParams = Object.fromEntries(Object.entries(params).filter(([_, v]) =>
+          typeof v === 'number' ? !!(v) : !isEmpty(v)
+        ));
         return await client.query(
             {
                 query: query,
-                variables: this.$removeEmptyObjects(params),
+                variables: removeEmptyParams,
                 fetchPolicy: 'no-cache'
             })
     }
 }
 export const mutations = {
     SET_FILTERS(state, data) {
-        state.filters = _.cloneDeep(data)
+        state.filters = cloneDeep(data)
     },
     SET_CHOSEN(state, data) {
         state.chosen[data.key] = data.value ? data.value : null
@@ -197,7 +201,7 @@ export const mutations = {
         state.chosen[key] = null
     },
     SET_ALL_CHOSEN(state, data) {
-        state.chosen = _.cloneDeep(data)
+        state.chosen = cloneDeep(data)
     },
     SET_LOADING(state, data) {
         state.loading = data

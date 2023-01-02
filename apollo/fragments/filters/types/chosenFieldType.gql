@@ -5,7 +5,6 @@
 #import "./engineTypeFieldType.gql"
 #import "./driveTypeFieldType.gql"
 #import "./bodyTypeFieldType.gql"
-#import "./ownerFieldType.gql"
 fragment ChosenFieldType on ChosenFieldType {
   mark{
     ... MarkFieldType
@@ -27,9 +26,6 @@ fragment ChosenFieldType on ChosenFieldType {
   }
   bodyType{
     ... BodyTypeFieldType
-  }
-  owner{
-    ... OwnerFieldType
   }
   yearFrom
   yearTo

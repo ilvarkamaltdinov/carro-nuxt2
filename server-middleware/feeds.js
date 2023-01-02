@@ -33,6 +33,10 @@ let routes = [
     {
         from: '/feeds/google/xml/carro/main',
         to: '/mytarget/offers.xml'
+    },
+    {
+        from: '/feeds/yandex/xml/kaluga-carro/feed',
+        to: '/yandex/offers.xml'
     }
 ]
 

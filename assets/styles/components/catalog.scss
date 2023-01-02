@@ -474,6 +474,8 @@
 
   .catalog__item--vertical .catalog__img img {
     border-radius: $borderRadius;
+    height: 100%;
+    object-fit: cover;
   }
 
   .catalog__item--modal-desktop .catalog__tech {

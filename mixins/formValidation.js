@@ -1,5 +1,5 @@
 import {mapGetters} from "vuex";
-
+import range from 'lodash/range'
 export default {
     data() {
         return {
@@ -16,15 +16,15 @@ export default {
                 },
                 year: {
                     valid: null,
-                    value: 'Год от',
+                    value: '',
                 },
                 gearbox: {
                     valid: null,
-                    value: 'КПП',
+                    value: '',
                 },
                 engineType: {
                     valid: null,
-                    value: 'Двигатель',
+                    value: '',
                 },
                 run: {
                     valid: null,
@@ -65,7 +65,7 @@ export default {
             buttonDisabled: 'form/form/buttonDisabled'
         }),
         years_range() {
-            return this._.range(2003, new Date().getFullYear() + 1)
+            return range(2003, new Date().getFullYear() + 1)
         },
         gearboxes() {
             return [
@@ -140,7 +140,7 @@ export default {
         },
         //ГОД
         year_valid() {
-            return this.form.year.value !== 'Год от'
+            return this.form.year.value !== ''
         },
         year_invalid() {
             return this.form.year.valid === false
@@ -154,7 +154,7 @@ export default {
         },
         //КОРОБКА
         gearbox_valid() {
-            return this.form.gearbox.value !== 'КПП'
+            return this.form.gearbox.value !== ''
         },
         gearbox_invalid() {
             return this.form.gearbox.valid === false
@@ -168,7 +168,7 @@ export default {
         },
         //ДВИГАТЕЛЬ
         engine_type_valid() {
-            return this.form.engineType.value !== 'Двигатель'
+            return this.form.engineType.value !== ''
         },
         engine_type_invalid() {
             return this.form.engineType.valid === false

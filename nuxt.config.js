@@ -89,7 +89,20 @@ export default {
     router: {
         prefetchLinks: false,
         linkActiveClass: 'active',
-        linkExactActiveClass: 'active'
+        linkExactActiveClass: 'active',
+        // extendRoutes(routes, resolve) {
+        //
+        //     console.log(resolve)
+        //     thanks_pages.forEach(value => {
+        //         routes.push({
+        //             name: value,
+        //             path: `/${value}`,
+        //             component: resolve(__dirname, 'pages/test.vue'),
+        //             chunkName: `pages/${value}`
+        //         })
+        //     })
+        //     console.log(routes)
+        // }
     },
     modules: [
         'vue-scrollto/nuxt',
@@ -101,39 +114,39 @@ export default {
         '@nuxtjs/redirect-module',
         'nuxt-ssr-cache',
     ],
-  // ...(!isDev && {
-  //   cache: {
-  //     // if you're serving multiple host names (with differing
-  //     // results) from the same server, set this option to true.
-  //     // (cache keys will be prefixed by your host name)
-  //     // if your server is behind a reverse-proxy, please use
-  //     // express or whatever else that uses 'X-Forwarded-Host'
-  //     // header field to provide req.hostname (actual host name)
-  //     useHostPrefix: false,
-  //     pages: [
-  //       '/',
-  //     ],
-  //
-  //     key(route, context) {
-  //       if (route === '/') {
-  //         return 'page:home:string';
-  //       }
-  //       let page = route.substr(1).split('/');
-  //       page = page.join('.');
-  //       return `page:${page}:string`;
-  //     },
-  //
-  //     store: {
-  //       type: 'redis',
-  //       host: 'localhost',
-  //       ttl: 10 * 60,
-  //       configure: [
-  //         ['maxmemory', '200mb'],
-  //         ['maxmemory-policy', 'allkeys-lru'],
-  //       ],
-  //     },
-  //   }
-  //   }),
+    // ...(!isDev && {
+    //   cache: {
+    //     // if you're serving multiple host names (with differing
+    //     // results) from the same server, set this option to true.
+    //     // (cache keys will be prefixed by your host name)
+    //     // if your server is behind a reverse-proxy, please use
+    //     // express or whatever else that uses 'X-Forwarded-Host'
+    //     // header field to provide req.hostname (actual host name)
+    //     useHostPrefix: false,
+    //     pages: [
+    //       '/',
+    //     ],
+    //
+    //     key(route, context) {
+    //       if (route === '/') {
+    //         return 'page:home:string';
+    //       }
+    //       let page = route.substr(1).split('/');
+    //       page = page.join('.');
+    //       return `page:${page}:string`;
+    //     },
+    //
+    //     store: {
+    //       type: 'redis',
+    //       host: 'localhost',
+    //       ttl: 10 * 60,
+    //       configure: [
+    //         ['maxmemory', '200mb'],
+    //         ['maxmemory-policy', 'allkeys-lru'],
+    //       ],
+    //     },
+    //   }
+    //   }),
     redirect: redirects,
     svgSprite: {
         input: '~/assets/icons/',
@@ -161,11 +174,11 @@ export default {
         }
     },
     build: {
-        extend(config, { isClient }) {
-          // Extend only webpack config for client-bundle
-          if (isClient) {
-            config.devtool = 'source-map'
-          }
+        extend(config, {isClient}) {
+            // Extend only webpack config for client-bundle
+            if (isClient) {
+                config.devtool = 'source-map'
+            }
         },
         filenames:
             {

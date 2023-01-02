@@ -76,7 +76,7 @@
   .heading-group--filter {
     @include border-bottom;
     padding-bottom: 16px;
-    margin-bottom: 0;
+    margin-bottom: 2px;
   }
 
   .heading-group--modal {
@@ -96,6 +96,10 @@
 @media (min-width: $desktop-width) {
   .heading-group--h1 {
     grid-column: span 12;
+  }
+
+  .heading-group--catalog .heading--h1 {
+    margin-bottom: 0;
   }
 
   .heading-group--h1.grid__col-6 {
