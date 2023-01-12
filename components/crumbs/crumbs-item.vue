@@ -1,12 +1,17 @@
 <template>
-	<li class="crumbs__item">
-		<span v-if="disabled" v-html="crumb.title">
+	<li class="crumbs__item"
+	    v-if="disabled">
+		<span v-html="crumb.title">
 		</span>
+	</li>
+	<li class="crumbs__item"
+	    v-else>
 		<nuxt-link :to="crumb.link"
-		           v-else
-		           class="crumbs__link" v-html="crumb.title">
+		           class="crumbs__link"
+		           v-html="crumb.title">
 		</nuxt-link>
 	</li>
+
 </template>
 <script>
 export default {

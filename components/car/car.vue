@@ -19,10 +19,11 @@
 							<span class="heading-group__year">
 								{{ offer.year }}
 							</span>
-              <span class="heading-group__generation">
-                {{ offer.generation.name }}
+							<span class="heading-group__generation">
+								{{ offer.generation.name }}
 							</span>
-							<span v-if="offer.vin" class="vin__wrapper-car">
+							<span v-if="offer.vin"
+							      class="vin__wrapper-car">
 								<span class="car__vin vin"
 								      v-tippy="{
                   content: `<div class='tippy__text'>VIN-номер проверен на предмет нахождения в розыске, угоне, залоге, использования в такси, попадания в ДТП, соответствия количества владельцев.</div>`,
@@ -45,7 +46,8 @@
 							class="button--icon button--link"
 							icon="icon-callback"
 					/>
-					<button-call-modal v-if="offer.dealer.phone" :phone="offer.dealer.phone" />
+					<button-call-modal v-if="offer.dealer.phone"
+					                   :phone="offer.dealer.phone" />
 				</div>
 			</div>
 			<div class="car__slider-wrap">
@@ -59,8 +61,8 @@
 					<car-fixed v-if="showFixed && focusShowFixed" />
 				</transition>
 				<car-info />
-
-        <car-complectation v-if="$device.isMobile"
+				
+				<car-complectation v-if="$device.isMobile"
 				                   :offer="offer"
 				                   class="swiper-slide car__info-group--complectation" />
 			</div>
@@ -71,6 +73,7 @@
 				            :offer="offer" />
 			</div>
 		</section>
+		<catalog-list-visited :offer="offer" v-if="visitedIsLoadig" />
 		<catalog-list-car v-show="carPageLoaded" />
 		<skeleton-car v-show="!carPageLoaded" />
 	</div>
@@ -91,6 +94,8 @@ export default {
 	},
 	data() {
 		return {
+			visitedIsLoadig: false,
+			offer_external_id: null,
 			jsonType: "car",
 			showFixed: false,
 		};
@@ -100,6 +105,12 @@ export default {
 			window.scrollTo(0, -100);
 		}, 1);
 		this.setBackButton(this.currentBackButton);
+		
+		if (this.offer_external_id) {
+			//добавляю тачку в посещаемые если загрузилась на сервере
+			this.setVisited(this.offer_external_id)
+			this.visitedIsLoadig = true
+		}
 	},
 	async fetch() {
 		if (Number(this.$route.params.car)) {
@@ -118,6 +129,14 @@ export default {
 			await this.setDealerPhone(response.data.offer.dealer.phone);
 			await this.sendYandexCommercial();
 			await this.sendMyTarget();
+			// записываю посещенную тачку в локальное хранилище
+			if (process.client) {
+				this.setVisited(this.offer.external_id)
+				this.visitedIsLoadig = true
+			} else {
+				// если на сервере, то чуть другая логика завязанная на хуке mounted
+				this.offer_external_id = this.offer.external_id
+			}
 		}
 	},
 	computed: {
@@ -174,6 +193,7 @@ export default {
 			setComponentCatalog: "filters/filters/SET_COMPONENT_CATALOG",
 			setBackButton: "header/header/SET_BACK_BUTTON",
 			setDealerPhone: "header/header/SET_DEALER_PHONE",
+			setVisited: "visited/visited/SET_VISITED",
 		}),
 		...mapActions({
 			request: "filters/filters/request",

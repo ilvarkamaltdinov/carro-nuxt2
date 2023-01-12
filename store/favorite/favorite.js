@@ -16,9 +16,6 @@ export const actions = {
         let result = state.likesArray
         let carId = String(payload)
 
-
-
-
         //////////////////////////
         if (result.some(item => item === carId)) {
             commit('SET_LIKES_ARRAY', result.filter(item => item !== carId))
@@ -27,8 +24,6 @@ export const actions = {
             commit('SET_LIKES_ARRAY', result)
         }
         //////////////////////////
-
-
 
         localStorage.setItem('likes', state.likesArray)
     },
