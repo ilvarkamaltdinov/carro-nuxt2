@@ -52,7 +52,7 @@
 							<h3 class="featured__title">{{ video.snippet.title }}</h3>
 						</div>
 						<div class="featured__review-picture">
-							<img class="featured__review-img lazyload"
+							<img v-if="video.snippet.thumbnails.high" class="featured__review-img lazyload"
 							     :data-src="video.snippet.thumbnails.high.url"
 							     :alt="video.snippet.title" />
 						</div>
