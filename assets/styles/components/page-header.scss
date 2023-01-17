@@ -262,9 +262,9 @@
   .page-header__logo {
     margin-right: 32px;
 
-    // &:hover .page-header__logo-circle {
-    //   transform: rotate(22deg);
-    // }
+     &:hover .page-header__logo-circle {
+       transform: rotate(22deg);
+     }
 
     &:hover .page-header__logo-hat {
       top: -14px;

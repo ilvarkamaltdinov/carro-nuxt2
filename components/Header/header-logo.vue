@@ -8,13 +8,13 @@
         width="24"
         class="page-header__logo-circle"
       />
-      <img
-        src="~/assets/img/ny-hat.svg"
-        alt="Портал проверенных автомобилей с пробегом — carro.ru"
-        height="24"
-        width="24"
-        class="page-header__logo-hat"
-      />
+      <!--<img-->
+      <!--  src="~/assets/img/ny-hat.svg"-->
+      <!--  alt="Портал проверенных автомобилей с пробегом — carro.ru"-->
+      <!--  height="24"-->
+      <!--  width="24"-->
+      <!--  class="page-header__logo-hat"-->
+      <!--/>-->
       <img
         src="~/assets/img/logo-part-2.svg"
         alt="Портал проверенных автомобилей с пробегом — carro.ru"
