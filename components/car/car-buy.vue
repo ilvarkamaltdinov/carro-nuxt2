@@ -94,8 +94,10 @@
           />
         </div>
       </div>
-      <div class="car__stock" v-if="offer.is_active">
-        <span v-if="$route.params.category !== 'europe'">В наличии</span>
+      <div class="car__stock" v-if="offer.is_active && !offer.is_stock">
+        <span v-if="offer.category_enum !== 'europe'">
+	        В наличии
+        </span>
         <span v-else>Под заказ</span>
         в автоцентре
         <a
@@ -108,6 +110,9 @@
         <div class="car__stock-promo">
           г. {{ offer.dealer.city }}, {{ offer.dealer.address }}
         </div>
+      </div>
+      <div v-else-if="offer.is_stock" class="car__stock car__stock--no">
+	      Автомобиль находится на центральной стоянке
       </div>
       <div v-else class="car__stock car__stock--no">Нет в наличии</div>
     </div>

@@ -13,6 +13,7 @@ fragment OfferPagination on OfferTypePagination {
   data {
     id
     external_id
+    is_stock
     external_unique_id
     name
     category_enum

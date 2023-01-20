@@ -15,6 +15,7 @@
 fragment OfferPage on Offer {
     id
     is_active
+    is_stock
     external_id
     name
     category_enum

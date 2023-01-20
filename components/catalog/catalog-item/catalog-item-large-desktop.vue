@@ -9,14 +9,14 @@
 		                     :slider-id="offer.external_id" />
 		<div class="catalog__info-wrap"
 		     :class="{'catalog__info-wrap--no-buttons':!hasButtons}">
-      <div class="catalog__vin vin" v-if="offer.vin"  v-tippy="{
-				content:`<div class='tippy__text'>VIN-номер проверен на предмет нахождения в розыске, угоне, залоге, использования в такси, попадания в ДТП, соответствия количества владельцев.</div>`,
-				animation:'scale',
-				arrow: true,
-			}">
-        <svg-icon name="icon-check"/>
-        VIN
-      </div>
+      <!--<div class="catalog__vin vin" v-if="offer.vin"  v-tippy="{-->
+			<!--	content:`<div class='tippy__text'>VIN-номер проверен на предмет нахождения в розыске, угоне, залоге, использования в такси, попадания в ДТП, соответствия количества владельцев.</div>`,-->
+			<!--	animation:'scale',-->
+			<!--	arrow: true,-->
+			<!--}">-->
+      <!--  <svg-icon name="icon-check"/>-->
+      <!--  VIN-->
+      <!--</div>-->
 			<div class="catalog__info">
 				<div class="catalog__title-wrap">
 					<div class="catalog__info">
@@ -24,7 +24,7 @@
 						                    :is-form="isForm"
 						                    :url="currentUrl"
 						                    :offer="offer" />
-						<catalog-item-price :vin="offer.vin" :price="offer.price" />
+						<catalog-item-price :category-enum="offer.category_enum" :is-stock="offer.is_stock" :vin="offer.vin" :price="offer.price" />
 					</div>
 				</div>
 			</div>

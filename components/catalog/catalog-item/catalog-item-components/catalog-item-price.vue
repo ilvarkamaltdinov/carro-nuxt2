@@ -3,16 +3,28 @@
 		<div class="catalog__price">{{ price | toCurrency }}</div>
 		<!--<div class="catalog__oldprice">1 585 000 ₽</div>-->
 		<div class="catalog__credit-price">{{ price | access_acredit }} / мес. без взноса</div>
-		<div class="catalog__vin vin"
-		     v-if="vin"
-		     v-tippy="{
-				content:`<div class='tippy__text'>VIN-номер проверен на предмет нахождения в розыске, угоне, залоге, использования в такси, попадания в ДТП, соответствия количества владельцев.</div>`,
+		
+		<div v-if="categoryEnum !== 'europe' && !hideStock">
+			<div class="stock stock--true"
+			     v-if="isStock"
+			     v-tippy="{
+				content:`<div class='tippy__text'>Ввиду ограниченной площади автоцентра многие автомобили находятся на центральной стоянке. Доставка в автоцентр бесплатная в день обращения. Подробности уточняйте по телефону.</div>`,
 				animation:'scale',
 				arrow: true,
 			}">
-			<svg-icon name="icon-check" />
-			VIN
+				Центральная стоянка
+			</div>
+			<div class="stock stock--false"
+			     v-else
+			     v-tippy="{
+				content:`<div class='tippy__text'>В наличии в автоцентре.</div>`,
+				animation:'scale',
+				arrow: true,
+			}">
+				В наличии
+			</div>
 		</div>
+	
 	</div>
 </template>
 <script>
@@ -22,6 +34,12 @@ export default {
 	mixins: [filters],
 	props: {
 		isForm: {
+			type: Boolean,
+			default: false
+		},
+		categoryEnum: String,
+		isStock: Boolean,
+		hideStock: {
 			type: Boolean,
 			default: false
 		},
