@@ -32,9 +32,7 @@
 			                           :offer="offer"
 			                           :key="offer.id" />
 		</div>
-		<catalog-index-swiper v-else
-		                      :offers="offers_list" />
-		
+		<catalog-index-swiper v-else :offers="offers_list" />
 		<button-typical :link="`/used/${set}`"
 		                text="Все автомобили"
 		                class="button--link button--more" />
@@ -112,18 +110,23 @@ export default {
 		}),
 		async getOffers() {
 			await this.setLoading(true)
-			let response = await this.request({
-				query: offers,
-				variables: {
-					page: 0,
-					limit: 10,
-					set: this.set,
-					dateFormat: 'j F Y года.',
-					sort: this.set === 'best' ? 'communications_count|desc' : 'price|asc'
-				}
-			})
-			this.setOffers(response.data.offers)
-			await this.setLoading(false)
+			try {
+				let response = await this.request({
+					query: offers,
+					variables: {
+						page: 0,
+						limit: 10,
+						set: this.set,
+						dateFormat: 'j F Y года.',
+						sort: this.set === 'best' ? 'communications_count|desc' : 'price|asc'
+					}
+				})
+				this.setOffers(response.data.offers)
+				await this.setLoading(false)
+			} catch (error) {
+				console.log(error)
+			}
+			
 		},
 		tabClick(tab) {
 			this.set = tab.slug
@@ -134,12 +137,10 @@ export default {
 		if (this.siteId !== 21) {
 			this.tabs.shift()
 			this.set = 'fresh'
-		}
-		else {
+		} else {
 			this.set = 'best'
 		}
 		this.getOffers()
-		
 	}
 }
 </script>

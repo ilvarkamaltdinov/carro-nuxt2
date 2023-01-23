@@ -23,19 +23,19 @@ export default {
                 })
             store.commit('folders/folders/SET_FOLDERS', response.data.folders)
         }
-        if(route.params.bank){
+        if (route.params.bank) {
             try {
                 let response = await client.query(
-                        {
-                            query: bank,
-                            variables: {
-                                site_id: store.getters.site_id,
-                                slug: route.params.bank,
-                            }
-                        })
+                    {
+                        query: bank,
+                        variables: {
+                            site_id: store.getters.site_id,
+                            slug: route.params.bank,
+                        }
+                    })
                 store.commit('banks/SET_BANK', response.data.bank)
-            }
-            catch (er){
+            } catch (error) {
+                console.log(error)
                 error({statusCode: 404, message: '404'})
             }
         }

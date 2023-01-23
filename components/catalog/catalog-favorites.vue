@@ -80,7 +80,8 @@ export default {
 							})
 					this.liked_offers = response.data.offers.data
 					this.loading = false
-				} catch (e) {
+				} catch (error) {
+					console.log(error)
 					this.$nuxt.error({statusCode: 404})
 				}
 			} else {

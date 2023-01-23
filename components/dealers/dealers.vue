@@ -102,7 +102,8 @@ export default {
 					modal_sub_title: `${dealerData.short_description}`
 				}
 				await this.openModal(payload)
-			} catch (e) {
+			} catch (error) {
+				console.log(error)
 				return this.$nuxt.error({statusCode: 404, message: '404'})
 			}
 		}
@@ -112,8 +113,8 @@ export default {
 			try {
 				let response = await this.request({query: dealers})
 				this.setDealers(response.data.dealers)
-			} catch (e) {
-				console.log(e)
+			} catch (error) {
+				console.log(error)
 			}
 		}
 		if (this.$route.params.dealer) {

@@ -70,8 +70,8 @@ export default {
 					modal_sub_title: `${dealerData.short_description}`
 				}
 				await this.openModal(payload)
-			} catch (e) {
-				console.log(e)
+			} catch (error) {
+				console.log(error)
 			}
 		}
 	},
@@ -80,8 +80,8 @@ export default {
 			try {
 				let response = await this.request({query: dealers})
 				this.setDealers(response.data.dealers)
-			} catch (e) {
-				console.log(e)
+			} catch (error) {
+				console.log(error)
 			}
 		}
 	}

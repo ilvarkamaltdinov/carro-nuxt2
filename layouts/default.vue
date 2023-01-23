@@ -86,9 +86,9 @@ export default {
 			try {
 				let response = await this.request({query: offers, variables: assignVariables})
 				await this.changingOffers(response.data.offers)
-
 			} catch (error) {
-				return this.$nuxt.error({statusCode: 404, message: '404'})
+				console.log(error)
+				// return this.$nuxt.error({statusCode: 404, message: '404'})
 			}
 		},
 		async filterRequest(assignVariables) {
@@ -96,6 +96,7 @@ export default {
 				let response = await this.request({query: offerFilters, variables: assignVariables})
 				await this.changingFilters(response.data.offerFilters)
 			} catch (error) {
+				console.log(error)
 				return this.$nuxt.error({statusCode: 404, message: '404'})
 			}
 		},
@@ -152,7 +153,8 @@ export default {
 						// Если это авто, просто показываем компонент, запрос отправится в компоненте
 						this.setComponentCatalog('car')
 					}
-				} catch (e) {
+				} catch (error) {
+					console.log(error)
 					this.$nuxt.error({statusCode: 404})
 				}
 			} else {

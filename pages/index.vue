@@ -16,17 +16,17 @@
 			<LazyHydrate when-visible>
 				<catalog-list-index />
 			</LazyHydrate>
-			<LazyHydrate never>
+			<LazyHydrate when-visible>
 				<featured />
 			</LazyHydrate>
-			<LazyHydrate never
+			<LazyHydrate when-visible
 			             v-if="showBlog">
 				<blog index />
 			</LazyHydrate>
-			<LazyHydrate never>
+			<LazyHydrate when-visible>
 				<video-about />
 			</LazyHydrate>
-			<LazyHydrate never>
+			<LazyHydrate when-visible>
 				<text-main />
 			</LazyHydrate>
 		</div>

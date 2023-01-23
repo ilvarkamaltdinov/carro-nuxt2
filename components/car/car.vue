@@ -113,30 +113,39 @@ export default {
 		}
 	},
 	async fetch() {
-		if (Number(this.$route.params.car)) {
-			let variables = {
-				site_id: this.site_id,
-				mark_slug: this.$route.params.mark,
-				folder_slug: this.$route.params.model,
-				dateFormat: "j F Y года.",
-				external_id: Number(this.$route.params.car),
-			};
-			let response = await this.request({query: offer, variables: variables});
-			if (!this.validateCategoryOffer(response.data.offer.category_enum)) {
-				return this.$nuxt.error({statusCode: 404});
+		try {
+			if (Number(this.$route.params.car)) {
+				let variables = {
+					site_id: this.site_id,
+					mark_slug: this.$route.params.mark,
+					folder_slug: this.$route.params.model,
+					dateFormat: "j F Y года.",
+					external_id: Number(this.$route.params.car),
+				};
+				let response = await this.request({query: offer, variables: variables});
+				if (this.$route.params.category && !this.validateCategoryOffer(response.data.offer.category_enum)) {
+					console.log(123,'error in car.vue')
+					return this.$nuxt.error({statusCode: 404});
+				}
+				await this.setOffer(response.data.offer);
+				await this.setDealerPhone(response.data.offer.dealer.phone);
+				// записываю посещенную тачку в локальное хранилище
+				if (process.client) {
+					this.setVisited(this.offer.external_id)
+					this.visitedIsLoadig = true
+				} else {
+					// если на сервере, то чуть другая логика завязанная на хуке mounted
+					this.offer_external_id = this.offer.external_id
+				}
+				if(this.offer.external_id){
+					await this.sendYandexCommercial();
+					await this.sendMyTarget();
+				}
+				
 			}
-			await this.setOffer(response.data.offer);
-			await this.setDealerPhone(response.data.offer.dealer.phone);
-			await this.sendYandexCommercial();
-			await this.sendMyTarget();
-			// записываю посещенную тачку в локальное хранилище
-			if (process.client) {
-				this.setVisited(this.offer.external_id)
-				this.visitedIsLoadig = true
-			} else {
-				// если на сервере, то чуть другая логика завязанная на хуке mounted
-				this.offer_external_id = this.offer.external_id
-			}
+		}
+		catch (error){
+			console.log(error)
 		}
 	},
 	computed: {
@@ -200,7 +209,9 @@ export default {
 			openModal: "modal/modal-main/openModal",
 		}),
 		validateCategoryOffer(category) {
-			return this.$route.params.category === category;
+			if(this.$route.params.category){
+				return this.$route.params.category === category;
+			}
 		},
 		sendMyTarget() {
 			if (process.client) {

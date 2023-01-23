@@ -84,6 +84,7 @@ export default {
 				this.offers.current_page = response.data.offers.current_page
 				await this.$store.commit('filters/filters/SET_OFFERS', this.offers)
 			} catch (error) {
+				console.log(error)
 				return this.$nuxt.error({statusCode: 404, message: '404'})
 			}
 		},

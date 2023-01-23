@@ -102,8 +102,8 @@ export default {
 			let response = await this.request({query: dealerReviews})
 			this.dealers = response.data.dealers.filter(item => item.youtube_playlist_review)
 			await this.getPlaylist(this.nextPageToken, this.dealers[0].youtube_playlist_review);
-		} catch (e) {
-			console.log(e)
+		} catch (error) {
+			console.log(error)
 		}
 	},
 
