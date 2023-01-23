@@ -119,7 +119,7 @@ export default {
 					limit: 10,
 					set: this.set,
 					dateFormat: 'j F Y года.',
-					sort: this.set === 'best' ? 'created_at|desc' : 'price|asc'
+					sort: this.set === 'best' ? 'communications_count|desc' : 'price|asc'
 				}
 			})
 			this.setOffers(response.data.offers)
