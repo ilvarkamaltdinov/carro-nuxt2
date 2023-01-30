@@ -1,6 +1,5 @@
 <template>
 	<main class="page-main">
-		<!--forVK5807-->
 		<div class="grid grid--container">
 			<h1 class="visually-hidden">{{ pageTitle }}</h1>
 			<div class="page-main__promo grid__col-8">

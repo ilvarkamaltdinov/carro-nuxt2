@@ -13,7 +13,8 @@ export default {
         },
         meta: [
             {charset: 'UTF-8'},
-            {name: 'yandex-verification', content: 'f70bc9bad3cb4352'},
+            {name: 'for-vk', content: 'f70bc9bad3cb4352'},
+            {name: 'yandex-verification', content: 'forVK5807'},
             {name: 'google-site-verification', content: 'bWKRxv7GJwHjT2LiBTxTJHGkT_2MjLWJfRbE4_uJbrU'},
             {name: 'theme-color', content: '#ED2939'},
             {name: 'http-equiv="X-UA-Compatible', content: 'ie=edge'},
