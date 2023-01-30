@@ -85,11 +85,11 @@
 			</div>
 			<div class="page-footer__legal grid__col-12">
 				<ul class="page-footer__legal-list">
-					<li class="page-footer__legal-item">ООО «Ю-СТАЙЛ»</li>
-					<li class="page-footer__legal-item">ОГРН: 1177746078916</li>
-					<li class="page-footer__legal-item">ИНН / КПП: 7724398974 / 772401001</li>
-					<li class="page-footer__legal-item">Юр. адрес: 115487, г. Москва, ул. Нагатинская, 16/9</li>
-					<li class="page-footer__legal-item">Физ. адрес: 117405, г. Москва, Варшавское шоссе, 170Г</li>
+					<li class="page-footer__legal-item">ООО «РИ-АДВАНС»</li>
+					<li class="page-footer__legal-item">ОГРН: 1187746783047</li>
+					<li class="page-footer__legal-item">ИНН / КПП: 7724451970 / 772401001</li>
+					<li class="page-footer__legal-item">Юр. адрес / Физ. адрес: 117405, г. Москва, ул. Кирпичные Выемки, 2к1, оф. 412</li>
+					<!--<li class="page-footer__legal-item">Физ. адрес: 117405, г. Москва, ул. Кирпичные Выемки, 2к1</li>-->
 				</ul>
 			</div>
 			<div class="page-footer__disclaimer grid__col-12">
