@@ -38,13 +38,13 @@
 				<div class="text__content">
 					<h2 class="heading heading--h2">Юридическая информация</h2>
 					<div class="text__contacts-label">Юридический адрес:</div>
-					<p class="text__p">117405, г. Москва, ул. Кирпичные Выемки, 2к1, оф. 412</p>
+					<p class="text__p"> 115487, г. Москва, ул. Нагатинская, 16/9</p>
 					<div class="text__contacts-label">Физический адрес:</div>
-					<p class="text__p">117405, г. Москва, ул. Кирпичные Выемки, 2к1, оф. 412</p>
+					<p class="text__p">117405, г. Москва, Варшавское шоссе, 170Г</p>
 					<ul class="text__list">
-						<li class="text__list-item">ООО «РИ-АДВАНС»</li>
-						<li class="text__list-item">ИНН: 7724451970</li>
-						<li class="text__list-item">ОГРН: 1187746783047</li>
+						<li class="text__list-item">ООО «Ю-СТАЙЛ»</li>
+						<li class="text__list-item">ИНН: 7724398974</li>
+						<li class="text__list-item">ОГРН: 1177746078916</li>
 						<li class="text"></li>
 					</ul>
 				</div>

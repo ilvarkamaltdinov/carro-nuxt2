@@ -25,7 +25,7 @@
 						<button class="page-footer__city">
 							<svg-icon class="page-footer__city-icon"
 							          name="icon-map" />
-							<span>{{settings.city}}</span>
+							<span>{{ settings.city }}</span>
 						</button>
 					</div>
 					<div class="page-footer__credits">
@@ -40,7 +40,8 @@
 						           class="page-footer__link">О портале
 						</nuxt-link>
 					</li>
-					<li class="page-footer__links-item" v-if="showBlog">
+					<li class="page-footer__links-item"
+					    v-if="showBlog">
 						<nuxt-link to="/blog"
 						           class="page-footer__link">Блог
 						</nuxt-link>
@@ -85,15 +86,15 @@
 			</div>
 			<div class="page-footer__legal grid__col-12">
 				<ul class="page-footer__legal-list">
-					<li class="page-footer__legal-item">ООО «РИ-АДВАНС»</li>
-					<li class="page-footer__legal-item">ОГРН: 1187746783047</li>
-					<li class="page-footer__legal-item">ИНН / КПП: 7724451970 / 772401001</li>
-					<li class="page-footer__legal-item">Юр. адрес / Физ. адрес: 117405, г. Москва, ул. Кирпичные Выемки, 2к1, оф. 412</li>
-					<!--<li class="page-footer__legal-item">Физ. адрес: 117405, г. Москва, ул. Кирпичные Выемки, 2к1</li>-->
+					<li class="page-footer__legal-item">ООО «Ю-СТАЙЛ»</li>
+					<li class="page-footer__legal-item">ОГРН: 1177746078916</li>
+					<li class="page-footer__legal-item">ИНН / КПП: 7724398974 / 772401001</li>
+					<li class="page-footer__legal-item">Юр. адрес: 115487, г. Москва, ул. Нагатинская, д. 16/9</li>
+					<li class="page-footer__legal-item">Физ. адрес: 117405, г. Москва, Варшавское шоссе, д. 170Г</li>
 				</ul>
 			</div>
 			<div class="page-footer__disclaimer grid__col-12">
-
+				
 				<p class="page-footer__disclaimer-p">
 					Годовая ставка автокредита варьируется от {{ settings.credit_percent }} до {{ settings.credit_max_percent }} и
 					зависит от конкретного банка, суммы займа и
@@ -102,25 +103,30 @@
 					комиссии
 					автопорталом CARRO не взимаются.
 				</p>
-
+				
 				<p class="page-footer__disclaimer-p">
 					В случае невозвращения в условленный срок суммы автокредита или суммы процентов по автокредиту банк-партнер
 					оставляет за собой право начислить штраф за просрочку платежа в среднем размере 0,1% от первоначальной суммы
 					автокредита. При несоблюдении условий погашения автокредита данные о нарушителе могут быть переданы в
 					специальный реестр должников и коллекторское агентство для взыскания задолженности.
 				</p>
-
+				
 				<p class="page-footer__disclaimer-p">
 					Данный Интернет-сайт носит исключительно информационный характер и ни при каких условиях не является публичной
 					офертой, определяемой положениями Статьи 437 Гражданского кодекса РФ. Для получения подробной информации о
 					наличии и стоимости указанных товаров и (или) услуг, пожалуйста, обращайтесь к менеджерам
 					автосалонов-партнеров.
 				</p>
-
+				
 				<p class="page-footer__disclaimer-p">
-					Кредит предоставляется банком АО «Тинькофф Банк». <a class="page-footer__link" href="https://acdn.tinkoff.ru/static/documents/d7f200ac-6949-4baa-ab9b-186b11d6b168.pdf" target="_blank">Лицензия ЦБ РФ № 2673 от 11.04.2022</a>.
+					Кредит предоставляется банком АО «Тинькофф Банк».
+					<a class="page-footer__link"
+					   href="https://acdn.tinkoff.ru/static/documents/d7f200ac-6949-4baa-ab9b-186b11d6b168.pdf"
+					   target="_blank">Лицензия ЦБ РФ № 2673 от 11.04.2022
+					</a>
+					.
 				</p>
-
+				
 				<p class="page-footer__disclaimer-p">
 					<span>Обязательное страхование гражданской ответственности владельцев транспортных средств осуществляется АО
 					      «Тинькофф Страхование»
@@ -150,7 +156,7 @@ export default {
 			allMarksCount: 'marks/marks/allMarksCount',
 			settings: 'settings/settings/settings',
 			isMoscow: 'isMoscow',
-			showBlog:'showBlog'
+			showBlog: 'showBlog'
 		})
 	}
 }
