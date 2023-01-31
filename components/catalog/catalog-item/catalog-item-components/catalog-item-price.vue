@@ -24,6 +24,16 @@
 				В наличии
 			</div>
 		</div>
+		<div v-else-if="categoryEnum === 'europe'">
+			<div class="stock stock--true"
+			     v-tippy="{
+				content:`<div class='tippy__text'>Доставим этот автомобиль из Европы за 14 дней.</div>`,
+				animation:'scale',
+				arrow: true,
+			}">
+				Из Европы
+			</div>
+		</div>
 	
 	</div>
 </template>
