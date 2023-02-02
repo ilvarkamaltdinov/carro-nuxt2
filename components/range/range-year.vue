@@ -40,6 +40,17 @@ export default {
 			to: ''
 		}
 	},
+	watch: {
+		chosen() {
+			this.setFromTo();
+			this.$refs["range-year"].slider.update({
+				from: Number(this.from),
+				to: Number(this.to),
+				min: this.min,
+				max: this.max
+			});
+		}
+	},
 	computed: {
 		...mapGetters({
 			filters: 'filters/filters/filters',
@@ -48,36 +59,45 @@ export default {
 		filterYear() {
 			return this.filters.year
 		},
+		min() {
+			return Number(this.filterYear?.[0]);
+		},
+		max() {
+			return Number(this.filterYear?.[1]);
+		},
 		getYearOptions() {
 			return {
-				type: 'double',
+				type: "double",
 				grid: false,
 				step: 1,
 				from: Number(this.from),
 				to: Number(this.to),
-				min: Number(this.filterYear?.[0]) - 1,
-				max: Number(this.filterYear?.[1]),
+				min: this.min,
+				max: this.max,
 				onFinish: (event) => this.sendYear(event),
 				onChange: (event) => this.changeYear(event)
-			}
+			};
 		}
 	},
 	mounted() {
-		if (this.$route.query.year_from && this.$route.query.year_to) {
-			this.from = Number(this.$route.query.year_from)
-			this.to = Number(this.$route.query.year_to)
-		} else if (this.chosen.yearFrom || this.chosen.yearTo) {
-			this.from = this.chosen.yearFrom || this.filterYear?.[0] - 1
-			this.to = this.chosen.yearTo || this.filterYear?.[1]
-		} else {
-			this.from = this.filterYear?.[0] - 1
-			this.to = this.filterYear?.[1]
-		}
+		this.setFromTo();
 	},
 	methods: {
 		...mapMutations({
 			setIsFilterClick: 'filters/filters/SET_IS_FILTER_CLICK'
 		}),
+		setFromTo() {
+			if (this.$route.query.year_from && this.$route.query.year_to) {
+				this.from = Number(this.$route.query.year_from);
+				this.to = Number(this.$route.query.year_to);
+			} else if (this.chosen.yearFrom || this.chosen.yearTo) {
+				this.from = this.chosen.yearFrom || this.filterYear?.[0];
+				this.to = this.chosen.yearTo || this.filterYear?.[1];
+			} else {
+				this.from = this.filterYear?.[0];
+				this.to = this.filterYear?.[1];
+			}
+		},
 		async sendYear() {
 			this.setIsFilterClick(true)
 			await this.$router.push({path: this.$route.fullPath, query: {year_from: this.from, year_to: this.to}});
