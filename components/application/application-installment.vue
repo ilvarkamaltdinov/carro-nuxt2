@@ -12,11 +12,12 @@
 			</div>
 			<div v-if="currentCar && !$device.isMobile"
 			     class="application__catalog catalog grid__col-8">
-				<catalog-item-large-desktop :is-form="true"
-				                            :has-fancy="true"
-				                            :choose="true"
-				                            :has-buttons="false"
-				                            :offer="currentCar" />
+				<component :choose="true" :is="component"
+				           :has-fancy="true"
+				           :key="currentCar.id"
+				           :is-form="true"
+				           :has-buttons="false"
+				           :offer="currentCar" />
 			</div>
 			<button v-else
 			        class="application__choose-car grid__col-8"
@@ -57,6 +58,9 @@ export default {
 			totalSum: 'form/form-credit/totalSum',
 			rangePeriodValue: 'form/form-credit/rangePeriodValue'
 		}),
+		component() {
+			return this.$device.isMobile ? 'catalog-item-large-mobile' : 'catalog-item-large-desktop'
+		}
 	},
 	methods: {
 		...mapActions({
