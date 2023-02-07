@@ -17,7 +17,7 @@ export const getters = {
         return state.site_id === 21 || state.site_id === 28 || state.site_id === 30
     },
     showBlog:(state) =>{
-        return state.site_id === 21 || state.site_id === 28
+        return state.site_id === 21
     },
     showComm:(state) =>{
         return state.site_id === 21 || state.site_id === 28
