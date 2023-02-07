@@ -20,8 +20,8 @@ export default {
     return {
       nav: [
         {
-          title: "В наличии",
-          link: "/used",
+          title: "Рассрочка",
+          link: "/credit",
         },
         {
           title: "Автокредит",
@@ -30,6 +30,10 @@ export default {
         {
           title: "Trade-In",
           link: "/exchange",
+        },
+        {
+          title: "В наличии",
+          link: "/used",
         },
         {
           title: "О портале",
@@ -46,20 +50,20 @@ export default {
   },
   mounted() {
     this.showReviews
-      ? this.nav.splice(3, 0, {
+      ? this.nav.splice(4, 0, {
           title: "Отзывы",
           link: "/reviews-dealers",
         })
-      : this.nav.splice(3, 0, {
+      : this.nav.splice(4, 0, {
           title: "Контакты",
           link: "/contacts",
         });
-    this.isMoscow
-      ? this.nav.splice(1, 0, {
-        title: "Из Европы",
-        link: "/europe",
-      })
-      : '';
+    // this.isMoscow
+    //   ? this.nav.splice(1, 0, {
+    //     title: "Из Европы",
+    //     link: "/europe",
+    //   })
+    //   : '';
   },
   methods: {
     ...mapMutations({
