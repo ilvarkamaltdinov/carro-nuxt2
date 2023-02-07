@@ -21,7 +21,7 @@ export default {
       nav: [
         {
           title: "Рассрочка",
-          link: "/credit",
+          link: "/rassrochka",
         },
         {
           title: "Автокредит",

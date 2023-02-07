@@ -71,7 +71,8 @@ export const actions = {
         let variables = {
             site_id: rootState.site_id,
             mark_slug: state.currentMark.slug,
-            folder_slug: payload.slug
+            folder_slug: payload.slug,
+            category: 'used'
         }
         let client = this.app.apolloProvider.defaultClient
         let response = await client.query(
