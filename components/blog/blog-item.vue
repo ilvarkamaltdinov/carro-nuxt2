@@ -35,6 +35,7 @@
 							                   :big-webp="article.image.large_webp" />
 						</div>
 					</div>
+					<blog-slider v-if="article.image_slide && article.image_slide.length" :images="article.image_slide"/>
 				</div>
 			</div>
 		</div>
@@ -45,6 +46,8 @@ import declension from "@/mixins/declension";
 import domParser from "@/mixins/domParser";
 
 export default {
+	components: {},
+	
 	mixins: [declension, domParser],
 	props: {
 		article: Object

@@ -13,6 +13,10 @@ query article($site_id: Int! $url: String) {
         image_preview{
             thumb
         }
+        image_slide{
+            small_webp
+            src
+        }
         image{
             medium
             large

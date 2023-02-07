@@ -1,0 +1,20 @@
+.swiper--article {
+  .swiper-slide {
+    width: 100% !important;
+    img {
+      width: 100%;
+      aspect-ratio: 4/2;
+      -o-object-fit: cover;
+      object-fit: cover;
+    }
+  }
+  .swiper-pagination-bullet{
+    width: 32px;
+    border-radius: 8px;
+    height: 8px;
+    background: $colorPrimaryLight;
+  }
+  .swiper-pagination-bullet-active{
+    background: $colorPrimary;
+  }
+}
