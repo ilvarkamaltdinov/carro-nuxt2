@@ -94,12 +94,20 @@
           />
         </div>
       </div>
-      <div class="car__stock" v-if="offer.is_active && !offer.is_stock">
-        <span v-if="offer.category_enum !== 'europe'">
-	        В наличии
-        </span>
-        <span v-else>Под заказ</span>
-        в автоцентре
+	    <div class="car__stock" v-if="offer.category_enum === 'europe'">
+		    Под заказ в автоцентре <a
+				    href="#"
+				    @click.prevent="moreInfoDiller(offer.dealer.slug)"
+				    class="car__stock-dealer"
+		    >
+			    «{{ offer.dealer.title }}»
+		    </a>
+		    <div class="car__stock-promo">
+			    г. {{ offer.dealer.city }}, {{ offer.dealer.address }}
+		    </div>
+	    </div>
+      <div class="car__stock" v-else-if="offer.is_active && !offer.is_stock">
+	      В наличии в автоцентре
         <a
           href="#"
           @click.prevent="moreInfoDiller(offer.dealer.slug)"
@@ -111,7 +119,7 @@
           г. {{ offer.dealer.city }}, {{ offer.dealer.address }}
         </div>
       </div>
-      <div v-else-if="offer.is_stock" class="car__stock car__stock--no">
+      <div v-else-if="offer.is_active && offer.is_stock" class="car__stock car__stock--no">
 	      Автомобиль находится на центральной стоянке
       </div>
       <div v-else class="car__stock car__stock--no">Нет в наличии</div>
