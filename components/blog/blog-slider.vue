@@ -6,7 +6,7 @@
 			     v-for="(img, index) in images"
 			     :data-src="img.src"
 			     :key="index">
-				<img :src="`${img.small_webp}`"
+				<img :data-src="`${img.src}`" class="lazyload"
 				     alt="slider-image">
 			</div>
 		</div>
