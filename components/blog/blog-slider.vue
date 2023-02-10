@@ -1,12 +1,13 @@
 <template>
 	<div class="swiper swiper--article">
 		<div class="swiper-wrapper">
-			<div class="swiper-slide"
+			<a class="swiper-slide"
 			     v-for="(img, index) in images"
-			     :key="index">
-				<img :data-src="`${img.src}`" data-fancybox="gallery" class="lazyload"
+			   :data-src="`${img.src}`" data-fancybox="gallery"
+			   :key="index">
+				<img :data-src="`${img.src}`" class="lazyload"
 				     alt="slider-image">
-			</div>
+			</a>
 		</div>
 		<div class="swiper-pagination"></div>
 	</div>
