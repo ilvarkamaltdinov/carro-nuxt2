@@ -2,10 +2,12 @@
 	<div class="swiper swiper--article">
 		<div class="swiper-wrapper">
 			<a class="swiper-slide"
-			     v-for="(img, index) in images"
-			   :data-src="`${img.src}`" data-fancybox="gallery"
+			   v-for="(img, index) in images"
+			   :data-src="`${img.src}`"
+			   data-fancybox="gallery"
 			   :key="index">
-				<img :data-src="`${img.src}`" class="lazyload"
+				<img :data-src="`${img.src}`"
+				     class="lazyload"
 				     alt="slider-image">
 			</a>
 		</div>
@@ -15,10 +17,14 @@
 
 <script>
 import AOS from "aos";
+import {Fancybox} from "@fancyapps/ui";
 
 export default {
 	props: {
 		images: Array
+	},
+	components: {
+		Fancybox
 	},
 	mounted() {
 		const sliderIndexSwiper = new swiper.default(".swiper--article", {
