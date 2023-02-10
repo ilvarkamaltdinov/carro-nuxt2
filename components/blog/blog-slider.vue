@@ -2,11 +2,9 @@
 	<div class="swiper swiper--article">
 		<div class="swiper-wrapper">
 			<div class="swiper-slide"
-			     data-fancybox="gallery"
 			     v-for="(img, index) in images"
-			     :data-src="img.src"
 			     :key="index">
-				<img :data-src="`${img.src}`" class="lazyload"
+				<img :data-src="`${img.src}`" data-fancybox="gallery" class="lazyload"
 				     alt="slider-image">
 			</div>
 		</div>
