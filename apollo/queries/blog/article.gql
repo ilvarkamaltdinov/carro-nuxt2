@@ -14,7 +14,6 @@ query article($site_id: Int! $url: String) {
             thumb
         }
         image_slide{
-            small_webp
             src
         }
         image{
