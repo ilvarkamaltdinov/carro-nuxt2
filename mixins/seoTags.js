@@ -34,8 +34,7 @@ export default {
                         }
                     })
                 store.commit('banks/SET_BANK', response.data.bank)
-            } catch (error) {
-                console.log(error)
+            } catch (e) {
                 error({statusCode: 404, message: '404'})
             }
         }
