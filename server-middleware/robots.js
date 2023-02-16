@@ -6,6 +6,7 @@ export default function (req, res, next) {
         || req.headers.host === 'kaluga.carro.ru'){
         data = "User-agent: *\n" +
             "Disallow: /*thanks*\n" +
+            "Disallow: /europe*\n"+
             "Disallow: /*?*\n" +
             "Allow: *.js\n" +
             "Allow: *.css\n" +
