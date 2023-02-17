@@ -55,7 +55,8 @@ export default {
             description: seo.data.seoTag.description,
             pageTitle: seo.data.seoTag.page_title,
             title: seo.data.seoTag.title,
-            crumbs: seo.data.seoTag.crumbs
+            crumbs: seo.data.seoTag.crumbs,
+            siteText: seo.data.seoTag.site_text
         }
     },
     computed: {

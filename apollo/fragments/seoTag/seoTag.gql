@@ -1,10 +1,14 @@
 #import "./seoTagCrumbs.gql"
+#import "../siteText/siteText.gql"
 fragment SeoTag on SeoTag {
     page_title
     title
     description
-    crumbs{
+    crumbs {
         ... SeoTagCrumbs
+    },
+    site_text {
+       ... SiteText
     }
 
 }
