@@ -37,6 +37,10 @@ let routes = [
     {
         from: '/feeds/yandex/xml/kaluga-carro/feed',
         to: '/yandex/offers.xml'
+    },
+    {
+        from: '/feeds/yandex/xml/spb-carro-rf/main',
+        to: '/yandex/xml/spb-carro-rf/main'
     }
 ]
 

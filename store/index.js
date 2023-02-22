@@ -39,6 +39,10 @@ export const actions = {
             commit('SET_SITE_ID', $config.site_id_spb);
             commit('SET_DOMAIN', $config.domain_spb);
         }
+        else if(req.headers.host === 'xn----8sbb1bvblac.xn--p1ai'){
+            commit('SET_SITE_ID', $config.site_id_spb_rf);
+            commit('SET_DOMAIN', $config.domain_spb_rf);
+        }
         else if(req.headers.host === 'kaluga.carro.ru'){
             commit('SET_SITE_ID', $config.site_id_kaluga);
             commit('SET_DOMAIN', $config.domain_kaluga);
