@@ -1,7 +1,7 @@
 export const state = () => ({
     allMarks: [],
     popularMarks: [
-        'audi', 'bmw', 'mercedes-benz', 'ford', 'hyundai', 'kia', 'mazda', 'mitsubishi', 'nissan', 'skoda'
+        'audi', 'bmw', 'mercedes-benz', 'ford', 'hyundai', 'kia', 'toyota', 'volkswagen', 'nissan', 'skoda'
     ],
     allMarksCount: null,
 
