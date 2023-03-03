@@ -89,7 +89,7 @@
 					          name="icon-owners" />
 				</div>
 				<div class="car__tech-content">
-					{{ offer.owner.title }}
+					{{ offer.owner.title === '0 владельцев' ? 'Новый' : offer.owner.title }}
 				</div>
 			</li>
 		</ul>

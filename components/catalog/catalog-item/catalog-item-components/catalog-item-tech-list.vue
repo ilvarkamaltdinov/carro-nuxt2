@@ -14,7 +14,7 @@
 		    v-if="!small">{{ offer.engineType.title }}
 		</li>
 		<li class="catalog__tech-item"
-		    v-if="!small">{{ offer.owner.title }}
+		    v-if="!small">{{ offer.owner.title === '0 владельцев' ? 'Новый' : offer.owner.title }}
 		</li>
 		<li class="catalog__tech-item"
 		    v-if="!small">{{ offer.driveType.title }}
