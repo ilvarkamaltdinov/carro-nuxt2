@@ -18,7 +18,7 @@
 			</label>
 			<label class="form__field-wrap form__field-wrap--select"
 			       :class="yearClass">
-				<inputs-select :value="form.year.value"
+				<inputs-select :value="form.year.value "
 				               title="Год"
 				               :options="years_range"
 				               @input="changeSelect( $event, 'year')" />

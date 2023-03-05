@@ -18,7 +18,7 @@
 	     tabindex="1"
 	     class="form__field form__field--select select"
 	     @click="isOpen = !isOpen">
-		<span>{{ value.title || value }}</span>
+		<span>{{ value.title || value || title}}</span>
 		<ul class="select__list"
 		    v-if="isOpen">
 			<li class="select__item"
