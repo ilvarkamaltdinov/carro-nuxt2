@@ -13,7 +13,7 @@
 			<div class="page-footer__contacts grid__col-12">
 				<div class="page-footer__social">
 					<social />
-					<div class="page-footer__contacts-list">
+					<div class="page-footer__contacts-list" v-if="settings.phone">
 						<a class="page-footer__contacts-item"
 						   :href="`tel:${settings.phone.replace(/[^+\d]/g, '')}`">{{ settings.phone }}
 						</a>

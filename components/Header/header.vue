@@ -30,6 +30,7 @@
 					</li>
 					<li class="page-header__buttons-item page-header__buttons-item--call">
 						<a class="page-header__buttons-link page-header__buttons-link--phone"
+						   v-if="settings.phone"
 						   :href="`tel:${currentPhone.replace(/[^+\d]/g, '')}`"
 						   title="Бесплатный звонок"
 						   aria-label="Бесплатный звонок">
