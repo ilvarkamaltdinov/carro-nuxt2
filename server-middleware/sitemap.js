@@ -10,6 +10,9 @@ export default async function (req, res, next) {
     else if(req.headers.host === 'kaluga.carro.ru'){
         link = 'https://api.genzes.ru/sitemap/xml/kaluga-carro'
     }
+    else if(req.headers.host === 'krsk.carro.ru'){
+        link = 'https://api.genzes.ru/sitemap/xml/krsk-carro'
+    }
     if(link !== ''){
         let response = await getXml(link)
         res.setHeader('Content-Type', response.headers['content-type']);

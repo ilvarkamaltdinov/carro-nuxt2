@@ -29,7 +29,9 @@
 					<h3 class="heading heading--h3">Адрес:</h3>
 					<ul class="features__list">
 						<li class="features__item">{{ dealer.address }}</li>
-						<li v-if="dealer.metro" class="features__item">м. {{ dealer.metro }}</li>
+						<li v-if="dealer.metro"
+						    class="features__item">м. {{ dealer.metro }}
+						</li>
 					</ul>
 				</div>
 				<div class="features__group">
@@ -50,10 +52,12 @@
 				                @click="showMore(dealer.slug)"
 				                text="Подробнее о дилере"
 				                class="button--show" />
-				<button-typical v-else :link="`/contact/${dealer.slug}`"
+				<button-typical v-else
+				                :link="`/contact/${dealer.slug}`"
 				                text="Подробнее о дилере"
 				                class="button--show" />
-				<a v-if="dealer.site" class="button button--show button--show-link"
+				<a v-if="dealer.site"
+				   class="button button--show button--show-link"
 				   :href="`${dealer.site}`"
 				   target="_blank">Сайт автоцентра
 				</a>
@@ -61,10 +65,10 @@
 			<div class="dealers__item-img-wrap">
 				<picture-component
 						classes="dealers__item-img lazyload"
-						:small="dealer.images[0].small"
-						:small-webp="dealer.images[0].small_webp"
-						:big="dealer.images[0].medium"
-						:big-webp="dealer.images[0].medium_webp" />
+						:small="dealer.images[0].small | replaceApiUrl(siteId)"
+						:small-webp="dealer.images[0].small_webp | replaceApiUrl(siteId)"
+						:big="dealer.images[0].medium | replaceApiUrl(siteId)"
+						:big-webp="dealer.images[0].medium_webp | replaceApiUrl(siteId)" />
 			</div>
 		</div>
 	</section>
@@ -73,13 +77,18 @@
 import {mapActions, mapGetters, mapMutations} from "vuex";
 import dealers from "@/apollo/queries/dealer/dealers";
 import dealer from "@/apollo/queries/dealer/dealer";
+import filters from "~/mixins/filters";
 
 export default {
+	mixins: [
+		filters
+	],
 	props: {
 		pageTitle: String
 	},
 	computed: {
 		...mapGetters({
+			siteId: 'site_id',
 			dealers: 'dealers/dealers'
 		})
 	},

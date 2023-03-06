@@ -21,6 +21,15 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 
 export default {
     filters: {
+        replaceApiUrl(value, id) {
+            let rootApiLink = 'https://api.carro.ru/'
+            let localApiLink = 'https://api.карро.рф/'
+            if (id === 108) {
+                return value.replace(rootApiLink, localApiLink)
+            }
+            return value
+        },
+
         run(value) {
             if (!value) return ''
             return Number(value).toLocaleString('ru')
@@ -44,7 +53,7 @@ export default {
         },
         numberFormat(value) {
             if (!value) return ''
-            if(typeof value === 'string') return value
+            if (typeof value === 'string') return value
             return new Intl.NumberFormat("ru-RU").format(value);
         },
         toCurrencyValue(value) {

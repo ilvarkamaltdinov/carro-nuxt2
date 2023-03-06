@@ -2,8 +2,11 @@ export default function (req, res, next) {
     let data = "User-agent: *\n" +
         "Disallow: /";
 
-    if (req.headers.host === 'carro.ru' || req.headers.host === 'spb.carro.ru'
-        || req.headers.host === 'kaluga.carro.ru'){
+    if (req.headers.host === 'carro.ru'
+        || req.headers.host === 'spb.carro.ru'
+        || req.headers.host === 'kaluga.carro.ru'
+        || req.headers.host === 'krsk.carro.ru'
+    ){
         data = "User-agent: *\n" +
             "Disallow: /*thanks*\n" +
             "Disallow: /europe*\n"+

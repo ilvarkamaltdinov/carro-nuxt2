@@ -9,10 +9,10 @@
 					<div class="dealer__link">
 						<picture-component
 								classes="dealer__img lazyload"
-								:small="item.small"
-								:small-webp="item.small_webp"
-								:big="item.medium"
-								:big-webp="item.medium_webp" />
+								:small="item.small | replaceApiUrl(siteId)"
+								:small-webp="item.small_webp | replaceApiUrl(siteId)"
+								:big="item.medium | replaceApiUrl(siteId)"
+								:big-webp="item.medium_webp | replaceApiUrl(siteId)" />
 					</div>
 				</div>
 			</div>
@@ -28,13 +28,22 @@
 	</div>
 </template>
 <script>
-import {mapActions} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 import dealers from "@/apollo/queries/dealer/dealers";
 import dealer from "@/apollo/queries/dealer/dealer";
+import filters from "~/mixins/filters";
 
 export default {
+	mixins: [
+		filters
+	],
 	props: {
 		images: Array
+	},
+	computed: {
+		...mapGetters({
+			siteId: 'site_id'
+		}),
 	},
 	mounted() {
 		const sliderStories = new swiper.default('.dealer .swiper', {
