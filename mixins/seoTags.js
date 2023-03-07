@@ -95,6 +95,12 @@ export default {
 
         ]
         let canonicalDomain = 'https://carro.ru'
+        if (this.domain === 'https://carro.ru'
+            || this.domain === 'https://spb.carro.ru'
+            || this.domain === 'https://krsk.carro.ru'
+            || this.domain === 'https://kaluga.carro.ru') {
+            canonicalDomain = this.domain
+        }
 
         if (this.domain !== 'https://carro.ru' &&
             this.domain !== 'https://spb.carro.ru' &&
@@ -120,12 +126,7 @@ export default {
             })
         }
 
-        if (this.domain === 'https://carro.ru'
-            || this.domain === 'https://spb.carro.ru'
-            || this.domain === 'https://krsk.carro.ru'
-            || this.domain === 'https://kaluga.carro.ru') {
-            canonicalDomain = this.domain
-        }
+
 
         const canonical = `${canonicalDomain}${this.$route.path
             .toLowerCase()

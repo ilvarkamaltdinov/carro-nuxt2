@@ -47,9 +47,9 @@ export const actions = {
             commit('SET_SITE_ID', $config.site_id_kaluga);
             commit('SET_DOMAIN', $config.domain_kaluga);
         }
-        else if(req.headers.host === 'krs.carro.ru'){
-            commit('SET_SITE_ID', $config.site_id_krs);
-            commit('SET_DOMAIN', $config.domain_carro_krs);
+        else if(req.headers.host === 'krsk.carro.ru'){
+            commit('SET_SITE_ID', $config.site_id_krsk);
+            commit('SET_DOMAIN', $config.domain_carro_krsk);
         }
         //TODO если localhost или dev.carro.ru
         else {

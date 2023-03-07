@@ -241,14 +241,14 @@ export default {
         domain_spb_rf: process.env.DOMAIN_SPB_RF,
         domain_kaluga: process.env.DOMAIN_KALUGA,
         domain_carro_rf: process.env.DOMAIN_CARRO_RF,
-        domain_carro_krs: process.env.DOMAIN_CARRO_KRS,
+        domain_carro_krsk: process.env.DOMAIN_CARRO_KRSK,
         site_id: process.env.SITE_ID,
         site_id_spb: process.env.SITE_ID_SPB,
         site_id_spb_rf: process.env.SITE_ID_SPB_RF,
         site_id_kaluga: process.env.SITE_ID_KALUGA,
         site_id_carro_rf: process.env.SITE_ID_CARRO_RF,
         site_id_dev: process.env.SITE_ID_DEV,
-        site_id_krs: process.env.SITE_ID_KRS
+        site_id_krsk: process.env.SITE_ID_KRSK
 
     }
 }
