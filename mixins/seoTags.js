@@ -122,6 +122,7 @@ export default {
 
         if (this.domain === 'https://carro.ru'
             || this.domain === 'https://spb.carro.ru'
+            || this.domain === 'https://krsk.carro.ru'
             || this.domain === 'https://kaluga.carro.ru') {
             canonicalDomain = this.domain
         }
