@@ -13,17 +13,18 @@
 							content:`<div class='tippy__text'>Рейтинг дилера</div>`,
 							animation:'scale',
 							arrow: true,
-					}" :rating="dealer.rating"
+					}"
+					        :rating="dealer.rating"
 					        :max="5" />
 				</div>
 			</div>
 			<div class="dealers__item-img-wrap">
 				<picture-component
 						classes="dealers__item-img lazyload"
-						:small="dealer.images[0].small"
-						:small-webp="dealer.images[0].small_webp"
-						:big="dealer.images[0].medium"
-						:big-webp="dealer.images[0].medium_webp" />
+						:small="dealer.images[0].small | replaceApiUrl(api)"
+						:small-webp="dealer.images[0].small_webp | replaceApiUrl(api)"
+						:big="dealer.images[0].medium | replaceApiUrl(api)"
+						:big-webp="dealer.images[0].medium_webp | replaceApiUrl(api)" />
 				<button-typical @click="showMore(dealer.slug)"
 				                button-class="button--show"
 				                text="Подробнее о дилере" />
@@ -41,16 +42,21 @@
 import dealers from "@/apollo/queries/dealer/dealers";
 import {mapActions, mapGetters, mapMutations} from "vuex";
 import dealer from "@/apollo/queries/dealer/dealer";
+import filters from "@/mixins/filters";
 
 export default {
 	computed: {
 		...mapGetters({
-			dealers: 'dealers/dealers'
+			dealers: 'dealers/dealers',
+			api: 'api'
 		}),
 		currentDealers() {
 			return this.dealers.filter(item => item.slug !== 'komm-auto')
 		}
 	},
+	mixins: [
+		filters
+	],
 	methods: {
 		...mapMutations({
 			setDealers: 'dealers/SET_DEALERS'
