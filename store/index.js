@@ -1,3 +1,5 @@
+import {findDomain} from '~/app/variables'
+
 export const strict = false
 import marks from '~/apollo/queries/marks'
 import settings from '~/apollo/queries/settings'
@@ -5,57 +7,49 @@ import settings from '~/apollo/queries/settings'
 export const state = () => ({
     site_id: null,
     domain: '',
+
+    showComm: true,
+    showEurope: true,
+    showReviews: true,
+    showBlog: true
 })
 export const getters = {
     site_id: (state) => {
         return state.site_id
     },
-    isMoscow:(state) =>{
-       return state.site_id === 21 || state.site_id === 28
-    },
-    showReviews:(state) =>{
-        return state.site_id === 21 || state.site_id === 28 || state.site_id === 30
-    },
-    showBlog:(state) =>{
-        return state.site_id === 21
-    },
-    showComm:(state) =>{
-        return state.site_id === 21 || state.site_id === 28
-    },
     domain: (state) => {
         return state.domain
-    }
+    },
+    showComm: (state) => {
+        return state.showComm
+    },
+    showEurope: (state) => {
+        return state.showEurope
+    },
+    showReviews: (state) => {
+        return state.showReviews
+    },
+    showBlog: (state) => {
+        return state.showBlog
+    },
+
+
+
+
+
+    isMoscow: (state) => {
+        return state.site_id === 21 || state.site_id === 28
+    },
 }
 export const actions = {
     async nuxtServerInit({dispatch, commit, state}, {req, app, $config}) {
-        if (req.headers.host === 'xn--80atnha.xn--p1ai') {
-            commit('SET_SITE_ID', $config.site_id_carro_rf);
-            commit('SET_DOMAIN', $config.domain_carro_rf);
-        } else if(req.headers.host === 'carro.ru'){
-            commit('SET_SITE_ID', $config.site_id);
-            commit('SET_DOMAIN', $config.domain);
-        }
-        else if(req.headers.host === 'spb.carro.ru'){
-            commit('SET_SITE_ID', $config.site_id_spb);
-            commit('SET_DOMAIN', $config.domain_spb);
-        }
-        else if(req.headers.host === 'xn----8sbb1bvblac.xn--p1ai'){
-            commit('SET_SITE_ID', $config.site_id_spb_rf);
-            commit('SET_DOMAIN', $config.domain_spb_rf);
-        }
-        else if(req.headers.host === 'kaluga.carro.ru'){
-            commit('SET_SITE_ID', $config.site_id_kaluga);
-            commit('SET_DOMAIN', $config.domain_kaluga);
-        }
-        else if(req.headers.host === 'krsk.carro.ru'){
-            commit('SET_SITE_ID', $config.site_id_krsk);
-            commit('SET_DOMAIN', $config.domain_carro_krsk);
-        }
-        //TODO если localhost или dev.carro.ru
-        else {
-            commit('SET_SITE_ID', $config.site_id_dev);
-            commit('SET_DOMAIN', $config.domain_dev);
-        }
+        let currentDomain = findDomain(req.headers.host)
+        await commit('SET_SITE_ID', currentDomain.siteId);
+        await commit('SET_DOMAIN', currentDomain.domain);
+        await commit('SET_SHOW_COMM', currentDomain.showComm);
+        await commit('SET_SHOW_EUROPE', currentDomain.showEurope);
+        await commit('SET_SHOW_REVIEWS', currentDomain.showReviews);
+        await commit('SET_SHOW_BLOG', currentDomain.showBlog);
 
         let client = app.apolloProvider.defaultClient
         // TODO получаю дефолтный процент тут так как в state нет экземпляра контекста
@@ -103,5 +97,18 @@ export const mutations = {
     },
     SET_DOMAIN(state, data) {
         state.domain = data
+    },
+
+    SET_SHOW_COMM(state, data) {
+        state.showComm = data
+    },
+    SET_SHOW_EUROPE(state, data) {
+        state.showEurope = data
+    },
+    SET_SHOW_REVIEWS(state, data) {
+        state.showReviews = data
+    },
+    SET_SHOW_BLOG(state, data) {
+        state.showBlog = data
     },
 }

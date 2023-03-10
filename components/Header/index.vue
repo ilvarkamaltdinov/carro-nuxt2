@@ -1,46 +1,7 @@
 <template>
 	<header class="page-header">
 		<div class="page-header__container grid grid--header">
-			<div class="page-header__wrap grid__col-12">
-				<header-logo-block @burger="burgerClick"
-				                   :modal-menu="modalMenu" />
-				<nav class="main-nav page-header__nav page-header__nav--desktop">
-					<site-list-desktop />
-				</nav>
-				<ul class="page-header__buttons">
-					<li class="page-header__buttons-item">
-						<nuxt-link to="/favorites"
-						           class="page-header__buttons-link"
-						           title="Избранное"
-						           aria-label="Избранное">
-							<span v-if="likesArray.length"
-							      class="page-header__favorites-count">{{ likesArray.length }}
-							</span>
-							<svg-icon class="icon"
-							          name="icon-favorites" />
-						</nuxt-link>
-					</li>
-					<li class="page-header__buttons-item"
-					    v-if="$device.isMobile">
-						<div @click="searchClick"
-						     class="page-header__buttons-link">
-							<svg-icon class="icon"
-							          name="icon-search" />
-						</div>
-					</li>
-					<li class="page-header__buttons-item page-header__buttons-item--call">
-						<a class="page-header__buttons-link page-header__buttons-link--phone"
-						   v-if="settings.phone"
-						   :href="`tel:${currentPhone.replace(/[^+\d]/g, '')}`"
-						   title="Бесплатный звонок"
-						   aria-label="Бесплатный звонок">
-							<svg-icon class="icon"
-							          name="icon-call" />
-							<span class="page-header__buttons-phone">{{ currentPhone }}</span>
-						</a>
-					</li>
-				</ul>
-			</div>
+			<header-top/>
 			<nav class="page-header__nav grid__col-12">
 				<header-back-button :back-button="backButton"
 				                    v-if="backButton.title && $device.isMobile" />
@@ -69,8 +30,6 @@
 				</button>
 			</nav>
 		</div>
-
-
 		<!--TODO анимация выпадающих списков в хедере-->
 		<transition name="menu">
 			<modal-makes v-show="modalMarks" />
@@ -88,6 +47,9 @@ import {mapGetters, mapMutations, mapActions} from 'vuex'
 import bodyClasses from "@/mixins/bodyClasses";
 
 export default {
+	components:{
+		HeaderTop: () => import(/* webpackChunkName: "header-top" */ '~/components/Header/Top'),
+	},
 	mixins: [bodyClasses],
 	watch: {
 		'$route'() {
@@ -160,12 +122,7 @@ export default {
 			}
 			await this.openModal(payload)
 		},
-		burgerClick() {
-			this.setModalMenu(!this.modalMenu)
-			this.setModalMarks(false)
-			this.setModalSearch(false)
-			this.setModalSearch(false)
-		},
+		
 		navMarkClick() {
 			this.setModalMenu(false)
 			this.setModalMarks(false)

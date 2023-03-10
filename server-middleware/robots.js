@@ -1,15 +1,13 @@
+import {findDomain} from '../app/variables'
+
 export default function (req, res, next) {
     let data = "User-agent: *\n" +
         "Disallow: /";
 
-    if (req.headers.host === 'carro.ru'
-        || req.headers.host === 'spb.carro.ru'
-        || req.headers.host === 'kaluga.carro.ru'
-        || req.headers.host === 'krsk.carro.ru'
-    ){
+    if (findDomain(req.headers.host).isIndex) {
         data = "User-agent: *\n" +
             "Disallow: /*thanks*\n" +
-            "Disallow: /europe*\n"+
+            "Disallow: /europe*\n" +
             "Disallow: /*?*\n" +
             "Allow: *.js\n" +
             "Allow: *.css\n" +
@@ -21,7 +19,6 @@ export default function (req, res, next) {
             "Allow: *.ttf\n" +
             `Sitemap: https://${req.headers.host}/sitemap.xml`
     }
-
     res.setHeader('Content-Type', 'text/plain');
     res.end(data);
 

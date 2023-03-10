@@ -24,7 +24,7 @@ export default {
         replaceApiUrl(value, id) {
             let rootApiLink = 'https://api.carro.ru/'
             let localApiLink = 'https://api.карро.рф/'
-            if (id === 108) {
+            if (id === 108 || id === 112 || id === 113) {
                 return value.replace(rootApiLink, localApiLink)
             }
             return value

@@ -1,4 +1,5 @@
 import {redirects} from './configModules'
+import {apiDomain} from './app/variables'
 
 const isDev = process.env.NODE_ENV !== 'production'
 
@@ -90,7 +91,7 @@ export default {
     router: {
         prefetchLinks: false,
         linkActiveClass: 'active',
-        linkExactActiveClass: 'active',
+        linkExactActiveClass: 'active'
         // extendRoutes(routes, resolve) {
         //
         //     console.log(resolve)
@@ -113,7 +114,7 @@ export default {
         '@nuxtjs/axios',
         '@nuxtjs/svg-sprite',
         '@nuxtjs/redirect-module',
-        'nuxt-ssr-cache',
+        'nuxt-ssr-cache'
     ],
     // ...(!isDev && {
     //   cache: {
@@ -162,7 +163,7 @@ export default {
     apollo: {
         clientConfigs: {
             default: {
-                httpEndpoint: process.env.API_DOMAIN + '/graphql',
+                httpEndpoint: process.env.API,
                 persisting: true
             }
         }
@@ -230,25 +231,10 @@ export default {
             }
         }
     },
+    publicRuntimeConfig: {
+        api: process.env.API
+    }
     // server: {
     //     host: "0.0.0.0"
-    // },
-    publicRuntimeConfig: {
-        api_domain: process.env.API_DOMAIN,
-        domain: process.env.DOMAIN,
-        domain_dev: process.env.DOMAIN_DEV,
-        domain_spb: process.env.DOMAIN_SPB,
-        domain_spb_rf: process.env.DOMAIN_SPB_RF,
-        domain_kaluga: process.env.DOMAIN_KALUGA,
-        domain_carro_rf: process.env.DOMAIN_CARRO_RF,
-        domain_carro_krsk: process.env.DOMAIN_CARRO_KRSK,
-        site_id: process.env.SITE_ID,
-        site_id_spb: process.env.SITE_ID_SPB,
-        site_id_spb_rf: process.env.SITE_ID_SPB_RF,
-        site_id_kaluga: process.env.SITE_ID_KALUGA,
-        site_id_carro_rf: process.env.SITE_ID_CARRO_RF,
-        site_id_dev: process.env.SITE_ID_DEV,
-        site_id_krsk: process.env.SITE_ID_KRSK
-
-    }
+    // }
 }

@@ -31,7 +31,16 @@ import metrika from "@/mixins/metrika";
 import LazyHydrate from 'vue-lazy-hydration';
 
 export default {
-	components: {LazyHydrate},
+	components: {
+		LazyHydrate,
+		Header: () => import(/* webpackChunkName: "header" */ '~/components/Header'),
+		// Crumbs: () => import(/* webpackChunkName: "crumbs" */ '~/components/Crumbs'),
+		
+		// Footer: () => import(/* webpackChunkName: "footer" */ '~/components/Footer'),
+		// ModalMain: () => import(/* webpackChunkName: "modal-main" */ '~/components/Modal/Main'),
+		// CookieModal: () => import(/* webpackChunkName: "cookie-modal" */ '~/components/Cookie/Modal'),
+		// CallbackModal: () => import(/* webpackChunkName: "callback-modal" */ '~/components/Callback/Modal'),
+	},
 	mixins: [utm, metrika],
 	watch: {
 		'$route'() {

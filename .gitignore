@@ -1,6 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 ### Node template
 # Logs
+.env
 /assets/styles/*.css
 /assets/styles/*/*.css
 /logs
