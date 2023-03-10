@@ -21,13 +21,9 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 
 export default {
     filters: {
-        replaceApiUrl(value, id) {
-            let rootApiLink = 'https://api.carro.ru/'
-            let localApiLink = 'https://api.карро.рф/'
-            if (id === 108 || id === 112 || id === 113) {
-                return value.replace(rootApiLink, localApiLink)
-            }
-            return value
+        replaceApiUrl(value, api) {
+            let rootApiLink = 'api.carro.ru'
+            return value.replace(rootApiLink, api)
         },
 
         run(value) {

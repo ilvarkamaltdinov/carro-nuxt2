@@ -2,7 +2,7 @@
 	<div>
 		<div class="modal__options">
 			<img class="modal__logo"
-			     :src="modalData.image_logo"
+			     :src="modalData.image_logo | replaceApiUrl(api)"
 			     alt="" />
 			<div class="modal__buttons">
 				<button-callback @click="callback" />
@@ -22,7 +22,8 @@
 							<div class="features__item-type">Адрес:</div>
 							<div class="features__item-content">{{ modalData.address }}</div>
 						</li>
-						<li class="features__item" v-if="modalData.metro" >
+						<li class="features__item"
+						    v-if="modalData.metro">
 							<div class="features__item-type">Метро:</div>
 							<div class="features__item-content">{{ modalData.metro }}</div>
 						</li>
@@ -42,7 +43,8 @@
 				</div>
 				<div class="features__group">
 					<h3 class="heading heading--h3">Об автоцентре:</h3>
-					<p class="about-dealer__text" v-html="modalData.description "></p>
+					<p class="about-dealer__text"
+					   v-html="modalData.description "></p>
 				</div>
 			</div>
 			<div class="modal__dealer-photos">
@@ -60,11 +62,14 @@
 </template>
 <script>
 import {mapActions, mapGetters} from 'vuex'
+import filters from "@/mixins/filters";
 
 export default {
+	mixins: [filters],
 	computed: {
 		...mapGetters({
-			modalData: 'modal/modal-main/modalData'
+			modalData: 'modal/modal-main/modalData',
+			api: 'api'
 		})
 	},
 	methods: {

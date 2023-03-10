@@ -9,10 +9,10 @@
 					<div class="dealer__link">
 						<picture-component
 								classes="dealer__img lazyload"
-								:small="item.small | replaceApiUrl(siteId)"
-								:small-webp="item.small_webp | replaceApiUrl(siteId)"
-								:big="item.medium | replaceApiUrl(siteId)"
-								:big-webp="item.medium_webp | replaceApiUrl(siteId)" />
+								:small="item.small | replaceApiUrl(api)"
+								:small-webp="item.small_webp | replaceApiUrl(api)"
+								:big="item.medium | replaceApiUrl(api)"
+								:big-webp="item.medium_webp | replaceApiUrl(api)" />
 					</div>
 				</div>
 			</div>
@@ -42,7 +42,8 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			siteId: 'site_id'
+			siteId: 'site_id',
+			api: 'api'
 		}),
 	},
 	mounted() {

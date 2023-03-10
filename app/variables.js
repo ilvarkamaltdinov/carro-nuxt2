@@ -1,14 +1,25 @@
 export const apiDomain = 'api.карро.рф'
 export const apiSlug = 'carro'
 export const domains = [
-    //первый домен ГЛАВНЫЙ и используется для 'DEV'
-    //если домен на кириллице, то домен в punycode
+
+    //     domain: 'домен сайта', если домен на кириллице, то домен в punycode
+    //     slug: 'slug api',
+    //     api: 'используется в компоненте dealer для изменения стандартной апи на нужную'
+    //     siteId: 'site id',
+    //     isIndex: 'Индексирование / robots / sitemap',
+    //     showComm: 'Показывать коммерческий',
+    //     showEurope: 'Показывать тачки из европы',
+    //     showReviews: 'Показывать отзывы, если есть у нужных салонов',
+    //     showBlog: 'Показывать блог'
+
     {
         domain: 'carro.ru',
         slug: 'carro',
+        //api -
         api: 'api.carro.ru',
         siteId: 21,
         isIndex: true,
+        // параметры для показа определенных блоков
         showComm: true,
         showEurope: true,
         showReviews: true,
@@ -80,13 +91,57 @@ export const domains = [
         showEurope: false,
         showReviews: false,
         showBlog: false
+    },
+    {
+        domain: 'irk.carro.ru',
+        slug: 'irk-carro',
+        api: 'api.карро.рф',
+        siteId: 113,
+        isIndex: true,
+        showComm: false,
+        showEurope: false,
+        showReviews: false,
+        showBlog: false
+    },
+    {
+        domain: 'tlt.carro.ru',
+        slug: 'tlt-carro',
+        api: 'api.карро.рф',
+        siteId: 114,
+        isIndex: true,
+        showComm: false,
+        showEurope: false,
+        showReviews: false,
+        showBlog: false
+    },
+    {
+        domain: 'ekb.carro.ru',
+        slug: 'ekb-carro',
+        api: 'api.карро.рф',
+        siteId: 115,
+        isIndex: true,
+        showComm: false,
+        showEurope: false,
+        showReviews: false,
+        showBlog: false
+    },
+    {
+        domain: 'ornb.carro.ru',
+        slug: 'ornb-carro',
+        api: 'api.карро.рф',
+        siteId: 116,
+        isIndex: true,
+        showComm: false,
+        showEurope: false,
+        showReviews: false,
+        showBlog: false
     }
 ]
 export const devDomain = {
     domain: 'dev.carro.ru',
     slug: 'dev-carro',
     api: 'api.карро.рф',
-    siteId: 112,
+    siteId: 115,
     isIndex: false,
     showComm: false,
     showEurope: false,

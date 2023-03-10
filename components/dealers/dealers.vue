@@ -37,7 +37,7 @@
 				<div class="features__group">
 					<h3 class="heading heading--h3">Телефон:</h3>
 					<ul class="features__list">
-						<li class="features__item">
+						<li class="features__item" v-if="dealer.phone">
 							<a :href="`tel:${ dealer.phone.replace(/[^+\d]/g, '')}`"> {{ dealer.phone }}</a>
 						</li>
 					</ul>
@@ -64,11 +64,12 @@
 			</div>
 			<div class="dealers__item-img-wrap">
 				<picture-component
+						v-if="dealer.images[0]"
 						classes="dealers__item-img lazyload"
-						:small="dealer.images[0].small | replaceApiUrl(siteId)"
-						:small-webp="dealer.images[0].small_webp | replaceApiUrl(siteId)"
-						:big="dealer.images[0].medium | replaceApiUrl(siteId)"
-						:big-webp="dealer.images[0].medium_webp | replaceApiUrl(siteId)" />
+						:small="dealer.images[0].small | replaceApiUrl(api)"
+						:small-webp="dealer.images[0].small_webp | replaceApiUrl(api)"
+						:big="dealer.images[0].medium | replaceApiUrl(api)"
+						:big-webp="dealer.images[0].medium_webp | replaceApiUrl(api)" />
 			</div>
 		</div>
 	</section>
@@ -89,6 +90,7 @@ export default {
 	computed: {
 		...mapGetters({
 			siteId: 'site_id',
+			api: 'api',
 			dealers: 'dealers/dealers'
 		})
 	},

@@ -7,6 +7,7 @@ import settings from '~/apollo/queries/settings'
 export const state = () => ({
     site_id: null,
     domain: '',
+    api: '',
 
     showComm: true,
     showEurope: true,
@@ -32,6 +33,9 @@ export const getters = {
     showBlog: (state) => {
         return state.showBlog
     },
+    api: (state) => {
+        return state.api
+    },
 
 
 
@@ -50,6 +54,7 @@ export const actions = {
         await commit('SET_SHOW_EUROPE', currentDomain.showEurope);
         await commit('SET_SHOW_REVIEWS', currentDomain.showReviews);
         await commit('SET_SHOW_BLOG', currentDomain.showBlog);
+        await commit('SET_API', currentDomain.api);
 
         let client = app.apolloProvider.defaultClient
         // TODO получаю дефолтный процент тут так как в state нет экземпляра контекста
@@ -110,5 +115,8 @@ export const mutations = {
     },
     SET_SHOW_BLOG(state, data) {
         state.showBlog = data
+    },
+    SET_API(state, data) {
+        state.api = data
     },
 }
