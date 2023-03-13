@@ -135,13 +135,46 @@ export const domains = [
         showEurope: false,
         showReviews: false,
         showBlog: false
+    },
+    {
+        domain: 'surgut.carro.ru',
+        slug: 'surgut-carro',
+        api: 'api.карро.рф',
+        siteId: 117,
+        isIndex: true,
+        showComm: false,
+        showEurope: false,
+        showReviews: false,
+        showBlog: false
+    },
+    {
+        domain: 'kem.carro.ru',
+        slug: 'kem-carro',
+        api: 'api.карро.рф',
+        siteId: 118,
+        isIndex: true,
+        showComm: false,
+        showEurope: false,
+        showReviews: false,
+        showBlog: false
+    },
+    {
+        domain: 'tmn.carro.ru',
+        slug: 'tmn-carro',
+        api: 'api.карро.рф',
+        siteId: 119,
+        isIndex: true,
+        showComm: false,
+        showEurope: false,
+        showReviews: false,
+        showBlog: false
     }
 ]
 export const devDomain = {
     domain: 'dev.carro.ru',
     slug: 'dev-carro',
     api: 'api.карро.рф',
-    siteId: 115,
+    siteId: 119,
     isIndex: false,
     showComm: false,
     showEurope: false,
