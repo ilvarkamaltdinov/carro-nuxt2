@@ -175,7 +175,7 @@ export const devDomain = {
     slug: 'dev-carro',
     api: 'api.xn--80atnha.xn--p1ai',
     siteId: 119,
-    isIndex: true,
+    isIndex: false,
     showComm: false,
     showEurope: false,
     showReviews: false,
