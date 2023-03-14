@@ -31,8 +31,8 @@
 							<picture-component classes="text__img text__img--blog lazyload"
 							                   :small="article.image.medium"
 							                   :small-webp="article.image.medium_webp"
-							                   :big="article.image.large"
-							                   :big-webp="article.image.large_webp" />
+							                   :big="article.image.src"
+							                   :big-webp="article.image.src" />
 						</div>
 					</div>
 					<blog-slider v-if="article.image_slide && article.image_slide.length" :images="article.image_slide"/>

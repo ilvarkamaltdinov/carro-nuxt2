@@ -21,6 +21,7 @@ query article($site_id: Int! $url: String) {
             large
             medium_webp
             large_webp
+            src
         }
 
     }
