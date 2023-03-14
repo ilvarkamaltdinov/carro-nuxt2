@@ -98,6 +98,9 @@ export default {
         let canonicalDomain = 'https://carro.ru'
         let domain = findDomain(this.domain)
 
+        console.log(this.domain)
+        console.log(domain)
+
         if (domain.isIndex) {
             canonicalDomain = 'https://' + this.domain
         }
