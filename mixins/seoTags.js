@@ -1,3 +1,4 @@
+import {findDomain} from '../app/variables'
 import seoTags from "@/apollo/queries/seoTags";
 import folders from "@/apollo/queries/folder/folders";
 import generations from "@/apollo/queries/generations";
@@ -95,17 +96,13 @@ export default {
 
         ]
         let canonicalDomain = 'https://carro.ru'
-        if (this.domain === 'https://carro.ru'
-            || this.domain === 'https://spb.carro.ru'
-            || this.domain === 'https://krsk.carro.ru'
-            || this.domain === 'https://kaluga.carro.ru') {
+        let domain = findDomain(this.domain.split('//')[1])
+
+        if (domain.isIndex) {
             canonicalDomain = this.domain
         }
 
-        if (this.domain !== 'https://carro.ru' &&
-            this.domain !== 'https://spb.carro.ru' &&
-            this.domain !== 'https://krsk.carro.ru' &&
-            this.domain !== 'https://kaluga.carro.ru') {
+        if (!domain.isIndex) {
             currentMeta.push({
                 name: 'robots',
                 content: 'noindex, nofollow'
@@ -122,10 +119,9 @@ export default {
             currentMeta.push({
                 hid: 'og:image',
                 property: 'og:image',
-                content: this.domain + '/carro.png'
+                content: 'https://' + this.domain + '/carro.png'
             })
         }
-
 
 
         const canonical = `${canonicalDomain}${this.$route.path
