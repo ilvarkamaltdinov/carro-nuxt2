@@ -2,8 +2,10 @@ const axios = require('axios')
 import {findDomain} from '../app/variables'
 export default async function (req, res, next) {
     let link = ''
-    if(findDomain(req.headers.host).isIndex){
-        link = `https://${findDomain.api}/sitemap/xml/${findDomain.slug}`
+    let domain = findDomain(req.headers.host)
+    if(domain.isIndex){
+        link = `https://${domain.api}/sitemap/xml/${domain.slug}`
+
     }
     // if(req.headers.host === 'carro.ru'){
     //     link = 'https://api.carro.ru/sitemap/xml/carro'
