@@ -81,7 +81,7 @@ export default {
             {
                 hid: 'og:url',
                 property: 'og:url',
-                content: this.domain + this.$route.path,
+                content: 'https://' +  this.domain + this.$route.path,
             },
             {
                 hid: 'og:title',
@@ -96,10 +96,10 @@ export default {
 
         ]
         let canonicalDomain = 'https://carro.ru'
-        let domain = findDomain(this.domain.split('//')[1])
+        let domain = findDomain(this.domain)
 
         if (domain.isIndex) {
-            canonicalDomain = this.domain
+            canonicalDomain = 'https://' + this.domain
         }
 
         if (!domain.isIndex) {
