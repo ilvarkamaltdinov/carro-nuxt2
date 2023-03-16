@@ -169,7 +169,6 @@ export default {
     let localApiLink = apiDomain
     let banksList = response.data.banks.map((bank) => {
       bank.image = bank.image.replace(rootApiLink, localApiLink)
-      bank.license_file = bank.license_file.replace(rootApiLink, localApiLink)
       return bank;
     })
 		await this.setBanks(banksList)
