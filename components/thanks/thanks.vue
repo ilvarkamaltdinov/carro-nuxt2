@@ -63,7 +63,7 @@ export default {
 			if (process.client) {
         _tmr.push({
           type: 'reachGoal',
-          id: this.settings.vk_ads_id,
+          id: this.settings.vk_ads,
           value: this.offer.price,
           goal: 'purchase',
           params: {
