@@ -41,9 +41,9 @@ export default {
       }
     },
     vkAds() {
-      if (this.settings.vkAds) {
+      if (this.settings.vk_ads) {
         _tmr.push({
-          id: `${this.settings.vkAds}`,
+          id: `${this.settings.vk_ads}`,
           type: "pageView",
           start: (new Date()).getTime(),
           pid: "USER_ID"

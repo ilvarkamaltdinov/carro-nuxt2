@@ -65,7 +65,7 @@ export default {
 					type: 'itemView',
 					productid: this.userCar.external_id,
 					pagetype: 'purchase',
-					list: '1',
+					list: this.settings.vk_ads_id,
 					totalvalue: this.userCar.price,
 				})
 			}

@@ -61,7 +61,7 @@
 					<car-fixed v-if="showFixed && focusShowFixed" />
 				</transition>
 				<car-info />
-				
+
 				<car-complectation v-if="$device.isMobile"
 				                   :offer="offer"
 				                   class="swiper-slide car__info-group--complectation" />
@@ -84,6 +84,7 @@ import {mapActions, mapGetters, mapMutations} from "vuex";
 import offer from "@/apollo/queries/offer/offer";
 import seoTags from "@/mixins/seoTags";
 import jsonld from "@/mixins/jsonld";
+import settings from "@/mixins/settings";
 
 export default {
 	mixins: [jsonld],
@@ -105,7 +106,7 @@ export default {
 			window.scrollTo(0, -100);
 		}, 1);
 		this.setBackButton(this.currentBackButton);
-		
+
 		if (this.offer_external_id) {
 			//добавляю тачку в посещаемые если загрузилась на сервере
 			this.setVisited(this.offer_external_id)
@@ -141,7 +142,7 @@ export default {
 					await this.sendYandexCommercial();
 					await this.sendMyTarget();
 				}
-				
+
 			}
 		}
 		catch (error){
@@ -158,6 +159,7 @@ export default {
 			marks: "marks/marks/allMarks",
 			folders: "folders/folders/folders",
 			focusShowFixed: "car/car/focusShowFixed",
+      settings: 'settings/settings/settings'
 		}),
 		currentBackButton() {
 			let long =
@@ -219,7 +221,7 @@ export default {
 					type: "itemView",
 					productid: this.offer.external_id,
 					pagetype: "product",
-					list: "1",
+					list: this.settings.vk_ads_id,
 					totalvalue: this.offer.price,
 				});
 			}
