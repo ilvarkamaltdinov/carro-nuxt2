@@ -26,7 +26,7 @@ export default {
     window.dataLayer = window.dataLayer || [];
     window._tmr = window._tmr || [];
     this.googleTag()
-    this.myTarget()
+    this.vkAds()
     this.vkPixel()
     this.yandexMetrika()
   },
@@ -41,10 +41,10 @@ export default {
         gtag('config', `${this.settings.gtag}`);
       }
     },
-    myTarget() {
-      if (this.settings.mytarget) {
+    vkAds() {
+      if (this.settings.vkAds) {
         _tmr.push({
-          id: `${this.settings.mytarget}`,
+          id: `${this.settings.vkAds}`,
           type: "pageView",
           start: (new Date()).getTime(),
           pid: "USER_ID"
@@ -65,7 +65,7 @@ export default {
           } else {
             f();
           }
-        })(document, window, "topmailru-code");
+        })(document, window, "tmr-code");
       }
     },
     vkPixel() {
