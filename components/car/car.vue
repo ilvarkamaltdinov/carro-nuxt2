@@ -140,7 +140,7 @@ export default {
 				}
 				if(this.offer.external_id){
 					await this.sendYandexCommercial();
-					await this.sendMyTarget();
+					await this.sendVkAds();
 				}
 
 			}
@@ -215,15 +215,17 @@ export default {
 				return this.$route.params.category === category;
 			}
 		},
-		sendMyTarget() {
+		sendVkAds() {
 			if (process.client) {
-				_tmr.push({
-					type: "itemView",
-					productid: this.offer.external_id,
-					pagetype: "product",
-					list: this.settings.vk_ads_id,
-					totalvalue: this.offer.price,
-				});
+        _tmr.push({
+          type: 'reachGoal',
+          id: this.settings.vk_ads_id,
+          value: this.offer.price,
+          goal: 'viewProduct',
+          params: {
+            product_id: this.offer.external_id
+          }
+        });
 			}
 		},
 		sendYandexCommercial() {

@@ -61,13 +61,15 @@ export default {
 		}),
 		sendMyTarget() {
 			if (process.client) {
-				_tmr.push({
-					type: 'itemView',
-					productid: this.userCar.external_id,
-					pagetype: 'purchase',
-					list: this.settings.vk_ads_id,
-					totalvalue: this.userCar.price,
-				})
+        _tmr.push({
+          type: 'reachGoal',
+          id: this.settings.vk_ads_id,
+          value: this.offer.price,
+          goal: 'purchase',
+          params: {
+            product_id: this.offer.external_id
+          }
+        });
 			}
 		},
 		sendYandexCommercial() {
