@@ -165,8 +165,8 @@ export default {
 	},
 	async fetch() {
 		let response = await this.request({query: banks, variables: {}})
-    let rootApiLink = 'https://api.carro.ru/'
-    let localApiLink = `https://${apiDomain}/`
+    let rootApiLink = 'api.carro.ru'
+    let localApiLink = apiDomain
     let banksList = response.data.banks.map((bank) => {
       bank.image = bank.image.replace(rootApiLink, localApiLink)
       bank.license_file = bank.license_file.replace(rootApiLink, localApiLink)
