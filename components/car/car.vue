@@ -142,7 +142,7 @@ export default {
         }
         if (this.offer.external_id) {
           await this.sendYandexCommercial();
-          await this.sendVkAds();
+          await this.sendMyTarget();
         }
 
       }
@@ -216,7 +216,7 @@ export default {
         return this.$route.params.category === category;
       }
     },
-    sendVkAds() {
+    sendMyTarget() {
       if (process.client) {
         _tmr.push({
           type: "reachGoal",
