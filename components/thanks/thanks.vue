@@ -61,13 +61,14 @@ export default {
 		}),
 		sendMyTarget() {
 			if (process.client) {
+        let _tmr = window._tmr || (window._tmr = []);
         _tmr.push({
           type: 'reachGoal',
           id: this.settings.vk_ads,
-          value: this.offer.price,
+          value: this.userCar.price,
           goal: 'purchase',
           params: {
-            product_id: this.offer.external_id
+            product_id: this.userCar.external_id
           }
         });
 			}

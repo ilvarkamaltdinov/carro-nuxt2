@@ -217,6 +217,7 @@ export default {
 		},
 		sendVkAds() {
 			if (process.client) {
+        let _tmr = window._tmr || (window._tmr = []);
         _tmr.push({
           type: 'reachGoal',
           id: this.settings.vk_ads,
