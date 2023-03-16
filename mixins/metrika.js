@@ -27,7 +27,6 @@ export default {
     window._tmr = window._tmr || [];
     this.googleTag()
     this.vkAds()
-    this.vkPixel()
     this.yandexMetrika()
   },
   methods: {
@@ -66,23 +65,6 @@ export default {
             f();
           }
         })(document, window, "tmr-code");
-      }
-    },
-    vkPixel() {
-      if (this.settings.vkpixel && this.settings.vkpixel_alt) {
-        const vkPixel = this.settings.vkpixel;
-        const vkPixelAlt = this.settings.vkpixel_alt;
-        (
-          function () {
-            var t = document.createElement("script");
-            t.type = "text/javascript", t.async = !0, t.src = 'https://vk.com/js/api/openapi.js?169', t.onload = function () {
-              VK.Retargeting.Init(vkPixel),
-              VK.Retargeting.Hit()
-              VK.Retargeting.Init(vkPixelAlt),
-              VK.Retargeting.Hit()
-            }, document.head.appendChild(t)
-          }()
-        )
       }
     },
     yandexMetrika() {
