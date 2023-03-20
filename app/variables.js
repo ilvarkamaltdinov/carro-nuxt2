@@ -34,7 +34,7 @@ export const domains = [
         showComm: true,
         showEurope: true,
         showReviews: true,
-        showBlog: true
+        showBlog: false
     },
     //спб-карро.рф
     {
