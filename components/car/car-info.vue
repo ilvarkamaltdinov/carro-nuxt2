@@ -45,6 +45,11 @@
           :offer="offer"
           class="swiper-slide car__info-group--options"
         />
+        <car-description
+          v-if="offer.description && !$device.isMobile"
+          :offer="offer"
+          :page-title="pageTitle"
+        />
         <car-dealer
           v-if="!$device.isMobile"
           :offer="offer"
@@ -74,6 +79,9 @@ export default {
     };
   },
   mixins: [filters],
+  props: {
+    pageTitle: String
+  },
   computed: {
     ...mapGetters({
       offer: "catalog/catalog-cars/offer",

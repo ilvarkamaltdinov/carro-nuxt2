@@ -60,11 +60,16 @@
 				<transition name="slide-fade">
 					<car-fixed v-if="showFixed && focusShowFixed" />
 				</transition>
-				<car-info />
+				<car-info :page-title="pageTitle"/>
 
 				<car-complectation v-if="$device.isMobile"
 				                   :offer="offer"
 				                   class="swiper-slide car__info-group--complectation" />
+
+        <car-description v-if="offer.description && $device.isMobile"
+                           :offer="offer"
+                           :page-title="pageTitle"
+                           class="swiper-slide car__info-group--description" />
 			</div>
 			<div class="grid grid--container">
 				<benefits class="car__benefits car__benefits--desktop"
@@ -73,7 +78,7 @@
 				            :offer="offer" />
 			</div>
 		</section>
-		<catalog-list-visited :offer="offer" v-if="visitedIsLoadig" />
+		<catalog-list-visited :offer="offer" v-if="visitedIsLoading" />
 		<catalog-list-car v-show="carPageLoaded" />
 		<skeleton-car v-show="!carPageLoaded" />
 	</div>
@@ -82,9 +87,7 @@
 <script>
 import {mapActions, mapGetters, mapMutations} from "vuex";
 import offer from "@/apollo/queries/offer/offer";
-import seoTags from "@/mixins/seoTags";
 import jsonld from "@/mixins/jsonld";
-import settings from "@/mixins/settings";
 
 export default {
 	mixins: [jsonld],
@@ -95,7 +98,7 @@ export default {
 	},
 	data() {
 		return {
-			visitedIsLoadig: false,
+			visitedIsLoading: false,
 			offer_external_id: null,
 			jsonType: "car",
 			showFixed: false,
@@ -110,7 +113,7 @@ export default {
 		if (this.offer_external_id) {
 			//добавляю тачку в посещаемые если загрузилась на сервере
 			this.setVisited(this.offer_external_id)
-			this.visitedIsLoadig = true
+			this.visitedIsLoading = true
 		}
 	},
 	async fetch() {
@@ -133,7 +136,7 @@ export default {
 				// записываю посещенную тачку в локальное хранилище
 				if (process.client) {
 					this.setVisited(this.offer.external_id)
-					this.visitedIsLoadig = true
+					this.visitedIsLoading = true
 				} else {
 					// если на сервере, то чуть другая логика завязанная на хуке mounted
 					this.offer_external_id = this.offer.external_id

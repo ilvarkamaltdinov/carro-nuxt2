@@ -174,12 +174,12 @@ export const devDomain = {
     domain: 'dev.carro.ru',
     slug: 'dev-carro',
     api: 'api.xn--80atnha.xn--p1ai',
-    siteId: 119,
+    siteId: 21,
     isIndex: false,
-    showComm: false,
-    showEurope: false,
-    showReviews: false,
-    showBlog: false
+    showComm: true,
+    showEurope: true,
+    showReviews: true,
+    showBlog: true
 }
 
 export function findDomain(host) {
