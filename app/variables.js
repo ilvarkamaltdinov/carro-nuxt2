@@ -1,5 +1,3 @@
-export const apiDomain = 'api.xn--80atnha.xn--p1ai'
-export const apiSlug = 'carro'
 export const domains = [
 
     //     domain: 'домен сайта', если домен на кириллице, то домен в punycode

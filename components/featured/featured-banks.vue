@@ -138,7 +138,6 @@
 <script>
 import {mapActions, mapGetters, mapMutations} from "vuex";
 import banks from "@/apollo/queries/bank/banks";
-import { apiDomain } from "@/app/variables";
 
 export default {
 	props: {
@@ -165,13 +164,7 @@ export default {
 	},
 	async fetch() {
 		let response = await this.request({query: banks, variables: {}})
-    let rootApiLink = 'api.carro.ru'
-    let localApiLink = apiDomain
-    let banksList = response.data.banks.map((bank) => {
-      bank.image = bank.image.replace(rootApiLink, localApiLink)
-      return bank;
-    })
-		await this.setBanks(banksList)
+    await this.setBanks(response.data.banks)
 	}
 }
 </script>

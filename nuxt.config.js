@@ -1,6 +1,4 @@
 import {redirects} from './configModules'
-import {apiDomain} from './app/variables'
-
 const isDev = process.env.NODE_ENV !== 'production'
 
 export default {
