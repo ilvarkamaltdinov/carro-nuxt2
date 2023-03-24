@@ -15,9 +15,11 @@ import jsonld from "@/mixins/jsonld";
 export default {
 	mixins: [seoTags, jsonld],
 	mounted() {
+		console.log(1)
 		setTimeout(function () {window.scrollTo(0, -100);}, 1);
 	},
 	validate(ctx) {
+		console.log(1)
 		return ctx.store.getters.showBlog
 	},
 }

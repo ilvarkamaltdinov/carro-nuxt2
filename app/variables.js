@@ -171,11 +171,11 @@ export const domains = [
     }
 ]
 export const devDomain = {
-    domain: 'dev.carro.ru',
-    slug: 'dev-carro',
+    domain: 'tmn.carro.ru',
+    slug: 'tmn-carro',
     api: 'api.xn--80atnha.xn--p1ai',
     siteId: 119,
-    isIndex: false,
+    isIndex: true,
     showComm: false,
     showEurope: false,
     showReviews: false,

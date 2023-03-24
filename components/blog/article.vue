@@ -15,9 +15,19 @@ import {mapGetters} from "vuex";
 
 export default {
 	mixins: [article, jsonld],
-	data() {
-		return {
-			crumbs: [
+	
+	computed: {
+		...mapGetters({
+			domain: 'domain'
+		}),
+		ruName() {
+			return this.$route.name.split('-')[1] === 'articles' ? 'Статьи' :
+					this.$route.name.split('-')[1] === 'ratings' ? 'Рейтинги' :
+							this.$route.name.split('-')[1] === 'news' ? 'Новости' :
+									this.$route.name.split('-')[0] === 'news' ? 'Новости' : ''
+		},
+		crumbs() {
+			return [
 				{
 					title: 'Главная',
 					link: '/',
@@ -29,21 +39,19 @@ export default {
 					active: false
 				},
 				{
-					title: 'Рейтинги',
-					link: '/blog/ratings',
+					title: this.ruName,
+					link: this.$route.name.split('-')[1] !== 'article' ? `/blog/${this.$route.name.split('-')[1]}`
+							: `/news`,
+					active: false
+				},
+				{
+					title: (this.article.long_title ? this.article.long_title : this.article.page_title) || '',
+					link: `/blog/${this.$route.name.split('-')[1]}`,
 					active: true
 				}
 			]
+			
 		}
-	},
-	...mapGetters({
-		domain: 'domain'
-	}),
-	mounted() {
-		setTimeout(function () {window.scrollTo(0, -100);}, 1);
-	},
-	validate(ctx) {
-		return ctx.store.getters.showBlog
 	},
 	head() {
 		let title = (this.article.long_title ? this.article.long_title : this.article.page_title) + ' — CARRO'
@@ -55,7 +63,7 @@ export default {
 			link: [
 				{
 					rel: 'canonical',
-					href: this.domain + this.$route.path
+					href: 'https://' + this.domain + this.$route.path
 				}
 			],
 			meta: [
@@ -72,7 +80,7 @@ export default {
 				{
 					hid: 'og:url',
 					property: 'og:url',
-					content: this.domain + this.$route.path,
+					content: 'https://' + this.domain + this.$route.path,
 				},
 				{
 					hid: 'og:title',
@@ -87,10 +95,18 @@ export default {
 				{
 					hid: 'og:image',
 					property: 'og:image',
-					content: this.article.image_preview ? this.article.image_preview.thumb : this.domain + '/carro.png'
+					content: this.article.image_preview ? this.article.image_preview.thumb : 'https://' + this.domain + '/carro.png'
 				},
 			]
 		}
+	},
+	mounted() {
+		setTimeout(function () {
+			window.scrollTo(0, -100);
+		}, 1);
+	},
+	validate(ctx) {
+		return ctx.store.getters.showBlog
 	}
 }
 </script>

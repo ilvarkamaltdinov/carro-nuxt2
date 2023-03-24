@@ -54,12 +54,10 @@
 			<catalog-sub-filters/>
 			<!--TODO offers для страницы дилеров-->
 			<catalog-offers v-if="offers" />
-
 			<div class="grid__col-4"
 			     v-if="!$device.isMobile">
 				<filter-desktop />
 			</div>
-
 			<div class="grid__col-8" ref="catalog">
 				<filter-sort />
 				<component
