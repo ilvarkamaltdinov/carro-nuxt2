@@ -48,7 +48,7 @@ export function routersArray(resolve) {
         },
     ]
 
-    let routes = [
+    let routers = [
         {
             name: 'main',
             path: '/',
@@ -211,8 +211,10 @@ export function routersArray(resolve) {
         },
     ]
 
+    let thanksRouts = []
+
     dealers.forEach((value, key) => {
-        routes.unshift(
+        thanksRouts.push(
             {
                 name: `thanks-${value}`,
                 path: `/thanks-${value}`,
@@ -236,7 +238,8 @@ export function routersArray(resolve) {
         )
     })
 
-    routes.push(...catalog)
+    routers.push(...thanksRouts)
+    routers.push(...catalog)
 
-    return routes
+    return routers
 }

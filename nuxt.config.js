@@ -1,4 +1,7 @@
 import {redirects} from './configModules'
+import {apiDomain} from './app/variables'
+import {routersArray} from './routers.js'
+
 const isDev = process.env.NODE_ENV !== 'production'
 
 export default {
@@ -89,7 +92,12 @@ export default {
     router: {
         prefetchLinks: false,
         linkActiveClass: 'active',
-        linkExactActiveClass: 'active'
+        linkExactActiveClass: 'active',
+        extendRoutes(routes, resolve) {
+            return routersArray(resolve)
+        }
+
+
         // extendRoutes(routes, resolve) {
         //
         //     console.log(resolve)
