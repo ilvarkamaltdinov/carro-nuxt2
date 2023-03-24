@@ -23,6 +23,7 @@ fragment OfferPage on Offer {
     run
     vin
     year
+    description
     rating {
         rating_total
         rating_body

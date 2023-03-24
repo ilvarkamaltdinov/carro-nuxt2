@@ -1,5 +1,3 @@
-export const apiDomain = 'api.xn--80atnha.xn--p1ai'
-export const apiSlug = 'carro'
 export const domains = [
 
     //     domain: 'домен сайта', если домен на кириллице, то домен в punycode
@@ -34,7 +32,7 @@ export const domains = [
         showComm: true,
         showEurope: true,
         showReviews: true,
-        showBlog: true
+        showBlog: false
     },
     //спб-карро.рф
     {
@@ -171,15 +169,15 @@ export const domains = [
     }
 ]
 export const devDomain = {
-    domain: 'tmn.carro.ru',
-    slug: 'tmn-carro',
+    domain: 'dev.carro.ru',
+    slug: 'dev-carro',
     api: 'api.xn--80atnha.xn--p1ai',
-    siteId: 119,
-    isIndex: true,
-    showComm: false,
-    showEurope: false,
-    showReviews: false,
-    showBlog: false
+    siteId: 21,
+    isIndex: false,
+    showComm: true,
+    showEurope: true,
+    showReviews: true,
+    showBlog: true
 }
 
 export function findDomain(host) {

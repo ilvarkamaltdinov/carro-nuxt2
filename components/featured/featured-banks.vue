@@ -164,7 +164,7 @@ export default {
 	},
 	async fetch() {
 		let response = await this.request({query: banks, variables: {}})
-		await this.setBanks(response.data.banks)
+    await this.setBanks(response.data.banks)
 	}
 }
 </script>
