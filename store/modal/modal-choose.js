@@ -53,39 +53,17 @@ export const getters = {
     }
 }
 export const actions = {
-    async getModels({commit, state, rootState}, payload) {
-        let variables = {
-            site_id: rootState.site_id,
-            mark_slug: state.currentMark.slug,
-            category: 'used'
-        }
-        let client = this.app.apolloProvider.defaultClient
-        let response = await client.query(
-            {
-                query: folders,
-                variables: Object.assign(variables)
-            })
-        commit('SET_MODELS', response.data.folders)
+    async getModels({commit, state}) {
+        commit('SET_MODELS', state.currentMark.folders)
     },
-    async getGenerations({commit, dispatch, state, rootState}, payload) {
-        let variables = {
-            site_id: rootState.site_id,
-            mark_slug: state.currentMark.slug,
-            folder_slug: payload.slug,
-            category: 'used'
-        }
-        let client = this.app.apolloProvider.defaultClient
-        let response = await client.query(
-            {
-                query: generations,
-                variables: Object.assign(variables)
-            })
-        if (response.data.generations.length === 1) {
-            dispatch('chooseGeneration', response.data.generations[0])
+    async getGenerations({commit, dispatch, state}) {
+
+        if (state.currentModel.generations.length === 1) {
+            dispatch('chooseGeneration', state.currentModel.generations[0])
         } else {
             await commit('SET_TAB_COMPONENT', 'generation');
         }
-        commit('SET_GENERATIONS', response.data.generations)
+        commit('SET_GENERATIONS', state.currentModel.generations)
     },
     async getOffers({commit, state, rootState}) {
         commit('SET_LOADING', true)

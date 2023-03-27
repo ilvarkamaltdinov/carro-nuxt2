@@ -1,26 +1,12 @@
 <template>
 	<header class="page-header">
 		<div class="page-header__container grid grid--header">
-			<header-top/>
+			<header-top />
 			<nav class="page-header__nav grid__col-12">
 				<header-back-button :back-button="backButton"
 				                    v-if="backButton.title && $device.isMobile" />
-				<div v-else
-				     class="page-header__nav-wrap makes">
-					<ul class="makes__list makes__list--header">
-						<li class="makes__item"
-						    v-for="item in popular"
-						    :key="item.slug">
-							<nuxt-link :title="item.title"
-							           :to="'/used/' + item.slug"
-							           @click.native="navMarkClick()"
-							           class="makes__link">
-								<div class="makes__title">{{ item.title }}</div>
-								<div class="makes__count">{{ item.offers_count }}</div>
-							</nuxt-link>
-						</li>
-					</ul>
-				</div>
+				<header-makes @click="navMarkClick"
+				              v-else />
 				<button class="page-header__makes-more"
 				        :class="{'page-header__makes-more--active':modalMarks}"
 				        @click.prevent="allMarksClick()">
@@ -47,7 +33,7 @@ import {mapGetters, mapMutations, mapActions} from 'vuex'
 import bodyClasses from "@/mixins/bodyClasses";
 
 export default {
-	components:{
+	components: {
 		HeaderTop: () => import(/* webpackChunkName: "header-top" */ '~/components/Header/Top'),
 	},
 	mixins: [bodyClasses],

@@ -50,15 +50,16 @@
 					<h1 class="heading heading--h1">{{ pageTitle }}</h1>
 				</div>
 			</div>
-      <catalog-marks v-if="showMarkTabs" />
-			<catalog-sub-filters/>
+			<catalog-marks v-if="showMarkTabs" />
+			<catalog-sub-filters />
 			<!--TODO offers для страницы дилеров-->
 			<catalog-offers v-if="offers" />
 			<div class="grid__col-4"
 			     v-if="!$device.isMobile">
 				<filter-desktop />
 			</div>
-			<div class="grid__col-8" ref="catalog">
+			<div class="grid__col-8"
+			     ref="catalog">
 				<filter-sort />
 				<component
 						:is="$device.isMobileOrTablet
@@ -71,12 +72,16 @@
 	</div>
 </template>
 <script>
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters, mapMutations} from "vuex";
 import capitalizeFirstLetter from "~/mixins/capitalizeFirstLetter";
-import benefits from '../benefits/benefits.vue';
+import markFolderGeneration from "@/apollo/queries/markFolderGeneration";
 
 export default {
-	components: {benefits},
+	watch: {
+		'$route'() {
+			this.getCategoryMarks()
+		},
+	},
 	mixins: [capitalizeFirstLetter],
 	props: {
 		pageTitle: String,
@@ -86,10 +91,72 @@ export default {
 		},
 	},
 	computed: {
+		...mapGetters({
+			commMarks: 'marks/marks/commMarks',
+			europeMarks: 'marks/marks/europeMarks'
+		}),
 		showMarkTabs() {
-			return (this.$route.params.category === "used" || this.$route.params.category === "commercial" || this.$route.params.category === "europe" )
+			return (this.$route.params.category === "used" || this.$route.params.category === "commercial" || this.$route.params.category === "europe")
 					&& !this.$route.params.mark;
 		}
+	},
+	methods: {
+		...mapActions({
+			request: 'request'
+		}),
+		...mapMutations({
+			setCommMarks: 'marks/marks/SET_COMM_MARKS',
+			setEuropeMarks: 'marks/marks/SET_EUROPE_MARKS'
+		}),
+		async getCategoryMarks() {
+			switch (this.$route.params.category) {
+				case 'commercial':
+					if (!this.commMarks.length) {
+						await this.getComm()
+					}
+					break
+				case 'europe':
+					if (!this.europeMarks.length) {
+						await this.getEurope()
+					}
+					break
+			}
+		},
+		async getComm() {
+			try {
+				let response = await this.request({
+					query: markFolderGeneration,
+					variables: {
+						category: 'commercial'
+					}
+				})
+				const commMarks = response.data.markFolderGeneration
+				await this.setCommMarks(commMarks)
+				return commMarks
+				
+			} catch (error) {
+				console.log(error)
+			}
+		},
+		async getEurope() {
+			try {
+				let response = await this.request({
+					query: markFolderGeneration,
+					variables: {
+						category: 'europe'
+					}
+				})
+				const europeMarks = response.data.markFolderGeneration
+				await this.setEuropeMarks(europeMarks)
+				return europeMarks
+				
+			} catch (error) {
+				console.log(error)
+			}
+		},
+	},
+	async fetch() {
+		await this.getCategoryMarks()
 	}
 };
 </script>

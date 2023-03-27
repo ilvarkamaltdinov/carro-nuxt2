@@ -1,4 +1,5 @@
 import {findDomain} from '~/app/variables'
+import markFolderGeneration from '~/apollo/queries/markFolderGeneration'
 
 export const strict = false
 import marks from '~/apollo/queries/marks'
@@ -65,10 +66,10 @@ export const actions = {
         // TODO ПОЛУЧАЮ СПИСОК МАРОК
         let response = await client.query(
             {
-                query: marks,
+                query: markFolderGeneration,
                 variables: {site_id: state.site_id, category: 'used'}
             })
-        commit('marks/marks/SET_ALL_MARKS', response.data.marks)
+        commit('marks/marks/SET_ALL_MARKS', response.data.markFolderGeneration)
 
         //TODO НАСТРОЙКИ САЙТА
         let currentSettings = {}

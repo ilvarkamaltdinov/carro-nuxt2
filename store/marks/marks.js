@@ -1,5 +1,7 @@
 export const state = () => ({
     allMarks: [],
+    commMarks: [],
+    europeMarks: [],
     popularMarks: [
         'audi', 'bmw', 'mercedes-benz', 'ford', 'hyundai', 'kia', 'toyota', 'volkswagen', 'nissan', 'skoda'
     ],
@@ -10,6 +12,12 @@ export const state = () => ({
 export const getters = {
     allMarks: (state) => {
         return state.allMarks
+    },
+    commMarks: (state) => {
+        return state.commMarks
+    },
+    europeMarks: (state) => {
+        return state.europeMarks
     },
     sortedByAlphabet() {
         return state.allMarksCount
@@ -29,9 +37,7 @@ export const getters = {
 export const mutations = {
     SET_ALL_MARKS(state, data) {
         //Подсчет общего кол-ва автомобилей
-        const popular = state.popularMarks.map((name) => data.find((mark) => mark.slug === name));
-
-        state.popularMarks = popular
+        state.popularMarks = state.popularMarks.map((name) => data.find((mark) => mark.slug === name))
         data.forEach(val => {
             state.allMarksCount += val.offers_count
             //разбивка по алфавиту
@@ -43,5 +49,11 @@ export const mutations = {
 
         state.allMarks = data
 
+    },
+    SET_COMM_MARKS(state, data) {
+        state.commMarks = data
+    },
+    SET_EUROPE_MARKS(state, data) {
+        state.europeMarks = data
     },
 }

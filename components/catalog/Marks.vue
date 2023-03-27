@@ -27,36 +27,36 @@
 	</div>
 </template>
 <script>
-import {mapActions, mapGetters} from "vuex";
-import marks from '~/apollo/queries/marks'
+import {mapGetters} from "vuex";
 import sortBy from "lodash/sortBy";
+import markFolderGeneration from "@/apollo/queries/markFolderGeneration";
 
 export default {
+	watch: {
+		commMarks() {
+			this.marks = this.commMarks
+		},
+		europeMarks() {
+			this.marks = this.europeMarks
+		}
+	},
 	data() {
 		return {
 			allMarks: false,
-			marksArray: [],
-		}
-	},
-	async created() {
-		if (this.$route.params.category === 'used') {
-			this.marksArray = this.marks
-		} else if (this.$route.params.category === 'commercial') {
-			this.marksArray = await this.getComm()
-		}
-		else if (this.$route.params.category === 'europe') {
-			this.marksArray = await this.getEurope()
+			marks: [],
 		}
 	},
 	computed: {
 		...mapGetters({
-			marks: 'marks/marks/allMarks'
+			usedMarks: 'marks/marks/allMarks',
+			commMarks: 'marks/marks/commMarks',
+			europeMarks: 'marks/marks/europeMarks',
 		}),
 		showAllButton() {
-			if (this.$device.isMobile && this.marksArray) {
-				return this.marksArray.length > 10
-			} else if (this.marksArray) {
-				return this.marksArray.length > 21
+			if (this.$device.isMobile && this.marks) {
+				return this.marks.length > 10
+			} else if (this.marks) {
+				return this.marks.length > 21
 			}
 		},
 		sortedMarks() {
@@ -65,7 +65,7 @@ export default {
 			}])
 		},
 		marksList() {
-			let marks = [...this.marksArray]
+			let marks = [...this.marks]
 			let marksShowNumber = 21
 			if (this.$device.isMobile) {
 				marksShowNumber = 10
@@ -90,35 +90,17 @@ export default {
 		}
 	},
 	methods: {
-		...mapActions({
-			request: 'request'
-		}),
-		async getComm() {
-			try {
-				let response = await this.request({
-					query: marks,
-					variables: {
-						category: 'commercial'
-					}
-				})
-				return response.data.marks
-				
-			} catch (error) {
-				console.log(error)
-			}
-		},
-		async getEurope() {
-			try {
-				let response = await this.request({
-					query: marks,
-					variables: {
-						category: 'europe'
-					}
-				})
-				return response.data.marks
-				
-			} catch (error) {
-				console.log(error)
+		setMarks() {
+			switch (this.$route.params.category) {
+				case 'commercial':
+					this.marks = this.commMarks
+					break
+				case 'europe':
+					this.marks = this.europeMarks
+					break
+				default:
+					this.marks = this.usedMarks
+					break
 			}
 		},
 		clickAllMarks() {
@@ -128,5 +110,8 @@ export default {
 			this.allMarks = !this.allMarks
 		},
 	},
+	async fetch() {
+		await this.setMarks()
+	}
 }
 </script>

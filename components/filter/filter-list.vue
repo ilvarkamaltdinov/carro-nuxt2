@@ -2,7 +2,7 @@
 	<div>
 		<ul class="filter__menu-list">
 			<li class="filter__menu-item"
-			    :class="{'filter__menu-item&#45;&#45;loading':false}"
+			    :class="{'filter__menu-item--loading':false}"
 			    @click="openFilterModal('mark')">
 				<div class="filter__menu-text">
 					{{ mark_select_title }}

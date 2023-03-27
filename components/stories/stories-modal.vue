@@ -61,9 +61,6 @@ export default {
 		}),
 		buttonClick() {
 			this.closeStories()
-		},
-		test() {
-			console.log('esc')
 		}
 	},
 	mounted() {

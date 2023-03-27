@@ -1,12 +1,10 @@
 <template>
 	<div class="grid__col-12"
-	     v-if="showFoldersTabs || showGenerationsTabs">
-		<catalog-folders v-if="showFoldersTabs"
-		                 :folders="folders"
+	     v-if="isFolders || isGenerations">
+		<catalog-folders v-if="isFolders"
 		                 :is-all="showAll" />
 		
-		<catalog-generations v-if="showGenerationsTabs"
-		                     :generations="filters.generation"
+		<catalog-generations v-if="isGenerations"
 		                     :is-all="showAll" />
 		
 		<div class="catalog__more-buttons"
@@ -52,7 +50,7 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			folders: "folders/folders/folders",
+			marks: 'marks/marks/allMarks',
 			filters: 'filters/filters/filters',
 			chosen: 'filters/filters/chosen'
 		}),
@@ -60,8 +58,14 @@ export default {
 			return this.$route.name === 'category-mark'
 		},
 		isGenerations() {
-			return this.chosen.folder?.length === 1
+			// return this.chosen.folder?.length === 1
+			return this.$route.name === 'category-mark-model' || this.$route.name === 'category-mark-model-car'
 		},
+		folders() {
+			let currentMark = this.marks.find(item => item.slug === this.$route.params.mark)
+			return currentMark?.folders || []
+		},
+		
 		currentAllText() {
 			if (this.showAll) {
 				if (this.isFolders) {
@@ -80,8 +84,7 @@ export default {
 		showAllButton() {
 			if (this.isFolders) {
 				return this.folders?.length > 8
-			}
-			else if (this.isGenerations) {
+			} else if (this.isGenerations) {
 				return this.filters.generation?.length > 4
 			}
 		},
@@ -94,11 +97,11 @@ export default {
 			}
 		},
 		showFoldersTabs() {
-			return this.folders.length && this.$route.name === 'category-mark'
+			return this.$route.name === 'category-mark'
 		},
-		showGenerationsTabs() {
-			return this.filters.generation && !this.showFoldersTabs && this.$route.name !== 'category'
-		}
+		// showGenerationsTabs() {
+		// 	return this.filters.generation && !this.showFoldersTabs && this.$route.name !== 'category'
+		// }
 	},
 	methods: {
 		...mapMutations({

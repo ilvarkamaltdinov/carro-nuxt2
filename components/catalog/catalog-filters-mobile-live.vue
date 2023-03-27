@@ -1,46 +1,66 @@
 <template>
-	<vue-slide-toggle :open="showFilters" :duration="0">
-		<div class="catalog__filters-mobile">
-			<label class="form__field-wrap form__field-wrap--select">
-				<inputs-select :value="chosenMark"
-				               title="Марка"
-				               :options="filters.mark"
-				               @input="select( $event, 'mark')" />
-			</label>
-			<label class="form__field-wrap form__field-wrap--select">
-				<inputs-select :value="chosenFolder"
-				               title="Модель"
-				               :options="filters.folder"
-				               @input="select( $event, 'folder')" />
-			</label>
-			<label class="form__field-wrap form__field-wrap--select">
-				<inputs-select :value="chosenGeneration"
-				               title="Поколение"
-				               :options="filters.generation"
-				               @input="select( $event, 'generation')" />
-			</label>
-		</div>
-	</vue-slide-toggle>
+	<div v-if="showFilters"
+	     class="catalog__filters-mobile">
+		<label class="form__field-wrap form__field-wrap--select">
+			<inputs-select :value="chosenMark"
+			               title="Марка"
+			               :options="currentMarks"
+			               @input="handlerSelect( $event, 'mark')" />
+		</label>
+		<label class="form__field-wrap form__field-wrap--select">
+			<inputs-select :value="chosenFolder"
+			               title="Модель"
+			               :options="currentFolders"
+			               @input="handlerSelect( $event, 'folder')" />
+		</label>
+		<label class="form__field-wrap form__field-wrap--select">
+			<inputs-select :value="chosenGeneration"
+			               title="Поколение"
+			               :options="currentGenerations"
+			               @input="handlerSelect( $event, 'generation')" />
+		</label>
+	</div>
 </template>
 
 <script>
 import {mapActions, mapGetters, mapMutations} from "vuex";
-import onlyFilters from '@/apollo/queries/offer/onlyFilters'
 
 export default {
 	computed: {
 		...mapGetters({
 			showFilters: 'filters/filters/showFilters',
-			filters: 'filters/filters/filters'
+			
+			usedMarks: 'marks/marks/allMarks',
+			commMarks: 'marks/marks/commMarks',
+			europeMarks: 'marks/marks/europeMarks'
 		}),
+		
+		currentMarks() {
+			switch (this.$route.params.category) {
+				case 'commercial':
+					return this.commMarks
+				case 'europe':
+					return this.europeMarks
+				default:
+					return this.usedMarks
+			}
+		},
 		chosenMark() {
-			return this.filters?.chosen?.mark?.[0]?.slug || ''
+			return this.currentMarks.find(item => item.slug === this.$route.params.mark) || null
+		},
+		
+		currentFolders() {
+			return this.chosenMark?.folders || null
 		},
 		chosenFolder() {
-			return this.filters?.chosen?.folder?.[0]?.slug || ''
+			return this.chosenMark?.folders.find(item => item.slug === this.$route.params.model) || null
+		},
+		
+		currentGenerations() {
+			return this.chosenFolder?.generations || null
 		},
 		chosenGeneration() {
-			return this.filters?.chosen?.generation?.[0]?.slug || ''
+			return this.currentGenerations?.find(item => item.slug === this.$route.params.car) || null
 		},
 	},
 	methods: {
@@ -50,22 +70,25 @@ export default {
 		...mapMutations({
 			setMobileFilterClick: 'click/SET_MOBILE_FILTER_CLICK'
 		}),
-		async select(slug, type) {
-			this.setMobileFilterClick(true)
-			let route = `/${this.$route.params.category}/`
+		async handlerSelect(title, type) {
+			await this.setMobileFilterClick(true)
+			let route = `/${this.$route.params.category || 'used'}/`
 			switch (type) {
 				case 'mark':
-					route += `${slug}`
+					let mark = this.currentMarks.find(item => item.title === title)
+					route += `${mark.slug}`
 					break
 				case 'folder':
-					route += `${this.$route.params.mark}/${slug}`
+					let folder = this.currentFolders.find(item => item.title === title)
+					route += `${this.$route.params.mark}/${folder.slug}`
 					break
 				case 'generation':
-					route += `${this.$route.params.mark}/${this.$route.params.model}/${slug}`
+					let generation = this.currentGenerations.find(item => item.name === title)
+					route += `${this.$route.params.mark}/${this.$route.params.model}/${generation.slug}`
 					break
 			}
 			await this.$router.push(route)
-		},
+		}
 	}
 }
 </script>

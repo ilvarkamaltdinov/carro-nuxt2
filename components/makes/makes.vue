@@ -69,7 +69,6 @@ export default {
 		clickMarks() {
 			this.setModalMarks(false)
 			this.setModalSearch(false)
-			
 		},
 		markClick(item) {
 			this.setModalMarks(false)

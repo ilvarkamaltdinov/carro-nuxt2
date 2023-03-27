@@ -5,6 +5,7 @@ export const domains = [
     //     api: 'используется в компоненте dealer для изменения стандартной апи на нужную'
     //     siteId: 'site id',
     //     isIndex: 'Индексирование / robots / sitemap',
+    // параметры для показа определенных блоков
     //     showComm: 'Показывать коммерческий',
     //     showEurope: 'Показывать тачки из европы',
     //     showReviews: 'Показывать отзывы, если есть у нужных салонов',
@@ -13,11 +14,9 @@ export const domains = [
     {
         domain: 'carro.ru',
         slug: 'carro',
-        //api -
         api: 'api.carro.ru',
         siteId: 21,
         isIndex: true,
-        // параметры для показа определенных блоков
         showComm: true,
         showEurope: true,
         showReviews: true,
@@ -169,15 +168,15 @@ export const domains = [
     }
 ]
 export const devDomain = {
-    domain: 'tmn.carro.ru',
-    slug: 'tmn-carro',
-    api: 'api.xn--80atnha.xn--p1ai',
-    siteId: 119,
+    domain: 'carro.ru',
+    slug: 'carro',
+    api: 'api.carro.ru',
+    siteId: 21,
     isIndex: true,
-    showComm: false,
-    showEurope: false,
-    showReviews: false,
-    showBlog: false
+    showComm: true,
+    showEurope: true,
+    showReviews: true,
+    showBlog: true
 }
 
 export function findDomain(host) {

@@ -4,13 +4,13 @@
 	        @change="changeSelect()"
 	        v-model="currentValue"
 	        :value="currentValue">
-		<option value="">
+		<option :value="title">
 			{{ title }}
 		</option>
-		<option :value="option?.slug || option"
-		        :key="option?.name || option?.title || option"
+		<option :value="option?.name || option?.title || option"
+		        :key="option?.name || option?.title || option?.slug || option"
 		        v-for="option in options">
-			{{ option.name || option.title || option }}
+			{{ option.name || option.title || option.slug || option }}
 		</option>
 	</select>
 	<div v-else
@@ -18,7 +18,7 @@
 	     tabindex="1"
 	     class="form__field form__field--select select"
 	     @click="isOpen = !isOpen">
-		<span>{{ value.title || value || title}}</span>
+		<span>{{ value.name || value.title || value || title }}</span>
 		<ul class="select__list"
 		    v-if="isOpen">
 			<li class="select__item"
@@ -46,10 +46,10 @@ export default {
 	computed: {
 		currentValue: {
 			get() {
-				return this.value?.title || this.value
+				return this.value?.name || this.value?.title || this.value || this.title
 			},
 			set() {
-				return this.value?.title || this.value
+				return this.value?.name || this.value?.title || this.value
 			}
 		}
 	},

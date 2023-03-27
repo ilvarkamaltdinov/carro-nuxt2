@@ -18,7 +18,6 @@
 <script>
 
 import seoTags from "@/mixins/seoTags";
-import {mapGetters, mapMutations} from "vuex";
 import jsonld from "@/mixins/jsonld";
 import categoryValidate from "@/mixins/categoryValidate";
 import domParser from "@/mixins/domParser";
@@ -28,11 +27,6 @@ export default {
 	mounted() {
 		setTimeout(function () {window.scrollTo(0, -100);}, 1);
 		localStorage.removeItem('foldersTabsLeft');
-	},
-	methods: {
-		...mapMutations({
-			setFolders: 'folders/folders/SET_FOLDERS'
-		})
-	},
+	}
 }
 </script>

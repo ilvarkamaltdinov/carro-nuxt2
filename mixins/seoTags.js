@@ -12,18 +12,6 @@ export default {
             query: seoTags,
             variables: {site_id: store.getters.site_id, url: route.path === '/' ? '/home' : route.path}
         })
-        if (route.params.mark) {
-            let response = await client.query(
-                {
-                    query: folders,
-                    variables: {
-                        site_id: store.getters.site_id,
-                        mark_slug: route.params.mark,
-                        category: route.params.category
-                    }
-                })
-            store.commit('folders/folders/SET_FOLDERS', response.data.folders)
-        }
         if (route.params.bank) {
             try {
                 let response = await client.query(
@@ -39,18 +27,6 @@ export default {
                 error({statusCode: 404, message: '404'})
             }
         }
-        // if (route.params.model) {
-        //     let response = await client.query(
-        //         {
-        //             query: generations,
-        //             variables: {
-        //                 site_id: store.getters.site_id,
-        //                 mark_slug: route.params.mark,
-        //                 folder_slug: route.params.model
-        //             }
-        //         })
-        //     store.commit('generations/generations/SET_GENERATIONS', response.data.generations)
-        // }
 
         return {
             description: seo.data.seoTag.description,
