@@ -14,7 +14,7 @@
 			           :key="offer.id"
 			           v-for="offer in moreOffersData.data" />
 			<div class="grid__col-8"
-			     v-show="moreOffersData.data.length === 0">
+			     v-if="moreOffersData.data.length === 0">
 				<div class="catalog__no-cars">
 					<h2 class="heading heading--h2">Автомобили не найдены</h2>
 					<div class="catalog__no-cars-text">
