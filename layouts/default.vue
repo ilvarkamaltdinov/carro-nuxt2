@@ -13,7 +13,7 @@
 		<transition :name="hasRouteTransition ? 'page' : ''">
 			<Nuxt />
 		</transition>
-		<LazyHydrate never>
+		<LazyHydrate when-visible>
 			<Footer />
 		</LazyHydrate>
 	</div>

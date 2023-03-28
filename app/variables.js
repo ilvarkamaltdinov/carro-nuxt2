@@ -168,15 +168,15 @@ export const domains = [
     }
 ]
 export const devDomain = {
-    domain: 'carro.ru',
-    slug: 'carro',
-    api: 'api.carro.ru',
-    siteId: 21,
+    domain: 'kaluga.carro.ru',
+    slug: 'kaluga-carro',
+    api: 'api.xn--80atnha.xn--p1ai',
+    siteId: 31,
     isIndex: true,
-    showComm: true,
-    showEurope: true,
-    showReviews: true,
-    showBlog: true
+    showComm: false,
+    showEurope: false,
+    showReviews: false,
+    showBlog: false
 }
 
 export function findDomain(host) {

@@ -1,5 +1,5 @@
 <template>
-
+	
 	<section class="page-main__about about grid">
 		<div class="heading-group heading-group--h1">
 			<div class="heading-group__wrap">
@@ -20,10 +20,10 @@
 							:big-webp="`${require(`~/assets/img/figures/figure-5@2x.webp`)}`" />
 				</div>
 				<div class="text__content">
-					<div class="text__contacts-group">
+					<div class="text__contacts-group" v-if="settings.phone">
 						<div class="text__contacts-label">Вопросы о портале:</div>
 						<a class="text__contacts-item"
-						   :href="`tel:${settings.phone}`">{{settings.phone}}
+						   :href="`tel:${settings.phone}`">{{ settings.phone }}
 						</a>
 					</div>
 					<div class="text__contacts-group">
@@ -31,6 +31,13 @@
 						<a class="text__contacts-item"
 						   :href="`mailto:${settings.email}`">{{ settings.email }}
 						</a>
+					</div>
+					<div class="text__contacts-group"
+					     v-if="!isMoscow && settings.filial_address">
+						<div class="text__contacts-label">Филиал в городе {{settings.city}}:</div>
+						<span class="text__contacts-item">
+							{{ settings.filial_address }}
+						</span>
 					</div>
 				</div>
 			</div>
@@ -62,7 +69,8 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			settings: 'settings/settings/settings'
+			settings: 'settings/settings/settings',
+			isMoscow: 'isMoscow',
 		})
 	}
 }

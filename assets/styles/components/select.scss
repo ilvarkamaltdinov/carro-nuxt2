@@ -19,8 +19,13 @@
   overflow: auto;
   z-index: 50;
 }
+.select__list--regions{
+  left: 50% !important;
+  transform: translateX(-50%);
+}
 
 .select__item {
+  display: block;
   padding: 16px;
   color: $colorText;
   text-align: left;

@@ -10,6 +10,8 @@
 					:big-webp="`${require(`~/assets/img/logo-footer@2x.webp`)}`" />
 		</div>
 		<div class="page-footer__wrap grid grid--footer">
+			
+			
 			<div class="page-footer__contacts grid__col-12">
 				<div class="page-footer__social">
 					<social />
@@ -23,18 +25,14 @@
 						   :href="`mailto:${settings.email}`">{{ settings.email }}
 						</a>
 					</div>
-					<div class="page-footer__city-wrap">
-						<button class="page-footer__city">
-							<svg-icon class="page-footer__city-icon"
-							          name="icon-map" />
-							<span>{{ settings.city }}</span>
-						</button>
-					</div>
+					<footer-regions/>
 					<div class="page-footer__credits">
 						<div class="page-footer__contacts-item">© 2016 - {{ new Date().getFullYear() }} CARRO.RU</div>
 					</div>
 				</div>
 			</div>
+			
+			
 			<div class="page-footer__links grid__col-12">
 				<ul class="page-footer__links-list">
 					<li class="page-footer__links-item">
