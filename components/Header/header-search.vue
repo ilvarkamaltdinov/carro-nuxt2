@@ -11,10 +11,10 @@
 			       v-model="search"
 			       placeholder="Поиск" />
 			<svg-icon v-if="search === ''"
-			          class="form__icon-search icon"
+			          class="form__icon-search"
 			          name="icon-search" />
 			<svg-icon v-else
-			          class="form__icon-search icon"
+			          class="form__icon-search"
 			          @click="clearSearch"
 			          name="icon-close-s" />
 		</label>

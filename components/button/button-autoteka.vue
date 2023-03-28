@@ -5,7 +5,7 @@
             alt="Эмблема Автотеки — carro.ru"
             height="16"
             width="16"
-            class="button__icon icon">
+            class="button__icon">
 			<span class="button__text">Проверить
         <span class="button__text-autoteka">по Автотеке</span>
       </span>

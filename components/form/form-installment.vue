@@ -31,7 +31,7 @@
 
 					</button>
 					<svg-icon name="icon-form"
-					          class="icon form__car-icon" />
+					          class="form__car-icon" />
 				</label>
 				<div class="catalog form__catalog" v-if="$device.isMobile && currentCar">
 					<catalog-item-large-mobile-form :is-form="true"

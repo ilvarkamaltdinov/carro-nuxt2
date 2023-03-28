@@ -17,7 +17,7 @@
 
 				</button>
 				<svg-icon name="icon-form"
-				          class="icon form__car-icon" />
+				          class="form__car-icon" />
 			</label>
 		</fieldset>
 		<div class="catalog form__catalog" v-if="$device.isMobile && (offer || currentCar)">

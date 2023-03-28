@@ -11,7 +11,7 @@
 				        :class="{'page-header__makes-more--active':modalMarks}"
 				        @click.prevent="allMarksClick()">
 					Все марки
-					<svg-icon class="page-header__makes-more-arrow icon"
+					<svg-icon class="page-header__makes-more-arrow"
 					          name="icon-arrow" />
 				</button>
 			</nav>
@@ -108,7 +108,7 @@ export default {
 			}
 			await this.openModal(payload)
 		},
-		
+
 		navMarkClick() {
 			this.setModalMenu(false)
 			this.setModalMarks(false)

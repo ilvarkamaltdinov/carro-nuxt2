@@ -8,7 +8,7 @@
 				<span v-if="likesArray.length"
 				      class="page-header__favorites-count">{{ likesArray.length }}
 				</span>
-				<svg-icon class="icon"
+				<svg-icon
 				          name="icon-favorites" />
 			</nuxt-link>
 		</li>
@@ -16,7 +16,7 @@
 		    v-if="$device.isMobile">
 			<div @click="searchClick"
 			     class="page-header__buttons-link">
-				<svg-icon class="icon"
+				<svg-icon
 				          name="icon-search" />
 			</div>
 		</li>
@@ -26,7 +26,7 @@
 			   :href="`tel:${currentPhone.replace(/[^+\d]/g, '')}`"
 			   title="Бесплатный звонок"
 			   aria-label="Бесплатный звонок">
-				<svg-icon class="icon"
+				<svg-icon
 				          name="icon-call" />
 				<span class="page-header__buttons-phone">{{ currentPhone }}</span>
 			</a>

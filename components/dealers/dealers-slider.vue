@@ -18,11 +18,11 @@
 			</div>
 		</div>
 		<button class="swiper-button swiper-button-prev">
-			<svg-icon class="icon swiper-button__icon"
+			<svg-icon class="swiper-button__icon"
 			          name="icon-arrow" />
 		</button>
 		<button class="swiper-button swiper-button-next">
-			<svg-icon class="icon swiper-button__icon"
+			<svg-icon class="swiper-button__icon"
 			          name="icon-arrow" />
 		</button>
 	</div>

@@ -9,7 +9,7 @@
 							     alt="Эмблема Автотеки — carro.ru"
 							     height="16"
 							     width="16"
-							     class="benefits__icon icon" />
+							     class="benefits__icon" />
 							<div class="benefits__text">
 								Все автомобили
 								<div class="benefits__text-strong">
@@ -21,7 +21,7 @@
 					<li class="benefits__item">
 						<nuxt-link to="/credit"
 						           class="benefits__link">
-							<svg-icon class="benefits__icon icon"
+							<svg-icon class="benefits__icon"
 							          name="icon-credit-card" />
 							<div class="benefits__text">
 								Скидка до 300 000 ₽
@@ -33,7 +33,7 @@
 					</li>
 					<li class="benefits__item">
 						<div class="benefits__link">
-							<svg-icon class="benefits__icon icon"
+							<svg-icon class="benefits__icon"
 							          name="icon-insurance" />
 							<div class="benefits__text">
 								ОСАГО в подарок
@@ -133,7 +133,7 @@ export default {
 				const commMarks = response.data.markFolderGeneration
 				await this.setCommMarks(commMarks)
 				return commMarks
-				
+
 			} catch (error) {
 				console.log(error)
 			}
@@ -149,7 +149,7 @@ export default {
 				const europeMarks = response.data.markFolderGeneration
 				await this.setEuropeMarks(europeMarks)
 				return europeMarks
-				
+
 			} catch (error) {
 				console.log(error)
 			}

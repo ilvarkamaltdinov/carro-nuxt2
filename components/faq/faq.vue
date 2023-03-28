@@ -41,10 +41,10 @@
 								                :duration="500">
 									<dd class="faq__answer">{{ question.answer }}</dd>
 								</VueSlideToggle>
-								<svg-icon class="icon faq__close"
+								<svg-icon class="faq__close"
 								          name="icon-close-s" />
 							</div>
-						
+
 						</div>
 					</div>
 				</section>

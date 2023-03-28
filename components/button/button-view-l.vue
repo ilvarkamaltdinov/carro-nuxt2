@@ -4,7 +4,7 @@
 	        :class="{'filter__button--active':currentView === 'l'}"
 	        class="button button--action button--view-l filter__button"
 	        type="button">
-		<svg-icon class="button__icon icon"
+		<svg-icon class="button__icon"
 		          name="icon-view-s" />
 	</button>
 </template>

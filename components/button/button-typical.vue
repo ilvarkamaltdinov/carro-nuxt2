@@ -12,7 +12,6 @@
 	        @click="$emit('click')">
 		{{ text }}
 		<svg-icon v-if="icon !== ''"
-		          class="icon"
 		          :name="icon" />
 	</button>
 </template>
