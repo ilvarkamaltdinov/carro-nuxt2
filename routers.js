@@ -95,6 +95,11 @@ export function routersArray(resolve) {
             component: resolve(__dirname, '_pages/contact/index.vue')
         },
         {
+            name: 'contact-dealer',
+            path: '/contact/:dealer',
+            component: resolve(__dirname, '_pages/contact/_dealer/index.vue')
+        },
+        {
             name: 'banks-partners',
             path: '/banks-partners',
             component: resolve(__dirname, '_pages/banks-partners.vue')
