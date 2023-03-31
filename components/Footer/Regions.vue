@@ -12,8 +12,7 @@
 		<transition name="select">
 			<div class="select__list select__list--regions"
 			     v-show="open">
-				<a @click.native
-				   class="select__item select__item-link"
+				<a class="select__item select__item-link"
 				   v-for="(item, index) in regions"
 				   :key="index"
 				   :title="item.name"
