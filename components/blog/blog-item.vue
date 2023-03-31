@@ -35,7 +35,12 @@
 							                   :big-webp="article.image.src" />
 						</div>
 					</div>
-					<blog-slider v-if="article.image_slide && article.image_slide.length" :images="article.image_slide"/>
+					<blog-video v-if="article.video_youtube"
+					            :id="article.video_youtube" />
+					
+					<blog-slider v-if="article.image_slide && article.image_slide.length"
+					             :images="article.image_slide" />
+				
 				</div>
 			</div>
 		</div>

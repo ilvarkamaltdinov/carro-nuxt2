@@ -8,6 +8,7 @@ query article($site_id: Int! $url: String) {
         description
         url
         views
+        video_youtube
         body
         createdAt(format:"d.m.Y")
         image_preview{
