@@ -17,12 +17,14 @@ export default {
             let p_array = doc.documentElement.querySelectorAll('p')
             let h2_array = doc.documentElement.querySelectorAll('h2')
             let ul_array = doc.documentElement.querySelectorAll('ul')
+            let ol_array = doc.documentElement.querySelectorAll('ol')
             let li_array = doc.documentElement.querySelectorAll('li')
 
             this.addClass(p_array, 'text__p')
             this.addClass(h2_array, 'heading--h2')
             this.addClass(h2_array, 'heading')
             this.addClass(ul_array, 'text__list')
+            this.addClass(ol_array, 'text__list')
             this.addClass(li_array, 'text__list-item')
 
             return doc.documentElement.outerHTML
