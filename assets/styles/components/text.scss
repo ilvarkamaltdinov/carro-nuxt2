@@ -10,6 +10,9 @@
 .text__p {
   margin-bottom: 16px;
 }
+.text__p--car-description{
+  white-space: break-spaces;
+}
 
 .text__link {
   color: $colorLink;

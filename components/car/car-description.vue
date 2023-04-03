@@ -8,7 +8,7 @@
         <span class="heading-group__label" v-html="pageTitle"></span>
       </div>
     </div>
-    <p class="text__p"
+    <p class="text__p text__p--car-description"
        v-html="offer.description"></p>
   </div>
 </template>
