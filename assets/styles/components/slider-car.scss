@@ -2,8 +2,8 @@
   &:after{
     content: '';
     position: absolute;
-    left: 16%;
-    bottom: 24%;
+    left: 16px;
+    bottom: 80px;
     z-index: 2;
     width: 100px;
     height: 32px;
@@ -23,8 +23,8 @@
   &:before{
     content: '';
     position: absolute;
-    left: 16%;
-    bottom: 24%;
+    left: 16px;
+    bottom: 80px;
     z-index: 2;
     width: 100px;
     height: 32px;
