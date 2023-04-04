@@ -1,6 +1,7 @@
 <template>
 	<div class="slider-car__item swiper-slide">
 		<div class="slider-car__link"
+         @click.right.prevent
 		     data-fancybox="gallery"
 		     :data-src="img.original"
 		     tabindex="0">
@@ -16,7 +17,7 @@
 import { Fancybox } from "@fancyapps/ui";
 export default {
 	components: {Fancybox},
-	
+
 	props: {
 		img: Object
 	}
