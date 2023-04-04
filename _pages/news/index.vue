@@ -51,7 +51,7 @@ export default {
 			link: [
 				{
 					rel: 'canonical',
-					href: this.domain + this.$route.path
+					href: 'https://' + this.domain + this.$route.path
 				}
 			],
 			meta: [
@@ -68,7 +68,7 @@ export default {
 				{
 					hid: 'og:url',
 					property: 'og:url',
-					content: this.domain + this.$route.path,
+					content: 'https://' + this.domain + this.$route.path,
 				},
 				{
 					hid: 'og:title',
@@ -83,7 +83,7 @@ export default {
 				{
 					hid: 'og:image',
 					property: 'og:image',
-					content: this.domain + '/carro.png'
+					content: 'https://' + this.domain + '/carro.png'
 				},
 			]
 		}

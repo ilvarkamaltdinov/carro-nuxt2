@@ -11,7 +11,7 @@ export default {
   },
   watch: {
     '$route'() {
-      ym(this.settings.ym, 'hit', `${this.domain}${this.$route.fullPath}`);
+      ym(this.settings.ym, 'hit', `https://${this.domain}${this.$route.fullPath}`);
     },
   },
   head() {
@@ -85,7 +85,7 @@ export default {
         webvisor: true,
         ecommerce: "dataLayer"
       });
-      ym(this.settings.ym, 'hit', `${this.domain}${this.$route.fullPath}`);
+      ym(this.settings.ym, 'hit', `https://${this.domain}${this.$route.fullPath}`);
     }
   }
 }
