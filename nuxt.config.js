@@ -1,5 +1,4 @@
 import {redirects} from './configModules'
-import {apiDomain} from './app/variables'
 import {routersArray} from './routers.js'
 
 const isDev = process.env.NODE_ENV !== 'production'
@@ -72,7 +71,7 @@ export default {
     },
     css: [
         '~/assets/styles/index.scss',
-        '@fancyapps/ui/src/Fancybox/Fancybox.scss'
+        '@fancyapps/ui/dist/fancybox/fancybox.css'
     ],
     plugins: [
         {src: '~/plugins/rangeSlider.js', mode: 'client'},
