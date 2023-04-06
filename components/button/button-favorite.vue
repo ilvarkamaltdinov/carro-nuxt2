@@ -3,8 +3,8 @@
 	        :class="{'button--favorite-active' : active}"
 	        @click.prevent="$emit('click')"
 	        type="button"
-          title="Добавить в избраноне"
-          aria-label="Добавить в избраноне">
+          title="Добавить в избранное"
+          aria-label="Добавить в избранное">
 		<svg-icon class="button__icon"
 		          :name="active?'icon-heart-active':'icon-heart'" />
 	</button>
