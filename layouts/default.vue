@@ -35,7 +35,7 @@ export default {
 		LazyHydrate,
 		Header: () => import(/* webpackChunkName: "header" */ '~/components/Header'),
 		// Crumbs: () => import(/* webpackChunkName: "crumbs" */ '~/components/Crumbs'),
-		
+
 		// Footer: () => import(/* webpackChunkName: "footer" */ '~/components/Footer'),
 		// ModalMain: () => import(/* webpackChunkName: "modal-main" */ '~/components/Modal/Main'),
 		// CookieModal: () => import(/* webpackChunkName: "cookie-modal" */ '~/components/Cookie/Modal'),

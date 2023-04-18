@@ -5,6 +5,7 @@
 /assets/styles/*.css
 /assets/styles/*/*.css
 /logs
+/_docker/nginx/logs
 *.log
 npm-debug.log*
 yarn-debug.log*

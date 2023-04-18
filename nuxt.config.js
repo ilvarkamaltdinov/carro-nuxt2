@@ -113,7 +113,6 @@ export default {
     },
     modules: [
         'vue-scrollto/nuxt',
-        '@nuxtjs/style-resources',
         '@nuxtjs/apollo',
         '@nuxtjs/device',
         '@nuxtjs/axios',

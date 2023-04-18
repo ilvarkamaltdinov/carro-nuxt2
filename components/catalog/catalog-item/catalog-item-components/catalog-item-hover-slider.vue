@@ -68,15 +68,3 @@ export default {
 	}
 }
 </script>
-<style scoped
-       lang="scss">
-img.load {
-	filter: blur(5px);
-	transition: filter .5s;
-	will-change: filter;
-}
-
-img.loaded {
-	filter: blur(0);
-}
-</style>

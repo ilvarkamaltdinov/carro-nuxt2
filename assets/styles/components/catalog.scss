@@ -657,6 +657,16 @@
     -webkit-backface-visibility: visible;
   }
 
+  .catalog__img img.load {
+    filter: blur(5px);
+    transition: filter .5s;
+    will-change: filter;
+  }
+
+  .catalog__img img.loaded {
+    filter: blur(0);
+  }
+
   .catalog--slider {
     margin-top: -32px;
   }

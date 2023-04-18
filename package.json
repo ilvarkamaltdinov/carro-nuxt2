@@ -2,6 +2,12 @@
   "name": "carro",
   "version": "2.0.0",
   "private": true,
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0",
+      "port": "3000"
+    }
+  },
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
@@ -25,8 +31,13 @@
     "nuxt-lazysizes": "^1.4.2",
     "nuxt-ssr-cache": "^1.5.2",
     "nuxt-start": "^2.15.8",
+    "sass": "^1.43.4",
+    "sass-loader": "^10.1.1",
     "swiper": "^8.0.6",
     "universal-dom-parser": "0.0.3",
+    "vue": "^2.7.10",
+    "vue-server-renderer": "^2.7.10",
+    "vue-template-compiler": "^2.7.10",
     "vue-infinite-loading": "^2.4.5",
     "vue-lazy-hydration": "^2.0.0-beta.4",
     "vue-lodash": "^2.1.2",
@@ -34,16 +45,13 @@
     "vue-scrollto": "^2.20.0",
     "vue-slide-toggle": "^1.1.1",
     "vue-tippy": "^4.14.0",
-    "vuejs-paginate": "^2.1.0"
+    "vuejs-paginate": "^2.1.0",
+    "@nuxtjs/device": "^2.1.0",
+    "vue-yandex-maps": "^0.10.12",
+    "webpack": "^4.46.0"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.8",
-    "@nuxtjs/device": "^2.1.0",
-    "@nuxtjs/style-resources": "^1.2.1",
-    "imagemin-webp-webpack-plugin": "^3.3.6",
-    "sass": "^1.43.4",
-    "sass-loader": "10.1.1",
-    "vue-yandex-maps": "^0.10.12",
-    "webpack": "^4.46.0"
+    "imagemin-webp-webpack-plugin": "^3.3.6"
   }
 }
