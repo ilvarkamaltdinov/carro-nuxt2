@@ -48,7 +48,7 @@ routes.forEach(route => {
     router.get(route.to, async (req, res) => {
         let domain = 'https://api.genzes.ru'
         if (req.headers.host === 'carro.ru') {
-            domain = 'https://api.carro.ru'
+            domain = 'https://api.genzes.ru'
         }
         let response = await getXml(domain + route.from)
         res.set('Content-Type', response.headers['content-type']);
