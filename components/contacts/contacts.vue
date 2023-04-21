@@ -32,15 +32,11 @@
                :href="`mailto:${settings.email}`">{{ settings.email }}
             </a>
           </div>
-          <div class="text__contacts-group" v-if="dealers.length">
-            <div class="text__contacts-label">
-              {{ dealers.length === 1 ? 'Филиал' : 'Филиалы' }}
-              в
-              {{
-                settings.in_city
-              }}:
+          <div class="text__contacts-group" v-if="dealers.length" v-for="(dealer, index) in dealers" :key="dealer.id">
+            <div class="text__contacts-label" >
+              Филиал в {{ settings.in_city }} № {{ index + 1 }}:
             </div>
-            <p class="text__p" v-for="dealer in dealers" :key="dealer.id">
+            <p class="text__p">
               {{ dealer.address }}
             </p>
           </div>
