@@ -1,0 +1,5 @@
+fragment DealerContact on Dealer {
+  id
+  slug
+  address
+}

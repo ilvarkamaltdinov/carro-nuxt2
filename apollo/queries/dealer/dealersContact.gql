@@ -1,0 +1,6 @@
+#import "../../fragments/dealer/dealerContact.gql"
+query dealersContact($site_id: Int!) {
+  dealers(site_id: $site_id) {
+    ...DealerContact
+  }
+}
