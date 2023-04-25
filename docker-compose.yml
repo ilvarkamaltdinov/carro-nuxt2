@@ -1,19 +1,25 @@
 version: "3.8"
 
+networks:
+  nuxt-network:
+    driver: bridge
 
 services:
   nuxt:
     container_name: app_nuxt
+    restart: always
     build:
       context: .
       dockerfile: _docker/app/Dockerfile
     ports:
       - "3000:3000"
+    networks:
+      - nuxt-network
 
   nginx:
     container_name: app_nginx
     image: nginx:latest
-    restart: always
+    restart: unless-stopped
     ports:
       - "80:80"
       - "443:443"
@@ -23,3 +29,5 @@ services:
       - ./_docker/nginx/logs:/var/log/nginx/
     depends_on:
       - nuxt
+    networks:
+      - nuxt-network
