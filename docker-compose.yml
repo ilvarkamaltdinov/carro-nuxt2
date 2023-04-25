@@ -15,6 +15,7 @@ services:
       - "3000:3000"
     networks:
       - nuxt-network
+    tty: true
 
   nginx:
     container_name: app_nginx
@@ -31,3 +32,4 @@ services:
       - nuxt
     networks:
       - nuxt-network
+    tty: true
