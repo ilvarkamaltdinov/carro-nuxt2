@@ -1,7 +1,4 @@
 version: "3.8"
-networks:
-  app-net:
-    driver: bridge
 
 
 services:
@@ -12,8 +9,6 @@ services:
       dockerfile: _docker/app/Dockerfile
     ports:
       - "3000:3000"
-    networks:
-      - app-net
 
   nginx:
     container_name: app_nginx
@@ -28,5 +23,3 @@ services:
       - ./_docker/nginx/logs:/var/log/nginx/
     depends_on:
       - nuxt
-    networks:
-      - app-net
