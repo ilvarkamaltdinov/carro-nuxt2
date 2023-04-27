@@ -6,7 +6,7 @@
 			<button-favorite :active="likesArray.some(id => id === String(offer.external_id))"
 			                 @click="like()" />
 			<!--<button-compare v-if="long" />-->
-			<button-call :phone="offer.dealer.phone"
+			<button-call v-if="offer.dealer.phone" :phone="offer.dealer.phone"
 			             @click="call" />
 		</div>
 		<div class="catalog__actions-main"

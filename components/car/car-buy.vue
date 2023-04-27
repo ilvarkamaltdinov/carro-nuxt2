@@ -29,7 +29,7 @@
           />
           <!--<button-compare />-->
           <button-call
-            v-if="offer.is_active"
+            v-if="offer.is_active && offer.dealer.phone"
             :phone="offer.dealer.phone"
             @click="callback(offer)"
           />
@@ -88,7 +88,7 @@
           />
           <!--<button-compare />-->
           <button-call
-            v-if="offer.is_active"
+            v-if="offer.is_active && offer.dealer.phone"
             :phone="offer.dealer.phone"
             @click="callback(offer)"
           />

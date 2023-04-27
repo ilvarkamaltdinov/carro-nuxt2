@@ -16,7 +16,7 @@
 							animation:'scale',
 							arrow: true,
 					}" />
-		
+
 		</div>
 		<div class="car__info-options features">
 			<div class="features__group">
@@ -26,7 +26,7 @@
 					<li class="features__item" v-if="offer.dealer.metro">м. {{ offer.dealer.metro }}</li>
 				</ul>
 			</div>
-			<div class="features__group">
+			<div class="features__group" v-if="offer.dealer.phone">
 				<h3 class="heading heading--h3">Телефон:</h3>
 				<ul class="features__list">
 					<li class="features__item">

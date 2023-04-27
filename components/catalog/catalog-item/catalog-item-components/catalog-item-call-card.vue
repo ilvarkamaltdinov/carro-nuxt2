@@ -1,5 +1,6 @@
 <template>
 	<a class="catalog__call-card"
+     v-if="dealer.phone"
 	   :href="`tel:${dealer.phone.replace(/[^+\d]/g, '')}`">
 		<div class="catalog__call">
 			<svg-icon name="icon-call"

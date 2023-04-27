@@ -168,14 +168,15 @@ export const domains = [
   }
 ]
 export const devDomain = {
-  domain: 'xn--80atnha.xn--p1ai',
-  siteId: 21,
+  domain: 'spb.carro.ru',
+  slug: 'spb-carro',
+  siteId: 30,
   api: 'api.xn--80atnha.xn--p1ai',
-  isIndex: false,
-  showComm: true,
-  showEurope: true,
+  isIndex: true,
+  showComm: false,
+  showEurope: false,
   showReviews: true,
-  showBlog: true
+  showBlog: false
 }
 
 export function findDomain(host) {
