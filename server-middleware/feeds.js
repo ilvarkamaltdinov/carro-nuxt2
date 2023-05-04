@@ -27,11 +27,11 @@ let routes = [
         to: '/yandex/after-400/offers.xml'
     },
     {
-        from: '/feeds/yandex/xml/carro/main',
+        from: '/feeds_file/yandex/xml/carro/file',
         to: '/autoru/cars.xml'
     },
     {
-        from: '/feeds/google/xml/carro/main',
+        from: '/feeds_file/google/xml/carro/file',
         to: '/mytarget/offers.xml'
     },
     {
@@ -48,8 +48,9 @@ routes.forEach(route => {
     router.get(route.to, async (req, res) => {
         let domain = 'https://api.genzes.ru'
         if (req.headers.host === 'carro.ru') {
-            domain = 'https://api.genzes.ru'
+            domain = 'https://api.carro.ru'
         }
+        console.log(1111, domain + route.from)
         let response = await getXml(domain + route.from)
         res.set('Content-Type', response.headers['content-type']);
         res.status(200).send(response.data);
