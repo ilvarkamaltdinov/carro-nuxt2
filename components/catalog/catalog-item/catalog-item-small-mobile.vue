@@ -15,7 +15,7 @@
 			                    :url="currentUrl"
 			                    @click="linkClick"
 			                    :offer="offer" />
-			<catalog-item-price :vin="offer.vin" :price="offer.price" />
+			<catalog-item-price :vin="offer.vin" :price="offer.price" :price-old="offer.price_old" :is-stock="offer.is_stock"/>
 			<div class="catalog__tech"
 			     :class="{'catalog__tech--no-buttons':!hasButtons}">
 				<catalog-item-tech-list small

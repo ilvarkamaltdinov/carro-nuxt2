@@ -1,7 +1,7 @@
 <template>
 	<div class="catalog__price-wrap">
 		<div class="catalog__price">{{ price | toCurrency }}</div>
-		<div class="catalog__price-old">1 585 000 ₽</div>
+		<div class="catalog__price-old" v-if="!isStock && priceOld">{{ priceOld | toCurrency }}</div>
 		<div class="catalog__credit-price">{{ price | access_acredit }} / мес.</div>
 
 		<div v-if="categoryEnum !== 'europe' && !hideStock">
@@ -54,7 +54,8 @@ export default {
 			default: false
 		},
 		vin: String,
-		price: Number
+		price: Number,
+    priceOld: Number
 	}
 }
 </script>

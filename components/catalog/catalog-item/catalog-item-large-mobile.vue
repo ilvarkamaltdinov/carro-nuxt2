@@ -5,7 +5,7 @@
 			                    @click="linkClick"
 			                    :url="currentUrl"
 			                    :offer="offer" />
-			<catalog-item-price :category-enum="offer.category_enum" :is-stock="offer.is_stock" :vin="offer.vin" :price="offer.price" />
+			<catalog-item-price :category-enum="offer.category_enum" :is-stock="offer.is_stock" :vin="offer.vin" :price="offer.price" :price-old="offer.price_old"/>
 		</div>
 		<div class="catalog__img">
 			<catalog-item-img @click="linkClick"

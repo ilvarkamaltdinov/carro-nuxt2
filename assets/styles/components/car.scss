@@ -188,6 +188,10 @@
   margin-bottom: 24px;
 }
 
+.car__tippy-question {
+  display: none!important;
+}
+
 @media (max-width: $iphone-mini-only) {
   .car__buy-block .button--trade-in {
     padding: 12px 8px;
@@ -398,6 +402,9 @@
 }
 
 @media (min-width: $tablet-width) {
+  .car__tippy-question {
+    display: flex!important;
+  }
   .car__info-group.car__info-group--terms {
     padding-bottom: 8px;
   }

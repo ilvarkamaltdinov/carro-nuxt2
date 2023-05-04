@@ -11,9 +11,9 @@
         <div class="car__price">
           {{ offer.price | toCurrency }}
         </div>
-        <!-- <tippy-question text="Цена актуальна при покупке в кредит" /> -->
-        <div class="car__price-old">
-          {{ offer.price | toCurrency }}
+        <tippy-question :class="{'car__tippy-question' : !offer.is_stock}" text="Цена актуальна при покупке в кредит" />
+        <div class="car__price-old" v-if="!offer.is_stock && offer.price_old">
+          {{ offer.price_old | toCurrency }}
         </div>
         <div class="car__price-payment">
           {{ offer.price | access_acredit }} / мес.

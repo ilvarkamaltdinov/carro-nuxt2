@@ -5,7 +5,7 @@
                         :url="currentUrl"
                         :offer="offer" />
 		<div class="catalog__offer">
-			<catalog-item-price hide-stock :category-enum="offer.category_enum" :is-stock="offer.is_stock" :vin="offer.vin" :price="offer.price" />
+			<catalog-item-price hide-stock :category-enum="offer.category_enum" :is-stock="offer.is_stock" :vin="offer.vin" :price="offer.price" :price-old="offer.price_old"/>
 		</div>
 		<div class="catalog__img">
 			<catalog-item-img @click="linkClick"

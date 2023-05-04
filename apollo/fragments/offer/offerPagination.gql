@@ -18,6 +18,7 @@ fragment OfferPagination on OfferTypePagination {
     name
     category_enum
     price
+    price_old
     run
     vin
     color {
