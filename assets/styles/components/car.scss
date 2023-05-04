@@ -97,6 +97,10 @@
   color: $colorPrimary;
 }
 
+.car__price-old {
+  text-decoration: line-through;
+}
+
 .car__price-cash {
   display: none;
 }

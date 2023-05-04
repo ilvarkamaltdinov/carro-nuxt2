@@ -2,20 +2,26 @@
   <div class="car__buy-wrap">
     <div class="car__buy">
       <div class="car__price-block">
-        <div v-if="$route.params.category === 'europe'" class="car__price-europe visually-hidden">
+        <div
+          v-if="$route.params.category === 'europe'"
+          class="car__price-europe visually-hidden"
+        >
           32 456 €
         </div>
         <div class="car__price">
           {{ offer.price | toCurrency }}
         </div>
-        <tippy-question text="Цена актуальна при покупке в кредит" />
+        <!-- <tippy-question text="Цена актуальна при покупке в кредит" /> -->
+        <div class="car__price-old">
+          {{ offer.price | toCurrency }}
+        </div>
         <div class="car__price-payment">
-          {{ offer.price | access_acredit }} / мес. без взноса
+          {{ offer.price | access_acredit }} / мес.
         </div>
       </div>
       <div v-if="offer.is_active" class="car__buy-block">
         <div
-          v-if="($route.params.category === 'europe')"
+          v-if="$route.params.category === 'europe'"
           class="car__actions-buttons"
         >
           <button-autoteka
@@ -64,7 +70,7 @@
         </button>
       </div>
       <div
-        v-if="($route.params.category !== 'europe')"
+        v-if="$route.params.category !== 'europe'"
         class="car__actions-block"
       >
         <rating-car
@@ -94,20 +100,8 @@
           />
         </div>
       </div>
-	    <div class="car__stock" v-if="offer.category_enum === 'europe'">
-		    Под заказ в автоцентре <a
-				    href="#"
-				    @click.prevent="moreInfoDiller(offer.dealer.slug)"
-				    class="car__stock-dealer"
-		    >
-			    «{{ offer.dealer.title }}»
-		    </a>
-		    <div class="car__stock-promo">
-			    г. {{ offer.dealer.city }}, {{ offer.dealer.address }}
-		    </div>
-	    </div>
-      <div class="car__stock" v-else-if="offer.is_active && !offer.is_stock">
-	      В наличии в автоцентре
+      <div class="car__stock" v-if="offer.category_enum === 'europe'">
+        Под заказ в автоцентре
         <a
           href="#"
           @click.prevent="moreInfoDiller(offer.dealer.slug)"
@@ -119,8 +113,24 @@
           г. {{ offer.dealer.city }}, {{ offer.dealer.address }}
         </div>
       </div>
-      <div v-else-if="offer.is_active && offer.is_stock" class="car__stock car__stock--no">
-	      Автомобиль находится на центральной стоянке
+      <div class="car__stock" v-else-if="offer.is_active && !offer.is_stock">
+        В наличии в автоцентре
+        <a
+          href="#"
+          @click.prevent="moreInfoDiller(offer.dealer.slug)"
+          class="car__stock-dealer"
+        >
+          «{{ offer.dealer.title }}»
+        </a>
+        <div class="car__stock-promo">
+          г. {{ offer.dealer.city }}, {{ offer.dealer.address }}
+        </div>
+      </div>
+      <div
+        v-else-if="offer.is_active && offer.is_stock"
+        class="car__stock car__stock--no"
+      >
+        Автомобиль находится на центральной стоянке
       </div>
       <div v-else class="car__stock car__stock--no">Нет в наличии</div>
     </div>
@@ -144,7 +154,7 @@ export default {
       settings: "settings/settings/settings",
     }),
     showTradeIn() {
-      if (this.$route.params.category === 'europe') {
+      if (this.$route.params.category === "europe") {
         if (this.$device.isMobile) {
           return false;
         } else {
@@ -153,7 +163,7 @@ export default {
       } else {
         return true;
       }
-    }
+    },
   },
   methods: {
     ...mapActions({
