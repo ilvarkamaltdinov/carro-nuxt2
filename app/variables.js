@@ -170,8 +170,8 @@ export const domains = [
 export const devDomain = {
   domain: 'carro.ru',
   slug: 'carro',
-  siteId: 21,
   api: 'api.carro.ru',
+  siteId: 21,
   isIndex: true,
   showComm: true,
   showEurope: true,
