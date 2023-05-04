@@ -1,9 +1,9 @@
 <template>
 	<div class="catalog__price-wrap">
 		<div class="catalog__price">{{ price | toCurrency }}</div>
-		<!--<div class="catalog__oldprice">1 585 000 ₽</div>-->
-		<div class="catalog__credit-price">{{ price | access_acredit }} / мес. без взноса</div>
-		
+		<div class="catalog__price-old">1 585 000 ₽</div>
+		<div class="catalog__credit-price">{{ price | access_acredit }} / мес.</div>
+
 		<div v-if="categoryEnum !== 'europe' && !hideStock">
 			<div class="stock stock--true"
 			     v-if="isStock"
@@ -34,7 +34,7 @@
 				Из Европы
 			</div>
 		</div>
-	
+
 	</div>
 </template>
 <script>

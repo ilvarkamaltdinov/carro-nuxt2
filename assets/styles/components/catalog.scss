@@ -118,8 +118,9 @@
   margin-bottom: 8px;
 }
 
-.catalog__oldprice {
-  display: none;
+.catalog__price-old {
+  text-decoration: line-through;
+  margin-right: 8px;
 }
 
 .catalog__buttons {
@@ -177,6 +178,7 @@
 
 .catalog__credit-price {
   @include font-features;
+  color: $colorTextSecondary;
 }
 
 .catalog__item--small .catalog__credit-price {
