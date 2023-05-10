@@ -50,7 +50,6 @@ routes.forEach(route => {
         if (req.headers.host === 'carro.ru') {
             domain = 'https://api.carro.ru'
         }
-        console.log(1111, domain + route.from)
         let response = await getXml(domain + route.from)
         res.set('Content-Type', response.headers['content-type']);
         res.status(200).send(response.data);

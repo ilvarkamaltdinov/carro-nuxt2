@@ -98,8 +98,23 @@ export default {
 			this.setCurrentCar(offer)
 			await this.closeModal()
 		},
+    sendVkAds() {
+      if (process.client) {
+        let _tmr = window._tmr || (window._tmr = []);
+        _tmr.push({
+          type: 'reachGoal',
+          id: this.settings.vk_ads,
+          value: this.offer.price,
+          goal: 'favorites',
+          params: {
+            product_id: this.offer.external_id
+          }
+        });
+      }
+    },
 		async like() {
 			await this.liked(this.offer.external_id)
+      await this.sendVkAds()
 		},
 		async call() {
 			let payload = {
