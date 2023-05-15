@@ -100,7 +100,9 @@
 .car__price-old {
   text-decoration: line-through;
 }
-
+.car__price-old {
+  display: none;
+}
 .car__price-cash {
   display: none;
 }

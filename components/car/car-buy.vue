@@ -11,7 +11,8 @@
         <div class="car__price">
           {{ offer.price | toCurrency }}
         </div>
-        <tippy-question :class="{'car__tippy-question' : $route.params.category !== 'europe'}" text="Цена актуальна при покупке в кредит" />
+<!--        <tippy-question :class="{'car__tippy-question' : $route.params.category !== 'europe'}" text="Цена актуальна при покупке в кредит" />-->
+        <tippy-question text="Цена актуальна при покупке в кредит" />
         <div class="car__price-old" v-if="$route.params.category !== 'europe'">
           {{ offer.price_old | toCurrency }}
         </div>
