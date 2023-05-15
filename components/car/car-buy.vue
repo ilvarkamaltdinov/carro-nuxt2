@@ -17,7 +17,7 @@
           {{ offer.price_old | toCurrency }}
         </div>
         <div class="car__price-payment">
-          {{ offer.price | access_acredit }} / мес.
+          {{ offer.price | access_acredit }} / мес. без взноса
         </div>
       </div>
       <div v-if="offer.is_active" class="car__buy-block">
