@@ -24,7 +24,7 @@
 						обременительна для семейного бюджета, оптимальным решением станет
 						<nuxt-link to="/credit">автокредит</nuxt-link>
 						{{ settings.credit_percent }} со
-						скидкой до {{ settings.sale_credit }} ₽.
+						скидкой {{ settings.sale_credit }}.
 					</p>
 					<p class="text__p">
 						Окончательное решение о предоставлении рассрочки принимается банками-партнерами CARRO.
