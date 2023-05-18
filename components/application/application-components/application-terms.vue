@@ -44,7 +44,7 @@
 			     class="application__terms-number application__terms-number--payment">
 				-
 			</div>
-			<div class="application__terms-text">Ежемеясячный платеж</div>
+			<div class="application__terms-text">Ежемесячный платеж</div>
 		</div>
 	</div>
 </template>
