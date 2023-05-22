@@ -122,7 +122,7 @@ export function routersArray(resolve) {
         {
             name: 'privacy',
             path: '/privacy',
-            component: resolve(__dirname, '_pages/reviews-dealers.vue')
+            component: resolve(__dirname, '_pages/privacy.vue')
         },
         {
             name: 'credit',
