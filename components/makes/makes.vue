@@ -73,7 +73,7 @@ export default {
       let marks = [...this.marks]
       let marksShowNumber = 21
       if (this.$device.isMobile) {
-        marksShowNumber = 10
+        marksShowNumber = 16
         if (this.allMarks) {
           return marks
         } else {
