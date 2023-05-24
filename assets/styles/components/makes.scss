@@ -128,8 +128,12 @@
   background-color: white;
 }
 
+.modal__makes .button--show {
+  margin-left: auto;
+}
+
 @media (max-width: $mobile-width-only) {
-  .makes__list--all-catalog {
+  .makes__list--all-catalog, .makes__list--all-modal {
     margin-bottom: 16px;
 
     & li {
