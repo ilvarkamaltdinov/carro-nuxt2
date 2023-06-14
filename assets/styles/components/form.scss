@@ -66,7 +66,8 @@
 .form__range-value {
   @include font-body-strong;
 }
-.catalog__filters-mobile{
+
+.catalog__filters-mobile {
   padding-top: 16px;
   padding-bottom: 12px;
 }
@@ -74,6 +75,15 @@
 .form__field-wrap {
   position: relative;
   margin-bottom: 12px;
+}
+
+.form__field-wrap-line {
+  display: flex;
+  gap: 12px;
+}
+
+.form__field-wrap-line .form__field-wrap {
+  width: calc(50% - 6px);
 }
 
 .form__icon-search {
@@ -254,7 +264,7 @@
   }
 
   .form__catalog .catalog__img {
-    margin: 16px -24px!important;
+    margin: 16px -24px !important;
   }
 
   .form__catalog .catalog__tech-item {
