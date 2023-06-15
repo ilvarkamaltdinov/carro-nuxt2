@@ -84,22 +84,28 @@ export default {
       //     return `от ${year}`
       //   })
       // }
-      return range(this.filters.year[0], this.filters.year[1]) || null
+      if (this.filters.year) {
+        return range(this.filters.year[0], this.filters.year[1]) || null
+      }
+
     },
     chosenYear() {
       return this.currentYears?.find(year => year === Number(this.$route.query.year_from))
     },
     currentPrices() {
       let prices = range(this.filters.price[0] + 100000, this.filters.price[1] + 100000, 100000) || null
-      // if (prices) {
-      //   prices = prices.map(prices => {
-      //     return new Intl.NumberFormat("ru-RU").format(prices);
-      //   })
-      // }
+      if (prices) {
+        prices = prices.map(prices => {
+          return new Intl.NumberFormat("ru-RU").format(prices) + ' ₽';
+        })
+      }
       return prices
     },
     chosenPrice() {
-      return this.currentPrices?.find(price => price === Number(this.$route.query.price_to))
+      return this.currentPrices?.find(price => {
+        //очищаю значения от пробелов и значка рубля и ищу по цифрам из урла
+        return Number(price.replace(/\D/g, '')) === Number(this.$route.query.price_to)
+      })
     }
   },
   methods: {
@@ -132,7 +138,8 @@ export default {
           break
         case 'price':
           route = this.$route.fullPath
-          query.price_to = title
+          //очищаю от пробелов и символов число
+          query.price_to = title.replace(/\D/g, '')
           break
       }
       await this.$router.push({path: route, query: query})
