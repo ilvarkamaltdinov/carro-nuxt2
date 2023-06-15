@@ -93,11 +93,14 @@ export default {
       return this.currentYears?.find(year => year === Number(this.$route.query.year_from))
     },
     currentPrices() {
-      let prices = range(this.filters.price[0] + 100000, this.filters.price[1] + 100000, 100000) || null
-      if (prices) {
-        prices = prices.map(prices => {
-          return new Intl.NumberFormat("ru-RU").format(prices) + ' ₽';
-        })
+      let prices = []
+      if (this.filters.price) {
+        prices = range(this.filters.price[0] + 100000, this.filters.price[1] + 100000, 100000) || null
+        if (prices) {
+          prices = prices.map(prices => {
+            return new Intl.NumberFormat("ru-RU").format(prices) + ' ₽';
+          })
+        }
       }
       return prices
     },
