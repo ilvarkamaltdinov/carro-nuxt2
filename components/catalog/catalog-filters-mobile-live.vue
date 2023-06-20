@@ -85,7 +85,7 @@ export default {
       //   })
       // }
       if (this.filters.year) {
-        return range(this.filters.year[0], this.filters.year[1]) || null
+        return range(this.filters.year[0], this.filters.year[1] + 1) || null
       }
 
     },
