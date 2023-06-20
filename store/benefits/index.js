@@ -5,7 +5,7 @@ export const state = () => ({
     benefitsInstallment: ['sale', 'guaranty', 'docs', 'first-pay-alt', 'first-pay-trade', 'insurance'],
     benefitsTradeIn: ['sale-trade', 'guaranty', 'docs', 'value-market', 'first-pay-trade', 'fast-time'],
     benefitsBuyout: ['fast-pay', 'value-market', 'value-man', 'value-free', 'docs', 'fast-time'],
-    benefitsCar: ['guaranty', 'credit', 'docs', 'first-pay-trade', 'tires', 'insurance'],
+    benefitsCar: ['guaranty', 'first-pay', 'docs', 'first-pay-trade', 'tires', 'insurance'],
     benefitsCreditMobile: ['docs', 'insurance'],
     benefits: [
         {
