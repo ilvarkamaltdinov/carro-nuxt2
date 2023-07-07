@@ -40,6 +40,7 @@
 <script>
 import {mapActions, mapGetters, mapMutations} from "vuex";
 import range from 'lodash/range'
+import sortBy from "lodash/sortBy";
 
 export default {
   computed: {
@@ -73,7 +74,9 @@ export default {
     },
 
     currentGenerations() {
-      return this.chosenFolder?.generations || null
+      return sortBy(this.chosenFolder?.generations || null, [function (generation) {
+        return generation.year_begin || null
+      }])
     },
     chosenGeneration() {
       return this.currentGenerations?.find(item => item.slug === this.$route.params.car) || null
