@@ -1534,8 +1534,8 @@ const IonRangeSlider = function (element, initOptions= {}) {
     const convertToValue = function (percent) {
         let min = options.min,
             max = options.max,
-            min_decimals = min.toString().split(".")[1],
-            max_decimals = max.toString().split(".")[1],
+            min_decimals = min?.toString().split(".")[1],
+            max_decimals = max?.toString().split(".")[1],
             min_length, max_length,
             avg_decimals = 0,
             abs = 0;
@@ -1689,7 +1689,7 @@ const IonRangeSlider = function (element, initOptions= {}) {
     };
 
     const prettify = function (num) {
-        return num.toString().replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, "$1" + options.prettify_separator);
+        return num?.toString().replace(/(\d{1,3}(?=(?:\d\d\d)+(?!\d)))/g, "$1" + options.prettify_separator);
     };
 
     const checkEdges = function (left, width) {
