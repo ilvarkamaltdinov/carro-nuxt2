@@ -105,7 +105,10 @@ export default {
           mainEntity.push({
             "@type": "Question",
             "name": val.question,
-            "acceptedAnswer": val.answer
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": val.answer
+            }
           })
         })
       })
