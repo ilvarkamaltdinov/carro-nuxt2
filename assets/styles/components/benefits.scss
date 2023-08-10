@@ -49,6 +49,11 @@
   margin-right: 12px;
 }
 
+.benefits.benefits--catalog,
+.benefits.benefits--europe {
+  margin-bottom: -16px;
+}
+
 @media (max-width: $mobile-width-only) {
   .benefits--credit {
     margin-bottom: 16px;
@@ -84,6 +89,14 @@
 
   .benefits__link {
     padding: 8px 16px;
+  }
+
+  .benefits.benefits--catalog {
+    display: none;
+  }
+
+  .benefits.benefits--europe {
+    margin-bottom: 24px;
   }
 }
 

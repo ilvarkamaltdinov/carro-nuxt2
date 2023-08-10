@@ -2,12 +2,48 @@ export const state = () => ({
     benefitModal: false,
     benefit: {},
     benefitsCredit: ['sale', 'guaranty', 'docs', 'first-pay', 'first-pay-trade', 'insurance'],
+    benefitsEurope: ['delivery', 'pre-pay', 'transportation', 'europe-tech', 'europe-insurance'],
     benefitsInstallment: ['sale', 'guaranty', 'docs', 'first-pay-alt', 'first-pay-trade', 'insurance'],
     benefitsTradeIn: ['sale-trade', 'guaranty', 'docs', 'value-market', 'first-pay-trade', 'fast-time'],
     benefitsBuyout: ['fast-pay', 'value-market', 'value-man', 'value-free', 'docs', 'fast-time'],
     benefitsCar: ['guaranty', 'first-pay', 'docs', 'first-pay-trade', 'tires', 'insurance'],
     benefitsCreditMobile: ['docs', 'insurance'],
     benefits: [
+          {
+            text: 'Доставка из Европы',
+            text_strong: 'бесплатно',
+            icon: 'delivery',
+            description: 'Доставим автомобиль из Европы и подготовим пакет документов за наш счет.',
+            slug: 'delivery',
+        },
+        {
+          text: 'Задаток',
+          text_strong: 'не требуется',
+          icon: 'ruble',
+          description: 'Привезем автомобиль из Европы без предоплаты с вашей стороны.',
+          slug: 'pre-pay',
+         },
+          {
+            text: 'Транспортировка',
+            text_strong: '10-14 дней',
+            icon: 'engine',
+            description: 'Доставка автомобиля из Европы займет ориентировочно 14 дней.',
+            slug: 'transportation',
+          },
+          {
+            text: 'Техосмотр в Европе',
+            text_strong: 'бесплатно',
+            icon: 'form',
+            description: 'Привезем автомобиль, который прошел полный технический осмотр в Европе.',
+            slug: 'europe-tech',
+          },
+          {
+            text: 'Страхование перевозки',
+            text_strong: 'за наш счет',
+            icon: 'shield',
+            description: 'Застрахуем автомобиль от всех рисков на время транспортировки.',
+            slug: 'europe-insurance',
+        },
         {
             text: 'Гарантия',
             text_strong: '2 года',
@@ -122,6 +158,11 @@ export const getters = {
     benefit: (state) => {
         return state.benefit
     },
+    benefitsEurope: (state) => {
+      return state.benefits.filter((item) => {
+          return state.benefitsEurope.indexOf(item.slug) !== -1;
+      })
+  },
     benefitsCredit: (state) => {
         return state.benefits.filter((item) => {
             return state.benefitsCredit.indexOf(item.slug) !== -1;
