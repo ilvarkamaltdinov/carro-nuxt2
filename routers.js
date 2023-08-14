@@ -22,6 +22,7 @@ export function routersArray(resolve) {
         'ralff',
         'stels',
         'tyumen',
+        'atlas-avto',
     ]
 
     let catalog = [
