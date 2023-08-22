@@ -191,7 +191,7 @@
 }
 
 .car__tippy-question {
-  display: none!important;
+  display: none !important;
 }
 
 @media (max-width: $iphone-mini-only) {
@@ -242,7 +242,8 @@
     margin-bottom: 16px;
   }
 
-  .car__info-group--complectation, .car__info-group--description{
+  .car__info-group--complectation,
+  .car__info-group--description {
     margin-bottom: 16px;
   }
 
@@ -335,7 +336,18 @@
     margin-bottom: -8px;
   }
 
+  .car__buy-block .button--credit {
+    width: 100%;
+    order: -1;
+  }
+
   .car__buy-block .button--trade-in {
+    flex-grow: 1;
+    margin: 0;
+  }
+
+  .car__buy-block .button--credit-pay {
+    display: block;
     flex-grow: 1;
   }
 
@@ -357,12 +369,17 @@
   .car__info-tabs .tabs__link {
     width: 100%;
   }
+
+  .car__buy-block {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
 }
 
 @media (max-width: $tablet-width-max) {
-  .car__buy-block .button--credit-pay {
-    display: none;
-  }
+  // .car__buy-block .button--credit-pay {
+  //   display: none;
+  // }
 }
 
 @media (min-width: $tablet-width) and (max-width: $tablet-width-max) {
@@ -405,7 +422,7 @@
 
 @media (min-width: $tablet-width) {
   .car__tippy-question {
-    display: flex!important;
+    display: flex !important;
   }
   .car__info-group.car__info-group--terms {
     padding-bottom: 8px;
