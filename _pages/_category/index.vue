@@ -20,8 +20,7 @@ export default {
     if (ctx.store.getters.showComm) {
       return ctx.params.category === 'used' ||
         ctx.params.category === 'commercial' ||
-        ctx.params.category === 'europe' ||
-        ctx.params.category === 'new';
+        ctx.params.category === 'europe';
     } else {
       return ctx.params.category === 'used'
     }
