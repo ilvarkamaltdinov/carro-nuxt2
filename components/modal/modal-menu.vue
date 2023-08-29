@@ -40,12 +40,7 @@ export default {
               name: 'Из Европы',
               link: '/europe',
               show: this.isMoscow
-            },
-            {
-              name: 'Новые',
-              link: '/new',
-              show: this.isMoscow
-            },
+            }
           ],
         },
         {
