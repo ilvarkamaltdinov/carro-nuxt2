@@ -14,7 +14,7 @@ export const domains = [
   {
     domain: 'carro.ru',
     slug: 'carro',
-    api: 'api.carro.ru',
+    api: 'api.xn--80atnha.xn--p1ai',
     siteId: 21,
     isIndex: true,
     showComm: true,
