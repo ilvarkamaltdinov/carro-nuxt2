@@ -120,6 +120,10 @@
     bottom: 0;
   }
 
+  .modal__buttons--dealer .button__text {
+    display: none
+  }
+
   .modal--makes {
     @include modal-menu;
     top: 106px;
@@ -299,8 +303,8 @@
   .modal {
     height: 100%;
     top: 0;
-    width: 880px;
-    left: calc(100% - 880px);
+    width: 916px;
+    left: calc(100% - 916px);
   }
 
   .modal__choose-group {

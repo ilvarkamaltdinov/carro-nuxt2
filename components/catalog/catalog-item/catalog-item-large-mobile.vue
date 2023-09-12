@@ -5,7 +5,7 @@
 			                    @click="linkClick"
 			                    :url="currentUrl"
 			                    :offer="offer" />
-			<catalog-item-price :category-enum="offer.category_enum" :is-stock="offer.is_stock" :vin="offer.vin" :price="offer.price" :price-old="offer.price_old"/>
+			<catalog-item-price :isNew="isNew" :category-enum="offer.category_enum" :is-stock="offer.is_stock" :vin="offer.vin" :price="offer.price" :price-old="offer.price_old"/>
 		</div>
 		<div class="catalog__img">
 			<catalog-item-img @click="linkClick"
@@ -44,6 +44,11 @@ import cardClick from "@/mixins/cardClick";
 
 export default {
 	mixins: [filters, cardClick],
+  computed: {
+    isNew() {
+      return this.offer.run <= 100 && this.offer.owner.number <= 1;
+    }
+  },
 	props: {
 		offer: {
 			type: Object,

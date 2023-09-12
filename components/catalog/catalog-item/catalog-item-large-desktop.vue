@@ -24,7 +24,7 @@
 						                    :is-form="isForm"
 						                    :url="currentUrl"
 						                    :offer="offer" />
-						<catalog-item-price :category-enum="offer.category_enum" :is-stock="offer.is_stock" :vin="offer.vin" :price="offer.price" :price-old="offer.price_old" />
+						<catalog-item-price :category-enum="offer.category_enum" :is-stock="offer.is_stock" :isNew="isNew" :vin="offer.vin" :price="offer.price" :price-old="offer.price_old" />
 					</div>
 				</div>
 			</div>
@@ -43,7 +43,8 @@
 		                      :is-form="isForm"
 		                      :long="true"
 		                      v-if="hasButtons"
-		                      :offer="offer" />
+		                      :offer="offer"
+                          :isNew="currentStock" />
 	</article>
 </template>
 <script>
@@ -52,6 +53,11 @@ import cardClick from "~/mixins/cardClick";
 
 export default {
 	mixins: [filters, cardClick],
+  computed: {
+    isNew() {
+      return this.offer.run <= 100 && this.offer.owner.number <= 1;
+    }
+  },
 	props: {
 		hasFancy:{
 			type: Boolean,

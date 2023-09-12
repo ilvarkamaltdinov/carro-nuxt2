@@ -4,7 +4,7 @@
       <img class="modal__logo"
            :src="modalData.image_logo | replaceApiUrl(api)"
            alt=""/>
-      <div class="modal__buttons">
+      <div class="modal__buttons modal__buttons--dealer">
         <button-callback @click="callback"/>
         <button-call-modal v-if="modalData.phone" :phone="modalData.phone"/>
       </div>

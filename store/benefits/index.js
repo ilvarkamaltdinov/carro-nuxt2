@@ -4,9 +4,11 @@ export const state = () => ({
     benefitsCredit: ['sale', 'guaranty', 'docs', 'first-pay', 'first-pay-trade', 'insurance'],
     benefitsEurope: ['delivery', 'pre-pay', 'transportation', 'europe-tech', 'europe-insurance'],
     benefitsInstallment: ['sale', 'guaranty', 'docs', 'first-pay-alt', 'first-pay-trade', 'insurance'],
-    benefitsTradeIn: ['sale-trade', 'guaranty', 'docs', 'value-market', 'first-pay-trade', 'fast-time'],
+    benefitsTradeIn: ['sale-trade', 'free-value', 'docs', 'value-market', 'first-pay-trade', 'fast-time'],
     benefitsBuyout: ['fast-pay', 'value-market', 'value-man', 'value-free', 'docs', 'fast-time'],
     benefitsCar: ['guaranty', 'first-pay', 'docs', 'first-pay-trade', 'tires', 'insurance'],
+    benefitsNew: ['guaranty-new', 'first-pay', 'docs', 'first-pay-trade', 'tires', 'insurance'],
+    benefitsInstallmentNew: ['guaranty-new', 'first-pay', 'docs', 'first-pay-trade', 'tires', 'insurance'],
     benefitsCreditMobile: ['docs', 'insurance'],
     benefits: [
           {
@@ -50,6 +52,20 @@ export const state = () => ({
             icon: 'shield',
             description: 'Автосалоны-партнеры CARRO предоставляют гарантию на техническое состояние автомобиля в течение двух лет с момента покупки.',
             slug: 'guaranty',
+        },
+        {
+          text: 'Бесплатная',
+          text_strong: 'оценка',
+          icon: 'search',
+          description: 'Автосалоны-партнеры CARRO бесплатно оценят ваш автомобиль для последующего обмена.',
+          slug: 'free-value',
+        },
+        {
+          text: 'Гарантия 5 лет',
+          text_strong: 'или 150 000 км',
+          icon: 'shield',
+          description: 'Автосалоны-партнеры CARRO предоставляют гарантию на техническое состояние нового автомобиля в течение 5 лет или 150 000 км.',
+          slug: 'guaranty-new',
         },
         {
             text: 'Скидка',
@@ -173,6 +189,11 @@ export const getters = {
           return state.benefitsInstallment.indexOf(item.slug) !== -1;
       })
     },
+    benefitsInstallmentNew: (state) => {
+      return state.benefits.filter((item) => {
+          return state.benefitsInstallmentNew.indexOf(item.slug) !== -1;
+      })
+    },
     benefitsTradeIn: (state) => {
         return state.benefits.filter((item) => {
             return state.benefitsTradeIn.indexOf(item.slug) !== -1;
@@ -187,6 +208,11 @@ export const getters = {
         return state.benefits.filter((item) => {
             return state.benefitsCar.indexOf(item.slug) !== -1;
         })
+    },
+    benefitsNew: (state) => {
+      return state.benefits.filter((item) => {
+          return state.benefitsNew.indexOf(item.slug) !== -1;
+      })
     },
     benefitsCreditMobile: (state) => {
       return state.benefits.filter((item) => {

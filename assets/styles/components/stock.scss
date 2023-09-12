@@ -12,13 +12,22 @@
   position: absolute;
   top: 96px;
   left: 16px;
-  @media (min-width: $tablet-width) {
-    top: 24px;
-  }
-  &.stock--true{
+
+  &.stock--false {
     background-color: $colorLink;
   }
-  &.stock--false{
+
+  &.stock--true {
     background-color: $colorSuccess;
+  }
+
+  &.stock--new {
+    background-color: $colorPrimary;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .stock {
+    top: 24px;
   }
 }

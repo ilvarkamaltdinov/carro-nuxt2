@@ -2,16 +2,13 @@
   <div class="car__buy-wrap">
     <div class="car__buy">
       <div class="car__price-block">
-        <div
-          v-if="$route.params.category === 'europe'"
-          class="car__price-europe visually-hidden"
-        >
+        <div v-if="$route.params.category === 'europe'" class="car__price-europe visually-hidden">
           32 456 €
         </div>
         <div class="car__price">
           {{ offer.price | toCurrency }}
         </div>
-<!--        <tippy-question :class="{'car__tippy-question' : $route.params.category !== 'europe'}" text="Цена актуальна при покупке в кредит" />-->
+        <!--        <tippy-question :class="{'car__tippy-question' : $route.params.category !== 'europe'}" text="Цена актуальна при покупке в кредит" />-->
         <tippy-question text="Цена актуальна при покупке в кредит" />
         <div class="car__price-old" v-if="$route.params.category !== 'europe'">
           {{ offer.price_old | toCurrency }}
@@ -21,124 +18,83 @@
         </div>
       </div>
       <div v-if="offer.is_active" class="car__buy-block">
-        <div
-          v-if="$route.params.category === 'europe'"
-          class="car__actions-buttons"
-        >
-          <button-autoteka
-            v-if="$route.params.category !== 'europe'"
-            @click="autoteka(offer)"
-          />
-          <button-favorite
-            v-if="offer.is_active"
-            :active="likesArray.some((id) => id === String(offer.external_id))"
-            @click="like()"
-          />
+        <div v-if="$route.params.category === 'europe'" class="car__actions-buttons">
+          <button-autoteka v-if="$route.params.category !== 'europe'" @click="autoteka(offer)" />
+          <button-favorite v-if="offer.is_active" :active="likesArray.some((id) => id === String(offer.external_id))"
+            @click="like()" />
           <!--<button-compare />-->
-          <button-call
-            v-if="offer.is_active && offer.dealer.phone"
-            :phone="offer.dealer.phone"
-            @click="callback(offer)"
-          />
+          <button-call v-if="offer.is_active && offer.dealer.phone" :phone="offer.dealer.phone"
+            @click="callback(offer)" />
         </div>
-        <button
-          v-if="$route.params.category !== 'europe'"
-          @click.prevent="installmentClick(offer)"
-          class="button button--credit-pay button--link"
-        >
+        <button v-if="$route.params.category !== 'europe'" @click.prevent="installmentClick(offer)"
+          class="button button--credit-pay button--link">
           Рассрочка
         </button>
-        <button
-          v-if="showTradeIn"
-          @click.prevent="tradeInClick(offer)"
-          class="button button--trade-in button--link"
-        >
+        <button v-if="showTradeIn" @click.prevent="tradeInClick(offer)" class="button button--trade-in button--link">
           Trade-In
         </button>
-        <button
-          v-if="$route.params.category === 'europe'"
-          @click.prevent="creditClick(offer)"
-          class="button button--credit button--credit-europe"
-        >
+        <button v-if="$route.params.category === 'europe'" @click.prevent="creditClick(offer)"
+          class="button button--credit button--credit-europe">
           Рассчитать кредит
         </button>
-        <button
-          v-else
-          @click.prevent="creditClick(offer)"
-          class="button button--credit"
-        >
+        <button v-else @click.prevent="creditClick(offer)" class="button button--credit">
           Купить в кредит
         </button>
       </div>
-      <div
-        v-if="$route.params.category !== 'europe'"
-        class="car__actions-block"
-      >
-        <rating-car
-          v-tippy="{
+      <div v-if="$route.params.category !== 'europe'" class="car__actions-block">
+        <rating-car v-if="!isNew" v-tippy="{
+          content: `<div class='tippy__text'>Рейтинг автомобиля</div>`,
+          animation: 'scale',
+          arrow: true,
+        }" @click="ratingClick" :rating="offer.rating" />
+
+        <div class="car__rating-new" v-if="isNew">
+          <rating-car v-tippy="{
             content: `<div class='tippy__text'>Рейтинг автомобиля</div>`,
             animation: 'scale',
             arrow: true,
-          }"
-          @click="ratingClick"
-          :rating="offer.rating"
-        />
+          }" :rating="{ rating_total: 5 }" />
+
+          <span class="car__rating-new-label">
+            Новый
+            <span>автомобиль</span>
+          </span>
+        </div>
+
+
         <div class="car__actions-buttons">
-          <button-autoteka
-            v-if="$route.params.category !== 'europe'"
-            @click="autoteka(offer)"
-          />
-          <button-favorite
-            v-if="offer.is_active"
-            :active="likesArray.some((id) => id === String(offer.external_id))"
-            @click="like()"
-          />
+          <button-autoteka v-if="$route.params.category !== 'europe' && !isNew" @click="autoteka(offer)" />
+          <button-favorite v-if="offer.is_active" :active="likesArray.some((id) => id === String(offer.external_id))"
+            @click="like()" />
           <!--<button-compare />-->
-          <button-call
-            v-if="offer.is_active && offer.dealer.phone"
-            :phone="offer.dealer.phone"
-            @click="callback(offer)"
-          />
+          <button-call v-if="offer.is_active && offer.dealer.phone" :phone="offer.dealer.phone"
+            @click="callback(offer)" />
         </div>
       </div>
       <div class="car__stock" v-if="offer.category_enum === 'europe'">
         Под заказ в автоцентре
-        <a
-          href="#"
-          @click.prevent="moreInfoDiller(offer.dealer.slug)"
-          class="car__stock-dealer"
-        >
+        <a href="#" @click.prevent="moreInfoDiller(offer.dealer.slug)" class="car__stock-dealer">
           «{{ offer.dealer.title }}»
         </a>
         <div class="car__stock-promo">
           г. {{ offer.dealer.city }}, {{ offer.dealer.address }}
         </div>
       </div>
-      <div class="car__stock" v-else-if="offer.is_active && !offer.is_stock">
+      <div class="car__stock" v-else-if="offer.is_active && !offer.is_stock || isNew">
         В наличии в автоцентре
-        <a
-          href="#"
-          @click.prevent="moreInfoDiller(offer.dealer.slug)"
-          class="car__stock-dealer"
-        >
+        <a href="#" @click.prevent="moreInfoDiller(offer.dealer.slug)" class="car__stock-dealer">
           «{{ offer.dealer.title }}»
         </a>
         <div class="car__stock-promo">
           г. {{ offer.dealer.city }}, {{ offer.dealer.address }}
         </div>
       </div>
-      <div
-        v-else-if="offer.is_active && offer.is_stock"
-        class="car__stock car__stock--no"
-      >
+      <div v-else-if="offer.is_active && offer.is_stock && !isNew" class="car__stock car__stock--no">
         Автомобиль находится на центральной стоянке
       </div>
       <div v-else class="car__stock car__stock--no">Нет в наличии</div>
     </div>
-    <car-terms
-      v-if="!$device.isMobile"
-      class="swiper-slide car__info-group--options"
-    />
+    <car-terms v-if="!$device.isMobile" class="swiper-slide car__info-group--options" />
   </div>
 </template>
 <script>
@@ -154,6 +110,9 @@ export default {
       likesArray: "favorite/favorite/likesArray",
       settings: "settings/settings/settings",
     }),
+    isNew() {
+      return this.offer.run <= 100 && this.offer.owner.number <= 1;
+    },
     showTradeIn() {
       if (this.$route.params.category === "europe") {
         if (this.$device.isMobile) {

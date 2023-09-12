@@ -2,7 +2,7 @@
 	<div class="catalog__buttons">
 		<div class="catalog__actions">
 			<button-autoteka @click="autoteka(offer)"
-			                 v-if="long && $route.params.category !=='europe'" />
+			                 v-if="long && $route.params.category !=='europe' && !isNew" />
 			<button-favorite :active="likesArray.some(id => id === String(offer.external_id))"
 			                 @click="like()" />
 			<!--<button-compare v-if="long" />-->
@@ -64,7 +64,10 @@ export default {
 			} else {
 				return false
 			}
-		}
+		},
+    isNew() {
+      return this.offer.run <= 100 && this.offer.owner.number <= 1;
+    }
 	},
 	props: {
 		isForm: {
