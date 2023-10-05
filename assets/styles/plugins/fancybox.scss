@@ -48,6 +48,12 @@
   .carousel__button.is-next {
     display: none;
   }
+
+  .fancybox__content {
+    &::after {
+      display: none!important;
+    }
+  }
 }
 
 @media (min-width: $tablet-width) {

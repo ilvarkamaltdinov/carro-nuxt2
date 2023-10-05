@@ -50,7 +50,11 @@
 }
 
 @media (max-width: $mobile-width-only) {
-
+  .slider-car__item {
+    &::before {
+      display: none!important;
+    }
+  }
 }
 
 @media (min-width: $desktop-width) {
