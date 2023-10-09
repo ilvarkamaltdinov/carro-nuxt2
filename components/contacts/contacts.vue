@@ -23,8 +23,12 @@
           <div class="text__contacts-group" v-if="settings.phone">
             <div class="text__contacts-label">Вопросы о портале:</div>
             <a class="text__contacts-item"
+               v-if="!isNight"
                :href="`tel:${settings.phone}`">{{ settings.phone }}
             </a>
+            <span class="text__contacts-item" v-else @click="callback">
+              {{ settings.phone }}
+            </span>
           </div>
           <div class="text__contacts-group">
             <div class="text__contacts-label">Вопросы сотрудничества:</div>
@@ -33,7 +37,7 @@
             </a>
           </div>
           <div class="text__contacts-group" v-if="dealers.length" v-for="(dealer, index) in dealers" :key="dealer.id">
-            <div class="text__contacts-label" >
+            <div class="text__contacts-label">
               Филиал в {{ settings.in_city }} № {{ index + 1 }}:
             </div>
             <p class="text__p">
@@ -78,12 +82,23 @@ export default {
     ...mapGetters({
       settings: 'settings/settings/settings',
       isMoscow: 'isMoscow',
+      isNight: 'isNight'
     })
   },
   methods: {
     ...mapActions({
-      request: 'request'
-    })
+      request: 'request',
+      openModal: 'modal/modal-main/openModal',
+    }),
+    callback() {
+      let payload = {
+        modal_data: {},
+        modal_component: "modal-callback",
+        modal_title: "Остались вопросы? Перезвоним Вам!",
+        modal_sub_title: '',
+      };
+      this.openModal(payload);
+    },
   },
   async fetch() {
     let variables = {}
