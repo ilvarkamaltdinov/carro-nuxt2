@@ -100,10 +100,11 @@ export default {
       setIsNight: 'SET_IS_NIGHT'
     }),
     async dateTimeFunc() {
-      if (new Date().getHours() >= 21 || new Date().getHours() <= 9) {
-        await this.setIsNight(false)
-      } else {
+      const hours = new Date().getHours()
+      if (hours >= 21 && hours <= 9) {
         await this.setIsNight(true)
+      } else {
+        await this.setIsNight(false)
       }
     },
     async searchClick() {

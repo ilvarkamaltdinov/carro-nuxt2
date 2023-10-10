@@ -17,10 +17,10 @@
           <social/>
           <div class="page-footer__contacts-list">
             <a class="page-footer__contacts-item"
-               v-if="settings.phone && !isNight"
+               v-show="settings.phone && !isNight"
                :href="`tel:${settings.phone.replace(/[^+\d]/g, '')}`">{{ settings.phone }}
             </a>
-            <span v-else-if="settings.phone && isNight" class="page-footer__contacts-item" @click="callback">
+            <span v-show="settings.phone && isNight" class="page-footer__contacts-item" @click="callback">
               {{ settings.phone }}
             </span>
             <a class="page-footer__contacts-item"

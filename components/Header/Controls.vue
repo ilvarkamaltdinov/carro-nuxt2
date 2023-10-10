@@ -5,7 +5,7 @@
                  class="page-header__buttons-link"
                  title="Избранное"
                  aria-label="Избранное">
-				<span v-if="likesArray.length"
+				<span v-show="likesArray.length"
               class="page-header__favorites-count">{{ likesArray.length }}
 				</span>
         <svg-icon
@@ -22,7 +22,7 @@
     </li>
     <li class="page-header__buttons-item page-header__buttons-item--call">
       <a class="page-header__buttons-link page-header__buttons-link--phone"
-         v-if="settings.phone && !isNight"
+         v-show="settings.phone && !isNight"
          :href="`tel:${currentPhone.replace(/[^+\d]/g, '')}`"
          title="Бесплатный звонок"
          aria-label="Бесплатный звонок">
@@ -30,7 +30,7 @@
           name="icon-call"/>
         <span class="page-header__buttons-phone">{{ currentPhone }}</span>
       </a>
-      <div v-else-if="settings.phone && isNight" @click="callback"
+      <div v-show="settings.phone && isNight" @click="callback"
            class="page-header__buttons-link page-header__buttons-link--phone">
         <svg-icon
           name="icon-call"/>

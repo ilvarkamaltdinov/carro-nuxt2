@@ -35,7 +35,7 @@
         <div class="car__top-buttons grid__col-6" v-if="offer.is_active">
           <button-typical @click="callback" text="Обратный звонок" class="button--icon button--link"
             icon="icon-callback" />
-          <button-call-modal v-if="offer.dealer.phone" :phone="offer.dealer.phone" />
+          <button-call-modal @click="callback" v-if="offer.dealer.phone" :phone="offer.dealer.phone" />
         </div>
       </div>
       <div class="car__slider-wrap">

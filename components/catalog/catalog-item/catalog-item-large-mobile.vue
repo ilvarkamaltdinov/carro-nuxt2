@@ -16,6 +16,7 @@
 			                  :key="img.small_webp" />
 			<catalog-item-call-card
 					v-if="!isForm"
+          @click="callback"
 					:dealer="offer.dealer"
 					:image="offer.images[0].small_webp" />
 		</div>
@@ -39,7 +40,7 @@
 </template>
 <script>
 import filters from "~/mixins/filters";
-import {mapActions, mapMutations} from "vuex";
+import {mapActions} from "vuex";
 import cardClick from "@/mixins/cardClick";
 
 export default {
@@ -67,6 +68,20 @@ export default {
 			type: Boolean,
 			default: true
 		}
-	}
+	},
+  methods: {
+    ...mapActions({
+      openModal: 'modal/modal-main/openModal',
+    }),
+    async callback() {
+      let payload = {
+        modal_data: this.offer,
+        modal_component: 'modal-callback',
+        modal_title: 'Остались вопросы? Перезвоним Вам!',
+        modal_sub_title: this.offer.name
+      }
+      await this.openModal(payload)
+    },
+  }
 }
 </script>
