@@ -101,7 +101,7 @@ export default {
     }),
     async dateTimeFunc() {
       const hours = new Date().getHours()
-      if (hours >= 21 && hours <= 9) {
+      if (hours >= 21 || hours <= 9) {
         await this.setIsNight(true)
       } else {
         await this.setIsNight(false)
