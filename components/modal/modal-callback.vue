@@ -11,7 +11,9 @@
       <div class="application application--modal grid__col-12 grid grid--application grid--application-modal">
         <div class="application__form grid__col-4">
           <div class="text">
-            <p class="text__p text__p--modal">Операторы работают <span
+            <p v-show="!isNight" class="text__p text__p--modal">Оставьте заявку, и наши операторы свяжутся с вами в течение <span
+              class="text__working-hours">5 минут!</span> </p>
+            <p v-show="isNight" class="text__p text__p--modal">Операторы работают <span
               class="text__working-hours">с 9:00 до 21:00</span>. Оставьте заявку, и мы с радостью перезвоним вам в
               рабочее
               время!</p>
@@ -47,7 +49,8 @@ export default {
   computed: {
     ...mapGetters({
       modalData: 'modal/modal-main/modalData',
-      benefitsCredit: 'benefits/benefitsCredit'
+      benefitsCredit: 'benefits/benefitsCredit',
+      isNight: 'isNight'
     }),
   }
 }
