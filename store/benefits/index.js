@@ -76,7 +76,7 @@ export const state = () => ({
         },
         {
             text: 'Выгода',
-            text_strong: 'до 200 000 ₽',
+            text_strong: 'до 300 000 ₽',
             icon: 'bank',
             description: 'При обмене автомобиля по по программе Trade-In через CARRO Вам предоставляется скидка до 200 000 ₽ от изначальной стоимости нового автомобиля.',
             slug: 'sale-trade',
