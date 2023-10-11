@@ -128,7 +128,7 @@ export default {
 					id: 6,
 					heading: `Супер-автокредит от ${this.settings.credit_percent} годовых`,
 					content:
-							"Скидка до 300 000 ₽, одобрение по паспорту и В/У, взнос от 0%",
+							`Скидка ${this.settings.sale_credit} ₽, одобрение по паспорту и В/У, взнос от 0%`,
 					link: "/credit",
 				},
 				{
@@ -140,7 +140,7 @@ export default {
 				{
 					id: 8,
 					heading: "Обменяй авто по Trade-In",
-					content: "Выгода до 200 000 ₽, рыночная цена, оформление 30 мин.",
+					content: `Выгода ${this.settings.sale_tradein} ₽, рыночная цена, оформление 30 мин.`,
 					link: "/exchange",
 				},
 				{
