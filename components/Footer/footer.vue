@@ -92,7 +92,11 @@
           <li class="page-footer__legal-item">ООО «РИ-АДВАНС»</li>
           <li class="page-footer__legal-item">ОГРН: 1187746783047</li>
           <li class="page-footer__legal-item">ИНН / КПП: 7724451970 / 772401001</li>
-          <li class="page-footer__legal-item">Юр. адрес: 117405, РОССИЯ, г МОСКВА, ул КИРПИЧНЫЕ ВЫЕМКИ, ДОМ 2, корпус К. 1, офис ЭТ 4 П XII ОФ 412 </li>
+          <li class="page-footer__legal-item">
+            Юр. адрес: 117405, г. Москва, ул. Кирпичные Выемки,
+            д. 2к1, эт. 4,
+            п. XII, оф. 412
+          </li>
           <li class="page-footer__legal-item">Физ. адрес: 117405, г. Москва, Варшавское шоссе, д. 170Г</li>
         </ul>
       </div>

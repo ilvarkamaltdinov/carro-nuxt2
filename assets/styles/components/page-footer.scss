@@ -142,9 +142,9 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  padding-top: 16px;
-  padding-bottom: 16px;
   @include border-bottom;
+  padding: 16px;
+  text-align: center;
 
   border-bottom-color: $colorBg;
 }
@@ -196,7 +196,9 @@
   .page-footer__legal-list {
     display: flex;
     flex-direction: row;
-    padding-top: 0;
+    padding: 0;
+    text-align: left;
+    padding-bottom: 16px;
   }
 
   .page-footer {
