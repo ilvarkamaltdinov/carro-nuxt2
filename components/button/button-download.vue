@@ -4,7 +4,7 @@
 	        :class="{'button--loading':preloader}"
 	        class="button button--action button--text button--link button--download">
 		<svg-icon class="button__icon"
-		          name="icon-autoteka" />
+		          name="icon-download" />
 		<span v-if="preloader" class="loader loader--button"></span>
 		<span class="button__text"> Скачать отчет</span>
 	</button>
