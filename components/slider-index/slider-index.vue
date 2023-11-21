@@ -126,8 +126,8 @@ export default {
         // },
         {
           id: 13,
-          heading: "BLACK FRIDAY Скидки на все автомобили",
-          content: " с 20.11 до 26.11",
+          heading: "BLACK FRIDAY",
+          content: " Скидки на все автомобили с 20.11 до 26.11",
           link: "/credit"
         },
         {
