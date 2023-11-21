@@ -6,15 +6,6 @@
       <div class="swiper-wrapper">
         <!-- Slides-->
         <slider-index-slide
-          v-if="isMoscow"
-          :slide='{
-							id: 12,
-							heading: "Автомобили из Европы на carro.ru",
-							content: "Бесплатная доставка, особые условия по автокредиту",
-							link: "/europe",
-				  }'
-        />
-        <slider-index-slide
           v-for="slide in slides"
           :slide="slide"
           :key="slide.id"
@@ -117,7 +108,13 @@ export default {
       isMoscow: 'isMoscow'
     }),
     slides() {
-      return [
+      let europeSlide = {
+        id: 12,
+        heading: "Автомобили из Европы на carro.ru",
+        content: "Бесплатная доставка, особые условия по автокредиту",
+        link: "/europe"
+      }
+      let slides = [
         // {
         //   id: 11,
         //   heading: "Новогодняя акция от carro.ru",
@@ -126,7 +123,7 @@ export default {
         // },
         {
           id: 13,
-          heading: "BLACK FRIDAY",
+          heading: "ЧЕРНАЯ ПЯТНИЦА",
           content: " Скидки на все автомобили с 20.11 до 26.11",
           link: "/credit"
         },
@@ -179,7 +176,11 @@ export default {
           content: "При покупке автомобиля в кредит",
           link: "/credit",
         },
-      ];
+      ]
+      if (this.isMoscow) {
+        slides.splice(1, 0, europeSlide)
+      }
+      return slides
     },
   },
 };
