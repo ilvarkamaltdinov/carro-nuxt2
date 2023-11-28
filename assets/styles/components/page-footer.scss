@@ -153,6 +153,13 @@
   font-size: 12px;
   line-height: 20px;
   font-family: $fontFamilyAdd;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.page-footer__legal-item-label {
+  color: $colorTextSecondary;
 }
 
 .page-footer__city {
@@ -167,6 +174,12 @@
   width: 16px;
   height: 16px;
   margin-right: 8px;
+}
+
+@media (max-width: $mobile-width-only) {
+  .page-footer__legal-list {
+    gap: 8px;
+  }
 }
 
 @media (max-width: $iphone-mini-only) {
