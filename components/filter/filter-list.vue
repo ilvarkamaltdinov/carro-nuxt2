@@ -67,7 +67,7 @@
 					          name="icon-arrow" />
 				</li>
 			</VueSlideToggle>
-		
+
 		</ul>
 		<div class="filter__more">
 			<button-typical :text="allFilters ? 'Меньше фильтров' : 'Больше фильтров'"
@@ -104,7 +104,7 @@ export default {
 			// rangeLoading: !this.$device.isMobile
 		}
 	},
-	
+
 	computed: {
 		...mapGetters({
 			chosen: 'filters/filters/chosen',
