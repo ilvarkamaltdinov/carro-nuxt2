@@ -160,7 +160,7 @@ export default {
         },
         {
           id: 3,
-          heading: "Рассрочка от Сбера и Сетелем",
+          heading: "Рассрочка от Сбера и Драйв-Клик",
           content: "Лучшие условия для клиентов carro.ru",
           link: "/rassrochka",
         },
