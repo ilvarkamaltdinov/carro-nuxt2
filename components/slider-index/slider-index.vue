@@ -5,11 +5,7 @@
       <!-- Additional required wrapper-->
       <div class="swiper-wrapper">
         <!-- Slides-->
-        <slider-index-slide
-          v-for="slide in slides"
-          :slide="slide"
-          :key="slide.id"
-        />
+        <slider-index-slide v-for="slide in slides" :slide="slide" :key="slide.id" />
       </div>
       <!-- If we need pagination-->
       <div class="swiper-pagination"></div>
@@ -24,7 +20,7 @@
 <script>
 import AOS from "aos";
 import "aos/dist/aos.css";
-import {mapGetters} from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   mounted() {
@@ -32,7 +28,9 @@ export default {
       modules: [swiper.Navigation, swiper.Pagination, swiper.Autoplay],
       loop: true,
       autoplayDisableOnInteraction: false,
-      autoplay: true,
+      autoplay: {
+        delay: 5000,
+      },
       slidesPerView: 1,
       autoHeight: true,
       watchSlidesProgress: true,
@@ -115,12 +113,12 @@ export default {
         link: "/europe"
       }
       let slides = [
-        // {
-        //   id: 11,
-        //   heading: "Новогодняя акция от carro.ru",
-        //   content: "Дарим подарок за заявку на автокредит до конца января",
-        //   link: "/credit",
-        // },
+        {
+          id: 11,
+          heading: "Новогодняя акция от carro.ru",
+          content: "Зимняя резина и КАСКО в подарок до конца декабря",
+          link: "/credit",
+        },
         // {
         //   id: 13,
         //   heading: "ЧЕРНАЯ ПЯТНИЦА",
