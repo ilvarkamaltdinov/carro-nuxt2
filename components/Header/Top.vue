@@ -3,7 +3,7 @@
 		<header-logo-block @burger="burgerClick"
 		                   :modal-menu="modalMenu" />
 		<header-nav/>
-    <inputs-toggle/>
+    <inputs-toggle v-if="$device.isDesktopOrTablet"/>
 		<header-controls/>
 	</div>
 </template>
