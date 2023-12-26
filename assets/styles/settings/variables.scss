@@ -18,9 +18,6 @@ $fontApple: -apple-system, system-ui, BlinkMacSystemFont, “Segoe UI”, Roboto
 
 // Colors
 
-$colorText: #2C2D2E;
-$colorTextDark: #262727;
-$colorTextSecondary: #919399;
 $colorLink: #005FF9;
 $colorLinkActive: #004CC7;
 $colorLinkVisited: #4D8FFB;
@@ -132,4 +129,19 @@ $gridGapTabletWidth: 23px;
   --color-button-secondary: #DEE9FA;
   --svg-filter: none;
   --color-primary-light: #FBD4D7;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: #f6f7f9;
+    --color-section: #1C1C1E;
+    --color-text-secondary: #919399;
+    --color-bg: #0C0C0C;
+    --color-divider: #2a2a2c;
+    --color-button: #26282A;
+    --color-button-secondary: #26282A;
+    --color-primary-light: #26282A;
+    --color-text-link: #f6f7f9;
+    --svg-filter: brightness(0) invert(1);
+  }
 }
