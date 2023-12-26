@@ -1,0 +1,135 @@
+// Fonts
+
+$fontFamily: "Golos";
+$fontFamilyAdd: "Golos UI";
+
+$fontFamilyPath: "golos";
+$fontFamilyAddPath: "golos-ui";
+
+$fontLight: 300;
+$fontRegular: 400;
+$fontMedium: 500;
+$fontDemiBold: 600;
+$fontBold: 700;
+$fontExtraBold: 800;
+$fontBlack: 900;
+
+$fontApple: -apple-system, system-ui, BlinkMacSystemFont, “Segoe UI”, Roboto, “Helvetica Neue”, Arial, sans-serif;
+
+// Colors
+
+$colorText: #2C2D2E;
+$colorTextDark: #262727;
+$colorTextSecondary: #919399;
+$colorLink: #005FF9;
+$colorLinkActive: #004CC7;
+$colorLinkVisited: #4D8FFB;
+$colorLinkHover: #669FFB;
+
+$colorPrimary: #ED2939;
+$colorPrimaryLight: #FBD4D7;
+$colorPrimaryDark: #BE212E;
+$colorSuccess: #0DC268;
+$colorAttention: #ED7B29;
+$colorError: #F15461;
+
+$colorButton: #f2f3f6;
+
+$colorBg: #F7F8FA;
+$colorBgHover: #E5E7EC;
+$colorBgActive: #DBDEE4;
+$colorBgButton: #DEE9FA;
+
+$colorBankTinkoff: #FFDD2D;
+$colorBankAlfa: #EF3124;
+$colorBankSber: #1BA135;
+$colorBankVtb: #00AAFF;
+$colorBankSovcom: #FF4E50;
+$colorBankReif: #F8ED51;
+
+$colorDivider: #E0E2E8;
+$colorOverlay: rgba(44, 45, 46, 0.9);
+
+// Margins
+
+$marginBlockMobile: 24px;
+
+// Shadows
+
+$shadow: 0px 4px 32px 0px rgba(0, 16, 61, 12%);
+$shadowHoverCard: 0px 4px 32px 0px rgba(0, 16, 61, 22%);
+$shadowLinkButton: 0px 4px 32px 0px rgba(0, 64, 240, 0.20);
+
+$shadowFooter: 0px -20px 32px 0px rgba(0, 16, 61, 12%);
+$shadowPrimary: 0px 4px 32px 0px rgba(231, 41, 57, 32%);
+$shadowHover: 0px 4px 32px 0px rgba(231, 41, 57, 32%);
+$shadowPopup: 0px 16px 48px 0px rgba(0, 16, 61, 48%);
+$shadowModal: 0 47px 32px 0 rgb(0 16 61 / 6%);
+
+// Border radius
+
+$borderRadiusSmallest: 6px;
+$borderRadiusSmall: 8px;
+$borderRadius: 12px;
+
+// Timing functions
+
+$transitionHover: 0.2s cubic-bezier(0.37, 0, 0.63, 1);
+$shortTransition: 0.3s linear;
+
+// Screens
+
+$retina-dpi: 144dpi;
+$retina-dppx: 1.5dppx;
+
+$tablet-width: 768px;
+$small-desktop-width: 992px;
+$tablet-width-max: 1199px;
+$desktop-width: 1200px;
+$mobile-width-only: 767px;
+$iphone-mini-only: 320px;
+$iphone-se-only: 375px;
+
+// Other
+
+$goldenRatio: 1.61803398875;
+$smallestPadding: 0.02px;
+
+// Rating
+
+$rating-width: 48px;
+$rating-border: 4px;
+
+// Container
+
+$gridTabletWidth: 737px;
+$gridDesktopWidth: 1128px;
+$gridColumnWidth: 72px;
+$gridGapWidth: 24px;
+$gridGapTabletWidth: 23px;
+
+// Root
+
+:root {
+  --rating-width: #{$rating-width};
+  --rating-border: #{$rating-border};
+  --shift: 0;
+	--x: 0;
+	--y: 0;
+  --fancybox-accent-color: $colorPrimary!important;
+
+  // Main Variables
+
+  --color-text: #2C2D2E;
+  --color-text-dark: #262727;
+  --color-text-secondary: #919399;
+  --color-text-link: #005FF9;
+  --color-section: #ffffff;
+  --color-bg: #F7F8FA;
+  --color-bg-active: #DBDEE4;
+  --color-divider: #E0E2E8;
+  --color-button: #f2f3f6;
+  --color-button-secondary: #DEE9FA;
+  --svg-filter: none;
+  --color-primary-light: #FBD4D7;
+}

@@ -1,0 +1,50 @@
+.select {
+  position: relative;
+  overflow: visible;
+}
+
+.select--hidden {
+  @include hide-select;
+}
+
+.select__list {
+  @include white-back;
+  padding: 0 16px;
+  position: absolute;
+  top: 58px;
+  min-width: 270px;
+  width: auto;
+  left: -4px;
+  max-height: 320px;
+  overflow: auto;
+  z-index: 50;
+}
+.select__list--regions{
+  left: 50% !important;
+  transform: translateX(-50%);
+}
+
+.select__item {
+  display: block;
+  padding: 16px;
+  color: var(--color-text);
+  text-align: left;
+  @include font-body;
+  margin: 0 -16px;
+  transition: $transitionHover;
+
+  &:hover {
+    color: $colorPrimary;
+    cursor: pointer;
+  }
+
+  &:not(:last-child) {
+    @include border-bottom;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .select {
+    cursor: pointer;
+  }
+}

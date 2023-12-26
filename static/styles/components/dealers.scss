@@ -1,0 +1,97 @@
+.dealers__item {
+  @include white-back;
+}
+
+.dealers__item-img {
+  border-radius: $borderRadius;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.dealers__features .heading-group__wrap {
+  margin-right: 16px;
+}
+
+@media (max-width: $mobile-width-only) {
+  .dealers__features {
+    margin-bottom: 16px;
+  }
+
+  .dealers__item {
+    margin-bottom: 24px;
+  }
+
+  .dealers--catalog {
+    @include horizontal-scroll;
+    margin: 0 -16px;
+    margin-bottom: 24px;
+  }
+
+  .dealers__item--catalog {
+    margin-right: 16px;
+    width: 280px;
+    flex-shrink: 0;
+  }
+
+  .dealers__item--catalog .heading-group__label {
+    display: none;
+  }
+}
+
+@media (min-width: $tablet-width) and (max-width: $tablet-width-max) {
+  .dealers__item-img {
+    aspect-ratio: 3 / 4;
+  }
+
+  .dealers__item {
+    grid-column: span 4;
+  }
+
+  .dealers__item--catalog .dealers__item-img {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .dealers__item {
+    padding: 32px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .dealers__item--catalog {
+    flex-direction: column;
+  }
+
+  .dealers__item--catalog .dealers__features {
+    margin-right: 0;
+  }
+
+  .dealers__block-wrap {
+    display: flex;
+  }
+
+  .dealers__features {
+    width: 40%;
+    margin-right: 64px;
+    flex-shrink: 0;
+  }
+
+  .dealers__item-img-wrap {
+    width: 60%;
+    margin-left: 40px;
+  }
+
+  .dealers__item-img {
+    width: 100%;
+  }
+
+  .dealers__item--catalog .dealers__item-img-wrap {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .dealers__item--catalog .dealers__features {
+    width: 100%;
+  }
+}

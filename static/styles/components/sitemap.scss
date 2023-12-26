@@ -1,0 +1,44 @@
+.sitemap__block {
+  @include white-back;
+}
+
+.sitemap a {
+  display: inline-block;
+  transition: $transitionHover;
+
+  &:hover {
+    color: $colorLink;
+  }
+}
+
+.sitemap__link {
+  display: block;
+}
+
+.sitemap__group {
+  &:not(:last-child) {
+    @include border-bottom;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: $mobile-width-only) {
+  .sitemap__link {
+    margin-bottom: 8px;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .sitemap__link {
+    margin-right: 16px;
+  }
+
+  .sitemap__block {
+    padding: 24px;
+  }
+
+  .sitemap__links-list {
+    display: flex;
+  }
+}

@@ -1,0 +1,139 @@
+@media (max-width: $mobile-width-only) {
+  .grid--container {
+    padding: 0 16px;
+    width: 100%;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(8, $gridColumnWidth);
+    gap: $gridGapTabletWidth;
+    max-width: $gridTabletWidth;
+    width: 100%;
+    margin: auto;
+    grid-auto-flow: dense;
+  }
+  .grid--container {
+    row-gap: 40px;
+  }
+
+  .grid--car {
+    row-gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .grid.grid--catalog {
+    grid-template-columns: repeat(8, $gridColumnWidth);
+    row-gap: 24px;
+  }
+
+  .grid--footer {
+    row-gap: 16px;
+  }
+
+  .grid--featured {
+    grid-template-rows: repeat(3, 266px);
+  }
+
+  .grid--reviews {
+    grid-template-rows: auto;
+  }
+
+  .grid.grid--header {
+    grid-row-gap: 0;
+  }
+
+  .grid__col-2 {
+    grid-column: span 2;
+  }
+
+  .grid__col-3 {
+    grid-column: span 3;
+  }
+
+  .grid__col-4 {
+    grid-column: span 4;
+  }
+
+  .grid__col-5 {
+    grid-column: span 5;
+  }
+
+  .grid__col-6 {
+    grid-column: span 6;
+  }
+
+  .grid__col-7 {
+    grid-column: span 7;
+  }
+
+  .grid__col-8 {
+    grid-column: span 8;
+  }
+
+  .grid__col-9 {
+    grid-column: span 9;
+  }
+
+  .grid__col-10 {
+    grid-column: span 10;
+  }
+
+  .grid__col-11 {
+    grid-column: span 11;
+  }
+
+  .grid__col-12 {
+    grid-column: span 8;
+  }
+
+  .grid--application {
+    grid-template-rows: auto 1fr;
+  }
+
+  .grid .grid--application {
+    margin-bottom: -24px;
+  }
+
+  .grid--application-modal {
+    grid-template-columns: repeat(8, $gridColumnWidth);
+    grid-template-rows: auto 1fr;
+    margin-bottom: 16px;
+  }
+}
+
+@media (min-width: $tablet-width) and (max-width: $tablet-width-max) {
+  .grid--featured {
+    grid-template-rows: repeat(4, 266px);
+  }
+
+  .grid__col-5 {
+    grid-column: span 8;
+  }
+
+  .grid__col-7.text__wrap--figure {
+    grid-column: span 8;
+  }
+
+  .grid__col-7 {
+    grid-column: span 4;
+  }
+
+  .grid__col-9 {
+    grid-column: span 8;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .grid {
+    grid-template-columns: repeat(12, $gridColumnWidth);
+    max-width: $gridDesktopWidth;
+    gap: $gridGapWidth;
+  }
+
+  .grid__col-12 {
+    grid-column: span 12;
+  }
+}

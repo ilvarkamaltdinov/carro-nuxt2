@@ -1,0 +1,57 @@
+.dealer__slider {
+  margin-bottom: 16px;
+}
+
+.dealer__item,
+.dealer__link {
+  display: block;
+  border-radius: $borderRadius;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+
+.dealer__img {
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+  object-position: top;
+  height: 100%;
+  width: 100%;
+}
+
+@media (max-width: $mobile-width-only) {
+  .dealer__slider {
+    margin: 0 -16px;
+    margin-bottom: 16px;
+  }
+
+  .dealer .swiper-button {
+    display: none;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .dealer {
+    position: relative;
+  }
+
+  .dealer .swiper-button {
+    position: absolute;
+    top: calc(50% - 20px);
+    z-index: 50;
+  }
+
+  .dealer .swiper-button-prev {
+    position: absolute;
+    left: -12px;
+  }
+
+  .dealer .swiper-button-next {
+    position: absolute;
+    right: -12px;
+  }
+
+  .dealer__slider {
+    margin: 0 -32px;
+    margin-bottom: 32px;
+  }
+}

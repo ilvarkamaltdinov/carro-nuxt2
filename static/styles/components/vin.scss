@@ -1,0 +1,36 @@
+.vin__wrapper-car{
+  display: flex;
+  align-items: center;
+  .vin{
+    margin-left: 0;
+  }
+}
+
+.vin {
+  border-radius: $borderRadius;
+  background-color: $colorSuccess;
+  @include font-small;
+  font-weight: $fontRegular;
+  font-size: 13px;
+  color: white;
+  margin: 0 8px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  z-index: 25;
+}
+
+.vin .icon {
+  fill: white;
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+}
+
+@media (min-width: $desktop-width) {
+  .vin {
+    &:hover {
+      cursor: default;
+    }
+  }
+}

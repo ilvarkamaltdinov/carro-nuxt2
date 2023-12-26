@@ -1,0 +1,72 @@
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 56px;
+  height: 56px;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.hamburger__element {
+  background: var(--color-text);
+  border-radius: 10px;
+  height: 3px;
+  transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
+  &:nth-of-type(1) {
+    width: 12px;
+  }
+
+  &:nth-of-type(2) {
+    width: 24px;
+  }
+
+  &:nth-of-type(3) {
+    width: 16px;
+  }
+}
+
+.hamburger input {
+  display: none;
+
+  &:checked ~ span {
+    &:nth-of-type(1) {
+      transform-origin: bottom;
+      transform: rotatez(45deg) translate(5px, 3px);
+
+      width: 12px;
+    }
+
+    &:nth-of-type(2) {
+      transform-origin: top;
+      transform: rotatez(-45deg);
+    }
+
+    &:nth-of-type(3) {
+      transform-origin: bottom;
+      width: 50%;
+      transform: translate(10px, -7px) rotatez(45deg);
+    }
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .hamburger {
+    width: auto;
+    margin-right: 16px;
+    padding-right: 0;
+    padding-left: 0;
+
+    &:hover input:not(:checked) ~ .hamburger__element,
+    &:focus input:not(:checked) ~ .hamburger__element {
+      &:first-of-type {
+        width: 20px;
+      }
+
+      &:nth-of-type(3) {
+        width: 18px;
+      }
+    }
+  }
+}

@@ -26,6 +26,7 @@ export default {
         ],
         link: [
             {rel: 'icon', href: '/favicon.ico', sizes: 'any'},
+            { rel: 'stylesheet', href: '/styles/index-light.css', id: 'theme' },
             {rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml'},
             {rel: 'mask-icon', href: '/mask-icon.svg', color: '#ED2939'},
             {rel: 'manifest', href: '/manifest.json'},
@@ -70,7 +71,7 @@ export default {
         throttle: 0
     },
     css: [
-        '~/assets/styles/index.scss',
+        // '~/assets/styles/index.scss',
         '@fancyapps/ui/dist/fancybox/fancybox.css'
     ],
     plugins: [

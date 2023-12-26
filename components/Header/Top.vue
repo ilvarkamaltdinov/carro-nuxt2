@@ -4,6 +4,11 @@
 		                   :modal-menu="modalMenu" />
 		<header-nav/>
 		<header-controls/>
+    <div
+         class="page-header__buttons-link page-header__buttons-link--phone" @click="isDark = !isDark">
+      <svg-icon
+        name="icon-call"/>
+    </div>
 	</div>
 </template>
 
@@ -21,6 +26,18 @@ export default {
 			modalMenu: 'modal/modal-menu/modalMenu',
 		})
 	},
+  data(){
+    return {
+      isDark: false,
+    }
+  },
+  head() {
+    return {
+      link: [
+        { rel: 'stylesheet', href: this.isDark ? '/styles/index-dark.css': '/styles/index-light.css', id: 'theme' },
+      ]
+    }
+  },
 	methods:{
 		...mapMutations({
 			setModalMenu: 'modal/modal-menu/setModalMenu',

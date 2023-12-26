@@ -1,0 +1,16 @@
+.not-found {
+  grid-column: span 12;
+}
+
+.not-found__img {
+  max-width: 750px;
+  width: 100%;
+  margin: auto;
+}
+
+@media (min-width: $tablet-width) {
+  .not-found__img {
+    margin-top: 24px;
+    margin-bottom: -40px;
+  }
+}

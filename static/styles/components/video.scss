@@ -1,0 +1,131 @@
+.video {
+  //padding-bottom: 32px;
+}
+
+.video__block {
+  aspect-ratio: 16 / 9;
+  background-color: $colorPrimary;
+  display: flex;
+  position: relative;
+  align-items: center;
+
+  // fallback
+  @include aspect-ratio(16,9);
+}
+
+.video__block iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  height: 100%;
+  width: 100%;
+}
+
+.video__img-wrap {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  flex-shrink: 0;
+
+  @supports not (aspect-ratio: 16 / 9) {
+    width: 195px;
+    height: 220px;
+    bottom: -6px;
+  }
+}
+
+.video__img {
+  bottom: 0;
+  max-width: 90%;
+  position: absolute;
+  left: 32px;
+}
+
+.video__text {
+  color: white;
+  @include font-mobile-h3;
+
+  @supports not (aspect-ratio: 16 / 9) {
+    padding-right: 16px;
+  }
+}
+
+.video__play {
+  width: 56px;
+  position: absolute;
+  right: 32px;
+  bottom: -28px;
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: $shadow;
+
+  @supports not (aspect-ratio: 16 / 9) {
+    height: 56px;
+  }
+}
+
+.video__play-icon {
+  fill: $colorPrimary;
+  width: 16px;
+  aspect-ratio: 1 / 1;
+}
+
+@media (min-width: $tablet-width) {
+  .video__text {
+    @include font-desktop-h1;
+  }
+
+  .video__block {
+    padding: 0 32px;
+  }
+
+  .video__play {
+    bottom: -48px;
+    right: 64px;
+    position: absolute;
+    width: 100px;
+    transition: $transitionHover;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadowPrimary;
+      opacity: 0.9;
+      transition: $transitionHover;
+    }
+  }
+
+  .video__play-icon {
+    width: 32px;
+  }
+
+  .video__block {
+    border-radius: $borderRadius;
+  }
+
+}
+
+@media (min-width: $desktop-width) {
+  .video__play {
+    bottom: 64px;
+  }
+
+  .video__img {
+    position: absolute;
+    left: 120px;
+    height: 85%;
+  }
+
+  .video__block {
+    margin: 0 -32px;
+    overflow: hidden;
+  }
+
+  .video__text {
+    max-width: 360px;
+  }
+}

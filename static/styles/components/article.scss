@@ -1,0 +1,49 @@
+.article {
+  @include shadow;
+  background-color: white;
+  z-index: 50;
+  position: relative;
+  margin-top: 24px;
+  padding: 16px;
+  border-radius: $borderRadiusSmall;
+}
+
+.article__body {}
+
+.article__text {
+  line-height: 1.5;
+}
+
+.article__item-info {
+  z-index: 50;
+  position: relative;
+  display: flex;
+  padding: 16px 16px 16px 0;
+  font-size: 12px;
+  border-bottom: 1px solid $light-grey;
+  font-weight: 300;
+}
+
+.article__date {
+  margin-right: 16px;
+}
+
+.article__views {
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: "";
+    background-image: url("../img/icon-eye.svg");
+    background-size: cover;
+    width: 16px;
+    height: 10px;
+    margin-right: 8px;
+  }
+}
+@media (min-width: $desktop-width) {
+  .article {
+    padding: 16px 32px;
+    font-size: 16px;
+  }
+}

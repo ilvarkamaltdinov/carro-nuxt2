@@ -1,0 +1,135 @@
+.tabs {
+  margin-bottom: 16px;
+  z-index: 25;
+  position: relative;
+}
+
+.tabs--modal {
+  margin-bottom: 0;
+}
+
+.tabs__list {
+  display: flex;
+}
+
+.tabs__link {
+  border: 1px solid var(--color-divider);
+  padding: 8px 16px;
+  border-radius: 50px;
+  display: inline-block;
+  transition: $transitionHover;
+  white-space: nowrap;
+
+  @include font-features;
+}
+
+.tabs__year {
+  color: $colorPrimary;
+}
+
+.tabs__count {
+  margin-left: 6px;
+  color: $colorPrimary;
+}
+
+.tabs__item--active .tabs__link {
+  font-weight: $fontBold;
+  background-color: var(--color-divider);
+
+  &:hover {
+    cursor: default;
+  }
+}
+
+.tabs__item--disabled {
+  pointer-events: none;
+
+  &:hover {
+    cursor: auto;
+  }
+}
+
+@media (max-width: $mobile-width-only) {
+  .tabs__item {
+    margin-right: 16px;
+  }
+
+  .tabs__list--all-models .tabs__text {
+    max-width: calc(100% - 16px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .tabs--modal {
+    margin: 0 -16px;
+    width: 100%;
+    width: calc(100% + 32px);
+  }
+
+  .tabs__list {
+    @include horizontal-scroll;
+  }
+
+  .tabs__list--all {
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    width: 100%;
+    margin: auto;
+    padding: 16px;
+  }
+
+  .tabs__list--all-models {
+    justify-content: space-between;
+    gap: 12px 6px;
+  }
+
+  .tabs__list--all-models .tabs__item {
+    width: 46%;
+    width: calc(50% - 4px);
+  }
+
+  .tabs__list--all-models .tabs__link {
+    width: 100%;
+    display: flex;
+
+    & .tabs__count {
+      margin-left: auto;
+    }
+  }
+
+  .tabs__list--all .tabs__item {
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .tabs__list--all .tabs__link {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .tabs__list {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .tabs__item--disabled {
+    &:hover {
+      cursor: auto;
+    }
+  }
+
+  .tabs__link {
+    &:hover,
+    &:focus {
+      transition: $transitionHover;
+      background-color: var(--color-divider);
+    }
+  }
+}

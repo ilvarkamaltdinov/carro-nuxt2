@@ -1,0 +1,49 @@
+@keyframes float {
+	0% {
+		transform: rotate(10deg) translatey(0px);
+	}
+	50% {
+		transform: rotate(10deg) translatey(-20px);
+	}
+	100% {
+		transform: rotate(10deg) translatey(0px);
+	}
+}
+
+@keyframes countingBar {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes tickelWheel {
+  0% {
+    transform:rotate(0);
+  }
+  50% {
+    transform:rotate(-15deg);
+  }
+  100% {
+    transform:rotate(15deg);
+  }
+}
+
+@keyframes tickelWheelInitial {
+  to {
+    transform:rotate(0);
+  }
+}
+
+@keyframes loaderSpin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

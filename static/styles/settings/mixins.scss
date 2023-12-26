@@ -1,0 +1,394 @@
+// Font-Face
+
+@mixin font-face($font-name, $path, $weight: normal) {
+  @font-face {
+    font-family: $font-name;
+    src: url("../fonts/" + $path + ".woff2") format("woff2"),
+      url("../fonts/" + $path + ".woff") format("woff");
+    font-weight: $weight;
+    font-display: swap;
+  }
+}
+
+@mixin flex-wrap($items, $break) {
+  @for $i from 1 through $items {
+    & > *:nth-child(#{$i}) {
+      order: #{$i};
+    }
+  }
+
+  flex-wrap: wrap;
+
+  &::after {
+    content: "";
+    display: block;
+    flex-basis: 100%;
+    width: 0;
+    order: #{$break};
+  }
+}
+
+@mixin flex-wrap-reset {
+  flex-wrap: nowrap;
+
+  &::after {
+    display: none;
+  }
+}
+
+// Mobile fonts
+
+@mixin font-mobile-h1 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: $fontDemiBold;
+}
+
+@mixin font-mobile-h2 {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: $fontDemiBold;
+}
+
+@mixin font-mobile-h3 {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: $fontDemiBold;
+  letter-spacing: 3%;
+}
+
+@mixin font-mobile-h3-card {
+  font-size: 16px;
+  line-height: 24px;
+  font-family: $fontFamilyAdd;
+  font-weight: $fontDemiBold;
+  letter-spacing: 3%;
+}
+
+// Desktop fonts
+
+@mixin font-desktop-h1 {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: $fontDemiBold;
+}
+
+@mixin font-desktop-h2 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: $fontDemiBold;
+}
+
+@mixin font-desktop-h3 {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: $fontDemiBold;
+  letter-spacing: 3%;
+}
+
+@mixin font-desktop-h3-card {
+  font-size: 18px;
+  line-height: 24px;
+  font-family: $fontFamilyAdd;
+  font-weight: $fontDemiBold;
+  letter-spacing: 3%;
+}
+
+@mixin font-body-strong {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: $fontDemiBold;
+}
+
+@mixin font-body {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: $fontRegular;
+  color: var(--color-text);
+}
+
+div {
+  @include font-body;
+}
+
+@mixin font-features {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: $fontRegular;
+  font-family: $fontFamilyAdd;
+}
+
+@mixin font-features-strong {
+  font-size: 16px;
+  line-height: 20px;
+  font-family: $fontFamilyAdd;
+  font-weight: $fontBold;
+}
+
+@mixin font-small {
+  font-size: 14px;
+  line-height: 20px;
+  font-family: $fontFamilyAdd;
+}
+
+@mixin font-small-bold {
+  font-size: 14px;
+  line-height: 20px;
+  font-family: $fontFamilyAdd;
+  font-weight: $fontBold;
+}
+
+// Borders
+
+@mixin border-right {
+  border-right: 1px solid var(--color-divider);
+}
+
+@mixin border-left {
+  border-left: 1px solid var(--color-divider);
+}
+
+@mixin border-top {
+  border-top: 1px solid var(--color-divider);
+}
+
+@mixin border-bottom {
+  border-bottom: 1px solid var(--color-divider);
+}
+
+// Other mixins
+
+@mixin text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin hide-element {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+@mixin show-element {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+@mixin horizontal-scroll {
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 16px;
+  scroll-padding-right: 16px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+
+  padding: 16px 16px;
+  margin: -16px 0;
+  padding-right: 0;
+
+  -ms-scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0px;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    width: 8px;
+    flex-shrink: 0;
+  }
+}
+
+@mixin overlay {
+  &::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.6;
+    background-color: var(--color-text-dark);
+    border-radius: 4px;
+    transition: 0.3s all;
+    z-index: 50;
+  }
+}
+
+@mixin button-reset {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+}
+
+@mixin content-block {
+  padding: 24px;
+  background-color: white;
+  box-shadow: $shadow;
+  border-radius: $border-radius;
+}
+
+@mixin modal-menu {
+  position: fixed;
+  top: 56px;
+  z-index: 200;
+  width: 100%;
+  background-color: var(--color-section);
+  padding: 16px;
+  height: 100vh;
+  overflow-y: auto;
+  padding-bottom: 200px;
+}
+
+@mixin white-back {
+  background-color: var(--color-section);
+  padding: 16px;
+  border-radius: $borderRadius;
+  box-shadow: $shadow;
+}
+
+@mixin white-back-l {
+  background-color: var(--color-section);
+  padding: 24px;
+  border-radius: $borderRadius;
+  box-shadow: $shadow;
+}
+
+@mixin container-mobile {
+  width: 100%;
+  padding-right: 16px;
+  padding-left: 16px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@mixin container-mobile-reset {
+  margin-left: -16px;
+  margin-right: -16px;
+}
+
+// Hovers
+
+@mixin hover-card {
+  transition: $transitionHover;
+
+  &:hover {
+    box-shadow: $shadowHoverCard;
+  }
+}
+
+@mixin hover {
+  transition: $transitionHover;
+  color: $transitionHover;
+
+  &:hover {
+    transition: $transitionHover;
+    color: $colorPrimary;
+  }
+}
+
+@mixin hover-icon {
+  transition: $transitionHover;
+
+  & .icon {
+    transition: $transitionHover;
+  }
+
+  &:hover .icon {
+    transition: $transitionHover;
+    fill: $colorPrimary;
+  }
+}
+
+@mixin hover-social {
+  transition: $transitionHover;
+
+  &:hover {
+    transition: $transitionHover;
+    background-color: $colorPrimary;
+  }
+
+  &:hover .social__icon {
+    transition: $transitionHover;
+    transition-duration: 0.1s;
+    fill: white;
+  }
+}
+
+@mixin glass-hover($axis) {
+  &:hover .featured__glass {
+    &:first-of-type {
+      transform: translate#{$axis }(-16px);
+    }
+
+    &:last-of-type {
+      transform: translate#{$axis }(16px);
+    }
+  }
+}
+
+@mixin skeleton-loader {
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    border-radius: 4px;
+    height: 4px;
+    width: 100%;
+    position: absolute;
+    background-color: var(--color-bg);
+    height: 24px;
+    z-index: 25;
+  }
+}
+
+@mixin aspect-ratio($width, $height) {
+  // Fallback (current, using padding hack)
+  @supports not (aspect-ratio: 1 / 1) {
+    &::before {
+      float: left;
+      padding-top: calc(100% * #{$height} / #{$width});
+      content: "";
+    }
+    &::after {
+      display: block;
+      content: "";
+      clear: both;
+    }
+  }
+}
+
+@mixin lazyload {
+  opacity: 0;
+  visibility: hidden;
+  transition: $transitionHover;
+  will-change: opacity;
+  -webkit-backface-visibility: hidden;
+}
+
+@mixin lazyloaded {
+  opacity: 1;
+  visibility: visible;
+  transition: $transitionHover;
+  -webkit-backface-visibility: visible;
+}
+
+@mixin hide-select {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  font-size: 0;
+}

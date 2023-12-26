@@ -1,0 +1,6 @@
+@include font-face($fontFamily, $fontFamilyPath+"-regular", $fontRegular);
+@include font-face($fontFamily, $fontFamilyPath+"-demibold", $fontDemiBold);
+@include font-face($fontFamily, $fontFamilyPath+"-bold", $fontBold);
+
+@include font-face($fontFamilyAdd, $fontFamilyAddPath+"-regular", $fontRegular);
+@include font-face($fontFamilyAdd, $fontFamilyAddPath+"-bold", $fontBold);

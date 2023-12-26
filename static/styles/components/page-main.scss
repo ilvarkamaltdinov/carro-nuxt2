@@ -1,0 +1,112 @@
+.page-main__button-fixed {
+  position: fixed;
+  bottom: 32px;
+  left: 0;
+  padding: 0 16px;
+  width: 100%;
+  z-index: 100;
+}
+.catalog__list--visited{
+  margin-bottom: 24px;
+}
+
+@media (max-width: $mobile-width-only) {
+  .page-main__video {
+    margin-bottom: 48px!important;
+  }
+
+  .page-main {
+    padding-top: 121px;
+  }
+
+  .page-main > .grid > * {
+    &:not(:last-child) {
+      margin-bottom: $marginBlockMobile;
+    }
+  }
+
+  .page-main__slider-index {
+    margin-bottom: 24px;
+  }
+
+  .page-main__credit-index {
+    display: none;
+  }
+
+  .page-main__slider-index {
+    margin-top: -16px;
+  }
+
+  .page-main__catalog .tabs,
+  .page-main__catalog .catalog__list,
+  .page-main__catalog .filter,
+  .page-main__car .car__info,
+  .page-main__car .car__slider,
+  .page-main__stories,
+  .page-main__video,
+  .page-main__slider-index,
+  .page-main__filter,
+  .page-main .benefits__list,
+  .page-main__featured .tabs {
+    @include container-mobile-reset;
+  }
+
+  .page-main__car .swiper--car-info {
+    padding: 32px 16px;
+    margin-top: -48px;
+    margin-bottom: -48px;
+  }
+
+  .page-main__car .benefits__list {
+    margin-bottom: -32px;
+  }
+}
+
+@media (max-width: $tablet-width-max) {
+  .page-main__credit-index {
+    display: none;
+  }
+}
+
+@media (min-width: $tablet-width) and (max-width: $tablet-width-max) {
+  .page-main__credit-index {
+    display: none;
+  }
+
+  .page-main__slider-index {
+    margin-top: -24px;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .page-main {
+    padding-top: 153px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .page-main__credit-index {
+    @include white-back-l;
+  }
+
+  .page-main__button-fixed {
+    width: 880px;
+    right: 0;
+    left: auto;
+    padding: 0 32px;
+  }
+
+  .page-main__credit-index {
+    z-index: 50;
+  }
+
+  .page-main__stories {
+    position: relative;
+    padding-right: 80px;
+  }
+
+  .page-main__stories .swiper {
+    padding: 32px;
+    margin: -32px;
+  }
+}

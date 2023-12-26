@@ -1,0 +1,156 @@
+.benefits__item {
+  flex-shrink: 0;
+}
+
+.benefits__link {
+  transition: $transitionHover;
+  @include white-back;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:focus {
+    box-shadow: $shadowHoverCard;
+    transform: scale(1.02);
+  }
+
+  &:focus * {
+    color: $colorPrimary;
+  }
+
+  &:focus .benefits__icon {
+    fill: $colorPrimary;
+  }
+}
+
+.benefits--mobile {
+  margin-bottom: 16px;
+}
+
+.benefits__icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  transition: $transitionHover;
+  fill: var(--color-text);
+}
+
+.benefits__text,
+.benefits__text-strong {
+  text-align: left;
+  @include font-small;
+  white-space: normal;
+  transition: $transitionHover;
+}
+
+.benefits__icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.benefits.benefits--catalog,
+.benefits.benefits--europe {
+  margin-bottom: -16px;
+}
+
+@media (max-width: $mobile-width-only) {
+  .benefits--credit {
+    margin-bottom: 16px;
+  }
+
+  .benefits--modal {
+    margin: 0 -16px;
+  }
+
+  .benefits--modal .benefits__list--car {
+    margin-bottom: -24px;
+    margin-top: -64px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .benefits--modal .benefits__link {
+    padding: 8px;
+  }
+
+  .benefits__list {
+    @include horizontal-scroll;
+    padding-top: 32px;
+    padding-bottom: 48px;
+    margin-top: -32px;
+    margin-bottom: -32px;
+    margin-bottom: -48px;
+  }
+
+  .benefits__item {
+    margin-right: 16px;
+  }
+
+  .benefits__link {
+    padding: 8px 16px;
+  }
+
+  .benefits.benefits--catalog {
+    display: none;
+  }
+
+  .benefits.benefits--europe {
+    margin-bottom: 24px;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .benefits--mobile {
+    display: none;
+  }
+
+  .benefits__list--car {
+    display: flex;
+    justify-content: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .benefits--modal .benefits__item {
+    &:last-child {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .benefits {
+    margin-bottom: 16px;
+  }
+
+  .benefits__list--car {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+
+  .benefits__link {
+    transition: $transitionHover;
+    @include white-back;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      box-shadow: $shadowHoverCard;
+      transform: scale(1.02);
+    }
+
+    &:hover * {
+      color: $colorPrimary;
+    }
+
+    &:hover .benefits__icon {
+      fill: $colorPrimary;
+    }
+  }
+}
