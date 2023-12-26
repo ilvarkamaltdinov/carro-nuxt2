@@ -11,6 +11,10 @@
   @include font-body-strong;
 }
 
+.car__top-buttons .button__icon {
+  fill: var(--color-text-link);
+}
+
 .car__terms-item {
   display: flex;
   padding: 16px 0;
