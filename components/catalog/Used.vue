@@ -45,9 +45,9 @@
           </li>
         </ul>
       </div>
-      <div
-        class="heading-group heading-group--catalog heading-group--h1 grid__col-12"
-      >
+
+
+      <div class="heading-group heading-group--catalog heading-group--h1 grid__col-12">
         <div class="heading-group__wrap">
           <h1 class="heading heading--h1">{{ pageTitle }}</h1>
         </div>

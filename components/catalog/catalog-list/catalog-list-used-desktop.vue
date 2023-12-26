@@ -69,10 +69,10 @@ export default {
 			}
 			this.$nextTick(() => {
 				let catalog = this.$refs.catalog;
-				
+
 				catalog.scrollIntoView(true);
 				const yourHeight = 130 + 88; // header + filter
-				
+
 				const scrolledY = window.scrollY;
 				window.scroll(0, scrolledY - yourHeight);
 			})

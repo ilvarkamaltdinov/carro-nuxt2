@@ -13,6 +13,10 @@
   display: flex;
 }
 
+.filter__buttons-wrap--hidden .filter__buttons-sort {
+  display: none;
+}
+
 .filter__menu-text {
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -98,11 +102,12 @@
   .filter__buttons-sort-select {
     @include hide-select;
   }
-  .filter__buttons-wrap{
-    &:first-child{
+  .filter__buttons-wrap {
+    &:first-child {
       width: 100%;
       flex-direction: row-reverse;
       justify-content: space-between;
+
       .filter__button {
         &:first-child {
           margin-right: 0;
@@ -110,7 +115,7 @@
       }
     }
   }
-  .filter__buttons-wrap--view{
+  .filter__buttons-wrap--view {
     display: none;
   }
 }

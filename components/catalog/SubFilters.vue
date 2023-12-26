@@ -7,8 +7,7 @@
     <catalog-generations v-if="isGenerations"
                          :is-all="showAll"/>
 
-    <div class="catalog__more-buttons"
-         v-if="$device.isMobile">
+    <div class="catalog__more-buttons" v-if="$device.isMobile">
       <div class="catalog__more-buttons-wrap">
         <button-typical
           :text="'Цена до: ' + (this.chosenPrice ? Number(chosenPrice).toLocaleString('ru') + ' ₽' : 'выбрать')"

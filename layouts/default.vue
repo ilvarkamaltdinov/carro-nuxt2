@@ -68,6 +68,8 @@ export default {
 					|| this.$route.params.category === 'commercial'
 					|| this.$route.params.category === 'europe'
 					|| this.$route.name === 'Best-moscow-autosalon'
+					|| this.$route.name === 'best-moscow-autosalon'
+					|| this.$route.name === 'best-autosalon'
 					|| this.$route.name === 'Best-autosalon'
 		}
 	},
