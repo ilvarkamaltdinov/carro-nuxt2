@@ -161,7 +161,7 @@
     background: url("../img/icons/icon-arrow.svg");
     background-repeat: no-repeat;
     background-size: contain;
-    filter: brightness(0);
+    filter: var(--svg-filter);
     pointer-events: none;
   }
 }
@@ -229,6 +229,7 @@
   right: 16px;
   top: 16px;
   pointer-events: none;
+  fill: var(--color-text);
 }
 
 .form__field-wrap--range {
