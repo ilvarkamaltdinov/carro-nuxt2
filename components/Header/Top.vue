@@ -28,7 +28,7 @@ export default {
 	},
   data(){
     return {
-      isDark: false,
+      isDark: true,
     }
   },
   head() {
