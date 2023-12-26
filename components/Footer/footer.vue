@@ -137,7 +137,7 @@
             «Тинькофф Страхование»
           </span>
           <img class="page-footer__insurance-logo lazyload" alt="tinkoff"
-            :data-src="require('~/assets/img/banks/logo-tinkoff.svg')" />
+            :data-src="require('~/assets/img/logo-tinkoff.svg')" />
           <span>по лицензии ОС № 0191-03 от 19.05.2015 г.</span>
           <a class="page-footer__link" rel="nofollow"
             href="https://acdn.tinkoffinsurance.ru/static/documents/417d017c-904c-4477-a106-e8bf32008054.pdf"
