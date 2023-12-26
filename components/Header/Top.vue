@@ -3,6 +3,7 @@
 		<header-logo-block @burger="burgerClick"
 		                   :modal-menu="modalMenu" />
 		<header-nav/>
+    <inputs-toggle/>
 		<header-controls/>
 	</div>
 </template>
