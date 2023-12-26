@@ -172,7 +172,7 @@ export default {
             }
         }
     },
-    buildModules: ['nuxt-lazysizes', '@nuxtjs/color-mode'],
+    buildModules: ['nuxt-lazysizes'],
     lazySizes: {
         extendAssetUrls: {
             img: ['src', 'srcset', 'data-src', 'data-srcset'],
