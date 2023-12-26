@@ -101,7 +101,6 @@
 @media (min-width: $desktop-width) {
   .features__list--column,
   .features--complect {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    column-count: 2;
   }
 }

@@ -22,6 +22,7 @@
   top: 16px;
   transform: rotate(45deg);
   transition: $transitionHover;
+  fill: var(--color-text);
 }
 
 .faq__item--active {
