@@ -37,20 +37,21 @@
   z-index: 50;
 
   > * {
-    color: $colorBg;
+    color: var(--color-bg);
   }
 }
 
 .blog__item-info {
   display: flex;
   @include font-features;
-  color: $colorTextSecondary;
+  color: var(--color-text-secondary);
   display: none;
 }
 
 .blog__item-title {
   @include font-desktop-h3;
   text-align: center;
+  color: white;
 }
 
 .blog__item-text {

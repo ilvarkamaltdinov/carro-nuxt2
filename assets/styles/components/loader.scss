@@ -11,7 +11,7 @@
   font-size: 10px;
   position: relative;
   text-indent: -9999em;
-  border: 6px solid $colorPrimaryLight;
+  border: 6px solid var(--color-primary-light);
   border-left: 6px solid $colorPrimary;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);

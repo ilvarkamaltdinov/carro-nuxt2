@@ -56,7 +56,7 @@ export default {
 	head() {
 		let title = (this.article.long_title ? this.article.long_title : this.article.page_title) + ' — CARRO'
 		let description_title = this.article.description ? this.article.description : this.article.short_description ? this.article.short_description : title
-		let description_text = 'Портал проверенных автомобилей с пробегом CARRO.RU,  весь спектр услуг, Трейд ИН, выкуп, автокредитование. Выгодные цены, еженедельные скидки и подарки, спешите!'
+		let description_text = 'Портал проверенных автомобилей с пробегом CARRO.RU,  весь спектр услуг, Trade-In, выкуп, автокредитование. Выгодные цены, еженедельные скидки и подарки, спешите!'
 		let description = description_title ? (description_title + '.' + description_text) : description_text
 		return {
 			title: title,

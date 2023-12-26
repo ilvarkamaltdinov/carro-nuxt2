@@ -6,7 +6,7 @@
   right: 0;
   width: 100%;
   height: 100%;
-  background-color: $colorText;
+  background-color: var(--color-text-dark);
   transition: opacity 0.3s;
   display: block;
   z-index: 200;

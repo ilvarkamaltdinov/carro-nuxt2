@@ -30,11 +30,11 @@
 }
 
 .makes__letters-item--inactive {
-  color: $colorTextSecondary;
+  color: var(--color-text-secondary);
 }
 
 .makes__count {
-  color: $colorTextSecondary;
+  color: var(--color-text-secondary);
   @include font-body;
 }
 
@@ -51,11 +51,11 @@
   &:not(.makes__list--header) .makes__link {
     justify-content: space-between;
     padding: 8px 16px;
-    background-color: $colorBg;
+    background-color: var(--color-button);
     border-radius: $borderRadiusSmall;
 
     &:hover {
-      background-color: $colorBgActive;
+      background-color: var(--color-button);
     }
   }
 }
@@ -93,6 +93,7 @@
   transition: $transitionHover;
   width: 40px;
   height: 40px;
+  fill: var(--color-text);
 }
 
 .makes__popular-link {
@@ -112,7 +113,7 @@
 }
 
 .makes__qty {
-  color: $colorTextSecondary;
+  color: var(--color-text-secondary);
 }
 
 .makes__list--models {
@@ -125,7 +126,7 @@
 }
 
 .makes__list.makes__list--all-catalog .makes__link {
-  background-color: white;
+  background-color: var(--color-section);
 }
 
 .modal__makes .button--show {

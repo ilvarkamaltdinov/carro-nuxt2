@@ -26,7 +26,7 @@
 
 .fancybox__thumbs .carousel__slide .fancybox__thumb {
   &::after {
-    background-color: $colorText;
+    background-color: var(--color-text);
     opacity: 0.8 !important;
     transition: $transitionHover;
   }
@@ -74,7 +74,7 @@
       width: 16px;
       height: 16px;
       box-shadow: none;
-      color: $colorBg;
+      color: var(--color-bg);
     }
   }
 }

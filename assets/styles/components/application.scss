@@ -17,6 +17,7 @@
   position: relative;
   max-width: 140px;
   object-fit: contain;
+  filter: var(--svg-filter);
 }
 
 .application__banks-img--alfa {
@@ -25,7 +26,7 @@
 
 .application__banks-text {
   margin-left: 8px;
-  color: $colorTextSecondary;
+  color: var(--color-text-secondary);
   @include font-features;
   color: $colorLink;
   position: relative;
@@ -159,7 +160,7 @@
   }
 
   .application__terms-text {
-    color: $colorTextSecondary;
+    color: var(--color-text-secondary);
   }
 }
 
@@ -178,7 +179,7 @@
 
   .application__choose-car {
     height: 312px;
-    background-color: $colorBgButton;
+    background-color: var(--color-button-secondary);
     border-radius: $borderRadius;
     display: flex;
     flex-direction: column;

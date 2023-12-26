@@ -9,7 +9,7 @@
 }
 
 .hamburger__element {
-  background: $colorText;
+  background: var(--color-text);
   border-radius: 10px;
   height: 3px;
   transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);

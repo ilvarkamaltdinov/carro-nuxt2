@@ -4,14 +4,14 @@
 
 .skeleton__item {
   position: relative;
-  background-color: white;
+  background-color: var(--color-section);
   padding: 16px;
 }
 
 .skeleton__content {
   border-radius: $borderRadiusSmallest;;
   height: 24px;
-  background-color: $colorBg;
+  background-color: var(--color-bg);
 
   &:not(:last-child) {
     margin-bottom: 16px;
@@ -32,7 +32,7 @@
 }
 
 .skeleton__content--darker {
-  background-color: $colorBgActive;
+  background-color: var(--color-bg-active);
   opacity: 0.8;
 }
 
@@ -116,18 +116,18 @@
 }
 
 .skeleton__tabs-item {
-  border: 1px solid $colorDivider;
+  border: 1px solid var(--color-divider);
   padding: 8px 16px;
   border-radius: 50px;
   display: inline-block;
   width: 160px;
   height: 38px;
-  background-color: $colorBgActive;
+  background-color: var(--color-bg-active);
 }
 
 .skeleton__content--review {
   aspect-ratio: 4 / 3;
-  background-color: $colorDivider;
+  background-color: var(--color-divider);
   width: 100%;
   height: 100%;
   border-radius: $borderRadius;

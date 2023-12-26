@@ -11,7 +11,7 @@
   aspect-ratio: 1 / 1;
   border-radius: $borderRadius;
   overflow: hidden;
-  background-color: $colorBg;
+  background-color: var(--color-bg);
 }
 
 .map--dealer .ymap-container {

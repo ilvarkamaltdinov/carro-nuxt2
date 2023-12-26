@@ -128,9 +128,8 @@
           Кредит предоставляется банком АО «Тинькофф Банк».
           <a class="page-footer__link"
             href="https://acdn.tinkoff.ru/static/documents/d7f200ac-6949-4baa-ab9b-186b11d6b168.pdf"
-            target="_blank">Лицензия ЦБ РФ № 2673 от 11.04.2022
+            target="_blank">Лицензия ЦБ РФ № 2673 от 11.04.2022.
           </a>
-          .
         </p>
 
         <p class="page-footer__disclaimer-p">

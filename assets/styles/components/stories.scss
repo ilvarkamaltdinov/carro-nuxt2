@@ -22,7 +22,7 @@
 }
 
 .stories__modal {
-  background: white;
+  background: var(--color-section);
   aspect-ratio: 3 / 4;
   max-width: 320px;
   margin: auto;
@@ -32,6 +32,11 @@
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
+  position: relative;
+}
+
+.stories__modal .button {
+  display: block;
 }
 
 .stories--benefit .stories__modal {
@@ -49,7 +54,7 @@
 }
 
 .stories__close-icon {
-  fill: $colorBgActive;
+  fill: var(--color-bg-active);
 }
 
 .stories__modal .heading--h2 {
@@ -89,7 +94,7 @@
   &::before {
     opacity: 1;
     border-radius: $borderRadius;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0),);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
   }
 
   // fallback
@@ -125,9 +130,14 @@
   height: 100%;
   top: 0;
   left: 0;
- }
+}
 
 @media (max-width: $mobile-width-only) {
+  .stories__modal-img-wrap {
+    max-height: 160px;
+    margin: auto;
+  }
+
   .stories__list {
     @include horizontal-scroll;
     padding: 40px 16px;
@@ -156,7 +166,7 @@
   }
 
   .stories__list .stories__item {
-    &:nth-child(1n+6) {
+    &:nth-child(1n + 6) {
       display: none;
     }
   }

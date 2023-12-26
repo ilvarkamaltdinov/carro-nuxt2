@@ -1,5 +1,5 @@
 .modal {
-  background: white;
+  background: var(--color-section);
   position: fixed;
   width: 100%;
   top: 72px;
@@ -12,8 +12,13 @@
   pointer-events: auto;
 }
 
+.modal .benefits__link {
+  border: 1px solid var(--color-divider);
+}
+
 .modal__logo {
   max-width: 128px;
+  filter: var(--svg-filter);
 }
 
 .modal__wrap {
@@ -37,7 +42,7 @@
 }
 
 .modal__close-icon {
-  fill: $colorText;
+  fill: var(--color-text);
   transition: $transitionHover;
 }
 
@@ -120,6 +125,11 @@
     bottom: 0;
   }
 
+  .modal .catalog__item--vertical {
+    border-bottom: 1px solid var(--color-divider);
+    margin-bottom: 0;
+  }
+
   .modal__buttons--dealer .button__text {
     display: none
   }
@@ -144,7 +154,7 @@
   }
 
   .modal .heading-group--modal {
-    background: white;
+    background: var(--color-section);
     position: fixed;
     top: 0;
     width: 100%;
@@ -158,7 +168,7 @@
   }
 
   .modal .modal__options {
-    background: white;
+    background: var(--color-section);
     position: fixed;
     width: 100%;
     z-index: 250;
@@ -201,7 +211,7 @@
   }
 
   .modal__options ~ .modal__wrap {
-    padding-top: 202px;
+    padding-top: 172px;
   }
   .modal.modal--credit .modal__options {
     top: 89px;
@@ -272,6 +282,10 @@
 }
 
 @media (min-width: $desktop-width) {
+  .modal .catalog__item {
+    border: 1px solid var(--color-divider);
+  }
+
   .modal.modal--makes,
   .modal.modal--menu {
     height: auto;

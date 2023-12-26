@@ -17,7 +17,7 @@
   flex-shrink: 0;
   padding: 12px;
   border-radius: 50%;
-  background-color: $colorBg;
+  background-color: var(--color-button);
 
   @include hover-social;
 }
@@ -25,6 +25,8 @@
 .social__icon {
   width: 16px;
   height: 16px;
+
+  fill: var(--color-text);
 }
 
 @media (max-width: $iphone-mini-only) {

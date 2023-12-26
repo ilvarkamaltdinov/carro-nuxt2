@@ -27,7 +27,7 @@
 .select__item {
   display: block;
   padding: 16px;
-  color: $colorText;
+  color: var(--color-text);
   text-align: left;
   @include font-body;
   margin: 0 -16px;

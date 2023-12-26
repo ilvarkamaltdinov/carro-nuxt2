@@ -224,7 +224,7 @@ Build date: 2019-12-19 16:51:02
   background-color: #e1e4e9;
 }
 .irs--flat .irs-grid-text {
-  color: $colorTextSecondary;
+  color: var(--color-text-secondary);
   @include font-small;
 }
 .irs--big {
