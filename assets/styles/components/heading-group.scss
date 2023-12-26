@@ -10,7 +10,7 @@
 }
 
 .heading-group__label {
-  color: $colorTextSecondary;
+  color: var(--color-text-secondary);
   @include font-features;
 }
 
@@ -42,7 +42,7 @@
 }
 
 .heading-group__year {
-  color: $colorText;
+  color: var(--color-text);
 }
 
 @media (max-width: $iphone-mini-only) {

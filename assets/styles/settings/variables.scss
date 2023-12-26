@@ -50,7 +50,6 @@ $colorBankReif: #F8ED51;
 $colorDivider: #E0E2E8;
 $colorOverlay: rgba(44, 45, 46, 0.9);
 
-
 // Margins
 
 $marginBlockMobile: 24px;
@@ -118,4 +117,19 @@ $gridGapTabletWidth: 23px;
 	--x: 0;
 	--y: 0;
   --fancybox-accent-color: $colorPrimary!important;
+
+  // Main Variables
+
+  --color-text: #2C2D2E;
+  --color-text-dark: #262727;
+  --color-text-secondary: #919399;
+  --color-text-link: #005FF9;
+  --color-section: #ffffff;
+  --color-bg: #F7F8FA;
+  --color-bg-active: #DBDEE4;
+  --color-divider: #E0E2E8;
+  --color-button: #f2f3f6;
+  --color-button-secondary: #DEE9FA;
+  --svg-filter: none;
+  --color-primary-light: #FBD4D7;
 }

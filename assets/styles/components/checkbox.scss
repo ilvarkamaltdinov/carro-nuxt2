@@ -25,7 +25,7 @@
   height: 20px;
   margin-right: 8px;
   border-radius: $borderRadiusSmallest;;
-  border: 1px solid $colorDivider;
+  border: 1px solid var(--color-divider);
   background-color: transparent;
   fill: transparent;
 }
@@ -41,12 +41,12 @@
 }
 
 .checkbox__icon--disabled {
-  background-color: $colorBg;
+  background-color: var(--color-bg);
 }
 
 .checkbox__icon--disabled-checked {
-  background-color: $colorBg;
-  fill: $colorTextSecondary;
+  background-color: var(--color-bg);
+  fill: var(--color-text-secondary);
 }
 
 .checkbox .form__checkbox-text {

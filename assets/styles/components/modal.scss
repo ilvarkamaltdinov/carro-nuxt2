@@ -1,5 +1,5 @@
 .modal {
-  background: white;
+  background: var(--color-section);
   position: fixed;
   width: 100%;
   top: 72px;
@@ -14,6 +14,7 @@
 
 .modal__logo {
   max-width: 128px;
+  filter: var(--svg-filter);
 }
 
 .modal__wrap {
@@ -37,7 +38,7 @@
 }
 
 .modal__close-icon {
-  fill: $colorText;
+  fill: var(--color-text);
   transition: $transitionHover;
 }
 
@@ -272,6 +273,14 @@
 }
 
 @media (min-width: $desktop-width) {
+  .modal .catalog__item {
+    border: 1px solid var(--color-divider);
+  }
+
+  .modal .benefits__item {
+    border: 1px solid var(--color-divider);
+  }
+
   .modal.modal--makes,
   .modal.modal--menu {
     height: auto;

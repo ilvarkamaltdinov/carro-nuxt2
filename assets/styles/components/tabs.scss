@@ -13,7 +13,7 @@
 }
 
 .tabs__link {
-  border: 1px solid $colorDivider;
+  border: 1px solid var(--color-divider);
   padding: 8px 16px;
   border-radius: 50px;
   display: inline-block;
@@ -34,7 +34,7 @@
 
 .tabs__item--active .tabs__link {
   font-weight: $fontBold;
-  background-color: $colorDivider;
+  background-color: var(--color-divider);
 
   &:hover {
     cursor: default;
@@ -129,7 +129,7 @@
     &:hover,
     &:focus {
       transition: $transitionHover;
-      background-color: $colorDivider;
+      background-color: var(--color-divider);
     }
   }
 }

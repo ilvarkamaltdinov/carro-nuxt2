@@ -5,7 +5,7 @@
   border-radius: $borderRadiusSmall;
   display: block;
   text-align: center;
-  background-color: $colorButton;
+  background-color: var(--color-button);
   transition: $transitionHover;
   position: relative;
 }
@@ -29,18 +29,18 @@
 }
 
 .button.button--link {
-  color: $colorLink;
-  background-color: $colorBgButton;
+  color: var(--color-text-link);
+  background-color: var(--color-button-secondary);
   width: max-content;
 
   &:hover {
     opacity: 0.8;
-    background-color: $colorBgButton;
+    background-color: var(--color-button-secondary);
   }
 }
 
 .button--link .icon {
-  fill: $colorLink;
+  fill: var(--color-text-link);
   width: 16px;
   height: 16px;
 }
@@ -50,7 +50,7 @@
 }
 
 .button--link .button__text {
-  color: $colorLink;
+  color: var(--color-text-link);
 }
 
 .button--icon {
@@ -91,23 +91,23 @@
   justify-content: center;
 
   &:hover {
-    background-color: $colorBgHover;
+    background-color: var(--color-divider);
   }
 }
 
 .button--filter {
-  background-color: $colorBgButton;
+  background-color: var(--color-button-secondary);
   width: 100%;
   color: $colorLink;
 }
 
 .button--action.button--more {
-  background-color: $colorBgButton;
+  background-color: var(--color-button-secondary);
 }
 
 .button--option {
   color: $colorLink;
-  background-color: $colorBgButton;
+  background-color: var(--color-button-secondary);
   width: 100%;
   margin-top: 16px;
   height: 48px;
@@ -196,7 +196,7 @@
 
 .button__text {
   margin-left: 8px;
-  color: $colorText;
+  color: var(--color-text);
   font-weight: $fontDemiBold;
 }
 
@@ -219,6 +219,7 @@
 
 .button--action .button__icon {
   width: 19px;
+  fill: var(--color-text);
 }
 
 .button--share {

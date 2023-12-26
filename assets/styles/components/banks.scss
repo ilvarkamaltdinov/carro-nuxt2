@@ -36,6 +36,7 @@
   object-fit: contain;
   max-width: 140px;
   margin-right: 32px;
+  filter: var(--svg-filter);
 }
 
 .banks__list {

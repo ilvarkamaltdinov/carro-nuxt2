@@ -13,14 +13,14 @@
 				</div>
 				<div class="text__content">
 					<h2 class="heading heading--h2 visually-hidden">
-						Обмен авто по системе «трейд-ин» {{ currentCity }}
+						Обмен авто по системе Trade-In {{ currentCity }}
 					</h2>
 					<p class="text__p"
 					   v-for="text in currentText"
 					   :key="text">
 						{{ text }}
 					</p>
-					
+
 					<p class="text__p">
 						Услуга Trade-In предполагает обмен Вашего старого автомобиля на более новый. Обмен
 						позволяет

@@ -24,7 +24,7 @@
     align-items: center;
     flex-shrink: 0;
     @include font-small;
-    color: $colorTextSecondary;
+    color: var(--color-text-secondary);
 
     &:not(:last-child)::after {
       content: "";

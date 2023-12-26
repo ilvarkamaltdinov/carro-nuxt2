@@ -1,6 +1,6 @@
 .filter__catalog-wrap {
   padding: 16px;
-  background-color: white;
+  background-color: var(--color-section);
   z-index: 25;
   position: relative;
   @include border-bottom;
@@ -65,6 +65,7 @@
   width: 16px;
   height: 16px;
   transform: rotate(-90deg);
+  fill: var(--color-text);
 }
 
 .filter--modal {

@@ -18,7 +18,7 @@
   padding: 0 16px;
   padding-bottom: 16px;
   margin-bottom: 16px;
-  border-bottom: 1px solid $colorDivider;
+  border-bottom: 1px solid var(--color-divider);
 }
 
 .text__working-hours {
@@ -155,7 +155,7 @@
   .text__contacts-label {
     @include font-features;
     margin-bottom: 8px;
-    color: $colorTextSecondary;
+    color: var(--color-text-secondary);
   }
 
   .text__contacts-item {

@@ -3,7 +3,7 @@
 }
 
 .catalog__item {
-  background-color: white;
+  background-color: var(--color-section);
   padding: 16px;
   box-shadow: $shadow;
   transition-property: opacity, box-shadow, background !important;
@@ -102,7 +102,7 @@
 
 .catalog__year {
   margin-left: 8px;
-  color: $colorTextSecondary;
+  color: var(--color-text-secondary);
 }
 
 .catalog__heading * {
@@ -163,7 +163,7 @@
 
 .catalog__tech-item {
   @include font-features;
-  color: $colorTextSecondary;
+  color: var(--color-text-secondary);
 }
 
 .catalog__tech-list {
@@ -180,7 +180,7 @@
 
 .catalog__credit-price {
   @include font-features;
-  color: $colorTextSecondary;
+  color: var(--color-text-secondary);
 }
 
 .catalog__item--small .catalog__credit-price {
@@ -642,6 +642,10 @@
 }
 
 @media (min-width: $desktop-width) {
+  .catalog__list .button.button--more {
+    margin-top: 0;
+  }
+
   .catalog__filter--aside {
     display: block;
     margin-bottom: 0;

@@ -8,6 +8,7 @@
   top: 16px;
   width: 16px;
   height: 16px;
+  fill: var(--color-text);
 }
 
 .form__checkbox-text-link {
@@ -92,22 +93,22 @@
   position: absolute;
   right: 16px;
   top: 16px;
-  fill: $colorBgActive;
+  fill: var(--color-bg-active);
 }
 
 .form__icon-search--close {
-  $color: $colorText;
+  $color: var(--color-text);
 }
 
 .form__field {
   width: 100%;
   padding: 11px 16px;
-  border: 1px solid $colorDivider;
+  border: 1px solid var(--color-divider);
   border-radius: $borderRadiusSmall;
   @include font-body;
   transition: $transitionHover;
   text-align: left;
-  background-color: white;
+  background-color: var(--color-section);
 
   white-space: nowrap;
   overflow: hidden;
@@ -115,12 +116,12 @@
   padding-right: 48px;
 
   &:hover {
-    border-color: $colorTextSecondary;
+    border-color: var(--color-text-secondary);
   }
 
   &:focus {
     outline: none;
-    border-color: $colorText;
+    border-color: var(--color-text);
   }
 }
 
@@ -193,7 +194,7 @@
 }
 
 .form__total-payment .tippy--question {
-  fill: $colorBgActive;
+  fill: var(--color-bg-active);
 }
 
 .form__agree {
@@ -244,7 +245,7 @@
 
 .form__field--search .form__field {
   &:focus + .form__icon-search {
-    fill: $colorText;
+    fill: var(--color-text);
   }
 }
 
@@ -291,14 +292,14 @@
   }
 
   .form__field-wrap--search .form__field {
-    background-color: $colorBg;
-    border-color: $colorBg;
+    background-color: var(--color-bg);
+    border-color: var(--color-bg);
   }
 
   .form__field-wrap--search .form__field {
     &:focus {
       background: white;
-      border-color: $colorBgActive;
+      border-color: var(--color-bg-active);
     }
   }
 }

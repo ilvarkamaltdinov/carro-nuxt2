@@ -4,7 +4,7 @@
 }
 
 .slider-index .swiper-slide {
-  background: white;
+  background: var(--color-section);
   aspect-ratio: 16 / 9;
 
   // fallback
@@ -44,7 +44,7 @@
     width: 100%;
     height: 4px;
     border-radius: $borderRadiusSmall;
-    background-color: $colorPrimaryLight;
+    background-color: var(--color-primary-light);
     transition: opacity $transitionHover;
 
     &:hover {
@@ -95,7 +95,7 @@
 }
 
 .slider-index__item--black .slider-index__circle {
-  background: $colorText;
+  background: var(--color-text);
   box-shadow: none;
 }
 

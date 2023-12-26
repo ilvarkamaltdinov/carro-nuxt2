@@ -11,7 +11,7 @@
   align-items: center;
   margin: 0 16px;
 
-  border: 1px solid $colorBgActive;
+  border: 1px solid var(--color-divider);
   border-radius: $borderRadiusSmallest;;
 }
 
@@ -22,11 +22,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  fill: $colorBgActive;
+  fill: var(--color-bg-active);
   transition: $transitionHover;
 
   &:hover {
-    fill: $colorText;
+    fill: var(--color-text);
   }
 }
 
@@ -44,22 +44,22 @@
 }
 
 .pagination__item--active .pagination__link {
-  color: $colorText;
+  color: var(--color-text);
 }
 
 .pagination__link {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px;
+  width: 56px;
   height: 40px;
   aspect-ratio: 1 / 1;
-  color: $colorBgActive;
+  color: var(--color-bg-active);
   padding: 16px;
-  border-right: 1px solid $colorBgActive;
+  border-right: 1px solid var(--color-divider);
 
   &:hover {
-    color: $colorText;
+    color: var(--color-text);
   }
 }
 

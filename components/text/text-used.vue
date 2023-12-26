@@ -18,7 +18,7 @@
 				</p>
 				<div v-if="isMoscow">
 					<h2 class="heading heading--h2 heading--h2--mt">
-						Выгоды сотрудничества с Carro.ru
+						Выгоды сотрудничества с carro.ru
 					</h2>
 					<p class="text__p">
 						Мы работаем только с надежными автодилерами, репутация которых проверена временем и сотнями удачных сделок.
@@ -39,7 +39,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</section>
 </template>
 <script>

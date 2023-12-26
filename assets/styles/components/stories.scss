@@ -22,7 +22,7 @@
 }
 
 .stories__modal {
-  background: white;
+  background: var(--color-section);
   aspect-ratio: 3 / 4;
   max-width: 320px;
   margin: auto;
@@ -49,7 +49,7 @@
 }
 
 .stories__close-icon {
-  fill: $colorBgActive;
+  fill: var(--color-bg-active);
 }
 
 .stories__modal .heading--h2 {
