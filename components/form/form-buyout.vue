@@ -40,16 +40,16 @@
 				              v-model="form.name.value"
 				              type="text" />
 			</label>
-			<label class="form__field-wrap"
-			       :class="dateClass">
-				<inputs-input placeholder="Дата рождения"
-				              @input="handlerInput('date')"
-				              @dateMaskComplete="form.date.valid = true"
-				              @onincomplete="form.date.valid = null"
-				              v-model="form.date.value"
-				              mask="date"
-				              type="tel" />
-			</label>
+<!--			<label class="form__field-wrap"-->
+<!--			       :class="dateClass">-->
+<!--				<inputs-input placeholder="Дата рождения"-->
+<!--				              @input="handlerInput('date')"-->
+<!--				              @dateMaskComplete="form.date.valid = true"-->
+<!--				              @onincomplete="form.date.valid = null"-->
+<!--				              v-model="form.date.value"-->
+<!--				              mask="date"-->
+<!--				              type="tel" />-->
+<!--			</label>-->
 			<label class="form__field-wrap"
 			       :class="phoneClass">
 				<inputs-input placeholder="Телефон"
@@ -108,10 +108,10 @@ export default {
 				this.form.name.valid = false
 				return false
 			}
-			if (this.form.date.value === '' || this.form.date.value.split('_').length > 1) {
-				this.form.date.valid = false
-				return false
-			}
+			// if (this.form.date.value === '' || this.form.date.value.split('_').length > 1) {
+			// 	this.form.date.valid = false
+			// 	return false
+			// }
 			if (!this.form.phone.valid) {
 				this.form.phone.valid = false
 				return false
@@ -154,7 +154,7 @@ export default {
 				if(localStorage.utm_content){
 					formData.utm_content = localStorage.utm_content
 				}
-				
+
 				await this.sendForm(formData)
 			}
 		}

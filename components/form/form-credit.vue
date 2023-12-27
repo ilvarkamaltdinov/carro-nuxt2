@@ -36,12 +36,12 @@
           <inputs-input placeholder="ФИО" @input="handlerInput('name')" v-model="form.name.value" @focus="onFocus"
                         @focusout="onFocusOut" type="text"/>
         </label>
-        <label class="form__field-wrap" :class="dateClass">
-          <inputs-input placeholder="Дата рождения" @input="handlerInput('date')"
-                        @dateMaskComplete="form.date.valid = true" @onincomplete="form.date.valid = null"
-                        v-model="form.date.value"
-                        @focus="onFocus" @focusout="onFocusOut" mask="date" type="tel"/>
-        </label>
+<!--        <label class="form__field-wrap" :class="dateClass">-->
+<!--          <inputs-input placeholder="Дата рождения" @input="handlerInput('date')"-->
+<!--                        @dateMaskComplete="form.date.valid = true" @onincomplete="form.date.valid = null"-->
+<!--                        v-model="form.date.value"-->
+<!--                        @focus="onFocus" @focusout="onFocusOut" mask="date" type="tel"/>-->
+<!--        </label>-->
         <label class="form__field-wrap" :class="phoneClass">
           <inputs-input placeholder="Телефон" @input="handlerInput('phone')"
                         @phoneMaskComplete="form.phone.valid = true"
@@ -188,10 +188,10 @@ export default {
         this.form.name.valid = false
         return false
       }
-      if (this.form.date.value === '' || this.form.date.value.split('_').length > 1) {
-        this.form.date.valid = false
-        return false
-      }
+      // if (this.form.date.value === '' || this.form.date.value.split('_').length > 1) {
+      //   this.form.date.valid = false
+      //   return false
+      // }
       if (!this.form.phone.valid) {
         this.form.phone.valid = false
         return false
