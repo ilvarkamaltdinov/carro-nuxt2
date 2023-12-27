@@ -39,10 +39,10 @@ export default {
 			if (this.defaultBank !== '') {
 				return require(`~/assets/img/banks/logo-${this.defaultBank}.svg`)
 			} else {
-				return this.bank.image ? this.bank.image : require('~/assets/img/banks/logo-tinkoff.svg')
+				return this.bank.image ? this.bank.image : require('~/assets/img/banks/tinkoff-logo.svg')
 			}
-			
-			
+
+
 		},
 		bankImage() {
 			if (this.defaultBank !== '') {

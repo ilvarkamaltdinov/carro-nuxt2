@@ -13,7 +13,7 @@
 
 .featured__item--business {
   &:hover .featured__link {
-    background-color: $colorTextDark;
+    background-color: var(--color-text-dark);
   }
 }
 

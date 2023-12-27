@@ -186,6 +186,10 @@
 }
 
 @media (max-width: $mobile-width-only) {
+  .page-header__wrap .toggle {
+    display: none;
+  }
+
   .page-header__search--form {
     width: 100%;
     position: absolute;

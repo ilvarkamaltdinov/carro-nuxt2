@@ -3,6 +3,7 @@
 		<header-logo-block @burger="burgerClick"
 		                   :modal-menu="modalMenu" />
 		<header-nav/>
+    <inputs-toggle v-if="$device.isDesktopOrTablet"/>
 		<header-controls/>
     <div
          class="page-header__buttons-link page-header__buttons-link--phone" @click="isDark = !isDark">

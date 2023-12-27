@@ -1,6 +1,6 @@
 <template>
 	<div class="grid__col-12 grid dealers dealers--catalog">
-		<div class="dealers__item dealers__item--catalog grid__col-6"
+		<div class="dealers__item dealers__item--catalog grid__col-4"
 		     v-for="dealer in currentDealers"
 		     :key="dealer.id">
 			<div class="dealers__features features">
