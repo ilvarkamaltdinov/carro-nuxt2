@@ -115,7 +115,8 @@ export default {
           "48",
           "60",
           "72",
-          "84"
+          "84",
+          "96"
         ],
         rangePaymentValues: [
           '0%',
@@ -125,7 +126,7 @@ export default {
           '40%',
           '50%'
         ],
-        period: 84,
+        period: 96,
         payment: 0,
       }
     }

@@ -59,7 +59,7 @@ export default {
         },
         access_acredit(price) {
             let percent = 4.9;
-            let n = 84;
+            let n = 96;
             let coef_i = percent / 12 / 100;
             let K =
                 (coef_i * Math.pow(1 + coef_i, n)) / (Math.pow(1 + coef_i, n) - 1);

@@ -16,7 +16,8 @@
     </div>
     <form class="form" @submit.prevent="submitForm()">
       <fieldset v-if="hasChose" class="form__fieldset">
-        <label :class="{ 'form__field-wrap--car-active': currentCar, 'form__field-wrap--error': error === 'invalid_car' }"
+        <label
+          :class="{ 'form__field-wrap--car-active': currentCar, 'form__field-wrap--error': error === 'invalid_car' }"
           class="form__field-wrap form__field-wrap--car ">
           <button class="form__field" @click.prevent="choseCar()">
 
@@ -26,41 +27,43 @@
             </span>
 
           </button>
-          <svg-icon name="icon-form" class="form__car-icon" />
+          <svg-icon name="icon-form" class="form__car-icon"/>
         </label>
         <!-- <div class="catalog form__catalog" v-if="$device.isMobile && currentCar">
           <catalog-item-large-mobile-form :is-form="true" :offer="currentCar" />
         </div> -->
       </fieldset>
       <div class="catalog form__catalog" v-if="$device.isMobile && (offer || currentCar)">
-        <catalog-item-large-mobile-form :is-form="true" :offer="offer || currentCar" />
+        <catalog-item-large-mobile-form :is-form="true" :offer="offer || currentCar"/>
       </div>
       <form-credit-calculator installment @changePeriod="changePeriod" @changePayment="changePayment"
-        :params="creditParams" :offer="offer || currentCar" />
+                              :params="creditParams" :offer="offer || currentCar"/>
       <fieldset class="form__fieldset">
         <label class="form__field-wrap" :class="nameClass">
-          <inputs-input placeholder="ФИО" @input="handlerInput('name')" v-model="form.name.value" type="text" />
+          <inputs-input placeholder="ФИО" @input="handlerInput('name')" v-model="form.name.value" type="text"/>
         </label>
         <label class="form__field-wrap" :class="dateClass">
           <inputs-input placeholder="Дата рождения" @input="handlerInput('date')"
-            @dateMaskComplete="form.date.valid = true" @onincomplete="form.date.valid = null" v-model="form.date.value"
-            mask="date" type="tel" />
+                        @dateMaskComplete="form.date.valid = true" @onincomplete="form.date.valid = null"
+                        v-model="form.date.value"
+                        mask="date" type="tel"/>
         </label>
         <label class="form__field-wrap" :class="phoneClass">
-          <inputs-input placeholder="Телефон" @input="handlerInput('phone')" @phoneMaskComplete="form.phone.valid = true"
-            @onincomplete="form.phone.valid = null" v-model="form.phone.value" mask="phone" type="tel" />
+          <inputs-input placeholder="Телефон" @input="handlerInput('phone')"
+                        @phoneMaskComplete="form.phone.valid = true"
+                        @onincomplete="form.phone.valid = null" v-model="form.phone.value" mask="phone" type="tel"/>
         </label>
         <checkbox-form :error="error === 'agreeRf'" @change="changeCheckbox($event, 'agreeRf')"
-          label="Подтверждаю наличие гражданства РФ" />
+                       label="Подтверждаю наличие гражданства РФ"/>
         <checkbox-form :error="error === 'agree'" @change="changeCheckbox($event, 'agree')" label="Согласен на"
-          link="обработку личных данных" />
+                       link="обработку личных данных"/>
       </fieldset>
-      <button-typical :loading="buttonDisabled" text="Оставить заявку" button-class="button--credit button--form" />
+      <button-typical :loading="buttonDisabled" text="Оставить заявку" button-class="button--credit button--form"/>
     </form>
   </div>
 </template>
 <script>
-import { mapGetters, mapMutations, mapActions } from 'vuex'
+import {mapGetters, mapMutations, mapActions} from 'vuex'
 import formValidation from "@/mixins/formValidation";
 import filters from "@/mixins/filters";
 
@@ -81,12 +84,12 @@ export default {
           "2",
           "6",
           "12",
+          "18",
           "24",
-          "36",
-          "48",
-          "60"
+          "36"
         ],
         rangePaymentValues: [
+          '0%',
           '10%',
           '20%',
           '30%',
@@ -95,8 +98,8 @@ export default {
           '60%',
           '70%'
         ],
-        period: 60,
-        payment: 10,
+        period: 36,
+        payment: 0,
       }
     }
   },
