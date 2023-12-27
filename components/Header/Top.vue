@@ -22,18 +22,6 @@ export default {
 			modalMenu: 'modal/modal-menu/modalMenu',
 		})
 	},
-  data(){
-    return {
-      isDark: true,
-    }
-  },
-  head() {
-    return {
-      link: [
-        { rel: 'stylesheet', href: this.isDark ? '/styles/index-dark.css': '/styles/index-light.css', id: 'theme' },
-      ]
-    }
-  },
 	methods:{
 		...mapMutations({
 			setModalMenu: 'modal/modal-menu/setModalMenu',
