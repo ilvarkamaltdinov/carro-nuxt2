@@ -230,6 +230,10 @@
   display: block;
 }
 
+.button--download .button__icon {
+  fill: var(--color-text-link);
+}
+
 @media (max-width: $mobile-width-only) {
   .button--action {
     padding: 12px;

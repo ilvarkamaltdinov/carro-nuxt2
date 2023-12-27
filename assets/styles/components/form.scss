@@ -299,7 +299,7 @@
 
   .form__field-wrap--search .form__field {
     &:focus {
-      background: white;
+      background: var(--color-section);
       border-color: var(--color-bg-active);
     }
   }
