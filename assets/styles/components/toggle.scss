@@ -13,6 +13,7 @@
   border-radius: 64px;
   background-color: white;
   transition: background-color 250ms;
+  transition: box-shadow 250ms;
   box-shadow: 0 0 0 1px var(--color-divider);
 }
 
@@ -84,4 +85,12 @@
 .toggle__checkbox:checked ~ .toggle__slot .toggle__moon {
   opacity: 1;
   transform: translate(31px, 7px) rotate(-15deg);
+}
+
+@media (min-width: $desktop-width) {
+  .toggle {
+    &:hover .toggle__checkbox~ .toggle__slot {
+      box-shadow: 0 0 0 1px var(--color-text-secondary);
+    }
+  }
 }

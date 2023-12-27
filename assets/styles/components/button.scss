@@ -222,6 +222,10 @@
   fill: var(--color-text);
 }
 
+.button--text .button__icon {
+  fill: var(--color-text);
+}
+
 .button--link .icon {
   fill: var(--color-text-link);
 }
