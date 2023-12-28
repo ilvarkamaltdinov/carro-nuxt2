@@ -89,7 +89,7 @@
 
 @media (min-width: $desktop-width) {
   .toggle {
-    &:hover .toggle__checkbox~ .toggle__slot {
+    &:hover .toggle__checkbox ~ .toggle__slot {
       box-shadow: 0 0 0 1px var(--color-text-secondary);
     }
   }
