@@ -11,12 +11,18 @@
       <div class="application application--modal grid__col-12 grid grid--application grid--application-modal">
         <div class="application__form grid__col-4">
           <div class="text">
-            <p v-show="!isNight" class="text__p text__p--modal">Оставьте заявку, и наши операторы свяжутся с вами в течение <span
-              class="text__working-hours">5 минут!</span> </p>
-            <p v-show="isNight" class="text__p text__p--modal">Операторы работают <span
+            <p v-if="isNight && isNY" class="text__p text__p--modal">
+              Автомобильный портал <span class="text__working-hours">CARRO</span> поздравляет вас с Новым годом!
+              Оставьте заявку, и наши операторы перезвонят вам <span class="text__working-hours">2 января</span>!
+            </p>
+            <p v-show="isNight && !isNY" class="text__p text__p--modal">Операторы работают <span
               class="text__working-hours">с 9:00 до 21:00</span>. Оставьте заявку, и мы с радостью перезвоним вам в
               рабочее
               время!</p>
+            <p v-show="!isNight" class="text__p text__p--modal">Оставьте заявку, и наши операторы свяжутся с вами в
+              течение <span
+                class="text__working-hours">5 минут!</span></p>
+
           </div>
           <div class="heading-group heading-group--form">
             <div class="heading-group__wrap">
@@ -50,7 +56,9 @@ export default {
     ...mapGetters({
       modalData: 'modal/modal-main/modalData',
       benefitsCredit: 'benefits/benefitsCredit',
-      isNight: 'isNight'
+      isNight: 'isNight',
+      isNY: 'isNY',
+      settings: 'settings/settings/settings'
     }),
   }
 }

@@ -97,15 +97,43 @@ export default {
       setModalSearch: 'modal/modal-search/setModalSearch',
       setMobileSearch: 'modal/modal-search/setMobileSearch',
       setHeaderFilterClick: 'click/SET_HEADER_FILTER_CLICK',
-      setIsNight: 'SET_IS_NIGHT'
+      setIsNight: 'SET_IS_NIGHT',
+      setIsNY: "SET_IS_NY"
     }),
-    async dateTimeFunc() {
-      const hours = new Date().getHours()
-      if (hours >= 21 || hours <= 8) {
-        await this.setIsNight(true)
-      } else {
-        await this.setIsNight(false)
+    isNewYearCheck() {
+      let dateObj = new Date();
+      let month = dateObj.getUTCMonth() + 1; //months from 1-12
+      let day = dateObj.getUTCDate();
+      let hours = new Date().getHours();
+      //проверка на дату с 31 декабря по 2 января
+      if ((month === 12 && day === 31) || (month === 1 && day <= 2)) {
+        if (
+          //проверка на вермя с 18:00 31 ого
+          (month === 12 && day === 31 && hours >= 18)
+          ||
+          //проверка на 1ое января
+          (month === 1 && day === 1)
+          ||
+          //проверка на вермя с до 9:00 2ого
+          (month === 1 && day === 2 && hours <= 9)) {
+          return true;
+        }
       }
+      return false;
+    },
+    async dateTimeFunc() {
+      if (this.isNewYearCheck()) {
+        this.setIsNight(true);
+        this.setIsNY(true);
+      } else {
+        const hours = new Date().getHours()
+        if (hours >= 21 || hours <= 8) {
+          await this.setIsNight(true)
+        } else {
+          await this.setIsNight(false)
+        }
+      }
+
     },
     async searchClick() {
       await this.setHeaderFilterClick(true)

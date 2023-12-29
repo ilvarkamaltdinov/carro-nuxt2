@@ -10,6 +10,7 @@ export const state = () => ({
   domain: '',
   api: '',
   isNight: false,
+  isNY: false,
   showComm: true,
   showEurope: true,
   showReviews: true,
@@ -27,6 +28,9 @@ export const getters = {
   },
   isNight: (state) => {
     return state.isNight
+  },
+  isNY: (state) => {
+    return state.isNY
   },
   showEurope: (state) => {
     return state.showEurope
@@ -103,6 +107,9 @@ export const mutations = {
   },
   SET_IS_NIGHT(state, data) {
     state.isNight = data
+  },
+  SET_IS_NY(state, data) {
+    state.isNY = data
   },
   SET_DOMAIN(state, data) {
     state.domain = data
