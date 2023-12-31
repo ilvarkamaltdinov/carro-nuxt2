@@ -93,7 +93,7 @@ export default {
           type: 'callback',
           client_name: this.form.name.value,
           client_phone: this.form.phone.value,
-          dealer: this.offer.dealer.slug
+          dealer: this.offer?.dealer?.slug
         }
         // utm
         if (localStorage.utm_source) {
