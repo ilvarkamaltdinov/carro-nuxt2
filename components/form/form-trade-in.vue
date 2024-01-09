@@ -230,7 +230,7 @@ export default {
         if (this.isCredit) {
           formData.comment = 'В кредит'
           formData.credit_initial_fee = this.form.paymentValue.toString()
-          formData.credit_period = this.form.periodValue.toString()
+          formData.credit_period = this.form.periodValue.toString() + ' мес.'
         }
         await this.sendForm(formData)
         await this.closeModal()

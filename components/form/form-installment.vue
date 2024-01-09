@@ -205,7 +205,7 @@ export default {
           client_phone: this.form.phone.value,
           client_age: this.form.date.value,
           credit_initial_fee: this.form.paymentValue.toString(),
-          credit_period: this.form.periodValue.toString(),
+          credit_period: this.form.periodValue.toString()  + ' мес.',
         }
         // utm
         if (localStorage.utm_source) {
