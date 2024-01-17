@@ -129,7 +129,7 @@ export default {
           id: 6,
           heading: `Супер-автокредит от ${this.settings.credit_percent} годовых`,
           content:
-            `Скидка ${this.settings.sale_credit} ₽, одобрение по паспорту и В/У, взнос от 0%`,
+            `Скидка ${this.settings.sale_credit}, одобрение по паспорту и В/У, взнос от 0%`,
           link: "/credit",
         },
         {
