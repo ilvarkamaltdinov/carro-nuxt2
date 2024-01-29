@@ -71,6 +71,7 @@
             @click="callback(offer)" />
         </div>
       </div>
+
       <div class="car__stock" v-if="offer.category_enum === 'europe'">
         Под заказ в автоцентре
         <a href="#" @click.prevent="moreInfoDiller(offer.dealer.slug)" class="car__stock-dealer">
@@ -80,6 +81,7 @@
           г. {{ offer.dealer.city }}, {{ offer.dealer.address }}
         </div>
       </div>
+
       <div class="car__stock" v-else-if="offer.is_active && !offer.is_stock || isNew">
         В наличии в автоцентре
         <a href="#" @click.prevent="moreInfoDiller(offer.dealer.slug)" class="car__stock-dealer">

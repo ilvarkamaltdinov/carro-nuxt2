@@ -1,6 +1,5 @@
 <template>
-	<div class="catalog__img"
-	     :class="'catalog__img-' + sliderId">
+	<div class="catalog__img" :class="'catalog__img-' + sliderId">
 		<div class="swiper">
 			<div v-if="hasFancy"
 			     class="swiper-wrapper">
