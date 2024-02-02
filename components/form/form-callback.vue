@@ -109,8 +109,6 @@ export default {
       return true;
     },
     async submitForm() {
-      console.log(this.isSpammed)
-      return;
       if (this.checkForm()) {
         let formData = {
           chosen_car: this.offer,
