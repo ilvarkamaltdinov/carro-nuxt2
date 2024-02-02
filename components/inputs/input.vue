@@ -3,6 +3,8 @@
 	       class="form__field"
 	       :placeholder="placeholder"
 	       :value="value"
+         autocomplete="off"
+         onpaste="return false"
 	       @focus="$emit('focus')"
 	       @focusout="$emit('focusout')"
 	       :inputmode="type==='tel' ? 'numeric' : ''"

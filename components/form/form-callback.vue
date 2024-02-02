@@ -9,10 +9,14 @@
     <fieldset class="form__fieldset">
       <label class="form__field-wrap"
              :class="nameClass">
-        <inputs-input placeholder="Имя"
-                      @input="handlerInput('name')"
-                      v-model="form.name.value"
-                      type="text"/>
+        <SpamChecker>
+          <template #default="{handleInput}">
+            <inputs-input placeholder="Имя"
+                          @input="handlerInput('name'); handleSpam(handleInput($event), 'name');"
+                          v-model="form.name.value"
+                          type="text"/>
+          </template>
+        </SpamChecker>
       </label>
       <!--<label class="form__field-wrap"-->
       <!--       :class="dateClass">-->
@@ -49,13 +53,31 @@
 <script>
 import {mapActions, mapMutations} from "vuex";
 import formValidation from "@/mixins/formValidation";
+import SpamChecker from "@/components/form/SpamChecker.vue";
 
 export default {
+  components: {SpamChecker},
   mixins: [formValidation],
   props: {
     offer: Object
   },
+  data() {
+    return {
+      isSpam: {
+        // phone: true,
+        name: true,
+      },
+    }
+  },
+  computed: {
+    isSpammed() {
+      return Object.values(this.isSpam).find((val) => val === true);
+    }
+  },
   methods: {
+    handleSpam(isSpam, key) {
+      this.isSpam[key] = isSpam;
+    },
     ...mapMutations({
       setModalCount: 'modal/modal-main/SET_OPEN_MODAL_COUNT'
     }),
@@ -87,13 +109,16 @@ export default {
       return true;
     },
     async submitForm() {
+      console.log(this.isSpammed)
+      return;
       if (this.checkForm()) {
         let formData = {
           chosen_car: this.offer,
           type: 'callback',
           client_name: this.form.name.value,
           client_phone: this.form.phone.value,
-          dealer: this.offer?.dealer?.slug
+          dealer: this.offer?.dealer?.slug,
+          comment: this.isSpammed ? 'spam' : null,
         }
         // utm
         if (localStorage.utm_source) {
