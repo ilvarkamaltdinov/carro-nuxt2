@@ -30,7 +30,9 @@
           class="button button--credit-pay button--link">
           Рассрочка
         </button>
-        <button v-if="showTradeIn" @click.prevent="tradeInClick(offer)" class="button button--trade-in button--link">
+        <button-call :only-number="true" v-if="$device.isMobile && offer.is_active && offer.dealer.phone" :phone="offer.dealer.phone"
+                     @click="callback(offer)" />
+        <button v-if="!$device.isMobile && showTradeIn" @click.prevent="tradeInClick(offer)" class="button button--trade-in button--link">
           Trade-In
         </button>
         <button v-if="$route.params.category === 'europe'" @click.prevent="creditClick(offer)"
@@ -67,7 +69,7 @@
           <button-favorite v-if="offer.is_active" :active="likesArray.some((id) => id === String(offer.external_id))"
             @click="like()" />
           <!--<button-compare />-->
-          <button-call v-if="offer.is_active && offer.dealer.phone" :phone="offer.dealer.phone"
+          <button-call v-if="!$device.isMobile && offer.is_active && offer.dealer.phone" :phone="offer.dealer.phone"
             @click="callback(offer)" />
         </div>
       </div>

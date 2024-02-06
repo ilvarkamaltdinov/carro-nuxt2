@@ -38,7 +38,7 @@ import offers from "@/apollo/queries/offer/offers";
 export default {
   data() {
     return {
-      limit: 8,
+      limit: 16,
       infiniteId: +new Date(),
     }
   },
