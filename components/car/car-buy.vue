@@ -69,34 +69,37 @@
           <button-favorite v-if="offer.is_active" :active="likesArray.some((id) => id === String(offer.external_id))"
             @click="like()" />
           <!--<button-compare />-->
-          <button-call v-if="!$device.isMobile && offer.is_active && offer.dealer.phone" :phone="offer.dealer.phone"
-            @click="callback(offer)" />
         </div>
+      </div>
+      <div class="car__stock-wrapper">
+        <div class="car__stock" v-if="offer.category_enum === 'europe'">
+          Под заказ в автоцентре
+          <a href="#" @click.prevent="moreInfoDiller(offer.dealer.slug)" class="car__stock-dealer">
+            «{{ offer.dealer.title }}»
+          </a>
+          <div class="car__stock-promo">
+            г. {{ offer.dealer.city }}, {{ offer.dealer.address }}
+          </div>
+        </div>
+        <div class="car__stock" v-else-if="offer.is_active && !offer.is_stock || isNew">
+          В наличии в автоцентре
+          <a href="#" @click.prevent="moreInfoDiller(offer.dealer.slug)" class="car__stock-dealer">
+            «{{ offer.dealer.title }}»
+          </a>
+          <div class="car__stock-promo">
+            г. {{ offer.dealer.city }}, {{ offer.dealer.address }}
+          </div>
+        </div>
+        <div v-else-if="offer.is_active && offer.is_stock && !isNew" class="car__stock car__stock--no">
+          Автомобиль находится на центральной стоянке
+        </div>
+        <div v-else class="car__stock car__stock--no">Нет в наличии</div>
+
+        <button-call-modal v-if="$device.isDesktop && offer.dealer.phone" :phone="offer.dealer.phone"
+                     @click="callback(offer)" />
       </div>
 
-      <div class="car__stock" v-if="offer.category_enum === 'europe'">
-        Под заказ в автоцентре
-        <a href="#" @click.prevent="moreInfoDiller(offer.dealer.slug)" class="car__stock-dealer">
-          «{{ offer.dealer.title }}»
-        </a>
-        <div class="car__stock-promo">
-          г. {{ offer.dealer.city }}, {{ offer.dealer.address }}
-        </div>
-      </div>
 
-      <div class="car__stock" v-else-if="offer.is_active && !offer.is_stock || isNew">
-        В наличии в автоцентре
-        <a href="#" @click.prevent="moreInfoDiller(offer.dealer.slug)" class="car__stock-dealer">
-          «{{ offer.dealer.title }}»
-        </a>
-        <div class="car__stock-promo">
-          г. {{ offer.dealer.city }}, {{ offer.dealer.address }}
-        </div>
-      </div>
-      <div v-else-if="offer.is_active && offer.is_stock && !isNew" class="car__stock car__stock--no">
-        Автомобиль находится на центральной стоянке
-      </div>
-      <div v-else class="car__stock car__stock--no">Нет в наличии</div>
     </div>
     <car-terms v-if="!$device.isMobile" class="swiper-slide car__info-group--options" />
   </div>

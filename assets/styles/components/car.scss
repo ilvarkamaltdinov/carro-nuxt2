@@ -141,6 +141,10 @@
   white-space: nowrap;
 }
 
+.car__stock-wrapper {
+  display: block;
+}
+
 .car__stock {
   text-align: center;
   @include font-small;
@@ -574,6 +578,12 @@
 }
 
 @media (min-width: $desktop-width) {
+  .car__stock-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
   .car__slider .swiper-button-prev {
     left: -20px;
   }

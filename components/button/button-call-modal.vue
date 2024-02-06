@@ -1,6 +1,6 @@
 <template>
   <a class="button button--action button--text button--link"
-     v-if="!isNight"
+     v-if="!isNight && !$device.isDesktop"
      :href="`tel:${phone.replace(/[^+\d]/g, '')}`">
     <svg-icon class="button__icon"
               name="icon-call"/>
@@ -11,7 +11,7 @@
           @click.prevent="$emit('click')">
     <svg-icon class="button__icon"
               name="icon-call"/>
-    {{ phone }}
+    <span class="button__text">{{ phone }}</span>
   </button>
 </template>
 <script>
