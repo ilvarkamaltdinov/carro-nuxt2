@@ -46,6 +46,11 @@
   margin-bottom: 16px;
 }
 
+.car__buy-block .button--link {
+  padding: 12px;
+  flex-grow: 1;
+}
+
 .car__actions-block {
   @include border-top;
   @include border-bottom;
@@ -104,9 +109,11 @@
 .car__price-old {
   text-decoration: line-through;
 }
+
 .car__price-old {
   display: none;
 }
+
 .car__price-cash {
   display: none;
 }
