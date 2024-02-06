@@ -6,8 +6,9 @@
             height="16"
             width="16"
             class="button__icon">
-			<span class="button__text">Проверить
-        <span class="button__text-autoteka">по Автотеке</span>
+			<span class="button__text">
+       VIN проверен
+<!--        <span class="button__text-autoteka">по Автотеке</span>-->
       </span>
 	</button>
 </template>
