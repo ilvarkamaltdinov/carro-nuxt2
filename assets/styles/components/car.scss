@@ -102,17 +102,16 @@
 }
 
 .car__price {
-  @include font-body-strong;
+  @include font-mobile-h1;
   color: $colorPrimary;
+  flex-shrink: 0;
 }
 
 .car__price-old {
+  @include font-mobile-h1;
   text-decoration: line-through;
 }
 
-.car__price-old {
-  display: none;
-}
 
 .car__price-cash {
   display: none;
@@ -126,10 +125,6 @@
   & > * {
     margin-right: 8px;
   }
-}
-
-.car__price {
-  flex-shrink: 0;
 }
 
 .car__price-payment {
@@ -491,9 +486,6 @@
     }
   }
 
-  .car__price {
-    @include font-desktop-h3;
-  }
 
   .car__buy-block {
     flex-direction: row-reverse;
@@ -583,7 +575,7 @@
     align-items: center;
     justify-content: space-between;
   }
-  
+
   .car__slider .swiper-button-prev {
     left: -20px;
   }

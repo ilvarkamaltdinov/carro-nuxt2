@@ -13,9 +13,9 @@
         <div class="car__price-old" v-if="$route.params.category !== 'europe'">
           {{ offer.price_old | toCurrency }}
         </div>
-        <div class="car__price-payment">
-          {{ offer.price | access_acredit }} / мес. без взноса
-        </div>
+<!--        <div class="car__price-payment">-->
+<!--          {{ offer.price | access_acredit }} / мес. без взноса-->
+<!--        </div>-->
       </div>
       <div v-if="offer.is_active" class="car__buy-block">
         <div v-if="$route.params.category === 'europe'" class="car__actions-buttons">
@@ -40,7 +40,7 @@
           Рассчитать кредит
         </button>
         <button v-else @click.prevent="creditClick(offer)" class="button button--credit">
-          Купить в кредит
+          В кредит за {{creditPrice(offer.price)}}
         </button>
       </div>
       <div v-if="$route.params.category !== 'europe'" class="car__actions-block">
@@ -108,6 +108,7 @@
 import filters from "~/mixins/filters";
 import { mapActions, mapGetters } from "vuex";
 import dealer from "@/apollo/queries/dealer/dealer";
+import {creditPrice} from "../../helpers/creditPrice";
 
 export default {
   mixins: [filters],
@@ -133,6 +134,7 @@ export default {
     },
   },
   methods: {
+    creditPrice,
     ...mapActions({
       liked: "favorite/favorite/liked",
       openModal: "modal/modal-main/openModal",

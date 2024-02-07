@@ -94,10 +94,7 @@
 
 .catalog__actions {
   display: flex;
-
-  > *:not(:last-child) {
-    margin-right: 16px;
-  }
+  gap: 16px;
 }
 
 .catalog__year {
@@ -119,25 +116,40 @@
 }
 
 .catalog__price-old {
+  @include font-mobile-h2;
   text-decoration: line-through;
   margin-right: 8px;
 }
-.catalog__price-old {
-  display: none;
-}
+
 .catalog__buttons {
   display: flex;
   justify-content: space-between;
+  gap: 16px;
 }
 
 .catalog__item--modal-desktop .catalog__tech {
   margin-bottom: 0;
 }
 
+
+.catalog__actions-main {
+  flex-grow: 1;
+}
+
+.catalog__actions-main--long {
+  gap: 16px;
+}
+
+
 .catalog__buttons .button--credit {
-  margin-left: 16px;
-  // max-width: 194px;
-  max-width: auto;
+  font-size: 14px;
+  padding: 12px 4px;
+  width: 100%;
+}
+
+.catalog__actions-main--long .button {
+  width: auto;
+  flex-grow: 1;
 }
 
 .catalog__price-wrap {
@@ -147,7 +159,7 @@
 }
 
 .catalog__price {
-  @include font-body-strong;
+  @include font-mobile-h2;
   margin-right: 8px;
   color: $colorPrimary;
 }
@@ -609,11 +621,6 @@
 
   .catalog__actions-main {
     flex-direction: row-reverse;
-  }
-
-  .catalog__actions-main .button--credit {
-    margin-left: 0;
-    margin-right: 16px;
   }
 
   .catalog__item--desktop-form .catalog__info-wrap {

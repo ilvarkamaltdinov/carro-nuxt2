@@ -2,7 +2,7 @@
   <div class="catalog__price-wrap">
     <div class="catalog__price">{{ price | toCurrency }}</div>
     <div class="catalog__price-old" v-if="categoryEnum !== 'europe'">{{ priceOld | toCurrency }}</div>
-    <div class="catalog__credit-price">{{ price | access_acredit }} / мес. без взноса</div>
+<!--    <div class="catalog__credit-price">{{ price | access_acredit }}/мес.</div>-->
 
     <div v-if="categoryEnum !== 'europe' && !hideStock">
       <div class="stock stock--false" v-if="isStock && !isNew" v-tippy="{
