@@ -6,6 +6,7 @@
         <span> {{ offer.engine_volume | engineVolume }}</span>
         <span>  {{ offer.gearbox.title_short }}</span>
         <span class="catalog__title-line">
+          <span class="catalog__year">{{ offer.engine_power }} л.с.</span>
            <span class="catalog__year">{{ offer.year }}</span>
            <span class="catalog__run">{{ offer.run | run }} км</span>
         </span>
