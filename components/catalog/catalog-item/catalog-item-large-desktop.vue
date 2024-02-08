@@ -29,13 +29,13 @@
 				</div>
 			</div>
 			<div class="catalog__tech">
-				<rating-car v-tippy="{
-							content:`<div class='tippy__text'>Рейтинг автомобиля</div>`,
-							animation:'scale',
-							arrow: true,
-					}"
-				            @click="ratingClick"
-				            :rating="offer.rating" />
+<!--				<rating-car v-tippy="{-->
+<!--							content:`<div class='tippy__text'>Рейтинг автомобиля</div>`,-->
+<!--							animation:'scale',-->
+<!--							arrow: true,-->
+<!--					}"-->
+<!--				            @click="ratingClick"-->
+<!--				            :rating="offer.rating" />-->
 				<catalog-item-tech-list :offer="offer" />
 			</div>
 		</div>

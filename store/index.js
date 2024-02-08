@@ -62,11 +62,8 @@ export const actions = {
     await commit('SET_API', currentDomain.api);
 
     let client = app.apolloProvider.defaultClient
-    // TODO получаю дефолтный процент тут так как в state нет экземпляра контекста
-    commit('banks/SET_PERCENT', $config.default_percent)
     // // TODO танцы с бубнами
     // commit('filters/filters/SET_LOADING_RANGE', false)
-
     // TODO ПОЛУЧАЮ СПИСОК МАРОК
     let response = await client.query(
       {

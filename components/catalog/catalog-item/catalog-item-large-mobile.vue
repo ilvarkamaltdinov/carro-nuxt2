@@ -22,14 +22,16 @@
 		</div>
 		<div class="catalog__tech"
 		     :class="{'catalog__tech--no-buttons':!hasButtons}">
-			<rating-car v-tippy="{
-							content:`<div class='tippy__text'>Рейтинг автомобиля</div>`,
-							animation:'scale',
-							arrow: true,
-					}"
-			            @click="ratingClick"
-			            :rating="offer.rating" />
+<!--			<rating-car v-tippy="{-->
+<!--							content:`<div class='tippy__text'>Рейтинг автомобиля</div>`,-->
+<!--							animation:'scale',-->
+<!--							arrow: true,-->
+<!--					}"-->
+<!--			            @click="ratingClick"-->
+<!--			            :rating="offer.rating" />-->
 			<catalog-item-tech-list :offer="offer" />
+      <button-call v-if="offer.dealer.phone" :phone="offer.dealer.phone"
+                   @click="$emit('call')"/>
 		</div>
 		<catalog-item-buttons
 				:is-form="isForm"

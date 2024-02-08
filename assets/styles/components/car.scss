@@ -80,11 +80,13 @@
 
 .car__actions-buttons {
   display: flex;
+  width: 100%;
+  gap: 12px;
 }
 
 .car__actions-buttons .button {
   &:not(:last-child) {
-    margin-right: 12px;
+    flex-grow: 1;
   }
 }
 
@@ -112,7 +114,6 @@
   text-decoration: line-through;
 }
 
-
 .car__price-cash {
   display: none;
 }
@@ -121,10 +122,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 16px;
-
-  & > * {
-    margin-right: 8px;
-  }
+  gap: 8px;
 }
 
 .car__price-payment {
@@ -354,6 +352,9 @@
   .car__buy-block .button--credit {
     width: 100%;
     order: -1;
+  }
+  .car__fixed-wrap .car__buy-block .button--credit {
+    width: auto;
   }
 
   .car__buy-block .button--trade-in {

@@ -17,7 +17,7 @@
 					          name="icon-gear" />
 				</div>
 				<div class="car__tech-content">
-					{{ offer.gearbox.title_short_rus }}
+					{{ offer.gearbox.title_short }}
 				</div>
 			</li>
 			<li class="car__tech-item">

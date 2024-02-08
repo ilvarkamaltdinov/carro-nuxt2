@@ -3,74 +3,74 @@
     <section class="page-main__car car" v-show="carPageLoaded">
       <div class="grid grid--container" v-if="$device.isMobile">
         <benefits v-if="$route.params.category === 'europe'" class="car__benefits"
-          :benefits="benefitsEurope" />
-        <benefits v-else-if="isNew" class="car__benefits" :benefits="benefitsNew" />
-        <benefits v-else class="car__benefits" :benefits="benefitsCar" />
+                  :benefits="benefitsEurope"/>
+        <benefits v-else-if="isNew" class="car__benefits" :benefits="benefitsNew"/>
+        <benefits v-else class="car__benefits" :benefits="benefitsCar"/>
       </div>
       <div class="grid grid--container">
-        <div class="heading-group heading-group--h1 grid__col-6">
+        <div class="heading-group heading-group--offer heading-group--h1 grid__col-12">
           <div class="heading-group__wrap">
             <h1 class="heading heading--h1 heading--h1-car" v-html="pageTitle"></h1>
-            <span class="heading-group__label heading-group__label--car" v-if="offer.generation">
-              <span class="heading-group__year">
-                {{ offer.year }}
-              </span>
-              <span class="heading-group__generation">
-                {{ offer.generation.name }}
-              </span>
-              <span v-if="offer.vin" class="vin__wrapper-car">
-                <span class="car__vin vin" v-tippy="{
-                  content: `<div class='tippy__text'>VIN-номер проверен на предмет нахождения в розыске, угоне, залоге, использования в такси, попадания в ДТП, соответствия количества владельцев.</div>`,
-                  animation: 'scale',
-                  arrow: true,
-                }">
-                  <svg-icon name="icon-check" />
-                  VIN
-                </span>
-                <span> {{ offer.vin }}</span>
-              </span>
-            </span>
+            <!--            <span class="heading-group__label heading-group__label&#45;&#45;car" v-if="offer.generation">-->
+            <!--              <span class="heading-group__year">-->
+            <!--                {{ offer.year }}-->
+            <!--              </span>-->
+            <!--              <span class="heading-group__generation">-->
+            <!--                {{ offer.generation.name }}-->
+            <!--              </span>-->
+            <!--              <span v-if="offer.vin" class="vin__wrapper-car">-->
+            <!--                <span class="car__vin vin" v-tippy="{-->
+            <!--                  content: `<div class='tippy__text'>VIN-номер проверен на предмет нахождения в розыске, угоне, залоге, использования в такси, попадания в ДТП, соответствия количества владельцев.</div>`,-->
+            <!--                  animation: 'scale',-->
+            <!--                  arrow: true,-->
+            <!--                }">-->
+            <!--                  <svg-icon name="icon-check" />-->
+            <!--                  VIN-->
+            <!--                </span>-->
+            <!--                <span> {{ offer.vin }}</span>-->
+            <!--              </span>-->
+            <!--            </span>-->
           </div>
         </div>
-<!--        <div class="car__top-buttons grid__col-6" v-if="offer.is_active">-->
-<!--          <button-typical @click="callback" text="Обратный звонок" class="button&#45;&#45;icon button&#45;&#45;link"-->
-<!--            icon="icon-callback" />-->
-<!--          <button-call-modal @click="callback" v-if="offer.dealer.phone" :phone="offer.dealer.phone" />-->
-<!--        </div>-->
+        <!--        <div class="car__top-buttons grid__col-6" v-if="offer.is_active">-->
+        <!--          <button-typical @click="callback" text="Обратный звонок" class="button&#45;&#45;icon button&#45;&#45;link"-->
+        <!--            icon="icon-callback" />-->
+        <!--          <button-call-modal @click="callback" v-if="offer.dealer.phone" :phone="offer.dealer.phone" />-->
+        <!--        </div>-->
       </div>
       <div class="car__slider-wrap">
         <div class="grid grid--container">
-          <car-slider />
+          <car-slider/>
         </div>
       </div>
       <div class="grid grid--car grid--container grid__col-12">
-        <car-buy />
+        <car-buy/>
         <transition name="slide-fade">
-          <car-fixed v-if="showFixed && focusShowFixed" />
+          <car-fixed v-if="showFixed && focusShowFixed"/>
         </transition>
-        <car-info :page-title="pageTitle" />
+        <car-info :page-title="pageTitle"/>
 
-        <car-complectation v-if="$device.isMobile" :offer="offer" class="swiper-slide car__info-group--complectation" />
+        <car-complectation v-if="$device.isMobile" :offer="offer" class="swiper-slide car__info-group--complectation"/>
 
         <car-description v-if="offer.description && $device.isMobile" :offer="offer" :page-title="pageTitle"
-          class="swiper-slide car__info-group--description" />
+                         class="swiper-slide car__info-group--description"/>
       </div>
       <div class="grid grid--container">
         <benefits v-if="$route.params.category === 'europe'" class="car__benefits car__benefits--desktop"
-          :benefits="benefitsEurope" />
-        <benefits v-else-if="isNew" class="car__benefits car__benefits--desktop" :benefits="benefitsNew" />
-        <benefits v-else class="car__benefits car__benefits--desktop" :benefits="benefitsCar" />
-        <car-credit v-if="offer && offer.is_active" :offer="offer" />
+                  :benefits="benefitsEurope"/>
+        <benefits v-else-if="isNew" class="car__benefits car__benefits--desktop" :benefits="benefitsNew"/>
+        <benefits v-else class="car__benefits car__benefits--desktop" :benefits="benefitsCar"/>
+        <car-credit v-if="offer && offer.is_active" :offer="offer"/>
       </div>
     </section>
-    <catalog-list-visited :offer="offer" v-if="visitedIsLoading" />
-    <catalog-list-car :offer="offer" v-show="carPageLoaded" />
-    <skeleton-car v-show="!carPageLoaded" />
+    <catalog-list-visited :offer="offer" v-if="visitedIsLoading"/>
+    <catalog-list-car :offer="offer" v-show="carPageLoaded"/>
+    <skeleton-car v-show="!carPageLoaded"/>
   </div>
-  <skeleton-car v-else />
+  <skeleton-car v-else/>
 </template>
 <script>
-import { mapActions, mapGetters, mapMutations } from "vuex";
+import {mapActions, mapGetters, mapMutations} from "vuex";
 import offer from "@/apollo/queries/offer/offer";
 import jsonld from "@/mixins/jsonld";
 
@@ -111,10 +111,10 @@ export default {
           dateFormat: "j F Y года.",
           external_id: Number(this.$route.params.car),
         };
-        let response = await this.request({ query: offer, variables: variables });
+        let response = await this.request({query: offer, variables: variables});
         if (this.$route.params.category && !this.validateCategoryOffer(response.data.offer.category_enum)) {
           console.log(123, 'error in car.vue')
-          return this.$nuxt.error({ statusCode: 404 });
+          return this.$nuxt.error({statusCode: 404});
         }
         await this.setOffer(response.data.offer);
         await this.setDealerPhone(response.data.offer.dealer.phone);
@@ -252,7 +252,7 @@ export default {
     },
     handleScroll() {
       this.showFixed =
-        process.client && this.$device.isMobile && window.scrollY > 499;
+        this.offer.is_active && process.client && this.$device.isMobile && window.scrollY > 499;
     },
   },
 };

@@ -13,13 +13,13 @@
                      :options="currentFolders"
                      @input="handlerSelect( $event, 'folder')"/>
     </label>
-    <label class="form__field-wrap form__field-wrap--select">
-      <inputs-select :value="chosenGeneration"
-                     title="Поколение"
-                     :options="currentGenerations"
-                     @input="handlerSelect( $event, 'generation')"/>
-    </label>
-    <div class="form__field-wrap-line">
+    <!--    <label class="form__field-wrap form__field-wrap&#45;&#45;select">-->
+    <!--      <inputs-select :value="chosenGeneration"-->
+    <!--                     title="Поколение"-->
+    <!--                     :options="currentGenerations"-->
+    <!--                     @input="handlerSelect( $event, 'generation')"/>-->
+    <!--    </label>-->
+    <div class="form__field-wrap-line" v-if="!home">
       <label class="form__field-wrap form__field-wrap--select">
         <inputs-select :value="chosenYear"
                        title="Год от"
@@ -43,6 +43,12 @@ import range from 'lodash/range'
 import sortBy from "lodash/sortBy";
 
 export default {
+  props: {
+    home: {
+      type: Boolean,
+      default: false
+    }
+  },
   computed: {
     ...mapGetters({
       showFilters: 'filters/filters/showFilters',

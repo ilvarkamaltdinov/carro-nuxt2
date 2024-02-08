@@ -1,7 +1,7 @@
 export const state = () => ({
     banks: [],
     bank: {},
-    percent: null
+    percent: 4.9
 })
 export const getters = {
     banks: (state) => {

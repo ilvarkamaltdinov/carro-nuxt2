@@ -2,5 +2,6 @@ fragment GearboxType on Gearbox {
   id
   title
   title_short_rus
+  title_short
   name
 }

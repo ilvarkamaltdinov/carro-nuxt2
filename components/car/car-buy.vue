@@ -9,65 +9,69 @@
           {{ offer.price | toCurrency }}
         </div>
         <!--        <tippy-question :class="{'car__tippy-question' : $route.params.category !== 'europe'}" text="Цена актуальна при покупке в кредит" />-->
-        <tippy-question text="Цена актуальна при покупке в кредит" />
+        <tippy-question text="Цена актуальна при покупке в кредит"/>
         <div class="car__price-old" v-if="$route.params.category !== 'europe'">
           {{ offer.price_old | toCurrency }}
         </div>
-<!--        <div class="car__price-payment">-->
-<!--          {{ offer.price | access_acredit }} / мес. без взноса-->
-<!--        </div>-->
+        <!--        <div class="car__price-payment">-->
+        <!--          {{ offer.price | access_acredit }} / мес. без взноса-->
+        <!--        </div>-->
       </div>
       <div v-if="offer.is_active" class="car__buy-block">
         <div v-if="$route.params.category === 'europe'" class="car__actions-buttons">
-          <button-autoteka v-if="$route.params.category !== 'europe'" @click="autoteka(offer)" />
+          <button-autoteka v-if="$route.params.category !== 'europe'" @click="autoteka(offer)"/>
           <button-favorite v-if="offer.is_active" :active="likesArray.some((id) => id === String(offer.external_id))"
-            @click="like()" />
+                           @click="like()"/>
           <!--<button-compare />-->
           <button-call v-if="offer.is_active && offer.dealer.phone" :phone="offer.dealer.phone"
-            @click="callback(offer)" />
+                       @click="callback(offer)"/>
         </div>
         <button v-if="$route.params.category !== 'europe'" @click.prevent="installmentClick(offer)"
-          class="button button--credit-pay button--link">
+                class="button button--credit-pay button--link">
           Рассрочка
         </button>
-        <button-call :only-number="true" v-if="$device.isMobile && offer.is_active && offer.dealer.phone" :phone="offer.dealer.phone"
-                     @click="callback(offer)" />
-        <button v-if="!$device.isMobile && showTradeIn" @click.prevent="tradeInClick(offer)" class="button button--trade-in button--link">
+        <button-call class="button--call-green" :only-number="true" v-if="$device.isMobile && offer.is_active && offer.dealer.phone"
+                     :phone="offer.dealer.phone"
+                     @click="callback(offer)"/>
+        <button v-if="!$device.isMobile && showTradeIn" @click.prevent="tradeInClick(offer)"
+                class="button button--trade-in button--link">
           Trade-In
         </button>
         <button v-if="$route.params.category === 'europe'" @click.prevent="creditClick(offer)"
-          class="button button--credit button--credit-europe">
+                class="button button--credit button--credit-europe">
           Рассчитать кредит
         </button>
         <button v-else @click.prevent="creditClick(offer)" class="button button--credit">
-          В кредит за {{creditPrice(offer.price)}}
+          В кредит за {{ creditPrice(offer.price) }}
         </button>
       </div>
       <div v-if="$route.params.category !== 'europe'" class="car__actions-block">
-        <rating-car v-if="!isNew" v-tippy="{
-          content: `<div class='tippy__text'>Рейтинг автомобиля</div>`,
-          animation: 'scale',
-          arrow: true,
-        }" @click="ratingClick" :rating="offer.rating" />
+        <!--        <rating-car v-if="!isNew" v-tippy="{-->
+        <!--          content: `<div class='tippy__text'>Рейтинг автомобиля</div>`,-->
+        <!--          animation: 'scale',-->
+        <!--          arrow: true,-->
+        <!--        }" @click="ratingClick" :rating="offer.rating" />-->
 
-        <div class="car__rating-new" v-if="isNew">
-          <rating-car v-tippy="{
-            content: `<div class='tippy__text'>Рейтинг автомобиля</div>`,
-            animation: 'scale',
-            arrow: true,
-          }" :rating="{ rating_total: 5 }" />
+        <!--        <div class="car__rating-new" v-if="isNew">-->
+        <!--          <rating-car v-tippy="{-->
+        <!--            content: `<div class='tippy__text'>Рейтинг автомобиля</div>`,-->
+        <!--            animation: 'scale',-->
+        <!--            arrow: true,-->
+        <!--          }" :rating="{ rating_total: 5 }" />-->
 
-          <span class="car__rating-new-label">
-            Новый
-            <span>автомобиль</span>
-          </span>
-        </div>
+        <!--          <span class="car__rating-new-label">-->
+        <!--            Новый-->
+        <!--            <span>автомобиль</span>-->
+        <!--          </span>-->
+        <!--        </div>-->
 
 
         <div class="car__actions-buttons">
-          <button-autoteka v-if="$route.params.category !== 'europe' && !isNew" @click="autoteka(offer)" />
+          <button-autoteka v-if="$route.params.category !== 'europe' && !isNew" @click="autoteka(offer)">
+            <template #text>VIN {{ offer.vin}}</template>
+          </button-autoteka>
           <button-favorite v-if="offer.is_active" :active="likesArray.some((id) => id === String(offer.external_id))"
-            @click="like()" />
+                           @click="like()"/>
           <!--<button-compare />-->
         </div>
       </div>
@@ -77,18 +81,18 @@
           <a href="#" @click.prevent="moreInfoDiller(offer.dealer.slug)" class="car__stock-dealer">
             «{{ offer.dealer.title }}»
           </a>
-          <div class="car__stock-promo">
-            г. {{ offer.dealer.city }}, {{ offer.dealer.address }}
-          </div>
+<!--          <div class="car__stock-promo">-->
+<!--            г. {{ offer.dealer.city }}, {{ offer.dealer.address }}-->
+<!--          </div>-->
         </div>
         <div class="car__stock" v-else-if="offer.is_active && !offer.is_stock || isNew">
           В наличии в автоцентре
           <a href="#" @click.prevent="moreInfoDiller(offer.dealer.slug)" class="car__stock-dealer">
             «{{ offer.dealer.title }}»
           </a>
-          <div class="car__stock-promo">
-            г. {{ offer.dealer.city }}, {{ offer.dealer.address }}
-          </div>
+<!--          <div class="car__stock-promo">-->
+<!--            г. {{ offer.dealer.city }}, {{ offer.dealer.address }}-->
+<!--          </div>-->
         </div>
         <div v-else-if="offer.is_active && offer.is_stock && !isNew" class="car__stock car__stock--no">
           Автомобиль находится на центральной стоянке
@@ -96,17 +100,17 @@
         <div v-else class="car__stock car__stock--no">Нет в наличии</div>
 
         <button-call-modal v-if="$device.isDesktop && offer.dealer.phone" :phone="offer.dealer.phone"
-                     @click="callback(offer)" />
+                           @click="callback(offer)"/>
       </div>
 
 
     </div>
-    <car-terms v-if="!$device.isMobile" class="swiper-slide car__info-group--options" />
+    <car-terms v-if="!$device.isMobile" class="swiper-slide car__info-group--options"/>
   </div>
 </template>
 <script>
 import filters from "~/mixins/filters";
-import { mapActions, mapGetters } from "vuex";
+import {mapActions, mapGetters} from "vuex";
 import dealer from "@/apollo/queries/dealer/dealer";
 import {creditPrice} from "../../helpers/creditPrice";
 
@@ -144,7 +148,7 @@ export default {
       try {
         let dealerData = await this.request({
           query: dealer,
-          variables: { slug: dealerSlug },
+          variables: {slug: dealerSlug},
         });
         dealerData = dealerData.data.dealer;
         let payload = {

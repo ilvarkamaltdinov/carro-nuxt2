@@ -217,6 +217,15 @@
   border-left-color: white;
 }
 
+.button.button--call-green {
+  background-color: $colorSuccess;
+  color: $colorButton;
+}
+
+.button.button--call-green svg {
+  fill: $colorButton;
+}
+
 .button--action .button__icon {
   width: 19px;
   fill: var(--color-text);
