@@ -4,8 +4,8 @@
     <catalog-folders v-if="isFolders"
                      :is-all="showAll"/>
 
-    <catalog-generations v-if="isGenerations"
-                         :is-all="showAll"/>
+    <!--    <catalog-generations v-if="isGenerations"-->
+    <!--                         :is-all="showAll"/>-->
 
     <div class="catalog__more-buttons" v-if="$device.isMobile">
       <div class="catalog__more-buttons-wrap">
@@ -55,7 +55,7 @@ export default {
       chosen: 'filters/filters/chosen'
     }),
     isFolders() {
-      return this.$route.name === 'category-mark'
+      return this.$route.name === 'category-mark' || this.$route.name === 'category-mark-model' || this.$route.name === 'category-mark-model-car'
     },
     isGenerations() {
       // return this.chosen.folder?.length === 1
