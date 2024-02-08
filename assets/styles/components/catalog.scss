@@ -23,8 +23,19 @@
   transition: $transitionHover;
 }
 
+.catalog__price-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
 .catalog__title-link {
   display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  row-gap: 0;
 
   &:hover .catalog__title {
     color: $colorPrimary;
@@ -98,7 +109,16 @@
 }
 
 .catalog__year {
-  margin-left: 8px;
+  color: var(--color-text-secondary);
+}
+
+.catalog__title-line {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+}
+
+.catalog__run {
   color: var(--color-text-secondary);
 }
 
@@ -112,7 +132,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .catalog__price-old {
@@ -125,6 +145,7 @@
   display: flex;
   justify-content: space-between;
   gap: 16px;
+  flex-direction: row-reverse;
 }
 
 .catalog__item--modal-desktop .catalog__tech {
@@ -155,7 +176,6 @@
 .catalog__price-wrap {
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
 }
 
 .catalog__price {
@@ -546,7 +566,7 @@
 
   .catalog__item--desktop-l .catalog__info {
     flex-shrink: 0;
-    margin-right: 24px;
+    width: 100%;
   }
 
   .catalog__item--desktop-l .catalog__tech {

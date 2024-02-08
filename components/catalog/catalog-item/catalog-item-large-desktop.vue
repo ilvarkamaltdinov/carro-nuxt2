@@ -28,16 +28,16 @@
 					</div>
 				</div>
 			</div>
-			<div class="catalog__tech">
-<!--				<rating-car v-tippy="{-->
-<!--							content:`<div class='tippy__text'>Рейтинг автомобиля</div>`,-->
-<!--							animation:'scale',-->
-<!--							arrow: true,-->
-<!--					}"-->
-<!--				            @click="ratingClick"-->
-<!--				            :rating="offer.rating" />-->
-				<catalog-item-tech-list :offer="offer" />
-			</div>
+<!--			<div class="catalog__tech">-->
+<!--&lt;!&ndash;				<rating-car v-tippy="{&ndash;&gt;-->
+<!--&lt;!&ndash;							content:`<div class='tippy__text'>Рейтинг автомобиля</div>`,&ndash;&gt;-->
+<!--&lt;!&ndash;							animation:'scale',&ndash;&gt;-->
+<!--&lt;!&ndash;							arrow: true,&ndash;&gt;-->
+<!--&lt;!&ndash;					}"&ndash;&gt;-->
+<!--&lt;!&ndash;				            @click="ratingClick"&ndash;&gt;-->
+<!--&lt;!&ndash;				            :rating="offer.rating" />&ndash;&gt;-->
+<!--&lt;!&ndash;				<catalog-item-tech-list :offer="offer" />&ndash;&gt;-->
+<!--			</div>-->
 		</div>
 		<catalog-item-buttons :choose="choose"
 		                      :is-form="isForm"

@@ -28,7 +28,7 @@
 <!--					}"-->
 <!--			            @click="ratingClick"-->
 <!--			            :rating="offer.rating" />-->
-			<catalog-item-tech-list :offer="offer" />
+<!--			<catalog-item-tech-list :offer="offer" />-->
 		</div>
 	</article>
 </template>

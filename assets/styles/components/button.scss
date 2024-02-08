@@ -218,12 +218,12 @@
 }
 
 .button.button--call-green {
-  background-color: $colorSuccess;
-  color: $colorButton;
+  background-color: var(--color-button-call-bg);
+  color: var(--color-button-call-text);
 }
 
 .button.button--call-green svg {
-  fill: $colorButton;
+  fill: var(--color-text-dark);
 }
 
 .button--action .button__icon {

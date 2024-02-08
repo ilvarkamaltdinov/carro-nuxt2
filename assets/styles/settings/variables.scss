@@ -133,6 +133,8 @@ $gridGapTabletWidth: 23px;
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --color-button-call-text: #0C0C0C;
+    --color-button-call-bg: #f6f7f9;
     --color-text: #f6f7f9;
     --color-section: #1C1C1E;
     --color-text-secondary: #919399;
@@ -148,6 +150,8 @@ $gridGapTabletWidth: 23px;
 
 @media (prefers-color-scheme: light) {
   :root {
+    --color-button-call-text: #005FF9;
+    --color-button-call-bg: #DEE9FA;
     --color-text: #2C2D2E;
     --color-text-dark: #262727;
     --color-text-secondary: #919399;
@@ -164,6 +168,8 @@ $gridGapTabletWidth: 23px;
 }
 
 :root[data-theme="dark"] {
+  --color-button-call-text: #0C0C0C;
+  --color-button-call-bg: #f6f7f9;
   --color-text: #f6f7f9;
   --color-section: #1C1C1E;
   --color-text-secondary: #919399;
@@ -177,6 +183,8 @@ $gridGapTabletWidth: 23px;
 }
 
 :root[data-theme="light"] {
+  --color-button-call-text: #005FF9;
+  --color-button-call-bg: #DEE9FA;
   --color-text: #2C2D2E;
   --color-text-dark: #262727;
   --color-text-secondary: #919399;

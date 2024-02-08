@@ -22,7 +22,7 @@
       <!--			}"-->
       <!--			            @click="ratingClick"-->
       <!--			            :rating="offer.rating" />-->
-      <catalog-item-tech-list :offer="offer"/>
+<!--      <catalog-item-tech-list :offer="offer"/>-->
     </div>
     <catalog-item-buttons
       :is-form="isForm"

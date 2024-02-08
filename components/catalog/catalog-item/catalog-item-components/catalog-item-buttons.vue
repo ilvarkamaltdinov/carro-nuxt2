@@ -3,8 +3,9 @@
     <div class="catalog__actions">
       <button-autoteka @click="autoteka(offer)"
                        v-if="long && $route.params.category !=='europe' && !isNew"/>
-      <button-favorite :active="likesArray.some(id => id === String(offer.external_id))"
-                       @click="like()"/>
+      <!--      <button-favorite :active="likesArray.some(id => id === String(offer.external_id))"-->
+      <!--                       @click="like()"/>-->
+      <button-call @click="call" class="button--call-green"/>
       <!--<button-compare v-if="long" />-->
     </div>
     <div class="catalog__actions-main catalog__actions-main--long"

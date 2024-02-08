@@ -14,7 +14,7 @@
         <div class="car__actions-buttons">
           <!--					<button-favorite :active="likesArray.some(id => id === String(offer.external_id))"-->
           <!--					                 @click="like()" />-->
-          <button @click.prevent="$emit('onCredit')" class="button button--credit">
+          <button @click.prevent="creditClick(offer)" class="button button--credit">
             В кредит за {{ creditPrice(offer.price) }}
           </button>
           <button-call class="button--call-green" :phone="offer.dealer.phone" @click="callback(offer)"/>

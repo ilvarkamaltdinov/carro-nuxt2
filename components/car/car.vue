@@ -73,6 +73,7 @@
 import {mapActions, mapGetters, mapMutations} from "vuex";
 import offer from "@/apollo/queries/offer/offer";
 import jsonld from "@/mixins/jsonld";
+import credit from "@/_pages/credit/index.vue";
 
 export default {
   mixins: [jsonld],
@@ -137,6 +138,9 @@ export default {
     }
   },
   computed: {
+    credit() {
+      return credit
+    },
     ...mapGetters({
       domain: "domain",
       site_id: "site_id",
