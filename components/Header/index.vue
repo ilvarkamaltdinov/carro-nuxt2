@@ -133,7 +133,6 @@ export default {
           await this.setIsNight(false)
         }
       }
-
     },
     async searchClick() {
       await this.setHeaderFilterClick(true)
